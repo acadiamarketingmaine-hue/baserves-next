@@ -39,21 +39,106 @@ With over 200 campsites and 30+ miles of trails winding through forests, wetland
       '/images/Playground-Gallery-Pic-2048x1365.jpg',
     ],
   },
-  'experiences/canal-bridge': {
-    name: 'Canal Bridge Campground',
-    tagline: 'Scenic Riverside Camping in Maine',
-    description: 'A peaceful retreat for paddlers, anglers, and nature lovers',
-    longDescription: `Situated along the scenic Saco River in Fryeburg, Maine, Canal Bridge Campground offers a unique riverside camping experience. With direct waterfront access and stunning views of the White Mountains, this location is perfect for those seeking both relaxation and adventure.
+  'hardin-ridge-recreation-area': {
+    name: 'Hardin Ridge Recreation Area',
+    tagline: 'Lakeside Camping on Monroe Lake',
+    description: 'Experience the beauty of Indiana\'s largest lake',
+    longDescription: `Located on the shores of Monroe Lake, Indiana's largest man-made lake, Hardin Ridge Recreation Area offers an exceptional outdoor experience in the heart of Hoosier National Forest. The area features beautiful wooded campsites, a swimming beach, and direct access to over 10,000 acres of water.
 
-Kayakers and canoeists will find easy river access, while anglers can try their luck with the abundant trout and bass. The campground's proximity to hiking trails and local attractions makes it an ideal base for exploring the natural beauty of western Maine.`,
-    location: 'Fryeburg, ME',
-    features: ['Kayaking', 'Fishing', 'Hiking', 'Wildlife Viewing', 'RV & Tent Camping', 'River Access', 'Mountain Views'],
-    stats: { sites: 'Multiple', waterfront: 'Waterfront Access', river: 'Saco River' },
+Whether you're looking to spend a weekend fishing, hiking the surrounding trails, or simply enjoying the tranquil lake views, Hardin Ridge provides the perfect setting. The campground offers both electric and non-electric sites, accommodating everything from tent campers to large RVs.`,
+    location: 'Monroe County, IN | Hoosier National Forest',
+    features: ['Boating', 'Fishing', 'Swimming Beach', 'Hiking', 'RV & Tent Camping', 'Picnic Shelters', 'Boat Ramp'],
+    stats: { campsites: '200+', lakeSize: '10,750 acres', trails: '12+ miles' },
+    image: '/images/DSC_0103-2048x1365.jpg',
+    gallery: [
+      '/images/DSC_0103-2048x1365.jpg',
+      '/images/DSC_0110-2048x1365.jpg',
+      '/images/DSC_0001-2048x1365.jpg',
+    ],
+  },
+  'monongahela-national-forest': {
+    name: 'Monongahela National Forest',
+    tagline: 'Wild & Wonderful West Virginia',
+    description: 'Over 900,000 acres of Appalachian wilderness',
+    longDescription: `The Monongahela National Forest spans over 900,000 acres across the Allegheny Mountains of eastern West Virginia. This vast wilderness area is home to some of the most diverse ecosystems in the eastern United States, featuring spruce forests, highland bogs, and pristine mountain streams.
+
+Visitors can explore hundreds of miles of hiking trails, including portions of the Allegheny Trail and numerous wilderness areas. The forest offers exceptional opportunities for camping, fishing, hunting, rock climbing, and wildlife viewing. Several developed campgrounds provide convenient access to the forest's most scenic areas.`,
+    location: 'Eastern West Virginia',
+    features: ['Hiking', 'Camping', 'Fishing', 'Rock Climbing', 'Wildlife Viewing', 'Scenic Drives', 'Winter Sports'],
+    stats: { acres: '900,000+', trails: '800+ miles', wilderness: '5 areas' },
+    image: '/images/DSC_0110-2048x1365.jpg',
+    gallery: [
+      '/images/DSC_0110-2048x1365.jpg',
+      '/images/DSC_0103-2048x1365.jpg',
+      '/images/DSC_0001-2048x1365.jpg',
+    ],
+  },
+  'washington-state-park': {
+    name: 'Washington State Park',
+    tagline: 'Ancient Petroglyphs & Natural Beauty',
+    description: 'Discover Missouri\'s rich history and stunning landscapes',
+    longDescription: `Washington State Park, located along the Big River in Missouri, is renowned for its ancient Native American petroglyphs and diverse recreational opportunities. The park preserves over 350 prehistoric rock carvings, some dating back over 1,000 years, making it one of the most significant archaeological sites in the Midwest.
+
+Beyond its historical significance, the park offers excellent hiking trails, a swimming pool, and beautiful picnic areas. The campground provides both basic and electric sites nestled among the Ozark hills, perfect for families and outdoor enthusiasts looking to connect with nature and history.`,
+    location: 'De Soto, MO',
+    features: ['Historic Petroglyphs', 'Hiking', 'Swimming Pool', 'Camping', 'Picnic Areas', 'Nature Programs', 'Fishing'],
+    stats: { acres: '2,100+', petroglyphs: '350+', trails: '10+ miles' },
+    image: '/images/Burlingame2-1536x1152.jpg',
+    gallery: [
+      '/images/Burlingame2-1536x1152.jpg',
+      '/images/Burlingame1-2048x1365.jpg',
+      '/images/Playground-Gallery-Pic-2048x1365.jpg',
+    ],
+  },
+  'long-lake-outdoor-center': {
+    name: 'Long Lake Outdoor Center',
+    tagline: 'Year-Round Outdoor Education & Recreation',
+    description: 'Where adventure meets education in Michigan',
+    longDescription: `Long Lake Outdoor Center provides a unique blend of outdoor recreation and environmental education in the heart of Michigan. This facility offers programs for school groups, summer camps, and family retreats, all centered around connecting people with nature.
+
+The center features comfortable lodging options, a beautiful lake for water activities, and extensive trail systems for hiking and nature study. Whether you're looking for a team-building retreat, an educational field trip, or a family getaway, Long Lake Outdoor Center provides the perfect setting for meaningful outdoor experiences.`,
+    location: 'Yankee Springs, MI',
+    features: ['Lodging', 'Conference Facilities', 'Lake Activities', 'Hiking Trails', 'Environmental Education', 'Team Building', 'Summer Camps'],
+    stats: { capacity: '200+ guests', lake: 'Private Lake', programs: '50+ annually' },
+    image: '/images/Playground-Gallery-Pic-2048x1365.jpg',
+    gallery: [
+      '/images/Playground-Gallery-Pic-2048x1365.jpg',
+      '/images/Burlingame1-2048x1365.jpg',
+      '/images/DSC_0103-2048x1365.jpg',
+    ],
+  },
+  'chief-noonday-outdoor-center': {
+    name: 'Chief Noonday Outdoor Center',
+    tagline: 'Premier Group Camping in Michigan',
+    description: 'Exceptional facilities for group outdoor adventures',
+    longDescription: `Chief Noonday Outdoor Center offers premier group camping and retreat facilities in the beautiful Yankee Springs Recreation Area. Named after a prominent Potawatomi chief, this center honors the region's Native American heritage while providing modern amenities for group gatherings.
+
+The facility can accommodate large groups with its multiple cabin clusters, dining hall, and extensive outdoor spaces. Whether you're planning a scout campout, church retreat, family reunion, or corporate team-building event, Chief Noonday provides the infrastructure and natural setting to make your gathering memorable.`,
+    location: 'Middleville, MI',
+    features: ['Group Cabins', 'Dining Hall', 'Meeting Spaces', 'Lake Access', 'Hiking Trails', 'Campfire Areas', 'Sports Fields'],
+    stats: { capacity: '300+ guests', cabins: '12+', acres: '100+' },
     image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
     gallery: [
       '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
-      '/images/Canal-Bridge-Entrance-10-2048x1365.jpg',
-      '/images/Canal-Bridge-Entrance-11-2048x1365.jpg',
+      '/images/Playground-Gallery-Pic-2048x1365.jpg',
+      '/images/Burlingame1-2048x1365.jpg',
+    ],
+  },
+  'bankhead-national-forest': {
+    name: 'Bankhead National Forest',
+    tagline: 'Alabama\'s Natural Treasure',
+    description: 'Explore canyons, waterfalls, and pristine wilderness',
+    longDescription: `The Bankhead National Forest, often called the "Land of a Thousand Waterfalls," encompasses over 180,000 acres of diverse Alabama landscape. This stunning forest features dramatic sandstone canyons, pristine streams, and countless waterfalls that attract visitors from across the country.
+
+The Sipsey Wilderness, located within the forest, is the largest wilderness area east of the Mississippi River and offers exceptional backpacking and hiking opportunities. The forest also provides excellent camping, fishing, and wildlife viewing, with several developed recreation areas offering modern amenities.`,
+    location: 'Northwest Alabama',
+    features: ['Waterfalls', 'Canyon Hiking', 'Wilderness Backpacking', 'Camping', 'Fishing', 'Wildlife Viewing', 'Scenic Drives'],
+    stats: { acres: '180,000+', waterfalls: '100+', wilderness: '25,000 acres' },
+    image: '/images/DSC_0001-2048x1365.jpg',
+    gallery: [
+      '/images/DSC_0001-2048x1365.jpg',
+      '/images/DSC_0110-2048x1365.jpg',
+      '/images/DSC_0103-2048x1365.jpg',
     ],
   },
 }
@@ -111,7 +196,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
             href="https://escape.baserves.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
           >
             Book Your Stay
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,12 +221,12 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Main Content */}
-      <section className="section">
+      <section className="py-16">
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Description */}
             <div className="lg:col-span-2">
-              <h2 className="headline-md text-gray-900 mb-6">About This Location</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">About This Location</h2>
               <div className="prose prose-lg max-w-none">
                 {location.longDescription.split('\n\n').map((paragraph: string, index: number) => (
                   <p key={index} className="text-gray-600 leading-relaxed mb-4">

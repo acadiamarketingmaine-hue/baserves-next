@@ -62,6 +62,16 @@ const categoryData: Record<string, any> = {
       { name: 'Long Lake Outdoor Center', location: 'Michigan', duration: 'Daily/Weekly', price: 'Contact for rates', image: '/images/Playground-Gallery-Pic-2048x1365.jpg' },
     ]
   },
+  'lookout-pavillions': {
+    name: 'Lookout Pavilions',
+    icon: '🏔️',
+    description: 'Reserve scenic overlooks and covered pavilions for picnics, gatherings, and enjoying panoramic views.',
+    image: '/images/DSC_0110-2048x1365.jpg',
+    experiences: [
+      { name: 'Hardin Ridge Overlook', location: 'Monroe Lake, IN', duration: 'Daily', price: 'From $50', image: '/images/DSC_0103-2048x1365.jpg' },
+      { name: 'Tipsaw Lake Pavilion', location: 'Perry County, IN', duration: 'Daily', price: 'From $40', image: '/images/DSC_0001-2048x1365.jpg' },
+    ]
+  },
 }
 
 export default function CategoryPage({ params }: { params: { category: string } }) {
