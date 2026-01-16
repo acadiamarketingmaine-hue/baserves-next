@@ -37,13 +37,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-6">
+            <Link href="/" className="inline-block mb-6 bg-white rounded-lg px-4 py-2">
               <Image
                 src="/images/logo.png"
                 alt="BA Serves"
-                width={200}
-                height={67}
-                className="h-16 w-auto brightness-0 invert"
+                width={180}
+                height={60}
+                className="h-12 w-auto"
               />
             </Link>
             <p className="text-white/70 leading-relaxed mb-6 max-w-md">
