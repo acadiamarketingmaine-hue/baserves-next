@@ -96,6 +96,260 @@ const stats = [
   { number: '10K+', label: 'Happy Visitors' },
 ]
 
+const partnershipSteps = [
+  {
+    number: 1,
+    title: 'Initial Assessment',
+    description: 'We evaluate your recreation area\'s unique needs, challenges, and opportunities.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+      </svg>
+    ),
+  },
+  {
+    number: 2,
+    title: 'Custom Management Plan',
+    description: 'A tailored strategy designed to maximize visitor satisfaction and operational efficiency.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+    ),
+  },
+  {
+    number: 3,
+    title: 'Expert Operations',
+    description: 'Our trained professionals handle day-to-day management, maintenance, and visitor services.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+  },
+  {
+    number: 4,
+    title: 'Results & Savings',
+    description: 'Reduced costs, improved visitor experiences, and complete peace of mind.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
+]
+
+const partnershipStats = [
+  { number: 35, suffix: '%', label: 'Average Cost Savings' },
+  { number: 98, suffix: '%', label: 'Partner Satisfaction' },
+  { number: 24, suffix: '/7', label: 'Support Available' },
+  { number: 0, suffix: '', label: 'Hassles For You', display: 'Zero' },
+]
+
+function PartnershipJourney() {
+  const [isVisible, setIsVisible] = useState(false)
+  const [activeStep, setActiveStep] = useState(0)
+  const sectionRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          // Animate through steps
+          let step = 0
+          const interval = setInterval(() => {
+            step++
+            setActiveStep(step)
+            if (step >= partnershipSteps.length) {
+              clearInterval(interval)
+            }
+          }, 600)
+          return () => clearInterval(interval)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <section ref={sectionRef} className="section bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      <div className="container-custom px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="badge badge-forest mb-4">Why Partner With Us</span>
+          <h2 className="headline-lg text-gray-900 mb-4">
+            The <span className="text-forest-DEFAULT">BA Serves</span> Advantage
+          </h2>
+          <p className="subheadline max-w-3xl mx-auto">
+            Let us handle the complexities of recreation area management while you focus on what matters most.
+            Here's how our partnership delivers results.
+          </p>
+        </div>
+
+        {/* Journey Timeline */}
+        <div className="relative max-w-5xl mx-auto mb-20">
+          {/* Progress Line Background */}
+          <div className="absolute top-16 left-0 right-0 h-1 bg-gray-200 rounded-full hidden md:block" />
+
+          {/* Animated Progress Line */}
+          <div
+            className="absolute top-16 left-0 h-1 bg-gradient-to-r from-forest-DEFAULT to-green-500 rounded-full hidden md:block transition-all duration-1000 ease-out"
+            style={{ width: isVisible ? `${(activeStep / partnershipSteps.length) * 100}%` : '0%' }}
+          />
+
+          {/* Steps */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {partnershipSteps.map((step, index) => (
+              <div
+                key={step.number}
+                className={`relative text-center transition-all duration-500 ${
+                  index < activeStep ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-4'
+                }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
+                {/* Step Circle */}
+                <div
+                  className={`relative z-10 w-12 h-12 mx-auto mb-6 rounded-full flex items-center justify-center transition-all duration-500 ${
+                    index < activeStep
+                      ? 'bg-forest-DEFAULT text-white shadow-lg shadow-forest-DEFAULT/30'
+                      : 'bg-gray-200 text-gray-400'
+                  }`}
+                >
+                  {index < activeStep ? (
+                    step.icon
+                  ) : (
+                    <span className="font-bold">{step.number}</span>
+                  )}
+                </div>
+
+                {/* Content */}
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Benefits Stats */}
+        <div className="bg-forest-DEFAULT rounded-3xl p-8 md:p-12">
+          <div className="text-center mb-10">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+              What Our Partners Experience
+            </h3>
+            <p className="text-white/70 max-w-2xl mx-auto">
+              When you partner with BA Serves, you're not just hiring a management company —
+              you're gaining a dedicated team committed to your success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {partnershipStats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className="text-center p-4 rounded-2xl bg-white/5 border border-white/10"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-white mb-1">
+                  {stat.display ? (
+                    <span>{isVisible ? stat.display : '...'}</span>
+                  ) : isVisible ? (
+                    <PartnershipCounter target={stat.number} suffix={stat.suffix} isActive={isVisible} />
+                  ) : (
+                    <span>0{stat.suffix}</span>
+                  )}
+                </div>
+                <div className="text-white/60 text-sm">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Key Benefits List */}
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-semibold text-white mb-1">Reduced Operating Costs</h4>
+                <p className="text-white/60 text-sm">Economies of scale and expert management mean significant savings.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-semibold text-white mb-1">Liability Protection</h4>
+                <p className="text-white/60 text-sm">Proper insurance, trained staff, and compliance reduce your risk exposure.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-semibold text-white mb-1">Happy Visitors</h4>
+                <p className="text-white/60 text-sm">Professional management means better experiences and glowing reviews.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-10 text-center">
+            <a href="tel:+12073077903" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Discuss Partnership Options
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function PartnershipCounter({ target, suffix, isActive }: { target: number; suffix: string; isActive: boolean }) {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!isActive) {
+      setCount(0)
+      return
+    }
+
+    let startTime: number
+    let animationFrame: number
+    const duration = 2000
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / duration, 1)
+      setCount(Math.floor(progress * target))
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate)
+      }
+    }
+
+    animationFrame = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animationFrame)
+  }, [target, isActive])
+
+  return <span>{count}{suffix}</span>
+}
+
 function AnimatedCounter({ target, suffix = '', isActive }: { target: number; suffix?: string; isActive: boolean }) {
   const [count, setCount] = useState(0)
 
@@ -385,6 +639,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Partnership Benefits - Animated Journey */}
+      <PartnershipJourney />
 
       {/* CTA Section */}
       <section className="relative py-32 overflow-hidden">
