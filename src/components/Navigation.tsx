@@ -40,23 +40,24 @@ export default function Navigation() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <nav className="glass-dark">
-        <div className="container-custom">
-          <div className="flex items-center justify-between h-20 px-6">
+      {/* Top Bar - Clean white like AmEx */}
+      <div className="bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between h-16 px-6">
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image
                 src="/images/logo.png"
                 alt="BA Serves"
-                width={180}
-                height={60}
-                className="h-12 w-auto brightness-0 invert"
+                width={160}
+                height={53}
+                className="h-10 w-auto"
                 priority
               />
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-1">
               {navigation.map((item) => (
                 <div
                   key={item.name}
@@ -64,10 +65,13 @@ export default function Navigation() {
                   onMouseEnter={() => item.submenu && setOpenDropdown(item.name)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <Link href={item.href} className="nav-link py-2 flex items-center gap-1">
+                  <Link
+                    href={item.href}
+                    className="px-4 py-2 text-gray-700 hover:text-forest-DEFAULT font-medium text-sm flex items-center gap-1 transition-colors"
+                  >
                     {item.name}
                     {item.submenu && (
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     )}
@@ -75,13 +79,13 @@ export default function Navigation() {
 
                   {/* Dropdown */}
                   {item.submenu && openDropdown === item.name && (
-                    <div className="absolute top-full left-0 pt-2 w-64">
-                      <div className="bg-white rounded-xl shadow-2xl py-2 border border-gray-100">
+                    <div className="absolute top-full left-0 pt-1 w-64">
+                      <div className="bg-white rounded-lg shadow-xl py-2 border border-gray-100">
                         {item.submenu.map((subitem) => (
                           <Link
                             key={subitem.name}
                             href={subitem.href}
-                            className="block px-4 py-3 text-gray-700 hover:bg-forest-DEFAULT/5 hover:text-forest-DEFAULT transition-colors"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-forest-DEFAULT text-sm transition-colors"
                           >
                             {subitem.name}
                           </Link>
@@ -93,19 +97,25 @@ export default function Navigation() {
               ))}
             </div>
 
-            {/* CTA Button */}
-            <div className="hidden lg:flex items-center gap-4">
-              <a href="tel:+12073077903" className="flex items-center gap-2 text-white/90 hover:text-white transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <span className="font-medium">+1 207 307-7903</span>
+            {/* Right Side - Rewards, Sign In, Book Now */}
+            <div className="hidden lg:flex items-center gap-2">
+              <Link
+                href="/rewards"
+                className="px-4 py-2 text-gray-700 hover:text-forest-DEFAULT font-medium text-sm transition-colors"
+              >
+                Rewards
+              </Link>
+              <a
+                href="https://escape.baserves.com/login"
+                className="px-4 py-2 text-gray-700 hover:text-forest-DEFAULT font-medium text-sm transition-colors"
+              >
+                Sign In
               </a>
               <a
                 href="https://escape.baserves.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2.5 bg-white text-forest-DEFAULT font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                className="ml-2 px-5 py-2 bg-forest-DEFAULT text-white font-semibold text-sm rounded-md hover:bg-forest-dark transition-colors"
               >
                 Book Now
               </a>
@@ -114,7 +124,7 @@ export default function Navigation() {
             {/* Mobile menu button */}
             <button
               type="button"
-              className="lg:hidden p-2 text-white"
+              className="lg:hidden p-2 text-gray-700"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <span className="sr-only">Open menu</span>
@@ -130,56 +140,63 @@ export default function Navigation() {
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden bg-forest-dark border-t border-white/10">
-            <div className="px-6 py-4 space-y-1">
-              {navigation.map((item) => (
-                <div key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="block py-3 text-white font-medium"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                  {item.submenu && (
-                    <div className="pl-4 space-y-1">
-                      {item.submenu.map((subitem) => (
-                        <Link
-                          key={subitem.name}
-                          href={subitem.href}
-                          className="block py-2 text-white/70 text-sm"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {subitem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <div className="pt-4 border-t border-white/10">
-                <a href="tel:+12073077903" className="flex items-center gap-2 text-white py-3">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  +1 207 307-7903
-                </a>
-                <a
-                  href="https://escape.baserves.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center py-3 bg-white text-forest-DEFAULT font-semibold rounded-lg mt-2"
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-b border-gray-100 shadow-lg">
+          <div className="px-6 py-4 space-y-1">
+            {navigation.map((item) => (
+              <div key={item.name}>
+                <Link
+                  href={item.href}
+                  className="block py-3 text-gray-800 font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  Book Now
-                </a>
+                  {item.name}
+                </Link>
+                {item.submenu && (
+                  <div className="pl-4 space-y-1">
+                    {item.submenu.map((subitem) => (
+                      <Link
+                        key={subitem.name}
+                        href={subitem.href}
+                        className="block py-2 text-gray-500 text-sm"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {subitem.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
+            ))}
+            <div className="pt-4 border-t border-gray-100 space-y-2">
+              <Link
+                href="/rewards"
+                className="block py-2 text-gray-700 font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Rewards
+              </Link>
+              <a
+                href="https://escape.baserves.com/login"
+                className="block py-2 text-gray-700 font-medium"
+              >
+                Sign In
+              </a>
+              <a
+                href="https://escape.baserves.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center py-3 bg-forest-DEFAULT text-white font-semibold rounded-md mt-2"
+              >
+                Book Now
+              </a>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </header>
   )
 }
