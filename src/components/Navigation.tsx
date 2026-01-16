@@ -44,17 +44,15 @@ export default function Navigation() {
         <div className="container-custom">
           <div className="flex items-center justify-between h-20 px-6">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3">
-              <div className="relative w-12 h-12">
-                <svg viewBox="0 0 100 100" className="w-full h-full">
-                  <circle cx="50" cy="70" r="25" fill="#2d5a3c" />
-                  <ellipse cx="50" cy="45" rx="35" ry="25" fill="#1a472a" />
-                  <ellipse cx="50" cy="30" rx="25" ry="18" fill="#2d5a3c" />
-                  <ellipse cx="50" cy="18" rx="15" ry="12" fill="#1a472a" />
-                  <rect x="47" y="70" width="6" height="20" fill="#8B4513" />
-                </svg>
-              </div>
-              <span className="text-white font-bold text-xl tracking-tight">BAServes.com</span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo.png"
+                alt="BA Serves"
+                width={180}
+                height={60}
+                className="h-12 w-auto brightness-0 invert"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}

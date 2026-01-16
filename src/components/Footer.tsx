@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const footerLinks = {
   experiences: [
@@ -36,17 +37,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="relative w-12 h-12">
-                <svg viewBox="0 0 100 100" className="w-full h-full">
-                  <circle cx="50" cy="70" r="25" fill="#2d5a3c" />
-                  <ellipse cx="50" cy="45" rx="35" ry="25" fill="#3d6b4c" />
-                  <ellipse cx="50" cy="30" rx="25" ry="18" fill="#2d5a3c" />
-                  <ellipse cx="50" cy="18" rx="15" ry="12" fill="#3d6b4c" />
-                  <rect x="47" y="70" width="6" height="20" fill="#8B4513" />
-                </svg>
-              </div>
-              <span className="text-white font-bold text-xl tracking-tight">BAServes.com</span>
+            <Link href="/" className="inline-block mb-6">
+              <Image
+                src="/images/logo.png"
+                alt="BA Serves"
+                width={200}
+                height={67}
+                className="h-16 w-auto brightness-0 invert"
+              />
             </Link>
             <p className="text-white/70 leading-relaxed mb-6 max-w-md">
               From the rolling forests of Alabama to the rugged landscapes of Missouri, our managed sites provide

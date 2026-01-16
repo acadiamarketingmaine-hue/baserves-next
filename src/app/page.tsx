@@ -156,7 +156,6 @@ function PartnershipJourney() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
-          // Animate through steps
           let step = 0
           const interval = setInterval(() => {
             step++
@@ -164,11 +163,11 @@ function PartnershipJourney() {
             if (step >= partnershipSteps.length) {
               clearInterval(interval)
             }
-          }, 600)
+          }, 500)
           return () => clearInterval(interval)
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     )
 
     if (sectionRef.current) {
@@ -179,141 +178,201 @@ function PartnershipJourney() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="section bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      <div className="container-custom px-6">
+    <section ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+      <div className="absolute inset-0 opacity-30" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+      }} />
+
+      <div className="relative container-custom px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="badge badge-forest mb-4">Why Partner With Us</span>
-          <h2 className="headline-lg text-gray-900 mb-4">
-            The <span className="text-forest-DEFAULT">BA Serves</span> Advantage
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-emerald-400 text-sm font-semibold tracking-wide uppercase">Partnership Opportunities</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+            Your Success Is <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-300">Our Mission</span>
           </h2>
-          <p className="subheadline max-w-3xl mx-auto">
-            Let us handle the complexities of recreation area management while you focus on what matters most.
-            Here's how our partnership delivers results.
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+            We handle the complexities of recreation area management so you can focus on growth.
+            Here's how partnering with BA Serves transforms your operations.
           </p>
         </div>
 
-        {/* Journey Timeline */}
-        <div className="relative max-w-5xl mx-auto mb-20">
-          {/* Progress Line Background */}
-          <div className="absolute top-16 left-0 right-0 h-1 bg-gray-200 rounded-full hidden md:block" />
-
-          {/* Animated Progress Line */}
+        {/* Journey Timeline - Desktop */}
+        <div className="hidden lg:block relative max-w-6xl mx-auto mb-24">
+          {/* Connection Line */}
+          <div className="absolute top-24 left-[10%] right-[10%] h-0.5 bg-slate-700" />
           <div
-            className="absolute top-16 left-0 h-1 bg-gradient-to-r from-forest-DEFAULT to-green-500 rounded-full hidden md:block transition-all duration-1000 ease-out"
-            style={{ width: isVisible ? `${(activeStep / partnershipSteps.length) * 100}%` : '0%' }}
+            className="absolute top-24 left-[10%] h-0.5 bg-gradient-to-r from-emerald-500 to-green-400 transition-all duration-1000 ease-out"
+            style={{ width: isVisible ? `${(activeStep / partnershipSteps.length) * 80}%` : '0%' }}
           />
 
           {/* Steps */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-4 gap-6">
             {partnershipSteps.map((step, index) => (
               <div
                 key={step.number}
-                className={`relative text-center transition-all duration-500 ${
-                  index < activeStep ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-4'
+                className={`relative transition-all duration-700 ${
+                  index < activeStep ? 'opacity-100' : 'opacity-40'
                 }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                {/* Step Circle */}
-                <div
-                  className={`relative z-10 w-12 h-12 mx-auto mb-6 rounded-full flex items-center justify-center transition-all duration-500 ${
-                    index < activeStep
-                      ? 'bg-forest-DEFAULT text-white shadow-lg shadow-forest-DEFAULT/30'
-                      : 'bg-gray-200 text-gray-400'
-                  }`}
-                >
-                  {index < activeStep ? (
-                    step.icon
-                  ) : (
-                    <span className="font-bold">{step.number}</span>
-                  )}
+                {/* Number Circle */}
+                <div className="flex justify-center mb-8">
+                  <div
+                    className={`relative w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+                      index < activeStep
+                        ? 'bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg shadow-emerald-500/30 rotate-0'
+                        : 'bg-slate-800 border border-slate-700 -rotate-3'
+                    }`}
+                  >
+                    {index < activeStep ? (
+                      <div className="text-white">{step.icon}</div>
+                    ) : (
+                      <span className="text-2xl font-bold text-slate-500">{step.number}</span>
+                    )}
+                    {index < activeStep && (
+                      <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-white flex items-center justify-center">
+                        <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                {/* Content */}
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                {/* Content Card */}
+                <div className={`p-6 rounded-2xl transition-all duration-500 ${
+                  index < activeStep
+                    ? 'bg-slate-800/80 border border-slate-700'
+                    : 'bg-transparent'
+                }`}>
+                  <h3 className="text-lg font-bold text-white mb-3">{step.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">{step.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Benefits Stats */}
-        <div className="bg-forest-DEFAULT rounded-3xl p-8 md:p-12">
-          <div className="text-center mb-10">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-              What Our Partners Experience
-            </h3>
-            <p className="text-white/70 max-w-2xl mx-auto">
-              When you partner with BA Serves, you're not just hiring a management company —
-              you're gaining a dedicated team committed to your success.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {partnershipStats.map((stat, index) => (
+        {/* Journey Timeline - Mobile */}
+        <div className="lg:hidden mb-16">
+          <div className="space-y-6">
+            {partnershipSteps.map((step, index) => (
               <div
-                key={stat.label}
-                className="text-center p-4 rounded-2xl bg-white/5 border border-white/10"
+                key={step.number}
+                className={`flex gap-4 transition-all duration-500 ${
+                  index < activeStep ? 'opacity-100' : 'opacity-40'
+                }`}
               >
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">
-                  {stat.display ? (
-                    <span>{isVisible ? stat.display : '...'}</span>
-                  ) : isVisible ? (
-                    <PartnershipCounter target={stat.number} suffix={stat.suffix} isActive={isVisible} />
+                <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${
+                  index < activeStep
+                    ? 'bg-gradient-to-br from-emerald-500 to-green-600'
+                    : 'bg-slate-800 border border-slate-700'
+                }`}>
+                  {index < activeStep ? (
+                    <div className="text-white scale-75">{step.icon}</div>
                   ) : (
-                    <span>0{stat.suffix}</span>
+                    <span className="text-lg font-bold text-slate-500">{step.number}</span>
                   )}
                 </div>
-                <div className="text-white/60 text-sm">{stat.label}</div>
+                <div className="flex-1 pb-6 border-b border-slate-800">
+                  <h3 className="text-lg font-bold text-white mb-1">{step.title}</h3>
+                  <p className="text-slate-400 text-sm">{step.description}</p>
+                </div>
               </div>
             ))}
           </div>
+        </div>
 
-          {/* Key Benefits List */}
-          <div className="mt-10 grid md:grid-cols-3 gap-6">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <h4 className="font-semibold text-white mb-1">Reduced Operating Costs</h4>
-                <p className="text-white/60 text-sm">Economies of scale and expert management mean significant savings.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <div>
-                <h4 className="font-semibold text-white mb-1">Liability Protection</h4>
-                <p className="text-white/60 text-sm">Proper insurance, trained staff, and compliance reduce your risk exposure.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <h4 className="font-semibold text-white mb-1">Happy Visitors</h4>
-                <p className="text-white/60 text-sm">Professional management means better experiences and glowing reviews.</p>
+        {/* Stats & Benefits */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          {/* Stats Panel */}
+          <div className="bg-gradient-to-br from-emerald-600 to-green-700 rounded-3xl p-8 lg:p-10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+
+            <div className="relative">
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
+                The Numbers Speak
+              </h3>
+              <p className="text-emerald-100/80 mb-8">Real results from real partnerships</p>
+
+              <div className="grid grid-cols-2 gap-6">
+                {partnershipStats.map((stat) => (
+                  <div key={stat.label} className="text-center">
+                    <div className="text-4xl lg:text-5xl font-bold text-white mb-1">
+                      {stat.display ? (
+                        <span>{isVisible ? stat.display : '—'}</span>
+                      ) : isVisible ? (
+                        <PartnershipCounter target={stat.number} suffix={stat.suffix} isActive={isVisible} />
+                      ) : (
+                        <span>—</span>
+                      )}
+                    </div>
+                    <div className="text-emerald-100/70 text-sm font-medium">{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* CTA */}
-          <div className="mt-10 text-center">
-            <a href="tel:+12073077903" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Discuss Partnership Options
-            </a>
+          {/* Benefits List */}
+          <div className="space-y-6">
+            <div className="flex gap-5 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/30 transition-colors">
+              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
+                <svg className="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-white mb-2">Significant Cost Reduction</h4>
+                <p className="text-slate-400 leading-relaxed">Our economies of scale and operational expertise translate to major savings on staffing, equipment, and supplies—without sacrificing quality.</p>
+              </div>
+            </div>
+
+            <div className="flex gap-5 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/30 transition-colors">
+              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
+                <svg className="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-white mb-2">Complete Peace of Mind</h4>
+                <p className="text-slate-400 leading-relaxed">Full liability coverage, compliance management, and trained staff mean you can rest easy knowing your recreation area is in expert hands.</p>
+              </div>
+            </div>
+
+            <div className="flex gap-5 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/30 transition-colors">
+              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
+                <svg className="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-white mb-2">5-Star Visitor Experiences</h4>
+                <p className="text-slate-400 leading-relaxed">Professional management, pristine facilities, and attentive service create memorable experiences that keep visitors coming back.</p>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="pt-4">
+              <a
+                href="tel:+12073077903"
+                className="group flex items-center justify-center gap-3 w-full py-5 px-8 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-semibold text-lg rounded-2xl transition-all duration-300 shadow-lg shadow-emerald-500/25"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                Let's Discuss Your Needs
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
