@@ -478,7 +478,7 @@ export default function HomePage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 container-custom px-6 pt-16">
+        <div className="relative z-10 container-custom px-6 pt-28">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-8 animate-fade-in">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
