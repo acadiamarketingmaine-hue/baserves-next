@@ -13,7 +13,7 @@ const topNavLinks = [
 
 const secondaryNavLinks = [
   { name: 'Book', href: 'https://escape.baserves.com', external: true },
-  { name: 'My Reservations', href: 'https://escape.baserves.com/login', external: true },
+  { name: 'My Reservations', href: 'https://escape.baserves.com/customer/login', external: true },
   { name: 'Locations', href: '/experiences' },
   { name: 'Cave Tours', href: '/experiences/categories/cave-tours' },
   { name: 'Campgrounds', href: '/experiences/categories/campground-rentals' },
@@ -73,7 +73,7 @@ export default function Navigation() {
               </Link>
 
               <a
-                href="https://escape.baserves.com/login"
+                href="https://escape.baserves.com/customer/login"
                 className="px-4 py-2 text-forest-DEFAULT hover:text-forest-dark font-medium text-sm transition-colors"
               >
                 Sign In
@@ -202,7 +202,7 @@ export default function Navigation() {
                 Rewards
               </Link>
               <a
-                href="https://escape.baserves.com/login"
+                href="https://escape.baserves.com/customer/login"
                 className="block py-2 text-forest-DEFAULT font-medium"
               >
                 Sign In
