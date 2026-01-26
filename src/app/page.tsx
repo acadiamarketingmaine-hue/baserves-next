@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Script from 'next/script'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
@@ -410,6 +409,69 @@ function PartnershipCounter({ target, suffix, isActive }: { target: number; suff
   return <span>{count}{suffix}</span>
 }
 
+function BookingWidgets() {
+  useEffect(() => {
+    const loadAndInitWidgets = () => {
+      // Check if script already loaded and BAServesWidget is available
+      if (typeof (window as any).BAServesWidget !== 'undefined') {
+        // Use manual init for each widget
+        const widget = (window as any).BAServesWidget
+        if (widget.init) {
+          widget.init('chief-noonday-widget', { property: 'chief-noonday-outdoor-center', showPrice: true })
+          widget.init('long-lake-widget', { property: 'long-lake-outdoor-center', showPrice: true })
+        }
+        return
+      }
+
+      // Check if script is already being loaded
+      if (document.querySelector('script[src="https://escape.baserves.com/embed/widget.js"]')) {
+        // Script exists but may not be loaded yet, wait and retry
+        setTimeout(loadAndInitWidgets, 100)
+        return
+      }
+
+      // Create and load the script
+      const script = document.createElement('script')
+      script.src = 'https://escape.baserves.com/embed/widget.js'
+      script.async = true
+      script.onload = () => {
+        // Give the script a moment to set up, then init
+        setTimeout(loadAndInitWidgets, 100)
+      }
+      document.body.appendChild(script)
+    }
+
+    loadAndInitWidgets()
+  }, [])
+
+  return (
+    <section className="py-12 bg-gray-50">
+      <div className="max-w-[1400px] mx-auto px-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div>
+            <h3 className="text-center text-2xl font-bold text-forest-DEFAULT mb-5 uppercase tracking-[3px]">
+              Chief Noonday Outdoor Center
+            </h3>
+            <div
+              id="chief-noonday-widget"
+              className="min-h-[300px]"
+            />
+          </div>
+          <div>
+            <h3 className="text-center text-2xl font-bold text-forest-DEFAULT mb-5 uppercase tracking-[3px]">
+              Long Lake
+            </h3>
+            <div
+              id="long-lake-widget"
+              className="min-h-[300px]"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function AnimatedCounter({ target, suffix = '', isActive }: { target: number; suffix?: string; isActive: boolean }) {
   const [count, setCount] = useState(0)
 
@@ -529,38 +591,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Properties Booking Widgets */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-[1400px] mx-auto px-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div>
-              <h3 className="text-center text-2xl font-bold text-forest-DEFAULT mb-5 uppercase tracking-[3px]">
-                Chief Noonday Outdoor Center
-              </h3>
-              <div
-                data-baserves-widget
-                data-property="chief-noonday-outdoor-center"
-                data-show-price="true"
-                className="[&_img]:h-80 [&_img]:object-cover"
-              />
-            </div>
-            <div>
-              <h3 className="text-center text-2xl font-bold text-forest-DEFAULT mb-5 uppercase tracking-[3px]">
-                Long Lake
-              </h3>
-              <div
-                data-baserves-widget
-                data-property="long-lake-outdoor-center"
-                data-show-price="true"
-                className="[&_img]:h-80 [&_img]:object-cover"
-              />
-            </div>
-          </div>
-        </div>
-        <Script
-          src="https://escape.baserves.com/embed/widget.js"
-          strategy="lazyOnload"
-        />
-      </section>
+      <BookingWidgets />
 
       {/* Stats Section */}
       <section ref={statsRef} className="py-16 bg-forest-DEFAULT">
