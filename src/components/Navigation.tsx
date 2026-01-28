@@ -15,8 +15,7 @@ const secondaryNavLinks = [
   { name: 'Book', href: 'https://escape.baserves.com', external: true },
   { name: 'My Reservations', href: 'https://escape.baserves.com/customer/login', external: true },
   { name: 'Locations', href: '/experiences' },
-  { name: 'Cave Tours', href: '/experiences/categories/cave-tours' },
-  { name: 'Campgrounds', href: '/experiences/categories/campground-rentals' },
+{ name: 'Campgrounds', href: '/experiences/categories/campground-rentals' },
   { name: 'Watercraft', href: '/experiences/categories/kayak-and-watercraft-rentals' },
 ]
 

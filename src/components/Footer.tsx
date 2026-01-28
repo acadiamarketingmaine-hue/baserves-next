@@ -3,7 +3,6 @@ import Image from 'next/image'
 
 const footerLinks = {
   experiences: [
-    { name: 'Cave Tours', href: '/experiences/categories/cave-tours' },
     { name: 'Kayak & Watercraft', href: '/experiences/categories/kayak-and-watercraft-rentals' },
     { name: 'Campground Rentals', href: '/experiences/categories/campground-rentals' },
     { name: 'Hiking Trails', href: '/experiences/categories/hiking' },

@@ -4,15 +4,6 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 const categoryData: Record<string, any> = {
-  'cave-tours': {
-    name: 'Cave Tours',
-    icon: '🦇',
-    description: 'Explore the underground wonders of America with guided cave tours through stunning geological formations.',
-    image: '/images/20210323_093823-2048x1536.jpg',
-    experiences: [
-      { name: 'Meramec Caverns Tour', location: 'Missouri', duration: '1.5 hours', price: 'From $25', image: '/images/20210323_093823-1536x1152.jpg' },
-    ]
-  },
   'kayak-and-watercraft-rentals': {
     name: 'Kayak & Watercraft Rentals',
     icon: '🚣',

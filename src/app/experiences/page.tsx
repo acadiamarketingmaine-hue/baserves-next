@@ -67,7 +67,6 @@ const locations = [
 ]
 
 const categories = [
-  { name: 'Cave Tours', icon: '🦇', count: 5, slug: 'cave-tours', image: '/images/20210323_093823-2048x1536.jpg' },
   { name: 'Kayak & Watercraft', icon: '🚣', count: 12, slug: 'kayak-and-watercraft-rentals', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg' },
   { name: 'Campground Rentals', icon: '⛺', count: 25, slug: 'campground-rentals', image: '/images/DSC_0001-2048x1365.jpg' },
   { name: 'Scenic Drives', icon: '🚗', count: 8, slug: 'scenic-drives', image: '/images/DSC_0110-2048x1365.jpg' },

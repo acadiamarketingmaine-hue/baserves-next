@@ -43,14 +43,14 @@ The campground features spacious sites suitable for both tent and RV camping, wi
   },
   'meramec-state-park': {
     name: 'Meramec State Park',
-    tagline: 'Missouri\'s Cave Country',
-    description: 'Over 40 caves and endless outdoor adventures',
-    longDescription: `Meramec State Park is one of Missouri's most scenic state parks, featuring over 40 caves, including the famous Fisher Cave. The park spans more than 6,800 acres along the Meramec River, offering exceptional opportunities for caving, hiking, fishing, and camping.
+    tagline: 'Missouri\'s Scenic State Park',
+    description: 'Over 6,800 acres of outdoor adventures along the Meramec River',
+    longDescription: `Meramec State Park is one of Missouri's most scenic state parks, spanning more than 6,800 acres along the Meramec River. The park offers exceptional opportunities for hiking, fishing, camping, and paddling.
 
-The campground provides a variety of camping options from basic tent sites to full-hookup RV sites. Visitors can explore miles of trails, paddle the river, or take a guided cave tour. The park's diverse ecosystems support abundant wildlife, making it a favorite destination for nature enthusiasts.`,
+The campground provides a variety of camping options from basic tent sites to full-hookup RV sites. Visitors can explore miles of trails, paddle the river, or enjoy the park's diverse ecosystems that support abundant wildlife, making it a favorite destination for nature enthusiasts.`,
     location: 'Sullivan, MO',
-    features: ['Cave Tours', 'Camping', 'Hiking', 'Canoeing', 'Fishing', 'Swimming', 'Visitor Center'],
-    stats: { caves: '40+', acres: '6,800+', trails: '16 miles' },
+    features: ['Camping', 'Hiking', 'Canoeing', 'Fishing', 'Swimming', 'Visitor Center'],
+    stats: { acres: '6,800+', trails: '16 miles' },
     image: '/images/DSC_0103-2048x1365.jpg',
     gallery: [
       '/images/DSC_0103-2048x1365.jpg',

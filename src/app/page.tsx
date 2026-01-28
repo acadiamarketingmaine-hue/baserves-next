@@ -41,7 +41,6 @@ const locations = [
 ]
 
 const experienceCategories = [
-  { name: 'Cave Tours', icon: '🦇', count: 5, slug: 'cave-tours' },
   { name: 'Kayak & Watercraft', icon: '🚣', count: 12, slug: 'kayak-and-watercraft-rentals' },
   { name: 'Campground Rentals', icon: '⛺', count: 25, slug: 'campground-rentals' },
   { name: 'Scenic Drives', icon: '🚗', count: 8, slug: 'scenic-drives' },
