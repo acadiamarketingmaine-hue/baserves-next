@@ -1,7 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+
+const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 
 const values = [
   {
@@ -128,12 +131,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative aspect-square rounded-2xl overflow-hidden">
-              <Image
-                src="/images/Burlingame1-2048x1365.jpg"
-                alt="Our mission"
-                fill
-                className="object-cover"
-              />
+              <PropertyMap />
             </div>
           </div>
         </div>
