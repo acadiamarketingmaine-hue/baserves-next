@@ -82,6 +82,9 @@ const services = [
 export const metadata = {
   title: 'Services | BA Serves',
   description: 'Professional recreation area management services including maintenance, landscaping, cleaning, and repairs.',
+  alternates: {
+    canonical: '/services',
+  },
 }
 
 export default function ServicesPage() {
@@ -98,8 +101,8 @@ export default function ServicesPage() {
               Professional Recreation Area <span className="text-green-400">Management</span>
             </h1>
             <p className="text-xl text-white/80 leading-relaxed">
-              Beyond providing unforgettable outdoor experiences, we offer comprehensive management
-              services to keep recreation areas pristine and welcoming for all visitors.
+              Beyond providing unforgettable outdoor <Link href="/experiences" className="underline hover:text-white transition-colors">experiences</Link>, we offer comprehensive management
+              services to keep recreation areas pristine and welcoming for all visitors. <Link href="/about" className="underline hover:text-white transition-colors">Learn more about our company</Link> and mission.
             </p>
           </div>
         </div>
@@ -160,7 +163,7 @@ export default function ServicesPage() {
             Need Professional Management Services?
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            Contact us to discuss how we can help maintain and improve your recreation area.
+            <Link href="/contact" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">Contact us</Link> to discuss how we can help maintain and improve your recreation area. We're always looking for talented people to <Link href="/careers" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">join our team</Link>. Visit our <Link href="/" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">homepage</Link> to discover all our offerings, or <Link href="/leave-a-review" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">leave a review</Link> of our work.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="tel:+12073077903" className="btn-primary">

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
@@ -100,7 +101,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-xl text-white/80 leading-relaxed">
               Have questions about our recreation areas or services? We're here to help.
-              Reach out and our team will get back to you promptly.
+              Reach out and our <Link href="/about" className="underline hover:text-white transition-colors">team</Link> will get back to you promptly.
             </p>
           </div>
         </div>
@@ -138,7 +139,7 @@ export default function ContactPage() {
             {/* Form */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-2">Send Us a Message</h2>
-              <p className="text-gray-600 mb-8">Fill out the form below and we'll get back to you within 24 hours.</p>
+              <p className="text-gray-600 mb-8">Fill out the form below and we'll get back to you within 24 hours. You can also <Link href="/leave-a-review" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">leave a review</Link> of a recent visit.</p>
 
               {submitted ? (
                 <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
@@ -305,7 +306,7 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
                   </a>
-                  <a
+                  <Link
                     href="/experiences"
                     className="flex items-center justify-between text-gray-600 hover:text-forest-DEFAULT transition-colors"
                   >
@@ -313,8 +314,8 @@ export default function ContactPage() {
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="/careers"
                     className="flex items-center justify-between text-gray-600 hover:text-forest-DEFAULT transition-colors"
                   >
@@ -322,8 +323,8 @@ export default function ContactPage() {
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="/services"
                     className="flex items-center justify-between text-gray-600 hover:text-forest-DEFAULT transition-colors"
                   >
@@ -331,14 +332,14 @@ export default function ContactPage() {
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
 
               <div className="bg-forest-DEFAULT rounded-2xl p-8 text-white">
                 <h3 className="text-xl font-bold mb-4">Need Immediate Assistance?</h3>
                 <p className="text-white/80 mb-6">
-                  For urgent matters or immediate assistance with your reservation, please call us directly.
+                  For urgent matters or immediate assistance with your reservation, please call us directly. Visit our <Link href="/" className="underline hover:text-white transition-colors">homepage</Link> to explore all we offer.
                 </p>
                 <a
                   href="tel:+12073077903"

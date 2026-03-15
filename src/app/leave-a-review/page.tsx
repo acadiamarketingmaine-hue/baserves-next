@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
@@ -112,7 +113,7 @@ export default function LeaveReviewPage() {
               Submit Your <span className="text-green-400">Feedback</span>
             </h1>
             <p className="text-xl text-white/80 leading-relaxed">
-              Your feedback helps us maintain the highest standards at our rest areas. Please take a moment to share your experience.
+              Your feedback helps us maintain the highest standards at our rest areas. Please take a moment to share your experience. Learn more <Link href="/about" className="underline hover:text-white transition-colors">about our company</Link> and the <Link href="/services" className="underline hover:text-white transition-colors">services</Link> we provide.
             </p>
           </div>
         </div>
@@ -131,7 +132,7 @@ export default function LeaveReviewPage() {
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Thank You for Your Feedback!</h2>
                 <p className="text-gray-600 mb-8">
-                  We appreciate you taking the time to share your experience. Your feedback helps us continue to improve our services.
+                  We appreciate you taking the time to share your experience. Your feedback helps us continue to improve our services. <Link href="/experiences" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">Explore our recreation areas</Link> for your next adventure, or <Link href="/contact" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">contact us</Link> with any questions.
                 </p>
                 <button
                   onClick={() => {
@@ -379,6 +380,15 @@ export default function LeaveReviewPage() {
               </form>
             )}
           </div>
+        </div>
+      </section>
+
+      {/* Additional Info */}
+      <section className="py-12 bg-gray-50">
+        <div className="container-custom px-6 text-center">
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Interested in making a difference at our recreation areas? Check out our <Link href="/careers" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">career opportunities</Link>. Return to our <Link href="/" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">homepage</Link> to discover everything BA Serves has to offer.
+          </p>
         </div>
       </section>
 

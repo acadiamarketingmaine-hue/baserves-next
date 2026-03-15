@@ -4,6 +4,9 @@ import Footer from '@/components/Footer'
 export const metadata = {
   title: 'SMS Terms & Conditions | BA Serves',
   description: 'Terms and conditions for BA Serves SMS messaging services.',
+  alternates: {
+    canonical: '/sms-terms',
+  },
 }
 
 export default function SMSTermsPage() {

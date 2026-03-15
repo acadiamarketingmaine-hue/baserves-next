@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
@@ -100,6 +101,21 @@ From HVAC systems to playground equipment, our certified technicians have the ex
     ],
     image: '/images/Burlingame1-2048x1365.jpg',
   },
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const service = services[params.slug]
+  if (!service) {
+    return {
+      title: 'Service Not Found | BA Serves',
+      alternates: { canonical: `/services/${params.slug}` },
+    }
+  }
+  return {
+    title: `${service.name} | BA Serves`,
+    description: service.description,
+    alternates: { canonical: `/services/${params.slug}` },
+  }
 }
 
 export default function ServicePage({ params }: { params: { slug: string } }) {

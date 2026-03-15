@@ -77,6 +77,9 @@ const categories = [
 export const metadata = {
   title: 'Experiences | BA Serves',
   description: 'Explore our recreation areas and outdoor experiences across America.',
+  alternates: {
+    canonical: '/experiences',
+  },
 }
 
 export default function ExperiencesPage() {
@@ -94,7 +97,7 @@ export default function ExperiencesPage() {
             </h1>
             <p className="text-xl text-white/80 leading-relaxed">
               From coast to coast, discover pristine outdoor destinations managed with care and dedication
-              to preserving natural beauty while providing exceptional visitor experiences.
+              to preserving natural beauty while providing exceptional visitor experiences. <Link href="/about" className="underline hover:text-white transition-colors">Learn about our story</Link> and the <Link href="/services" className="underline hover:text-white transition-colors">services</Link> that make it possible.
             </p>
           </div>
         </div>
@@ -186,7 +189,7 @@ export default function ExperiencesPage() {
             Ready to Start Your Adventure?
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            Book your stay at one of our pristine recreation areas today.
+            Book your stay at one of our pristine recreation areas today. <Link href="/contact" className="underline hover:text-white transition-colors">Reach out</Link> with any questions, <Link href="/leave-a-review" className="underline hover:text-white transition-colors">share your feedback</Link> after your visit, or explore <Link href="/careers" className="underline hover:text-white transition-colors">career opportunities</Link> with our team. Return to our <Link href="/" className="underline hover:text-white transition-colors">homepage</Link> to see everything we offer.
           </p>
           <a
             href="https://escape.baserves.com"

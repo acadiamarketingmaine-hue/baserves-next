@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
@@ -141,6 +142,21 @@ The Sipsey Wilderness, located within the forest, is the largest wilderness area
       '/images/DSC_0103-2048x1365.jpg',
     ],
   },
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const location = locations[params.slug]
+  if (!location) {
+    return {
+      title: 'Location Not Found | BA Serves',
+      alternates: { canonical: `/${params.slug}` },
+    }
+  }
+  return {
+    title: `${location.name} | BA Serves`,
+    description: location.longDescription?.split('\n\n')[0] || location.description,
+    alternates: { canonical: `/${params.slug}` },
+  }
 }
 
 export default function LocationPage({ params }: { params: { slug: string } }) {

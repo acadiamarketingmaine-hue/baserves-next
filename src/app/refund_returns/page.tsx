@@ -4,6 +4,9 @@ import Footer from '@/components/Footer'
 export const metadata = {
   title: 'Refund Policy | BA Serves',
   description: 'Learn about our refund and cancellation policies for reservations.',
+  alternates: {
+    canonical: '/refund_returns',
+  },
 }
 
 export default function RefundPolicyPage() {

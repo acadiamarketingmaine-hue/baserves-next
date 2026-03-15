@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
@@ -113,6 +114,21 @@ With over 700 campsites ranging from tent-only to full-hookup RV sites, Burlinga
     ],
     bookingUrl: 'https://escape.baserves.com',
   },
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const experience = experiences[params.slug]
+  if (!experience) {
+    return {
+      title: 'Experience Not Found | BA Serves',
+      alternates: { canonical: `/experiences/${params.slug}` },
+    }
+  }
+  return {
+    title: `${experience.name} | BA Serves`,
+    description: experience.longDescription?.split('\n\n')[0] || experience.description,
+    alternates: { canonical: `/experiences/${params.slug}` },
+  }
 }
 
 export default function ExperiencePage({ params }: { params: { slug: string } }) {

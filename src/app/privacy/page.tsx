@@ -4,6 +4,9 @@ import Footer from '@/components/Footer'
 export const metadata = {
   title: 'Privacy Policy | BA Serves',
   description: 'Learn how BA Serves collects, uses, and protects your personal information.',
+  alternates: {
+    canonical: '/privacy',
+  },
 }
 
 export default function PrivacyPolicyPage() {

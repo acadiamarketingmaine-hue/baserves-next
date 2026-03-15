@@ -55,6 +55,9 @@ const stats = [
 export const metadata = {
   title: 'About Us | BA Serves',
   description: 'Learn about BA Serves and our mission to provide exceptional outdoor recreation experiences.',
+  alternates: {
+    canonical: '/about',
+  },
 }
 
 export default function AboutPage() {
@@ -82,7 +85,7 @@ export default function AboutPage() {
             <p className="text-xl text-white/80 leading-relaxed">
               From the rolling forests of Alabama to the rugged landscapes of Missouri, we're
               dedicated to providing well-maintained facilities, pristine landscapes, and
-              seamless visitor experiences.
+              seamless <Link href="/" className="underline hover:text-white transition-colors">visitor experiences</Link>.
             </p>
           </div>
         </div>
@@ -115,7 +118,7 @@ export default function AboutPage() {
                 <p>
                   At BA Serves, we believe that everyone deserves access to beautiful, well-maintained
                   outdoor spaces. Our mission is to manage recreation areas that inspire connection
-                  with nature while providing the amenities and services visitors need for a
+                  with nature while providing the amenities and <Link href="/services">services</Link> visitors need for a
                   comfortable experience.
                 </p>
                 <p>
@@ -126,7 +129,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   Whether you're seeking a weekend camping trip, a day of hiking, or a peaceful
-                  afternoon by the lake, our recreation areas offer something for everyone.
+                  afternoon by the lake, our recreation areas offer something for everyone. We invite you to <Link href="/leave-a-review">share your experience</Link> after your visit.
                 </p>
               </div>
             </div>
@@ -170,7 +173,7 @@ export default function AboutPage() {
             Ready to Experience the Difference?
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            Visit one of our recreation areas and see firsthand why thousands of visitors choose BA Serves.
+            Visit one of our recreation areas and see firsthand why thousands of visitors choose BA Serves. <Link href="/contact" className="underline hover:text-white transition-colors">Get in touch</Link> to learn more.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/experiences" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">

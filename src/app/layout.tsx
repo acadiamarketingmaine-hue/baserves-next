@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   description: 'Discover pristine recreation areas across America. From the rolling forests of Alabama to the rugged landscapes of Missouri, our managed sites provide well-maintained facilities, pristine landscapes, and seamless visitor experiences.',
   keywords: 'recreation areas, camping, hiking, outdoor experiences, national forests, state parks, campground management',
   metadataBase: new URL('https://baserves.com'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'BA Serves | Recreation Area Management & Outdoor Experiences',
     description: 'Discover pristine recreation areas across America. Well-maintained facilities, pristine landscapes, and seamless visitor experiences.',

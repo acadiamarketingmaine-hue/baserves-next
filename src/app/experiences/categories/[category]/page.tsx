@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
@@ -63,6 +64,21 @@ const categoryData: Record<string, any> = {
       { name: 'Tipsaw Lake Pavilion', location: 'Perry County, IN', duration: 'Daily', price: 'From $40', image: '/images/DSC_0001-2048x1365.jpg' },
     ]
   },
+}
+
+export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {
+  const category = categoryData[params.category]
+  if (!category) {
+    return {
+      title: 'Category Not Found | BA Serves',
+      alternates: { canonical: `/experiences/categories/${params.category}` },
+    }
+  }
+  return {
+    title: `${category.name} | BA Serves`,
+    description: category.description,
+    alternates: { canonical: `/experiences/categories/${params.category}` },
+  }
 }
 
 export default function CategoryPage({ params }: { params: { category: string } }) {

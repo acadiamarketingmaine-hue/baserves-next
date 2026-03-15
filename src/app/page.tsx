@@ -196,7 +196,7 @@ function PartnershipJourney() {
           </h2>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
             We handle the complexities of recreation area management so you can focus on growth.
-            Here's how partnering with BA Serves transforms your operations.
+            Here's how partnering with <Link href="/about">BA Serves</Link> transforms your operations.
           </p>
         </div>
 
@@ -625,7 +625,7 @@ export default function HomePage() {
               Discover Our <span className="text-forest-DEFAULT">Recreation Areas</span>
             </h2>
             <p className="subheadline max-w-2xl mx-auto">
-              Each location offers unique experiences, from lakeside camping to mountain adventures
+              Each location offers unique experiences, from lakeside camping to mountain adventures. Visitors are encouraged to <Link href="/leave-a-review" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">leave a review</Link> after their stay.
             </p>
           </div>
 
@@ -682,12 +682,17 @@ export default function HomePage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/experiences" className="btn-secondary">
-              View All Locations
+            <a
+              href="https://escape.baserves.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
+              Book Your Stay
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -736,7 +741,7 @@ export default function HomePage() {
               </h2>
               <p className="text-xl text-white/70 leading-relaxed mb-8">
                 Beyond providing unforgettable outdoor experiences, we offer comprehensive management
-                services to keep recreation areas pristine and welcoming for all visitors.
+                services to keep recreation areas pristine and welcoming for all visitors. Our <Link href="/careers" className="text-green-400 underline hover:text-green-300 transition-colors">dedicated team</Link> makes it all possible.
               </p>
               <Link href="/services" className="btn-primary">
                 Learn About Our Services
@@ -784,7 +789,7 @@ export default function HomePage() {
             Ready for Your Next Adventure?
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10">
-            Book your stay at one of our pristine recreation areas and create memories that last a lifetime.
+            Book your stay at one of our pristine recreation areas and create memories that last a lifetime. <Link href="/contact" className="underline hover:text-white transition-colors">Contact us</Link> to plan your trip.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

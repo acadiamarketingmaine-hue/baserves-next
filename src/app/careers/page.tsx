@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import EmploymentApplicationForm from '@/components/EmploymentApplicationForm'
 
 const benefits = [
   { title: 'Work Outdoors', description: 'Spend your days in beautiful natural settings' },
@@ -41,7 +42,10 @@ const positions = [
 
 export const metadata = {
   title: 'Careers | BA Serves',
-  description: 'Join our team and help create memorable outdoor experiences. View current job openings.',
+  description: 'Join our team and help create memorable outdoor experiences. Apply online or download our employment application.',
+  alternates: {
+    canonical: '/careers',
+  },
 }
 
 export default function CareersPage() {
@@ -68,8 +72,32 @@ export default function CareersPage() {
             </h1>
             <p className="text-xl text-white/80 leading-relaxed">
               Love the outdoors? Want to make a difference? Join our team of dedicated
-              professionals who are passionate about creating memorable experiences for visitors.
+              professionals who are passionate about creating memorable <Link href="/experiences" className="underline hover:text-white transition-colors">experiences</Link> for visitors.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Download Application - TOP */}
+      <section className="py-12 bg-white border-b border-gray-200">
+        <div className="container-custom px-6">
+          <div className="max-w-3xl mx-auto bg-forest-DEFAULT/5 border border-forest-DEFAULT/20 rounded-2xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">Download Employment Application</h2>
+            <p className="text-gray-600 mb-6">
+              Prefer to fill out a paper application? Download the PDF and email it to{' '}
+              <a href="mailto:OfficeManager@BAServes.com" className="text-forest-DEFAULT hover:underline">OfficeManager@BAServes.com</a>{' '}
+              or fax it to 207-307-7902.
+            </p>
+            <a
+              href="/employment-application.pdf"
+              download="BA Services - Employment Application.pdf"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-light transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download Application (PDF)
+            </a>
           </div>
         </div>
       </section>
@@ -101,7 +129,7 @@ export default function CareersPage() {
             <span className="badge badge-forest mb-4">Open Positions</span>
             <h2 className="headline-lg text-gray-900 mb-4">Current Opportunities</h2>
             <p className="subheadline max-w-2xl mx-auto">
-              We're always looking for talented individuals to join our team.
+              We&apos;re always looking for talented individuals to join our team. Learn more about our <Link href="/services">management services</Link>.
             </p>
           </div>
 
@@ -128,7 +156,7 @@ export default function CareersPage() {
                     </div>
                   </div>
                   <a
-                    href="mailto:careers@baserves.com"
+                    href="#apply"
                     className="px-6 py-2 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-light transition-colors"
                   >
                     Apply Now
@@ -139,48 +167,31 @@ export default function CareersPage() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">
-              Don't see a position that fits? We're always interested in hearing from passionate individuals.
+          <div className="text-center mt-8">
+            <p className="text-gray-600">
+              Don&apos;t see a position that fits? We&apos;re always interested in hearing from passionate individuals.{' '}
+              <a href="#apply" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">Apply below</a> or{' '}
+              <Link href="/contact" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">contact us</Link> to start a conversation.
             </p>
-            <a href="mailto:careers@baserves.com" className="btn-secondary">
-              Send Your Resume
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </a>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-gray-50">
+      {/* Online Application Form */}
+      <section id="apply" className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="headline-lg text-gray-900 mb-6">
-                Ready to Make a Difference?
-              </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                Join a team that's passionate about the outdoors and dedicated to creating
-                exceptional experiences for visitors from all walks of life.
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-8">
+              <span className="badge badge-forest mb-4">Apply Online</span>
+              <h2 className="headline-lg text-gray-900 mb-4">Employment Application</h2>
+              <p className="text-gray-500 text-sm italic">
+                It is the policy of BA Services, Inc. to provide equal employment opportunities to all applicants and
+                employees without regard to any legally protected status such as race, color, religion, gender,
+                national origin, age, disability, or veteran status.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <a href="mailto:careers@baserves.com" className="btn-primary">
-                  Contact HR
-                </a>
-                <Link href="/about" className="btn-secondary">
-                  Learn More About Us
-                </Link>
-              </div>
             </div>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-              <Image
-                src="/images/Canal-Bridge-Entrance-1-2048x1365.jpg"
-                alt="Join our team"
-                fill
-                className="object-cover"
-              />
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100">
+              <EmploymentApplicationForm />
             </div>
           </div>
         </div>
