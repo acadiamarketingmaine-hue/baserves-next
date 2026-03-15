@@ -73,7 +73,7 @@ export default function Navigation() {
               </a>
 
               <a
-                href="https://escape.baserves.com"
+                href="https://escape.baserves.com/customer/login"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ml-2 px-5 py-2 bg-forest-DEFAULT text-white font-semibold text-sm rounded-md hover:bg-forest-dark transition-colors"
@@ -194,7 +194,7 @@ export default function Navigation() {
                 Sign In
               </a>
               <a
-                href="https://escape.baserves.com"
+                href="https://escape.baserves.com/customer/login"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center py-3 bg-forest-DEFAULT text-white font-semibold rounded-md mt-2"
