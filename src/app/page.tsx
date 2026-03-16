@@ -3,8 +3,11 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+
+const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 
 // Sample data - will be replaced by Sanity
 const locations = [
@@ -1002,6 +1005,24 @@ export default function HomePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="py-16 bg-white">
+        <div className="container-custom px-6">
+          <div className="text-center mb-10">
+            <span className="badge badge-forest mb-4">Our Locations</span>
+            <h2 className="headline-lg text-gray-900 mb-4">
+              Find Us Across <span className="text-forest-DEFAULT">America</span>
+            </h2>
+            <p className="subheadline max-w-2xl mx-auto">
+              Click a pin to explore our recreation areas
+            </p>
+          </div>
+          <div className="h-[500px] rounded-2xl overflow-hidden">
+            <PropertyMap />
           </div>
         </div>
       </section>

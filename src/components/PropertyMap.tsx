@@ -28,7 +28,7 @@ const pinIcon = new L.DivIcon({
 
 export default function PropertyMap() {
   return (
-    <div className="w-full h-full min-h-[400px] rounded-2xl overflow-hidden shadow-lg">
+    <div className="relative z-0 w-full h-full min-h-[400px] rounded-2xl overflow-hidden shadow-lg">
       <MapContainer
         center={[39.5, -96.0]}
         zoom={4}
