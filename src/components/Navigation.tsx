@@ -259,73 +259,135 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-gray-100 shadow-lg">
-          <div className="px-6 py-4 space-y-1">
-            {/* Primary Links */}
-            {topNavLinks.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="block py-3 text-gray-800 font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
+      {/* Mobile menu - slide out drawer */}
+      <div
+        className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${
+          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/40"
+          onClick={() => setMobileMenuOpen(false)}
+        />
 
-            {/* Divider */}
-            <div className="border-t border-gray-100 my-2"></div>
+        {/* Drawer */}
+        <div
+          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl transition-transform duration-300 ease-out flex flex-col ${
+            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          {/* Drawer Header */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+            <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+              <Image
+                src="/images/logo.png"
+                alt="BA Serves"
+                width={120}
+                height={40}
+                className="h-8 w-auto"
+              />
+            </Link>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 text-gray-500 hover:text-gray-700 transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
 
-            {/* Secondary Links */}
-            <p className="text-xs text-gray-400 font-semibold uppercase tracking-wide pt-2 pb-1">Experiences</p>
-            {secondaryNavLinks.map((item) => (
-              item.external ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block py-2 text-gray-600 text-sm"
-                >
-                  {item.name}
-                </a>
-              ) : (
+          {/* Scrollable Content */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-6 py-4 space-y-1">
+              {/* Primary Links */}
+              {topNavLinks.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block py-2 text-gray-600 text-sm"
+                  className="flex items-center justify-between py-3 text-gray-800 font-medium border-b border-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
+                  <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </Link>
-              )
-            ))}
+              ))}
+            </div>
 
-            {/* Divider */}
-            <div className="border-t border-gray-100 my-2"></div>
+            {/* Experiences Section */}
+            <div className="px-6 py-4 bg-gray-50">
+              <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-3">Experiences</p>
+              <div className="space-y-1">
+                {secondaryNavLinks.map((item) => (
+                  item.external ? (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between py-2.5 text-gray-600 text-sm"
+                    >
+                      {item.name}
+                      <svg className="w-3.5 h-3.5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="flex items-center justify-between py-2.5 text-gray-600 text-sm"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                      <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  )
+                ))}
+              </div>
+            </div>
 
-            {/* Actions */}
-            <div className="pt-2 space-y-2">
-              <a
-                href="https://escape.baserves.com/customer/login"
-                className="block py-2 text-forest-DEFAULT font-medium"
+            {/* Search */}
+            <div className="px-6 py-4">
+              <button
+                onClick={() => { setMobileMenuOpen(false); setTimeout(() => setSearchOpen(true), 200) }}
+                className="flex items-center gap-3 w-full py-3 px-4 bg-gray-100 rounded-lg text-gray-500 text-sm"
               >
-                Sign In
-              </a>
-              <a
-                href="https://escape.baserves.com/customer/login"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center py-3 bg-forest-DEFAULT text-white font-semibold rounded-md mt-2"
-              >
-                Log In
-              </a>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                Search the site...
+              </button>
             </div>
           </div>
+
+          {/* Fixed Bottom - Log In Button + Padding */}
+          <div className="px-6 pt-4 pb-10 border-t border-gray-100 bg-white">
+            <a
+              href="https://escape.baserves.com/customer/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center py-3.5 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
+            >
+              Log In
+            </a>
+            <a
+              href="tel:+12073077903"
+              className="flex items-center justify-center gap-2 mt-3 py-2 text-gray-500 text-sm"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              +1 207 307-7903
+            </a>
+          </div>
         </div>
-      )}
+      </div>
 
       {/* Search Overlay */}
       {searchOpen && (
