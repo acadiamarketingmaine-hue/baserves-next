@@ -89,10 +89,10 @@ const services = [
 ]
 
 const stats = [
-  { number: '15+', label: 'Recreation Areas' },
-  { number: '500+', label: 'Campsites' },
-  { number: '100+', label: 'Miles of Trails' },
-  { number: '10K+', label: 'Happy Visitors' },
+  { target: 15, suffix: '+', label: 'Recreation Areas' },
+  { target: 500, suffix: '+', label: 'Campsites' },
+  { target: 100, suffix: '+', label: 'Miles of Trails' },
+  { target: 10, suffix: 'K+', label: 'Happy Visitors' },
 ]
 
 const statesData = [
@@ -907,8 +907,8 @@ export default function HomePage() {
                 <div className="text-4xl md:text-5xl font-bold text-white mb-2">
                   {statsVisible ? (
                     <AnimatedCounter
-                      target={parseInt(stat.number)}
-                      suffix={stat.number.includes('+') ? '+' : stat.number.includes('K') ? 'K+' : ''}
+                      target={stat.target}
+                      suffix={stat.suffix}
                       isActive={statsVisible}
                     />
                   ) : (
