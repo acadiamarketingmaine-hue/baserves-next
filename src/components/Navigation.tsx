@@ -63,6 +63,8 @@ const searchIndex: SearchItem[] = [
   { title: 'Hiking Trails', description: 'Explore scenic hiking trails', href: '/experiences/categories/hiking', category: 'Experiences', keywords: ['hiking', 'trails', 'walking', 'nature', 'scenic'] },
   { title: 'Scenic Drives', description: 'Discover beautiful scenic drives', href: '/experiences/categories/scenic-drives', category: 'Experiences', keywords: ['scenic', 'drives', 'driving', 'tour', 'views'] },
   { title: 'Conference Center Rentals', description: 'Event and meeting space rentals', href: '/experiences/categories/conference-center-rentals', category: 'Experiences', keywords: ['conference', 'center', 'meeting', 'event', 'rental', 'pavilion'] },
+  { title: 'Lookout Pavilions', description: 'Scenic overlooks and covered pavilions', href: '/experiences/categories/lookout-pavillions', category: 'Experiences', keywords: ['lookout', 'pavilion', 'overlook', 'picnic', 'gathering'] },
+  { title: 'Cave Tours', description: 'Underground cave exploration at Meramec State Park', href: '/experiences/categories/cave-tours', category: 'Experiences', keywords: ['cave', 'tour', 'underground', 'spelunking', 'fisher cave', 'meramec'] },
 
   // Booking
   { title: 'Book a Reservation', description: 'Book cabins, campsites, and watercraft', href: 'https://escape.baserves.com', category: 'Booking', keywords: ['book', 'reserve', 'reservation', 'booking'] },

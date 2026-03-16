@@ -72,6 +72,8 @@ const categories = [
   { name: 'Scenic Drives', icon: '🚗', count: 8, slug: 'scenic-drives', image: '/images/DSC_0110-2048x1365.jpg' },
   { name: 'Hiking Trails', icon: '🥾', count: 30, slug: 'hiking', image: '/images/Burlingame1-2048x1365.jpg' },
   { name: 'Conference Centers', icon: '🏛️', count: 4, slug: 'conference-center-rentals', image: '/images/Playground-Gallery-Pic-2048x1365.jpg' },
+  { name: 'Cave Tours', icon: '🦇', count: 1, slug: 'cave-tours', image: '/images/Fisher-Cave-2-2048x1536.jpg' },
+  { name: 'Lookout Pavilions', icon: '🏔️', count: 2, slug: 'lookout-pavillions', image: '/images/DSC_0110-2048x1365.jpg' },
 ]
 
 export const metadata = {
@@ -107,7 +109,7 @@ export default function ExperiencesPage() {
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Browse by Experience</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
             {categories.map((category) => (
               <Link
                 key={category.slug}

@@ -64,6 +64,15 @@ const categoryData: Record<string, any> = {
       { name: 'Tipsaw Lake Pavilion', location: 'Perry County, IN', duration: 'Daily', price: 'From $40', image: '/images/DSC_0001-2048x1365.jpg' },
     ]
   },
+  'cave-tours': {
+    name: 'Cave Tours',
+    icon: '🦇',
+    description: 'Venture underground and experience the awe-inspiring beauty of natural caves. Explore ancient rock formations, underground rivers, and hidden chambers.',
+    image: '/images/Fisher-Cave-2-2048x1536.jpg',
+    experiences: [
+      { name: 'Fisher Cave Tour', location: 'Meramec State Park, Sullivan, MO', duration: '1-2 hours', price: 'From $10', image: '/images/Fisher-Cave-2-2048x1536.jpg' },
+    ]
+  },
 }
 
 export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {

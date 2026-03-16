@@ -95,6 +95,157 @@ const stats = [
   { number: '10K+', label: 'Happy Visitors' },
 ]
 
+const statesData = [
+  {
+    name: 'Alabama',
+    icon: '/images/states/alabama.png',
+    heading: 'Hiking, Swimming, and Camping with Lake Views in Alabama',
+    properties: [
+      {
+        name: 'Clear Creek Recreation Area',
+        tagline: 'Hiking, Swimming, and Camping with Lake Views in Alabama',
+        location: 'Jasper, AL',
+        stats: { sites: 'Multiple', bathhouses: 'Available', lake: 'Lewis Smith Lake' },
+        activities: ['Camping with a View', 'Boating & Fishing', 'Scenic Hiking & Forest Trails', 'Swimming & Family-Friendly Beaches'],
+        href: '/experiences/clear-creek-recreation-area',
+        image: '/images/DSC_0001-2048x1365.jpg',
+      },
+    ],
+  },
+  {
+    name: 'Rhode Island',
+    icon: '/images/states/rhode-island.png',
+    heading: 'Iconic Camping Destination in Rhode Island',
+    properties: [
+      {
+        name: 'Burlingame State Park',
+        tagline: 'Iconic Camping Destination in Rhode Island',
+        location: 'Charlestown, RI',
+        stats: { sites: '700+', bathhouses: 'Multiple', acres: '3,100+' },
+        activities: ['Kayaking', 'Hiking & Nature Walks', 'Swimming & Fishing', 'RV & Tent Camping'],
+        href: '/experiences/burlingame-state-park',
+        image: '/images/Burlingame1-2048x1365.jpg',
+      },
+    ],
+  },
+  {
+    name: 'Indiana',
+    icon: '/images/states/indiana.png',
+    heading: 'Lakeside Adventures in Indiana',
+    properties: [
+      {
+        name: 'Hardin Ridge Recreation Area',
+        tagline: 'Scenic Lakeside Camping & Outdoor Fun in Indiana',
+        location: 'Bloomington, IN | Hoosier National Forest',
+        stats: { campsites: '200+', trails: 'Multiple', lake: 'Monroe Lake' },
+        activities: ['Hiking', 'Boating', 'Fishing', 'Swimming', 'RV & Tent Camping'],
+        href: '/hardin-ridge-recreation-area',
+        image: '/images/DSC_0103-2048x1365.jpg',
+      },
+      {
+        name: 'Indian-Celina Lakes Recreation Area',
+        tagline: 'Lakeside Adventure & Tranquil Camping in Indiana',
+        location: 'Perry County, IN | Hoosier National Forest',
+        stats: { campsites: '60+', lakes: '2', trails: '10+ miles' },
+        activities: ['Fishing', 'Kayaking', 'Hiking', 'Swimming', 'RV & Tent Camping'],
+        href: '/experiences/celina-lakes-recreation-area',
+        image: '/images/DSC_0110-2048x1365.jpg',
+      },
+      {
+        name: 'Tipsaw Lake Recreation Area',
+        tagline: 'Scenic Lakeside Camping & Outdoor Adventure in Indiana',
+        location: 'Perry County, IN | Hoosier National Forest',
+        stats: { campsites: '35+', lake: '131 acres', trails: '8+ miles' },
+        activities: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
+        href: '/tipsaw-lake-recreation-area',
+        image: '/images/DSC_0001-2048x1365.jpg',
+      },
+    ],
+  },
+  {
+    name: 'West Virginia',
+    icon: '/images/states/west-virginia.png',
+    heading: 'Untamed Wilderness in West Virginia',
+    properties: [
+      {
+        name: 'Monongahela National Forest',
+        tagline: 'Untamed Wilderness in West Virginia',
+        location: 'West Virginia',
+        stats: { acres: '921,000+', trails: '800+ miles', elevation: '4,863 ft' },
+        activities: ['Hiking', 'Scenic Drives', 'Fishing', 'Rock Climbing', 'Camping'],
+        href: '/monongahela-national-forest',
+        image: '/images/DSC_0110-2048x1365.jpg',
+      },
+    ],
+  },
+  {
+    name: 'Maine',
+    icon: '/images/states/maine.png',
+    heading: 'Scenic Riverside Camping in Maine',
+    properties: [
+      {
+        name: 'Canal Bridge Campground',
+        tagline: 'Scenic Riverside Camping in Maine',
+        location: 'Fryeburg, ME',
+        stats: { sites: 'Multiple', waterfront: 'Yes', river: 'Saco River' },
+        activities: ['Kayaking', 'Fishing', 'Hiking', 'Wildlife Viewing', 'RV & Tent Camping'],
+        href: '/experiences/canal-bridge',
+        image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
+      },
+    ],
+  },
+  {
+    name: 'Michigan',
+    icon: '/images/states/michigan.png',
+    heading: "Michigan's Ultimate Outdoor Escape",
+    properties: [
+      {
+        name: 'Yankee Springs Recreation Area',
+        tagline: "Michigan's Ultimate Outdoor Escape",
+        location: 'Barry County, MI',
+        stats: { campsites: '200+', trails: '30+ miles', acres: '5,200+' },
+        activities: ['Boating', 'Fishing', 'Hiking', 'Mountain Biking', 'RV & Tent Camping'],
+        href: '/yankee-springs-recreation-area',
+        image: '/images/Burlingame1-2048x1365.jpg',
+      },
+      {
+        name: 'Long Lake Outdoor Center',
+        tagline: 'Year-Round Outdoor Education & Recreation',
+        location: 'Middleville, MI',
+        stats: { capacity: '200+', cabins: '20', lake: 'Private Lake' },
+        activities: ['Group Camping', 'Outdoor Education', 'Team Building', 'Lake Activities'],
+        href: '/long-lake-outdoor-center',
+        image: '/images/Playground-Gallery-Pic-2048x1365.jpg',
+      },
+    ],
+  },
+  {
+    name: 'Missouri',
+    icon: '/images/states/missouri.png',
+    heading: 'Historic & Scenic Outdoor Escape in Missouri',
+    properties: [
+      {
+        name: 'Washington State Park',
+        tagline: 'Historic & Scenic Outdoor Escape in Missouri',
+        location: 'De Soto, MO',
+        stats: { campsites: '50+', trails: '10+ miles', acres: '2,147+' },
+        activities: ['Hiking', 'Camping', 'Swimming', 'Historic Sites', 'Watercraft Rentals'],
+        href: '/washington-state-park',
+        image: '/images/Burlingame2-1536x1152.jpg',
+      },
+      {
+        name: 'Meramec State Park',
+        tagline: 'Premier Camping & Caving Destination on the Meramec River',
+        location: 'Sullivan, MO',
+        stats: { caves: '40+', campsites: 'Multiple', river: 'Meramec River' },
+        activities: ['Cave Tours', 'Watercraft Rentals', 'Camping', 'Hiking', 'Fishing'],
+        href: '/experiences/meramec-state-park',
+        image: '/images/Meramec-State-Park-Overview-Image.jpg',
+      },
+    ],
+  },
+]
+
 const partnershipSteps = [
   {
     number: 1,
@@ -471,6 +622,161 @@ function BookingWidgets() {
   )
 }
 
+function StatesGrid() {
+  const [selectedState, setSelectedState] = useState<typeof statesData[0] | null>(null)
+
+  return (
+    <>
+      <section className="py-16 bg-white">
+        <div className="container-custom px-6">
+          <div className="text-center mb-12">
+            <span className="badge badge-forest mb-4">Browse by State</span>
+            <h2 className="headline-lg text-gray-900 mb-4">
+              Outdoor Experiences & Bookings <span className="text-forest-DEFAULT">By State</span>
+            </h2>
+            <p className="subheadline max-w-2xl mx-auto">
+              Click a state to explore our recreation areas and book your next adventure
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+            {statesData.map((state) => (
+              <button
+                key={state.name}
+                onClick={() => setSelectedState(state)}
+                className="group flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-gray-50 transition-all duration-300 cursor-pointer"
+              >
+                <div className="relative w-24 h-24 md:w-28 md:h-28 transition-transform duration-300 group-hover:scale-110">
+                  <Image
+                    src={state.icon}
+                    alt={state.name}
+                    fill
+                    className="object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                  />
+                </div>
+                <span className="text-sm font-semibold text-gray-700 group-hover:text-forest-DEFAULT transition-colors">
+                  {state.name}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* State Modal */}
+      {selectedState && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedState(null)}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+
+          {/* Modal */}
+          <div
+            className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedState(null)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
+            >
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Header */}
+            <div className="bg-forest-DEFAULT px-8 py-6 rounded-t-2xl">
+              <div className="flex items-center gap-4">
+                <div className="relative w-16 h-16 flex-shrink-0">
+                  <Image
+                    src={selectedState.icon}
+                    alt={selectedState.name}
+                    fill
+                    className="object-contain brightness-0 invert opacity-80"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">{selectedState.name}</h3>
+                  <p className="text-white/80 text-sm">{selectedState.heading}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Properties */}
+            <div className="p-8">
+              <div className={`grid gap-6 ${selectedState.properties.length > 1 ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
+                {selectedState.properties.map((property) => (
+                  <div key={property.name} className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+                    {/* Property Image */}
+                    <div className="relative h-48">
+                      <Image
+                        src={property.image}
+                        alt={property.name}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute bottom-3 left-3">
+                        <span className="inline-block px-2.5 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">
+                          {property.tagline}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Property Info */}
+                    <div className="p-5">
+                      <h4 className="text-lg font-bold text-gray-900 mb-1">{property.name}</h4>
+                      <div className="flex items-center text-sm text-gray-500 mb-3">
+                        <svg className="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        {property.location}
+                      </div>
+
+                      {/* Stats */}
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600 mb-3 pb-3 border-b">
+                        {Object.entries(property.stats).map(([key, value]) => (
+                          <span key={key}>
+                            <span className="font-semibold text-forest-DEFAULT">{value}</span>{' '}
+                            <span className="capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Activities */}
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {property.activities.map((activity) => (
+                          <span
+                            key={activity}
+                            className="inline-block px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                          >
+                            {activity}
+                          </span>
+                        ))}
+                      </div>
+
+                      <Link
+                        href={property.href}
+                        onClick={() => setSelectedState(null)}
+                        className="block w-full text-center py-2.5 border-2 border-forest-DEFAULT text-forest-DEFAULT font-semibold rounded-lg hover:bg-forest-DEFAULT hover:text-white transition-colors text-sm"
+                      >
+                        View Details
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
+
 function AnimatedCounter({ target, suffix = '', isActive }: { target: number; suffix?: string; isActive: boolean }) {
   const [count, setCount] = useState(0)
 
@@ -615,6 +921,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Explore by State */}
+      <StatesGrid />
 
       {/* Featured Locations */}
       <section className="section bg-gray-50">
