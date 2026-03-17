@@ -386,29 +386,50 @@ export default function Navigation() {
             mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          {/* Drawer Header */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-            <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-              <Image
-                src="/images/logo.png"
-                alt="BA Serves"
-                width={120}
-                height={40}
-                className="h-8 w-auto"
-              />
-            </Link>
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              className="p-2 text-gray-500 hover:text-gray-700 transition-colors"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+          {/* Fixed Top - Header + Log In + Phone */}
+          <div className="bg-forest-DEFAULT">
+            <div className="flex items-center justify-between px-6 py-4">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+                <Image
+                  src="/images/logo.png"
+                  alt="BA Serves"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto brightness-0 invert"
+                />
+              </Link>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 text-white/80 hover:text-white transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="px-6 pb-4 space-y-2">
+              <a
+                href="https://escape.baserves.com/customer/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center py-3 bg-white text-forest-DEFAULT font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                Log In
+              </a>
+              <a
+                href="tel:+12073077903"
+                className="flex items-center justify-center gap-2 py-1.5 text-white/70 text-sm"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                +1 207 307-7903
+              </a>
+            </div>
           </div>
 
           {/* Scrollable Content */}
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1 overflow-y-auto bg-white">
             <div className="px-6 py-4 space-y-1">
               {/* Primary Links */}
               {topNavLinks.map((item) => (
@@ -510,26 +531,8 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Fixed Bottom - Log In Button + Padding */}
-          <div className="px-6 pt-4 pb-10 border-t border-gray-100 bg-white">
-            <a
-              href="https://escape.baserves.com/customer/login"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full text-center py-3.5 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
-            >
-              Log In
-            </a>
-            <a
-              href="tel:+12073077903"
-              className="flex items-center justify-center gap-2 mt-3 py-2 text-gray-500 text-sm"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              +1 207 307-7903
-            </a>
-          </div>
+          {/* Bottom safe area padding */}
+          <div className="pb-6" />
         </div>
       </div>
 

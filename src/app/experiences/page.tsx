@@ -5,6 +5,15 @@ import Footer from '@/components/Footer'
 
 const locations = [
   {
+    name: 'Bankhead National Forest',
+    tagline: 'The Land of a Thousand Waterfalls',
+    description: '180,000+ acres of canyons, waterfalls, old-growth forests, and exceptional birding',
+    location: 'Lawrence, Winston & Franklin Counties, AL',
+    features: ['Sipsey Wilderness', '84 Bird Species', 'Waterfalls', 'Shooting Range', 'Horse Trails'],
+    image: '/images/bankhead-forest.jpg',
+    slug: 'bankhead-national-forest'
+  },
+  {
     name: 'Clear Creek Recreation Area',
     tagline: 'Alabama\'s Premier Lakeside Campground',
     description: '102 campsites on Lewis Smith Lake with swimming, trails, and group camping',
@@ -23,6 +32,69 @@ const locations = [
     slug: 'experiences/corinth-recreation-area'
   },
   {
+    name: 'Tipsaw Lake Recreation Area',
+    tagline: 'Lakeside Camping in Hoosier National Forest',
+    description: '47 campsites on a 131-acre lake with beach, trails, and group camping',
+    location: 'Perry County, IN',
+    features: ['131-Acre Lake', '47 Campsites', 'Swimming Beach', '5.9-mi Trail', 'Group Camps'],
+    image: '/images/DSC_0001-2048x1365.jpg',
+    slug: 'tipsaw-lake-recreation-area'
+  },
+  {
+    name: 'Hardin Ridge Recreation Area',
+    tagline: 'Lakeside Camping on Monroe Lake',
+    description: '203 campsites on Indiana\'s largest lake with beach, boat ramp, and cabins',
+    location: 'Monroe County, IN',
+    features: ['203 Sites', '10,750-Acre Lake', 'Swimming Beach', '2 Cabins', 'Boat Ramp'],
+    image: '/images/DSC_0103-2048x1365.jpg',
+    slug: 'hardin-ridge-recreation-area'
+  },
+  {
+    name: 'Canal Bridge Campground',
+    tagline: 'Scenic Riverside Camping in Maine',
+    description: '36 campsites on the Saco River with White Mountain views',
+    location: 'Fryeburg, ME',
+    features: ['Saco River', 'Kayaking', 'Fishing', 'Mountain Views', 'Pet Friendly'],
+    image: '/images/canal-bridge/entrance.jpg',
+    slug: 'experiences/canal-bridge'
+  },
+  {
+    name: 'Yankee Springs Recreation Area',
+    tagline: 'Michigan\'s Ultimate Outdoor Escape',
+    description: '5,200+ acres with 200+ campsites, 30+ miles of trails, and year-round recreation',
+    location: 'Barry County, MI',
+    features: ['200+ Campsites', '30+ mi Trails', 'Mountain Biking', 'Swimming', 'Winter Sports'],
+    image: '/images/yankee-springs/hill-cabins.jpg',
+    slug: 'yankee-springs-recreation-area'
+  },
+  {
+    name: 'Long Lake Outdoor Center',
+    tagline: 'Historic CCC Property Since 1939',
+    description: '16 cabins, 4 bunkhouses, and a 120-seat lodge on the National Registry',
+    location: 'Yankee Springs, MI',
+    features: ['16 Cabins', 'Lodge', 'Weddings', 'Group Retreats', 'Commercial Kitchen'],
+    image: '/images/long-lake/fall-aerial.jpg',
+    slug: 'long-lake-outdoor-center'
+  },
+  {
+    name: 'Meramec State Park',
+    tagline: 'Missouri\'s Scenic CCC-Built State Park',
+    description: '19 cabins, 40+ caves, motel, and river float rentals along the Meramec River',
+    location: 'Sullivan, MO',
+    features: ['19 Cabins', '40+ Caves', 'Float Rentals', 'Motel', '13 mi Trails'],
+    image: '/images/meramec-state-park/ccc-monument.jpg',
+    slug: 'experiences/meramec-state-park'
+  },
+  {
+    name: 'Washington State Park',
+    tagline: 'Ancient Petroglyphs & Natural Beauty',
+    description: '2,157 acres with 11 cabins, pool, 140 bird species, and Fish of the Big River series',
+    location: 'De Soto, MO',
+    features: ['11 Cabins', '350+ Petroglyphs', 'Swimming Pool', '140 Bird Species', '9.7 mi Trails'],
+    image: '/images/washington-state-park/cabin-11-exterior.png',
+    slug: 'washington-state-park'
+  },
+  {
     name: 'Burlingame State Park',
     tagline: 'Rhode Island\'s Premier Campground Since 1934',
     description: '755 campsites, 20 cabins, and a rich history on Watchaug Pond',
@@ -32,56 +104,11 @@ const locations = [
     slug: 'experiences/burlingame-state-park'
   },
   {
-    name: 'Canal Bridge Campground',
-    tagline: 'Scenic Riverside Camping in Maine',
-    description: '36 campsites and 5 tent sites on the Saco River',
-    location: 'Fryeburg, ME',
-    features: ['Kayaking', 'Fishing', 'River Access', 'Pet Friendly', 'Bath House'],
-    image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
-    slug: 'experiences/canal-bridge'
-  },
-  {
-    name: 'Tipsaw Lake Recreation Area',
-    tagline: 'Scenic Lakeside Camping & Outdoor Adventure in Indiana',
-    description: 'A perfect getaway for families, anglers, and outdoor enthusiasts',
-    location: 'Perry County, IN | Hoosier National Forest',
-    features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
-    image: '/images/DSC_0001-2048x1365.jpg',
-    slug: 'tipsaw-lake-recreation-area'
-  },
-  {
-    name: 'Yankee Springs Recreation Area',
-    tagline: "Michigan's Ultimate Outdoor Escape",
-    description: 'A year-round haven for outdoor lovers, families, and adventure seekers',
-    location: 'Barry County, MI',
-    features: ['Boating', 'Fishing', 'Hiking', 'Mountain Biking', 'RV & Tent Camping'],
-    image: '/images/Burlingame2-1536x1152.jpg',
-    slug: 'yankee-springs-recreation-area'
-  },
-  {
-    name: 'Hardin Ridge Recreation Area',
-    tagline: 'Indiana Lakeside Paradise',
-    description: 'Premier camping and recreation on Monroe Lake',
-    location: 'Monroe County, IN | Hoosier National Forest',
-    features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
-    image: '/images/DSC_0103-2048x1365.jpg',
-    slug: 'hardin-ridge-recreation-area'
-  },
-  {
-    name: 'Long Lake Outdoor Center',
-    tagline: 'Year-Round Outdoor Education',
-    description: 'Where adventure meets learning in Michigan',
-    location: 'Barry County, MI',
-    features: ['Group Camping', 'Outdoor Education', 'Team Building', 'Nature Programs'],
-    image: '/images/Playground-Gallery-Pic-2048x1365.jpg',
-    slug: 'long-lake-outdoor-center'
-  },
-  {
     name: 'Monongahela National Forest',
     tagline: 'Wild & Wonderful West Virginia',
-    description: 'Pristine wilderness in the Appalachian Mountains',
-    location: 'West Virginia',
-    features: ['Hiking', 'Camping', 'Wildlife Viewing', 'Scenic Drives', 'Fishing'],
+    description: '921,000 acres with 800+ miles of trails, 5 wilderness areas, and Spruce Knob',
+    location: 'Eastern West Virginia',
+    features: ['921,000 Acres', '800+ mi Trails', '5 Wilderness Areas', 'Rock Climbing', 'Scenic Drives'],
     image: '/images/DSC_0110-2048x1365.jpg',
     slug: 'monongahela-national-forest'
   },

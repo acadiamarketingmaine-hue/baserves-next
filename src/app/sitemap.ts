@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/leave-a-review`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
   ];
 
-  // Dynamic location pages ([slug])
+  // Dedicated location pages ([slug])
   const locationSlugs = [
     'tipsaw-lake-recreation-area',
     'yankee-springs-recreation-area',
@@ -51,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Dynamic experience pages (experiences/[slug])
+  // Dedicated experience pages (experiences/[slug])
   const experienceSlugs = [
     'canal-bridge',
     'corinth-recreation-area',

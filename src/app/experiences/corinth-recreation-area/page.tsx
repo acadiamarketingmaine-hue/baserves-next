@@ -310,6 +310,37 @@ export default function CorinthPage() {
         </div>
       </section>
 
+      {/* Resources & Downloads */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
+          <p className="text-gray-600 mb-8">Download maps and guides for your visit to the Bankhead National Forest.</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { name: 'Corinth Map', file: '/downloads/bankhead-national-forest/corinth-map.pdf' },
+              { name: 'Clear Creek Map', file: '/downloads/bankhead-national-forest/clear-creek-map.pdf' },
+              { name: 'Birding Guide', file: '/downloads/bankhead-national-forest/birding-guide.pdf' },
+              { name: 'Sipsey Wilderness Map', file: '/downloads/bankhead-national-forest/sipsey-wilderness-map.pdf' },
+              { name: 'Sipsey Canoe Map', file: '/downloads/bankhead-national-forest/sipsey-canoe-map.pdf' },
+              { name: 'Forest Visitor Rules', file: '/downloads/bankhead-national-forest/forest-visitor-rules.pdf' },
+            ].map((doc) => (
+              <a
+                key={doc.name}
+                href={doc.file}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-white rounded-xl p-4 border border-gray-200 hover:border-green-300 hover:bg-green-50 transition-colors"
+              >
+                <svg className="w-8 h-8 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/>
+                </svg>
+                <span className="text-sm font-medium text-gray-900">{doc.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-forest-DEFAULT">
         <div className="container-custom px-6 text-center">

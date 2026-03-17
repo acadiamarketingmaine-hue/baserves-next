@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css'
 
 const properties = [
   // Alabama
+  { name: 'Bankhead National Forest', slug: 'bankhead-national-forest', lat: 34.20, lng: -87.35 },
   { name: 'Clear Creek Recreation Area', slug: 'experiences/clear-creek-recreation-area', lat: 34.27, lng: -87.33 },
   { name: 'Corinth Recreation Area', slug: 'experiences/corinth-recreation-area', lat: 34.15, lng: -87.15 },
   // Rhode Island
