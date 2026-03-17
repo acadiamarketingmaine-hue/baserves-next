@@ -7,12 +7,22 @@ const footerLinks = {
     { name: 'Campground Rentals', href: '/experiences/categories/campground-rentals' },
     { name: 'Hiking Trails', href: '/experiences/categories/hiking' },
     { name: 'Scenic Drives', href: '/experiences/categories/scenic-drives' },
+    { name: 'Conference Centers', href: '/experiences/categories/conference-center-rentals' },
+    { name: 'Lookout Pavilions', href: '/experiences/categories/lookout-pavillions' },
   ],
   locations: [
-    { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area' },
+    { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area' },
+    { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area' },
+    { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park' },
+    { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge' },
+    { name: 'Meramec State Park', href: '/experiences/meramec-state-park' },
+    { name: 'Bankhead National Forest', href: '/bankhead-national-forest' },
     { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area' },
+    { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area' },
     { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area' },
     { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center' },
+    { name: 'Monongahela National Forest', href: '/monongahela-national-forest' },
+    { name: 'Washington State Park', href: '/washington-state-park' },
     { name: 'View All Locations', href: '/experiences' },
   ],
   company: [
@@ -33,7 +43,7 @@ export default function Footer() {
     <footer className="bg-forest-dark text-white">
       {/* Main Footer */}
       <div className="container-custom py-16 px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6 bg-white rounded-lg px-4 py-2">
@@ -74,12 +84,12 @@ export default function Footer() {
           </div>
 
           {/* Locations */}
-          <div>
+          <div className="lg:col-span-2">
             <h3 className="text-white font-semibold mb-4">Locations</h3>
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
               {footerLinks.locations.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-white/70 hover:text-white transition-colors">
+                  <Link href={link.href} className="text-white/70 hover:text-white transition-colors text-sm">
                     {link.name}
                   </Link>
                 </li>

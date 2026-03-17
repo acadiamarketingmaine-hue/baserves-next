@@ -127,19 +127,25 @@ The facility can accommodate large groups with its multiple cabin clusters, dini
   },
   'bankhead-national-forest': {
     name: 'Bankhead National Forest',
-    tagline: 'Alabama\'s Natural Treasure',
-    description: 'Explore canyons, waterfalls, and pristine wilderness',
-    longDescription: `The Bankhead National Forest, often called the "Land of a Thousand Waterfalls," encompasses over 180,000 acres of diverse Alabama landscape. This stunning forest features dramatic sandstone canyons, pristine streams, and countless waterfalls that attract visitors from across the country.
+    tagline: 'Alabama\'s Land of a Thousand Waterfalls',
+    description: 'Explore canyons, waterfalls, pristine wilderness, and incredible birding',
+    longDescription: `The William B. Bankhead National Forest spans over 180,000 acres across Lawrence, Winston, and Franklin counties within the Cumberland Plateau region of North Alabama. Known as "The Land of a Thousand Waterfalls," it features dramatic sandstone canyons, pristine streams, old-growth forests, limestone bluffs, and lush canyons.
 
-The Sipsey Wilderness, located within the forest, is the largest wilderness area east of the Mississippi River and offers exceptional backpacking and hiking opportunities. The forest also provides excellent camping, fishing, and wildlife viewing, with several developed recreation areas offering modern amenities.`,
-    location: 'Northwest Alabama',
-    features: ['Waterfalls', 'Canyon Hiking', 'Wilderness Backpacking', 'Camping', 'Fishing', 'Wildlife Viewing', 'Scenic Drives'],
-    stats: { acres: '180,000+', waterfalls: '100+', wilderness: '25,000 acres' },
-    image: '/images/DSC_0001-2048x1365.jpg',
+The Sipsey Wilderness, located within the forest, is the largest wilderness area east of the Mississippi River. The Sipsey Fork is a designated Wild and Scenic River corridor, famous for its nesting Cerulean Warblers. The American Bird Conservancy designated the Bankhead as an Important Bird Area — 84 species of birds have been recorded during the breeding season, making it part of the North Alabama Birding Trail.
+
+The forest is home to two premier campgrounds managed by BA Serves: Clear Creek Recreation Area (102 sites on Lewis Smith Lake) and Corinth Recreation Area (52 full-hookup sites). Other highlights include Brushy Lake and Houston Recreation Areas, Natural Bridge Day Use Area, Owl Creek Horse Camp, the Flint-Creek Multi-Use Trail, and the Hurricane Creek Shooting Range — an accessible, year-round facility with eight shooting benches marked at 25, 50, and 100 yards.
+
+Visit the Ranger Station on Highway 33 in Double Springs for maps, birding brochures and checklists, and current sighting reports. Call (205) 489-5111 for more information.`,
+    location: 'Lawrence, Winston & Franklin Counties, AL',
+    features: ['Sipsey Wilderness', 'Birding (84 species)', 'Waterfalls', 'Canyon Hiking', 'Camping', 'Fishing', 'Shooting Range', 'Horse Trails', 'Scenic Drives'],
+    stats: { acres: '180,000+', birdSpecies: '84 breeding', wilderness: 'Sipsey 25K acres', campgrounds: '2 managed' },
+    image: '/images/bankhead-forest.jpg',
     gallery: [
-      '/images/DSC_0001-2048x1365.jpg',
-      '/images/DSC_0110-2048x1365.jpg',
-      '/images/DSC_0103-2048x1365.jpg',
+      '/images/bankhead-forest.jpg',
+      '/images/Bankhead-Waterfall.png',
+      '/images/bankhead-bicycle-trail.jpg',
+      '/images/clear-creek-overview.jpg',
+      '/images/corinth-campground.jpg',
     ],
   },
 }

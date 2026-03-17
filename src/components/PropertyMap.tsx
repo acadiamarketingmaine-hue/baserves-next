@@ -6,12 +6,23 @@ import Link from 'next/link'
 import 'leaflet/dist/leaflet.css'
 
 const properties = [
-  { name: 'Tipsaw Lake Recreation Area', slug: 'tipsaw-lake-recreation-area', lat: 38.23, lng: -86.62 },
-  { name: 'Yankee Springs Recreation Area', slug: 'yankee-springs-recreation-area', lat: 42.62, lng: -85.32 },
+  // Alabama
+  { name: 'Clear Creek Recreation Area', slug: 'experiences/clear-creek-recreation-area', lat: 34.27, lng: -87.33 },
+  { name: 'Corinth Recreation Area', slug: 'experiences/corinth-recreation-area', lat: 34.15, lng: -87.15 },
+  // Rhode Island
+  { name: 'Burlingame State Park', slug: 'experiences/burlingame-state-park', lat: 41.38, lng: -71.72 },
+  // Maine
   { name: 'Canal Bridge Campground', slug: 'experiences/canal-bridge', lat: 44.02, lng: -70.97 },
+  // Indiana
+  { name: 'Tipsaw Lake Recreation Area', slug: 'tipsaw-lake-recreation-area', lat: 38.23, lng: -86.62 },
   { name: 'Hardin Ridge Recreation Area', slug: 'hardin-ridge-recreation-area', lat: 39.07, lng: -86.47 },
-  { name: 'Long Lake Outdoor Center', slug: 'long-lake-outdoor-center', lat: 42.61, lng: -85.34 },
+  // Michigan
+  { name: 'Yankee Springs Recreation Area', slug: 'yankee-springs-recreation-area', lat: 42.62, lng: -85.32 },
+  { name: 'Long Lake Outdoor Center', slug: 'long-lake-outdoor-center', lat: 42.55, lng: -85.40 },
+  // West Virginia
   { name: 'Monongahela National Forest', slug: 'monongahela-national-forest', lat: 38.70, lng: -79.80 },
+  // Missouri
+  { name: 'Washington State Park', slug: 'washington-state-park', lat: 38.09, lng: -90.68 },
   { name: 'Meramec State Park', slug: 'experiences/meramec-state-park', lat: 38.22, lng: -91.08 },
 ]
 

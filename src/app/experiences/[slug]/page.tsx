@@ -9,36 +9,44 @@ const experiences: Record<string, any> = {
   'canal-bridge': {
     name: 'Canal Bridge Campground',
     tagline: 'Scenic Riverside Camping in Maine',
-    description: 'A peaceful retreat for paddlers, anglers, and nature lovers',
-    longDescription: `Situated along the scenic Saco River in Fryeburg, Maine, Canal Bridge Campground offers a unique riverside camping experience. With direct waterfront access and stunning views of the White Mountains, this location is perfect for those seeking both relaxation and adventure.
+    description: 'A peaceful family campground on the Saco River',
+    longDescription: `Situated along the scenic Saco River in Fryeburg, Maine, Canal Bridge Campground is a family campground offering 36 campsites (including site 30a) plus 5 dedicated tent sites. With direct waterfront access and stunning views of the White Mountains, this location is perfect for those seeking both relaxation and adventure.
 
-Kayakers and canoeists will find easy river access, while anglers can try their luck with the abundant trout and bass. The campground's proximity to hiking trails and local attractions makes it an ideal base for exploring the natural beauty of western Maine.`,
+Kayakers and canoeists will find easy river access, while anglers can try their luck with the abundant trout and bass. The campground features a bath house that doubles as a storm shelter during severe weather, and firewood and ice are available for purchase at the office or through your camp host. Check-in is at 2:00 PM and check-out is at 12:00 PM. Quiet hours are from 10:00 PM to 7:00 AM, and all children under 17 must be on their campsite by 10:00 PM.
+
+Two vehicles are allowed per campsite, with overflow parking available at the entrance. All pets must be on a leash at all times. Fires are permitted only in fire pits. No fireworks allowed. To make a reservation, visit escape.baserves.com or call 207.935.2286.`,
     location: 'Fryeburg, ME',
-    features: ['Kayaking', 'Fishing', 'Hiking', 'Wildlife Viewing', 'RV & Tent Camping', 'River Access', 'Mountain Views'],
-    stats: { sites: 'Multiple', waterfront: 'Direct Access', river: 'Saco River' },
+    features: ['Kayaking', 'Fishing', 'Hiking', 'Wildlife Viewing', 'RV & Tent Camping', 'River Access', 'Mountain Views', 'Bath House', 'Pet Friendly'],
+    stats: { campsites: '36', tentSites: '5', river: 'Saco River' },
     image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
     gallery: [
       '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
       '/images/Canal-Bridge-Entrance-10-2048x1365.jpg',
       '/images/Canal-Bridge-Entrance-11-2048x1365.jpg',
+      '/images/canal-bridge-bath-house.jpg',
     ],
     bookingUrl: 'https://escape.baserves.com',
   },
   'corinth-recreation-area': {
     name: 'Corinth Recreation Area',
     tagline: 'Bankhead National Forest Camping',
-    description: 'Experience Alabama\'s beautiful national forest',
-    longDescription: `Corinth Recreation Area offers a serene camping experience within the Bankhead National Forest in Alabama. This well-maintained campground provides easy access to the forest's famous hiking trails, waterfalls, and the Sipsey Wilderness Area.
+    description: 'Modern state-of-the-art campground on Lewis Smith Lake',
+    longDescription: `Corinth Recreation Area is a modern, state-of-the-art campground located on the shores of Lewis Smith Lake in the Bankhead National Forest. Two camping loops contain 52 campsites with full hookups (electric, water, and sewer), plus 10 tent-only sites. Four bathhouses with warm showers serve the camping areas.
 
-The campground features spacious sites suitable for both tent and RV camping, with modern amenities including restrooms and picnic areas. Whether you're here for a weekend getaway or an extended adventure, Corinth provides the perfect base for exploring this natural treasure.`,
+The day-use area features a swimming beach, dressing rooms with warm showers, 29 picnic sites, a reservable 100-person pavilion, and a double-lane boat ramp. The lake provides excellent fishing for Kentucky Spotted Bass and Hybrid Striped Bass. Hikers can access the 1.3-mile Bobwhite Trail, and interpretive programs are hosted during the summer.
+
+Nearby attractions within the Bankhead National Forest include the Little Natural Bridge, the 19th-century Pine Torch Church, and the Houston Civil War Jail. The forest is also home to the Sipsey Wilderness — "The Land of a Thousand Waterfalls."`,
     location: 'Bankhead National Forest, AL',
-    features: ['Camping', 'Hiking', 'Fishing', 'Wildlife Viewing', 'Picnic Areas', 'Restrooms', 'Near Sipsey Wilderness'],
-    stats: { forest: 'Bankhead NF', sites: '25+', access: 'Year-round' },
-    image: '/images/DSC_0001-2048x1365.jpg',
+    features: ['Full Hookup Camping', 'Tent Camping', 'Swimming Beach', 'Boat Ramp', 'Group Pavilion', 'Hiking', 'Fishing', 'ADA Accessible'],
+    stats: { sites: '52 + 10 tent', pavilion: '100-person', trail: '1.3 miles' },
+    image: '/images/corinth-campground.jpg',
     gallery: [
-      '/images/DSC_0001-2048x1365.jpg',
-      '/images/DSC_0103-2048x1365.jpg',
-      '/images/DSC_0110-2048x1365.jpg',
+      '/images/corinth-campground.jpg',
+      '/images/corinth-swimming.jpg',
+      '/images/corinth-boat-ramp.jpg',
+      '/images/corinth-pavilion.jpg',
+      '/images/corinth-camping-loop.jpg',
+      '/images/corinth-firefly-loop.jpg',
     ],
     bookingUrl: 'https://www.recreation.gov/camping/campgrounds/232423',
   },
@@ -80,37 +88,45 @@ The campground features well-maintained sites with access to both lakes. Whether
   },
   'clear-creek-recreation-area': {
     name: 'Clear Creek Recreation Area',
-    tagline: 'Bankhead National Forest Adventure',
-    description: 'Gateway to Alabama\'s wilderness',
-    longDescription: `Clear Creek Recreation Area serves as a premier camping destination within Bankhead National Forest. Known for its crystal-clear streams, dramatic sandstone bluffs, and access to some of Alabama's most beautiful waterfalls, this area is a paradise for outdoor enthusiasts.
+    tagline: 'Alabama\'s Premier Lakeside Campground',
+    description: 'The Bankhead National Forest\'s largest recreation area on Lewis Smith Lake',
+    longDescription: `Clear Creek Recreation Area is the Bankhead National Forest's largest recreation area, located on the shore of Lewis Smith Lake. With 102 campsites across four loops (Fox, Hoot Owl, Fawn, and Bear), it offers electric and water hookups, five bathhouses with warm showers, and ADA accessible facilities.
 
-The campground offers both tent and RV sites with modern amenities. From here, visitors can access numerous hiking trails leading to stunning waterfalls and the Sipsey Wilderness, the largest wilderness area east of the Mississippi River.`,
+The day-use area features a swimming beach, three group shelters, a large picnic area, a double-lane boat ramp, and a children's playground with basketball and volleyball courts. Two group camping units each accommodate up to 25 persons.
+
+Explore the 2.5-mile Raven Interpretive Trail or the 1.25-mile paved bicycle trail. Lewis Smith Lake boasts 500+ miles of shoreline with excellent fishing. Nearby attractions include the Sipsey Wilderness ("The Land of a Thousand Waterfalls"), the Little Natural Bridge, and the historic Pine Torch Church.`,
     location: 'Bankhead National Forest, AL',
-    features: ['Camping', 'Waterfall Hikes', 'Fishing', 'Swimming', 'Wildlife Viewing', 'Wilderness Access', 'Photography'],
-    stats: { waterfalls: 'Numerous', wilderness: 'Sipsey', sites: '100+' },
-    image: '/images/DSC_0110-2048x1365.jpg',
+    features: ['102 Campsites', 'Swimming Beach', 'Boat Ramp', 'Group Camping', 'Hiking Trails', 'Bicycle Trail', 'Playground', 'ADA Accessible'],
+    stats: { campsites: '102', loops: '4', trails: '2', lake: 'Lewis Smith' },
+    image: '/images/clear-creek-overview.jpg',
     gallery: [
-      '/images/DSC_0110-2048x1365.jpg',
-      '/images/DSC_0103-2048x1365.jpg',
-      '/images/DSC_0001-2048x1365.jpg',
+      '/images/clear-creek-overview.jpg',
+      '/images/clear-creek-swimming.jpg',
+      '/images/clear-creek-boat-ramp.jpg',
+      '/images/clear-creek-shelter.jpg',
+      '/images/clear-creek-camping.jpg',
+      '/images/clear-creek-hoot-owl-loop.jpg',
     ],
     bookingUrl: 'https://www.recreation.gov/camping/campgrounds/231990',
   },
   'burlingame-state-park': {
-    name: 'Burlingame State Park',
-    tagline: 'Rhode Island\'s Premier Camping Destination',
-    description: 'Over 700 acres of outdoor recreation',
-    longDescription: `Burlingame State Park encompasses over 3,100 acres in Charlestown, Rhode Island, making it one of the largest camping facilities in the state. The park features a beautiful freshwater swimming area, miles of hiking trails, and excellent fishing opportunities.
+    name: 'Burlingame State Park & Campground',
+    tagline: 'Rhode Island\'s Premier Camping Destination Since 1934',
+    description: '755 campsites, 20 cabins, and a rich history on Watchaug Pond',
+    longDescription: `Burlingame State Park encompasses over 3,100 acres in Charlestown, Rhode Island — the state's largest camping facility. Established in 1934 as Rhode Island's first campground, the park has roots dating to 1930 and was shaped by the Civilian Conservation Corps during the Depression era.
 
-With over 700 campsites ranging from tent-only to full-hookup RV sites, Burlingame can accommodate camping experiences of all types. The park's location near the Rhode Island coast also provides easy access to beaches and coastal attractions.`,
+The park features 755 campsites across six areas (Main Camp, 400 Area, 500 Area, Legiontown, Mills Camp, and Fish Camp), plus 20 rustic cabins in the Legiontown area. Amenities include a freshwater beach and boat ramp on Watchaug Pond, hiking trails, a playground, recreation center, camp store, athletic field, and basketball and volleyball courts.
+
+Wildlife is abundant: white-tailed deer, river otters, and 80+ nesting bird species including wintering bald eagles on Watchaug Pond. The area north of Buckeye Brook Road provides hunting opportunities along the Pawcatuck River.`,
     location: 'Charlestown, RI',
-    features: ['Camping', 'Swimming', 'Fishing', 'Hiking', 'Boating', 'Nature Programs', 'Playground'],
-    stats: { acres: '3,100+', sites: '755', lake: 'Watchaug Pond' },
+    features: ['755 Campsites', '20 Rustic Cabins', 'Swimming', 'Fishing', 'Boating', 'Hiking', 'Playground', 'Camp Store', 'Wildlife Viewing'],
+    stats: { campsites: '755', cabins: '20', acres: '3,100+', established: '1934' },
     image: '/images/Burlingame1-2048x1365.jpg',
     gallery: [
       '/images/Burlingame1-2048x1365.jpg',
       '/images/Burlingame2-1536x1152.jpg',
       '/images/Playground-Gallery-Pic-2048x1365.jpg',
+      '/images/burlingame-aerial.jpg',
     ],
     bookingUrl: 'https://escape.baserves.com',
   },

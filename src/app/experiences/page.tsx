@@ -5,12 +5,47 @@ import Footer from '@/components/Footer'
 
 const locations = [
   {
+    name: 'Clear Creek Recreation Area',
+    tagline: 'Alabama\'s Premier Lakeside Campground',
+    description: '102 campsites on Lewis Smith Lake with swimming, trails, and group camping',
+    location: 'Bankhead National Forest, AL',
+    features: ['102 Campsites', 'Swimming Beach', 'Boat Ramp', 'Hiking Trails', 'Group Camping'],
+    image: '/images/clear-creek-overview.jpg',
+    slug: 'experiences/clear-creek-recreation-area'
+  },
+  {
+    name: 'Corinth Recreation Area',
+    tagline: 'Modern Full-Hookup Campground',
+    description: '52 full-hookup sites and 10 tent sites on Lewis Smith Lake',
+    location: 'Bankhead National Forest, AL',
+    features: ['Full Hookups', 'Swimming Beach', '100-Person Pavilion', 'Bobwhite Trail', 'Boat Ramp'],
+    image: '/images/corinth-campground.jpg',
+    slug: 'experiences/corinth-recreation-area'
+  },
+  {
+    name: 'Burlingame State Park',
+    tagline: 'Rhode Island\'s Premier Campground Since 1934',
+    description: '755 campsites, 20 cabins, and a rich history on Watchaug Pond',
+    location: 'Charlestown, RI',
+    features: ['755 Campsites', '20 Cabins', 'Swimming', 'Boating', 'Wildlife Viewing'],
+    image: '/images/Burlingame1-2048x1365.jpg',
+    slug: 'experiences/burlingame-state-park'
+  },
+  {
+    name: 'Canal Bridge Campground',
+    tagline: 'Scenic Riverside Camping in Maine',
+    description: '36 campsites and 5 tent sites on the Saco River',
+    location: 'Fryeburg, ME',
+    features: ['Kayaking', 'Fishing', 'River Access', 'Pet Friendly', 'Bath House'],
+    image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
+    slug: 'experiences/canal-bridge'
+  },
+  {
     name: 'Tipsaw Lake Recreation Area',
     tagline: 'Scenic Lakeside Camping & Outdoor Adventure in Indiana',
     description: 'A perfect getaway for families, anglers, and outdoor enthusiasts',
     location: 'Perry County, IN | Hoosier National Forest',
     features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
-    stats: { campsites: '35+', lakeSize: '131 acres', trails: '8+ miles' },
     image: '/images/DSC_0001-2048x1365.jpg',
     slug: 'tipsaw-lake-recreation-area'
   },
@@ -20,19 +55,8 @@ const locations = [
     description: 'A year-round haven for outdoor lovers, families, and adventure seekers',
     location: 'Barry County, MI',
     features: ['Boating', 'Fishing', 'Hiking', 'Mountain Biking', 'RV & Tent Camping'],
-    stats: { campsites: '200+', trails: '30+ miles', acres: '5,200+' },
-    image: '/images/Burlingame1-2048x1365.jpg',
+    image: '/images/Burlingame2-1536x1152.jpg',
     slug: 'yankee-springs-recreation-area'
-  },
-  {
-    name: 'Canal Bridge Campground',
-    tagline: 'Scenic Riverside Camping in Maine',
-    description: 'A peaceful retreat for paddlers, anglers, and nature lovers',
-    location: 'Fryeburg, ME',
-    features: ['Kayaking', 'Fishing', 'Hiking', 'Wildlife Viewing', 'RV & Tent Camping'],
-    stats: { sites: 'Multiple', waterfront: 'Waterfront', river: 'Saco River' },
-    image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
-    slug: 'experiences/canal-bridge'
   },
   {
     name: 'Hardin Ridge Recreation Area',
@@ -40,7 +64,6 @@ const locations = [
     description: 'Premier camping and recreation on Monroe Lake',
     location: 'Monroe County, IN | Hoosier National Forest',
     features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
-    stats: { campsites: '200+', lake: 'Monroe Lake', trails: '12+ miles' },
     image: '/images/DSC_0103-2048x1365.jpg',
     slug: 'hardin-ridge-recreation-area'
   },
@@ -50,7 +73,6 @@ const locations = [
     description: 'Where adventure meets learning in Michigan',
     location: 'Barry County, MI',
     features: ['Group Camping', 'Outdoor Education', 'Team Building', 'Nature Programs'],
-    stats: { capacity: '150+', programs: '20+', acres: '300+' },
     image: '/images/Playground-Gallery-Pic-2048x1365.jpg',
     slug: 'long-lake-outdoor-center'
   },
@@ -60,7 +82,6 @@ const locations = [
     description: 'Pristine wilderness in the Appalachian Mountains',
     location: 'West Virginia',
     features: ['Hiking', 'Camping', 'Wildlife Viewing', 'Scenic Drives', 'Fishing'],
-    stats: { acres: '921,000', trails: '825+ miles', peaks: '5 peaks 4,000+ft' },
     image: '/images/DSC_0110-2048x1365.jpg',
     slug: 'monongahela-national-forest'
   },
@@ -72,7 +93,6 @@ const categories = [
   { name: 'Scenic Drives', icon: '🚗', count: 8, slug: 'scenic-drives', image: '/images/DSC_0110-2048x1365.jpg' },
   { name: 'Hiking Trails', icon: '🥾', count: 30, slug: 'hiking', image: '/images/Burlingame1-2048x1365.jpg' },
   { name: 'Conference Centers', icon: '🏛️', count: 4, slug: 'conference-center-rentals', image: '/images/Playground-Gallery-Pic-2048x1365.jpg' },
-  { name: 'Cave Tours', icon: '🦇', count: 1, slug: 'cave-tours', image: '/images/Fisher-Cave-2-2048x1536.jpg' },
   { name: 'Lookout Pavilions', icon: '🏔️', count: 2, slug: 'lookout-pavillions', image: '/images/DSC_0110-2048x1365.jpg' },
 ]
 
@@ -109,7 +129,7 @@ export default function ExperiencesPage() {
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Browse by Experience</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {categories.map((category) => (
               <Link
                 key={category.slug}

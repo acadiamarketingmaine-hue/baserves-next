@@ -76,7 +76,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'scenic-drives',
     'conference-center-rentals',
     'lookout-pavillions',
-    'cave-tours',
   ];
 
   const categoryPages: MetadataRoute.Sitemap = categorySlugs.map((slug) => ({

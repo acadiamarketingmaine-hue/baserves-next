@@ -16,9 +16,65 @@ const topNavLinks = [
 const secondaryNavLinks = [
   { name: 'Book', href: 'https://escape.baserves.com', external: true },
   { name: 'My Reservations', href: 'https://escape.baserves.com/customer/login', external: true },
-  { name: 'Locations', href: '/experiences' },
-{ name: 'Campgrounds', href: '/experiences/categories/campground-rentals' },
+  { name: 'Campgrounds', href: '/experiences/categories/campground-rentals' },
   { name: 'Watercraft', href: '/experiences/categories/kayak-and-watercraft-rentals' },
+]
+
+const locationsByState = [
+  {
+    state: 'Alabama',
+    icon: '/images/states/alabama.png',
+    locations: [
+      { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area' },
+      { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area' },
+      { name: 'Bankhead National Forest', href: '/bankhead-national-forest' },
+    ],
+  },
+  {
+    state: 'Indiana',
+    icon: '/images/states/indiana.png',
+    locations: [
+      { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area' },
+      { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area' },
+    ],
+  },
+  {
+    state: 'Maine',
+    icon: '/images/states/maine.png',
+    locations: [
+      { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge' },
+    ],
+  },
+  {
+    state: 'Michigan',
+    icon: '/images/states/michigan.png',
+    locations: [
+      { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area' },
+      { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center' },
+    ],
+  },
+  {
+    state: 'Missouri',
+    icon: '/images/states/missouri.png',
+    locations: [
+      { name: 'Washington State Park', href: '/washington-state-park' },
+      { name: 'Meramec State Park', href: '/experiences/meramec-state-park' },
+    ],
+  },
+  {
+    state: 'Rhode Island',
+    icon: '/images/states/rhode-island.png',
+    locations: [
+      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park' },
+    ],
+  },
+  {
+    state: 'West Virginia',
+    icon: '/images/states/west-virginia.png',
+    locations: [
+      { name: 'Monongahela National Forest', href: '/monongahela-national-forest' },
+    ],
+  },
 ]
 
 interface SearchItem {
@@ -55,7 +111,14 @@ const searchIndex: SearchItem[] = [
   { title: 'Washington State Park', description: 'De Soto, Missouri — cabins, watercraft rentals, hiking', href: '/washington-state-park', category: 'Locations', keywords: ['washington', 'missouri', 'de soto', 'cabins', 'watercraft', 'kayak', 'canoe', 'hiking'] },
   { title: 'Long Lake Outdoor Center', description: 'Michigan — cabins, campgrounds, outdoor activities', href: '/long-lake-outdoor-center', category: 'Locations', keywords: ['long lake', 'michigan', 'cabins', 'campground', 'outdoor'] },
   { title: 'Chief Noonday Outdoor Center', description: 'Michigan — cabins, camping, outdoor recreation', href: '/chief-noonday', category: 'Locations', keywords: ['chief noonday', 'michigan', 'cabins', 'camping', 'outdoor'] },
-  { title: 'Bankhead National Forest', description: 'Alabama — Sipsey Wilderness, hiking, waterfalls, canyons', href: '/bankhead', category: 'Locations', keywords: ['bankhead', 'alabama', 'sipsey', 'wilderness', 'hiking', 'waterfalls', 'canyons'] },
+  { title: 'Bankhead National Forest', description: 'Alabama — Sipsey Wilderness, birding, waterfalls, shooting range', href: '/bankhead-national-forest', category: 'Locations', keywords: ['bankhead', 'alabama', 'sipsey', 'wilderness', 'hiking', 'waterfalls', 'canyons', 'birding', 'shooting range'] },
+
+  // Experiences (detailed pages)
+  { title: 'Clear Creek Recreation Area', description: '102 campsites on Lewis Smith Lake — swimming, trails, group camping', href: '/experiences/clear-creek-recreation-area', category: 'Experiences', keywords: ['clear creek', 'lewis smith', 'alabama', 'bankhead', 'swimming', 'camping', 'boat ramp', 'hiking'] },
+  { title: 'Corinth Recreation Area', description: '52 full-hookup sites on Lewis Smith Lake — pavilion, Bobwhite Trail', href: '/experiences/corinth-recreation-area', category: 'Experiences', keywords: ['corinth', 'lewis smith', 'alabama', 'bankhead', 'full hookup', 'pavilion', 'bobwhite', 'tent camping'] },
+  { title: 'Burlingame State Park', description: '755 campsites & 20 cabins on Watchaug Pond — Rhode Island since 1934', href: '/experiences/burlingame-state-park', category: 'Experiences', keywords: ['burlingame', 'rhode island', 'watchaug', 'cabins', 'camping', 'swimming', 'wildlife', 'history'] },
+  { title: 'Canal Bridge Campground', description: '36 campsites on the Saco River — kayaking, fishing, pet friendly', href: '/experiences/canal-bridge', category: 'Experiences', keywords: ['canal bridge', 'maine', 'saco river', 'kayaking', 'fishing', 'tent', 'camping', 'fryeburg'] },
+  { title: 'Meramec State Park', description: 'Cabins, motel, and watercraft on the Meramec River', href: '/experiences/meramec-state-park', category: 'Experiences', keywords: ['meramec', 'missouri', 'cabins', 'motel', 'watercraft', 'canoe', 'kayak'] },
 
   // Experience Categories
   { title: 'Campground Rentals', description: 'Browse campground and cabin rentals', href: '/experiences/categories/campground-rentals', category: 'Experiences', keywords: ['campground', 'camping', 'cabin', 'rentals', 'tent', 'rv'] },
@@ -64,7 +127,6 @@ const searchIndex: SearchItem[] = [
   { title: 'Scenic Drives', description: 'Discover beautiful scenic drives', href: '/experiences/categories/scenic-drives', category: 'Experiences', keywords: ['scenic', 'drives', 'driving', 'tour', 'views'] },
   { title: 'Conference Center Rentals', description: 'Event and meeting space rentals', href: '/experiences/categories/conference-center-rentals', category: 'Experiences', keywords: ['conference', 'center', 'meeting', 'event', 'rental', 'pavilion'] },
   { title: 'Lookout Pavilions', description: 'Scenic overlooks and covered pavilions', href: '/experiences/categories/lookout-pavillions', category: 'Experiences', keywords: ['lookout', 'pavilion', 'overlook', 'picnic', 'gathering'] },
-  { title: 'Cave Tours', description: 'Underground cave exploration at Meramec State Park', href: '/experiences/categories/cave-tours', category: 'Experiences', keywords: ['cave', 'tour', 'underground', 'spelunking', 'fisher cave', 'meramec'] },
 
   // Booking
   { title: 'Book a Reservation', description: 'Book cabins, campsites, and watercraft', href: 'https://escape.baserves.com', category: 'Booking', keywords: ['book', 'reserve', 'reservation', 'booking'] },
@@ -74,8 +136,10 @@ const searchIndex: SearchItem[] = [
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [locationsOpen, setLocationsOpen] = useState(false)
   const [query, setQuery] = useState('')
   const searchInputRef = useRef<HTMLInputElement>(null)
+  const locationsRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
   const results = useMemo(() => {
@@ -108,7 +172,7 @@ export default function Navigation() {
   // Close on Escape, open on Cmd+K
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSearchOpen(false)
+      if (e.key === 'Escape') { setSearchOpen(false); setLocationsOpen(false) }
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault()
         setSearchOpen(true)
@@ -116,6 +180,17 @@ export default function Navigation() {
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  // Close locations dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (locationsRef.current && !locationsRef.current.contains(e.target as Node)) {
+        setLocationsOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
   const handleResultClick = (href: string) => {
@@ -233,6 +308,51 @@ export default function Navigation() {
 
             {/* Secondary Nav Links */}
             <nav className="flex items-center gap-1">
+              {/* Locations Dropdown */}
+              <div ref={locationsRef} className="relative">
+                <button
+                  onClick={() => setLocationsOpen(!locationsOpen)}
+                  className="flex items-center gap-1 px-4 py-2 text-white/90 hover:text-white font-medium text-sm transition-colors"
+                >
+                  Locations
+                  <svg className={`w-3.5 h-3.5 transition-transform ${locationsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {locationsOpen && (
+                  <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 z-50">
+                    <div className="px-4 py-2 border-b border-gray-100">
+                      <Link
+                        href="/experiences"
+                        onClick={() => setLocationsOpen(false)}
+                        className="text-xs font-semibold text-forest-DEFAULT hover:underline uppercase tracking-wide"
+                      >
+                        View All Locations
+                      </Link>
+                    </div>
+                    <div className="max-h-80 overflow-y-auto py-1">
+                      {locationsByState.map((group) => (
+                        <div key={group.state}>
+                          <div className="flex items-center gap-2 px-4 pt-3 pb-1">
+                            <Image src={group.icon} alt={group.state} width={14} height={14} className="opacity-60" />
+                            <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">{group.state}</span>
+                          </div>
+                          {group.locations.map((loc) => (
+                            <Link
+                              key={loc.href}
+                              href={loc.href}
+                              onClick={() => setLocationsOpen(false)}
+                              className="block px-4 pl-9 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                            >
+                              {loc.name}
+                            </Link>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
               {secondaryNavLinks.map((item) => (
                 item.external ? (
                   <a
@@ -317,9 +437,44 @@ export default function Navigation() {
               ))}
             </div>
 
-            {/* Experiences Section */}
+            {/* Locations Section */}
             <div className="px-6 py-4 bg-gray-50">
-              <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-3">Experiences</p>
+              <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-3">Locations</p>
+              <div className="space-y-0">
+                {locationsByState.map((group) => (
+                  <div key={group.state}>
+                    <div className="flex items-center gap-2 pt-3 pb-1">
+                      <Image src={group.icon} alt={group.state} width={14} height={14} className="opacity-60" />
+                      <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">{group.state}</span>
+                    </div>
+                    {group.locations.map((loc) => (
+                      <Link
+                        key={loc.href}
+                        href={loc.href}
+                        className="block py-2 pl-6 text-gray-600 text-sm"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {loc.name}
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+                <Link
+                  href="/experiences"
+                  className="flex items-center justify-between pt-4 pb-2 text-forest-DEFAULT text-sm font-semibold"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  View All Locations
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+
+            {/* Experiences Section */}
+            <div className="px-6 py-4">
+              <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-3">Quick Links</p>
               <div className="space-y-1">
                 {secondaryNavLinks.map((item) => (
                   item.external ? (
