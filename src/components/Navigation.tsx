@@ -182,16 +182,6 @@ export default function Navigation() {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // Close locations dropdown on click outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (locationsRef.current && !locationsRef.current.contains(e.target as Node)) {
-        setLocationsOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
 
   const handleResultClick = (href: string) => {
     setSearchOpen(false)
@@ -309,9 +299,8 @@ export default function Navigation() {
             {/* Secondary Nav Links */}
             <nav className="flex items-center gap-1">
               {/* Locations Dropdown */}
-              <div ref={locationsRef} className="relative">
+              <div ref={locationsRef} className="relative" onMouseEnter={() => setLocationsOpen(true)} onMouseLeave={() => setLocationsOpen(false)}>
                 <button
-                  onClick={() => setLocationsOpen(!locationsOpen)}
                   className="flex items-center gap-1 px-4 py-2 text-white/90 hover:text-white font-medium text-sm transition-colors"
                 >
                   Locations
@@ -320,7 +309,7 @@ export default function Navigation() {
                   </svg>
                 </button>
                 {locationsOpen && (
-                  <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 z-50">
+                  <div className="absolute top-full left-0 pt-1 w-72 z-50"><div className="bg-white rounded-xl shadow-2xl border border-gray-200 py-2">
                     <div className="px-4 py-2 border-b border-gray-100">
                       <Link
                         href="/experiences"
@@ -350,7 +339,7 @@ export default function Navigation() {
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </div></div>
                 )}
               </div>
               {secondaryNavLinks.map((item) => (
