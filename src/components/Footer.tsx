@@ -131,9 +131,9 @@ export default function Footer() {
             <div className="grid grid-cols-2 gap-x-6 gap-y-1">
               {locationsByState.map((group) => (
                 <div key={group.state} className="mb-3">
-                  <div className="flex items-center gap-1.5 mb-1">
-                    <Image src={group.icon} alt={group.state} width={12} height={12} className="opacity-50" />
-                    <span className="text-[10px] font-semibold text-white/40 uppercase tracking-wider">{group.state}</span>
+                  <div className="inline-flex items-center gap-1.5 mb-1 px-2 py-0.5 bg-white/10 rounded-full">
+                    <Image src={group.icon} alt={group.state} width={12} height={12} className="brightness-0 invert opacity-70" />
+                    <span className="text-[10px] font-semibold text-white/60 uppercase tracking-wider">{group.state}</span>
                   </div>
                   <ul className="space-y-1">
                     {group.locations.map((loc) => (
