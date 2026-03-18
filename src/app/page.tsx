@@ -853,7 +853,7 @@ export default function HomePage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900">
         {/* Background Video */}
         <div className="absolute inset-0">
           <video
@@ -861,7 +861,7 @@ export default function HomePage() {
             muted
             loop
             playsInline
-            poster="/images/DSC_0110-2048x1365.jpg"
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="/videos/hero.mp4" type="video/mp4" />
