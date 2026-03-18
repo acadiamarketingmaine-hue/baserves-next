@@ -854,39 +854,42 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
+        {/* Background Video */}
         <div className="absolute inset-0">
-          <Image
-            src="/images/DSC_0110-2048x1365.jpg"
-            alt="Beautiful recreation area"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/55" />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/images/DSC_0110-2048x1365.jpg"
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/videos/hero.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
         </div>
 
         {/* Content */}
         <div className="relative z-10 container-custom px-6 pt-28">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-8 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-8 animate-fade-in">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               +1 207 307-7903
             </div>
 
-            <h1 className="font-display headline-xl text-white mb-6 animate-fade-in-up">
+            <h1 className="font-display headline-xl text-white mb-6 animate-fade-in-up drop-shadow-lg">
               Find Your<br />
-              <span className="text-green-400">Adventure.</span>
+              <span className="text-green-400 drop-shadow-lg">Adventure.</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-white/80 leading-relaxed mb-10 max-w-2xl animate-fade-in-up delay-200">
-              From <span className="text-white font-medium">the rolling forests of Alabama</span> to{' '}
-              <span className="text-white font-medium">the rugged landscapes of Missouri</span>, our
-              managed sites provide <span className="text-green-400 font-medium">well-maintained facilities</span>,{' '}
-              <span className="text-green-400 font-medium">pristine landscapes</span>, and{' '}
-              <span className="text-green-400 font-medium">seamless visitor experiences</span>.
+            <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-10 max-w-2xl animate-fade-in-up delay-200 drop-shadow-md">
+              From <span className="text-white font-semibold">the rolling forests of Alabama</span> to{' '}
+              <span className="text-white font-semibold">the rugged landscapes of Missouri</span>, our
+              managed sites provide <span className="text-green-400 font-semibold">well-maintained facilities</span>,{' '}
+              <span className="text-green-400 font-semibold">pristine landscapes</span>, and{' '}
+              <span className="text-green-400 font-semibold">seamless visitor experiences</span>.
             </p>
 
             <div className="flex flex-wrap gap-4 animate-fade-in-up delay-300">
