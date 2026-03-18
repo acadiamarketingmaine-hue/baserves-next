@@ -1,6 +1,63 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
+const locationsByState = [
+  {
+    state: 'Alabama',
+    icon: '/images/states/alabama.png',
+    locations: [
+      { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area' },
+      { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area' },
+      { name: 'Bankhead National Forest', href: '/bankhead-national-forest' },
+    ],
+  },
+  {
+    state: 'Indiana',
+    icon: '/images/states/indiana.png',
+    locations: [
+      { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area' },
+      { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area' },
+    ],
+  },
+  {
+    state: 'Maine',
+    icon: '/images/states/maine.png',
+    locations: [
+      { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge' },
+    ],
+  },
+  {
+    state: 'Michigan',
+    icon: '/images/states/michigan.png',
+    locations: [
+      { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area' },
+      { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center' },
+    ],
+  },
+  {
+    state: 'Missouri',
+    icon: '/images/states/missouri.png',
+    locations: [
+      { name: 'Washington State Park', href: '/washington-state-park' },
+      { name: 'Meramec State Park', href: '/experiences/meramec-state-park' },
+    ],
+  },
+  {
+    state: 'Rhode Island',
+    icon: '/images/states/rhode-island.png',
+    locations: [
+      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park' },
+    ],
+  },
+  {
+    state: 'West Virginia',
+    icon: '/images/states/west-virginia.png',
+    locations: [
+      { name: 'Monongahela National Forest', href: '/monongahela-national-forest' },
+    ],
+  },
+]
+
 const footerLinks = {
   experiences: [
     { name: 'Kayak & Watercraft', href: '/experiences/categories/kayak-and-watercraft-rentals' },
@@ -9,21 +66,6 @@ const footerLinks = {
     { name: 'Scenic Drives', href: '/experiences/categories/scenic-drives' },
     { name: 'Conference Centers', href: '/experiences/categories/conference-center-rentals' },
     { name: 'Lookout Pavilions', href: '/experiences/categories/lookout-pavillions' },
-  ],
-  locations: [
-    { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area' },
-    { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area' },
-    { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park' },
-    { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge' },
-    { name: 'Meramec State Park', href: '/experiences/meramec-state-park' },
-    { name: 'Bankhead National Forest', href: '/bankhead-national-forest' },
-    { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area' },
-    { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area' },
-    { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area' },
-    { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center' },
-    { name: 'Monongahela National Forest', href: '/monongahela-national-forest' },
-    { name: 'Washington State Park', href: '/washington-state-park' },
-    { name: 'View All Locations', href: '/experiences' },
   ],
   company: [
     { name: 'About Us', href: '/about' },
@@ -83,18 +125,33 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Locations */}
+          {/* Locations by State */}
           <div className="lg:col-span-2">
             <h3 className="text-white font-semibold mb-4">Locations</h3>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
-              {footerLinks.locations.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-white/70 hover:text-white transition-colors text-sm">
-                    {link.name}
-                  </Link>
-                </li>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+              {locationsByState.map((group) => (
+                <div key={group.state} className="mb-3">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <Image src={group.icon} alt={group.state} width={12} height={12} className="opacity-50" />
+                    <span className="text-[10px] font-semibold text-white/40 uppercase tracking-wider">{group.state}</span>
+                  </div>
+                  <ul className="space-y-1">
+                    {group.locations.map((loc) => (
+                      <li key={loc.href}>
+                        <Link href={loc.href} className="text-white/70 hover:text-white transition-colors text-sm">
+                          {loc.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+              <div className="mb-3">
+                <Link href="/experiences" className="text-green-400 hover:text-green-300 transition-colors text-sm font-semibold">
+                  View All Locations →
+                </Link>
+              </div>
+            </div>
           </div>
 
           {/* Company */}
