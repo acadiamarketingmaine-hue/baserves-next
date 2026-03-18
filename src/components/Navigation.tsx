@@ -322,9 +322,11 @@ export default function Navigation() {
                     <div className="max-h-80 overflow-y-auto py-1">
                       {locationsByState.map((group) => (
                         <div key={group.state}>
-                          <div className="flex items-center gap-2 px-4 pt-3 pb-1">
-                            <Image src={group.icon} alt={group.state} width={14} height={14} className="opacity-60" />
-                            <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">{group.state}</span>
+                          <div className="px-4 pt-3 pb-1">
+                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-gray-100 rounded-full">
+                              <Image src={group.icon} alt={group.state} width={12} height={12} className="opacity-60" />
+                              <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">{group.state}</span>
+                            </span>
                           </div>
                           {group.locations.map((loc) => (
                             <Link
@@ -387,7 +389,7 @@ export default function Navigation() {
           }`}
         >
           {/* Fixed Top - Header + Log In + Phone */}
-          <div className="bg-forest-DEFAULT">
+          <div className="bg-stone-100 border-b border-stone-200">
             <div className="flex items-center justify-between px-6 py-4">
               <Link href="/" onClick={() => setMobileMenuOpen(false)}>
                 <Image
@@ -395,12 +397,12 @@ export default function Navigation() {
                   alt="BA Serves"
                   width={120}
                   height={40}
-                  className="h-8 w-auto brightness-0 invert"
+                  className="h-8 w-auto"
                 />
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-white/80 hover:text-white transition-colors"
+                className="p-2 text-gray-500 hover:text-gray-700 transition-colors"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -412,13 +414,13 @@ export default function Navigation() {
                 href="https://escape.baserves.com/customer/login"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center py-3 bg-white text-forest-DEFAULT font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                className="block w-full text-center py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
               >
                 Log In
               </a>
               <a
                 href="tel:+12073077903"
-                className="flex items-center justify-center gap-2 py-1.5 text-white/70 text-sm"
+                className="flex items-center justify-center gap-2 py-1.5 text-gray-500 text-sm"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -453,9 +455,11 @@ export default function Navigation() {
               <div className="space-y-0">
                 {locationsByState.map((group) => (
                   <div key={group.state}>
-                    <div className="flex items-center gap-2 pt-3 pb-1">
-                      <Image src={group.icon} alt={group.state} width={14} height={14} className="opacity-60" />
-                      <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">{group.state}</span>
+                    <div className="pt-3 pb-1">
+                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-gray-200 rounded-full">
+                        <Image src={group.icon} alt={group.state} width={12} height={12} className="opacity-60" />
+                        <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">{group.state}</span>
+                      </span>
                     </div>
                     {group.locations.map((loc) => (
                       <Link
