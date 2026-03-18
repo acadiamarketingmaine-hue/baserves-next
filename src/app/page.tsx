@@ -1132,7 +1132,8 @@ export default function HomePage() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-forest-DEFAULT/90" />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-forest-DEFAULT/70" />
         </div>
 
         <div className="relative z-10 container-custom px-6 text-center">
