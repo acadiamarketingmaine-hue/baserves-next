@@ -25,54 +25,54 @@ const locationsByState = [
     state: 'Alabama',
     icon: '/images/states/alabama.png',
     locations: [
-      { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area' },
-      { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area' },
-      { name: 'Bankhead National Forest', href: '/bankhead-national-forest' },
+      { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area', image: '/images/clear-creek-overview.jpg' },
+      { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area', image: '/images/corinth-campground.jpg' },
+      { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-forest.jpg' },
     ],
   },
   {
     state: 'Indiana',
     icon: '/images/states/indiana.png',
     locations: [
-      { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area' },
-      { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area' },
+      { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area', image: '/images/DSC_0001-2048x1365.jpg' },
+      { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area', image: '/images/DSC_0103-2048x1365.jpg' },
     ],
   },
   {
     state: 'Maine',
     icon: '/images/states/maine.png',
     locations: [
-      { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge' },
+      { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg' },
     ],
   },
   {
     state: 'Michigan',
     icon: '/images/states/michigan.png',
     locations: [
-      { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area' },
-      { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center' },
+      { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area', image: '/images/yankee-springs/hill-cabins.jpg' },
+      { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center', image: '/images/long-lake/fall-aerial.jpg' },
     ],
   },
   {
     state: 'Missouri',
     icon: '/images/states/missouri.png',
     locations: [
-      { name: 'Washington State Park', href: '/washington-state-park' },
-      { name: 'Meramec State Park', href: '/experiences/meramec-state-park' },
+      { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-state-park/cabin-11-exterior.png' },
+      { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-state-park/ccc-monument.jpg' },
     ],
   },
   {
     state: 'Rhode Island',
     icon: '/images/states/rhode-island.png',
     locations: [
-      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park' },
+      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/Burlingame1-2048x1365.jpg' },
     ],
   },
   {
     state: 'West Virginia',
     icon: '/images/states/west-virginia.png',
     locations: [
-      { name: 'Monongahela National Forest', href: '/monongahela-national-forest' },
+      { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/DSC_0110-2048x1365.jpg' },
     ],
   },
 ]
@@ -309,7 +309,7 @@ export default function Navigation() {
                   </svg>
                 </button>
                 {locationsOpen && (
-                  <div className="absolute top-full left-0 pt-1 w-72 z-50"><div className="bg-white rounded-xl shadow-2xl border border-gray-200 py-2">
+                  <div className="absolute top-full left-0 pt-1 w-80 z-50"><div className="bg-white rounded-xl shadow-2xl border border-gray-200 py-2">
                     <div className="px-4 py-2 border-b border-gray-100">
                       <Link
                         href="/experiences"
@@ -319,13 +319,13 @@ export default function Navigation() {
                         View All Locations
                       </Link>
                     </div>
-                    <div className="max-h-80 overflow-y-auto py-1">
+                    <div className="max-h-[28rem] overflow-y-auto py-1">
                       {locationsByState.map((group) => (
                         <div key={group.state}>
-                          <div className="px-4 pt-3 pb-1">
-                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-gray-100 rounded-full">
-                              <Image src={group.icon} alt={group.state} width={12} height={12} className="opacity-60" />
-                              <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">{group.state}</span>
+                          <div className="px-4 pt-3 pb-1.5">
+                            <span className="inline-flex items-center gap-2 px-2.5 py-1 bg-gray-100 rounded-full">
+                              <Image src={group.icon} alt={group.state} width={18} height={18} className="opacity-70" />
+                              <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">{group.state}</span>
                             </span>
                           </div>
                           {group.locations.map((loc) => (
@@ -333,8 +333,11 @@ export default function Navigation() {
                               key={loc.href}
                               href={loc.href}
                               onClick={() => setLocationsOpen(false)}
-                              className="block px-4 pl-9 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                              className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                             >
+                              <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
+                                <Image src={loc.image} alt={loc.name} fill className="object-cover" />
+                              </div>
                               {loc.name}
                             </Link>
                           ))}
@@ -455,19 +458,22 @@ export default function Navigation() {
               <div className="space-y-0">
                 {locationsByState.map((group) => (
                   <div key={group.state}>
-                    <div className="pt-3 pb-1">
-                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-gray-200 rounded-full">
-                        <Image src={group.icon} alt={group.state} width={12} height={12} className="opacity-60" />
-                        <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">{group.state}</span>
+                    <div className="pt-3 pb-1.5">
+                      <span className="inline-flex items-center gap-2 px-2.5 py-1 bg-gray-200 rounded-full">
+                        <Image src={group.icon} alt={group.state} width={18} height={18} className="opacity-70" />
+                        <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">{group.state}</span>
                       </span>
                     </div>
                     {group.locations.map((loc) => (
                       <Link
                         key={loc.href}
                         href={loc.href}
-                        className="block py-2 pl-6 text-gray-600 text-sm"
+                        className="flex items-center gap-3 py-2 pl-2 text-gray-600 text-sm"
                         onClick={() => setMobileMenuOpen(false)}
                       >
+                        <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
+                          <Image src={loc.image} alt={loc.name} fill className="object-cover" />
+                        </div>
                         {loc.name}
                       </Link>
                     ))}
