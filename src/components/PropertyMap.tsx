@@ -1,30 +1,30 @@
 'use client'
 
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet'
 import L from 'leaflet'
 import Link from 'next/link'
 import 'leaflet/dist/leaflet.css'
 
 const properties = [
   // Alabama
-  { name: 'Bankhead National Forest', slug: 'bankhead-national-forest', lat: 34.20, lng: -87.35 },
-  { name: 'Clear Creek Recreation Area', slug: 'experiences/clear-creek-recreation-area', lat: 34.27, lng: -87.33 },
-  { name: 'Corinth Recreation Area', slug: 'experiences/corinth-recreation-area', lat: 34.15, lng: -87.15 },
+  { name: 'Bankhead National Forest', slug: 'bankhead-national-forest', lat: 34.20, lng: -87.35, excerpt: '180,000 acres of canyons, waterfalls, and the Sipsey Wilderness — Alabama\'s birding paradise.' },
+  { name: 'Clear Creek Recreation Area', slug: 'experiences/clear-creek-recreation-area', lat: 34.27, lng: -87.33, excerpt: '102 campsites on Lewis Smith Lake with swimming beach, boat ramps, and hiking trails.' },
+  { name: 'Corinth Recreation Area', slug: 'experiences/corinth-recreation-area', lat: 34.15, lng: -87.15, excerpt: '52 full-hookup sites on Lewis Smith Lake with swimming beach, pavilion, and Bobwhite Trail.' },
   // Rhode Island
-  { name: 'Burlingame State Park', slug: 'experiences/burlingame-state-park', lat: 41.38, lng: -71.72 },
+  { name: 'Burlingame State Park', slug: 'experiences/burlingame-state-park', lat: 41.38, lng: -71.72, excerpt: 'Rhode Island\'s largest campground since 1934 — 755 sites, 20 cabins on Watchaug Pond.' },
   // Maine
-  { name: 'Canal Bridge Campground', slug: 'experiences/canal-bridge', lat: 44.02, lng: -70.97 },
+  { name: 'Canal Bridge Campground', slug: 'experiences/canal-bridge', lat: 44.02, lng: -70.97, excerpt: 'Family campground on the Saco River with 36 sites, river access, and White Mountain views.' },
   // Indiana
-  { name: 'Tipsaw Lake Recreation Area', slug: 'tipsaw-lake-recreation-area', lat: 38.23, lng: -86.62 },
-  { name: 'Hardin Ridge Recreation Area', slug: 'hardin-ridge-recreation-area', lat: 39.07, lng: -86.47 },
+  { name: 'Tipsaw Lake Recreation Area', slug: 'tipsaw-lake-recreation-area', lat: 38.23, lng: -86.62, excerpt: 'Scenic 131-acre lake in Hoosier National Forest with camping, fishing, and 8+ miles of trails.' },
+  { name: 'Hardin Ridge Recreation Area', slug: 'hardin-ridge-recreation-area', lat: 39.07, lng: -86.47, excerpt: '200+ campsites on Monroe Lake — Indiana\'s largest — with beach, boat ramp, and hiking.' },
   // Michigan
-  { name: 'Yankee Springs Recreation Area', slug: 'yankee-springs-recreation-area', lat: 42.62, lng: -85.32 },
-  { name: 'Long Lake Outdoor Center', slug: 'long-lake-outdoor-center', lat: 42.55, lng: -85.40 },
+  { name: 'Yankee Springs Recreation Area', slug: 'yankee-springs-recreation-area', lat: 42.62, lng: -85.32, excerpt: '5,200 acres with 200+ campsites, 30+ miles of trails, and year-round outdoor adventure.' },
+  { name: 'Long Lake Outdoor Center', slug: 'long-lake-outdoor-center', lat: 42.55, lng: -85.40, excerpt: 'CCC-built retreat center with 16 cabins, a private lake, lodge, and wedding venue.' },
   // West Virginia
-  { name: 'Monongahela National Forest', slug: 'monongahela-national-forest', lat: 38.70, lng: -79.80 },
+  { name: 'Monongahela National Forest', slug: 'monongahela-national-forest', lat: 38.70, lng: -79.80, excerpt: '900,000+ acres across the Alleghenies with 800+ miles of trails and 5 wilderness areas.' },
   // Missouri
-  { name: 'Washington State Park', slug: 'washington-state-park', lat: 38.09, lng: -90.68 },
-  { name: 'Meramec State Park', slug: 'experiences/meramec-state-park', lat: 38.22, lng: -91.08 },
+  { name: 'Washington State Park', slug: 'washington-state-park', lat: 38.09, lng: -90.68, excerpt: 'Ancient petroglyphs, cabins, and 10+ miles of trails along the Big River in the Ozarks.' },
+  { name: 'Meramec State Park', slug: 'experiences/meramec-state-park', lat: 38.22, lng: -91.08, excerpt: '6,896 acres along the Meramec River with 19 cabins, motel, float trips, and Fisher Cave.' },
 ]
 
 const pinIcon = new L.DivIcon({
@@ -53,17 +53,19 @@ export default function PropertyMap() {
         />
         {properties.map((property) => (
           <Marker key={property.slug} position={[property.lat, property.lng]} icon={pinIcon}>
-            <Popup>
-              <div className="text-center">
-                <strong className="block text-sm mb-2">{property.name}</strong>
+            <Tooltip direction="top" offset={[0, -40]} opacity={1} permanent={false} sticky={false}>
+              <div className="text-center max-w-[220px]">
+                <strong className="block text-sm mb-1">{property.name}</strong>
+                <p className="text-xs text-gray-500 leading-snug mb-2">{property.excerpt}</p>
                 <Link
                   href={`/${property.slug}`}
-                  className="inline-block px-3 py-1 bg-green-800 text-white text-xs font-semibold rounded hover:bg-green-900 transition-colors"
+                  className="inline-block px-3 py-1.5 bg-green-800 text-white text-xs font-semibold rounded hover:bg-green-900 transition-colors"
+                  style={{ color: 'white' }}
                 >
                   View Property
                 </Link>
               </div>
-            </Popup>
+            </Tooltip>
           </Marker>
         ))}
       </MapContainer>
