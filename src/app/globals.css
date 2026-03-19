@@ -452,6 +452,10 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.leaflet-pane.leaflet-popup-pane {
+  z-index: 800;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

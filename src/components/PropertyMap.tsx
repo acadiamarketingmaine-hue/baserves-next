@@ -106,12 +106,12 @@ function HoverMarker({ property }: { property: typeof properties[number] }) {
 
 export default function PropertyMap() {
   return (
-    <div className="relative z-0 w-full h-full min-h-[400px] rounded-2xl overflow-hidden shadow-lg">
+    <div className="relative z-10 w-full h-full min-h-[400px]">
       <MapContainer
         center={[39.5, -96.0]}
         zoom={4}
         scrollWheelZoom={false}
-        style={{ height: '100%', width: '100%', minHeight: '400px' }}
+        style={{ height: '100%', width: '100%', minHeight: '400px', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
       >
         <TileLayer
           attribution='&copy; <a href="https://carto.com/">CARTO</a>'
