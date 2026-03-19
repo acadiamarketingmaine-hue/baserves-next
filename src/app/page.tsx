@@ -1031,7 +1031,7 @@ export default function HomePage() {
       </section>
 
       {/* Map */}
-      <section className="py-16 bg-white">
+      <section className="relative z-10 py-16 bg-white">
         <div className="container-custom px-6">
           <div className="text-center mb-10">
             <span className="badge badge-forest mb-4">Our Locations</span>
@@ -1042,7 +1042,7 @@ export default function HomePage() {
               Click a pin to explore our recreation areas
             </p>
           </div>
-          <div className="h-[500px] rounded-2xl overflow-hidden">
+          <div className="h-[500px]">
             <PropertyMap />
           </div>
         </div>
