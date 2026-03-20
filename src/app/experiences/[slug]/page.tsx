@@ -14,7 +14,7 @@ const experiences: Record<string, any> = {
 
 Kayakers and canoeists will find easy river access, while anglers can try their luck with the abundant trout and bass. The campground features a bath house that doubles as a storm shelter during severe weather, and firewood and ice are available for purchase at the office or through your camp host. Check-in is at 2:00 PM and check-out is at 12:00 PM. Quiet hours are from 10:00 PM to 7:00 AM, and all children under 17 must be on their campsite by 10:00 PM.
 
-Two vehicles are allowed per campsite, with overflow parking available at the entrance. All pets must be on a leash at all times. Fires are permitted only in fire pits. No fireworks allowed. To make a reservation, visit escape.baserves.com or call 207.935.2286.`,
+Two vehicles are allowed per campsite, with overflow parking available at the entrance. All pets must be on a leash at all times. Fires are permitted only in fire pits. No fireworks allowed. To make a reservation, call 207.935.2286.`,
     location: 'Fryeburg, ME',
     features: ['Kayaking', 'Fishing', 'Hiking', 'Wildlife Viewing', 'RV & Tent Camping', 'River Access', 'Mountain Views', 'Bath House', 'Pet Friendly'],
     stats: { campsites: '36', tentSites: '5', river: 'Saco River' },
@@ -25,7 +25,7 @@ Two vehicles are allowed per campsite, with overflow parking available at the en
       '/images/Canal-Bridge-Entrance-11-2048x1365.jpg',
       '/images/canal-bridge-bath-house.jpg',
     ],
-    bookingUrl: 'https://escape.baserves.com',
+    bookingUrl: 'tel:+12079352286',
   },
   'corinth-recreation-area': {
     name: 'Corinth Recreation Area',
@@ -128,7 +128,7 @@ Wildlife is abundant: white-tailed deer, river otters, and 80+ nesting bird spec
       '/images/Playground-Gallery-Pic-2048x1365.jpg',
       '/images/burlingame-aerial.jpg',
     ],
-    bookingUrl: 'https://escape.baserves.com',
+    bookingUrl: 'https://riparks.com/Campgrounds/Burlingame.html',
   },
 }
 

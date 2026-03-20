@@ -22,6 +22,7 @@ Whether you're casting a line for bass and bluegill, hiking through the rolling 
       '/images/DSC_0103-2048x1365.jpg',
       '/images/DSC_0110-2048x1365.jpg',
     ],
+    bookingUrl: 'https://www.recreation.gov/camping/campgrounds/232114',
   },
   'yankee-springs-recreation-area': {
     name: 'Yankee Springs Recreation Area',
@@ -39,6 +40,7 @@ With over 200 campsites and 30+ miles of trails winding through forests, wetland
       '/images/Burlingame2-1536x1152.jpg',
       '/images/Playground-Gallery-Pic-2048x1365.jpg',
     ],
+    bookingUrl: 'https://midnrreservations.com',
   },
   'hardin-ridge-recreation-area': {
     name: 'Hardin Ridge Recreation Area',
@@ -56,6 +58,7 @@ Whether you're looking to spend a weekend fishing, hiking the surrounding trails
       '/images/DSC_0110-2048x1365.jpg',
       '/images/DSC_0001-2048x1365.jpg',
     ],
+    bookingUrl: 'https://www.recreation.gov/camping/campgrounds/232056',
   },
   'monongahela-national-forest': {
     name: 'Monongahela National Forest',
@@ -73,6 +76,7 @@ Visitors can explore hundreds of miles of hiking trails, including portions of t
       '/images/DSC_0103-2048x1365.jpg',
       '/images/DSC_0001-2048x1365.jpg',
     ],
+    bookingUrl: 'https://www.recreation.gov/gateways/1090',
   },
   'washington-state-park': {
     name: 'Washington State Park',
@@ -90,6 +94,7 @@ Beyond its historical significance, the park offers excellent hiking trails, a s
       '/images/Burlingame1-2048x1365.jpg',
       '/images/Playground-Gallery-Pic-2048x1365.jpg',
     ],
+    bookingUrl: 'https://escape.baserves.com',
   },
   'long-lake-outdoor-center': {
     name: 'Long Lake Outdoor Center',
@@ -107,6 +112,7 @@ The center features comfortable lodging options, a beautiful lake for water acti
       '/images/Burlingame1-2048x1365.jpg',
       '/images/DSC_0103-2048x1365.jpg',
     ],
+    bookingUrl: 'https://escape.baserves.com',
   },
   'chief-noonday-outdoor-center': {
     name: 'Chief Noonday Outdoor Center',
@@ -124,6 +130,7 @@ The facility can accommodate large groups with its multiple cabin clusters, dini
       '/images/Playground-Gallery-Pic-2048x1365.jpg',
       '/images/Burlingame1-2048x1365.jpg',
     ],
+    bookingUrl: 'https://escape.baserves.com',
   },
   'bankhead-national-forest': {
     name: 'Bankhead National Forest',
@@ -147,6 +154,7 @@ Visit the Ranger Station on Highway 33 in Double Springs for maps, birding broch
       '/images/clear-creek-overview.jpg',
       '/images/corinth-campground.jpg',
     ],
+    bookingUrl: 'https://www.recreation.gov',
   },
 }
 
@@ -215,7 +223,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
             {location.location}
           </div>
           <a
-            href="https://escape.baserves.com"
+            href={location.bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
@@ -299,7 +307,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
                   Book your stay and experience everything {location.name} has to offer.
                 </p>
                 <a
-                  href="https://escape.baserves.com"
+                  href={location.bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"

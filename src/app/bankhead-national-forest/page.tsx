@@ -98,12 +98,12 @@ export default function BankheadNationalForestPage() {
             Lawrence, Winston &amp; Franklin Counties, Alabama &mdash; Cumberland Plateau
           </div>
           <a
-            href="https://escape.baserves.com"
+            href="https://www.recreation.gov"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
           >
-            Book Your Stay
+            Find on Recreation.gov
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -197,12 +197,12 @@ export default function BankheadNationalForestPage() {
                   (205) 489-5111
                 </a>
                 <a
-                  href="https://escape.baserves.com"
+                  href="https://www.recreation.gov"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
                 >
-                  Book Your Stay
+                  Find on Recreation.gov
                 </a>
               </div>
             </div>
@@ -540,12 +540,12 @@ export default function BankheadNationalForestPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://escape.baserves.com"
+              href="https://www.recreation.gov"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
             >
-              Book Your Stay
+              Find on Recreation.gov
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

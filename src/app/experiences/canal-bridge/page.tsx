@@ -26,7 +26,7 @@ const rules = [
   { title: 'Pets', detail: 'Pets must be leashed at all times. Please clean up after your pet.' },
   { title: 'Fires', detail: 'Fires only in designated fire pits. Absolutely no fireworks.' },
   { title: 'Vehicles', detail: '2 vehicles per campsite. Overflow parking available at the entrance.' },
-  { title: 'Reservations', detail: 'Book online at escape.baserves.com or call 207.935.2286.' },
+  { title: 'Reservations', detail: 'Call 207.935.2286 to reserve.' },
 ]
 
 const galleryImages = [
@@ -73,12 +73,10 @@ export default function CanalBridgePage() {
             Saco River, Fryeburg, Maine
           </div>
           <a
-            href="https://escape.baserves.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="tel:+12079352286"
             className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
           >
-            Book Your Stay
+            Call to Reserve: 207.935.2286
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -177,12 +175,10 @@ export default function CanalBridgePage() {
                   Reserve your campsite at Canal Bridge Campground on the Saco River.
                 </p>
                 <a
-                  href="https://escape.baserves.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="tel:+12079352286"
                   className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
                 >
-                  Book Your Stay
+                  Call to Reserve: 207.935.2286
                 </a>
                 <a href="tel:+12079352286" className="flex items-center justify-center gap-2 mt-4 text-white/80 hover:text-white transition-colors">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -330,12 +326,10 @@ export default function CanalBridgePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://escape.baserves.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="tel:+12079352286"
               className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
             >
-              Book Your Stay
+              Call to Reserve: 207.935.2286
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
