@@ -20,7 +20,14 @@ const secondaryNavLinks = [
   { name: 'Watercraft', href: '/experiences/categories/kayak-and-watercraft-rentals' },
 ]
 
-const locationsByState = [
+interface LocationItem {
+  name: string
+  href: string
+  image: string
+  children?: LocationItem[]
+}
+
+const locationsByState: { state: string; icon: string; locations: LocationItem[] }[] = [
   {
     state: 'Alabama',
     icon: '/images/states/alabama.png',
@@ -34,8 +41,11 @@ const locationsByState = [
     state: 'Indiana',
     icon: '/images/states/indiana.png',
     locations: [
-      { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area', image: '/images/DSC_0001-2048x1365.jpg' },
-      { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area', image: '/images/DSC_0103-2048x1365.jpg' },
+      { name: 'Hoosier National Forest', href: '/hoosier-national-forest', image: '/images/hardin-ridge/aerial.jpg', children: [
+        { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area', image: '/images/hardin-ridge/beach.jpg' },
+        { name: 'Indian-Celina Lakes Recreation Area', href: '/indian-celina-lakes-recreation-area', image: '/images/indian-celina/lake-aerial.jpg' },
+        { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area', image: '/images/tipsaw-lake/lake-view.jpg' },
+      ]},
     ],
   },
   {
@@ -104,9 +114,11 @@ const searchIndex: SearchItem[] = [
 
   // Locations
   { title: 'All Locations', description: 'Explore all our recreation areas', href: '/experiences', category: 'Locations', keywords: ['locations', 'all', 'explore', 'recreation areas'] },
-  { title: 'Tipsaw Lake Recreation Area', description: 'Hoosier National Forest, Indiana — boating, fishing, swimming, camping', href: '/tipsaw-lake', category: 'Locations', keywords: ['tipsaw', 'lake', 'indiana', 'hoosier', 'boating', 'fishing', 'swimming', 'camping'] },
+  { title: 'Hoosier National Forest', description: 'Southern Indiana — 200,000 acres with 3 recreation areas, trails, and camping', href: '/hoosier-national-forest', category: 'Locations', keywords: ['hoosier', 'indiana', 'national forest', 'southern indiana', 'hiking', 'camping'] },
+  { title: 'Tipsaw Lake Recreation Area', description: 'Hoosier National Forest, Indiana — boating, fishing, swimming, camping', href: '/tipsaw-lake-recreation-area', category: 'Locations', keywords: ['tipsaw', 'lake', 'indiana', 'hoosier', 'boating', 'fishing', 'swimming', 'camping'] },
+  { title: 'Indian-Celina Lakes Recreation Area', description: 'Hoosier National Forest, Indiana — twin lakes, fishing pier, camping', href: '/indian-celina-lakes-recreation-area', category: 'Locations', keywords: ['indian', 'celina', 'lakes', 'indiana', 'hoosier', 'fishing', 'camping', 'boating'] },
   { title: 'Yankee Springs Recreation Area', description: 'Gun Lake, Michigan — camping, hiking, mountain biking, horseback riding', href: '/yankee-springs', category: 'Locations', keywords: ['yankee springs', 'michigan', 'gun lake', 'camping', 'hiking', 'mountain biking', 'horseback'] },
-  { title: 'Hardin Ridge Recreation Area', description: 'Monroe Lake, Indiana — hiking, swimming, boating, camping', href: '/hardin-ridge', category: 'Locations', keywords: ['hardin ridge', 'indiana', 'monroe lake', 'hiking', 'swimming', 'boating', 'camping'] },
+  { title: 'Hardin Ridge Recreation Area', description: 'Monroe Lake, Indiana — hiking, swimming, boating, camping', href: '/hardin-ridge-recreation-area', category: 'Locations', keywords: ['hardin ridge', 'indiana', 'monroe lake', 'hiking', 'swimming', 'boating', 'camping'] },
   { title: 'Monongahela National Forest', description: 'West Virginia — hiking, fishing, wildlife, fall foliage', href: '/monongahela', category: 'Locations', keywords: ['monongahela', 'west virginia', 'hiking', 'fishing', 'wildlife', 'forest', 'foliage'] },
   { title: 'Washington State Park', description: 'De Soto, Missouri — cabins, watercraft rentals, hiking', href: '/washington-state-park', category: 'Locations', keywords: ['washington', 'missouri', 'de soto', 'cabins', 'watercraft', 'kayak', 'canoe', 'hiking'] },
   { title: 'Long Lake Outdoor Center', description: 'Michigan — cabins, campgrounds, outdoor activities', href: '/long-lake-outdoor-center', category: 'Locations', keywords: ['long lake', 'michigan', 'cabins', 'campground', 'outdoor'] },
@@ -330,17 +342,31 @@ export default function Navigation() {
                             </span>
                           </div>
                           {group.locations.map((loc) => (
-                            <Link
-                              key={loc.href}
-                              href={loc.href}
-                              onClick={() => setLocationsOpen(false)}
-                              className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                            >
-                              <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
-                                <Image src={loc.image} alt={loc.name} fill className="object-cover" />
-                              </div>
-                              {loc.name}
-                            </Link>
+                            <div key={loc.href}>
+                              <Link
+                                href={loc.href}
+                                onClick={() => setLocationsOpen(false)}
+                                className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                              >
+                                <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
+                                  <Image src={loc.image} alt={loc.name} fill className="object-cover" />
+                                </div>
+                                {loc.name}
+                              </Link>
+                              {loc.children?.map((child) => (
+                                <Link
+                                  key={child.href}
+                                  href={child.href}
+                                  onClick={() => setLocationsOpen(false)}
+                                  className="flex items-center gap-3 pl-8 pr-4 py-1.5 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition-colors"
+                                >
+                                  <div className="relative w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
+                                    <Image src={child.image} alt={child.name} fill className="object-cover" />
+                                  </div>
+                                  {child.name}
+                                </Link>
+                              ))}
+                            </div>
                           ))}
                         </div>
                       ))}
@@ -465,17 +491,31 @@ export default function Navigation() {
                       </span>
                     </div>
                     {group.locations.map((loc) => (
-                      <Link
-                        key={loc.href}
-                        href={loc.href}
-                        className="flex items-center gap-3 py-2 pl-2 text-gray-600 text-sm"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
-                          <Image src={loc.image} alt={loc.name} fill className="object-cover" />
-                        </div>
-                        {loc.name}
-                      </Link>
+                      <div key={loc.href}>
+                        <Link
+                          href={loc.href}
+                          className="flex items-center gap-3 py-2 pl-2 text-gray-600 text-sm"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
+                            <Image src={loc.image} alt={loc.name} fill className="object-cover" />
+                          </div>
+                          {loc.name}
+                        </Link>
+                        {loc.children?.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="flex items-center gap-3 py-1.5 pl-6 text-gray-500 text-sm"
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            <div className="relative w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
+                              <Image src={child.image} alt={child.name} fill className="object-cover" />
+                            </div>
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
                     ))}
                   </div>
                 ))}
