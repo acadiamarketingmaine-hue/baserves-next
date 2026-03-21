@@ -5,7 +5,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Tipsaw Lake Recreation Area | Perry County, Indiana | BA Serves',
+  title: 'Tipsaw Lake Recreation Area | Perry County, Indiana | BA Services',
   description: 'Explore Tipsaw Lake Recreation Area in Hoosier National Forest. 131-acre lake with camping, swimming beach, fishing, amphitheater, and 8+ miles of trails.',
   alternates: { canonical: '/tipsaw-lake-recreation-area' },
 }

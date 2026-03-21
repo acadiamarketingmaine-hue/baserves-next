@@ -5,7 +5,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Hardin Ridge Recreation Area | Monroe County, Indiana | BA Serves',
+  title: 'Hardin Ridge Recreation Area | Monroe County, Indiana | BA Services',
   description: 'Explore Hardin Ridge Recreation Area on Monroe Lake in Hoosier National Forest. 200+ campsites, swimming beach, boat ramp, and 12+ miles of trails.',
   alternates: { canonical: '/hardin-ridge-recreation-area' },
 }

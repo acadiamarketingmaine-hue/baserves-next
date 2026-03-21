@@ -2,8 +2,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Privacy Policy | BA Serves',
-  description: 'Learn how BA Serves collects, uses, and protects your personal information.',
+  title: 'Privacy Policy | BA Services',
+  description: 'Learn how BA Services collects, uses, and protects your personal information.',
   alternates: {
     canonical: '/privacy',
   },
@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
 
               <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Introduction</h2>
               <p className="text-gray-600 mb-4">
-                BA Serves ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+                BA Services ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
               </p>
 
               <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Information We Collect</h2>

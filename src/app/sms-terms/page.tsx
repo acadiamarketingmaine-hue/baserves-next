@@ -2,8 +2,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'SMS Terms & Conditions | BA Serves',
-  description: 'Terms and conditions for BA Serves SMS messaging services.',
+  title: 'SMS Terms & Conditions | BA Services',
+  description: 'Terms and conditions for BA Services SMS messaging services.',
   alternates: {
     canonical: '/sms-terms',
   },
@@ -26,7 +26,7 @@ export default function SMSTermsPage() {
 
               <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Overview</h2>
               <p className="text-gray-600 mb-4">
-                By opting in to receive SMS messages from BA Serves, you agree to the following terms and conditions. These terms govern your use of our SMS messaging service.
+                By opting in to receive SMS messages from BA Services, you agree to the following terms and conditions. These terms govern your use of our SMS messaging service.
               </p>
 
               <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Message Types</h2>
@@ -48,7 +48,7 @@ export default function SMSTermsPage() {
 
               <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Costs</h2>
               <p className="text-gray-600 mb-4">
-                Message and data rates may apply. BA Serves does not charge for SMS messages, but your mobile carrier may charge you for each message received. Please check with your carrier for details about your messaging plan.
+                Message and data rates may apply. BA Services does not charge for SMS messages, but your mobile carrier may charge you for each message received. Please check with your carrier for details about your messaging plan.
               </p>
 
               <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">How to Opt Out</h2>

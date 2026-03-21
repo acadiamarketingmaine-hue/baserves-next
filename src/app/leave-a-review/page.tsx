@@ -387,7 +387,7 @@ export default function LeaveReviewPage() {
       <section className="py-12 bg-gray-50">
         <div className="container-custom px-6 text-center">
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Interested in making a difference at our recreation areas? Check out our <Link href="/careers" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">career opportunities</Link>. Return to our <Link href="/" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">homepage</Link> to discover everything BA Serves has to offer.
+            Interested in making a difference at our recreation areas? Check out our <Link href="/careers" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">career opportunities</Link>. Return to our <Link href="/" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">homepage</Link> to discover everything BA Services has to offer.
           </p>
         </div>
       </section>

@@ -5,7 +5,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Bankhead National Forest | Alabama | BA Serves',
+  title: 'Bankhead National Forest | Alabama | BA Services',
   description: 'Explore Bankhead National Forest — "The Land of a Thousand Waterfalls." 180,000+ acres featuring the Sipsey Wilderness, 84 breeding bird species, campgrounds, and the Hurricane Creek Shooting Range.',
   alternates: { canonical: '/bankhead-national-forest' },
 }
@@ -144,7 +144,7 @@ export default function BankheadNationalForestPage() {
                   At its heart lies the Sipsey Wilderness &mdash; the largest wilderness area east of the Mississippi River. The Sipsey Fork, a designated Wild and Scenic River corridor, carves through deep sandstone canyons, creating a landscape of cascading waterfalls, rock shelters, and towering old-growth hardwoods. The forest&apos;s rich biodiversity has earned it designation as an Important Bird Area by the American Bird Conservancy.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Two premier campgrounds managed by BA Serves &mdash; Clear Creek Recreation Area and Corinth Recreation Area &mdash; provide comfortable base camps for exploring the forest. Additional recreation areas, horse trails, a shooting range, and scenic drives offer something for every outdoor enthusiast.
+                  Two premier campgrounds managed by BA Services &mdash; Clear Creek Recreation Area and Corinth Recreation Area &mdash; provide comfortable base camps for exploring the forest. Additional recreation areas, horse trails, a shooting range, and scenic drives offer something for every outdoor enthusiast.
                 </p>
               </div>
 
@@ -410,7 +410,7 @@ export default function BankheadNationalForestPage() {
         <div className="container-custom px-6">
           <h2 className="text-3xl font-bold text-gray-900 mb-3">Campgrounds</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">
-            Two campgrounds managed by BA Serves provide comfortable base camps for exploring the Bankhead National Forest.
+            Two campgrounds managed by BA Services provide comfortable base camps for exploring the Bankhead National Forest.
           </p>
           <div className="grid md:grid-cols-2 gap-8">
             {campgrounds.map((campground) => (

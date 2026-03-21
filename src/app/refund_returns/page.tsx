@@ -2,7 +2,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Refund Policy | BA Serves',
+  title: 'Refund Policy | BA Services',
   description: 'Learn about our refund and cancellation policies for reservations.',
   alternates: {
     canonical: '/refund_returns',

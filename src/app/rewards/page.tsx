@@ -3,8 +3,8 @@ import Footer from '@/components/Footer'
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Rewards | BA Serves',
-  description: 'BA Serves rewards program - coming soon. Earn points on every booking and unlock exclusive perks.',
+  title: 'Rewards | BA Services',
+  description: 'BA Services rewards program - coming soon. Earn points on every booking and unlock exclusive perks.',
   alternates: {
     canonical: '/rewards',
   },
@@ -67,10 +67,10 @@ export default function RewardsPage() {
               Coming Soon
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              BA Serves Rewards
+              BA Services Rewards
             </h1>
             <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-              We&apos;re building a rewards program to thank our loyal guests. Earn points on every booking and unlock exclusive perks across all BA Serves properties.
+              We&apos;re building a rewards program to thank our loyal guests. Earn points on every booking and unlock exclusive perks across all BA Services properties.
             </p>
           </div>
         </section>

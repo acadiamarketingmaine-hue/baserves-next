@@ -97,11 +97,11 @@ interface SearchItem {
 
 const searchIndex: SearchItem[] = [
   // Pages
-  { title: 'Home', description: 'BA Serves homepage — outdoor recreation management', href: '/', category: 'Pages', keywords: ['home', 'main', 'recreation', 'outdoor'] },
+  { title: 'Home', description: 'BA Services homepage — outdoor recreation management', href: '/', category: 'Pages', keywords: ['home', 'main', 'recreation', 'outdoor'] },
   { title: 'About Us', description: 'Our mission, values, and team', href: '/about', category: 'Pages', keywords: ['about', 'mission', 'team', 'values', 'company', 'who'] },
   { title: 'Contact', description: 'Get in touch with our team', href: '/contact', category: 'Pages', keywords: ['contact', 'email', 'phone', 'message', 'help', 'support'] },
   { title: 'Careers', description: 'Job openings and employment application', href: '/careers', category: 'Pages', keywords: ['careers', 'jobs', 'hiring', 'employment', 'apply', 'work', 'application'] },
-  { title: 'Rewards', description: 'BA Serves rewards program — coming soon', href: '/rewards', category: 'Pages', keywords: ['rewards', 'loyalty', 'points', 'perks', 'program'] },
+  { title: 'Rewards', description: 'BA Services rewards program — coming soon', href: '/rewards', category: 'Pages', keywords: ['rewards', 'loyalty', 'points', 'perks', 'program'] },
   { title: 'Leave a Review', description: 'Share feedback about your visit', href: '/leave-a-review', category: 'Pages', keywords: ['review', 'feedback', 'rating', 'experience'] },
   { title: 'Privacy Policy', description: 'Our privacy and data practices', href: '/privacy', category: 'Pages', keywords: ['privacy', 'policy', 'data'] },
 
@@ -224,7 +224,7 @@ export default function Navigation() {
               <Link href="/" className="flex items-center">
                 <Image
                   src="/images/logo.png"
-                  alt="BA Serves"
+                  alt="BA Services"
                   width={140}
                   height={47}
                   className="h-9 w-auto"
@@ -423,7 +423,7 @@ export default function Navigation() {
               <Link href="/" onClick={() => setMobileMenuOpen(false)}>
                 <Image
                   src="/images/logo.png"
-                  alt="BA Serves"
+                  alt="BA Services"
                   width={120}
                   height={40}
                   className="h-8 w-auto"

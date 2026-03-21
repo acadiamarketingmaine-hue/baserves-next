@@ -53,8 +53,8 @@ const stats = [
 ]
 
 export const metadata = {
-  title: 'About Us | BA Serves',
-  description: 'Learn about BA Serves and our mission to provide exceptional outdoor recreation experiences.',
+  title: 'About Us | BA Services',
+  description: 'Learn about BA Services and our mission to provide exceptional outdoor recreation experiences.',
   alternates: {
     canonical: '/about',
   },
@@ -70,7 +70,7 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/DSC_0110-2048x1365.jpg"
-            alt="About BA Serves"
+            alt="About BA Services"
             fill
             className="object-cover"
           />
@@ -116,7 +116,7 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
                 <p>
-                  At BA Serves, we believe that everyone deserves access to beautiful, well-maintained
+                  At BA Services, we believe that everyone deserves access to beautiful, well-maintained
                   outdoor spaces. Our mission is to manage recreation areas that inspire connection
                   with nature while providing the amenities and <Link href="/services">services</Link> visitors need for a
                   comfortable experience.
@@ -173,7 +173,7 @@ export default function AboutPage() {
             Ready to Experience the Difference?
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            Visit one of our recreation areas and see firsthand why thousands of visitors choose BA Serves. <Link href="/contact" className="underline hover:text-white transition-colors">Get in touch</Link> to learn more.
+            Visit one of our recreation areas and see firsthand why thousands of visitors choose BA Services. <Link href="/contact" className="underline hover:text-white transition-colors">Get in touch</Link> to learn more.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/experiences" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">

@@ -140,7 +140,7 @@ The facility can accommodate large groups with its multiple cabin clusters, dini
 
 The Sipsey Wilderness, located within the forest, is the largest wilderness area east of the Mississippi River. The Sipsey Fork is a designated Wild and Scenic River corridor, famous for its nesting Cerulean Warblers. The American Bird Conservancy designated the Bankhead as an Important Bird Area — 84 species of birds have been recorded during the breeding season, making it part of the North Alabama Birding Trail.
 
-The forest is home to two premier campgrounds managed by BA Serves: Clear Creek Recreation Area (102 sites on Lewis Smith Lake) and Corinth Recreation Area (52 full-hookup sites). Other highlights include Brushy Lake and Houston Recreation Areas, Natural Bridge Day Use Area, Owl Creek Horse Camp, the Flint-Creek Multi-Use Trail, and the Hurricane Creek Shooting Range — an accessible, year-round facility with eight shooting benches marked at 25, 50, and 100 yards.
+The forest is home to two premier campgrounds managed by BA Services: Clear Creek Recreation Area (102 sites on Lewis Smith Lake) and Corinth Recreation Area (52 full-hookup sites). Other highlights include Brushy Lake and Houston Recreation Areas, Natural Bridge Day Use Area, Owl Creek Horse Camp, the Flint-Creek Multi-Use Trail, and the Hurricane Creek Shooting Range — an accessible, year-round facility with eight shooting benches marked at 25, 50, and 100 yards.
 
 Visit the Ranger Station on Highway 33 in Double Springs for maps, birding brochures and checklists, and current sighting reports. Call (205) 489-5111 for more information.`,
     location: 'Lawrence, Winston & Franklin Counties, AL',
@@ -162,12 +162,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const location = locations[params.slug]
   if (!location) {
     return {
-      title: 'Location Not Found | BA Serves',
+      title: 'Location Not Found | BA Services',
       alternates: { canonical: `/${params.slug}` },
     }
   }
   return {
-    title: `${location.name} | BA Serves`,
+    title: `${location.name} | BA Services`,
     description: location.longDescription?.split('\n\n')[0] || location.description,
     alternates: { canonical: `/${params.slug}` },
   }

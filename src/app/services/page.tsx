@@ -80,7 +80,7 @@ const services = [
 ]
 
 export const metadata = {
-  title: 'Services | BA Serves',
+  title: 'Services | BA Services',
   description: 'Professional recreation area management services including maintenance, landscaping, cleaning, and repairs.',
   alternates: {
     canonical: '/services',

@@ -5,7 +5,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Hoosier National Forest | Southern Indiana | BA Serves',
+  title: 'Hoosier National Forest | Southern Indiana | BA Services',
   description: 'Explore Hoosier National Forest in southern Indiana. Three recreation areas with camping, swimming, fishing, boating, and hundreds of miles of trails.',
   alternates: { canonical: '/hoosier-national-forest' },
 }

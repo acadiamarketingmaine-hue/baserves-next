@@ -136,12 +136,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const experience = experiences[params.slug]
   if (!experience) {
     return {
-      title: 'Experience Not Found | BA Serves',
+      title: 'Experience Not Found | BA Services',
       alternates: { canonical: `/experiences/${params.slug}` },
     }
   }
   return {
-    title: `${experience.name} | BA Serves`,
+    title: `${experience.name} | BA Services`,
     description: experience.longDescription?.split('\n\n')[0] || experience.description,
     alternates: { canonical: `/experiences/${params.slug}` },
   }

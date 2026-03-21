@@ -107,12 +107,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const service = services[params.slug]
   if (!service) {
     return {
-      title: 'Service Not Found | BA Serves',
+      title: 'Service Not Found | BA Services',
       alternates: { canonical: `/services/${params.slug}` },
     }
   }
   return {
-    title: `${service.name} | BA Serves`,
+    title: `${service.name} | BA Services`,
     description: service.description,
     alternates: { canonical: `/services/${params.slug}` },
   }

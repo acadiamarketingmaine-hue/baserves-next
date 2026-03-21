@@ -5,7 +5,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Burlingame State Park & Campground | Rhode Island | BA Serves',
+  title: 'Burlingame State Park & Campground | Rhode Island | BA Services',
   description: 'Explore Burlingame State Park in Charlestown, RI. 755 campsites, 20 rustic cabins, Watchaug Pond swimming, hiking trails, and a rich history dating back to 1702.',
   alternates: { canonical: '/experiences/burlingame-state-park' },
 }

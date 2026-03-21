@@ -41,7 +41,7 @@ const positions = [
 ]
 
 export const metadata = {
-  title: 'Careers | BA Serves',
+  title: 'Careers | BA Services',
   description: 'Join our team and help create memorable outdoor experiences. Apply online or download our employment application.',
   alternates: {
     canonical: '/careers',
@@ -58,7 +58,7 @@ export default function CareersPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/Playground-Gallery-Pic-2048x1365.jpg"
-            alt="Careers at BA Serves"
+            alt="Careers at BA Services"
             fill
             className="object-cover"
           />

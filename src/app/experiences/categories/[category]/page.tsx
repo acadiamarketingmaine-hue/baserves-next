@@ -98,12 +98,12 @@ export async function generateMetadata({ params }: { params: { category: string 
   const category = categoryData[params.category]
   if (!category) {
     return {
-      title: 'Category Not Found | BA Serves',
+      title: 'Category Not Found | BA Services',
       alternates: { canonical: `/experiences/categories/${params.category}` },
     }
   }
   return {
-    title: `${category.name} | BA Serves`,
+    title: `${category.name} | BA Services`,
     description: category.description,
     alternates: { canonical: `/experiences/categories/${params.category}` },
   }

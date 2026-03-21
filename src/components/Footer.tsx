@@ -93,7 +93,7 @@ export default function Footer() {
             <Link href="/" className="inline-block mb-6 bg-white rounded-lg px-4 py-2">
               <Image
                 src="/images/logo.png"
-                alt="BA Serves"
+                alt="BA Services"
                 width={180}
                 height={60}
                 className="h-12 w-auto"
@@ -187,7 +187,7 @@ export default function Footer() {
         <div className="container-custom py-6 px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/60 text-sm">
-              © {new Date().getFullYear()} BA Serves. All rights reserved.
+              © {new Date().getFullYear()} BA Services. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">

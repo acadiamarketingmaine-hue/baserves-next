@@ -368,7 +368,7 @@ function PartnershipJourney() {
           </h2>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
             We handle the complexities of recreation area management so you can focus on growth.
-            Here's how partnering with <Link href="/about">BA Serves</Link> transforms your operations.
+            Here's how partnering with <Link href="/about">BA Services</Link> transforms your operations.
           </p>
         </div>
 

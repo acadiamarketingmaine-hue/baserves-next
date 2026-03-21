@@ -124,7 +124,7 @@ const categories = [
 ]
 
 export const metadata = {
-  title: 'Experiences | BA Serves',
+  title: 'Experiences | BA Services',
   description: 'Explore our recreation areas and outdoor experiences across America.',
   alternates: {
     canonical: '/experiences',

@@ -87,7 +87,7 @@ export default function ContactPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/DSC_0110-2048x1365.jpg"
-            alt="Contact BA Serves"
+            alt="Contact BA Services"
             fill
             className="object-cover"
           />

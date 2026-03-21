@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'BA Serves - Recreation Area Management & Outdoor Experiences'
+export const alt = 'BA Services - Recreation Area Management & Outdoor Experiences'
 export const size = {
   width: 1200,
   height: 630,
