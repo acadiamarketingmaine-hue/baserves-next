@@ -15,13 +15,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/refund_returns`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${baseUrl}/sms-terms`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${baseUrl}/leave-a-review`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${baseUrl}/rewards`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
   ];
 
   // Dedicated location pages ([slug])
   const locationSlugs = [
+    'hoosier-national-forest',
     'tipsaw-lake-recreation-area',
-    'yankee-springs-recreation-area',
     'hardin-ridge-recreation-area',
+    'indian-celina-lakes-recreation-area',
+    'yankee-springs-recreation-area',
     'monongahela-national-forest',
     'washington-state-park',
     'long-lake-outdoor-center',
