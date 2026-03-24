@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
@@ -933,15 +933,39 @@ export default function HomePage() {
 
   // Rotating featured destinations — show 3 at a time, advance every 6s
   const [locationPage, setLocationPage] = useState(0)
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right'>('right')
+  const [isSliding, setIsSliding] = useState(false)
+  const [selectedLocation, setSelectedLocation] = useState<typeof allLocations[0] | null>(null)
   const totalPages = Math.ceil(allLocations.length / 3)
   const visibleLocations = allLocations.slice(locationPage * 3, locationPage * 3 + 3)
+  const autoAdvanceRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
+  const goToPage = useCallback((page: number, direction: 'left' | 'right') => {
+    if (isSliding) return
+    setSlideDirection(direction)
+    setIsSliding(true)
+    setTimeout(() => {
+      setLocationPage(page)
+      setTimeout(() => setIsSliding(false), 50)
+    }, 300)
+  }, [isSliding])
+
+  const nextPage = useCallback(() => {
+    goToPage((locationPage + 1) % totalPages, 'right')
+  }, [locationPage, totalPages, goToPage])
+
+  const prevPage = useCallback(() => {
+    goToPage((locationPage - 1 + totalPages) % totalPages, 'left')
+  }, [locationPage, totalPages, goToPage])
+
+  // Auto-advance, resets when user interacts
   useEffect(() => {
-    const timer = setInterval(() => {
-      setLocationPage(prev => (prev + 1) % totalPages)
+    if (autoAdvanceRef.current) clearInterval(autoAdvanceRef.current)
+    autoAdvanceRef.current = setInterval(() => {
+      goToPage(((locationPage + 1) % totalPages), 'right')
     }, 6000)
-    return () => clearInterval(timer)
-  }, [totalPages])
+    return () => { if (autoAdvanceRef.current) clearInterval(autoAdvanceRef.current) }
+  }, [locationPage, totalPages, goToPage])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -1074,56 +1098,92 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-500" key={locationPage}>
-            {visibleLocations.map((location) => (
-              <Link
-                key={location.name}
-                href={`/${location.slug}`}
-                className="location-card group animate-fade-in"
+          {/* Carousel with arrows */}
+          <div className="relative">
+            {/* Left arrow */}
+            <button
+              onClick={prevPage}
+              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl transition-all duration-200 border border-gray-200"
+              aria-label="Previous destinations"
+            >
+              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Right arrow */}
+            <button
+              onClick={nextPage}
+              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl transition-all duration-200 border border-gray-200"
+              aria-label="Next destinations"
+            >
+              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Cards with slide animation */}
+            <div className="overflow-hidden">
+              <div
+                className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-300 ease-in-out ${
+                  isSliding
+                    ? slideDirection === 'right'
+                      ? 'opacity-0 translate-x-8'
+                      : 'opacity-0 -translate-x-8'
+                    : 'opacity-100 translate-x-0'
+                }`}
               >
-                <div className="location-card-image">
-                  <Image
-                    src={location.image}
-                    alt={location.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="location-card-overlay" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="inline-block px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full mb-2">
-                      {location.tagline}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {location.features.slice(0, 4).map((feature) => (
-                      <span key={feature} className="text-xs text-gray-500">
-                        {feature} •
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-forest-DEFAULT transition-colors">
-                    {location.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm italic mb-3">{location.description}</p>
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
-                    <svg className="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    {location.location}
-                  </div>
-                  <div className="flex justify-between text-sm border-t pt-4">
-                    {Object.entries(location.stats).map(([key, value]) => (
-                      <div key={key}>
-                        <span className="font-semibold text-forest-DEFAULT">{value}</span>
-                        <span className="text-gray-500 ml-1 capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
+                {visibleLocations.map((location) => (
+                  <button
+                    key={location.name}
+                    onClick={() => setSelectedLocation(location)}
+                    className="location-card group text-left cursor-pointer"
+                  >
+                    <div className="location-card-image">
+                      <Image
+                        src={location.image}
+                        alt={location.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="location-card-overlay" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <span className="inline-block px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full mb-2">
+                          {location.tagline}
+                        </span>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </Link>
-            ))}
+                    </div>
+                    <div className="p-6">
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {location.features.slice(0, 4).map((feature) => (
+                          <span key={feature} className="text-xs text-gray-500">
+                            {feature} •
+                          </span>
+                        ))}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-forest-DEFAULT transition-colors">
+                        {location.name}
+                      </h3>
+                      <p className="text-gray-600 text-sm italic mb-3">{location.description}</p>
+                      <div className="flex items-center text-sm text-gray-500 mb-4">
+                        <svg className="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        {location.location}
+                      </div>
+                      <div className="flex justify-between text-sm border-t pt-4">
+                        {Object.entries(location.stats).map(([key, value]) => (
+                          <div key={key}>
+                            <span className="font-semibold text-forest-DEFAULT">{value}</span>
+                            <span className="text-gray-500 ml-1 capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Page dots */}
@@ -1131,7 +1191,7 @@ export default function HomePage() {
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
                 key={i}
-                onClick={() => setLocationPage(i)}
+                onClick={() => goToPage(i, i > locationPage ? 'right' : 'left')}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                   i === locationPage ? 'bg-forest-DEFAULT w-6' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
@@ -1292,6 +1352,92 @@ export default function HomePage() {
       </section>
 
       <Footer />
+
+      {/* Property Quick View Modal */}
+      {selectedLocation && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedLocation(null)}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+
+          {/* Modal */}
+          <div
+            className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-fade-in-up"
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedLocation(null)}
+              className="absolute top-4 right-4 z-10 w-8 h-8 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-md hover:bg-white transition-colors"
+            >
+              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Image */}
+            <div className="relative h-64 w-full">
+              <Image
+                src={selectedLocation.image}
+                alt={selectedLocation.name}
+                fill
+                className="object-cover rounded-t-2xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-t-2xl" />
+              <div className="absolute bottom-4 left-4">
+                <span className="inline-block px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">
+                  {selectedLocation.tagline}
+                </span>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">{selectedLocation.name}</h3>
+              <div className="flex items-center text-sm text-gray-500 mb-4">
+                <svg className="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                {selectedLocation.location}
+              </div>
+              <p className="text-gray-600 mb-5">{selectedLocation.description}</p>
+
+              {/* Features */}
+              <div className="flex flex-wrap gap-2 mb-5">
+                {selectedLocation.features.map((feature) => (
+                  <span key={feature} className="px-3 py-1 bg-forest-DEFAULT/10 text-forest-DEFAULT text-xs font-medium rounded-full">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-gray-50 rounded-xl">
+                {Object.entries(selectedLocation.stats).map(([key, value]) => (
+                  <div key={key} className="text-center">
+                    <div className="font-bold text-forest-DEFAULT text-lg">{value}</div>
+                    <div className="text-xs text-gray-500 capitalize">{key.replace(/([A-Z])/g, ' $1')}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <Link
+                href={`/${selectedLocation.slug}`}
+                className="block w-full text-center py-3.5 bg-forest-DEFAULT text-white font-semibold rounded-xl hover:bg-forest-dark transition-colors"
+                onClick={() => setSelectedLocation(null)}
+              >
+                Go to Property
+                <svg className="w-4 h-4 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   )
 }
