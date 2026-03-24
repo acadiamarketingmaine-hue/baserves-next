@@ -9,8 +9,8 @@ import Footer from '@/components/Footer'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 
-// Sample data - will be replaced by Sanity
-const locations = [
+// All featured destinations — 3 shown at a time, rotating every 6 seconds
+const allLocations = [
   {
     name: 'Tipsaw Lake Recreation Area',
     tagline: 'Scenic Lakeside Camping & Outdoor Adventure in Indiana',
@@ -18,7 +18,7 @@ const locations = [
     location: 'Perry County, IN | Hoosier National Forest',
     features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
     stats: { campsites: '35+', lakeSize: '131 acres', trails: '8+ miles' },
-    image: '/images/DSC_0001-2048x1365.jpg',
+    image: '/images/tipsaw-entrance-sign.jpg',
     slug: 'tipsaw-lake-recreation-area'
   },
   {
@@ -28,7 +28,7 @@ const locations = [
     location: 'Barry County, MI',
     features: ['Boating', 'Fishing', 'Hiking', 'Mountain Biking', 'RV & Tent Camping'],
     stats: { campsites: '200+', trails: '30+ miles', acres: '5,200+' },
-    image: '/images/Burlingame1-2048x1365.jpg',
+    image: '/images/yankee-springs/hill-cabins.jpg',
     slug: 'yankee-springs-recreation-area'
   },
   {
@@ -37,9 +37,109 @@ const locations = [
     description: 'A peaceful retreat for paddlers, anglers, and nature lovers',
     location: 'Fryeburg, ME',
     features: ['Kayaking', 'Fishing', 'Hiking', 'Wildlife Viewing', 'RV & Tent Camping'],
-    stats: { sites: 'Multiple', waterfront: 'Waterfront Access', river: 'Saco River' },
+    stats: { sites: '36', waterfront: 'Saco River', views: 'White Mtns' },
     image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
     slug: 'experiences/canal-bridge'
+  },
+  {
+    name: 'Meramec State Park',
+    tagline: 'Premier Camping & Caving on the Meramec River',
+    description: 'Cabins, camping, float trips, and cave tours in the Ozarks',
+    location: 'Sullivan, MO',
+    features: ['Cabins', 'Float Trips', 'Cave Tours', 'Fishing', 'Hiking'],
+    stats: { acres: '6,896', cabins: '19', river: 'Meramec' },
+    image: '/images/meramec-state-park/ccc-monument.jpg',
+    slug: 'experiences/meramec-state-park'
+  },
+  {
+    name: 'Washington State Park',
+    tagline: 'Ancient Petroglyphs & Ozark Trails',
+    description: 'Historic petroglyphs, rustic cabins, and trails along the Big River',
+    location: 'De Soto, MO',
+    features: ['Hiking', 'Cabins', 'Swimming', 'Historic Sites', 'Watercraft'],
+    stats: { campsites: '50+', trails: '10+ mi', acres: '2,147+' },
+    image: '/images/washington-state-park/cabin-11-exterior.png',
+    slug: 'washington-state-park'
+  },
+  {
+    name: 'Burlingame State Park',
+    tagline: "Rhode Island's Largest Campground Since 1934",
+    description: '755 campsites and 20 rustic cabins on the shores of Watchaug Pond',
+    location: 'Charlestown, RI',
+    features: ['Swimming', 'Fishing', 'Boating', 'Hiking', 'Cabins'],
+    stats: { campsites: '755', cabins: '20', acres: '3,100+' },
+    image: '/images/Burlingame1-2048x1365.jpg',
+    slug: 'experiences/burlingame-state-park'
+  },
+  {
+    name: 'Hardin Ridge Recreation Area',
+    tagline: "Indiana's Largest Lake Campground",
+    description: '200+ campsites on Monroe Lake with beach, boat ramp, and hiking',
+    location: 'Bloomington, IN | Hoosier National Forest',
+    features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
+    stats: { campsites: '200+', lake: '10,750 ac', trails: '12+ mi' },
+    image: '/images/hardin-ridge/beach.jpg',
+    slug: 'hardin-ridge-recreation-area'
+  },
+  {
+    name: 'Clear Creek Recreation Area',
+    tagline: '102 Campsites on Lewis Smith Lake',
+    description: 'Swimming beach, boat ramps, and hiking trails in Bankhead NF',
+    location: 'Bankhead National Forest, AL',
+    features: ['Camping', 'Swimming', 'Boat Ramp', 'Hiking', 'Group Camping'],
+    stats: { campsites: '102', loops: '4', trails: '2' },
+    image: '/images/clear-creek-overview.jpg',
+    slug: 'experiences/clear-creek-recreation-area'
+  },
+  {
+    name: 'Monongahela National Forest',
+    tagline: 'Untamed Wilderness in West Virginia',
+    description: '900,000+ acres across the Alleghenies with 800+ miles of trails',
+    location: 'West Virginia',
+    features: ['Hiking', 'Scenic Drives', 'Fishing', 'Rock Climbing', 'Camping'],
+    stats: { acres: '921,000+', trails: '800+ mi', peaks: '4,863 ft' },
+    image: '/images/DSC_0110-2048x1365.jpg',
+    slug: 'monongahela-national-forest'
+  },
+  {
+    name: 'Long Lake Outdoor Center',
+    tagline: 'Year-Round Outdoor Education & Recreation',
+    description: 'CCC-built retreat center with cabins, a private lake, and lodge',
+    location: 'Middleville, MI',
+    features: ['Group Camping', 'Outdoor Education', 'Team Building', 'Lake Activities'],
+    stats: { cabins: '16', capacity: '200+', lake: 'Private' },
+    image: '/images/long-lake/fall-aerial.jpg',
+    slug: 'long-lake-outdoor-center'
+  },
+  {
+    name: 'Indian-Celina Lakes Recreation Area',
+    tagline: 'Twin Lakes in the Heart of Hoosier National Forest',
+    description: 'Accessible fishing pier, camping, boat launch, and hiking trails',
+    location: 'Perry County, IN | Hoosier National Forest',
+    features: ['Fishing', 'Kayaking', 'Hiking', 'Swimming', 'RV & Tent Camping'],
+    stats: { lakes: '2', campsites: '80+', trails: 'Multiple' },
+    image: '/images/indian-celina/entrance.jpg',
+    slug: 'indian-celina-lakes-recreation-area'
+  },
+  {
+    name: 'Bankhead National Forest',
+    tagline: 'The Land of a Thousand Waterfalls',
+    description: '180,000 acres of canyons, waterfalls, and the Sipsey Wilderness',
+    location: 'Northwest Alabama',
+    features: ['Birding', 'Waterfall Hikes', 'Sipsey Wilderness', 'Scenic Drives'],
+    stats: { acres: '180,000+', species: '84 birds', wilderness: 'Sipsey' },
+    image: '/images/bankhead-forest.jpg',
+    slug: 'bankhead-national-forest'
+  },
+  {
+    name: 'Corinth Recreation Area',
+    tagline: 'Modern Full-Hookup Campground',
+    description: '52 full-hookup sites on Lewis Smith Lake with pavilion and beach',
+    location: 'Bankhead National Forest, AL',
+    features: ['Full Hookup Camping', 'Swimming', 'Boat Ramp', 'Pavilion'],
+    stats: { sites: '52 + 10 tent', pavilion: '100-person', trail: '1.3 mi' },
+    image: '/images/corinth-campground.jpg',
+    slug: 'experiences/corinth-recreation-area'
   },
 ]
 
@@ -161,7 +261,7 @@ const statesData = [
         stats: { campsites: '200+', trails: 'Multiple', lake: 'Monroe Lake' },
         activities: ['Hiking', 'Boating', 'Fishing', 'Swimming', 'RV & Tent Camping'],
         href: '/hardin-ridge-recreation-area',
-        image: '/images/DSC_0103-2048x1365.jpg',
+        image: '/images/hardin-ridge-entrance-sign.jpg',
       },
       {
         name: 'Indian-Celina Lakes Recreation Area',
@@ -169,8 +269,8 @@ const statesData = [
         location: 'Perry County, IN | Hoosier National Forest',
         stats: { campsites: '60+', lakes: '2', trails: '10+ miles' },
         activities: ['Fishing', 'Kayaking', 'Hiking', 'Swimming', 'RV & Tent Camping'],
-        href: '/experiences/celina-lakes-recreation-area',
-        image: '/images/DSC_0110-2048x1365.jpg',
+        href: '/indian-celina-lakes-recreation-area',
+        image: '/images/indian-celina-entrance-sign.jpg',
       },
       {
         name: 'Tipsaw Lake Recreation Area',
@@ -179,7 +279,7 @@ const statesData = [
         stats: { campsites: '35+', lake: '131 acres', trails: '8+ miles' },
         activities: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
         href: '/tipsaw-lake-recreation-area',
-        image: '/images/DSC_0001-2048x1365.jpg',
+        image: '/images/tipsaw-entrance-sign.jpg',
       },
     ],
   },
@@ -831,6 +931,18 @@ export default function HomePage() {
   const [statsVisible, setStatsVisible] = useState(false)
   const statsRef = useRef<HTMLDivElement>(null)
 
+  // Rotating featured destinations — show 3 at a time, advance every 6s
+  const [locationPage, setLocationPage] = useState(0)
+  const totalPages = Math.ceil(allLocations.length / 3)
+  const visibleLocations = allLocations.slice(locationPage * 3, locationPage * 3 + 3)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setLocationPage(prev => (prev + 1) % totalPages)
+    }, 6000)
+    return () => clearInterval(timer)
+  }, [totalPages])
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -962,12 +1074,12 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {locations.map((location, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-500" key={locationPage}>
+            {visibleLocations.map((location) => (
               <Link
                 key={location.name}
                 href={`/${location.slug}`}
-                className="location-card group"
+                className="location-card group animate-fade-in"
               >
                 <div className="location-card-image">
                   <Image
@@ -1011,6 +1123,20 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+            ))}
+          </div>
+
+          {/* Page dots */}
+          <div className="flex justify-center gap-2 mt-8">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setLocationPage(i)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  i === locationPage ? 'bg-forest-DEFAULT w-6' : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+                aria-label={`Show destinations page ${i + 1}`}
+              />
             ))}
           </div>
 

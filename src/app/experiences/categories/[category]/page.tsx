@@ -32,9 +32,9 @@ const categoryData: Record<string, any> = {
       { name: 'Canal Bridge Campground', location: 'Fryeburg, ME', duration: 'Nightly', price: '36 sites + 5 tent', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg', href: '/experiences/canal-bridge' },
       { name: 'Meramec State Park', location: 'Sullivan, MO', duration: 'Nightly', price: '19 cabins + motel', image: '/images/meramec-state-park/ccc-monument.jpg', href: '/experiences/meramec-state-park' },
       { name: 'Washington State Park', location: 'De Soto, MO', duration: 'Nightly', price: 'Cabins + campsites', image: '/images/washington-state-park/cabin-11-exterior.png', href: '/washington-state-park' },
-      { name: 'Tipsaw Lake Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '35+ sites — 3 loops', image: '/images/DSC_0001-2048x1365.jpg', href: '/tipsaw-lake-recreation-area' },
+      { name: 'Tipsaw Lake Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '35+ sites — 3 loops', image: '/images/tipsaw-lake/lake-view.jpg', href: '/tipsaw-lake-recreation-area' },
       { name: 'Hardin Ridge Recreation Area', location: 'Monroe County, IN', duration: 'Nightly', price: '200+ sites', image: '/images/hardin-ridge/beach.jpg', href: '/hardin-ridge-recreation-area' },
-      { name: 'Indian-Celina Lakes Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '80+ sites', image: '/images/indian-celina/lake-aerial.jpg', href: '/indian-celina-lakes-recreation-area' },
+      { name: 'Indian-Celina Lakes Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '80+ sites', image: '/images/indian-celina/entrance.jpg', href: '/indian-celina-lakes-recreation-area' },
       { name: 'Yankee Springs Recreation Area', location: 'Barry County, MI', duration: 'Nightly', price: '200+ sites', image: '/images/yankee-springs/hill-cabins.jpg', href: '/yankee-springs-recreation-area' },
       { name: 'Long Lake Outdoor Center', location: 'Middleville, MI', duration: 'Nightly / Weekly', price: '16 cabins + lodge', image: '/images/long-lake/fall-aerial.jpg', href: '/long-lake-outdoor-center' },
       { name: 'Monongahela National Forest', location: 'Eastern West Virginia', duration: 'Nightly', price: 'Multiple campgrounds', image: '/images/DSC_0110-2048x1365.jpg', href: '/monongahela-national-forest' },
@@ -53,7 +53,7 @@ const categoryData: Record<string, any> = {
       { name: 'Indian-Celina Two Lakes Loop', location: 'Perry County, IN', duration: 'Trail loops', price: 'Free', image: '/images/indian-celina/trail-sign.jpg', href: '/indian-celina-lakes-recreation-area' },
       { name: 'Washington State Park Trails', location: 'De Soto, MO', duration: '10+ miles', price: 'Free', image: '/images/washington-state-park/cabin-11-exterior.png', href: '/washington-state-park' },
       { name: 'Meramec State Park Trails', location: 'Sullivan, MO', duration: '16 miles', price: 'Free', image: '/images/meramec-state-park/ccc-monument.jpg', href: '/experiences/meramec-state-park' },
-      { name: 'Tipsaw Lake Trails', location: 'Perry County, IN', duration: '8+ miles', price: 'Free', image: '/images/DSC_0001-2048x1365.jpg', href: '/tipsaw-lake-recreation-area' },
+      { name: 'Tipsaw Lake Trails', location: 'Perry County, IN', duration: '8+ miles', price: 'Free', image: '/images/tipsaw-lake/lake-view.jpg', href: '/tipsaw-lake-recreation-area' },
       { name: 'Raven Interpretive Trail', location: 'Clear Creek, Bankhead NF, AL', duration: '2.5 miles', price: 'Free', image: '/images/clear-creek-overview.jpg', href: '/experiences/clear-creek-recreation-area' },
       { name: 'Burlingame State Park Trails', location: 'Charlestown, RI', duration: 'Multiple trails', price: 'Free', image: '/images/Burlingame1-2048x1365.jpg', href: '/experiences/burlingame-state-park' },
     ]
@@ -89,7 +89,7 @@ const categoryData: Record<string, any> = {
       { name: 'Meramec Overlook Pavilion', location: 'Meramec State Park, Sullivan, MO', duration: 'Daily', price: 'Contact for rates', image: '/images/meramec-state-park/overlook-pavilion.jpg', href: '/experiences/meramec-state-park' },
       { name: 'Hardin Ridge Picnic Shelters', location: 'Monroe Lake, IN', duration: 'Daily', price: 'From $50', image: '/images/DSC_0103-2048x1365.jpg', href: '/hardin-ridge-recreation-area' },
       { name: 'Clear Creek Group Shelters', location: 'Bankhead National Forest, AL', duration: 'Daily', price: 'Reservable', image: '/images/clear-creek-overview.jpg', href: '/experiences/clear-creek-recreation-area' },
-      { name: 'Tipsaw Lake Pavilion', location: 'Perry County, IN', duration: 'Daily', price: 'From $40', image: '/images/DSC_0001-2048x1365.jpg', href: '/tipsaw-lake-recreation-area' },
+      { name: 'Tipsaw Lake Pavilion', location: 'Perry County, IN', duration: 'Daily', price: 'From $40', image: '/images/tipsaw-lake/shelter.jpg', href: '/tipsaw-lake-recreation-area' },
     ]
   },
 }

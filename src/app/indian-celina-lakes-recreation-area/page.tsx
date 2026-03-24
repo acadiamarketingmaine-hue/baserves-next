@@ -29,7 +29,7 @@ const facilities = [
   {
     name: 'Restroom & Shower House',
     description: 'Modern restroom and shower house facilities are centrally located within the campground, providing hot showers, flush toilets, and accessible stalls for camper convenience.',
-    image: '/images/indian-celina/shower-house.jpg',
+    image: '/images/indian-celina/restroom-shower.jpg',
   },
 ]
 
@@ -83,16 +83,16 @@ const activities = [
 ]
 
 const galleryPhotos = [
-  { src: '/images/indian-celina/lake-aerial.jpg', alt: 'Aerial view of Indian-Celina Lakes' },
+  { src: '/images/indian-celina/entrance.jpg', alt: 'Indian-Celina Lakes entrance sign' },
+  { src: '/images/indian-celina/restroom-shower.jpg', alt: 'Restroom and shower house facility' },
+  { src: '/images/indian-celina/fall-road.jpg', alt: 'Fall foliage along the campground road' },
+  { src: '/images/indian-celina/two-lakes-loop-sign.jpg', alt: 'Two Lakes Loop hiking trail sign' },
   { src: '/images/indian-celina/fishing-pier.jpg', alt: 'Accessible Fishing Pier on Celina Lake' },
   { src: '/images/indian-celina/boat-launch.jpg', alt: 'Boat launch on Indian Lake' },
   { src: '/images/indian-celina/campsite1.jpg', alt: 'Campsite among the hardwoods' },
-  { src: '/images/indian-celina/campsite2.jpg', alt: 'Campsite with fire ring' },
-  { src: '/images/indian-celina/entrance.jpg', alt: 'Indian-Celina Lakes entrance sign' },
+  { src: '/images/indian-celina/campsite2.jpg', alt: 'Campsite with tents' },
   { src: '/images/indian-celina/gatehouse.jpg', alt: 'Entrance gatehouse' },
-  { src: '/images/indian-celina/shower-house.jpg', alt: 'Restroom and shower house' },
-  { src: '/images/indian-celina/trail-sign.jpg', alt: 'Two Lakes Loop trail sign' },
-  { src: '/images/indian-celina/lake-view.jpg', alt: 'Scenic lake view' },
+  { src: '/images/indian-celina/lake-view.jpg', alt: 'Scenic lake view from fishing pier' },
 ]
 
 export default function IndianCelinaLakesPage() {
@@ -104,7 +104,7 @@ export default function IndianCelinaLakesPage() {
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/indian-celina/lake-aerial.jpg"
+            src="/images/indian-celina/boat-launch.jpg"
             alt="Indian-Celina Lakes Recreation Area, Hoosier National Forest, Indiana"
             fill
             className="object-cover"

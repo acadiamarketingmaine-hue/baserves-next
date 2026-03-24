@@ -18,7 +18,7 @@ const properties = [
   // Indiana
   { name: 'Tipsaw Lake Recreation Area', slug: 'tipsaw-lake-recreation-area', lat: 38.23, lng: -86.62, image: '/images/tipsaw-lake/lake-view.jpg', excerpt: 'Scenic 131-acre lake in Hoosier National Forest with camping, fishing, and 8+ miles of trails.' },
   { name: 'Hardin Ridge Recreation Area', slug: 'hardin-ridge-recreation-area', lat: 39.07, lng: -86.47, image: '/images/hardin-ridge/beach.jpg', excerpt: '200+ campsites on Monroe Lake — Indiana\'s largest — with beach, boat ramp, and hiking.' },
-  { name: 'Indian-Celina Lakes Recreation Area', slug: 'indian-celina-lakes-recreation-area', lat: 38.35, lng: -86.60, image: '/images/indian-celina/lake-aerial.jpg', excerpt: 'Twin lakes with accessible fishing pier, camping, boat launch, and hiking in Hoosier National Forest.' },
+  { name: 'Indian-Celina Lakes Recreation Area', slug: 'indian-celina-lakes-recreation-area', lat: 38.35, lng: -86.60, image: '/images/indian-celina/boat-launch.jpg', excerpt: 'Twin lakes with accessible fishing pier, camping, boat launch, and hiking in Hoosier National Forest.' },
   // Michigan
   { name: 'Yankee Springs Recreation Area', slug: 'yankee-springs-recreation-area', lat: 42.62, lng: -85.32, image: '/images/yankee-springs/hill-cabins.jpg', excerpt: '5,200 acres with 200+ campsites, 30+ miles of trails, and year-round outdoor adventure.' },
   { name: 'Long Lake Outdoor Center', slug: 'long-lake-outdoor-center', lat: 42.55, lng: -85.40, image: '/images/long-lake/fall-aerial.jpg', excerpt: 'CCC-built retreat center with 16 cabins, a private lake, lodge, and wedding venue.' },

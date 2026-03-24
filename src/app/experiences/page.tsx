@@ -37,7 +37,7 @@ const locations = [
     description: '47 campsites on a 131-acre lake with beach, trails, and group camping',
     location: 'Perry County, IN',
     features: ['131-Acre Lake', '47 Campsites', 'Swimming Beach', '5.9-mi Trail', 'Group Camps'],
-    image: '/images/DSC_0001-2048x1365.jpg',
+    image: '/images/tipsaw-lake/lake-view.jpg',
     slug: 'tipsaw-lake-recreation-area'
   },
   {

@@ -43,7 +43,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     locations: [
       { name: 'Hoosier National Forest', href: '/hoosier-national-forest', image: '/images/hardin-ridge/aerial.jpg', children: [
         { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area', image: '/images/hardin-ridge/beach.jpg' },
-        { name: 'Indian-Celina Lakes Recreation Area', href: '/indian-celina-lakes-recreation-area', image: '/images/indian-celina/lake-aerial.jpg' },
+        { name: 'Indian-Celina Lakes Recreation Area', href: '/indian-celina-lakes-recreation-area', image: '/images/indian-celina/entrance.jpg' },
         { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area', image: '/images/tipsaw-lake/lake-view.jpg' },
       ]},
     ],

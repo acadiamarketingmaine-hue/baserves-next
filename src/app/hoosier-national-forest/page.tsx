@@ -22,7 +22,7 @@ const subProperties = [
     name: 'Indian-Celina Lakes Recreation Area',
     href: '/indian-celina-lakes-recreation-area',
     description: 'Two scenic lakes nestled in the forest with an accessible fishing pier, camping, boat launch, and hiking trails through rolling southern Indiana terrain.',
-    image: '/images/indian-celina/lake-aerial.jpg',
+    image: '/images/indian-celina/entrance.jpg',
     badge: 'Twin Lakes',
   },
   {
