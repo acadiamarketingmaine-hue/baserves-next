@@ -931,41 +931,70 @@ export default function HomePage() {
   const [statsVisible, setStatsVisible] = useState(false)
   const statsRef = useRef<HTMLDivElement>(null)
 
-  // Rotating featured destinations — show 3 at a time, advance every 6s
-  const [locationPage, setLocationPage] = useState(0)
-  const [slideDirection, setSlideDirection] = useState<'left' | 'right'>('right')
-  const [isSliding, setIsSliding] = useState(false)
+  // Carousel state — 1 card on mobile, 3 on desktop, smooth translateX sliding
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedLocation, setSelectedLocation] = useState<typeof allLocations[0] | null>(null)
-  const totalPages = Math.ceil(allLocations.length / 3)
-  const visibleLocations = allLocations.slice(locationPage * 3, locationPage * 3 + 3)
+  const [cardsPerView, setCardsPerView] = useState(3)
+  const touchStartRef = useRef(0)
+  const touchDeltaRef = useRef(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragOffset, setDragOffset] = useState(0)
   const autoAdvanceRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const maxIndex = Math.max(0, allLocations.length - cardsPerView)
+  const totalDots = Math.ceil(allLocations.length / cardsPerView)
+  const activeDot = Math.min(Math.floor(currentIndex / cardsPerView), totalDots - 1)
 
-  const goToPage = useCallback((page: number, direction: 'left' | 'right') => {
-    if (isSliding) return
-    setSlideDirection(direction)
-    setIsSliding(true)
-    setTimeout(() => {
-      setLocationPage(page)
-      setTimeout(() => setIsSliding(false), 50)
-    }, 300)
-  }, [isSliding])
+  // Detect screen size for cards per view
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth
+      setCardsPerView(w < 768 ? 1 : w < 1024 ? 2 : 3)
+    }
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
 
-  const nextPage = useCallback(() => {
-    goToPage((locationPage + 1) % totalPages, 'right')
-  }, [locationPage, totalPages, goToPage])
+  const goTo = useCallback((index: number) => {
+    setCurrentIndex(Math.max(0, Math.min(index, maxIndex)))
+  }, [maxIndex])
 
-  const prevPage = useCallback(() => {
-    goToPage((locationPage - 1 + totalPages) % totalPages, 'left')
-  }, [locationPage, totalPages, goToPage])
+  const next = useCallback(() => {
+    setCurrentIndex(prev => prev >= maxIndex ? 0 : Math.min(prev + cardsPerView, maxIndex))
+  }, [maxIndex, cardsPerView])
 
-  // Auto-advance, resets when user interacts
+  const prev = useCallback(() => {
+    setCurrentIndex(prev => prev <= 0 ? maxIndex : Math.max(prev - cardsPerView, 0))
+  }, [maxIndex, cardsPerView])
+
+  // Touch / swipe handlers
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartRef.current = e.touches[0].clientX
+    touchDeltaRef.current = 0
+    setIsDragging(true)
+  }, [])
+
+  const onTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!isDragging) return
+    const delta = e.touches[0].clientX - touchStartRef.current
+    touchDeltaRef.current = delta
+    setDragOffset(delta)
+  }, [isDragging])
+
+  const onTouchEnd = useCallback(() => {
+    setIsDragging(false)
+    setDragOffset(0)
+    const threshold = 50
+    if (touchDeltaRef.current < -threshold) next()
+    else if (touchDeltaRef.current > threshold) prev()
+  }, [next, prev])
+
+  // Auto-advance, resets on interaction
   useEffect(() => {
     if (autoAdvanceRef.current) clearInterval(autoAdvanceRef.current)
-    autoAdvanceRef.current = setInterval(() => {
-      goToPage(((locationPage + 1) % totalPages), 'right')
-    }, 6000)
+    autoAdvanceRef.current = setInterval(next, 6000)
     return () => { if (autoAdvanceRef.current) clearInterval(autoAdvanceRef.current) }
-  }, [locationPage, totalPages, goToPage])
+  }, [currentIndex, next])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -1099,45 +1128,49 @@ export default function HomePage() {
           </div>
 
           {/* Carousel with arrows */}
-          <div className="relative">
+          <div className="relative group/carousel">
             {/* Left arrow */}
             <button
-              onClick={prevPage}
-              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl transition-all duration-200 border border-gray-200"
+              onClick={prev}
+              className="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl transition-all duration-200 border border-gray-200"
               aria-label="Previous destinations"
             >
-              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
 
             {/* Right arrow */}
             <button
-              onClick={nextPage}
-              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl transition-all duration-200 border border-gray-200"
+              onClick={next}
+              className="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl transition-all duration-200 border border-gray-200"
               aria-label="Next destinations"
             >
-              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
               </svg>
             </button>
 
-            {/* Cards with slide animation */}
-            <div className="overflow-hidden">
+            {/* Sliding track */}
+            <div
+              className="overflow-hidden"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
               <div
-                className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-300 ease-in-out ${
-                  isSliding
-                    ? slideDirection === 'right'
-                      ? 'opacity-0 translate-x-8'
-                      : 'opacity-0 -translate-x-8'
-                    : 'opacity-100 translate-x-0'
-                }`}
+                className="flex gap-8"
+                style={{
+                  transform: `translateX(calc(-${currentIndex} * (100% / ${cardsPerView} + ${32 / cardsPerView}px) + ${dragOffset}px))`,
+                  transition: isDragging ? 'none' : 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
               >
-                {visibleLocations.map((location) => (
+                {allLocations.map((location) => (
                   <button
                     key={location.name}
                     onClick={() => setSelectedLocation(location)}
-                    className="location-card group text-left cursor-pointer"
+                    className="location-card group text-left cursor-pointer flex-shrink-0"
+                    style={{ width: `calc((100% - ${(cardsPerView - 1) * 32}px) / ${cardsPerView})` }}
                   >
                     <div className="location-card-image">
                       <Image
@@ -1188,12 +1221,12 @@ export default function HomePage() {
 
           {/* Page dots */}
           <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: totalPages }).map((_, i) => (
+            {Array.from({ length: totalDots }).map((_, i) => (
               <button
                 key={i}
-                onClick={() => goToPage(i, i > locationPage ? 'right' : 'left')}
+                onClick={() => goTo(i * cardsPerView)}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  i === locationPage ? 'bg-forest-DEFAULT w-6' : 'bg-gray-300 hover:bg-gray-400'
+                  i === activeDot ? 'bg-forest-DEFAULT w-6' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 aria-label={`Show destinations page ${i + 1}`}
               />
