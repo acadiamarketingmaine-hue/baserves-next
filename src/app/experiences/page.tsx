@@ -46,7 +46,7 @@ const locations = [
     description: '203 campsites on Indiana\'s largest lake with beach, boat ramp, and cabins',
     location: 'Monroe County, IN',
     features: ['203 Sites', '10,750-Acre Lake', 'Swimming Beach', '2 Cabins', 'Boat Ramp'],
-    image: '/images/DSC_0103-2048x1365.jpg',
+    image: '/images/hardin-ridge-entrance-sign.jpg',
     slug: 'hardin-ridge-recreation-area'
   },
   {

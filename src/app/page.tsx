@@ -78,7 +78,7 @@ const allLocations = [
     location: 'Bloomington, IN | Hoosier National Forest',
     features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
     stats: { campsites: '200+', lake: '10,750 ac', trails: '12+ mi' },
-    image: '/images/hardin-ridge/beach.jpg',
+    image: '/images/hardin-ridge-entrance-sign.jpg',
     slug: 'hardin-ridge-recreation-area'
   },
   {
@@ -118,7 +118,7 @@ const allLocations = [
     location: 'Perry County, IN | Hoosier National Forest',
     features: ['Fishing', 'Kayaking', 'Hiking', 'Swimming', 'RV & Tent Camping'],
     stats: { lakes: '2', campsites: '80+', trails: 'Multiple' },
-    image: '/images/indian-celina/entrance.jpg',
+    image: '/images/indian-celina-entrance-sign.jpg',
     slug: 'indian-celina-lakes-recreation-area'
   },
   {

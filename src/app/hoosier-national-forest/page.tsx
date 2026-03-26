@@ -15,14 +15,14 @@ const subProperties = [
     name: 'Hardin Ridge Recreation Area',
     href: '/hardin-ridge-recreation-area',
     description: '200+ campsites on Monroe Lake — Indiana\'s largest reservoir. Features a swimming beach, boat ramp, and over 12 miles of trails winding through hardwood forest.',
-    image: '/images/hardin-ridge/beach.jpg',
+    image: '/images/hardin-ridge-entrance-sign.jpg',
     badge: 'Monroe Lake',
   },
   {
     name: 'Indian-Celina Lakes Recreation Area',
     href: '/indian-celina-lakes-recreation-area',
     description: 'Two scenic lakes nestled in the forest with an accessible fishing pier, camping, boat launch, and hiking trails through rolling southern Indiana terrain.',
-    image: '/images/indian-celina/entrance.jpg',
+    image: '/images/indian-celina-entrance-sign.jpg',
     badge: 'Twin Lakes',
   },
   {

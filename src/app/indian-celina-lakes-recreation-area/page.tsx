@@ -104,7 +104,7 @@ export default function IndianCelinaLakesPage() {
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/indian-celina/boat-launch.jpg"
+            src="/images/indian-celina-entrance-sign.jpg"
             alt="Indian-Celina Lakes Recreation Area, Hoosier National Forest, Indiana"
             fill
             className="object-cover"

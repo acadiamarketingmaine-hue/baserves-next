@@ -113,7 +113,7 @@ export default function HardinRidgePage() {
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/hardin-ridge/beach.jpg"
+            src="/images/hardin-ridge-entrance-sign.jpg"
             alt="Hardin Ridge Recreation Area beach on Monroe Lake, Indiana"
             fill
             className="object-cover"
