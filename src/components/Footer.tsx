@@ -34,6 +34,7 @@ const locationsByState = [
     locations: [
       { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area' },
       { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center' },
+      { name: 'Chief Noonday Outdoor Center', href: '/chief-noonday-outdoor-center' },
     ],
   },
   {
