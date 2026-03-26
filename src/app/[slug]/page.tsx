@@ -38,7 +38,7 @@ With over 200 campsites and 30+ miles of trails winding through forests, wetland
     gallery: [
       '/images/Burlingame1-2048x1365.jpg',
       '/images/Burlingame2-1536x1152.jpg',
-      '/images/Playground-Gallery-Pic-2048x1365.jpg',
+      '/images/long-lake/lodge.jpg',
     ],
     bookingUrl: 'https://midnrreservations.com',
   },
@@ -95,7 +95,7 @@ Beyond its historical significance, the park offers excellent hiking trails, a s
     gallery: [
       '/images/Burlingame2-1536x1152.jpg',
       '/images/Burlingame1-2048x1365.jpg',
-      '/images/Playground-Gallery-Pic-2048x1365.jpg',
+      '/images/long-lake/lodge.jpg',
     ],
     bookingUrl: 'https://escape.baserves.com',
   },
@@ -109,9 +109,9 @@ The center features comfortable lodging options, a beautiful lake for water acti
     location: 'Yankee Springs, MI',
     features: ['Lodging', 'Conference Facilities', 'Lake Activities', 'Hiking Trails', 'Environmental Education', 'Team Building', 'Summer Camps'],
     stats: { capacity: '200+ guests', lake: 'Private Lake', programs: '50+ annually' },
-    image: '/images/Playground-Gallery-Pic-2048x1365.jpg',
+    image: '/images/long-lake/lodge.jpg',
     gallery: [
-      '/images/Playground-Gallery-Pic-2048x1365.jpg',
+      '/images/long-lake/lodge.jpg',
       '/images/Burlingame1-2048x1365.jpg',
       '/images/DSC_0103-2048x1365.jpg',
     ],
@@ -130,7 +130,7 @@ The facility can accommodate large groups with its multiple cabin clusters, dini
     image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
     gallery: [
       '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
-      '/images/Playground-Gallery-Pic-2048x1365.jpg',
+      '/images/long-lake/lodge.jpg',
       '/images/Burlingame1-2048x1365.jpg',
     ],
     bookingUrl: 'https://escape.baserves.com',

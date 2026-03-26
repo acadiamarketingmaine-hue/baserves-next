@@ -125,7 +125,7 @@ Wildlife is abundant: white-tailed deer, river otters, and 80+ nesting bird spec
     gallery: [
       '/images/Burlingame1-2048x1365.jpg',
       '/images/Burlingame2-1536x1152.jpg',
-      '/images/Playground-Gallery-Pic-2048x1365.jpg',
+      '/images/long-lake/lodge.jpg',
       '/images/burlingame-aerial.jpg',
     ],
     bookingUrl: 'https://www.reserveamerica.com/explore/burlingame-state-park/RI/252711/overview',

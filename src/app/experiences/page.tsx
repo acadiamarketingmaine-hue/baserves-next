@@ -119,7 +119,7 @@ const categories = [
   { name: 'Campground Rentals', icon: '⛺', count: 25, slug: 'campground-rentals', image: '/images/DSC_0001-2048x1365.jpg' },
   { name: 'Scenic Drives', icon: '🚗', count: 8, slug: 'scenic-drives', image: '/images/monongahela/entrance-sign.jpg' },
   { name: 'Hiking Trails', icon: '🥾', count: 30, slug: 'hiking', image: '/images/Burlingame1-2048x1365.jpg' },
-  { name: 'Conference Centers', icon: '🏛️', count: 4, slug: 'conference-center-rentals', image: '/images/Playground-Gallery-Pic-2048x1365.jpg' },
+  { name: 'Conference Centers', icon: '🏛️', count: 4, slug: 'conference-center-rentals', image: '/images/long-lake/lodge.jpg' },
   { name: 'Lookout Pavilions', icon: '🏔️', count: 2, slug: 'lookout-pavillions', image: '/images/monongahela/entrance-sign.jpg' },
 ]
 

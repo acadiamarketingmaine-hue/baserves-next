@@ -57,7 +57,7 @@ export default function CareersPage() {
       <section className="relative pt-32 pb-20">
         <div className="absolute inset-0">
           <Image
-            src="/images/Playground-Gallery-Pic-2048x1365.jpg"
+            src="/images/long-lake/fall-foliage.jpg"
             alt="Careers at BA Services"
             fill
             className="object-cover"

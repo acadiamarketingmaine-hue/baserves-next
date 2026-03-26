@@ -108,7 +108,7 @@ const allLocations = [
     location: 'Middleville, MI',
     features: ['Group Camping', 'Outdoor Education', 'Team Building', 'Lake Activities'],
     stats: { cabins: '16', capacity: '200+', lake: 'Private' },
-    image: '/images/long-lake/fall-aerial.jpg',
+    image: '/images/long-lake/fall-foliage.jpg',
     slug: 'long-lake-outdoor-center'
   },
   {
@@ -318,6 +318,7 @@ const statesData = [
   {
     name: 'Michigan',
     icon: '/images/states/michigan.png',
+    logo: '/images/states/michigan-dnr.png',
     heading: "Michigan's Ultimate Outdoor Escape",
     properties: [
       {
@@ -327,7 +328,7 @@ const statesData = [
         stats: { campsites: '200+', trails: '30+ miles', acres: '5,200+' },
         activities: ['Boating', 'Fishing', 'Hiking', 'Mountain Biking', 'RV & Tent Camping'],
         href: '/yankee-springs-recreation-area',
-        image: '/images/Burlingame1-2048x1365.jpg',
+        image: '/images/yankee-springs/hill-cabins.jpg',
       },
       {
         name: 'Long Lake Outdoor Center',
@@ -336,7 +337,16 @@ const statesData = [
         stats: { capacity: '200+', cabins: '20', lake: 'Private Lake' },
         activities: ['Group Camping', 'Outdoor Education', 'Team Building', 'Lake Activities'],
         href: '/long-lake-outdoor-center',
-        image: '/images/Playground-Gallery-Pic-2048x1365.jpg',
+        image: '/images/long-lake/fall-foliage.jpg',
+      },
+      {
+        name: 'Chief Noonday Outdoor Center',
+        tagline: 'Rustic Group Camp & Retreat Center',
+        location: 'Middleville, MI | Yankee Springs',
+        stats: { lodges: '3', cabins: '10+', capacity: '150+' },
+        activities: ['Group Camping', 'Team Building', 'Nature Education', 'Retreats'],
+        href: '/chief-noonday-outdoor-center',
+        image: '/images/chief-noonday/deer-lodge.jpg',
       },
     ],
   },
@@ -828,6 +838,17 @@ function StatesGrid() {
 
             {/* Properties */}
             <div className="p-8">
+              {selectedState.logo && (
+                <div className="flex justify-center mb-6">
+                  <Image
+                    src={selectedState.logo}
+                    alt={`${selectedState.name} DNR`}
+                    width={80}
+                    height={80}
+                    className="object-contain"
+                  />
+                </div>
+              )}
               <div className={`grid gap-6 ${selectedState.properties.length > 1 ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
                 {selectedState.properties.map((property) => (
                   <div key={property.name} className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
@@ -1405,7 +1426,7 @@ export default function HomePage() {
       <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/Playground-Gallery-Pic-2048x1365.jpg"
+            src="/images/long-lake/fall-foliage.jpg"
             alt="Adventure awaits"
             fill
             className="object-cover"
