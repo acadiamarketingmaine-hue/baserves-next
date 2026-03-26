@@ -98,7 +98,7 @@ const allLocations = [
     location: 'West Virginia',
     features: ['Hiking', 'Scenic Drives', 'Fishing', 'Rock Climbing', 'Camping'],
     stats: { acres: '921,000+', trails: '800+ mi', peaks: '4,863 ft' },
-    image: '/images/DSC_0110-2048x1365.jpg',
+    image: '/images/monongahela/entrance-sign.jpg',
     slug: 'monongahela-national-forest'
   },
   {
@@ -295,7 +295,7 @@ const statesData = [
         stats: { acres: '921,000+', trails: '800+ miles', elevation: '4,863 ft' },
         activities: ['Hiking', 'Scenic Drives', 'Fishing', 'Rock Climbing', 'Camping'],
         href: '/monongahela-national-forest',
-        image: '/images/DSC_0110-2048x1365.jpg',
+        image: '/images/monongahela/entrance-sign.jpg',
       },
     ],
   },

@@ -75,7 +75,7 @@ Our trained cleaning crews follow strict protocols and use environmentally-frien
       'Health code compliance',
       'Environmentally responsible cleaning',
     ],
-    image: '/images/DSC_0110-2048x1365.jpg',
+    image: '/images/monongahela/spruce-knob-panorama.jpg',
   },
   'preventive-maintenance-and-repairs': {
     name: 'Preventive Maintenance & Repairs',

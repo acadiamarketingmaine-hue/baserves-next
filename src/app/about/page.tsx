@@ -69,7 +69,7 @@ export default function AboutPage() {
       <section className="relative pt-32 pb-20">
         <div className="absolute inset-0">
           <Image
-            src="/images/DSC_0110-2048x1365.jpg"
+            src="/images/monongahela/spruce-knob-panorama.jpg"
             alt="About BA Services"
             fill
             className="object-cover"

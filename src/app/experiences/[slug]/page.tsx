@@ -63,7 +63,7 @@ The campground provides a variety of camping options from basic tent sites to fu
     image: '/images/DSC_0103-2048x1365.jpg',
     gallery: [
       '/images/DSC_0103-2048x1365.jpg',
-      '/images/DSC_0110-2048x1365.jpg',
+      '/images/monongahela/spruce-knob-panorama.jpg',
       '/images/DSC_0001-2048x1365.jpg',
     ],
     bookingUrl: 'https://escape.baserves.com',

@@ -23,7 +23,7 @@ const properties = [
   { name: 'Yankee Springs Recreation Area', slug: 'yankee-springs-recreation-area', lat: 42.62, lng: -85.32, image: '/images/yankee-springs/hill-cabins.jpg', excerpt: '5,200 acres with 200+ campsites, 30+ miles of trails, and year-round outdoor adventure.' },
   { name: 'Long Lake Outdoor Center', slug: 'long-lake-outdoor-center', lat: 42.55, lng: -85.40, image: '/images/long-lake/fall-aerial.jpg', excerpt: 'CCC-built retreat center with 16 cabins, a private lake, lodge, and wedding venue.' },
   // West Virginia
-  { name: 'Monongahela National Forest', slug: 'monongahela-national-forest', lat: 38.70, lng: -79.80, image: '/images/DSC_0110-2048x1365.jpg', excerpt: '900,000+ acres across the Alleghenies with 800+ miles of trails and 5 wilderness areas.' },
+  { name: 'Monongahela National Forest', slug: 'monongahela-national-forest', lat: 38.70, lng: -79.80, image: '/images/monongahela/entrance-sign.jpg', excerpt: '900,000+ acres across the Alleghenies with 800+ miles of trails and 5 wilderness areas.' },
   // Missouri
   { name: 'Washington State Park', slug: 'washington-state-park', lat: 38.09, lng: -90.68, image: '/images/washington-state-park/cabin-11-exterior.png', excerpt: 'Ancient petroglyphs, cabins, and 10+ miles of trails along the Big River in the Ozarks.' },
   { name: 'Meramec State Park', slug: 'experiences/meramec-state-park', lat: 38.22, lng: -91.08, image: '/images/meramec-state-park/ccc-monument.jpg', excerpt: '6,896 acres along the Meramec River with 19 cabins, motel, float trips, and Fisher Cave.' },

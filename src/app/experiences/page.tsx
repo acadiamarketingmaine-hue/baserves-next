@@ -109,7 +109,7 @@ const locations = [
     description: '921,000 acres with 800+ miles of trails, 5 wilderness areas, and Spruce Knob',
     location: 'Eastern West Virginia',
     features: ['921,000 Acres', '800+ mi Trails', '5 Wilderness Areas', 'Rock Climbing', 'Scenic Drives'],
-    image: '/images/DSC_0110-2048x1365.jpg',
+    image: '/images/monongahela/entrance-sign.jpg',
     slug: 'monongahela-national-forest'
   },
 ]
@@ -117,10 +117,10 @@ const locations = [
 const categories = [
   { name: 'Kayak & Watercraft', icon: '🚣', count: 12, slug: 'kayak-and-watercraft-rentals', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg' },
   { name: 'Campground Rentals', icon: '⛺', count: 25, slug: 'campground-rentals', image: '/images/DSC_0001-2048x1365.jpg' },
-  { name: 'Scenic Drives', icon: '🚗', count: 8, slug: 'scenic-drives', image: '/images/DSC_0110-2048x1365.jpg' },
+  { name: 'Scenic Drives', icon: '🚗', count: 8, slug: 'scenic-drives', image: '/images/monongahela/entrance-sign.jpg' },
   { name: 'Hiking Trails', icon: '🥾', count: 30, slug: 'hiking', image: '/images/Burlingame1-2048x1365.jpg' },
   { name: 'Conference Centers', icon: '🏛️', count: 4, slug: 'conference-center-rentals', image: '/images/Playground-Gallery-Pic-2048x1365.jpg' },
-  { name: 'Lookout Pavilions', icon: '🏔️', count: 2, slug: 'lookout-pavillions', image: '/images/DSC_0110-2048x1365.jpg' },
+  { name: 'Lookout Pavilions', icon: '🏔️', count: 2, slug: 'lookout-pavillions', image: '/images/monongahela/entrance-sign.jpg' },
 ]
 
 export const metadata = {

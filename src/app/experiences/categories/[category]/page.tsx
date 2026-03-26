@@ -37,7 +37,7 @@ const categoryData: Record<string, any> = {
       { name: 'Indian-Celina Lakes Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '80+ sites', image: '/images/indian-celina-entrance-sign.jpg', href: '/indian-celina-lakes-recreation-area' },
       { name: 'Yankee Springs Recreation Area', location: 'Barry County, MI', duration: 'Nightly', price: '200+ sites', image: '/images/yankee-springs/hill-cabins.jpg', href: '/yankee-springs-recreation-area' },
       { name: 'Long Lake Outdoor Center', location: 'Middleville, MI', duration: 'Nightly / Weekly', price: '16 cabins + lodge', image: '/images/long-lake/fall-aerial.jpg', href: '/long-lake-outdoor-center' },
-      { name: 'Monongahela National Forest', location: 'Eastern West Virginia', duration: 'Nightly', price: 'Multiple campgrounds', image: '/images/DSC_0110-2048x1365.jpg', href: '/monongahela-national-forest' },
+      { name: 'Monongahela National Forest', location: 'Eastern West Virginia', duration: 'Nightly', price: 'Multiple campgrounds', image: '/images/monongahela/entrance-sign.jpg', href: '/monongahela-national-forest' },
     ]
   },
   'hiking': {
@@ -46,7 +46,7 @@ const categoryData: Record<string, any> = {
     description: 'Discover hundreds of miles of scenic trails through forests, along lakeshores, and into wilderness areas.',
     image: '/images/bankhead-bicycle-trail.jpg',
     experiences: [
-      { name: 'Monongahela National Forest Trails', location: 'Eastern West Virginia', duration: '800+ miles', price: 'Free', image: '/images/DSC_0110-2048x1365.jpg', href: '/monongahela-national-forest' },
+      { name: 'Monongahela National Forest Trails', location: 'Eastern West Virginia', duration: '800+ miles', price: 'Free', image: '/images/monongahela/entrance-sign.jpg', href: '/monongahela-national-forest' },
       { name: 'Sipsey Wilderness Trails', location: 'Bankhead National Forest, AL', duration: '25,000 acres', price: 'Free', image: '/images/bankhead-forest.jpg', href: '/bankhead-national-forest' },
       { name: 'Yankee Springs Trail System', location: 'Barry County, MI', duration: '30+ miles', price: 'Free', image: '/images/yankee-springs/hill-cabins.jpg', href: '/yankee-springs-recreation-area' },
       { name: 'Hardin Ridge Trails', location: 'Monroe County, IN', duration: '12+ miles', price: 'Free', image: '/images/hardin-ridge-entrance-sign.jpg', href: '/hardin-ridge-recreation-area' },
@@ -62,9 +62,9 @@ const categoryData: Record<string, any> = {
     name: 'Scenic Drives',
     icon: '🚗',
     description: 'Experience breathtaking vistas and natural beauty from the comfort of your vehicle.',
-    image: '/images/DSC_0110-2048x1365.jpg',
+    image: '/images/monongahela/entrance-sign.jpg',
     experiences: [
-      { name: 'Highland Scenic Highway', location: 'Monongahela National Forest, WV', duration: '43 miles', price: 'Free', image: '/images/DSC_0110-2048x1365.jpg', href: '/monongahela-national-forest' },
+      { name: 'Highland Scenic Highway', location: 'Monongahela National Forest, WV', duration: '43 miles', price: 'Free', image: '/images/monongahela/entrance-sign.jpg', href: '/monongahela-national-forest' },
       { name: 'Bankhead National Forest Scenic Drive', location: 'Northwest Alabama', duration: '2-3 hours', price: 'Free', image: '/images/bankhead-forest.jpg', href: '/bankhead-national-forest' },
       { name: 'Hoosier National Forest Drive', location: 'Southern Indiana', duration: '2-3 hours', price: 'Free', image: '/images/DSC_0103-2048x1365.jpg', href: '/hardin-ridge-recreation-area' },
     ]

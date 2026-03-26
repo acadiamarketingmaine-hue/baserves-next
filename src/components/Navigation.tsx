@@ -82,7 +82,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'West Virginia',
     icon: '/images/states/west-virginia.png',
     locations: [
-      { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/DSC_0110-2048x1365.jpg' },
+      { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg' },
     ],
   },
 ]

@@ -81,8 +81,8 @@ export default function MonongahelaNationalForestPage() {
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/DSC_0110-2048x1365.jpg"
-            alt="Monongahela National Forest in the Allegheny Mountains of West Virginia"
+            src="/images/monongahela/spruce-knob-panorama.jpg"
+            alt="Panoramic mountain vista from Spruce Knob, Monongahela National Forest"
             fill
             className="object-cover"
             priority
@@ -259,7 +259,7 @@ export default function MonongahelaNationalForestPage() {
               <div key={dest.name} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100">
                 <div className="relative h-64">
                   <Image
-                    src={index === 0 ? '/images/DSC_0103-2048x1365.jpg' : '/images/DSC_0001-2048x1365.jpg'}
+                    src={index === 0 ? '/images/monongahela/spruce-knob-sign.jpg' : '/images/monongahela/seneca-rocks-sign.jpg'}
                     alt={dest.name}
                     fill
                     className="object-cover"
@@ -324,8 +324,8 @@ export default function MonongahelaNationalForestPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-80 rounded-2xl overflow-hidden">
               <Image
-                src="/images/DSC_0103-2048x1365.jpg"
-                alt="Birding in Monongahela National Forest"
+                src="/images/monongahela/spruce-treetops.jpg"
+                alt="Spruce treetops and mountain views in Monongahela National Forest"
                 fill
                 className="object-cover"
               />
