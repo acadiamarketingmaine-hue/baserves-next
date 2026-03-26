@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const facilities = [
   {
     name: 'Swimming Beach',
-    description: 'A sandy shoreline on the 131-acre lake with designated swim areas, perfect for families and sunbathers. Adjacent bathhouse provides warm showers and changing rooms.',
+    description: 'A sandy shoreline on the 131-acre lake with designated swim areas, perfect for families and sunbathers. Adjacent bathhouse provides restrooms and changing rooms.',
     image: '/images/tipsaw-lake/beach.jpg',
   },
   {
@@ -54,7 +54,7 @@ const activities = [
   },
   {
     name: 'Swimming',
-    description: 'Cool off at the designated swimming beach with a sandy shoreline and shallow entry, great for families with children. Bathhouse with warm showers and changing rooms nearby.',
+    description: 'Cool off at the designated swimming beach with a sandy shoreline and shallow entry, great for families with children. Bathhouse with restrooms and changing rooms nearby.',
     icon: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
