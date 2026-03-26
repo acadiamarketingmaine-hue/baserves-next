@@ -28,7 +28,7 @@ const locations = [
     description: '52 full-hookup sites and 10 tent sites on Lewis Smith Lake',
     location: 'Bankhead National Forest, AL',
     features: ['Full Hookups', 'Swimming Beach', '100-Person Pavilion', 'Bobwhite Trail', 'Boat Ramp'],
-    image: '/images/corinth-campground.jpg',
+    image: '/images/corinth-boat-ramp.jpg',
     slug: 'experiences/corinth-recreation-area'
   },
   {
@@ -100,7 +100,7 @@ const locations = [
     description: '755 campsites, 20 cabins, and a rich history on Watchaug Pond',
     location: 'Charlestown, RI',
     features: ['755 Campsites', '20 Cabins', 'Swimming', 'Boating', 'Wildlife Viewing'],
-    image: '/images/Burlingame1-2048x1365.jpg',
+    image: '/images/burlingame-entrance-sign.jpg',
     slug: 'experiences/burlingame-state-park'
   },
   {

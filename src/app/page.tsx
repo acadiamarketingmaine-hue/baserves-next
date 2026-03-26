@@ -68,7 +68,7 @@ const allLocations = [
     location: 'Charlestown, RI',
     features: ['Swimming', 'Fishing', 'Boating', 'Hiking', 'Cabins'],
     stats: { campsites: '755', cabins: '20', acres: '3,100+' },
-    image: '/images/Burlingame1-2048x1365.jpg',
+    image: '/images/burlingame-entrance-sign.jpg',
     slug: 'experiences/burlingame-state-park'
   },
   {
@@ -138,7 +138,7 @@ const allLocations = [
     location: 'Bankhead National Forest, AL',
     features: ['Full Hookup Camping', 'Swimming', 'Boat Ramp', 'Pavilion'],
     stats: { sites: '52 + 10 tent', pavilion: '100-person', trail: '1.3 mi' },
-    image: '/images/corinth-campground.jpg',
+    image: '/images/corinth-boat-ramp.jpg',
     slug: 'experiences/corinth-recreation-area'
   },
 ]
@@ -220,7 +220,7 @@ const statesData = [
         stats: { sites: '52 + 10 tent', pavilion: '100-person', trail: '1.3 mi' },
         activities: ['Full Hookup Camping', 'Swimming', 'Boat Ramp', 'Bobwhite Trail', 'Pavilion'],
         href: '/experiences/corinth-recreation-area',
-        image: '/images/corinth-campground.jpg',
+        image: '/images/corinth-boat-ramp.jpg',
       },
       {
         name: 'Bankhead National Forest',
@@ -245,7 +245,7 @@ const statesData = [
         stats: { campsites: '755', cabins: '20', acres: '3,100+' },
         activities: ['Swimming', 'Fishing', 'Boating', 'Hiking', 'Wildlife Viewing'],
         href: '/experiences/burlingame-state-park',
-        image: '/images/Burlingame1-2048x1365.jpg',
+        image: '/images/burlingame-entrance-sign.jpg',
       },
     ],
   },

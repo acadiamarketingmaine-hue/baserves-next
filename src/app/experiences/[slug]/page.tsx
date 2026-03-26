@@ -39,7 +39,7 @@ Nearby attractions within the Bankhead National Forest include the Little Natura
     location: 'Bankhead National Forest, AL',
     features: ['Full Hookup Camping', 'Tent Camping', 'Swimming Beach', 'Boat Ramp', 'Group Pavilion', 'Hiking', 'Fishing', 'ADA Accessible'],
     stats: { sites: '52 + 10 tent', pavilion: '100-person', trail: '1.3 miles' },
-    image: '/images/corinth-campground.jpg',
+    image: '/images/corinth-boat-ramp.jpg',
     gallery: [
       '/images/corinth-campground.jpg',
       '/images/corinth-swimming.jpg',
@@ -121,11 +121,11 @@ Wildlife is abundant: white-tailed deer, river otters, and 80+ nesting bird spec
     location: 'Charlestown, RI',
     features: ['755 Campsites', '20 Rustic Cabins', 'Swimming', 'Fishing', 'Boating', 'Hiking', 'Playground', 'Camp Store', 'Wildlife Viewing'],
     stats: { campsites: '755', cabins: '20', acres: '3,100+', established: '1934' },
-    image: '/images/Burlingame1-2048x1365.jpg',
+    image: '/images/burlingame-entrance-sign.jpg',
     gallery: [
+      '/images/burlingame-entrance-sign.jpg',
       '/images/Burlingame1-2048x1365.jpg',
       '/images/Burlingame2-1536x1152.jpg',
-      '/images/long-lake/lodge.jpg',
       '/images/burlingame-aerial.jpg',
     ],
     bookingUrl: 'https://www.reserveamerica.com/explore/burlingame-state-park/RI/252711/overview',

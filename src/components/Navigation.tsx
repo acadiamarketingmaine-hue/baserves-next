@@ -33,7 +33,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     icon: '/images/states/alabama.png',
     locations: [
       { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area', image: '/images/clear-creek-overview.jpg' },
-      { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area', image: '/images/corinth-campground.jpg' },
+      { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area', image: '/images/corinth-boat-ramp.jpg' },
       { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-forest.jpg' },
     ],
   },
@@ -61,6 +61,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     locations: [
       { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area', image: '/images/yankee-springs/hill-cabins.jpg' },
       { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center', image: '/images/long-lake/fall-aerial.jpg' },
+      { name: 'Chief Noonday Outdoor Center', href: '/chief-noonday-outdoor-center', image: '/images/chief-noonday/deer-lodge.jpg' },
     ],
   },
   {
@@ -75,7 +76,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Rhode Island',
     icon: '/images/states/rhode-island.png',
     locations: [
-      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/Burlingame1-2048x1365.jpg' },
+      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg' },
     ],
   },
   {

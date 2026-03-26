@@ -66,7 +66,7 @@ export default function CorinthPage() {
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/corinth-campground.jpg"
+            src="/images/corinth-boat-ramp.jpg"
             alt="Corinth Recreation Area on Lewis Smith Lake"
             fill
             className="object-cover"

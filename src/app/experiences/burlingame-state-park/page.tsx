@@ -56,7 +56,7 @@ export default function BurlingamePage() {
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/Burlingame1-2048x1365.jpg"
+            src="/images/burlingame-entrance-sign.jpg"
             alt="Burlingame State Park & Campground"
             fill
             className="object-cover"
@@ -316,10 +316,10 @@ export default function BurlingamePage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { src: '/images/Burlingame1-2048x1365.jpg', alt: 'Burlingame State Park entrance' },
+              { src: '/images/burlingame-entrance-sign.jpg', alt: 'Burlingame State Park entrance sign' },
+              { src: '/images/Burlingame1-2048x1365.jpg', alt: 'Watchaug Pond at Burlingame' },
               { src: '/images/Burlingame2-1536x1152.jpg', alt: 'Campsite at Burlingame' },
               { src: '/images/burlingame-aerial.jpg', alt: 'Aerial view of Burlingame' },
-              { src: '/images/Playground-Gallery-Pic-2048x1365.jpg', alt: 'Playground at Burlingame' },
               { src: '/images/burlingame-map.png', alt: 'Campground map' },
             ].map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">

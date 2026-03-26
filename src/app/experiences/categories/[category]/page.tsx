@@ -16,7 +16,7 @@ const categoryData: Record<string, any> = {
       { name: 'Washington State Park Watercraft', location: 'Washington State Park, De Soto, MO', duration: 'Hourly / Half day', price: 'Contact for rates', image: '/images/washington-state-park/store.jpg', href: '/washington-state-park' },
       { name: 'Tipsaw Lake Boating', location: 'Tipsaw Lake Recreation Area, Perry County, IN', duration: 'Hourly / Daily', price: 'From $20', image: '/images/tipsaw-lake/lake-view.jpg', href: '/tipsaw-lake-recreation-area' },
       { name: 'Indian-Celina Lakes Boating', location: 'Indian-Celina Lakes, Perry County, IN', duration: 'Daily', price: 'Electric motors only', image: '/images/indian-celina/boat-launch.jpg', href: '/indian-celina-lakes-recreation-area' },
-      { name: 'Burlingame State Park Boating', location: 'Burlingame State Park, Charlestown, RI', duration: 'Daily', price: 'Contact for rates', image: '/images/Burlingame1-2048x1365.jpg', href: '/experiences/burlingame-state-park' },
+      { name: 'Burlingame State Park Boating', location: 'Burlingame State Park, Charlestown, RI', duration: 'Daily', price: 'Contact for rates', image: '/images/burlingame-entrance-sign.jpg', href: '/experiences/burlingame-state-park' },
       { name: 'Lewis Smith Lake Boating', location: 'Clear Creek Recreation Area, Bankhead NF, AL', duration: 'Daily', price: 'Boat ramp access', image: '/images/clear-creek-overview.jpg', href: '/experiences/clear-creek-recreation-area' },
     ]
   },
@@ -24,11 +24,11 @@ const categoryData: Record<string, any> = {
     name: 'Campground Rentals',
     icon: '⛺',
     description: 'From primitive tent sites to full-hookup RV spots and rustic cabins, find the perfect stay for your outdoor adventure.',
-    image: '/images/corinth-campground.jpg',
+    image: '/images/corinth-boat-ramp.jpg',
     experiences: [
       { name: 'Clear Creek Recreation Area', location: 'Bankhead National Forest, AL', duration: 'Nightly', price: '102 sites — 4 loops', image: '/images/clear-creek-overview.jpg', href: '/experiences/clear-creek-recreation-area' },
-      { name: 'Corinth Recreation Area', location: 'Bankhead National Forest, AL', duration: 'Nightly', price: '52 full-hookup + 10 tent', image: '/images/corinth-campground.jpg', href: '/experiences/corinth-recreation-area' },
-      { name: 'Burlingame State Park', location: 'Charlestown, RI', duration: 'Nightly', price: '755 sites + 20 cabins', image: '/images/Burlingame1-2048x1365.jpg', href: '/experiences/burlingame-state-park' },
+      { name: 'Corinth Recreation Area', location: 'Bankhead National Forest, AL', duration: 'Nightly', price: '52 full-hookup + 10 tent', image: '/images/corinth-boat-ramp.jpg', href: '/experiences/corinth-recreation-area' },
+      { name: 'Burlingame State Park', location: 'Charlestown, RI', duration: 'Nightly', price: '755 sites + 20 cabins', image: '/images/burlingame-entrance-sign.jpg', href: '/experiences/burlingame-state-park' },
       { name: 'Canal Bridge Campground', location: 'Fryeburg, ME', duration: 'Nightly', price: '36 sites + 5 tent', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg', href: '/experiences/canal-bridge' },
       { name: 'Meramec State Park', location: 'Sullivan, MO', duration: 'Nightly', price: '19 cabins + motel', image: '/images/meramec-state-park/ccc-monument.jpg', href: '/experiences/meramec-state-park' },
       { name: 'Washington State Park', location: 'De Soto, MO', duration: 'Nightly', price: 'Cabins + campsites', image: '/images/washington-state-park/cabin-11-exterior.png', href: '/washington-state-park' },
@@ -55,7 +55,7 @@ const categoryData: Record<string, any> = {
       { name: 'Meramec State Park Trails', location: 'Sullivan, MO', duration: '16 miles', price: 'Free', image: '/images/meramec-state-park/ccc-monument.jpg', href: '/experiences/meramec-state-park' },
       { name: 'Tipsaw Lake Trails', location: 'Perry County, IN', duration: '8+ miles', price: 'Free', image: '/images/tipsaw-lake/lake-view.jpg', href: '/tipsaw-lake-recreation-area' },
       { name: 'Raven Interpretive Trail', location: 'Clear Creek, Bankhead NF, AL', duration: '2.5 miles', price: 'Free', image: '/images/clear-creek-overview.jpg', href: '/experiences/clear-creek-recreation-area' },
-      { name: 'Burlingame State Park Trails', location: 'Charlestown, RI', duration: 'Multiple trails', price: 'Free', image: '/images/Burlingame1-2048x1365.jpg', href: '/experiences/burlingame-state-park' },
+      { name: 'Burlingame State Park Trails', location: 'Charlestown, RI', duration: 'Multiple trails', price: 'Free', image: '/images/burlingame-entrance-sign.jpg', href: '/experiences/burlingame-state-park' },
     ]
   },
   'scenic-drives': {

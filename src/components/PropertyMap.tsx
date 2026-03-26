@@ -1,18 +1,18 @@
 'use client'
 
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useRef, useState, useEffect, useCallback } from 'react'
 import 'leaflet/dist/leaflet.css'
 
 const properties = [
   // Alabama
   { name: 'Bankhead National Forest', slug: 'bankhead-national-forest', lat: 34.20, lng: -87.35, image: '/images/bankhead-forest.jpg', excerpt: '180,000 acres of canyons, waterfalls, and the Sipsey Wilderness — Alabama\'s birding paradise.' },
   { name: 'Clear Creek Recreation Area', slug: 'experiences/clear-creek-recreation-area', lat: 34.27, lng: -87.33, image: '/images/clear-creek-overview.jpg', excerpt: '102 campsites on Lewis Smith Lake with swimming beach, boat ramps, and hiking trails.' },
-  { name: 'Corinth Recreation Area', slug: 'experiences/corinth-recreation-area', lat: 34.15, lng: -87.15, image: '/images/corinth-campground.jpg', excerpt: '52 full-hookup sites on Lewis Smith Lake with swimming beach, pavilion, and Bobwhite Trail.' },
+  { name: 'Corinth Recreation Area', slug: 'experiences/corinth-recreation-area', lat: 34.15, lng: -87.15, image: '/images/corinth-boat-ramp.jpg', excerpt: '52 full-hookup sites on Lewis Smith Lake with swimming beach, pavilion, and Bobwhite Trail.' },
   // Rhode Island
-  { name: 'Burlingame State Park', slug: 'experiences/burlingame-state-park', lat: 41.38, lng: -71.72, image: '/images/Burlingame1-2048x1365.jpg', excerpt: 'Rhode Island\'s largest campground since 1934 — 755 sites, 20 cabins on Watchaug Pond.' },
+  { name: 'Burlingame State Park', slug: 'experiences/burlingame-state-park', lat: 41.38, lng: -71.72, image: '/images/burlingame-entrance-sign.jpg', excerpt: 'Rhode Island\'s largest campground since 1934 — 755 sites, 20 cabins on Watchaug Pond.' },
   // Maine
   { name: 'Canal Bridge Campground', slug: 'experiences/canal-bridge', lat: 44.02, lng: -70.97, image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg', excerpt: 'Family campground on the Saco River with 36 sites, river access, and White Mountain views.' },
   // Indiana
@@ -105,7 +105,47 @@ function HoverMarker({ property }: { property: typeof properties[number] }) {
   )
 }
 
+function ScrollZoomHandler({ onScrollAttempt }: { onScrollAttempt: () => void }) {
+  const map = useMap()
+
+  useEffect(() => {
+    const container = map.getContainer()
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey) map.scrollWheelZoom.enable()
+    }
+    const handleKeyUp = () => {
+      map.scrollWheelZoom.disable()
+    }
+    const handleWheel = (e: WheelEvent) => {
+      if (!e.ctrlKey && !e.metaKey) onScrollAttempt()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keyup', handleKeyUp)
+    container.addEventListener('wheel', handleWheel, { passive: true })
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('keyup', handleKeyUp)
+      container.removeEventListener('wheel', handleWheel)
+    }
+  }, [map, onScrollAttempt])
+
+  return null
+}
+
 export default function PropertyMap() {
+  const [showScrollMsg, setShowScrollMsg] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const isMac = typeof navigator !== 'undefined' && /Mac/.test(navigator.userAgent)
+
+  const handleScrollAttempt = useCallback(() => {
+    setShowScrollMsg(true)
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    timeoutRef.current = setTimeout(() => setShowScrollMsg(false), 1500)
+  }, [])
+
   return (
     <div className="relative z-10 w-full h-full min-h-[400px]">
       <MapContainer
@@ -121,7 +161,18 @@ export default function PropertyMap() {
         {properties.map((property) => (
           <HoverMarker key={property.slug} property={property} />
         ))}
+        <ScrollZoomHandler onScrollAttempt={handleScrollAttempt} />
       </MapContainer>
+      <div
+        className={`absolute inset-0 flex items-center justify-center rounded-2xl z-[1000] pointer-events-none transition-opacity duration-300 ${
+          showScrollMsg ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}
+      >
+        <div className="bg-white/95 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg text-sm font-medium text-gray-800">
+          Use {isMac ? '⌘' : 'Ctrl'} + scroll to zoom the map
+        </div>
+      </div>
     </div>
   )
 }
