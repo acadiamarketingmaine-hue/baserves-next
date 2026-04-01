@@ -124,7 +124,7 @@ export default function MeramecStateParkPage() {
             Sullivan, Missouri
           </div>
           <a
-            href="https://escape.baserves.com"
+            href="https://www.meramecpark.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
@@ -229,7 +229,7 @@ export default function MeramecStateParkPage() {
                   Book a cabin or motel room at Meramec State Park and experience the Ozarks.
                 </p>
                 <a
-                  href="https://escape.baserves.com"
+                  href="https://www.meramecpark.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
@@ -270,7 +270,7 @@ export default function MeramecStateParkPage() {
           </div>
           <div className="mt-8 text-center">
             <a
-              href="https://escape.baserves.com"
+              href="https://www.meramecpark.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
@@ -440,7 +440,7 @@ export default function MeramecStateParkPage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Resources &amp; Booking</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <a
-              href="https://escape.baserves.com"
+              href="https://www.meramecpark.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 bg-white border border-gray-200 rounded-2xl p-6 hover:border-green-300 transition-colors group"
@@ -456,7 +456,7 @@ export default function MeramecStateParkPage() {
               </div>
             </a>
             <a
-              href="https://escape.baserves.com"
+              href="https://www.meramecpark.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 bg-white border border-gray-200 rounded-2xl p-6 hover:border-green-300 transition-colors group"
@@ -497,7 +497,7 @@ export default function MeramecStateParkPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://escape.baserves.com"
+              href="https://www.meramecpark.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"

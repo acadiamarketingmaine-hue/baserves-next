@@ -6,9 +6,10 @@ const locationsByState = [
     state: 'Alabama',
     icon: '/images/states/alabama.png',
     locations: [
-      { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area' },
-      { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area' },
-      { name: 'Bankhead National Forest', href: '/bankhead-national-forest' },
+      { name: 'Bankhead National Forest', href: '/bankhead-national-forest', children: [
+        { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area' },
+        { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area' },
+      ]},
     ],
   },
   {
@@ -32,9 +33,10 @@ const locationsByState = [
     state: 'Michigan',
     icon: '/images/states/michigan.png',
     locations: [
-      { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area' },
-      { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center' },
-      { name: 'Chief Noonday Outdoor Center', href: '/chief-noonday-outdoor-center' },
+      { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area', children: [
+        { name: 'Chief Noonday Outdoor Center', href: '/chief-noonday-outdoor-center' },
+        { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center' },
+      ]},
     ],
   },
   {
@@ -49,14 +51,23 @@ const locationsByState = [
     state: 'Rhode Island',
     icon: '/images/states/rhode-island.png',
     locations: [
-      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park' },
+      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', children: [
+        { name: 'Burlingame State Campground', href: '/experiences/burlingame-state-park' },
+      ]},
     ],
   },
   {
     state: 'West Virginia',
     icon: '/images/states/west-virginia.png',
     locations: [
-      { name: 'Monongahela National Forest', href: '/monongahela-national-forest' },
+      { name: 'Monongahela National Forest', href: '/monongahela-national-forest', children: [
+        { name: 'Big Bend Campground', href: '/monongahela-national-forest' },
+        { name: 'Jess Judy Group Campground', href: '/monongahela-national-forest' },
+        { name: 'Seneca Shadows Campground', href: '/monongahela-national-forest' },
+        { name: 'Spruce Knob Lake Campground', href: '/monongahela-national-forest' },
+        { name: 'Gatewood Group Campground', href: '/monongahela-national-forest' },
+        { name: 'Stuart Recreation Area', href: '/monongahela-national-forest' },
+      ]},
     ],
   },
 ]
@@ -139,11 +150,22 @@ export default function Footer() {
                     <span className="text-[10px] font-semibold text-white/60 uppercase tracking-wider">{group.state}</span>
                   </div>
                   <ul className="space-y-1">
-                    {group.locations.map((loc) => (
+                    {group.locations.map((loc: any) => (
                       <li key={loc.href}>
                         <Link href={loc.href} className="text-white/70 hover:text-white transition-colors text-sm">
                           {loc.name}
                         </Link>
+                        {loc.children && (
+                          <ul className="space-y-0.5 mt-0.5">
+                            {loc.children.map((child: any) => (
+                              <li key={child.name}>
+                                <Link href={child.href} className="text-white/50 hover:text-white transition-colors text-xs pl-3">
+                                  {child.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </li>
                     ))}
                   </ul>

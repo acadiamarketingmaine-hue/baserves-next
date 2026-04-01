@@ -32,9 +32,10 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Alabama',
     icon: '/images/states/alabama.png',
     locations: [
-      { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area', image: '/images/clear-creek-overview.jpg' },
-      { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area', image: '/images/corinth-boat-ramp.jpg' },
-      { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-forest.jpg' },
+      { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-forest.jpg', children: [
+        { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area', image: '/images/clear-creek-overview.jpg' },
+        { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area', image: '/images/corinth-boat-ramp.jpg' },
+      ]},
     ],
   },
   {
@@ -59,9 +60,10 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Michigan',
     icon: '/images/states/michigan.png',
     locations: [
-      { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area', image: '/images/yankee-springs/hill-cabins.jpg' },
-      { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center', image: '/images/long-lake/fall-aerial.jpg' },
-      { name: 'Chief Noonday Outdoor Center', href: '/chief-noonday-outdoor-center', image: '/images/chief-noonday/deer-lodge.jpg' },
+      { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area', image: '/images/yankee-springs/hill-cabins.jpg', children: [
+        { name: 'Chief Noonday Outdoor Center', href: '/chief-noonday-outdoor-center', image: '/images/chief-noonday/deer-lodge.jpg' },
+        { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center', image: '/images/long-lake/fall-aerial.jpg' },
+      ]},
     ],
   },
   {
@@ -76,14 +78,23 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Rhode Island',
     icon: '/images/states/rhode-island.png',
     locations: [
-      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg' },
+      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg', children: [
+        { name: 'Burlingame State Campground', href: '/experiences/burlingame-state-park', image: '/images/burlingame-aerial.jpg' },
+      ]},
     ],
   },
   {
     state: 'West Virginia',
     icon: '/images/states/west-virginia.png',
     locations: [
-      { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg' },
+      { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg', children: [
+        { name: 'Big Bend Campground', href: '/monongahela-national-forest', image: '/images/monongahela/scenic-drive.jpg' },
+        { name: 'Jess Judy Group Campground', href: '/monongahela-national-forest', image: '/images/monongahela/spruce-treetops.jpg' },
+        { name: 'Seneca Shadows Campground', href: '/monongahela-national-forest', image: '/images/monongahela/seneca-rocks-sign.jpg' },
+        { name: 'Spruce Knob Lake Campground', href: '/monongahela-national-forest', image: '/images/monongahela/spruce-knob-sign.jpg' },
+        { name: 'Gatewood Group Campground', href: '/monongahela-national-forest', image: '/images/monongahela/spruce-knob-panorama.jpg' },
+        { name: 'Stuart Recreation Area', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg' },
+      ]},
     ],
   },
 ]

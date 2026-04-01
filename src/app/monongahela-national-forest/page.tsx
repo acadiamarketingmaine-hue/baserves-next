@@ -102,17 +102,29 @@ export default function MonongahelaNationalForestPage() {
             </svg>
             Eastern West Virginia &mdash; Allegheny Mountains
           </div>
-          <a
-            href="https://www.recreation.gov/gateways/1090"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
-          >
-            Find Campgrounds on Recreation.gov
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { name: 'Big Bend', href: 'https://www.recreation.gov/camping/campgrounds/232019' },
+              { name: 'Jess Judy Group', href: 'https://www.recreation.gov/camping/campgrounds/233725' },
+              { name: 'Seneca Shadows', href: 'https://www.recreation.gov/camping/campgrounds/232095' },
+              { name: 'Spruce Knob Lake', href: 'https://www.recreation.gov/camping/campgrounds/234132' },
+              { name: 'Gatewood Group', href: 'https://www.recreation.gov/camping/campgrounds/233990' },
+              { name: 'Stuart Recreation Area', href: 'https://www.recreation.gov/camping/campgrounds/232007' },
+            ].map((cg) => (
+              <a
+                key={cg.name}
+                href={cg.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-forest-DEFAULT text-white text-sm font-semibold rounded-lg hover:bg-forest-dark transition-colors"
+              >
+                {cg.name}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -213,14 +225,20 @@ export default function MonongahelaNationalForestPage() {
                 <p className="text-white/80 mb-6">
                   Plan your trip to the Monongahela National Forest and experience one of the East&apos;s most spectacular wilderness destinations.
                 </p>
-                <a
-                  href="https://www.recreation.gov/gateways/1090"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
-                >
-                  Browse on Recreation.gov
-                </a>
+                <div className="space-y-2">
+                  {[
+                    { name: 'Big Bend', href: 'https://www.recreation.gov/camping/campgrounds/232019' },
+                    { name: 'Seneca Shadows', href: 'https://www.recreation.gov/camping/campgrounds/232095' },
+                    { name: 'Spruce Knob Lake', href: 'https://www.recreation.gov/camping/campgrounds/234132' },
+                    { name: 'Stuart Rec Area', href: 'https://www.recreation.gov/camping/campgrounds/232007' },
+                    { name: 'Jess Judy Group', href: 'https://www.recreation.gov/camping/campgrounds/233725' },
+                    { name: 'Gatewood Group', href: 'https://www.recreation.gov/camping/campgrounds/233990' },
+                  ].map((cg) => (
+                    <a key={cg.name} href={cg.href} target="_blank" rel="noopener noreferrer" className="block w-full text-center py-2.5 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+                      {cg.name}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -481,17 +499,18 @@ export default function MonongahelaNationalForestPage() {
             From Spruce Knob&apos;s summit to the depths of Seneca Rocks, the Monongahela National Forest offers 921,000 acres of Appalachian wilderness waiting to be explored.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://www.recreation.gov/gateways/1090"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
-            >
-              Find Campgrounds on Recreation.gov
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
+            {[
+              { name: 'Big Bend', href: 'https://www.recreation.gov/camping/campgrounds/232019' },
+              { name: 'Seneca Shadows', href: 'https://www.recreation.gov/camping/campgrounds/232095' },
+              { name: 'Spruce Knob Lake', href: 'https://www.recreation.gov/camping/campgrounds/234132' },
+              { name: 'Stuart Rec Area', href: 'https://www.recreation.gov/camping/campgrounds/232007' },
+              { name: 'Jess Judy Group', href: 'https://www.recreation.gov/camping/campgrounds/233725' },
+              { name: 'Gatewood Group', href: 'https://www.recreation.gov/camping/campgrounds/233990' },
+            ].map((cg) => (
+              <a key={cg.name} href={cg.href} target="_blank" rel="noopener noreferrer" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100 text-sm">
+                {cg.name}
+              </a>
+            ))}
             <Link href="/experiences" className="btn-primary bg-white/10 text-white hover:bg-white/20">
               View All Experiences
             </Link>

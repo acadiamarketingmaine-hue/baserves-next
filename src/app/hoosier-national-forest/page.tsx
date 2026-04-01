@@ -122,15 +122,26 @@ export default function HoosierNationalForestPage() {
             </svg>
             Southern Indiana &mdash; US Forest Service
           </div>
-          <Link
-            href="#recreation-areas"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
-          >
-            Explore Recreation Areas
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { name: 'Hardin Ridge', href: 'https://www.recreation.gov/camping/campgrounds/232056' },
+              { name: 'Indian-Celina Lakes', href: 'https://www.recreation.gov/camping/campgrounds/232027' },
+              { name: 'Tipsaw Lake', href: 'https://www.recreation.gov/camping/campgrounds/232114' },
+            ].map((cg) => (
+              <a
+                key={cg.name}
+                href={cg.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-forest-DEFAULT text-white text-sm font-semibold rounded-lg hover:bg-forest-dark transition-colors"
+              >
+                {cg.name}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 

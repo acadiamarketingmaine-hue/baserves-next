@@ -63,7 +63,7 @@ export default function WashingtonStateParkPage() {
             De Soto, Missouri
           </div>
           <a
-            href="https://escape.baserves.com"
+            href="https://www.washingtonstateparkmo.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
@@ -155,7 +155,7 @@ export default function WashingtonStateParkPage() {
                   Reserve your campsite or cabin at Washington State Park.
                 </p>
                 <a
-                  href="https://escape.baserves.com"
+                  href="https://www.washingtonstateparkmo.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
@@ -360,7 +360,7 @@ export default function WashingtonStateParkPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://escape.baserves.com"
+              href="https://www.washingtonstateparkmo.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
