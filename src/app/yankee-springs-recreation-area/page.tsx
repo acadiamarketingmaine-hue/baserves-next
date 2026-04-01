@@ -163,17 +163,30 @@ export default function YankeeSpringsPage() {
             </svg>
             Barry County, Michigan
           </div>
-          <a
-            href="https://midnrreservations.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
-          >
-            Reserve on Michigan DNR
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href="https://escape.baserves.com/chief-noonday-outdoor-center"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
+            >
+              Reserve Chief Noonday Outdoor Center
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a
+              href="https://escape.baserves.com/long-lake-outdoor-center"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors"
+            >
+              Reserve Long Lake Outdoor Center
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -244,12 +257,20 @@ export default function YankeeSpringsPage() {
                   Book a cabin, bunkhouse, or campsite in the Yankee Springs Recreation Area.
                 </p>
                 <a
-                  href="https://midnrreservations.com"
+                  href="https://escape.baserves.com/chief-noonday-outdoor-center"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
+                  className="block w-full text-center py-3 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors mb-3"
                 >
-                  Reserve on Michigan DNR
+                  Reserve Chief Noonday OC
+                </a>
+                <a
+                  href="https://escape.baserves.com/long-lake-outdoor-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center py-3 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors"
+                >
+                  Reserve Long Lake OC
                 </a>
               </div>
             </div>
@@ -382,19 +403,24 @@ export default function YankeeSpringsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://midnrreservations.com"
+              href="https://escape.baserves.com/chief-noonday-outdoor-center"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
             >
-              Reserve on Michigan DNR
+              Reserve Chief Noonday Outdoor Center
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <Link href="/long-lake-outdoor-center" className="btn-primary bg-white/10 text-white hover:bg-white/20">
-              See Long Lake Outdoor Center
-            </Link>
+            <a
+              href="https://escape.baserves.com/long-lake-outdoor-center"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary bg-white/10 text-white hover:bg-white/20"
+            >
+              Reserve Long Lake Outdoor Center
+            </a>
           </div>
         </div>
       </section>

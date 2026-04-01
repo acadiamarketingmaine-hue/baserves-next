@@ -40,7 +40,7 @@ With over 200 campsites and 30+ miles of trails winding through forests, wetland
       '/images/Burlingame2-1536x1152.jpg',
       '/images/long-lake/lodge.jpg',
     ],
-    bookingUrl: 'https://midnrreservations.com',
+    bookingUrl: 'https://escape.baserves.com/chief-noonday-outdoor-center',
   },
   'hardin-ridge-recreation-area': {
     name: 'Hardin Ridge Recreation Area',
@@ -115,7 +115,7 @@ The center features comfortable lodging options, a beautiful lake for water acti
       '/images/Burlingame1-2048x1365.jpg',
       '/images/DSC_0103-2048x1365.jpg',
     ],
-    bookingUrl: 'https://escape.baserves.com',
+    bookingUrl: 'https://escape.baserves.com/long-lake-outdoor-center',
   },
   'chief-noonday-outdoor-center': {
     name: 'Chief Noonday Outdoor Center',
@@ -133,7 +133,7 @@ The facility can accommodate large groups with its multiple cabin clusters, dini
       '/images/chief-noonday/long-house.jpg',
       '/images/chief-noonday/mess-hall.jpg',
     ],
-    bookingUrl: 'https://escape.baserves.com',
+    bookingUrl: 'https://escape.baserves.com/chief-noonday-outdoor-center',
   },
   'bankhead-national-forest': {
     name: 'Bankhead National Forest',
