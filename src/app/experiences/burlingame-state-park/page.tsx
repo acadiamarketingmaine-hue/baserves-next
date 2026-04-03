@@ -232,10 +232,20 @@ export default function BurlingamePage() {
           {/* Campground Map */}
           <div className="mt-8 bg-white rounded-2xl p-4 border border-gray-200">
             <h3 className="text-lg font-bold text-gray-900 mb-4 px-2">Campground Map</h3>
-            <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden">
-              <Image src="/images/burlingame-map.png" alt="Burlingame State Park campground map" fill className="object-contain bg-white" />
-            </div>
-            <p className="text-gray-500 text-xs mt-3 px-2">Map legend: A = Tents Only, B = Small Trailers, C = Large Trailers &amp; Motorhomes, M = Motorhomes</p>
+            <a
+              href="/images/burlingame-campground-map.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative w-full aspect-[16/10] rounded-xl overflow-hidden group cursor-pointer"
+            >
+              <Image src="/images/burlingame-campground-map.png" alt="Burlingame State Park campground map" fill className="object-contain bg-white" />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 text-gray-800 text-sm font-medium px-4 py-2 rounded-lg shadow">
+                  Click to enlarge
+                </span>
+              </div>
+            </a>
+            <p className="text-gray-500 text-xs mt-3 px-2">Click map to view full size. Legend: A = Tents Only, B = Small Trailers, C = Large Trailers &amp; Motorhomes, M = Motorhomes</p>
           </div>
         </div>
       </section>
@@ -317,10 +327,13 @@ export default function BurlingamePage() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
               { src: '/images/burlingame-entrance-sign.jpg', alt: 'Burlingame State Park entrance sign' },
-              { src: '/images/Burlingame1-2048x1365.jpg', alt: 'Watchaug Pond at Burlingame' },
-              { src: '/images/Burlingame2-1536x1152.jpg', alt: 'Campsite at Burlingame' },
+              { src: '/images/burlingame-beach.png', alt: 'Beach and swimming at Watchaug Pond' },
+              { src: '/images/burlingame-picnic-area.png', alt: 'Picnic area with tables under trees' },
+              { src: '/images/burlingame-cabin.png', alt: 'Rustic log cabin at Burlingame' },
+              { src: '/images/burlingame-kayaks.png', alt: 'Kayaks on the shore of Watchaug Pond' },
+              { src: '/images/burlingame-swimming.png', alt: 'Swimmers at Watchaug Pond beach' },
+              { src: '/images/burlingame-lakefront.png', alt: 'Lakefront view with picnic tables' },
               { src: '/images/burlingame-aerial.jpg', alt: 'Aerial view of Burlingame' },
-              { src: '/images/burlingame-map.png', alt: 'Campground map' },
             ].map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
                 <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />

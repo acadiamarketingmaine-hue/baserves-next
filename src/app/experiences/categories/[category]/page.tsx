@@ -12,12 +12,8 @@ const categoryData: Record<string, any> = {
     image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
     experiences: [
       { name: 'Meramec River Float Trips', location: 'Meramec State Park, Sullivan, MO', duration: 'Half day – Full day', price: 'Canoe from $54 / Kayak from $42', image: '/images/meramec-state-park/riverstop-store.jpg', href: '/experiences/meramec-state-park' },
-      { name: 'Saco River Kayaking & Canoeing', location: 'Canal Bridge Campground, Fryeburg, ME', duration: 'Half day – Full day', price: 'From $40', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg', href: '/experiences/canal-bridge' },
       { name: 'Washington State Park Watercraft', location: 'Washington State Park, De Soto, MO', duration: 'Hourly / Half day', price: 'Contact for rates', image: '/images/washington-state-park/store.jpg', href: '/washington-state-park' },
-      { name: 'Tipsaw Lake Boating', location: 'Tipsaw Lake Recreation Area, Perry County, IN', duration: 'Hourly / Daily', price: 'From $20', image: '/images/tipsaw-lake/lake-view.jpg', href: '/tipsaw-lake-recreation-area' },
-      { name: 'Indian-Celina Lakes Boating', location: 'Indian-Celina Lakes, Perry County, IN', duration: 'Daily', price: 'Electric motors only', image: '/images/indian-celina/boat-launch.jpg', href: '/indian-celina-lakes-recreation-area' },
       { name: 'Burlingame State Park Boating', location: 'Burlingame State Park, Charlestown, RI', duration: 'Daily', price: 'Contact for rates', image: '/images/burlingame-entrance-sign.jpg', href: '/experiences/burlingame-state-park' },
-      { name: 'Lewis Smith Lake Boating', location: 'Clear Creek Recreation Area, Bankhead NF, AL', duration: 'Daily', price: 'Boat ramp access', image: '/images/clear-creek-overview.jpg', href: '/experiences/clear-creek-recreation-area' },
     ]
   },
   'campground-rentals': {
