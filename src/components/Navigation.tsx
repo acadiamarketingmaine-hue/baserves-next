@@ -70,8 +70,8 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Missouri',
     icon: '/images/states/missouri.png',
     locations: [
-      { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-state-park/cabin-11-exterior.png' },
-      { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-state-park/ccc-monument.jpg' },
+      { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-thunderbird-lodge.png' },
+      { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-entrance-sign.jpg' },
     ],
   },
   {

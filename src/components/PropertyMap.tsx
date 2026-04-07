@@ -25,8 +25,8 @@ const properties = [
   // West Virginia
   { name: 'Monongahela National Forest', slug: 'monongahela-national-forest', lat: 38.70, lng: -79.80, image: '/images/monongahela/entrance-sign.jpg', excerpt: '900,000+ acres across the Alleghenies with 800+ miles of trails and 5 wilderness areas.' },
   // Missouri
-  { name: 'Washington State Park', slug: 'washington-state-park', lat: 38.09, lng: -90.68, image: '/images/washington-state-park/cabin-11-exterior.png', excerpt: 'Ancient petroglyphs, cabins, and 10+ miles of trails along the Big River in the Ozarks.' },
-  { name: 'Meramec State Park', slug: 'experiences/meramec-state-park', lat: 38.22, lng: -91.08, image: '/images/meramec-state-park/ccc-monument.jpg', excerpt: '6,896 acres along the Meramec River with 19 cabins, motel, float trips, and Fisher Cave.' },
+  { name: 'Washington State Park', slug: 'washington-state-park', lat: 38.09, lng: -90.68, image: '/images/washington-thunderbird-lodge.png', excerpt: 'Ancient petroglyphs, cabins, and 10+ miles of trails along the Big River in the Ozarks.' },
+  { name: 'Meramec State Park', slug: 'experiences/meramec-state-park', lat: 38.22, lng: -91.08, image: '/images/meramec-entrance-sign.jpg', excerpt: '6,896 acres along the Meramec River with 19 cabins, motel, float trips, and Fisher Cave.' },
 ]
 
 const pinIcon = new L.DivIcon({

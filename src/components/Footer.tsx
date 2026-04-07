@@ -16,10 +16,11 @@ const locationsByState = [
     state: 'Indiana',
     icon: '/images/states/indiana.png',
     locations: [
-      { name: 'Hoosier National Forest', href: '/hoosier-national-forest' },
-      { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area' },
-      { name: 'Indian-Celina Lakes Recreation Area', href: '/indian-celina-lakes-recreation-area' },
-      { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area' },
+      { name: 'Hoosier National Forest', href: '/hoosier-national-forest', children: [
+        { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area' },
+        { name: 'Indian-Celina Lakes Recreation Area', href: '/indian-celina-lakes-recreation-area' },
+        { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area' },
+      ]},
     ],
   },
   {

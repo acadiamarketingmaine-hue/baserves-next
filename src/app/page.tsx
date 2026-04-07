@@ -48,7 +48,7 @@ const allLocations = [
     location: 'Sullivan, MO',
     features: ['Cabins', 'Float Trips', 'Cave Tours', 'Fishing', 'Hiking'],
     stats: { acres: '6,896', cabins: '19', river: 'Meramec' },
-    image: '/images/meramec-state-park/ccc-monument.jpg',
+    image: '/images/meramec-entrance-sign.jpg',
     slug: 'experiences/meramec-state-park'
   },
   {
@@ -58,7 +58,7 @@ const allLocations = [
     location: 'De Soto, MO',
     features: ['Hiking', 'Cabins', 'Swimming', 'Historic Sites', 'Watercraft'],
     stats: { campsites: '50+', trails: '10+ mi', acres: '2,147+' },
-    image: '/images/washington-state-park/cabin-11-exterior.png',
+    image: '/images/washington-thunderbird-lodge.png',
     slug: 'washington-state-park'
   },
   {
@@ -371,7 +371,7 @@ const statesData = [
         stats: { campsites: 'Multiple', river: 'Meramec River', acres: '6,800+' },
         activities: ['Watercraft Rentals', 'Camping', 'Hiking', 'Fishing', 'Swimming'],
         href: '/experiences/meramec-state-park',
-        image: '/images/Meramec-State-Park-Overview-Image.jpg',
+        image: '/images/meramec-entrance-sign.jpg',
       },
     ],
   },

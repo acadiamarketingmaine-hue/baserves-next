@@ -82,7 +82,7 @@ const locations = [
     description: '19 cabins, 40+ caves, motel, and river float rentals along the Meramec River',
     location: 'Sullivan, MO',
     features: ['19 Cabins', '40+ Caves', 'Float Rentals', 'Motel', '13 mi Trails'],
-    image: '/images/meramec-state-park/ccc-monument.jpg',
+    image: '/images/meramec-entrance-sign.jpg',
     slug: 'experiences/meramec-state-park'
   },
   {
@@ -91,7 +91,7 @@ const locations = [
     description: '2,157 acres with 11 cabins, pool, 140 bird species, and Fish of the Big River series',
     location: 'De Soto, MO',
     features: ['11 Cabins', '350+ Petroglyphs', 'Swimming Pool', '140 Bird Species', '9.7 mi Trails'],
-    image: '/images/washington-state-park/cabin-11-exterior.png',
+    image: '/images/washington-thunderbird-lodge.png',
     slug: 'washington-state-park'
   },
   {

@@ -26,7 +26,7 @@ const fishPDFs = [
 ]
 
 const galleryImages = [
-  { src: '/images/washington-state-park/cabin-11-exterior.png', alt: 'Cabin 11 exterior at Washington State Park' },
+  { src: '/images/washington-thunderbird-lodge.png', alt: 'Cabin 11 exterior at Washington State Park' },
   { src: '/images/washington-state-park/cabin-11-interior.png', alt: 'Cabin 11 interior' },
   { src: '/images/washington-state-park/pool.png', alt: 'Swimming pool at Washington State Park' },
   { src: '/images/washington-state-park/store.jpg', alt: 'Camp store at Washington State Park' },
@@ -41,7 +41,7 @@ export default function WashingtonStateParkPage() {
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/washington-state-park/cabin-11-exterior.png"
+            src="/images/washington-thunderbird-lodge.png"
             alt="Washington State Park along the Big River in De Soto, Missouri"
             fill
             className="object-cover"
@@ -193,7 +193,7 @@ export default function WashingtonStateParkPage() {
             </div>
             <div className="space-y-4">
               <div className="relative h-64 rounded-2xl overflow-hidden">
-                <Image src="/images/washington-state-park/cabin-11-exterior.png" alt="Cabin 11 exterior at Washington State Park" fill className="object-cover" />
+                <Image src="/images/washington-thunderbird-lodge.png" alt="Cabin 11 exterior at Washington State Park" fill className="object-cover" />
               </div>
               <div className="relative h-64 rounded-2xl overflow-hidden">
                 <Image src="/images/washington-state-park/cabin-11-interior.png" alt="Cabin 11 interior at Washington State Park" fill className="object-cover" />

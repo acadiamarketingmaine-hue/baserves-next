@@ -45,7 +45,7 @@ const facilities = [
   {
     name: 'Visitor Center',
     description: 'Discover the natural and cultural history of the park through nature exhibits and aquariums featuring native fish species. Helpful staff provide park information and trail recommendations.',
-    image: '/images/meramec-state-park/ccc-monument.jpg',
+    image: '/images/meramec-entrance-sign.jpg',
   },
   {
     name: 'Hickory Ridge Motel',
@@ -89,7 +89,7 @@ const galleryImages = [
   { src: '/images/meramec-state-park/watercraft-rentals.jpg', alt: 'Watercraft rentals on the Meramec River' },
   { src: '/images/meramec-state-park/riverstop-interior.jpg', alt: 'Inside the Riverstop Store' },
   { src: '/images/meramec-state-park/float-takeout.jpg', alt: 'Float trip takeout on the Meramec River' },
-  { src: '/images/meramec-state-park/ccc-monument.jpg', alt: 'CCC monument at Meramec State Park' },
+  { src: '/images/meramec-entrance-sign.jpg', alt: 'CCC monument at Meramec State Park' },
   { src: '/images/meramec-state-park/fireside-store.jpg', alt: 'Fireside Store & Grill' },
 ]
 
