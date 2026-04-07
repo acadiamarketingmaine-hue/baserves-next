@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Canal Bridge Campground | Saco River, Fryeburg, Maine | BA Services',
-  description: 'Discover Canal Bridge Campground on the Saco River in Fryeburg, Maine. 36 numbered campsites, 5 tent sites, river frontage for kayaking, canoeing, and fishing with stunning White Mountain views.',
+  description: 'Discover Canal Bridge Campground on the Saco River in Fryeburg, Maine. 36 numbered campsites, river frontage for kayaking, canoeing, and fishing with stunning White Mountain views.',
   alternates: { canonical: '/experiences/canal-bridge' },
 }
 
@@ -78,7 +78,7 @@ export default function CanalBridgePage() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
           >
-            Call to Reserve: 207.935.2286
+            Book Your Stay
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -92,7 +92,6 @@ export default function CanalBridgePage() {
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
             {[
               { value: '36', label: 'Sites' },
-              { value: '5', label: 'Tent Sites' },
               { value: 'Saco', label: 'River' },
               { value: 'White', label: 'Mountains' },
             ].map((stat) => (
@@ -113,7 +112,7 @@ export default function CanalBridgePage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Canal Bridge Campground</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Nestled along the banks of the Saco River in Fryeburg, Maine, Canal Bridge Campground offers a peaceful retreat surrounded by the natural beauty of western Maine. With 36 numbered campsites (including 30a) and 5 dedicated tent sites, the campground provides the perfect balance of accessibility and seclusion for campers of all kinds.
+                  Nestled along the banks of the Saco River in Fryeburg, Maine, Canal Bridge Campground offers a peaceful retreat surrounded by the natural beauty of western Maine. With 36 numbered campsites (including 30a), the campground provides the perfect balance of accessibility and seclusion for campers of all kinds.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
                   The Saco River frontage is the heart of Canal Bridge. Guests enjoy direct access to kayaking, canoeing, and fishing for trout and bass right from the campground. Whether you&apos;re paddling downstream on a lazy afternoon or casting a line at sunrise, the river is always calling.
@@ -200,7 +199,7 @@ export default function CanalBridgePage() {
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
           <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Campsites</h2>
-          <p className="text-gray-600 mb-8 max-w-2xl">36 numbered sites (including 30a) plus 5 dedicated tent sites, spread across the campground along the Saco River.</p>
+          <p className="text-gray-600 mb-8 max-w-2xl">36 numbered sites (including 30a) spread across the campground along the Saco River.</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {campsiteImages.map((site) => (
               <div key={site.label} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
