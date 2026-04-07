@@ -209,7 +209,7 @@ export default function BurlingamePage() {
                 </p>
               </div>
               <div className="relative h-64 rounded-2xl overflow-hidden">
-                <Image src="/images/burlingame-aerial.jpg" alt="Aerial view of Burlingame State Park" fill className="object-cover" />
+                <Image src="/images/burlingame-lakefront.png" alt="Lakefront at Burlingame State Park" fill className="object-cover" />
               </div>
             </div>
           </div>
@@ -333,7 +333,6 @@ export default function BurlingamePage() {
               { src: '/images/burlingame-kayaks.png', alt: 'Kayaks on the shore of Watchaug Pond' },
               { src: '/images/burlingame-swimming.png', alt: 'Swimmers at Watchaug Pond beach' },
               { src: '/images/burlingame-lakefront.png', alt: 'Lakefront view with picnic tables' },
-              { src: '/images/burlingame-aerial.jpg', alt: 'Aerial view of Burlingame' },
             ].map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
                 <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />
