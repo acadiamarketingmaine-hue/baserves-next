@@ -245,7 +245,7 @@ function TourHandler() {
           slideIntervalRef.current = setInterval(() => {
             imgIndex = (imgIndex + 1) % images.length
             popup.setContent(makeContent(imgIndex))
-          }, 1500)
+          }, 2500)
         }
       }, 1300)
     }

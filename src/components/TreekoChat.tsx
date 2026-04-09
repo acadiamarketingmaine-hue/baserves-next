@@ -194,7 +194,7 @@ export default function TreekoChat() {
       const stop = tourStops[i]
       setTourIndex(i)
       window.dispatchEvent(new CustomEvent('treeko-tour-focus', { detail: { lat: stop.lat, lng: stop.lng, slug: stop.slug, index: i } }))
-      setMessages(prev => [...prev, { role: 'treeko', text: `📍 ${stop.name}: ${stop.summary}` }])
+      setMessages(prev => [...prev, { role: 'treeko', text: `📍 [${stop.name}](/${stop.slug}): ${stop.summary}` }])
 
       // Wait for fly animation
       await sleep(1500)
@@ -233,15 +233,18 @@ export default function TreekoChat() {
     })
   }
 
-  // Linkify URLs, phones, emails
+  // Linkify URLs, phones, emails, and [text](url) markdown links
   const linkify = (text: string) => {
     const parts: Array<string | { type: string; text: string; href: string }> = []
-    const regex = /(https?:\/\/[^\s,)]+|(?:baserves\.com|escape\.baserves\.com|mostateparks\.com|canalbridgeme\.com)[^\s,)]*|\b[\w.-]+@[\w.-]+\.\w+\b|\b\d{3}[-.]?\d{3}[-.]?\d{4}\b)/gi
+    const regex = /(\[([^\]]+)\]\(([^)]+)\)|https?:\/\/[^\s,)]+|(?:baserves\.com|escape\.baserves\.com|mostateparks\.com|canalbridgeme\.com)[^\s,)]*|\b[\w.-]+@[\w.-]+\.\w+\b|\b\d{3}[-.]?\d{3}[-.]?\d{4}\b)/gi
     let lastIndex = 0; let match
     while ((match = regex.exec(text)) !== null) {
       if (match.index > lastIndex) parts.push(text.slice(lastIndex, match.index))
       const m = match[0]
-      if (m.includes('@') && !m.startsWith('http')) parts.push({ type: 'email', text: m, href: `mailto:${m}` })
+      if (m.startsWith('[') && match[2] && match[3]) {
+        // Markdown link [text](url)
+        parts.push({ type: 'link', text: match[2], href: match[3] })
+      } else if (m.includes('@') && !m.startsWith('http')) parts.push({ type: 'email', text: m, href: `mailto:${m}` })
       else if (/^\d{3}[-.]?\d{3}[-.]?\d{4}$/.test(m)) parts.push({ type: 'phone', text: m, href: `tel:${m.replace(/[-.]/g, '')}` })
       else { const href = m.startsWith('http') ? m : `https://${m}`; parts.push({ type: 'link', text: m, href }) }
       lastIndex = regex.lastIndex
