@@ -7,6 +7,7 @@ import { useRef, useState, useEffect, useCallback } from 'react'
 import 'leaflet/dist/leaflet.css'
 import { utahRestAreas } from '@/data/utah-rest-areas'
 import { iowaRestAreas } from '@/data/iowa-rest-areas'
+import { tourStops } from '@/data/property-tour'
 
 const properties = [
   // Alabama
@@ -178,11 +179,18 @@ function RestAreaMarker({ restArea }: { restArea: typeof allRestAreas[number] })
 
 function TourHandler() {
   const map = useMap()
+  const tourPopupRef = useRef<L.Popup | null>(null)
+  const slideIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  // Invalidate map size when tour starts (after container expands)
+  // Invalidate map size when tour starts/ends
   useEffect(() => {
     const onStart = () => setTimeout(() => map.invalidateSize(), 800)
-    const onEnd = () => setTimeout(() => map.invalidateSize(), 800)
+    const onEnd = () => {
+      setTimeout(() => map.invalidateSize(), 800)
+      // Clean up tour popup
+      if (tourPopupRef.current) { map.closePopup(tourPopupRef.current); tourPopupRef.current = null }
+      if (slideIntervalRef.current) { clearInterval(slideIntervalRef.current); slideIntervalRef.current = null }
+    }
     window.addEventListener('treeko-tour-start', onStart)
     window.addEventListener('treeko-tour-end', onEnd)
     return () => {
@@ -194,19 +202,52 @@ function TourHandler() {
   useEffect(() => {
     const handler = (e: Event) => {
       const { lat, lng, slug } = (e as CustomEvent).detail
-      map.flyTo([lat, lng], 10, { duration: 1.5 })
+      const stop = tourStops.find(s => s.slug === slug)
+      const images = stop?.images || []
 
-      // Open the popup for this property after flying
+      // Clean up previous
+      if (tourPopupRef.current) map.closePopup(tourPopupRef.current)
+      if (slideIntervalRef.current) clearInterval(slideIntervalRef.current)
+
+      map.flyTo([lat, lng], 10, { duration: 1.2 })
+
+      // After fly, show popup with sliding images
       setTimeout(() => {
-        map.eachLayer((layer: any) => {
-          if (layer.getPopup && layer.getLatLng) {
-            const pos = layer.getLatLng()
-            if (Math.abs(pos.lat - lat) < 0.01 && Math.abs(pos.lng - lng) < 0.01) {
-              layer.openPopup()
-            }
-          }
+        let imgIndex = 0
+        const popupId = `tour-popup-img-${Date.now()}`
+
+        const makeContent = (idx: number) => `
+          <div style="width:280px;overflow:hidden;border-radius:12px;margin:-14px -14px -24px;">
+            <div style="position:relative;height:160px;overflow:hidden;">
+              <img src="${images[idx] || '/images/bankhead-forest.jpg'}" style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.4s;" />
+              ${images.length > 1 ? `<div style="position:absolute;bottom:6px;right:8px;background:rgba(0,0,0,0.6);color:white;font-size:10px;padding:2px 6px;border-radius:8px;">${idx + 1}/${images.length}</div>` : ''}
+            </div>
+            <div style="padding:10px 14px 14px;">
+              <div style="font-weight:700;font-size:14px;color:#111;margin-bottom:4px;">${stop?.name || ''}</div>
+              <a href="/${slug}" style="display:block;text-align:center;padding:7px;background:#1a472a;color:white;font-size:12px;font-weight:600;border-radius:8px;text-decoration:none;margin-top:8px;">View Property</a>
+            </div>
+          </div>`
+
+        const popup = L.popup({
+          closeButton: false,
+          autoPan: false,
+          className: 'property-card-popup',
+          maxWidth: 300,
         })
-      }, 1600)
+          .setLatLng([lat, lng])
+          .setContent(makeContent(0))
+          .openOn(map)
+
+        tourPopupRef.current = popup
+
+        // Cycle images every 1.5s
+        if (images.length > 1) {
+          slideIntervalRef.current = setInterval(() => {
+            imgIndex = (imgIndex + 1) % images.length
+            popup.setContent(makeContent(imgIndex))
+          }, 1500)
+        }
+      }, 1300)
     }
 
     window.addEventListener('treeko-tour-focus', handler)
