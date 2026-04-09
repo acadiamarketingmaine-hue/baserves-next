@@ -126,19 +126,34 @@ export default function TreekoChat() {
 
           {/* Input */}
           <div className="border-t border-gray-100 p-3">
-            <form onSubmit={(e) => {
+            <form onSubmit={async (e) => {
               e.preventDefault()
               if (!input.trim() || isTyping) return
-              setMessages(prev => [...prev, { role: 'user', text: input }])
+              const userText = input
+              setMessages(prev => [...prev, { role: 'user', text: userText }])
               setInput('')
               setIsTyping(true)
-              setTimeout(() => {
+
+              try {
+                const apiMessages = [
+                  ...messages.map(m => ({ role: m.role === 'treeko' ? 'assistant' as const : 'user' as const, content: m.text })),
+                  { role: 'user' as const, content: userText },
+                ]
+                const res = await fetch('/api/treeko', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ messages: apiMessages }),
+                })
+                const data = await res.json()
+                setMessages(prev => [...prev, { role: 'treeko', text: data.reply }])
+              } catch {
                 setMessages(prev => [...prev, {
                   role: 'treeko',
-                  text: "Thanks for your question! For the best assistance, please call us at (207) 307-7903 or email info@baserves.com. We're happy to help!"
+                  text: "I'm having trouble connecting. Please call us at (207) 307-7903 or email info@baserves.com!"
                 }])
+              } finally {
                 setIsTyping(false)
-              }, 2000)
+              }
             }}>
               <div className="flex gap-2">
                 <input
