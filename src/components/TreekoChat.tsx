@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 type ChatState = 'idle' | 'greeting' | 'chatting'
@@ -13,6 +13,14 @@ export default function TreekoChat() {
   const [input, setInput] = useState('')
 
   const greeting = "Hi there! I'm Treeko, your BA Services assistant. How can I help you today?"
+
+  // Preload both images
+  useEffect(() => {
+    const idle = new window.Image()
+    idle.src = '/images/treeko-idle.png'
+    const talking = new window.Image()
+    talking.src = '/images/treeko-talking.gif'
+  }, [])
 
   const handleClick = () => {
     if (state === 'idle') {
@@ -48,7 +56,7 @@ export default function TreekoChat() {
   }
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
+    <div className="fixed bottom-0 right-4 z-50 flex flex-col items-end">
       {/* Chat Panel */}
       {state === 'chatting' && (
         <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 w-80 sm:w-96 mb-2 overflow-hidden animate-slideUp">
@@ -92,12 +100,14 @@ export default function TreekoChat() {
               if (!input.trim()) return
               setMessages(prev => [...prev, { role: 'user', text: input }])
               setInput('')
+              setIsTyping(true)
               setTimeout(() => {
                 setMessages(prev => [...prev, {
                   role: 'treeko',
                   text: "Thanks for your question! For the best assistance, please call us at (207) 307-7903 or email info@baserves.com. We're happy to help!"
                 }])
-              }, 1000)
+                setIsTyping(false)
+              }, 2000)
             }}>
               <div className="flex gap-2">
                 <input
@@ -123,13 +133,13 @@ export default function TreekoChat() {
 
       {/* Speech Bubble (greeting state) */}
       {state === 'greeting' && displayedText && (
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-4 max-w-72 mb-2 animate-slideUp relative">
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-4 max-w-72 mb-2 mr-2 animate-slideUp relative">
           <div className="text-sm text-gray-800 leading-relaxed">{displayedText}</div>
           <div className="absolute -bottom-2 right-10 w-4 h-4 bg-white border-r border-b border-gray-200 transform rotate-45" />
         </div>
       )}
 
-      {/* Treeko Character */}
+      {/* Treeko Character — raw, no mask, flush to bottom */}
       <button
         onClick={handleClick}
         className="relative group cursor-pointer focus:outline-none"
@@ -137,29 +147,29 @@ export default function TreekoChat() {
       >
         {/* Notification dot when idle */}
         {state === 'idle' && (
-          <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center z-10 animate-bounce">
+          <div className="absolute top-2 right-0 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center z-10 animate-bounce">
             <span className="text-white text-[10px] font-bold">1</span>
           </div>
         )}
 
-        {/* Treeko image — idle (static) or talking (animated GIF) */}
-        <div className={`w-20 h-20 rounded-full overflow-hidden shadow-lg border-2 border-white transition-transform ${
-          state === 'idle' ? 'animate-treeko-idle group-hover:scale-110' : ''
+        {/* Treeko image — raw character, bottom-aligned */}
+        <div className={`w-24 h-28 relative transition-transform ${
+          state === 'idle' ? 'animate-treeko-idle group-hover:scale-105' : ''
         } ${isTyping ? 'animate-treeko-talk' : ''}`}>
           {isTyping ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src="/images/treeko-talking.gif"
               alt="Treeko talking"
-              className="w-full h-full object-cover scale-150 object-[center_35%]"
+              className="w-full h-full object-contain object-bottom drop-shadow-lg"
             />
           ) : (
             <Image
               src="/images/treeko-idle.png"
               alt="Treeko"
-              width={80}
-              height={80}
-              className="w-full h-full object-cover scale-150 object-[center_35%]"
+              width={96}
+              height={112}
+              className="w-full h-full object-contain object-bottom drop-shadow-lg"
               priority
             />
           )}
