@@ -152,8 +152,8 @@ export default function TreekoChat() {
           </div>
         )}
 
-        {/* Treeko image — raw character, bottom-aligned */}
-        <div className={`w-24 h-28 relative transition-transform ${
+        {/* Treeko image — raw character, double size on desktop, no background */}
+        <div className={`w-24 h-28 md:w-48 md:h-56 relative transition-transform ${
           state === 'idle' ? 'animate-treeko-idle group-hover:scale-105' : ''
         } ${isTyping ? 'animate-treeko-talk' : ''}`}>
           {isTyping ? (
@@ -161,14 +161,14 @@ export default function TreekoChat() {
             <img
               src="/images/treeko-talking.gif"
               alt="Treeko talking"
-              className="w-full h-full object-contain object-bottom drop-shadow-lg"
+              className="w-full h-full object-contain object-bottom drop-shadow-lg mix-blend-multiply"
             />
           ) : (
             <Image
               src="/images/treeko-idle.png"
               alt="Treeko"
-              width={96}
-              height={112}
+              width={192}
+              height={224}
               className="w-full h-full object-contain object-bottom drop-shadow-lg"
               priority
             />
