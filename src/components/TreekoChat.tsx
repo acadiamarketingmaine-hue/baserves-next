@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 
 type ChatState = 'idle' | 'greeting' | 'chatting'
@@ -11,15 +11,31 @@ export default function TreekoChat() {
   const [isTyping, setIsTyping] = useState(false)
   const [messages, setMessages] = useState<Array<{ role: 'treeko' | 'user'; text: string }>>([])
   const [input, setInput] = useState('')
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+  const typingRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const greeting = "Hi there! I'm Treeko, your BA Services assistant. How can I help you today?"
 
-  // Preload both images
+  // Preload ALL images on mount
   useEffect(() => {
+    let loaded = 0
+    const total = 3
+    const check = () => { loaded++; if (loaded >= total) setImagesLoaded(true) }
+
     const idle = new window.Image()
+    idle.onload = check
     idle.src = '/images/treeko-idle.png'
+
     const talking = new window.Image()
+    talking.onload = check
     talking.src = '/images/treeko-talking.png'
+
+    const thumb = new window.Image()
+    thumb.onload = check
+    thumb.src = '/images/treeko-thumb.png'
+
+    // Fallback in case images are cached and onload fires sync
+    setTimeout(() => setImagesLoaded(true), 2000)
   }, [])
 
   const handleClick = () => {
@@ -37,23 +53,27 @@ export default function TreekoChat() {
   const typeText = (text: string, onDone: () => void) => {
     let i = 0
     setDisplayedText('')
-    const interval = setInterval(() => {
+    if (typingRef.current) clearInterval(typingRef.current)
+    typingRef.current = setInterval(() => {
       if (i < text.length) {
         setDisplayedText(text.slice(0, i + 1))
         i++
       } else {
-        clearInterval(interval)
+        if (typingRef.current) clearInterval(typingRef.current)
         onDone()
       }
     }, 60)
   }
 
   const handleClose = () => {
+    if (typingRef.current) clearInterval(typingRef.current)
     setState('idle')
     setDisplayedText('')
     setMessages([])
     setIsTyping(false)
   }
+
+  if (!imagesLoaded) return null
 
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
@@ -63,8 +83,9 @@ export default function TreekoChat() {
           {/* Header */}
           <div className="bg-forest-DEFAULT px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full overflow-hidden bg-green-400/20 flex-shrink-0">
-                <Image src="/images/treeko-thumb.png" alt="Treeko" width={32} height={32} />
+              <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/treeko-thumb.png" alt="Treeko" width={32} height={32} className="w-8 h-8 object-contain" />
               </div>
               <div>
                 <p className="text-white font-semibold text-sm">Treeko</p>
@@ -91,13 +112,23 @@ export default function TreekoChat() {
                 </div>
               </div>
             ))}
+            {/* Typing indicator in chat */}
+            {isTyping && (
+              <div className="flex justify-start">
+                <div className="bg-gray-100 rounded-2xl rounded-bl-md px-3 py-2 flex items-center gap-1">
+                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Input */}
           <div className="border-t border-gray-100 p-3">
             <form onSubmit={(e) => {
               e.preventDefault()
-              if (!input.trim()) return
+              if (!input.trim() || isTyping) return
               setMessages(prev => [...prev, { role: 'user', text: input }])
               setInput('')
               setIsTyping(true)
@@ -139,7 +170,25 @@ export default function TreekoChat() {
         </div>
       )}
 
-      {/* Treeko Character — raw, no mask, flush to bottom */}
+      {/* Soundwave animation — diagonal from Treeko toward speech bubble */}
+      {isTyping && (
+        <div className="absolute bottom-20 right-10 pointer-events-none">
+          <div className="flex gap-[3px] -rotate-45 origin-bottom-right">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="w-[3px] bg-forest-DEFAULT/60 rounded-full animate-soundwave"
+                style={{
+                  animationDelay: `${i * 100}ms`,
+                  height: '12px',
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Treeko Character */}
       <button
         onClick={handleClick}
         className="relative group cursor-pointer focus:outline-none"
@@ -147,32 +196,31 @@ export default function TreekoChat() {
       >
         {/* Notification dot when idle */}
         {state === 'idle' && (
-          <div className="absolute top-2 right-0 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center z-10 animate-bounce">
+          <div className="absolute top-0 right-0 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center z-10 animate-bounce">
             <span className="text-white text-[10px] font-bold">1</span>
           </div>
         )}
 
-        {/* Treeko image — raw character, no background */}
+        {/* Always render idle image as base layer */}
         <div className={`w-24 h-28 relative transition-transform ${
           state === 'idle' ? 'animate-treeko-idle group-hover:scale-105' : ''
         } ${isTyping ? 'animate-treeko-talk' : ''}`}>
-          {isTyping ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src="/images/treeko-talking.png"
-              alt="Treeko talking"
-              className="w-full h-full object-contain object-bottom drop-shadow-lg"
-            />
-          ) : (
-            <Image
-              src="/images/treeko-idle.png"
-              alt="Treeko"
-              width={96}
-              height={112}
-              className="w-full h-full object-contain object-bottom drop-shadow-lg"
-              priority
-            />
-          )}
+          {/* Base: always-visible idle image */}
+          <Image
+            src="/images/treeko-idle.png"
+            alt="Treeko"
+            width={96}
+            height={112}
+            className={`w-full h-full object-contain object-bottom drop-shadow-lg absolute inset-0 transition-opacity duration-200 ${isTyping ? 'opacity-0' : 'opacity-100'}`}
+            priority
+          />
+          {/* Overlay: talking animation (always in DOM, toggled via opacity) */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/treeko-talking.png"
+            alt="Treeko talking"
+            className={`w-full h-full object-contain object-bottom drop-shadow-lg absolute inset-0 transition-opacity duration-200 ${isTyping ? 'opacity-100' : 'opacity-0'}`}
+          />
         </div>
       </button>
 
@@ -191,6 +239,10 @@ export default function TreekoChat() {
           from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes soundwave {
+          0%, 100% { transform: scaleY(0.4); opacity: 0.3; }
+          50% { transform: scaleY(1.8); opacity: 1; }
+        }
         .animate-treeko-idle {
           animation: treeko-idle 3s ease-in-out infinite;
         }
@@ -199,6 +251,9 @@ export default function TreekoChat() {
         }
         .animate-slideUp {
           animation: slideUp 0.3s ease-out;
+        }
+        .animate-soundwave {
+          animation: soundwave 0.6s ease-in-out infinite;
         }
       `}</style>
     </div>
