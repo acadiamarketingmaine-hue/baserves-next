@@ -215,8 +215,10 @@ export default function TreekoChat() {
       if (tourAbortRef.current) break
 
       const stop = tourStops[i]
+      const prevState = i > 0 ? tourStops[i - 1].state : stop.state
+      const changingState = stop.state !== prevState
       setTourIndex(i)
-      window.dispatchEvent(new CustomEvent('treeko-tour-focus', { detail: { lat: stop.lat, lng: stop.lng, slug: stop.slug, index: i } }))
+      window.dispatchEvent(new CustomEvent('treeko-tour-focus', { detail: { lat: stop.lat, lng: stop.lng, slug: stop.slug, index: i, changingState } }))
       setMessages(prev => [...prev, { role: 'treeko', text: `📍 [${stop.name}](/${stop.slug}): ${stop.summary}` }])
 
       // Wait for fly animation — shorter when audio since speech fills the time

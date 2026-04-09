@@ -1,6 +1,7 @@
 export const tourStops = [
   {
     slug: 'bankhead-national-forest',
+    state: 'AL',
     name: 'Bankhead National Forest',
     lat: 34.20, lng: -87.35,
     summary: "First up, Bankhead National Forest in Alabama! 180,000 acres they call the 'Land of a Thousand Waterfalls' — and let me tell you, it lives up to the name. The Sipsey Wilderness out here is absolutely stunning, 84 species of birds, and we've got two awesome campgrounds right in the heart of it.",
@@ -8,6 +9,7 @@ export const tourStops = [
   },
   {
     slug: 'experiences/clear-creek-recreation-area',
+    state: 'AL',
     name: 'Clear Creek Recreation Area',
     lat: 34.27, lng: -87.33,
     summary: "Now this is Clear Creek — right on Lewis Smith Lake. 102 campsites across 4 loops, a swimming beach that's perfect on a hot Alabama day, a boat ramp to get out on the water, and some killer hiking trails through the Bankhead National Forest. It's a gem!",
@@ -15,6 +17,7 @@ export const tourStops = [
   },
   {
     slug: 'experiences/corinth-recreation-area',
+    state: 'AL',
     name: 'Corinth Recreation Area',
     lat: 34.15, lng: -87.15,
     summary: "Corinth is also on Lewis Smith Lake — 52 full-hookup sites so you can bring the RV, plus 10 tent sites for the traditionalists. They've got a huge 100-person pavilion and the Bobwhite Trail right there. Great for groups!",
@@ -22,6 +25,7 @@ export const tourStops = [
   },
   {
     slug: 'hardin-ridge-recreation-area',
+    state: 'IN',
     name: 'Hardin Ridge Recreation Area',
     lat: 39.07, lng: -86.47,
     summary: "Now we're heading to Indiana! Hardin Ridge sits on Monroe Lake — the biggest lake in the state at over 10,000 acres. We're talking 200 campsites, a sandy swimming beach, a boat dock, and 12 miles of trails through Hoosier National Forest. This place is incredible.",
@@ -29,6 +33,7 @@ export const tourStops = [
   },
   {
     slug: 'indian-celina-lakes-recreation-area',
+    state: 'IN',
     name: 'Indian-Celina Lakes',
     lat: 38.35, lng: -86.60,
     summary: "Indian-Celina is a special one — twin lakes tucked away in Perry County with 60 campsites, a fully accessible fishing pier, kayaking, and 10 miles of trails. It's the kind of place where you can really disconnect and just enjoy nature.",
@@ -36,6 +41,7 @@ export const tourStops = [
   },
   {
     slug: 'tipsaw-lake-recreation-area',
+    state: 'IN',
     name: 'Tipsaw Lake Recreation Area',
     lat: 38.23, lng: -86.62,
     summary: "Tipsaw Lake! This is a hidden gem — 131-acre lake, 35 campsites, 8 miles of trails, and some of the best fishing in southern Indiana. If you haven't been here, put it on your list!",
@@ -43,6 +49,7 @@ export const tourStops = [
   },
   {
     slug: 'experiences/canal-bridge',
+    state: 'ME',
     name: 'Canal Bridge Campground',
     lat: 44.02, lng: -70.97,
     summary: "Let's head up to Maine! Canal Bridge Campground is right on the Saco River in Fryeburg. 36 campsites, fantastic kayaking, great fishing, and you wake up every morning to those White Mountain views. Doesn't get much better than that!",
@@ -50,6 +57,7 @@ export const tourStops = [
   },
   {
     slug: 'yankee-springs-recreation-area',
+    state: 'MI',
     name: 'Yankee Springs Recreation Area',
     lat: 42.62, lng: -85.32,
     summary: "Now Michigan — Yankee Springs is a powerhouse! Over 5,200 acres in Barry County with 200 campsites, 30 miles of trails for hiking and mountain biking, and outdoor adventure year-round. Summer, fall, winter, spring — it's always a good time here.",
@@ -57,6 +65,7 @@ export const tourStops = [
   },
   {
     slug: 'long-lake-outdoor-center',
+    state: 'MI',
     name: 'Long Lake Outdoor Center',
     lat: 42.55, lng: -85.40,
     summary: "Long Lake is something special — a retreat center originally built by the Civilian Conservation Corps. 20 cabins, a private lake, outdoor education programs, and honestly one of the most beautiful wedding venues in Michigan. It's got that rustic charm you can't fake.",
@@ -64,6 +73,7 @@ export const tourStops = [
   },
   {
     slug: 'experiences/meramec-state-park',
+    state: 'MO',
     name: 'Meramec State Park',
     lat: 38.22, lng: -91.08,
     summary: "Over to Missouri! Meramec State Park — nearly 7,000 acres along the Meramec River. 19 cabins, a motel, amazing float trips, and Fisher Cave. If you love caving, this is your spot. The river here is just unbelievable.",
@@ -71,6 +81,7 @@ export const tourStops = [
   },
   {
     slug: 'washington-state-park',
+    state: 'MO',
     name: 'Washington State Park',
     lat: 38.09, lng: -90.68,
     summary: "Washington State Park is one of the most historically significant spots we manage. Over 350 ancient petroglyphs, some more than 1,000 years old! Rustic cabins, 10 miles of trails along the Big River. It's like stepping back in time.",
@@ -78,6 +89,7 @@ export const tourStops = [
   },
   {
     slug: 'experiences/burlingame-state-park',
+    state: 'RI',
     name: 'Burlingame State Park',
     lat: 41.38, lng: -71.72,
     summary: "Rhode Island's pride and joy! Burlingame has been going strong since 1934 — 755 campsites, 20 rustic cabins right on Watchaug Pond, over 3,100 acres. It's the biggest campground in the state and it's an absolute blast.",
@@ -85,6 +97,7 @@ export const tourStops = [
   },
   {
     slug: 'monongahela-national-forest',
+    state: 'WV',
     name: 'Monongahela National Forest',
     lat: 38.70, lng: -79.80,
     summary: "And last but definitely not least — the Monongahela in West Virginia. Over 921,000 acres across the Alleghenies, 800 miles of trails, five wilderness areas, and peaks nearly hitting 5,000 feet. This is wild, rugged, breathtaking country. And that wraps our tour!",

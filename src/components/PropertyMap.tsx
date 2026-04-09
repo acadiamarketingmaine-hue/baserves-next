@@ -201,7 +201,7 @@ function TourHandler() {
 
   useEffect(() => {
     const handler = (e: Event) => {
-      const { lat, lng, slug } = (e as CustomEvent).detail
+      const { lat, lng, slug, changingState } = (e as CustomEvent).detail
       const stop = tourStops.find(s => s.slug === slug)
       const images = stop?.images || []
 
@@ -209,50 +209,60 @@ function TourHandler() {
       if (tourPopupRef.current) map.closePopup(tourPopupRef.current)
       if (slideIntervalRef.current) clearInterval(slideIntervalRef.current)
 
-      // Calculate distance to determine fly duration — longer for cross-country
-      const currentCenter = map.getCenter()
-      const dist = Math.sqrt(Math.pow(lat - currentCenter.lat, 2) + Math.pow(lng - currentCenter.lng, 2))
-      const flyDuration = Math.min(Math.max(dist * 0.3, 1.5), 4) // 1.5s minimum, 4s max
-      map.flyTo([lat, lng], 10, { duration: flyDuration })
+      if (changingState) {
+        // Zoom out to show ~75% of the country first, then fly to destination
+        map.flyTo([39.5, -96], 4, { duration: 1.8 })
+        setTimeout(() => {
+          map.flyTo([lat, lng], 10, { duration: 2.2 })
+        }, 2000)
+        // Total fly time: ~4.2s
+        const popupDelay = 4400
+        setTimeout(() => { showTourPopup(lat, lng, stop, images) }, popupDelay)
+      } else {
+        // Same state — direct fly
+        const currentCenter = map.getCenter()
+        const dist = Math.sqrt(Math.pow(lat - currentCenter.lat, 2) + Math.pow(lng - currentCenter.lng, 2))
+        const flyDuration = Math.min(Math.max(dist * 0.3, 1.5), 3)
+        map.flyTo([lat, lng], 10, { duration: flyDuration })
+        const popupDelay = flyDuration * 1000 + 200
+        setTimeout(() => { showTourPopup(lat, lng, stop, images) }, popupDelay)
+      }
+    }
 
-      // After fly, show popup with sliding images (wait for fly to finish)
-      const popupDelay = flyDuration * 1000 + 200
-      setTimeout(() => {
-        let imgIndex = 0
-        const popupId = `tour-popup-img-${Date.now()}`
+    const showTourPopup = (lat: number, lng: number, stop: typeof tourStops[number] | undefined, images: string[]) => {
+      let imgIndex = 0
+      const slug = stop?.slug || ''
 
-        const makeContent = (idx: number) => `
-          <div style="width:280px;overflow:hidden;border-radius:12px;margin:-14px -14px -24px;">
-            <div style="position:relative;height:160px;overflow:hidden;">
-              <img src="${images[idx] || '/images/bankhead-forest.jpg'}" style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.4s;" />
-              ${images.length > 1 ? `<div style="position:absolute;bottom:6px;right:8px;background:rgba(0,0,0,0.6);color:white;font-size:10px;padding:2px 6px;border-radius:8px;">${idx + 1}/${images.length}</div>` : ''}
-            </div>
-            <div style="padding:10px 14px 14px;">
-              <div style="font-weight:700;font-size:14px;color:#111;margin-bottom:4px;">${stop?.name || ''}</div>
-              <a href="/${slug}" style="display:block;text-align:center;padding:7px;background:#1a472a;color:white;font-size:12px;font-weight:600;border-radius:8px;text-decoration:none;margin-top:8px;">View Property</a>
-            </div>
-          </div>`
+      const makeContent = (idx: number) => `
+        <div style="width:280px;overflow:hidden;border-radius:12px;margin:-14px -14px -24px;">
+          <div style="position:relative;height:160px;overflow:hidden;">
+            <img src="${images[idx] || '/images/bankhead-forest.jpg'}" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            ${images.length > 1 ? `<div style="position:absolute;bottom:6px;right:8px;background:rgba(0,0,0,0.6);color:white;font-size:10px;padding:2px 6px;border-radius:8px;">${idx + 1}/${images.length}</div>` : ''}
+          </div>
+          <div style="padding:10px 14px 14px;">
+            <div style="font-weight:700;font-size:14px;color:#111;margin-bottom:4px;">${stop?.name || ''}</div>
+            <a href="/${slug}" style="display:block;text-align:center;padding:7px;background:#1a472a;color:white;font-size:12px;font-weight:600;border-radius:8px;text-decoration:none;margin-top:8px;">View Property</a>
+          </div>
+        </div>`
 
-        const popup = L.popup({
-          closeButton: false,
-          autoPan: false,
-          className: 'property-card-popup',
-          maxWidth: 300,
-        })
-          .setLatLng([lat, lng])
-          .setContent(makeContent(0))
-          .openOn(map)
+      const popup = L.popup({
+        closeButton: false,
+        autoPan: false,
+        className: 'property-card-popup',
+        maxWidth: 300,
+      })
+        .setLatLng([lat, lng])
+        .setContent(makeContent(0))
+        .openOn(map)
 
-        tourPopupRef.current = popup
+      tourPopupRef.current = popup
 
-        // Cycle images every 1.5s
-        if (images.length > 1) {
-          slideIntervalRef.current = setInterval(() => {
-            imgIndex = (imgIndex + 1) % images.length
-            popup.setContent(makeContent(imgIndex))
-          }, 2500)
-        }
-      }, 1300)
+      if (images.length > 1) {
+        slideIntervalRef.current = setInterval(() => {
+          imgIndex = (imgIndex + 1) % images.length
+          popup.setContent(makeContent(imgIndex))
+        }, 3500)
+      }
     }
 
     window.addEventListener('treeko-tour-focus', handler)
