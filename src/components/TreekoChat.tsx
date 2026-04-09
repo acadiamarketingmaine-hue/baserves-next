@@ -15,6 +15,7 @@ export default function TreekoChat() {
   const [input, setInput] = useState('')
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const [touring, setTouring] = useState(false)
+  const [tourChoosing, setTourChoosing] = useState(false)
   const [audioEnabled, setAudioEnabled] = useState(false)
   const [tourIndex, setTourIndex] = useState(0)
   const [tourPaused, setTourPaused] = useState(false)
@@ -113,17 +114,7 @@ export default function TreekoChat() {
     } catch { setIsSpeaking(false) }
   }
 
-  const startTour = useCallback(async () => {
-    setTouring(true)
-    setTourPaused(false)
-    tourAbortRef.current = false
-
-    // Scroll to map
-    const mapEl = document.getElementById('property-map-section')
-    if (mapEl) mapEl.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    await sleep(800)
-
-    // Expand map to fullscreen — take over entire section and lock scroll
+  const expandMap = () => {
     document.body.style.overflow = 'hidden'
     const section = document.getElementById('property-map-section')
     const container = document.getElementById('property-map-container')
@@ -133,7 +124,7 @@ export default function TreekoChat() {
       section.style.zIndex = '9998'
       section.style.padding = '0'
       section.style.margin = '0'
-      section.style.background = '#000'
+      section.style.background = '#fff'
       section.style.transition = 'all 0.4s ease-in-out'
     }
     if (container) {
@@ -157,7 +148,43 @@ export default function TreekoChat() {
     }
 
     window.dispatchEvent(new CustomEvent('treeko-tour-start'))
+  }
+
+  const startTour = useCallback(async () => {
+    setTouring(true)
+    setTourPaused(false)
+    tourAbortRef.current = false
+
+    const mapEl = document.getElementById('property-map-section')
+    if (mapEl) mapEl.scrollIntoView({ behavior: 'smooth', block: 'start' })
     await sleep(800)
+
+    expandMap()
+    await sleep(600)
+
+    // Show sound choice
+    setTourChoosing(true)
+  }, [])
+
+  const closeTourMap = () => {
+    document.body.style.overflow = ''
+    const section = document.getElementById('property-map-section')
+    const container = document.getElementById('property-map-container')
+    if (section) { section.style.position = ''; section.style.inset = ''; section.style.zIndex = ''; section.style.padding = ''; section.style.margin = ''; section.style.background = '' }
+    if (container) { container.style.height = ''; container.style.width = ''; container.style.borderRadius = ''; container.style.maxWidth = '' }
+    const sectionText = section?.querySelector('.text-center')
+    if (sectionText) (sectionText as HTMLElement).style.display = ''
+    const containerParent = section?.querySelector('.container-custom')
+    if (containerParent) (containerParent as HTMLElement).style.padding = ''
+    const leafletDiv = container?.querySelector('.leaflet-container') as HTMLElement
+    if (leafletDiv) { leafletDiv.style.height = ''; leafletDiv.style.width = ''; leafletDiv.style.borderRadius = '' }
+    window.dispatchEvent(new CustomEvent('treeko-tour-end'))
+  }
+
+  const beginTourLoop = async (withSound: boolean) => {
+    setAudioEnabled(withSound)
+    audioEnabledRef.current = withSound
+    setTourChoosing(false)
 
     for (let i = 0; i < tourStops.length; i++) {
       if (tourAbortRef.current) break
@@ -188,37 +215,6 @@ export default function TreekoChat() {
     }
     closeTourMap()
     setTouring(false)
-  }, [])
-
-  const closeTourMap = () => {
-    document.body.style.overflow = ''
-    const section = document.getElementById('property-map-section')
-    const container = document.getElementById('property-map-container')
-    if (section) {
-      section.style.position = ''
-      section.style.inset = ''
-      section.style.zIndex = ''
-      section.style.padding = ''
-      section.style.margin = ''
-      section.style.background = ''
-    }
-    if (container) {
-      container.style.height = ''
-      container.style.width = ''
-      container.style.borderRadius = ''
-      container.style.maxWidth = ''
-    }
-    const sectionText = section?.querySelector('.text-center')
-    if (sectionText) (sectionText as HTMLElement).style.display = ''
-    const containerParent = section?.querySelector('.container-custom')
-    if (containerParent) (containerParent as HTMLElement).style.padding = ''
-    const leafletDiv = container?.querySelector('.leaflet-container') as HTMLElement
-    if (leafletDiv) {
-      leafletDiv.style.height = ''
-      leafletDiv.style.width = ''
-      leafletDiv.style.borderRadius = ''
-    }
-    window.dispatchEvent(new CustomEvent('treeko-tour-end'))
   }
 
   const stopTour = () => {
@@ -263,21 +259,46 @@ export default function TreekoChat() {
 
   return (
     <div className={`fixed z-[9999] flex flex-col items-end gap-2 ${touring ? 'bottom-2 right-2 md:bottom-4 md:right-4' : 'bottom-4 right-4'}`}>
+      {/* Sound choice overlay — shown before tour starts */}
+      {tourChoosing && (
+        <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-sm mx-4 text-center animate-slideUp">
+            <div className="w-16 h-16 mx-auto mb-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/treeko-idle.png" alt="Treeko" className="w-full h-full object-contain" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Ready for the tour!</h3>
+            <p className="text-gray-600 text-sm mb-6">How would you like to experience it?</p>
+            <div className="flex flex-col gap-3">
+              <button onClick={() => beginTourLoop(true)} className="w-full py-3 px-6 bg-forest-DEFAULT text-white font-semibold rounded-xl hover:bg-forest-dark transition-colors flex items-center justify-center gap-2">
+                🔊 Tour with Sound
+              </button>
+              <button onClick={() => beginTourLoop(false)} className="w-full py-3 px-6 bg-gray-100 text-gray-800 font-semibold rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
+                🔇 Tour without Sound
+              </button>
+              <button onClick={() => { setTourChoosing(false); closeTourMap(); setTouring(false) }} className="text-sm text-gray-400 hover:text-gray-600 mt-1">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Tour controls bar — shown during tour */}
-      {touring && (
-        <div className="fixed top-0 left-0 right-0 z-[10000] bg-forest-DEFAULT/95 backdrop-blur-sm text-white px-3 md:px-6 py-2 md:py-3 flex items-center justify-between animate-slideDown">
+      {touring && !tourChoosing && (
+        <div className="fixed top-0 left-0 right-0 z-[10000] bg-white/95 backdrop-blur-sm shadow-md text-gray-900 px-3 md:px-6 py-2 md:py-3 flex items-center justify-between animate-slideDown">
           <div className="flex items-center gap-2 min-w-0">
-            <span className="font-bold text-sm md:text-base whitespace-nowrap">{tourIndex + 1}/{tourStops.length}</span>
-            <span className="text-green-300 text-xs md:text-sm truncate">{tourStops[tourIndex]?.name}</span>
+            <span className="font-bold text-sm md:text-base whitespace-nowrap text-forest-DEFAULT">{tourIndex + 1}/{tourStops.length}</span>
+            <span className="text-gray-600 text-xs md:text-sm truncate">{tourStops[tourIndex]?.name}</span>
           </div>
           <div className="flex items-center gap-1 md:gap-3 flex-shrink-0">
-            <button onClick={() => setAudioEnabled(a => !a)} className="p-1.5 md:px-3 md:py-1 bg-white/20 rounded-lg text-xs md:text-sm hover:bg-white/30">
+            <button onClick={() => { setAudioEnabled(a => !a); audioEnabledRef.current = !audioEnabledRef.current }} className="p-1.5 md:px-3 md:py-1 bg-gray-100 rounded-lg text-xs md:text-sm hover:bg-gray-200">
               {audioEnabled ? '🔊' : '🔇'}<span className="hidden md:inline"> {audioEnabled ? 'Audio On' : 'Audio Off'}</span>
             </button>
-            <button onClick={toggleTourPause} className="p-1.5 md:px-3 md:py-1 bg-white/20 rounded-lg text-xs md:text-sm hover:bg-white/30">
+            <button onClick={toggleTourPause} className="p-1.5 md:px-3 md:py-1 bg-gray-100 rounded-lg text-xs md:text-sm hover:bg-gray-200">
               {tourPaused ? '▶' : '⏸'}<span className="hidden md:inline"> {tourPaused ? 'Resume' : 'Pause'}</span>
             </button>
-            <button onClick={stopTour} className="p-1.5 md:px-3 md:py-1 bg-red-500/80 rounded-lg text-xs md:text-sm hover:bg-red-500">
+            <button onClick={stopTour} className="p-1.5 md:px-3 md:py-1 bg-red-100 text-red-700 rounded-lg text-xs md:text-sm hover:bg-red-200">
               ✕<span className="hidden md:inline"> End Tour</span>
             </button>
           </div>
