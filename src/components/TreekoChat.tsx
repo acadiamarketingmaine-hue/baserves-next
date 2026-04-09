@@ -102,14 +102,15 @@ export default function TreekoChat() {
     if (!audioEnabledRef.current) return
     try {
       if (audioRef.current) { audioRef.current.pause(); audioRef.current = null }
-      setIsSpeaking(true)
+      // Don't set isSpeaking yet — wait until audio actually plays
       const res = await fetch('/api/treeko/speak', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }) })
-      if (!res.ok) { setIsSpeaking(false); return }
+      if (!res.ok) return
       const blob = await res.blob()
       const url = URL.createObjectURL(blob)
       const audio = new Audio(url)
       audioRef.current = audio
       return new Promise((resolve) => {
+        audio.onplay = () => setIsSpeaking(true) // Mouth starts when audio actually plays
         audio.onended = () => { URL.revokeObjectURL(url); setIsSpeaking(false); resolve() }
         audio.onerror = () => { URL.revokeObjectURL(url); setIsSpeaking(false); resolve() }
         audio.play().catch(() => { setIsSpeaking(false); resolve() })
@@ -218,13 +219,16 @@ export default function TreekoChat() {
       window.dispatchEvent(new CustomEvent('treeko-tour-focus', { detail: { lat: stop.lat, lng: stop.lng, slug: stop.slug, index: i } }))
       setMessages(prev => [...prev, { role: 'treeko', text: `📍 [${stop.name}](/${stop.slug}): ${stop.summary}` }])
 
-      // Wait for fly animation
-      await sleep(1500)
+      // Wait for fly animation — shorter when audio since speech fills the time
+      await sleep(audioEnabledRef.current ? 800 : 1500)
 
       if (audioEnabledRef.current) {
+        // speakAndWait only sets isSpeaking when audio.onplay fires
         await speakAndWait(`${stop.name}. ${stop.summary}`)
-        await sleep(500)
+        // Brief pause after speech ends, then move on
+        await sleep(300)
       } else {
+        // No audio — simulate talking and give time to read
         setIsSpeaking(true)
         await sleep(3500)
         setIsSpeaking(false)
