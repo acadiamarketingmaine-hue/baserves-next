@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import Image from 'next/image'
 
 type ChatState = 'idle' | 'greeting' | 'chatting'
 
@@ -22,8 +23,6 @@ export default function TreekoChat() {
         setMessages([{ role: 'treeko', text: greeting }])
         setState('chatting')
       })
-    } else if (state === 'chatting') {
-      // Toggle chat panel visibility handled by CSS
     }
   }
 
@@ -56,8 +55,8 @@ export default function TreekoChat() {
           {/* Header */}
           <div className="bg-forest-DEFAULT px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-green-400/20 flex items-center justify-center">
-                <TreeIcon size={18} />
+              <div className="w-8 h-8 rounded-full overflow-hidden bg-green-400/20 flex-shrink-0">
+                <Image src="/images/treeko-thumb.png" alt="Treeko" width={32} height={32} />
               </div>
               <div>
                 <p className="text-white font-semibold text-sm">Treeko</p>
@@ -92,9 +91,7 @@ export default function TreekoChat() {
               e.preventDefault()
               if (!input.trim()) return
               setMessages(prev => [...prev, { role: 'user', text: input }])
-              const userMsg = input
               setInput('')
-              // Simple auto-response for now
               setTimeout(() => {
                 setMessages(prev => [...prev, {
                   role: 'treeko',
@@ -128,7 +125,7 @@ export default function TreekoChat() {
       {state === 'greeting' && displayedText && (
         <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-4 max-w-72 mb-2 animate-slideUp relative">
           <div className="text-sm text-gray-800 leading-relaxed">{displayedText}</div>
-          <div className="absolute -bottom-2 right-8 w-4 h-4 bg-white border-r border-b border-gray-200 transform rotate-45" />
+          <div className="absolute -bottom-2 right-10 w-4 h-4 bg-white border-r border-b border-gray-200 transform rotate-45" />
         </div>
       )}
 
@@ -145,11 +142,27 @@ export default function TreekoChat() {
           </div>
         )}
 
-        {/* Tree character */}
-        <div className={`w-16 h-16 rounded-full bg-forest-DEFAULT shadow-lg flex items-center justify-center transition-transform ${
+        {/* Treeko image — idle (static) or talking (animated GIF) */}
+        <div className={`w-20 h-20 rounded-full overflow-hidden shadow-lg border-2 border-white transition-transform ${
           state === 'idle' ? 'animate-treeko-idle group-hover:scale-110' : ''
         } ${isTyping ? 'animate-treeko-talk' : ''}`}>
-          <TreeIcon size={36} />
+          {isTyping ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src="/images/treeko-talking.gif"
+              alt="Treeko talking"
+              className="w-full h-full object-cover scale-150 object-[center_35%]"
+            />
+          ) : (
+            <Image
+              src="/images/treeko-idle.png"
+              alt="Treeko"
+              width={80}
+              height={80}
+              className="w-full h-full object-cover scale-150 object-[center_35%]"
+              priority
+            />
+          )}
         </div>
       </button>
 
@@ -161,16 +174,8 @@ export default function TreekoChat() {
           75% { transform: translateY(-4px) rotate(0.5deg); }
         }
         @keyframes treeko-talk {
-          0%, 100% { transform: scale(1) rotate(0deg); }
-          10% { transform: scale(1.05) rotate(-2deg); }
-          20% { transform: scale(0.98) rotate(1deg); }
-          30% { transform: scale(1.04) rotate(-1deg); }
-          40% { transform: scale(0.97) rotate(2deg); }
-          50% { transform: scale(1.03) rotate(-1.5deg); }
-          60% { transform: scale(0.99) rotate(1deg); }
-          70% { transform: scale(1.02) rotate(-0.5deg); }
-          80% { transform: scale(1) rotate(1deg); }
-          90% { transform: scale(1.01) rotate(-0.5deg); }
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
         }
         @keyframes slideUp {
           from { opacity: 0; transform: translateY(10px); }
@@ -180,39 +185,12 @@ export default function TreekoChat() {
           animation: treeko-idle 3s ease-in-out infinite;
         }
         .animate-treeko-talk {
-          animation: treeko-talk 0.6s ease-in-out infinite;
+          animation: treeko-talk 1s ease-in-out infinite;
         }
         .animate-slideUp {
           animation: slideUp 0.3s ease-out;
         }
       `}</style>
     </div>
-  )
-}
-
-function TreeIcon({ size = 36 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Trunk */}
-      <rect x="27" y="44" width="10" height="12" rx="2" fill="#8B5E3C" />
-      {/* Tree body - layered triangles */}
-      <path d="M32 6L48 28H16L32 6Z" fill="#4CAF50" />
-      <path d="M32 14L50 36H14L32 14Z" fill="#388E3C" />
-      <path d="M32 22L52 46H12L32 22Z" fill="#2E7D32" />
-      {/* Face - eyes */}
-      <circle cx="25" cy="33" r="2.5" fill="white" />
-      <circle cx="39" cy="33" r="2.5" fill="white" />
-      <circle cx="25.8" cy="33.5" r="1.2" fill="#1B5E20" />
-      <circle cx="39.8" cy="33.5" r="1.2" fill="#1B5E20" />
-      {/* Smile */}
-      <path d="M27 38C27 38 30 42 32 42C34 42 37 38 37 38" stroke="#1B5E20" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-      {/* Cheeks */}
-      <circle cx="22" cy="37" r="2" fill="#A5D6A7" opacity="0.6" />
-      <circle cx="42" cy="37" r="2" fill="#A5D6A7" opacity="0.6" />
-      {/* Waving hand/branch */}
-      <g className="treeko-wave-hand">
-        <path d="M50 30C52 28 55 26 56 28C57 30 54 32 52 33L50 30Z" fill="#4CAF50" />
-      </g>
-    </svg>
   )
 }
