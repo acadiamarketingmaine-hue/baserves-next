@@ -1341,7 +1341,7 @@ export default function HomePage() {
               Click a pin to explore our recreation areas
             </p>
           </div>
-          <div className="h-[500px]">
+          <div id="property-map-container" className="h-[500px] transition-all duration-700">
             <PropertyMap />
           </div>
         </div>

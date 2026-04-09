@@ -124,31 +124,46 @@ export default function TreekoChat() {
   }, [messages])
 
   const audioEnabledRef = useRef(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
   useEffect(() => { audioEnabledRef.current = audioEnabled }, [audioEnabled])
 
-  const speakAndWait = (text: string): Promise<void> => {
-    return new Promise((resolve) => {
-      if (!audioEnabledRef.current || !('speechSynthesis' in window)) {
-        resolve()
-        return
-      }
-      window.speechSynthesis.cancel()
+  const speakAndWait = async (text: string): Promise<void> => {
+    if (!audioEnabledRef.current) return
 
-      // Small delay to let cancel complete
-      setTimeout(() => {
-        const utter = new SpeechSynthesisUtterance(`${text}`)
-        utter.rate = 1.0
-        utter.pitch = 1.0
-        // Pick a good voice
-        const voices = window.speechSynthesis.getVoices()
-        const preferred = voices.find(v => v.name.includes('Samantha') || v.name.includes('Google US') || v.name.includes('Alex'))
-        if (preferred) utter.voice = preferred
-        utter.onend = () => resolve()
-        utter.onerror = () => resolve()
-        synthRef.current = utter
-        window.speechSynthesis.speak(utter)
-      }, 100)
-    })
+    try {
+      // Stop any currently playing audio
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current = null
+      }
+
+      const res = await fetch('/api/treeko/speak', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
+      })
+
+      if (!res.ok) return
+
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const audio = new Audio(url)
+      audioRef.current = audio
+
+      return new Promise((resolve) => {
+        audio.onended = () => {
+          URL.revokeObjectURL(url)
+          resolve()
+        }
+        audio.onerror = () => {
+          URL.revokeObjectURL(url)
+          resolve()
+        }
+        audio.play().catch(() => resolve())
+      })
+    } catch {
+      // Silently fail — tour continues without audio
+    }
   }
 
   const startTour = useCallback(async () => {
@@ -156,7 +171,9 @@ export default function TreekoChat() {
     setTourPaused(false)
     tourAbortRef.current = false
 
-    // Expand the map viewport
+    // Expand the map viewport — both the leaflet container AND the parent div
+    const mapContainer = document.getElementById('property-map-container')
+    if (mapContainer) mapContainer.style.height = '85vh'
     window.dispatchEvent(new CustomEvent('treeko-tour-start'))
 
     // Scroll to map
@@ -198,6 +215,8 @@ export default function TreekoChat() {
     }
 
     // Restore map size
+    const mapContainerEnd = document.getElementById('property-map-container')
+    if (mapContainerEnd) mapContainerEnd.style.height = '500px'
     window.dispatchEvent(new CustomEvent('treeko-tour-end'))
     setTouring(false)
   }, [])
@@ -206,14 +225,16 @@ export default function TreekoChat() {
     tourAbortRef.current = true
     setTouring(false)
     setTourPaused(false)
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel()
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current = null }
   }
 
   const toggleTourPause = () => {
     setTourPaused(p => {
       const next = !p
-      if (next && 'speechSynthesis' in window) window.speechSynthesis.pause()
-      if (!next && 'speechSynthesis' in window) window.speechSynthesis.resume()
+      if (audioRef.current) {
+        if (next) audioRef.current.pause()
+        else audioRef.current.play().catch(() => {})
+      }
       return next
     })
   }
