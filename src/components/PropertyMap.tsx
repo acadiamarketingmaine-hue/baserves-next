@@ -179,6 +179,18 @@ function RestAreaMarker({ restArea }: { restArea: typeof allRestAreas[number] })
 function TourHandler() {
   const map = useMap()
 
+  // Invalidate map size when tour starts (after container expands)
+  useEffect(() => {
+    const onStart = () => setTimeout(() => map.invalidateSize(), 800)
+    const onEnd = () => setTimeout(() => map.invalidateSize(), 800)
+    window.addEventListener('treeko-tour-start', onStart)
+    window.addEventListener('treeko-tour-end', onEnd)
+    return () => {
+      window.removeEventListener('treeko-tour-start', onStart)
+      window.removeEventListener('treeko-tour-end', onEnd)
+    }
+  }, [map])
+
   useEffect(() => {
     const handler = (e: Event) => {
       const { lat, lng, slug } = (e as CustomEvent).detail
@@ -236,6 +248,7 @@ function ScrollZoomHandler({ onScrollAttempt }: { onScrollAttempt: () => void })
 
 export default function PropertyMap() {
   const [showScrollMsg, setShowScrollMsg] = useState(false)
+  const [tourMode, setTourMode] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const isMac = typeof navigator !== 'undefined' && /Mac/.test(navigator.userAgent)
 
@@ -245,13 +258,25 @@ export default function PropertyMap() {
     timeoutRef.current = setTimeout(() => setShowScrollMsg(false), 1500)
   }, [])
 
+  // Listen for tour start/end to expand map
+  useEffect(() => {
+    const onStart = () => setTourMode(true)
+    const onEnd = () => setTourMode(false)
+    window.addEventListener('treeko-tour-start', onStart)
+    window.addEventListener('treeko-tour-end', onEnd)
+    return () => {
+      window.removeEventListener('treeko-tour-start', onStart)
+      window.removeEventListener('treeko-tour-end', onEnd)
+    }
+  }, [])
+
   return (
-    <div className="relative z-10 w-full h-full min-h-[400px]">
+    <div className={`relative z-10 w-full transition-all duration-700 ${tourMode ? 'min-h-[85vh]' : 'h-full min-h-[400px]'}`}>
       <MapContainer
         center={[39.5, -96.0]}
         zoom={4}
         scrollWheelZoom={false}
-        style={{ height: '100%', width: '100%', minHeight: '400px', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
+        style={{ height: '100%', width: '100%', minHeight: tourMode ? '85vh' : '400px', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
       >
         <TileLayer
           attribution='&copy; <a href="https://carto.com/">CARTO</a>'

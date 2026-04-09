@@ -117,15 +117,55 @@ export default function TreekoChat() {
     }
   }
 
+  // Auto-scroll chat to bottom when messages change
+  useEffect(() => {
+    const el = document.getElementById('treeko-messages')
+    if (el) el.scrollTop = el.scrollHeight
+  }, [messages])
+
+  const audioEnabledRef = useRef(false)
+  useEffect(() => { audioEnabledRef.current = audioEnabled }, [audioEnabled])
+
+  const speakAndWait = (text: string): Promise<void> => {
+    return new Promise((resolve) => {
+      if (!audioEnabledRef.current || !('speechSynthesis' in window)) {
+        resolve()
+        return
+      }
+      window.speechSynthesis.cancel()
+
+      // Small delay to let cancel complete
+      setTimeout(() => {
+        const utter = new SpeechSynthesisUtterance(`${text}`)
+        utter.rate = 1.0
+        utter.pitch = 1.0
+        // Pick a good voice
+        const voices = window.speechSynthesis.getVoices()
+        const preferred = voices.find(v => v.name.includes('Samantha') || v.name.includes('Google US') || v.name.includes('Alex'))
+        if (preferred) utter.voice = preferred
+        utter.onend = () => resolve()
+        utter.onerror = () => resolve()
+        synthRef.current = utter
+        window.speechSynthesis.speak(utter)
+      }, 100)
+    })
+  }
+
   const startTour = useCallback(async () => {
     setTouring(true)
     setTourPaused(false)
     tourAbortRef.current = false
 
+    // Expand the map viewport
+    window.dispatchEvent(new CustomEvent('treeko-tour-start'))
+
     // Scroll to map
     const mapEl = document.getElementById('property-map-section')
-    if (mapEl) mapEl.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    await sleep(1000)
+    if (mapEl) mapEl.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    await sleep(1200)
+
+    // Ensure voices are loaded (needed for first speech)
+    if ('speechSynthesis' in window) window.speechSynthesis.getVoices()
 
     for (let i = 0; i < tourStops.length; i++) {
       if (tourAbortRef.current) break
@@ -143,26 +183,24 @@ export default function TreekoChat() {
       // Add Treeko's narration
       setMessages(prev => [...prev, { role: 'treeko', text: `📍 ${stop.name}: ${stop.summary}` }])
 
-      // Speak if audio enabled
-      if (audioEnabled && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel()
-        const utter = new SpeechSynthesisUtterance(stop.summary)
-        utter.rate = 1.1
-        utter.pitch = 1.05
-        synthRef.current = utter
-        window.speechSynthesis.speak(utter)
+      // Wait for speech to finish if audio is on, otherwise fixed delay
+      if (audioEnabledRef.current) {
+        await speakAndWait(`${stop.name}. ${stop.summary}`)
+        await sleep(1000) // brief pause between stops
+      } else {
+        await sleep(6000)
       }
-
-      // Wait before next stop
-      await sleep(6000)
       await waitWhilePaused()
     }
 
     if (!tourAbortRef.current) {
       setMessages(prev => [...prev, { role: 'treeko', text: "That's the full tour! Want to learn more about any of these properties? Just ask!" }])
     }
+
+    // Restore map size
+    window.dispatchEvent(new CustomEvent('treeko-tour-end'))
     setTouring(false)
-  }, [audioEnabled])
+  }, [])
 
   const stopTour = () => {
     tourAbortRef.current = true
@@ -177,6 +215,44 @@ export default function TreekoChat() {
       if (next && 'speechSynthesis' in window) window.speechSynthesis.pause()
       if (!next && 'speechSynthesis' in window) window.speechSynthesis.resume()
       return next
+    })
+  }
+
+  // Auto-link URLs, phone numbers, and emails in message text
+  const linkify = (text: string) => {
+    const parts: Array<string | { type: 'link' | 'phone' | 'email'; text: string; href: string }> = []
+    // Match URLs (with or without protocol), phone numbers, and emails
+    const regex = /(https?:\/\/[^\s,)]+|(?:baserves\.com|escape\.baserves\.com|mostateparks\.com|canalbridgeme\.com)[^\s,)]*|\b[\w.-]+@[\w.-]+\.\w+\b|\b\d{3}[-.]?\d{3}[-.]?\d{4}\b)/gi
+    let lastIndex = 0
+    let match
+
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.slice(lastIndex, match.index))
+      }
+      const m = match[0]
+      if (m.includes('@') && !m.startsWith('http')) {
+        parts.push({ type: 'email', text: m, href: `mailto:${m}` })
+      } else if (/^\d{3}[-.]?\d{3}[-.]?\d{4}$/.test(m)) {
+        parts.push({ type: 'phone', text: m, href: `tel:${m.replace(/[-.]/g, '')}` })
+      } else {
+        const href = m.startsWith('http') ? m : `https://${m}`
+        parts.push({ type: 'link', text: m, href })
+      }
+      lastIndex = regex.lastIndex
+    }
+    if (lastIndex < text.length) parts.push(text.slice(lastIndex))
+
+    return parts.map((part, i) => {
+      if (typeof part === 'string') return <span key={i}>{part}</span>
+      return (
+        <a key={i} href={part.href} target={part.type === 'link' ? '_blank' : undefined}
+          rel={part.type === 'link' ? 'noopener noreferrer' : undefined}
+          className="underline font-semibold hover:opacity-80 transition-opacity"
+          style={{ color: 'inherit' }}>
+          {part.text}
+        </a>
+      )
     })
   }
 
@@ -253,7 +329,7 @@ export default function TreekoChat() {
                       </button>
                       ?
                     </span>
-                  ) : msg.text}
+                  ) : linkify(msg.text)}
                 </div>
               </div>
             ))}
