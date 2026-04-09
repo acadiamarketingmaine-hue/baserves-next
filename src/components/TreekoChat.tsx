@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { tourStops } from '@/data/property-tour'
 
@@ -38,6 +39,8 @@ export default function TreekoChat() {
 
   useEffect(() => { tourPausedRef.current = tourPaused }, [tourPaused])
   useEffect(() => { audioEnabledRef.current = audioEnabled }, [audioEnabled])
+
+  const pathname = usePathname()
 
   // Auto-scroll chat
   useEffect(() => {
@@ -151,6 +154,12 @@ export default function TreekoChat() {
   }
 
   const startTour = useCallback(async () => {
+    // If not on homepage, navigate there first
+    if (pathname !== '/') {
+      window.location.href = '/?tour=1'
+      return
+    }
+
     setTouring(true)
     setTourPaused(false)
     tourAbortRef.current = false
@@ -164,6 +173,19 @@ export default function TreekoChat() {
 
     // Show sound choice
     setTourChoosing(true)
+  }, [pathname])
+
+  // Auto-start tour if ?tour=1 is in URL (e.g. navigated from another page)
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('tour') === '1' && pathname === '/') {
+      window.history.replaceState({}, '', '/')
+      setState('chatting')
+      setMessages([{ role: 'treeko', text: greeting }])
+      setTimeout(() => startTour(), 500)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const closeTourMap = () => {

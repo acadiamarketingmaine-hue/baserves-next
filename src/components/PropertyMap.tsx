@@ -209,9 +209,14 @@ function TourHandler() {
       if (tourPopupRef.current) map.closePopup(tourPopupRef.current)
       if (slideIntervalRef.current) clearInterval(slideIntervalRef.current)
 
-      map.flyTo([lat, lng], 10, { duration: 1.2 })
+      // Calculate distance to determine fly duration — longer for cross-country
+      const currentCenter = map.getCenter()
+      const dist = Math.sqrt(Math.pow(lat - currentCenter.lat, 2) + Math.pow(lng - currentCenter.lng, 2))
+      const flyDuration = Math.min(Math.max(dist * 0.3, 1.5), 4) // 1.5s minimum, 4s max
+      map.flyTo([lat, lng], 10, { duration: flyDuration })
 
-      // After fly, show popup with sliding images
+      // After fly, show popup with sliding images (wait for fly to finish)
+      const popupDelay = flyDuration * 1000 + 200
       setTimeout(() => {
         let imgIndex = 0
         const popupId = `tour-popup-img-${Date.now()}`
