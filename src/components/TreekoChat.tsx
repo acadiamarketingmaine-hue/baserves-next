@@ -136,8 +136,8 @@ export default function TreekoChat() {
     // Hide the section header/text and remove container padding during tour
     const sectionText = section?.querySelector('.text-center')
     if (sectionText) (sectionText as HTMLElement).style.display = 'none'
-    const containerParent = section?.querySelector('.container-custom')
-    if (containerParent) (containerParent as HTMLElement).style.padding = '0'
+    const containerParent = section?.querySelector('.container-custom') as HTMLElement
+    if (containerParent) { containerParent.style.padding = '0'; containerParent.style.maxWidth = 'none'; containerParent.style.width = '100vw' }
 
     // Also force the Leaflet map div itself to fill
     const leafletDiv = container?.querySelector('.leaflet-container') as HTMLElement
@@ -174,8 +174,8 @@ export default function TreekoChat() {
     if (container) { container.style.height = ''; container.style.width = ''; container.style.borderRadius = ''; container.style.maxWidth = '' }
     const sectionText = section?.querySelector('.text-center')
     if (sectionText) (sectionText as HTMLElement).style.display = ''
-    const containerParent = section?.querySelector('.container-custom')
-    if (containerParent) (containerParent as HTMLElement).style.padding = ''
+    const containerParent = section?.querySelector('.container-custom') as HTMLElement
+    if (containerParent) { containerParent.style.padding = ''; containerParent.style.maxWidth = ''; containerParent.style.width = '' }
     const leafletDiv = container?.querySelector('.leaflet-container') as HTMLElement
     if (leafletDiv) { leafletDiv.style.height = ''; leafletDiv.style.width = ''; leafletDiv.style.borderRadius = '' }
     window.dispatchEvent(new CustomEvent('treeko-tour-end'))
