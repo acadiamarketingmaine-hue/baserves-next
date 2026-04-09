@@ -108,6 +108,87 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* DOT Contracts — Top of page */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Government Contracts</span>
+          <h2 className="headline-lg text-gray-900 mb-4">DOT Rest Area Management</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mb-10">
+            We partner with state Departments of Transportation to operate and maintain rest area facilities, ensuring safe and welcoming stops for millions of travelers.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Link href="/services/iowa-dot" className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-forest-DEFAULT transition-colors">Iowa DOT</h3>
+                    <p className="text-sm text-gray-500">Department of Transportation</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-4">Rest area facilities along the I-29 corridor near Sioux City, serving northbound and southbound travelers.</p>
+                <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <span className="font-semibold text-gray-900">2</span> Rest Areas
+                  <span className="text-gray-300">|</span>
+                  <span className="font-semibold text-gray-900">I-29</span> Corridor
+                </div>
+              </div>
+            </Link>
+            <Link href="/services/utah-dot" className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center">
+                    <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-forest-DEFAULT transition-colors">Utah DOT</h3>
+                    <p className="text-sm text-gray-500">Department of Transportation</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-4">Statewide rest area management across 28 facilities spanning I-15, I-80, I-70, and scenic byways through three regions.</p>
+                <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <span className="font-semibold text-gray-900">28</span> Rest Areas
+                  <span className="text-gray-300">|</span>
+                  <span className="font-semibold text-gray-900">3</span> Regions
+                  <span className="text-gray-300">|</span>
+                  <span className="font-semibold text-gray-900">Statewide</span>
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Scope of Services */}
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">Scope of Services</h3>
+          <p className="text-gray-600 max-w-3xl mb-8">
+            Our DOT contracts cover comprehensive facility management across all aspects of rest area operations.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { title: 'Facility Management', items: ['Daily operations & administration', 'Full staffing & workforce management', 'Quality control & oversight'] },
+              { title: 'Janitorial & Sanitation', items: ['Restroom cleaning & disinfecting', 'Supply replenishment', 'Deep cleaning cycles'] },
+              { title: 'Grounds & Maintenance', items: ['Lawn care & landscaping', 'Snow & ice removal', 'Preventive maintenance programs'] },
+              { title: 'Compliance & Safety', items: ['24/7 emergency availability', 'Performance monitoring', 'Environmental compliance'] },
+            ].map((cat) => (
+              <div key={cat.title} className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+                <h4 className="font-bold text-gray-900 text-sm mb-3">{cat.title}</h4>
+                <ul className="space-y-2">
+                  {cat.items.map((item) => (
+                    <li key={item} className="flex items-start text-xs text-gray-600">
+                      <svg className="w-3.5 h-3.5 mr-1.5 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services List */}
       <section className="section">
         <div className="container-custom px-6">
@@ -152,59 +233,6 @@ export default function ServicesPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DOT Contracts */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Government Contracts</span>
-          <h2 className="headline-lg text-gray-900 mb-4">DOT Rest Area Management</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mb-10">
-            We partner with state Departments of Transportation to operate and maintain rest area facilities, ensuring safe and welcoming stops for millions of travelers.
-          </p>
-          <div className="grid md:grid-cols-2 gap-8">
-            <Link href="/services/iowa-dot" className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-forest-DEFAULT transition-colors">Iowa DOT</h3>
-                    <p className="text-sm text-gray-500">Department of Transportation</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 mb-4">Rest area facilities along the I-29 corridor near Sioux City, serving northbound and southbound travelers.</p>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <span className="font-semibold text-gray-900">2</span> Rest Areas
-                  <span className="text-gray-300">|</span>
-                  <span className="font-semibold text-gray-900">I-29</span> Corridor
-                </div>
-              </div>
-            </Link>
-            <Link href="/services/utah-dot" className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center">
-                    <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-forest-DEFAULT transition-colors">Utah DOT</h3>
-                    <p className="text-sm text-gray-500">Department of Transportation</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 mb-4">Statewide rest area management across 28 facilities spanning I-15, I-80, I-70, and scenic byways through three regions.</p>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <span className="font-semibold text-gray-900">28</span> Rest Areas
-                  <span className="text-gray-300">|</span>
-                  <span className="font-semibold text-gray-900">3</span> Regions
-                  <span className="text-gray-300">|</span>
-                  <span className="font-semibold text-gray-900">Statewide</span>
-                </div>
-              </div>
-            </Link>
           </div>
         </div>
       </section>
