@@ -19,7 +19,7 @@ export default function TreekoChat() {
     const idle = new window.Image()
     idle.src = '/images/treeko-idle.png'
     const talking = new window.Image()
-    talking.src = '/images/treeko-talking.gif'
+    talking.src = '/images/treeko-talking.png'
   }, [])
 
   const handleClick = () => {
@@ -45,7 +45,7 @@ export default function TreekoChat() {
         clearInterval(interval)
         onDone()
       }
-    }, 30)
+    }, 60)
   }
 
   const handleClose = () => {
@@ -56,7 +56,7 @@ export default function TreekoChat() {
   }
 
   return (
-    <div className="fixed bottom-0 right-4 z-50 flex flex-col items-end">
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
       {/* Chat Panel */}
       {state === 'chatting' && (
         <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 w-80 sm:w-96 mb-2 overflow-hidden animate-slideUp">
@@ -152,23 +152,23 @@ export default function TreekoChat() {
           </div>
         )}
 
-        {/* Treeko image — raw character, double size on desktop, no background */}
-        <div className={`w-24 h-28 md:w-48 md:h-56 relative transition-transform ${
+        {/* Treeko image — raw character, no background */}
+        <div className={`w-24 h-28 relative transition-transform ${
           state === 'idle' ? 'animate-treeko-idle group-hover:scale-105' : ''
         } ${isTyping ? 'animate-treeko-talk' : ''}`}>
           {isTyping ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src="/images/treeko-talking.gif"
+              src="/images/treeko-talking.png"
               alt="Treeko talking"
-              className="w-full h-full object-contain object-bottom drop-shadow-lg mix-blend-multiply"
+              className="w-full h-full object-contain object-bottom drop-shadow-lg"
             />
           ) : (
             <Image
               src="/images/treeko-idle.png"
               alt="Treeko"
-              width={192}
-              height={224}
+              width={96}
+              height={112}
               className="w-full h-full object-contain object-bottom drop-shadow-lg"
               priority
             />
