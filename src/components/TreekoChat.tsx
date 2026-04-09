@@ -123,16 +123,27 @@ export default function TreekoChat() {
     if (mapEl) mapEl.scrollIntoView({ behavior: 'smooth', block: 'start' })
     await sleep(800)
 
-    // Expand map to fullscreen
+    // Expand map to fullscreen — take over entire section and lock scroll
+    document.body.style.overflow = 'hidden'
+    const section = document.getElementById('property-map-section')
     const container = document.getElementById('property-map-container')
+    if (section) {
+      section.style.position = 'fixed'
+      section.style.inset = '0'
+      section.style.zIndex = '9998'
+      section.style.padding = '0'
+      section.style.margin = '0'
+      section.style.background = '#000'
+      section.style.transition = 'all 0.4s ease-in-out'
+    }
     if (container) {
-      container.style.position = 'fixed'
-      container.style.inset = '0'
-      container.style.zIndex = '9998'
       container.style.height = '100vh'
       container.style.borderRadius = '0'
-      container.style.transition = 'all 0.5s ease-in-out'
     }
+    // Hide the section header/text during tour
+    const sectionText = section?.querySelector('.text-center')
+    if (sectionText) (sectionText as HTMLElement).style.display = 'none'
+
     window.dispatchEvent(new CustomEvent('treeko-tour-start'))
     await sleep(800)
 
@@ -168,14 +179,23 @@ export default function TreekoChat() {
   }, [])
 
   const closeTourMap = () => {
+    document.body.style.overflow = ''
+    const section = document.getElementById('property-map-section')
     const container = document.getElementById('property-map-container')
+    if (section) {
+      section.style.position = ''
+      section.style.inset = ''
+      section.style.zIndex = ''
+      section.style.padding = ''
+      section.style.margin = ''
+      section.style.background = ''
+    }
     if (container) {
-      container.style.position = ''
-      container.style.inset = ''
-      container.style.zIndex = ''
       container.style.height = ''
       container.style.borderRadius = ''
     }
+    const sectionText = section?.querySelector('.text-center')
+    if (sectionText) (sectionText as HTMLElement).style.display = ''
     window.dispatchEvent(new CustomEvent('treeko-tour-end'))
   }
 
@@ -220,23 +240,23 @@ export default function TreekoChat() {
   if (!imagesLoaded) return null
 
   return (
-    <div className="fixed bottom-4 right-4 z-[9999] flex flex-col items-end gap-2">
+    <div className={`fixed z-[9999] flex flex-col items-end gap-2 ${touring ? 'bottom-2 right-2 md:bottom-4 md:right-4' : 'bottom-4 right-4'}`}>
       {/* Tour controls bar — shown during tour */}
       {touring && (
-        <div className="fixed top-0 left-0 right-0 z-[10000] bg-forest-DEFAULT/95 backdrop-blur-sm text-white px-6 py-3 flex items-center justify-between animate-slideDown">
-          <div className="flex items-center gap-3">
-            <span className="font-bold">Property Tour</span>
-            <span className="text-green-300 text-sm">{tourIndex + 1} / {tourStops.length} — {tourStops[tourIndex]?.name}</span>
+        <div className="fixed top-0 left-0 right-0 z-[10000] bg-forest-DEFAULT/95 backdrop-blur-sm text-white px-3 md:px-6 py-2 md:py-3 flex items-center justify-between animate-slideDown">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="font-bold text-sm md:text-base whitespace-nowrap">{tourIndex + 1}/{tourStops.length}</span>
+            <span className="text-green-300 text-xs md:text-sm truncate">{tourStops[tourIndex]?.name}</span>
           </div>
-          <div className="flex items-center gap-3">
-            <button onClick={() => setAudioEnabled(a => !a)} className="px-3 py-1 bg-white/20 rounded-lg text-sm hover:bg-white/30">
-              {audioEnabled ? '🔊 Audio On' : '🔇 Audio Off'}
+          <div className="flex items-center gap-1 md:gap-3 flex-shrink-0">
+            <button onClick={() => setAudioEnabled(a => !a)} className="p-1.5 md:px-3 md:py-1 bg-white/20 rounded-lg text-xs md:text-sm hover:bg-white/30">
+              {audioEnabled ? '🔊' : '🔇'}<span className="hidden md:inline"> {audioEnabled ? 'Audio On' : 'Audio Off'}</span>
             </button>
-            <button onClick={toggleTourPause} className="px-3 py-1 bg-white/20 rounded-lg text-sm hover:bg-white/30">
-              {tourPaused ? '▶ Resume' : '⏸ Pause'}
+            <button onClick={toggleTourPause} className="p-1.5 md:px-3 md:py-1 bg-white/20 rounded-lg text-xs md:text-sm hover:bg-white/30">
+              {tourPaused ? '▶' : '⏸'}<span className="hidden md:inline"> {tourPaused ? 'Resume' : 'Pause'}</span>
             </button>
-            <button onClick={stopTour} className="px-3 py-1 bg-red-500/80 rounded-lg text-sm hover:bg-red-500">
-              ✕ End Tour
+            <button onClick={stopTour} className="p-1.5 md:px-3 md:py-1 bg-red-500/80 rounded-lg text-xs md:text-sm hover:bg-red-500">
+              ✕<span className="hidden md:inline"> End Tour</span>
             </button>
           </div>
         </div>
@@ -244,7 +264,7 @@ export default function TreekoChat() {
 
       {/* Chat Panel */}
       {state === 'chatting' && (
-        <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 w-80 sm:w-96 mb-2 overflow-hidden animate-slideUp">
+        <div className={`bg-white rounded-2xl shadow-2xl border border-gray-200 mb-2 overflow-hidden animate-slideUp ${touring ? 'w-72 sm:w-80' : 'w-80 sm:w-96'}`}>
           <div className="bg-forest-DEFAULT px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
@@ -260,7 +280,7 @@ export default function TreekoChat() {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
-          <div className="p-4 max-h-72 overflow-y-auto space-y-3" id="treeko-messages">
+          <div className={`p-4 overflow-y-auto space-y-3 ${touring ? 'max-h-40 md:max-h-56' : 'max-h-72'}`} id="treeko-messages">
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[80%] px-3 py-2 rounded-2xl text-sm ${msg.role === 'user' ? 'bg-forest-DEFAULT text-white rounded-br-md' : 'bg-gray-100 text-gray-800 rounded-bl-md'}`}>
