@@ -203,8 +203,8 @@ export default function TreekoChat() {
 
         {/* Always render idle image as base layer */}
         <div className={`w-24 h-28 relative transition-transform ${
-          state === 'idle' ? 'animate-treeko-idle group-hover:scale-105' : ''
-        } ${isTyping ? 'animate-treeko-talk' : ''}`}>
+          isTyping ? 'animate-treeko-talk' : 'animate-treeko-sway group-hover:scale-105'
+        }`}>
           {/* Base: always-visible idle image */}
           <Image
             src="/images/treeko-idle.png"
@@ -225,11 +225,10 @@ export default function TreekoChat() {
       </button>
 
       <style jsx global>{`
-        @keyframes treeko-idle {
-          0%, 100% { transform: translateY(0) rotate(0deg); }
-          25% { transform: translateY(-3px) rotate(1deg); }
-          50% { transform: translateY(-1px) rotate(-1deg); }
-          75% { transform: translateY(-4px) rotate(0.5deg); }
+        @keyframes treeko-sway {
+          0%, 100% { transform: rotate(0deg); transform-origin: center top; }
+          25% { transform: rotate(2.5deg); transform-origin: center top; }
+          75% { transform: rotate(-2.5deg); transform-origin: center top; }
         }
         @keyframes treeko-talk {
           0%, 100% { transform: scale(1); }
@@ -243,8 +242,9 @@ export default function TreekoChat() {
           0%, 100% { transform: scaleY(0.4); opacity: 0.3; }
           50% { transform: scaleY(1.8); opacity: 1; }
         }
-        .animate-treeko-idle {
-          animation: treeko-idle 3s ease-in-out infinite;
+        .animate-treeko-sway {
+          animation: treeko-sway 4s ease-in-out infinite;
+          transform-origin: center top;
         }
         .animate-treeko-talk {
           animation: treeko-talk 1s ease-in-out infinite;
