@@ -18,17 +18,103 @@ const regionInfo = [
   { id: 3, name: 'Region 3 — Southern Utah', color: 'green', description: 'Covering the I-15 corridor and scenic byways through red rock country, from Cedar City to Panguitch and beyond.' },
 ]
 
-const services = [
-  'Restroom cleaning and sanitization',
-  'Building and facility maintenance',
-  'Grounds maintenance and landscaping',
-  'Snow and ice removal',
-  'Trash collection and recycling',
-  'Parking lot and sidewalk upkeep',
-  'Signage and lighting maintenance',
-  'Emergency response and repairs',
-  'Water system maintenance',
-  'Seasonal facility opening and winterization',
+const scopeOfWork = [
+  {
+    title: 'Full-Service Facility Management',
+    description: 'End-to-end management of 28 UDOT Rest Areas, View Areas, and Welcome Centers across all three regions.',
+    items: [
+      'Daily operations and administration',
+      'Facility maintenance and upkeep',
+      'Full staffing and workforce management',
+      'On-site oversight and quality control',
+      'Regulatory and safety compliance',
+      'Asset inventory and tracking',
+    ],
+  },
+  {
+    title: 'Operations & Staffing',
+    description: 'Trained personnel deployed across all sites to maintain continuous, high-quality service.',
+    items: [
+      'Trained Site Attendants at every location',
+      'Maintenance Technicians for repairs',
+      'Area Managers for regional oversight',
+      'Dedicated Project Manager',
+      'Continuous 24/7 operations coverage',
+      'Staff training and certification programs',
+    ],
+  },
+  {
+    title: 'Janitorial & Sanitation',
+    description: 'Rigorous cleaning protocols that maintain a minimum "B" rating across all facilities.',
+    items: [
+      'Restroom cleaning and disinfecting',
+      'Replenishing soap, paper, and supplies',
+      'Trash and waste removal',
+      'Surface cleaning and sanitization',
+      'Minimum "B" cleanliness rating maintained',
+      'Odor control and deep cleaning cycles',
+    ],
+  },
+  {
+    title: 'Grounds & Site Maintenance',
+    description: 'Year-round grounds care adapted to Utah\'s diverse climates and elevations.',
+    items: [
+      'Lawn mowing, edging, and trimming',
+      'Vegetation management and weed control',
+      'Irrigation system maintenance',
+      'Litter and debris removal',
+      'Snow and ice removal',
+      'Parking lot and sidewalk upkeep',
+    ],
+  },
+  {
+    title: 'Preventive & Corrective Maintenance',
+    description: 'Scheduled and responsive maintenance to protect facility infrastructure and extend asset life.',
+    items: [
+      'Plumbing systems and fixtures',
+      'Electrical systems and lighting',
+      'HVAC and climate control',
+      'Mechanical and structural repairs',
+      'Preventive maintenance scheduling',
+      'Emergency and corrective repairs',
+    ],
+  },
+  {
+    title: 'Utilities & Environmental Systems',
+    description: 'Management of all utility systems including water, wastewater, and stormwater compliance.',
+    items: [
+      'Water systems operation and testing',
+      'Wastewater management (septic, sewer, lagoon)',
+      'Stormwater compliance and reporting',
+      'Utility monitoring and conservation',
+      'Environmental regulatory adherence',
+      'System inspections and documentation',
+    ],
+  },
+  {
+    title: 'Performance Monitoring & Compliance',
+    description: 'Continuous performance standards with measurable accountability at every facility.',
+    items: [
+      '24/7 emergency availability',
+      'On-site staffing during operating hours',
+      'Uniform and appearance standards',
+      'Safety and regulatory compliance',
+      'Routine quality inspections',
+      'Detailed reporting and documentation',
+    ],
+  },
+  {
+    title: 'Customer Experience',
+    description: 'Every rest stop delivers a clean, safe, and welcoming experience for Utah travelers.',
+    items: [
+      'Clean, safe, and welcoming facilities',
+      'Staff trained to assist the public',
+      'Prompt response to visitor concerns',
+      'Professional presence at all locations',
+      'Accessibility and ADA compliance',
+      'Traveler information and wayfinding support',
+    ],
+  },
 ]
 
 export default function UtahDotPage() {
@@ -141,41 +227,39 @@ export default function UtahDotPage() {
         )
       })}
 
-      {/* Services */}
-      <section className="py-16">
+      {/* Scope of Work */}
+      <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Services We Provide</h2>
-              <p className="text-gray-600 mb-6">
-                Our statewide team delivers comprehensive facility management services across all three UDOT regions, ensuring Utah travelers have safe, clean, and comfortable rest stops in every season and climate zone.
-              </p>
-              <ul className="grid sm:grid-cols-2 gap-3">
-                {services.map((service) => (
-                  <li key={service} className="flex items-center text-gray-700 text-sm">
-                    <svg className="w-4 h-4 mr-2 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    {service}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">About This Contract</h3>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                The Utah Department of Transportation entrusts BA Services with the operation and maintenance of 28 rest area facilities spanning the entire state. From the extreme desert conditions of the Bonneville Salt Flats to the mountain passes of the Wasatch Range and the red rock corridors of southern Utah, our teams adapt to diverse environments and seasonal challenges.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                Our scope includes daily facility cleaning, grounds maintenance, seasonal snow removal, emergency repairs, and complete infrastructure upkeep — ensuring millions of annual travelers find clean, safe, and well-maintained rest stops across Utah&apos;s highway system.
-              </p>
-            </div>
+          <div className="max-w-3xl mb-12">
+            <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Statement of Work</span>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Contract Scope of Services</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              BA Services provides comprehensive facility management, operations, and maintenance services for 28 UDOT Rest Areas, View Areas, and Welcome Centers across the state.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {scopeOfWork.map((category) => (
+              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li key={item} className="flex items-start text-sm text-gray-700">
+                      <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20">
         <div className="container-custom px-6 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
             Interested in Our DOT Services?

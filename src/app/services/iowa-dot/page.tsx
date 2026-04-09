@@ -12,15 +12,80 @@ export const metadata = {
   alternates: { canonical: '/services/iowa-dot' },
 }
 
-const services = [
-  'Restroom cleaning and sanitization',
-  'Building and facility maintenance',
-  'Grounds maintenance and landscaping',
-  'Snow and ice removal',
-  'Trash collection and recycling',
-  'Parking lot and sidewalk upkeep',
-  'Signage and lighting maintenance',
-  'Emergency response and repairs',
+const sowSections = [
+  {
+    title: 'Continuous Staffing & Operational Responsibility',
+    description: 'Ensuring rest areas are professionally staffed and operational throughout all designated service hours.',
+    items: [
+      'Trained attendants on-site during all operating hours',
+      'Full-duration staffing coverage with no service gaps',
+      'Continuously staffed facilities for traveler assistance',
+      'Professionally trained and uniformed personnel',
+    ],
+  },
+  {
+    title: 'Interior Janitorial Services',
+    description: 'Comprehensive cleaning and sanitation of all interior spaces to maintain the highest standards of hygiene.',
+    items: [
+      'Continuous restroom cleaning and sanitization',
+      'Scheduled deep cleaning of all interior areas',
+      'Maintenance of fixtures, floors, ceilings, walls, vents, and windows',
+      'ADA-compliant restroom upkeep and accessibility maintenance',
+      'Regular floor scrubbing and refinishing',
+      'Immediate spill response and cleanup',
+    ],
+  },
+  {
+    title: 'Exterior Janitorial & Grounds',
+    description: 'Maintaining clean, attractive, and well-kept exterior spaces and surrounding grounds.',
+    items: [
+      'Daily litter removal across all exterior areas',
+      'Trash receptacle servicing and replacement',
+      'Sweeping and washing of sidewalks and walkways',
+      'Kiosk and picnic area cleaning and upkeep',
+      'Landscaping, watering, and weeding of grounds',
+    ],
+  },
+  {
+    title: 'Waste Management & Sanitation Control',
+    description: 'Efficient and hygienic waste handling to keep facilities clean and odor-free year-round.',
+    items: [
+      'Timely trash removal on scheduled rotations',
+      'Cleaning and sanitizing of all waste receptacles',
+      'Proper waste disposal in compliance with regulations',
+      'Seasonal adjustments to waste management schedules',
+    ],
+  },
+  {
+    title: 'Facility Monitoring & Public Safety',
+    description: 'Proactive monitoring to protect facilities and ensure a safe environment for all travelers.',
+    items: [
+      'Monitoring for vandalism, damage, and safety hazards',
+      'Prompt reporting of maintenance and repair issues',
+      'Assisting travelers with facility information and directions',
+      'Maintaining daily logs and incident reports',
+    ],
+  },
+  {
+    title: 'Maintenance Support & Coordination',
+    description: 'Hands-on maintenance and coordination with Iowa DOT to keep all systems running smoothly.',
+    items: [
+      'Routine facility inspections and walkthroughs',
+      'Minor repairs and preventive maintenance tasks',
+      'Reporting major equipment issues to Iowa DOT',
+      'Detailed documentation of all maintenance activities',
+    ],
+  },
+  {
+    title: 'Compliance, Reporting & Quality Assurance',
+    description: 'Meeting and exceeding Iowa DOT standards through rigorous reporting and continuous improvement.',
+    items: [
+      'Full compliance with Iowa DOT specifications and standards',
+      'Staffing logs and attendance documentation',
+      'Regular performance reviews and quality audits',
+      'Ongoing employee training and certification programs',
+    ],
+  },
 ]
 
 export default function IowaDotPage() {
@@ -112,35 +177,32 @@ export default function IowaDotPage() {
         </div>
       </section>
 
-      {/* Services */}
+      {/* Statement of Work */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Services We Provide</h2>
-              <p className="text-gray-600 mb-6">
-                Our team delivers comprehensive facility management services to ensure Iowa travelers have a safe, clean, and comfortable rest stop experience year-round.
-              </p>
-              <ul className="space-y-3">
-                {services.map((service) => (
-                  <li key={service} className="flex items-center text-gray-700">
-                    <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    {service}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">About This Contract</h3>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                The Iowa Department of Transportation entrusts BA Services with the operation and maintenance of rest area facilities along the I-29 corridor near Sioux City. Our dedicated team ensures these facilities meet the highest standards of cleanliness, safety, and traveler satisfaction.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                From daily cleaning and grounds maintenance to seasonal snow removal and emergency repairs, we provide full-service facility management that keeps Iowa&apos;s rest areas welcoming for the millions of travelers who pass through each year.
-              </p>
-            </div>
+          <div className="max-w-3xl mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              BA Services provides comprehensive janitorial and facility support services for 2 interstate rest areas operated by the Iowa Department of Transportation, ensuring facilities remain clean, safe, fully operational, and welcoming to the traveling public.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {sowSections.map((section) => (
+              <div key={section.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{section.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">{section.description}</p>
+                <ul className="space-y-2">
+                  {section.items.map((item) => (
+                    <li key={item} className="flex items-start text-sm text-gray-700">
+                      <svg className="w-4 h-4 mr-2 mt-0.5 text-forest-DEFAULT flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
