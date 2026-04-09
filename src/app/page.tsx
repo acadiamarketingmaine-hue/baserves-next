@@ -1330,7 +1330,7 @@ export default function HomePage() {
       </section>
 
       {/* Map */}
-      <section className="relative z-10 py-16 bg-white">
+      <section id="property-map-section" className="relative z-10 py-16 bg-white">
         <div className="container-custom px-6">
           <div className="text-center mb-10">
             <span className="badge badge-forest mb-4">Our Locations</span>

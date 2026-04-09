@@ -176,6 +176,34 @@ function RestAreaMarker({ restArea }: { restArea: typeof allRestAreas[number] })
   )
 }
 
+function TourHandler() {
+  const map = useMap()
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const { lat, lng, slug } = (e as CustomEvent).detail
+      map.flyTo([lat, lng], 10, { duration: 1.5 })
+
+      // Open the popup for this property after flying
+      setTimeout(() => {
+        map.eachLayer((layer: any) => {
+          if (layer.getPopup && layer.getLatLng) {
+            const pos = layer.getLatLng()
+            if (Math.abs(pos.lat - lat) < 0.01 && Math.abs(pos.lng - lng) < 0.01) {
+              layer.openPopup()
+            }
+          }
+        })
+      }, 1600)
+    }
+
+    window.addEventListener('treeko-tour-focus', handler)
+    return () => window.removeEventListener('treeko-tour-focus', handler)
+  }, [map])
+
+  return null
+}
+
 function ScrollZoomHandler({ onScrollAttempt }: { onScrollAttempt: () => void }) {
   const map = useMap()
 
@@ -235,6 +263,7 @@ export default function PropertyMap() {
         {allRestAreas.map((ra) => (
           <RestAreaMarker key={`${ra.name}-${ra.direction}`} restArea={ra} />
         ))}
+        <TourHandler />
         <ScrollZoomHandler onScrollAttempt={handleScrollAttempt} />
       </MapContainer>
       {/* Legend */}

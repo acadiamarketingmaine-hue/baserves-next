@@ -1,0 +1,80 @@
+export const tourStops = [
+  {
+    slug: 'bankhead-national-forest',
+    name: 'Bankhead National Forest',
+    lat: 34.20, lng: -87.35,
+    summary: "Welcome to Bankhead National Forest in northwest Alabama — 180,000 acres known as the 'Land of a Thousand Waterfalls.' Home to the Sipsey Wilderness, 84 bird species, and two of our campgrounds.",
+  },
+  {
+    slug: 'experiences/clear-creek-recreation-area',
+    name: 'Clear Creek Recreation Area',
+    lat: 34.27, lng: -87.33,
+    summary: "Clear Creek sits on Lewis Smith Lake with 102 campsites across 4 loops. There's a swimming beach, boat ramp, and great hiking trails through the Bankhead National Forest.",
+  },
+  {
+    slug: 'experiences/corinth-recreation-area',
+    name: 'Corinth Recreation Area',
+    lat: 34.15, lng: -87.15,
+    summary: "Corinth offers 52 full-hookup campsites plus 10 tent sites on Lewis Smith Lake. Features a 100-person pavilion and the scenic Bobwhite Trail.",
+  },
+  {
+    slug: 'hardin-ridge-recreation-area',
+    name: 'Hardin Ridge Recreation Area',
+    lat: 39.07, lng: -86.47,
+    summary: "Hardin Ridge is on Monroe Lake — Indiana's largest at 10,750 acres. Over 200 campsites, a swimming beach, boat dock, and 12 miles of trails through Hoosier National Forest.",
+  },
+  {
+    slug: 'indian-celina-lakes-recreation-area',
+    name: 'Indian-Celina Lakes',
+    lat: 38.35, lng: -86.60,
+    summary: "Twin lakes in Perry County, Indiana, with 60 campsites, an accessible fishing pier, kayaking, and 10 miles of trails through the Hoosier National Forest.",
+  },
+  {
+    slug: 'tipsaw-lake-recreation-area',
+    name: 'Tipsaw Lake Recreation Area',
+    lat: 38.23, lng: -86.62,
+    summary: "Tipsaw Lake is a scenic 131-acre lake with 35 campsites, 8 miles of hiking trails, and great fishing — a hidden gem in southern Indiana.",
+  },
+  {
+    slug: 'experiences/canal-bridge',
+    name: 'Canal Bridge Campground',
+    lat: 44.02, lng: -70.97,
+    summary: "Canal Bridge is a family campground on the Saco River in Fryeburg, Maine. 36 campsites with kayaking, fishing, and stunning White Mountain views.",
+  },
+  {
+    slug: 'yankee-springs-recreation-area',
+    name: 'Yankee Springs Recreation Area',
+    lat: 42.62, lng: -85.32,
+    summary: "Yankee Springs in Barry County, Michigan covers over 5,200 acres with 200 campsites, 30 miles of trails, and year-round outdoor adventure.",
+  },
+  {
+    slug: 'long-lake-outdoor-center',
+    name: 'Long Lake Outdoor Center',
+    lat: 42.55, lng: -85.40,
+    summary: "Long Lake is a CCC-built retreat center with 20 cabins, a private lake, outdoor education programs, and a beautiful wedding venue in Middleville, Michigan.",
+  },
+  {
+    slug: 'experiences/meramec-state-park',
+    name: 'Meramec State Park',
+    lat: 38.22, lng: -91.08,
+    summary: "Meramec State Park covers 6,896 acres along the Meramec River in Missouri. Features 19 cabins, a motel, float trips, and the famous Fisher Cave.",
+  },
+  {
+    slug: 'washington-state-park',
+    name: 'Washington State Park',
+    lat: 38.09, lng: -90.68,
+    summary: "Washington State Park in De Soto, Missouri is home to over 350 ancient petroglyphs, some over 1,000 years old. Rustic cabins and 10 miles of trails along the Big River.",
+  },
+  {
+    slug: 'experiences/burlingame-state-park',
+    name: 'Burlingame State Park',
+    lat: 41.38, lng: -71.72,
+    summary: "Rhode Island's largest campground since 1934! Burlingame has 755 campsites and 20 rustic cabins on the shores of Watchaug Pond — over 3,100 acres of outdoor fun.",
+  },
+  {
+    slug: 'monongahela-national-forest',
+    name: 'Monongahela National Forest',
+    lat: 38.70, lng: -79.80,
+    summary: "The Monongahela spans over 921,000 acres across West Virginia's Alleghenies with 800 miles of trails, 5 wilderness areas, and peaks reaching nearly 5,000 feet.",
+  },
+]

@@ -68,6 +68,21 @@ SERVICES OFFERED:
 CAREERS:
 BA Services is always hiring. Interested applicants should visit baserves.com/careers or call (207) 307-7903.
 
+INTAKE INTERVIEW (LEAD CAPTURE):
+If a visitor shows ANY interest in services — managing their property, hiring BA Services, partnership, contract work, campground management, rest area management, or any business inquiry — begin a friendly intake interview. Collect:
+1. Their name
+2. Organization/company name
+3. Phone number
+4. Email address
+5. Type of property/facility (campground, rest area, park, etc.)
+6. Location (state/city)
+7. Brief description of what they need
+
+Ask these naturally in conversation (not all at once). When you have at least their name and a way to contact them (phone or email), say something like "Great, I've got your information! Our team will reach out to you shortly." and include the marker [INTAKE_COMPLETE] at the very end of your message (the user won't see this).
+
+Format the collected info as JSON after [INTAKE_COMPLETE] like this:
+[INTAKE_COMPLETE]{"name":"...","organization":"...","phone":"...","email":"...","property_type":"...","location":"...","needs":"..."}
+
 IMPORTANT RULES:
 - For booking questions about Long Lake or Chief Noonday, direct to escape.baserves.com or phone 616-644-9459
 - For Meramec and Washington State Park, direct to mostateparks.com
@@ -121,9 +136,21 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json()
-    const reply = data.choices?.[0]?.message?.content || "I'm not sure about that. Please call us at (207) 307-7903 for more help!"
+    let reply = data.choices?.[0]?.message?.content || "I'm not sure about that. Please call us at (207) 307-7903 for more help!"
 
-    return NextResponse.json({ reply })
+    // Check for intake completion marker
+    let intakeData = null
+    if (reply.includes('[INTAKE_COMPLETE]')) {
+      const parts = reply.split('[INTAKE_COMPLETE]')
+      reply = parts[0].trim()
+      try {
+        intakeData = JSON.parse(parts[1].trim())
+      } catch {
+        // JSON parse failed, still return the reply
+      }
+    }
+
+    return NextResponse.json({ reply, intakeData })
   } catch (error) {
     console.error('Treeko API error:', error)
     return NextResponse.json({
