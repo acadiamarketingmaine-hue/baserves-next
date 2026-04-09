@@ -5,6 +5,8 @@ import L from 'leaflet'
 import Link from 'next/link'
 import { useRef, useState, useEffect, useCallback } from 'react'
 import 'leaflet/dist/leaflet.css'
+import { utahRestAreas } from '@/data/utah-rest-areas'
+import { iowaRestAreas } from '@/data/iowa-rest-areas'
 
 const properties = [
   // Alabama
@@ -39,6 +41,22 @@ const pinIcon = new L.DivIcon({
   iconAnchor: [14, 40],
   popupAnchor: [0, -40],
 })
+
+const dotPinIcon = new L.DivIcon({
+  className: '',
+  html: `<svg width="20" height="30" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M14 0C6.268 0 0 6.268 0 14c0 10.5 14 26 14 26s14-15.5 14-26C28 6.268 21.732 0 14 0z" fill="#1565C0"/>
+    <circle cx="14" cy="14" r="6" fill="white"/>
+  </svg>`,
+  iconSize: [20, 30],
+  iconAnchor: [10, 30],
+  popupAnchor: [0, -30],
+})
+
+const allRestAreas = [
+  ...utahRestAreas.map(ra => ({ ...ra, state: 'Utah' })),
+  ...iowaRestAreas.map(ra => ({ ...ra, state: 'Iowa' })),
+]
 
 function HoverMarker({ property }: { property: typeof properties[number] }) {
   const markerRef = useRef<L.Marker>(null)
@@ -105,6 +123,59 @@ function HoverMarker({ property }: { property: typeof properties[number] }) {
   )
 }
 
+function RestAreaMarker({ restArea }: { restArea: typeof allRestAreas[number] }) {
+  const markerRef = useRef<L.Marker>(null)
+  const dotPage = restArea.state === 'Iowa' ? '/services/iowa-dot' : '/services/utah-dot'
+
+  return (
+    <Marker
+      ref={markerRef}
+      position={[restArea.lat, restArea.lng]}
+      icon={dotPinIcon}
+      eventHandlers={{
+        mouseover: () => markerRef.current?.openPopup(),
+        mouseout: (e) => {
+          const popup = markerRef.current?.getPopup()
+          if (popup) {
+            const popupEl = popup.getElement()
+            if (popupEl && popupEl.matches(':hover')) return
+            markerRef.current?.closePopup()
+          }
+        },
+      }}
+    >
+      <Popup className="property-card-popup" closeButton={false} autoPan={false}
+        eventHandlers={{ mouseout: () => markerRef.current?.closePopup() }}>
+        <div style={{ width: 220, overflow: 'hidden', borderRadius: 12, margin: -14, marginBottom: -24 }}>
+          <div style={{ padding: '12px 14px 14px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+              <span style={{ display: 'inline-block', padding: '2px 8px', backgroundColor: '#E3F2FD', color: '#1565C0', fontSize: 10, fontWeight: 700, borderRadius: 12 }}>
+                {restArea.state} DOT
+              </span>
+            </div>
+            <div style={{ fontWeight: 700, fontSize: 13, color: '#111', marginBottom: 4, lineHeight: 1.3 }}>
+              {restArea.name}
+            </div>
+            <div style={{ fontSize: 11, color: '#6b7280', lineHeight: 1.5, marginBottom: 4 }}>
+              {restArea.route}{restArea.direction ? ` ${restArea.direction}` : ''} &middot; {restArea.city}
+            </div>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <a href={restArea.googleMapsLink} target="_blank" rel="noopener noreferrer"
+                style={{ fontSize: 11, color: '#1565C0', fontWeight: 600, textDecoration: 'none' }}>
+                Directions &rarr;
+              </a>
+              <Link href={dotPage}
+                style={{ fontSize: 11, color: '#1a472a', fontWeight: 600, textDecoration: 'none' }}>
+                View Contract &rarr;
+              </Link>
+            </div>
+          </div>
+        </div>
+      </Popup>
+    </Marker>
+  )
+}
+
 function ScrollZoomHandler({ onScrollAttempt }: { onScrollAttempt: () => void }) {
   const map = useMap()
 
@@ -161,8 +232,22 @@ export default function PropertyMap() {
         {properties.map((property) => (
           <HoverMarker key={property.slug} property={property} />
         ))}
+        {allRestAreas.map((ra) => (
+          <RestAreaMarker key={`${ra.name}-${ra.direction}`} restArea={ra} />
+        ))}
         <ScrollZoomHandler onScrollAttempt={handleScrollAttempt} />
       </MapContainer>
+      {/* Legend */}
+      <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-lg shadow-md px-4 py-3 z-[1000] text-xs space-y-2">
+        <div className="flex items-center gap-2">
+          <svg width="14" height="20" viewBox="0 0 28 40" fill="none"><path d="M14 0C6.268 0 0 6.268 0 14c0 10.5 14 26 14 26s14-15.5 14-26C28 6.268 21.732 0 14 0z" fill="#1B5E20"/><circle cx="14" cy="14" r="6" fill="white"/></svg>
+          <span className="text-gray-700 font-medium">Recreation Areas</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <svg width="14" height="20" viewBox="0 0 28 40" fill="none"><path d="M14 0C6.268 0 0 6.268 0 14c0 10.5 14 26 14 26s14-15.5 14-26C28 6.268 21.732 0 14 0z" fill="#1565C0"/><circle cx="14" cy="14" r="6" fill="white"/></svg>
+          <span className="text-gray-700 font-medium">DOT Rest Areas</span>
+        </div>
+      </div>
       <div
         className={`absolute inset-0 flex items-center justify-center rounded-2xl z-[1000] pointer-events-none transition-opacity duration-300 ${
           showScrollMsg ? 'opacity-100' : 'opacity-0'
