@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { BriefcaseIcon, HandshakeIcon, ClipboardIcon } from '@/components/Icons'
 
@@ -25,16 +26,16 @@ const iowaRestAreas = ['Sergeant Bluff Northbound', 'Sergeant Bluff Southbound']
 const ratings = ['Excellent', 'Good', 'Fair', 'Poor']
 
 export default function ContactForm() {
+  const searchParams = useSearchParams()
   const [topic, setTopic] = useState<string | null>(null)
 
-  // Read ?topic= param on mount
+  // Read topic from URL params (works with Next.js client-side navigation)
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const t = params.get('topic')
+    const t = searchParams.get('topic')
     if (t && ['careers', 'partnership', 'feedback'].includes(t)) {
       setTopic(t)
     }
-  }, [])
+  }, [searchParams])
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 

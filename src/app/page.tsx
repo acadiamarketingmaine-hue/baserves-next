@@ -1139,22 +1139,22 @@ export default function HomePage() {
               <span className="text-green-400 font-semibold">seamless visitor experiences</span>.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-300">
+            <div className="flex flex-wrap gap-4 animate-fade-in-up delay-300">
               <a
                 href="https://escape.baserves.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 border-2 border-white text-white font-semibold text-lg rounded-xl transition-all duration-300 hover:bg-forest-DEFAULT hover:border-forest-DEFAULT hover:text-white inline-flex items-center gap-2"
+                className="btn-primary text-lg"
               >
                 Book Your Adventure
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
-              <Link href="/experiences" className="px-8 py-4 border-2 border-white text-white font-semibold text-lg rounded-xl transition-all duration-300 hover:bg-forest-DEFAULT hover:border-forest-DEFAULT hover:text-white inline-flex items-center gap-2">
+              <Link href="/experiences" className="btn-outline-white text-lg">
                 Explore Locations
               </Link>
-              <Link href="/contact?topic=partnership" className="px-8 py-4 border-2 border-white text-white font-semibold text-lg rounded-xl transition-all duration-300 hover:bg-forest-DEFAULT hover:border-forest-DEFAULT hover:text-white inline-flex items-center gap-2">
+              <Link href="/contact?topic=partnership" className="btn-outline-white">
                 Partnership Inquiries
               </Link>
             </div>
@@ -1372,7 +1372,7 @@ export default function HomePage() {
                 href={`/experiences/categories/${category.slug}`}
                 className="group p-6 bg-gray-50 rounded-2xl text-center hover:bg-forest-DEFAULT transition-all duration-300 card-hover"
               >
-                <div className="text-4xl mb-4 text-forest-DEFAULT group-hover:text-white transition-colors">{category.icon}</div>
+                <div className="text-4xl mb-4">{category.icon}</div>
                 <h3 className="font-semibold text-gray-900 group-hover:text-white transition-colors mb-1">
                   {category.name}
                 </h3>

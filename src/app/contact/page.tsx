@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ContactForm from '@/components/ContactForm'
@@ -29,7 +30,9 @@ export default function ContactPage() {
 
       <section className="py-16">
         <div className="container-custom px-6 max-w-4xl">
-          <ContactForm />
+          <Suspense fallback={<div className="text-center py-8 text-gray-500">Loading...</div>}>
+            <ContactForm />
+          </Suspense>
         </div>
       </section>
 
