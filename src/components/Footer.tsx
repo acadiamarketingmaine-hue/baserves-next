@@ -101,15 +101,6 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-forest-dark text-white">
-      {/* Mini Map */}
-      <div className="bg-forest-dark pt-12 pb-4">
-        <div className="container-custom px-6">
-          <div className="h-[250px] rounded-xl overflow-hidden opacity-80">
-            <PropertyMap />
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="container-custom py-16 px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
@@ -135,6 +126,10 @@ export default function Footer() {
                 </svg>
                 <span>+1 207 307-7903</span>
               </a>
+            </div>
+            {/* Mini Map */}
+            <div className="h-[180px] rounded-lg overflow-hidden opacity-70 mt-4">
+              <PropertyMap />
             </div>
           </div>
 
