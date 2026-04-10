@@ -2,11 +2,12 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { BriefcaseIcon, HandshakeIcon, ClipboardIcon } from '@/components/Icons'
 
 const topics = [
-  { id: 'careers', label: 'Careers', icon: '💼', description: 'Apply for a position with BA Services' },
-  { id: 'partnership', label: 'Partnerships', icon: '🤝', description: 'Explore a management partnership' },
-  { id: 'feedback', label: 'Rest Stop Feedback', icon: '📋', description: 'Share feedback about a rest area' },
+  { id: 'careers', label: 'Careers', icon: <BriefcaseIcon className="w-8 h-8" />, description: 'Apply for a position with BA Services' },
+  { id: 'partnership', label: 'Partnerships', icon: <HandshakeIcon className="w-8 h-8" />, description: 'Explore a management partnership' },
+  { id: 'feedback', label: 'Rest Stop Feedback', icon: <ClipboardIcon className="w-8 h-8" />, description: 'Share feedback about a rest area' },
 ]
 
 const utahRestAreas = [

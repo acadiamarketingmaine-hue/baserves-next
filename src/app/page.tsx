@@ -6,6 +6,7 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon } from '@/components/Icons'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 import ScopeAccordion from '@/components/ScopeAccordion'
@@ -145,11 +146,11 @@ const allLocations = [
 ]
 
 const experienceCategories = [
-  { name: 'Kayak & Watercraft', icon: '🚣', count: 12, slug: 'kayak-and-watercraft-rentals' },
-  { name: 'Campground Rentals', icon: '⛺', count: 25, slug: 'campground-rentals' },
-  { name: 'Scenic Drives', icon: '🚗', count: 8, slug: 'scenic-drives' },
-  { name: 'Hiking Trails', icon: '🥾', count: 30, slug: 'hiking' },
-  { name: 'Conference Centers', icon: '🏛️', count: 4, slug: 'conference-center-rentals' },
+  { name: 'Kayak & Watercraft', icon: <KayakIcon className="w-8 h-8" />, count: 12, slug: 'kayak-and-watercraft-rentals' },
+  { name: 'Campground Rentals', icon: <CampIcon className="w-8 h-8" />, count: 25, slug: 'campground-rentals' },
+  { name: 'Scenic Drives', icon: <CarIcon className="w-8 h-8" />, count: 8, slug: 'scenic-drives' },
+  { name: 'Hiking Trails', icon: <HikeIcon className="w-8 h-8" />, count: 30, slug: 'hiking' },
+  { name: 'Conference Centers', icon: <BuildingIcon className="w-8 h-8" />, count: 4, slug: 'conference-center-rentals' },
 ]
 
 const services = [

@@ -3,11 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon, MountainIcon } from '@/components/Icons'
 
 const categoryData: Record<string, any> = {
   'kayak-and-watercraft-rentals': {
     name: 'Kayak & Watercraft Rentals',
-    icon: '🚣',
+    icon: <KayakIcon className="w-12 h-12" />,
     description: 'Get out on the water with our selection of kayaks, canoes, rafts, and paddleboards available at multiple locations.',
     image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
     experiences: [
@@ -18,7 +19,7 @@ const categoryData: Record<string, any> = {
   },
   'campground-rentals': {
     name: 'Campground Rentals',
-    icon: '⛺',
+    icon: <CampIcon className="w-12 h-12" />,
     description: 'From primitive tent sites to full-hookup RV spots and rustic cabins, find the perfect stay for your outdoor adventure.',
     image: '/images/corinth-boat-ramp.jpg',
     experiences: [
@@ -38,7 +39,7 @@ const categoryData: Record<string, any> = {
   },
   'hiking': {
     name: 'Hiking Trails',
-    icon: '🥾',
+    icon: <HikeIcon className="w-12 h-12" />,
     description: 'Discover hundreds of miles of scenic trails through forests, along lakeshores, and into wilderness areas.',
     image: '/images/bankhead-bicycle-trail.jpg',
     experiences: [
@@ -56,7 +57,7 @@ const categoryData: Record<string, any> = {
   },
   'scenic-drives': {
     name: 'Scenic Drives',
-    icon: '🚗',
+    icon: <CarIcon className="w-12 h-12" />,
     description: 'Experience breathtaking vistas and natural beauty from the comfort of your vehicle.',
     image: '/images/monongahela/entrance-sign.jpg',
     experiences: [
@@ -67,7 +68,7 @@ const categoryData: Record<string, any> = {
   },
   'conference-center-rentals': {
     name: 'Conference Center Rentals',
-    icon: '🏛️',
+    icon: <BuildingIcon className="w-12 h-12" />,
     description: 'Host your next retreat, wedding, or corporate event in a stunning natural setting.',
     image: '/images/long-lake/lodge.jpg',
     experiences: [
@@ -78,7 +79,7 @@ const categoryData: Record<string, any> = {
   },
   'lookout-pavillions': {
     name: 'Lookout Pavilions',
-    icon: '🏔️',
+    icon: <MountainIcon className="w-12 h-12" />,
     description: 'Reserve scenic overlooks and covered pavilions for picnics, gatherings, and enjoying panoramic views.',
     image: '/images/meramec-state-park/overlook-pavilion.jpg',
     experiences: [

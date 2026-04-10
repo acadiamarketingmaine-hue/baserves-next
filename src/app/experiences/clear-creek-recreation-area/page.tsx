@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { BuildingIcon } from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: 'Clear Creek Recreation Area | Bankhead National Forest | BA Services',
@@ -36,7 +37,7 @@ const campingLoops = [
 const dayUseFeatures = [
   { name: 'Swimming Beach', description: 'Designated swimming area with roped buoys. Swim at your own risk — no lifeguard on duty.', icon: '🏊' },
   { name: 'Double-Lane Boat Ramp', description: 'Launch your watercraft with ease on Lewis Smith Lake. Day-use and camper boat ramps available.', icon: '🚤' },
-  { name: 'Group Shelters', description: 'Three reservable group shelters — Oak Leaf, Bay Leaf, and Elm Leaf — perfect for reunions and events.', icon: '🏛️' },
+  { name: 'Group Shelters', description: 'Three reservable group shelters — Oak Leaf, Bay Leaf, and Elm Leaf — perfect for reunions and events.', icon: <BuildingIcon className="w-8 h-8" /> },
   { name: 'Picnic Area', description: 'Large picnic area with tables and grills in a shaded lakeside setting.', icon: '🧺' },
   { name: 'Playground', description: 'Children\'s playground, basketball and volleyball courts, and horseshoe pit for campers.', icon: '🎪' },
   { name: 'Bathhouses', description: 'Five bathhouses with warm showers and dressing rooms serve the camping and day-use areas.', icon: '🚿' },

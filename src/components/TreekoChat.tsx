@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { tourStops } from '@/data/property-tour'
+import { SpeakerOnIcon, SpeakerOffIcon, PlayIcon, PauseIcon, CloseIcon } from '@/components/Icons'
 
 type ChatState = 'idle' | 'greeting' | 'chatting'
 
@@ -219,7 +220,7 @@ export default function TreekoChat() {
       const changingState = stop.state !== prevState
       setTourIndex(i)
       window.dispatchEvent(new CustomEvent('treeko-tour-focus', { detail: { lat: stop.lat, lng: stop.lng, slug: stop.slug, index: i, changingState } }))
-      setMessages(prev => [...prev, { role: 'treeko', text: `📍 [${stop.name}](/${stop.slug}): ${stop.summary}` }])
+      setMessages(prev => [...prev, { role: 'treeko', text: `[${stop.name}](/${stop.slug}): ${stop.summary}` }])
 
       // Wait for fly animation — shorter when audio since speech fills the time
       await sleep(audioEnabledRef.current ? 800 : 1500)
@@ -302,10 +303,10 @@ export default function TreekoChat() {
             <p className="text-gray-600 text-sm mb-6">How would you like to experience it?</p>
             <div className="flex flex-col gap-3">
               <button onClick={() => beginTourLoop(true)} className="w-full py-3 px-6 bg-forest-DEFAULT text-white font-semibold rounded-xl hover:bg-forest-dark transition-colors flex items-center justify-center gap-2">
-                🔊 Tour with Sound
+                <SpeakerOnIcon className="w-5 h-5" /> Tour with Sound
               </button>
               <button onClick={() => beginTourLoop(false)} className="w-full py-3 px-6 bg-gray-100 text-gray-800 font-semibold rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
-                🔇 Tour without Sound
+                <SpeakerOffIcon className="w-5 h-5" /> Tour without Sound
               </button>
               <button onClick={() => { setTourChoosing(false); closeTourMap(); setTouring(false) }} className="text-sm text-gray-400 hover:text-gray-600 mt-1">
                 Cancel
@@ -323,14 +324,14 @@ export default function TreekoChat() {
             <span className="text-gray-600 text-xs md:text-sm truncate">{tourStops[tourIndex]?.name}</span>
           </div>
           <div className="flex items-center gap-1 md:gap-3 flex-shrink-0">
-            <button onClick={() => { setAudioEnabled(a => !a); audioEnabledRef.current = !audioEnabledRef.current }} className="p-1.5 md:px-3 md:py-1 bg-gray-100 rounded-lg text-xs md:text-sm hover:bg-gray-200">
-              {audioEnabled ? '🔊' : '🔇'}<span className="hidden md:inline"> {audioEnabled ? 'Audio On' : 'Audio Off'}</span>
+            <button onClick={() => { setAudioEnabled(a => !a); audioEnabledRef.current = !audioEnabledRef.current }} className="p-1.5 md:px-3 md:py-1 bg-gray-100 rounded-lg text-xs md:text-sm hover:bg-gray-200 flex items-center gap-1">
+              {audioEnabled ? <SpeakerOnIcon className="w-4 h-4" /> : <SpeakerOffIcon className="w-4 h-4" />}<span className="hidden md:inline"> {audioEnabled ? 'Audio On' : 'Audio Off'}</span>
             </button>
-            <button onClick={toggleTourPause} className="p-1.5 md:px-3 md:py-1 bg-gray-100 rounded-lg text-xs md:text-sm hover:bg-gray-200">
-              {tourPaused ? '▶' : '⏸'}<span className="hidden md:inline"> {tourPaused ? 'Resume' : 'Pause'}</span>
+            <button onClick={toggleTourPause} className="p-1.5 md:px-3 md:py-1 bg-gray-100 rounded-lg text-xs md:text-sm hover:bg-gray-200 flex items-center gap-1">
+              {tourPaused ? <PlayIcon className="w-4 h-4" /> : <PauseIcon className="w-4 h-4" />}<span className="hidden md:inline"> {tourPaused ? 'Resume' : 'Pause'}</span>
             </button>
-            <button onClick={stopTour} className="p-1.5 md:px-3 md:py-1 bg-red-100 text-red-700 rounded-lg text-xs md:text-sm hover:bg-red-200">
-              ✕<span className="hidden md:inline"> End Tour</span>
+            <button onClick={stopTour} className="p-1.5 md:px-3 md:py-1 bg-red-100 text-red-700 rounded-lg text-xs md:text-sm hover:bg-red-200 flex items-center gap-1">
+              <CloseIcon className="w-4 h-4" /><span className="hidden md:inline"> End Tour</span>
             </button>
           </div>
         </div>

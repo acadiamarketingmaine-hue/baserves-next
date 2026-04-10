@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { BuildingIcon, HikeIcon } from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: 'Corinth Recreation Area | Bankhead National Forest | BA Services',
@@ -26,9 +27,9 @@ const campingLoops = [
 const dayUseFeatures = [
   { name: 'Swimming Beach', description: 'Designated swimming area with dressing rooms and warm showers. Swim at your own risk — no lifeguard on duty.', icon: '🏊' },
   { name: 'Double-Lane Boat Ramp', description: 'Launch watercraft on Lewis Smith Lake. Excellent fishing for Kentucky Spotted Bass and Hybrid Striped Bass.', icon: '🚤' },
-  { name: 'Group Pavilion', description: 'Reservable 100-person pavilion perfect for reunions, weddings, and group events. Reserve through Recreation.gov.', icon: '🏛️' },
+  { name: 'Group Pavilion', description: 'Reservable 100-person pavilion perfect for reunions, weddings, and group events. Reserve through Recreation.gov.', icon: <BuildingIcon className="w-8 h-8" /> },
   { name: 'Picnic Sites', description: '29 first-come, first-served picnic sites in a shaded lakeside setting.', icon: '🧺' },
-  { name: 'Bobwhite Trail', description: '1.3-mile hiking trail through the forest. Interpretive programs hosted during the summer.', icon: '🥾' },
+  { name: 'Bobwhite Trail', description: '1.3-mile hiking trail through the forest. Interpretive programs hosted during the summer.', icon: <HikeIcon className="w-8 h-8" /> },
   { name: 'Bathhouses', description: 'Four bathhouses with warm showers serve the camping areas. Day-use visitors have access to dressing rooms.', icon: '🚿' },
 ]
 
