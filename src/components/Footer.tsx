@@ -106,6 +106,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
+            {/* Mini Map — 1:1 square, above logo */}
+            <div className="aspect-square w-full max-w-[280px] rounded-xl overflow-hidden opacity-70 mb-6">
+              <PropertyMap />
+            </div>
             <Link href="/" className="inline-block mb-6 bg-white rounded-lg px-4 py-2">
               <Image
                 src="/images/logo.png"
@@ -126,10 +130,6 @@ export default function Footer() {
                 </svg>
                 <span>+1 207 307-7903</span>
               </a>
-            </div>
-            {/* Mini Map */}
-            <div className="h-[180px] rounded-lg overflow-hidden opacity-70 mt-4">
-              <PropertyMap />
             </div>
           </div>
 
