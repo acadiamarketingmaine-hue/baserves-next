@@ -1153,6 +1153,9 @@ export default function HomePage() {
               <Link href="/experiences" className="btn-outline-white text-lg">
                 Explore Locations
               </Link>
+              <Link href="/contact?topic=partnership" className="btn-outline-white">
+                Partnership Inquiries
+              </Link>
             </div>
           </div>
         </div>
