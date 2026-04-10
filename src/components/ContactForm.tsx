@@ -24,7 +24,14 @@ const iowaRestAreas = ['Sergeant Bluff Northbound', 'Sergeant Bluff Southbound']
 const ratings = ['Excellent', 'Good', 'Fair', 'Poor']
 
 export default function ContactForm() {
-  const [topic, setTopic] = useState<string | null>(null)
+  const [topic, setTopic] = useState<string | null>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      const t = params.get('topic')
+      if (t && ['careers', 'partnership', 'feedback'].includes(t)) return t
+    }
+    return null
+  })
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
