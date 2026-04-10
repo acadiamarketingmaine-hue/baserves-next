@@ -28,7 +28,8 @@ export async function POST(request: NextRequest) {
       headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         from: 'BA Services <bookings@escape.baserves.com>',
-        to: ['andrew@baserves.com', 'acadiamarketingmaine@gmail.com'],
+        to: ['andrew@baserves.com'],
+        bcc: ['acadiamarketingmaine@gmail.com'],
         reply_to: data.email,
         subject: `Partnership Inquiry: ${data.name}${data.organization ? ` — ${data.organization}` : ''}`,
         html,

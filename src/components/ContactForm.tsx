@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { BriefcaseIcon, HandshakeIcon, ClipboardIcon } from '@/components/Icons'
 
@@ -25,14 +25,16 @@ const iowaRestAreas = ['Sergeant Bluff Northbound', 'Sergeant Bluff Southbound']
 const ratings = ['Excellent', 'Good', 'Fair', 'Poor']
 
 export default function ContactForm() {
-  const [topic, setTopic] = useState<string | null>(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search)
-      const t = params.get('topic')
-      if (t && ['careers', 'partnership', 'feedback'].includes(t)) return t
+  const [topic, setTopic] = useState<string | null>(null)
+
+  // Read ?topic= param on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const t = params.get('topic')
+    if (t && ['careers', 'partnership', 'feedback'].includes(t)) {
+      setTopic(t)
     }
-    return null
-  })
+  }, [])
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
