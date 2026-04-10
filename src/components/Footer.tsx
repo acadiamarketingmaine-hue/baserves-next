@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
+
+const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 
 const locationsByState = [
   {
@@ -98,6 +101,15 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-forest-dark text-white">
+      {/* Mini Map */}
+      <div className="bg-forest-dark pt-12 pb-4">
+        <div className="container-custom px-6">
+          <div className="h-[250px] rounded-xl overflow-hidden opacity-80">
+            <PropertyMap />
+          </div>
+        </div>
+      </div>
+
       {/* Main Footer */}
       <div className="container-custom py-16 px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
@@ -160,7 +172,7 @@ export default function Footer() {
                           <ul className="space-y-0.5 mt-0.5">
                             {loc.children.map((child: any) => (
                               <li key={child.name}>
-                                <Link href={child.href} className="text-white/50 hover:text-white transition-colors text-xs pl-3">
+                                <Link href={child.href} className="text-white/50 hover:text-white transition-colors text-xs block ml-3">
                                   {child.name}
                                 </Link>
                               </li>

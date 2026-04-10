@@ -1370,9 +1370,9 @@ export default function HomePage() {
               <Link
                 key={category.name}
                 href={`/experiences/categories/${category.slug}`}
-                className="group p-6 bg-gray-50 rounded-2xl text-center hover:bg-forest-DEFAULT transition-all duration-300 card-hover"
+                className="group p-6 bg-gray-50 rounded-2xl text-center hover:bg-forest-DEFAULT hover:shadow-lg transition-all duration-300"
               >
-                <div className="text-4xl mb-4">{category.icon}</div>
+                <div className="text-gray-700 group-hover:text-white transition-colors mb-4 flex justify-center">{category.icon}</div>
                 <h3 className="font-semibold text-gray-900 group-hover:text-white transition-colors mb-1">
                   {category.name}
                 </h3>
