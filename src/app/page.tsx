@@ -8,6 +8,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
+import ScopeAccordion from '@/components/ScopeAccordion'
 
 // All featured destinations — 3 shown at a time, rotating every 6 seconds
 const allLocations = [
@@ -1432,6 +1433,7 @@ export default function HomePage() {
               </div>
             </Link>
           </div>
+          <ScopeAccordion />
         </div>
       </section>
 
