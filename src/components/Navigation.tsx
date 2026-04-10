@@ -11,6 +11,7 @@ const topNavLinks = [
   { name: 'Services', href: '/services' },
   { name: 'Rewards', href: '/rewards' },
   { name: 'Careers', href: '/careers' },
+  { name: 'Contact Us', href: '/contact' },
 ]
 
 const secondaryNavLinks = [
