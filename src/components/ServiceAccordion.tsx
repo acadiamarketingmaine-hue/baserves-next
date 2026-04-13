@@ -171,7 +171,7 @@ export default function ServiceAccordion({ compact = false }: { compact?: boolea
             <div className="flex items-center gap-3">
               <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${group.badgeColor}`}>{group.badge}</span>
               <span className="font-bold text-gray-900">{group.label}</span>
-              <span className="text-sm text-gray-400">{group.contracts.length} contract{group.contracts.length > 1 ? 's' : ''}</span>
+              <span className="text-sm text-gray-400">Select portfolio highlights</span>
             </div>
             <svg className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${openGroup === group.id ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
