@@ -111,6 +111,69 @@ const galleryPhotos = [
   { src: '/images/long-lake/winter.jpg', alt: 'Long Lake Outdoor Center in winter' },
 ]
 
+const scopeOfWork = [
+  {
+    title: 'Facility Operations & Guest Services',
+    description: 'BA Services manages all daily operations to ensure a seamless and enjoyable visitor experience.',
+    items: [
+      'Managing reservations and guest check-in processes',
+      'Providing customer service and visitor assistance',
+      'Overseeing lodging accommodations, cabins, and group-use facilities',
+      'Coordinating events, group rentals, and recreational activities',
+    ],
+  },
+  {
+    title: 'Restoration & Facility Readiness',
+    description: 'Bringing facilities back into safe, usable conditions while preserving their historic character.',
+    items: [
+      'Assessing existing structures and identifying repair needs',
+      'Developing and submitting project plans for cabins and buildings',
+      'Coordinating improvements to restore facilities for public use',
+      'Addressing safety concerns and infrastructure limitations (e.g., water systems, structural repairs)',
+    ],
+  },
+  {
+    title: 'Maintenance & Repairs',
+    description: 'Maintaining all buildings, systems, and equipment across both sites to keep facilities safe and operational.',
+    items: [
+      'Routine inspections and preventative maintenance',
+      'Repairs to electrical, plumbing, HVAC, and mechanical systems',
+      'Emergency response to facility or safety issues',
+      'Securing buildings and monitoring safety systems',
+    ],
+  },
+  {
+    title: 'Groundskeeping & Sanitation',
+    description: 'Maintaining the appearance and cleanliness of the property as a daily priority.',
+    items: [
+      'Landscaping, mowing, and vegetation management',
+      'Trash removal and site cleanup',
+      'Cleaning restrooms, common areas, and outdoor spaces',
+      'Supporting event setup and site logistics',
+    ],
+  },
+  {
+    title: 'Staffing & On-Site Management',
+    description: 'Trained personnel covering all functional areas with cross-trained support for efficiency and responsiveness.',
+    items: [
+      'Area Manager overseeing overall operations and compliance',
+      'Maintenance staff handling repairs and infrastructure',
+      'Grounds and janitorial teams maintaining cleanliness',
+      'Administrative staff supporting reservations and guest services',
+    ],
+  },
+  {
+    title: 'Lease Compliance & Stewardship',
+    description: 'Full responsibility for operations, compliance, and stewardship of state-owned assets.',
+    items: [
+      'Retains sole control and management of the premises',
+      'Ensures compliance with all DNR rules, state laws, and lease requirements',
+      'Protects natural, cultural, and historic resources',
+      'Coordinates with the DNR on improvements and long-term planning',
+    ],
+  },
+]
+
 export default function LongLakePage() {
   return (
     <main className="min-h-screen">
@@ -422,6 +485,37 @@ export default function LongLakePage() {
                   </div>
                 </div>
               </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Scope of Services */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <div className="max-w-3xl mb-12">
+            <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Concession Management</span>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              BA Services serves as the contracted concessionaire for the Long Lake and Chief Noonday Outdoor Centers, operating under a lease with the Michigan Department of Natural Resources. The company is responsible for the restoration, operation, maintenance, and day-to-day management of these historic recreation facilities.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {scopeOfWork.map((category) => (
+              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li key={item} className="flex items-start text-sm text-gray-700">
+                      <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>

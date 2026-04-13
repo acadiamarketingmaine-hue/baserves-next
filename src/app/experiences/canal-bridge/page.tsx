@@ -42,6 +42,93 @@ const galleryImages = [
   { src: '/images/canal-bridge/beach-2.jpg', alt: 'Sandy beach along the Saco River' },
 ]
 
+const scopeOfWork = [
+  {
+    title: 'Full-Service Campground Operations',
+    description: 'Complete day-to-day management of Canal Bridge Campground under concession agreement with the Town of Fryeburg.',
+    items: [
+      'Management of all campground activities and services',
+      'Operation of the registration office and guest check-in',
+      'Oversight of reservations and camper relations',
+      'Staffing, supervision, and scheduling of all personnel',
+      'Standards meeting or exceeding Town of Fryeburg requirements',
+      'Structured operations for consistent, high-quality service',
+    ],
+  },
+  {
+    title: 'On-Site Management & Staffing',
+    description: 'A structured management team with continuous on-site presence throughout the operating season.',
+    items: [
+      'Contract Manager overseeing performance and compliance',
+      'General Manager coordinating daily operations',
+      'On-site personnel for registration, maintenance, and security',
+      'Staff present throughout the full operating season',
+      'Continuous oversight and accountability',
+      'Responsive management at all times',
+    ],
+  },
+  {
+    title: 'Guest Services & Visitor Experience',
+    description: 'A welcoming, family-friendly environment with daily office hours and 24-hour emergency availability.',
+    items: [
+      'Daily registration office hours (7:00 AM – 9:00 PM)',
+      'Direct communication and assistance to campers',
+      'Clear campground rules and expectations',
+      '24-hour emergency contact availability',
+      'Smooth guest experience from arrival to departure',
+      'Family-oriented atmosphere and visitor support',
+    ],
+  },
+  {
+    title: 'Maintenance & Groundskeeping',
+    description: 'Full responsibility for maintaining campground condition, cleanliness, and safety.',
+    items: [
+      'Bathhouse cleaning and upkeep (minimum twice daily)',
+      'Routine campground inspections for cleanliness and safety',
+      'Lawn care, landscaping, and debris removal',
+      'Beach cleaning and upkeep along the Saco River',
+      'Trash and dumpster management',
+      'All equipment and supplies provided by BA Services',
+    ],
+  },
+  {
+    title: 'Safety & Security',
+    description: 'On-site security monitoring, nightly patrols, and coordination with local law enforcement.',
+    items: [
+      'On-site security monitoring and rule enforcement',
+      'Nightly quiet hours (10:00 PM – 7:00 AM) with regular patrols',
+      'Immediate response to disturbances or safety concerns',
+      'Coordination with local law enforcement when necessary',
+      'Routine rounds to ensure a respectful atmosphere',
+      'Family-oriented safety standards maintained at all times',
+    ],
+  },
+  {
+    title: 'Facility Improvements & Investment',
+    description: 'Direct capital investment in campground upgrades to restore and elevate Canal Bridge as a premier destination.',
+    items: [
+      'Installation of new registration office and entrance gate',
+      'Campsite upgrades including fire pits and site markers',
+      'Addition of recreational amenities (volleyball, horseshoe pits)',
+      'Ongoing improvements to enhance guest experience',
+      'Long-term investment in campground quality',
+      'Designed to elevate Canal Bridge as a premier local destination',
+    ],
+  },
+  {
+    title: 'Financial Responsibility & Reporting',
+    description: 'Transparent management of all financial and administrative functions with weekly reporting to the Town.',
+    items: [
+      'Collection of camping fees and deposits',
+      'Payment of operational expenses and utilities',
+      'Obtaining required licenses and permits',
+      'Weekly reporting of attendance and activity to the Town',
+      'Full transparency and accountability',
+      'Administrative compliance throughout the contract term',
+    ],
+  },
+]
+
 export default function CanalBridgePage() {
   return (
     <main className="min-h-screen">
@@ -312,6 +399,37 @@ export default function CanalBridgePage() {
             {galleryImages.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
                 <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Scope of Services */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <div className="max-w-3xl mb-12">
+            <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Statement of Work</span>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              BA Services provides full-service campground management, maintenance, and guest services for Canal Bridge Campground under concession agreement with the Town of Fryeburg.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {scopeOfWork.map((category) => (
+              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li key={item} className="flex items-start text-sm text-gray-700">
+                      <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>

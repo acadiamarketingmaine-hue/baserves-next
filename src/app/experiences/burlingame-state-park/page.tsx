@@ -34,6 +34,94 @@ const cabinInfo = [
   'Located in the Legiontown Camp Area (Cabins C, F, H, I, J, K)',
 ]
 
+const scopeOfWork = [
+  {
+    title: 'Full-Service Campground Operations',
+    description: 'Day-to-day management of nearly 700 campsites, cabins, restroom facilities, and common-use areas under agreement with RI DEM.',
+    items: [
+      '24/7 gatehouse and entrance operations',
+      'Guest check-in, verification, and security',
+      'Reservation system management via State platform',
+      'Staffing and supervision of all operational personnel',
+      'Customer service aligned with State Park standards',
+      'Coordination with park officials and law enforcement',
+    ],
+  },
+  {
+    title: 'Camp Store & Retail Services',
+    description: 'On-site Camp Store providing essential goods, convenience items, and rental services for campers.',
+    items: [
+      'Groceries, beverages, ice, and packaged foods',
+      'Camping supplies such as fuel and basic gear',
+      'Optional rental services (kayaks, canoes, bicycles)',
+      'Vending operations and merchandise sales',
+      'Compliance with state health and safety standards',
+      'Focus on locally sourced products when possible',
+    ],
+  },
+  {
+    title: 'Recreation Center Management',
+    description: 'Operation of the campground entertainment hub with family-friendly indoor activities and programming.',
+    items: [
+      'Arcade-style games (pinball, video games, air hockey)',
+      'Flexible recreational programming',
+      'Safe, family-friendly indoor activity space',
+      'All programming subject to State approval',
+    ],
+  },
+  {
+    title: 'Grounds Maintenance & Facility Management',
+    description: 'Maintaining cleanliness, safety, and functionality across all campground facilities and common areas.',
+    items: [
+      'Daily cleaning and housekeeping across campsites and cabins',
+      'Restroom and shower sanitation (multiple cleanings daily)',
+      'Trash removal and recycling management',
+      'Landscaping, mowing, debris removal, and site upkeep',
+      'Maintenance of concession buildings and equipment',
+    ],
+  },
+  {
+    title: 'Infrastructure & Capital Improvements',
+    description: 'Direct investment in ongoing campground improvement, modernization, and regulatory compliance.',
+    items: [
+      'Annual capital improvement contributions',
+      'Utilities management for concession facilities',
+      'Procurement and maintenance of operational equipment',
+      'Compliance with permitting and building codes',
+    ],
+  },
+  {
+    title: 'Environmental Stewardship & Compliance',
+    description: 'Strict adherence to environmental and regulatory standards within the state park environment.',
+    items: [
+      'Recycling and waste reduction programs',
+      'Compliance with state health, safety, and environmental regulations',
+      'Support for green initiatives and sustainable operations',
+      'Coordination with DEM on conservation priorities',
+    ],
+  },
+  {
+    title: 'Financial & Contractual Responsibilities',
+    description: 'Revenue-generating concession agreement aligned with the State\'s financial and recreational objectives.',
+    items: [
+      'Percentage of gross revenues paid to the State',
+      'Annual capital improvement funding',
+      'Full operational cost and staffing coverage',
+      'Funding of Environmental Police Officer details',
+    ],
+  },
+  {
+    title: 'Expanded Services & Guest Experience',
+    description: 'Additional responsibilities under the extended agreement through 2027, including expanded guest services.',
+    items: [
+      'Walk-in reservations and check-ins for East Beach Campground',
+      'Expanded guest services due to State staffing limitations',
+      'Extended operational coverage and customer access',
+      'Clean, safe, and well-managed facilities',
+    ],
+  },
+]
+
 const keyPolicies = [
   { title: 'Check In / Check Out', detail: 'Check-in: 1:00 PM | Check-out: 11:00 AM' },
   { title: 'Quiet Hours', detail: '10:00 PM to 7:00 AM' },
@@ -393,6 +481,37 @@ export default function BurlingamePage() {
                 </svg>
                 <span className="text-sm font-medium text-gray-900">{doc.name}</span>
               </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Scope of Services */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <div className="max-w-3xl mb-12">
+            <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Statement of Work</span>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              BA Services serves as the contracted concessionaire for Burlingame State Campground, delivering comprehensive campground operations, retail services, and recreational amenities under agreement with the Rhode Island Department of Environmental Management.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {scopeOfWork.map((category) => (
+              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li key={item} className="flex items-start text-sm text-gray-700">
+                      <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>
