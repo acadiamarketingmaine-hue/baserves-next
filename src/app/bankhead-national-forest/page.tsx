@@ -54,6 +54,76 @@ const recreationAreas = [
   { name: 'Flint-Creek Multi-Use Trail', description: 'A multi-use trail system open to hiking, mountain biking, and horseback riding.' },
 ]
 
+const scopeOfWork = [
+  {
+    title: 'Guest Services & Public Engagement',
+    description: 'Hospitality-driven visitor services that create welcoming, informative outdoor experiences at every touchpoint.',
+    items: [
+      'Campground check-in and reservation support',
+      'Visitor assistance and information services',
+      'Retail and recreational support services',
+      'Promotion of safe, family-oriented experiences',
+      'Public outreach and guest communication',
+    ],
+  },
+  {
+    title: 'Operations & Maintenance',
+    description: 'Full-spectrum operational and maintenance services keeping all facilities running efficiently to Forest Service standards.',
+    items: [
+      'Grounds and site maintenance',
+      'Road, parking area, and trail upkeep',
+      'Facility repairs and preventative maintenance',
+      'Water system monitoring and compliance support',
+      'Waste collection and disposal',
+      'Janitorial and sanitation services',
+    ],
+  },
+  {
+    title: 'Environmental Stewardship',
+    description: 'Conservation-focused practices that protect natural resources while maintaining public access to recreation areas.',
+    items: [
+      'Environmental remediation and protection practices',
+      'Bio-hazard cleaning and safe material handling',
+      'Natural resource preservation',
+      'Site-sensitive maintenance protocols',
+      'Forest Service environmental compliance support',
+    ],
+  },
+  {
+    title: 'Safety & Compliance',
+    description: 'Strict adherence to federal, state, and local regulations governing recreation sites on National Forest land.',
+    items: [
+      'Site security and public safety oversight',
+      'Health and sanitation regulatory compliance',
+      'Routine inspections and quality control reporting',
+      'Coordination with Forest Service personnel',
+      'Special Use Permit performance standards',
+    ],
+  },
+  {
+    title: 'Facility Operations',
+    description: 'End-to-end management of recreation infrastructure across the Clear Creek and Corinth Recreation Areas.',
+    items: [
+      'Campgrounds and overnight facilities',
+      'Day-use areas and picnic sites',
+      'Swim beaches and boat launches',
+      'Parking areas and access roads',
+      'Accessibility and visitor experience standards',
+    ],
+  },
+  {
+    title: 'Workforce & Management',
+    description: 'Experienced management and trained on-site personnel delivering consistent, professional service across all locations.',
+    items: [
+      'Staffing, training, and supervision',
+      'Quality control and inspections',
+      'Coordination with the U.S. Forest Service',
+      'Continuous operational improvement',
+      'On-site oversight and accountability',
+    ],
+  },
+]
+
 const downloads = [
   { name: 'Birding Guide', description: 'Complete guide to birding in the Bankhead, including trail descriptions and species lists.', file: '/downloads/bankhead-national-forest/birding-guide.pdf', color: 'blue' },
   { name: 'Quail Habitat Guide', description: 'Information on Black Pond and Inmanfield Quail Emphasis Areas and conservation efforts.', file: '/downloads/bankhead-national-forest/quail-habitat.pdf', color: 'green' },
@@ -531,6 +601,37 @@ export default function BankheadNationalForestPage() {
                   fill
                   className="object-cover hover:scale-110 transition-transform duration-500"
                 />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Scope of Services */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <div className="max-w-3xl mb-12">
+            <span className="inline-block px-4 py-2 bg-forest-DEFAULT/10 text-forest-DEFAULT text-sm font-semibold rounded-full mb-4">Statement of Work</span>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              BA Services delivers full-service recreation management for the William B. Bankhead National Forest under a U.S. Forest Service concession contract, operating and maintaining the Clear Creek and Corinth Recreation Areas to ensure safe, clean, and welcoming outdoor experiences.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {scopeOfWork.map((category) => (
+              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li key={item} className="flex items-start text-sm text-gray-700">
+                      <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>

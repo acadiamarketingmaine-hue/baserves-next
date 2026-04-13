@@ -56,6 +56,95 @@ const bloomingSchedule = [
   { month: 'November', highlights: 'Late-season color in sheltered valleys; witch hazel blooms as the last wildflower of the year' },
 ]
 
+const scopeOfWork = [
+  {
+    title: 'Campground & Recreation Area Operations',
+    description: 'Daily management of multiple campgrounds and recreation areas across the Cheat-Potomac Ranger District.',
+    items: [
+      'Opening, closing, and seasonal scheduling of facilities',
+      'Managing reservations through Recreation.gov',
+      'Operating fee stations and ensuring proper fee collection',
+      'Providing on-site staff presence and visitor assistance',
+      'Adjusting operations based on weather, safety, and Forest Service direction',
+    ],
+  },
+  {
+    title: 'Visitor Services & Customer Experience',
+    description: 'Hospitality-focused public interaction ensuring a high-quality visitor experience at every site.',
+    items: [
+      'Greeting visitors and providing information, maps, and guidance',
+      'Maintaining visible staff presence through patrols and campground hosts',
+      'Offering educational materials and interpretive programs',
+      'Supporting safe and enjoyable recreation through proactive engagement',
+      'Promoting a family-oriented outdoor experience',
+    ],
+  },
+  {
+    title: 'Facility Maintenance & Grounds Management',
+    description: 'Maintaining all physical assets to meet or exceed U.S. Forest Service standards.',
+    items: [
+      'Cleaning restrooms, campsites, and common areas',
+      'Maintaining roads, trails, signage, and infrastructure',
+      'Servicing water systems and utilities',
+      'Performing repairs, painting, landscaping, and general upkeep',
+      'Managing trash collection and sanitation',
+    ],
+  },
+  {
+    title: 'Staffing & On-Site Management',
+    description: 'A structured team deployed to operate and oversee all sites with 24/7 peak-season coverage.',
+    items: [
+      'Area Managers and Unit Managers for overall supervision',
+      'Campground Hosts for guest services and daily upkeep',
+      'Maintenance Technicians for repairs and infrastructure support',
+      'Gate Attendants for visitor entry and fee collection',
+      'Interpretive staff for educational programming',
+    ],
+  },
+  {
+    title: 'Safety, Security & Compliance',
+    description: 'Core safety and regulatory compliance responsibilities across all managed recreation sites.',
+    items: [
+      'Conducting routine safety inspections and hazard mitigation',
+      'Enforcing campground rules and fire restrictions',
+      'Implementing fire prevention and emergency response plans',
+      'Coordinating with law enforcement and Forest Service personnel',
+      'Ensuring compliance with federal, state, and environmental regulations',
+    ],
+  },
+  {
+    title: 'Environmental Stewardship',
+    description: 'Operating with a commitment to protecting the natural resources of the Monongahela.',
+    items: [
+      'Managing vegetation and hazard trees',
+      'Supporting wildlife awareness and protection efforts',
+      'Maintaining water quality standards',
+      'Promoting recycling and sustainable practices',
+      'Minimizing environmental impact while enhancing visitor access',
+    ],
+  },
+  {
+    title: 'Revenue & Administrative Management',
+    description: 'Full financial and administrative oversight of the concession operation.',
+    items: [
+      'Fee collection, reporting, and accounting',
+      'Revenue tracking and financial reporting to the Forest Service',
+      'Compliance with Special Use Permit requirements',
+      'Managing contracts, insurance, and operational documentation',
+    ],
+  },
+  {
+    title: 'Additional Guest Services & Enhancements',
+    description: 'Value-added services and amenities that improve the overall visitor experience.',
+    items: [
+      'Sale of firewood and convenience items',
+      'Interpretive programs and educational outreach',
+      'Optional amenities such as cabin rentals where applicable',
+      'Communication tools for guest feedback and service requests',
+    ],
+  },
+]
+
 const campgroundMaps = [
   { name: 'Bear Heaven Recreation Area Map', file: '/downloads/monongahela-national-forest/campground-maps/bear-heaven.pdf' },
   { name: 'Cranberry Campground Map', file: '/downloads/monongahela-national-forest/campground-maps/cranberry.pdf' },
@@ -485,6 +574,39 @@ export default function MonongahelaNationalForestPage() {
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Scope of Services */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <div className="max-w-3xl mb-12">
+            <span className="inline-block px-4 py-2 bg-green-600/10 text-green-700 text-sm font-semibold rounded-full mb-4">
+              Statement of Work
+            </span>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              BA Services provides full-service management, operations, and maintenance for campground and day-use recreation facilities within the Monongahela National Forest under a USDA Forest Service concession contract &mdash; delivering turnkey services that ensure safe, clean, and enjoyable recreational experiences while protecting federal lands.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {scopeOfWork.map((category) => (
+              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li key={item} className="flex items-start text-sm text-gray-700">
+                      <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>

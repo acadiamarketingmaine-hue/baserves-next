@@ -93,6 +93,93 @@ const galleryImages = [
   { src: '/images/meramec-state-park/fireside-store.jpg', alt: 'Fireside Store & Grill' },
 ]
 
+const scopeOfWork = [
+  {
+    title: 'Lodging & Conference Facilities',
+    description: 'Full operation of cabins, motel, and event spaces with modern booking and year-round administrative support.',
+    items: [
+      'Operation of Hickory Ridge Motel, cabins, and conference center',
+      'Online reservation system with advanced booking capabilities',
+      'Seasonal operations with year-round administrative support',
+      'Clean, comfortable, and well-maintained accommodations',
+      'Pet-friendly lodging alongside designated allergen-free units',
+    ],
+  },
+  {
+    title: 'Food & Beverage Operations',
+    description: 'Full management of dining services with high-quality, compliant food offerings and dietary-conscious menus.',
+    items: [
+      'Full management of the Fireside Grill restaurant',
+      'Preparation and service of high-quality, safe food offerings',
+      'Menu development including healthy and dietary-conscious choices',
+      'Strict adherence to federal, state, and local health regulations',
+    ],
+  },
+  {
+    title: 'Retail Services',
+    description: 'Visitor-friendly retail operations with camping supplies, merchandise, and locally sourced Missouri products.',
+    items: [
+      'Operation of the Fireside Store and River Stop Store',
+      'Sale of camping supplies, merchandise, and convenience items',
+      'Clean, organized, and visitor-friendly retail environments',
+      'Preference for locally sourced Missouri products where feasible',
+    ],
+  },
+  {
+    title: 'Watercraft Rentals & River Services',
+    description: 'Fleet of 80+ vessels for float trips with full transportation services and safety-focused operations.',
+    items: [
+      'Canoe, kayak, and raft rentals with a fleet of 80+ vessels',
+      'Transportation services for float trips',
+      'Seasonal operations aligned with peak visitation periods',
+      'Safety-focused operations with rental agreements and liability protocols',
+    ],
+  },
+  {
+    title: 'Operations & Management',
+    description: 'End-to-end operational management with structured on-site leadership across every business unit.',
+    items: [
+      'Staffing, training, and supervision of all personnel',
+      'Day-to-day facility operations across lodging, retail, food service, and recreation',
+      'Inventory control, procurement, and vendor coordination',
+      'Maintenance of all concession facilities in clean, safe condition',
+      'Financial management, reporting, and contract compliance',
+      'Structured on-site management team across each business unit',
+    ],
+  },
+  {
+    title: 'Quality Control & Guest Experience',
+    description: 'Formal quality program with regular inspections, rapid response, and continuous improvement.',
+    items: [
+      'Daily, weekly, and monthly inspections of facilities and operations',
+      'Rapid response to maintenance or service issues within 72 hours',
+      'Ongoing staff training focused on professionalism and satisfaction',
+      'Continuous improvement through audits, feedback, and reviews',
+      'Customer service programs including feedback systems and on-site support',
+    ],
+  },
+  {
+    title: 'Additional Guest Services',
+    description: 'Supplemental services that round out the full park experience for every visitor.',
+    items: [
+      'Firewood sales for campers during peak season',
+      'Marketing and promotion of park activities, lodging, and events',
+      'Customer feedback systems and on-site support',
+      'Park-wide event coordination and visitor outreach',
+    ],
+  },
+  {
+    title: 'Community & Economic Impact',
+    description: 'Supporting the local and state economy through employment, local partnerships, and tourism promotion.',
+    items: [
+      'Hiring local employees whenever possible',
+      'Partnering with local vendors and suppliers',
+      'Promoting tourism through targeted marketing and outreach',
+      'Driving visitation and revenue within Meramec State Park',
+    ],
+  },
+]
+
 export default function MeramecStateParkPage() {
   return (
     <main className="min-h-screen">
@@ -482,6 +569,37 @@ export default function MeramecStateParkPage() {
                 <p className="text-gray-500 text-sm">Visit the Visitor Center for maps, exhibits &amp; trail info</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Scope of Services */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <div className="max-w-3xl mb-12">
+            <span className="inline-block px-4 py-2 bg-forest-DEFAULT/10 text-forest-DEFAULT text-sm font-semibold rounded-full mb-4">Statement of Work</span>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              BA Services operates the concession services at Meramec State Park under a long-term partnership with the Missouri Department of Natural Resources, delivering comprehensive lodging, dining, retail, and recreational experiences across the park.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {scopeOfWork.map((category) => (
+              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li key={item} className="flex items-start text-sm text-gray-700">
+                      <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>

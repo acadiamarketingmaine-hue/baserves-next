@@ -34,6 +34,97 @@ const subProperties = [
   },
 ]
 
+const scopeOfWork = [
+  {
+    title: 'Recreation Area Operations',
+    description: 'Full operation of campgrounds, cabins, beaches, and day-use areas throughout the Hoosier National Forest.',
+    items: [
+      'Operate campgrounds, cabins, beaches, and day-use areas on approved seasonal schedules',
+      'Adjust operations based on weather, safety conditions, and visitor demand',
+      'Coordinate closely with the U.S. Forest Service on all operational decisions',
+      'Manage extended operating seasons at select sites',
+      'Provide cabin accommodations and strategic amenities that complement the natural setting',
+    ],
+  },
+  {
+    title: 'Visitor Services & Guest Experience',
+    description: 'Front-line customer service and visitor engagement rooted in traditional camping values.',
+    items: [
+      'Campground hosts, gate attendants, and on-site staff providing front-line service',
+      'Visitor information, education, and assistance throughout each stay',
+      'Fee collection and Recreation.gov reservation coordination',
+      'Text-based support and modern communication tools',
+      'Respectful, family-oriented outdoor experience rooted in traditional camping values',
+    ],
+  },
+  {
+    title: 'Facility Maintenance & Cleanliness',
+    description: 'Rigorous maintenance protocols that meet or exceed National Forest Service quality standards.',
+    items: [
+      'Restroom and sanitation system maintenance',
+      'Campsite, picnic area, and common space upkeep',
+      'Road, trail, and signage maintenance',
+      'Daily and scheduled cleaning to ensure high standards',
+      'Pre-season, mid-season, and post-season facility inspections',
+    ],
+  },
+  {
+    title: 'Staffing & On-Site Management',
+    description: 'A full team of trained personnel providing continuous presence at key recreation sites.',
+    items: [
+      'Area Managers and Unit Managers',
+      'Campground Hosts and Gate Attendants',
+      'Maintenance Technicians and Security Staff',
+      '24/7 staffing presence at key recreation sites during operating seasons',
+      'Recruiting and training staff to meet federal service, safety, and hospitality standards',
+    ],
+  },
+  {
+    title: 'Safety, Security & Emergency Response',
+    description: 'Comprehensive safety programs including inspections, fire prevention, and emergency coordination.',
+    items: [
+      'Regular safety inspections and hazard mitigation for trees, infrastructure, and facilities',
+      'Fire prevention and response protocols',
+      'Campground security, rule enforcement, and incident reporting',
+      'Emergency response coordination with appropriate agencies',
+      'Continuous visitor and employee safety assurance',
+    ],
+  },
+  {
+    title: 'Environmental Stewardship',
+    description: 'Responsible operations that protect natural resources and preserve the forest atmosphere.',
+    items: [
+      'Protect natural resources through responsible operations and maintenance practices',
+      'Vegetation management and wildlife interaction protocols',
+      'Waste system management and recycling programs',
+      'Eco-friendly and sustainability initiatives',
+      'Preserve the non-commercialized forest atmosphere valued by visitors',
+    ],
+  },
+  {
+    title: 'Forest Service Partnership',
+    description: 'Transparent, collaborative partnership with the U.S. Forest Service as the primary on-the-ground operator.',
+    items: [
+      'Serve as primary on-the-ground partner to the U.S. Forest Service',
+      'Regular inspections, reporting, and performance evaluations',
+      'Full compliance with federal regulations and concession requirements',
+      'Adherence to approved operating plans',
+      'Collaborative, transparent working relationship with Forest Service personnel',
+    ],
+  },
+  {
+    title: 'Quality Standards & Visitor Enhancement',
+    description: 'Proven results-driven model that transforms recreation sites into welcoming, well-managed destinations.',
+    items: [
+      'Meet or exceed National Quality Standards for Recreation Management',
+      'Full compliance with U.S. Forest Service operating requirements',
+      'Federal employment, safety, and civil rights standards adherence',
+      'Informational materials and forest-specific visitor guides',
+      'Initial facility improvement followed by ongoing high standards of maintenance',
+    ],
+  },
+]
+
 const activities = [
   {
     name: 'Hiking & Backpacking',
@@ -273,6 +364,39 @@ export default function HoosierNationalForestPage() {
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{activity.name}</h3>
                 <p className="text-gray-600 text-sm">{activity.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Scope of Services */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <div className="max-w-3xl mb-12">
+            <span className="inline-block px-4 py-2 bg-green-600/10 text-green-700 text-sm font-semibold rounded-full mb-4">
+              Statement of Work
+            </span>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              BA Services provides comprehensive concession services for the Hoosier National Forest under a U.S. Forest Service contract &mdash; managing the full operation, maintenance, and visitor services across designated campgrounds, cabins, and day-use recreation areas.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {scopeOfWork.map((category) => (
+              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li key={item} className="flex items-start text-sm text-gray-700">
+                      <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>

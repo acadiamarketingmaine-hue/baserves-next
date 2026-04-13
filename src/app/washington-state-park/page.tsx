@@ -25,6 +25,91 @@ const fishPDFs = [
   { name: 'Fish Handling & Release', file: 'Fish Handling & Release Guidelines.pdf' },
 ]
 
+const scopeOfWork = [
+  {
+    title: 'Lodging & Guest Accommodations',
+    description: 'Full-service cabin and campsite operations designed for comfort, consistency, and a hassle-free guest experience.',
+    items: [
+      'Operation of cabins and overnight accommodations',
+      'Housekeeping and facility maintenance to strict quality standards',
+      'Guest reservations, check-in, and support',
+      'Ongoing inspections for cleanliness, safety, and comfort',
+    ],
+  },
+  {
+    title: 'Food & Beverage Services',
+    description: 'On-site restaurant and grill operations with tight controls, consistent quality, and attention to cost.',
+    items: [
+      'Management of on-site restaurant and grill operations',
+      'Menu development focused on affordability, quality, and regional appeal',
+      'Inventory control systems to reduce waste and maintain consistency',
+      'Portion control standards to ensure value and efficiency',
+    ],
+  },
+  {
+    title: 'Retail & Camp Store Operations',
+    description: 'Clean, organized, and customer-friendly retail environments stocked with essentials and local goods.',
+    items: [
+      'Operation of gift shops and camp stores',
+      'Stocking of essential camping supplies, recreation items, and local goods',
+      'Merchandise selection reflecting the park and regional character',
+      'Customer-friendly store layouts and signage',
+    ],
+  },
+  {
+    title: 'Watercraft Rentals & Recreation',
+    description: 'Streamlined watercraft rental operations that get guests on the water with minimal hassle.',
+    items: [
+      'Canoe, kayak, and raft rental operations',
+      'Streamlined reservation systems for easy booking',
+      'Safety briefings and equipment orientation for all guests',
+      'Retail add-ons such as sunscreen, beverages, and gear',
+    ],
+  },
+  {
+    title: 'Grounds, Maintenance & Facilities',
+    description: 'Comprehensive groundskeeping and facility maintenance across all concession areas, every day.',
+    items: [
+      'Landscaping and site upkeep',
+      'Janitorial services for restrooms, public areas, and facilities',
+      'Trash collection and sanitation services',
+      'Preventative maintenance and repairs',
+      'Daily inspections and rapid response to deficiencies',
+    ],
+  },
+  {
+    title: 'Guest Services & Reservations',
+    description: 'Centralized reservation management and visitor support from first contact to departure.',
+    items: [
+      'Centralized reservation management (online and phone)',
+      'Check-in and check-out operations',
+      'Visitor information and customer support',
+      'Guest inquiry handling and issue resolution',
+    ],
+  },
+  {
+    title: 'Quality Control & Oversight',
+    description: 'A structured Quality Control Program with layered inspections and a 72-hour corrective action standard.',
+    items: [
+      'Daily on-site inspections by management',
+      'Weekly operational reviews',
+      'Monthly formal inspections by corporate leadership',
+      '72-hour corrective action standard for identified issues',
+    ],
+  },
+  {
+    title: 'Staffing, Marketing & Engagement',
+    description: 'Local on-site leadership backed by corporate oversight, plus active marketing to drive visitation.',
+    items: [
+      'On-Site Manager responsible for daily operations',
+      'General Manager support from nearby Meramec State Park',
+      'Corporate leadership providing resources and accountability',
+      'Website, digital advertising, and social media engagement',
+      'Group outreach for families, youth organizations, and tourists',
+    ],
+  },
+]
+
 const galleryImages = [
   { src: '/images/washington-thunderbird-lodge.png', alt: 'Cabin 11 exterior at Washington State Park' },
   { src: '/images/washington-state-park/cabin-11-interior.png', alt: 'Cabin 11 interior' },
@@ -343,6 +428,39 @@ export default function WashingtonStateParkPage() {
             {galleryImages.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
                 <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Scope of Services */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <div className="max-w-3xl mb-12">
+            <span className="inline-block px-4 py-2 bg-green-600/10 text-green-700 text-sm font-semibold rounded-full mb-4">
+              Statement of Work
+            </span>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              BA Services operates the full concession at Washington State Park — lodging, food service, retail, recreation, and facility maintenance — all managed under one coordinated system with a hands-on, service-first approach.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {scopeOfWork.map((category) => (
+              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li key={item} className="flex items-start text-sm text-gray-700">
+                      <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
