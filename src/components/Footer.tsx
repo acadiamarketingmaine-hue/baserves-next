@@ -65,12 +65,12 @@ const locationsByState = [
     icon: '/images/states/west-virginia.png',
     locations: [
       { name: 'Monongahela National Forest', href: '/monongahela-national-forest', children: [
-        { name: 'Big Bend Campground', href: '/monongahela-national-forest' },
-        { name: 'Jess Judy Group Campground', href: '/monongahela-national-forest' },
-        { name: 'Seneca Shadows Campground', href: '/monongahela-national-forest' },
-        { name: 'Spruce Knob Lake Campground', href: '/monongahela-national-forest' },
-        { name: 'Gatewood Group Campground', href: '/monongahela-national-forest' },
-        { name: 'Stuart Recreation Area', href: '/monongahela-national-forest' },
+        { name: 'Big Bend Campground', href: '/monongahela-national-forest/big-bend-campground' },
+        { name: 'Jess Judy Group Campground', href: '/monongahela-national-forest/jess-judy-group-campground' },
+        { name: 'Seneca Shadows Campground', href: '/monongahela-national-forest/seneca-shadows-campground' },
+        { name: 'Spruce Knob Lake Campground', href: '/monongahela-national-forest/spruce-knob-lake-campground' },
+        { name: 'Gatewood Group Campground', href: '/monongahela-national-forest/gatewood-group-campground' },
+        { name: 'Stuart Recreation Area', href: '/monongahela-national-forest/stuart-recreation-area' },
       ]},
     ],
   },
