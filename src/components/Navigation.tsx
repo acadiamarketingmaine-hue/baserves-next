@@ -162,6 +162,7 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [locationsOpen, setLocationsOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
   const [query, setQuery] = useState('')
   const searchInputRef = useRef<HTMLInputElement>(null)
   const locationsRef = useRef<HTMLDivElement>(null)
@@ -248,13 +249,116 @@ export default function Navigation() {
               {/* Primary Nav Links */}
               <nav className="hidden lg:flex items-center gap-1">
                 {topNavLinks.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="px-4 py-2 text-forest-DEFAULT hover:text-forest-dark font-medium text-sm transition-colors"
-                  >
-                    {item.name}
-                  </Link>
+                  item.name === 'Services' ? (
+                    <div key={item.name} className="relative"
+                      onMouseEnter={() => setServicesOpen(true)}
+                      onMouseLeave={() => setServicesOpen(false)}
+                    >
+                      <Link
+                        href={item.href}
+                        className="flex items-center gap-1 px-4 py-2 text-forest-DEFAULT hover:text-forest-dark font-medium text-sm transition-colors"
+                      >
+                        {item.name}
+                        <svg className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </Link>
+                      <div className={`absolute top-full -left-20 pt-2 z-50 transition-all duration-300 ease-out ${
+                        servicesOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
+                      }`}>
+                        <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 w-[700px]">
+                          <div className="grid grid-cols-2 gap-6">
+                            {/* DOT / Government */}
+                            <div>
+                              <div className="flex items-center gap-2 mb-3">
+                                <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700">Government</span>
+                                <span className="text-sm font-bold text-gray-900">DOT Rest Areas</span>
+                              </div>
+                              <div className="space-y-1">
+                                <Link href="/services/utah-dot" onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors group">
+                                  <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
+                                    <Image src="/images/monongahela/spruce-knob-panorama.jpg" alt="Utah" fill className="object-cover" />
+                                  </div>
+                                  <div>
+                                    <div className="text-sm font-semibold text-gray-900 group-hover:text-forest-DEFAULT">Utah DOT</div>
+                                    <div className="text-xs text-gray-500">28 rest areas — 3 regions statewide</div>
+                                  </div>
+                                </Link>
+                                <Link href="/services/iowa-dot" onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors group">
+                                  <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
+                                    <Image src="/images/bankhead-forest.jpg" alt="Iowa" fill className="object-cover" />
+                                  </div>
+                                  <div>
+                                    <div className="text-sm font-semibold text-gray-900 group-hover:text-forest-DEFAULT">Iowa DOT</div>
+                                    <div className="text-xs text-gray-500">I-29 corridor — Sergeant Bluff</div>
+                                  </div>
+                                </Link>
+                              </div>
+                              <div className="mt-4 pt-3 border-t border-gray-100">
+                                <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Services</div>
+                                <div className="space-y-1">
+                                  {[
+                                    { name: 'Campground & Park Maintenance', href: '/services/campground-park-maintenance' },
+                                    { name: 'Landscaping & Groundskeeping', href: '/services/landscaping-and-groundskeeping' },
+                                    { name: 'Rest Area Cleaning & Upkeep', href: '/services/rest-area-cleaning-and-upkeep' },
+                                    { name: 'Preventive Maintenance & Repairs', href: '/services/preventive-maintenance-and-repairs' },
+                                  ].map((s) => (
+                                    <Link key={s.href} href={s.href} onClick={() => setServicesOpen(false)} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-forest-DEFAULT hover:bg-gray-50 rounded-lg transition-colors">
+                                      {s.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Recreation Management */}
+                            <div>
+                              <div className="flex items-center gap-2 mb-3">
+                                <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-green-50 text-green-700">Concessions</span>
+                                <span className="text-sm font-bold text-gray-900">Recreation Management</span>
+                              </div>
+                              <div className="space-y-1">
+                                {[
+                                  { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-forest.jpg', sub: 'Alabama — 180,000+ acres' },
+                                  { name: 'Hoosier National Forest', href: '/hoosier-national-forest', image: '/images/hardin-ridge-entrance-sign.jpg', sub: 'Indiana — 3 recreation areas' },
+                                  { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg', sub: 'West Virginia — 6 campgrounds' },
+                                  { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-entrance-sign.jpg', sub: 'Missouri — lodging, dining, watercraft' },
+                                  { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-thunderbird-lodge.png', sub: 'Missouri — cabins, pool, trails' },
+                                  { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg', sub: 'Rhode Island — 755 sites, 20 cabins' },
+                                ].map((p) => (
+                                  <Link key={p.href} href={p.href} onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-gray-50 transition-colors group">
+                                    <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
+                                      <Image src={p.image} alt={p.name} fill className="object-cover" />
+                                    </div>
+                                    <div>
+                                      <div className="text-sm font-semibold text-gray-900 group-hover:text-forest-DEFAULT">{p.name}</div>
+                                      <div className="text-xs text-gray-500">{p.sub}</div>
+                                    </div>
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <Link href="/services" onClick={() => setServicesOpen(false)} className="text-sm font-semibold text-forest-DEFAULT hover:underline">
+                              View All Services &rarr;
+                            </Link>
+                            <Link href="/contact?topic=partnership" onClick={() => setServicesOpen(false)} className="text-sm font-semibold text-white bg-forest-DEFAULT px-4 py-2 rounded-lg hover:bg-forest-dark transition-colors">
+                              Partnership Inquiries
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="px-4 py-2 text-forest-DEFAULT hover:text-forest-dark font-medium text-sm transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )
                 ))}
               </nav>
             </div>
