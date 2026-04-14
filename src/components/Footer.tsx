@@ -101,6 +101,18 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-forest-dark text-white">
+      {/* Company Address Bar */}
+      <div className="border-b border-white/10">
+        <div className="container-custom px-6 py-8 text-center">
+          <h3 className="text-lg font-bold text-white mb-2">BA Services, Inc.</h3>
+          <p className="text-white/60 text-sm">1157 Hammond Street</p>
+          <p className="text-white/60 text-sm mb-3">Bangor, Maine 04401</p>
+          <a href="mailto:email@BAServes.com" className="text-green-400 hover:text-green-300 text-sm font-medium transition-colors">
+            email@BAServes.com
+          </a>
+        </div>
+      </div>
+
       {/* Main Footer */}
       <div className="container-custom py-16 px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
