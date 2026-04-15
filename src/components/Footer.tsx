@@ -101,18 +101,6 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-forest-dark text-white">
-      {/* Company Address Bar */}
-      <div className="border-b border-white/10">
-        <div className="container-custom px-6 py-8 text-center">
-          <h3 className="text-lg font-bold text-white mb-2">BA Services, Inc.</h3>
-          <p className="text-white/60 text-sm">1157 Hammond Street</p>
-          <p className="text-white/60 text-sm mb-3">Bangor, Maine 04401</p>
-          <a href="mailto:email@BAServes.com" className="text-green-400 hover:text-green-300 text-sm font-medium transition-colors">
-            email@BAServes.com
-          </a>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="container-custom py-16 px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
@@ -135,13 +123,11 @@ export default function Footer() {
               From the rolling forests of Alabama to the rugged landscapes of Missouri, our managed sites provide
               well-maintained facilities, pristine landscapes, and seamless visitor experiences.
             </p>
-            <div className="flex items-center gap-4">
-              <a href="tel:+12073077903" className="flex items-center gap-2 text-white/90 hover:text-white transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <span>+1 207 307-7903</span>
-              </a>
+            <div className="text-white/70 text-sm space-y-1 mb-4">
+              <p className="font-semibold text-white">BA Services, Inc.</p>
+              <p>1157 Hammond Street</p>
+              <p>Bangor, Maine 04401</p>
+              <a href="mailto:email@BAServes.com" className="text-green-400 hover:text-green-300 transition-colors">email@BAServes.com</a>
             </div>
           </div>
 
