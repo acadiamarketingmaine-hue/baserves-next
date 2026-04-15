@@ -81,8 +81,8 @@ const services = [
 ]
 
 export const metadata = {
-  title: 'Services | BA Services',
-  description: 'Professional recreation area management services including maintenance, landscaping, cleaning, and repairs.',
+  title: 'Services',
+  description: 'Campground maintenance, landscaping, rest area cleaning, and preventive repairs. BA Services manages federal, state, and DOT recreation facilities across America.',
   alternates: {
     canonical: '/services',
   },

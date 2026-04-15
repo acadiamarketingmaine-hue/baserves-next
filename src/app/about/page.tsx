@@ -53,8 +53,8 @@ const stats = [
 ]
 
 export const metadata = {
-  title: 'About Us | BA Services',
-  description: 'Learn about BA Services and our mission to provide exceptional outdoor recreation experiences.',
+  title: 'About Us',
+  description: 'BA Services, Inc. manages 15+ recreation areas across 7 states — campgrounds, national forests, state parks, and DOT rest areas with 100+ dedicated team members.',
   alternates: {
     canonical: '/about',
   },

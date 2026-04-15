@@ -1068,8 +1068,56 @@ export default function HomePage() {
     return () => observer.disconnect()
   }, [])
 
+  const localBusinessJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'BA Services, Inc.',
+    description: 'Professional recreation area management company operating campgrounds, national forests, state parks, and DOT rest areas across Alabama, Indiana, Maine, Michigan, Missouri, Rhode Island, West Virginia, Iowa, and Utah.',
+    url: 'https://baserves.com',
+    logo: 'https://baserves.com/images/logo.png',
+    image: 'https://baserves.com/images/logo.png',
+    telephone: '+1-207-307-7903',
+    email: 'email@BAServes.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '1157 Hammond Street',
+      addressLocality: 'Bangor',
+      addressRegion: 'ME',
+      postalCode: '04401',
+      addressCountry: 'US',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 44.8237,
+      longitude: -68.7924,
+    },
+    areaServed: [
+      { '@type': 'State', name: 'Alabama' },
+      { '@type': 'State', name: 'Indiana' },
+      { '@type': 'State', name: 'Maine' },
+      { '@type': 'State', name: 'Michigan' },
+      { '@type': 'State', name: 'Missouri' },
+      { '@type': 'State', name: 'Rhode Island' },
+      { '@type': 'State', name: 'West Virginia' },
+      { '@type': 'State', name: 'Iowa' },
+      { '@type': 'State', name: 'Utah' },
+    ],
+    serviceType: [
+      'Campground Management',
+      'National Forest Recreation Area Management',
+      'State Park Management',
+      'DOT Rest Area Management',
+      'Facility Maintenance',
+      'Landscaping & Groundskeeping',
+    ],
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
       {/* Loading Screen */}
       {loading && (
         <div

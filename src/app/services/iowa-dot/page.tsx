@@ -7,8 +7,8 @@ import { iowaRestAreas } from '@/data/iowa-rest-areas'
 const RestAreaMap = dynamic(() => import('@/components/RestAreaMap'), { ssr: false })
 
 export const metadata = {
-  title: 'Iowa DOT Rest Area Management | BA Services',
-  description: 'BA Services manages rest area facilities along I-29 in Sergeant Bluff, Iowa for the Iowa Department of Transportation.',
+  title: 'Iowa DOT Rest Area Management',
+  description: 'BA Services manages 2 rest areas along I-29 in Sergeant Bluff, Iowa for the Iowa DOT — 24/7 janitorial, grounds maintenance, and facility management.',
   alternates: { canonical: '/services/iowa-dot' },
 }
 

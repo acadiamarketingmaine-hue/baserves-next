@@ -41,8 +41,8 @@ const positions = [
 ]
 
 export const metadata = {
-  title: 'Careers | BA Services',
-  description: 'Join our team and help create memorable outdoor experiences. Apply online or download our employment application.',
+  title: 'Careers',
+  description: 'Join BA Services — seasonal and full-time outdoor jobs at campgrounds, state parks, and rest areas across 7 states. Apply online today.',
   alternates: {
     canonical: '/careers',
   },

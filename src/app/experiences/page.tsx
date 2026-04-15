@@ -125,8 +125,8 @@ const categories = [
 ]
 
 export const metadata = {
-  title: 'Experiences | BA Services',
-  description: 'Explore our recreation areas and outdoor experiences across America.',
+  title: 'Experiences',
+  description: 'Explore 12+ recreation areas managed by BA Services — campgrounds, national forests, and state parks across AL, IN, ME, MI, MO, RI, and WV. Book your stay today.',
   alternates: {
     canonical: '/experiences',
   },

@@ -7,8 +7,8 @@ import { utahRestAreas } from '@/data/utah-rest-areas'
 const RestAreaMap = dynamic(() => import('@/components/RestAreaMap'), { ssr: false })
 
 export const metadata = {
-  title: 'Utah DOT Rest Area Management | BA Services',
-  description: 'BA Services manages 28 rest area facilities across Utah for the Utah Department of Transportation, spanning I-15, I-80, I-70, and scenic byways.',
+  title: 'Utah DOT Rest Area Management',
+  description: 'BA Services manages 28 rest areas across Utah for UDOT — statewide coverage on I-15, I-80, I-70, and scenic byways with full facility management services.',
   alternates: { canonical: '/services/utah-dot' },
 }
 

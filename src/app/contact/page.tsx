@@ -4,8 +4,8 @@ import Footer from '@/components/Footer'
 import ContactForm from '@/components/ContactForm'
 
 export const metadata = {
-  title: 'Contact Us | BA Services',
-  description: 'Get in touch with BA Services — careers, partnerships, or rest area feedback.',
+  title: 'Contact Us',
+  description: 'Reach BA Services for career opportunities, partnership inquiries, or rest area feedback. Call +1-207-307-7903 or email us from Bangor, Maine.',
   alternates: { canonical: '/contact' },
 }
 
