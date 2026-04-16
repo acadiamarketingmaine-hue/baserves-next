@@ -275,15 +275,6 @@ export default function Navigation() {
                                 <span className="text-sm font-bold text-gray-900">DOT Rest Areas</span>
                               </div>
                               <div className="space-y-1">
-                                <Link href="/services/utah-dot" onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors group">
-                                  <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
-                                    <Image src="/images/monongahela/spruce-knob-panorama.jpg" alt="Utah" fill className="object-cover" />
-                                  </div>
-                                  <div>
-                                    <div className="text-sm font-semibold text-gray-900 group-hover:text-forest-DEFAULT">Utah DOT</div>
-                                    <div className="text-xs text-gray-500">28 rest areas — 3 regions statewide</div>
-                                  </div>
-                                </Link>
                                 <Link href="/services/iowa-dot" onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors group">
                                   <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
                                     <Image src="/images/bankhead-forest.jpg" alt="Iowa" fill className="object-cover" />
@@ -293,6 +284,15 @@ export default function Navigation() {
                                     <div className="text-xs text-gray-500">I-29 corridor — Sergeant Bluff</div>
                                   </div>
                                 </Link>
+                                <Link href="/services/utah-dot" onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors group">
+                                  <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
+                                    <Image src="/images/monongahela/spruce-knob-panorama.jpg" alt="Utah" fill className="object-cover" />
+                                  </div>
+                                  <div>
+                                    <div className="text-sm font-semibold text-gray-900 group-hover:text-forest-DEFAULT">Utah DOT</div>
+                                    <div className="text-xs text-gray-500">28 rest areas — 3 regions statewide</div>
+                                  </div>
+                                </Link>
                               </div>
                               <div className="mt-4 pt-3 border-t border-gray-100">
                                 <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Services</div>
@@ -300,8 +300,8 @@ export default function Navigation() {
                                   {[
                                     { name: 'Campground & Park Maintenance', href: '/services/campground-park-maintenance' },
                                     { name: 'Landscaping & Groundskeeping', href: '/services/landscaping-and-groundskeeping' },
-                                    { name: 'Rest Area Cleaning & Upkeep', href: '/services/rest-area-cleaning-and-upkeep' },
                                     { name: 'Preventive Maintenance & Repairs', href: '/services/preventive-maintenance-and-repairs' },
+                                    { name: 'Rest Area Cleaning & Upkeep', href: '/services/rest-area-cleaning-and-upkeep' },
                                   ].map((s) => (
                                     <Link key={s.href} href={s.href} onClick={() => setServicesOpen(false)} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-forest-DEFAULT hover:bg-gray-50 rounded-lg transition-colors">
                                       {s.name}
@@ -319,12 +319,14 @@ export default function Navigation() {
                               </div>
                               <div className="space-y-1">
                                 {[
-                                  { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-forest.jpg', sub: 'Alabama — 180,000+ acres' },
-                                  { name: 'Hoosier National Forest', href: '/hoosier-national-forest', image: '/images/hardin-ridge-entrance-sign.jpg', sub: 'Indiana — 3 recreation areas' },
-                                  { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg', sub: 'West Virginia — 6 campgrounds' },
-                                  { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-entrance-sign.jpg', sub: 'Missouri — lodging, dining, watercraft' },
-                                  { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-thunderbird-lodge.png', sub: 'Missouri — cabins, pool, trails' },
+                                  { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-forest.jpg', sub: 'Alabama — 2 Recreation Areas' },
                                   { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg', sub: 'Rhode Island — 755 sites, 20 cabins' },
+                                  { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg', sub: 'Maine — 36 sites on the Saco River' },
+                                  { name: 'Hoosier National Forest', href: '/hoosier-national-forest', image: '/images/hardin-ridge-entrance-sign.jpg', sub: 'Indiana — 3 recreation areas' },
+                                  { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-entrance-sign.jpg', sub: 'Missouri — lodging, dining, watercraft' },
+                                  { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg', sub: 'West Virginia — 6 campgrounds' },
+                                  { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-thunderbird-lodge.png', sub: 'Missouri — cabins, pool, trails' },
+                                  { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area', image: '/images/yankee-springs/hill-cabins.jpg', sub: 'Michigan — 200+ sites, 30+ miles of trails' },
                                 ].map((p) => (
                                   <Link key={p.href} href={p.href} onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-gray-50 transition-colors group">
                                     <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
