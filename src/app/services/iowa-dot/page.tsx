@@ -96,11 +96,11 @@ export default function IowaDotPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/bankhead-forest.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src="/images/iowa-dot-collage.png" alt="Iowa DOT Rest Areas" className="w-full h-full object-cover opacity-30" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">
-            <span className="badge bg-white/10 text-white mb-4">Government Contract</span>
+            <span className="badge bg-white/10 text-white mb-4">State DOT Contract</span>
             <h1 className="font-display headline-xl text-white mb-6">
               Iowa <span className="text-green-400">Rest Area</span> Management
             </h1>

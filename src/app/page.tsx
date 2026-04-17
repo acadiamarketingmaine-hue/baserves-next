@@ -1106,7 +1106,7 @@ export default function HomePage() {
       'Campground Management',
       'National Forest Recreation Area Management',
       'State Park Management',
-      'DOT Rest Area Management',
+      'Rest Area Management',
       'Facility Maintenance',
       'Landscaping & Groundskeeping',
     ],
@@ -1433,12 +1433,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Government Contracts */}
+      {/* State Department of Transportation Contracts */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
           <div className="text-center mb-10">
-            <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Government Contracts</span>
-            <h2 className="headline-lg text-gray-900 mb-4">DOT Rest Area Management</h2>
+            <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">State Department of Transportation Contracts</span>
+            <h2 className="headline-lg text-gray-900 mb-4">Rest Area Management</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               We partner with state Departments of Transportation to operate and maintain rest area facilities, ensuring safe and welcoming stops for millions of travelers.
             </p>

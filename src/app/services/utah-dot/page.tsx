@@ -131,16 +131,16 @@ export default function UtahDotPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/bankhead-forest.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src="/images/utah-welcome-sign.jpg" alt="Welcome to Utah" className="w-full h-full object-cover opacity-30" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">
-            <span className="badge bg-white/10 text-white mb-4">Government Contract</span>
+            <span className="badge bg-white/10 text-white mb-4">State DOT Contract</span>
             <h1 className="font-display headline-xl text-white mb-6">
               Utah <span className="text-green-400">Rest Area</span> Management
             </h1>
             <p className="text-xl text-white/80 leading-relaxed">
-              BA Services partners with the Utah Department of Transportation to maintain 28 rest area facilities across three regions, from the Bonneville Salt Flats to the red rock country of southern Utah.
+              BA Services partners with the Utah Department of Transportation to maintain 28 rest area facilities across three regions, from the Bonneville Salt Flats in the west to Bear Lake in the north and from the dinosaurs in the east to Bryce Canyon National Park in southern Utah.
             </p>
           </div>
         </div>
