@@ -71,7 +71,19 @@ export default function SenecaShadowsCampgroundPage() {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Seneca Shadows Campground</h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Seneca Shadows Campground sits in the shadow of the iconic Seneca Rocks — one of the most famous rock climbing destinations in the eastern United States. Located along the North Fork South Branch Potomac River, the campground offers stunning views of the 900-foot quartzite formation and access to world-class climbing, hiking, and fishing.
+                Seneca Shadows Campground is set beneath the dramatic backdrop of Seneca Rocks, one of the most iconic climbing destinations in the eastern United States. Located within the Spruce Knob&ndash;Seneca Rocks National Recreation Area and near the North Fork of the South Branch of the Potomac River, the campground offers sweeping views of the 900-foot quartzite formation, visible from many campsites. Surrounded by mountains on both the east and west, the setting provides a striking and immersive Appalachian landscape.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                As the newest campground in the recreation area, Seneca Shadows combines modern amenities with exceptional access to outdoor recreation. Visitors are drawn to the area for hiking, rock climbing, fishing, and nature study, with nearby attractions including Seneca Rocks, local cave systems, and scenic river corridors.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                The campground accommodates a wide range of camping styles. Facilities include 11 standard sites with electric hookups, 2 double sites with electric, 23 standard non-electric sites, and 2 double non-electric sites. In addition, there are 40 walk-in tent sites and 3 group tent areas. Standard sites are equipped with paved spurs, picnic tables, fire rings, and lantern posts, while drinking water is available throughout the campground. An outdoor amphitheater with lighting, sound equipment, and seating supports interpretive programs and group gatherings.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Sanitary facilities are extensive and include two four-toilet vault restrooms, one double-toilet vault restroom, and four flush restroom buildings with showers. Trash dumpsters are conveniently located throughout the campground for waste disposal. An RV dump station is located adjacent to the host site, and the campground is supported by an on-site wastewater treatment system utilizing a recirculating sand filter.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Seneca Shadows Campground typically operates from early April through late October, aligning with peak seasonal demand.
               </p>
               <a
                 href="https://www.recreation.gov/camping/campgrounds/232095"

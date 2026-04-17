@@ -71,7 +71,28 @@ export default function StuartRecreationAreaPage() {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Stuart Recreation Area</h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Stuart Recreation Area offers family-friendly camping along the shores of a scenic mountain lake in the Monongahela National Forest. The area features both tent and RV campsites, a swimming beach, fishing access, and hiking trails through the surrounding Allegheny Mountain forest.
+                Stuart Recreation Area is a well-developed, family-friendly destination located along the Shavers Fork of the Cheat River, approximately six miles northeast of Elkins, West Virginia, at the junction of WV Route 6 and Forest Road 91 (Stuart Memorial Drive). Nestled in the Allegheny Mountains within the Monongahela National Forest, the site was originally constructed in the 1930s by the Civilian Conservation Corps and continues to offer a blend of historic character and modern amenities.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                The recreation area includes a campground, a group campground, and a day-use area, providing a wide range of overnight and day-use opportunities. The main campground features 26 campsites (25 single and 1 double), all with electric hookups, paved spurs, picnic tables, fire rings, and lantern posts. Most campsites and facilities are ABA accessible. Sanitary facilities include two single-unit vault toilets, one double-unit vault toilet, and a six-unit flush restroom with four accessible shower units.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                A separate group campground accommodates up to 40 people and includes fire rings, picnic tables, lantern posts, and two single-unit vault toilets. While there is no electric service at the group site, drinking water is available from the main campground. The group campground is not accessible.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                The day-use area is centered around picnicking and outdoor recreation along the river. It features three reservable pavilions: a large pavilion with electricity that can accommodate up to 100 people, and two non-electric pavilions&mdash;the Small Pavilion (capacity 50) and the Alpena Pavilion (capacity 25). Additional amenities include multiple picnic tables and pedestal grills, five parking areas accommodating approximately 25&ndash;40 vehicles each, a 14-acre open field, a river beach with easy water access, a volleyball net, and four restroom buildings, including changing rooms. Key facilities, including restrooms, parking areas, and the large and small pavilions&mdash;are accessible.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                A unique feature of the site is the historic Stuart House, a renovated cabin listed on the National Register of Historic Places and available to reserve. The fully furnished cabin includes a complete kitchen, one full bathroom, two living areas, a study room, and two bedrooms with a total of four beds. The cabin is equipped with electric heat and public water and is connected to the on-site wastewater system, though it does not have air conditioning.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Recreational opportunities throughout the area include camping, fishing, swimming, hiking, and relaxing along the scenic river corridor.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Support facilities include trash dumpsters located in both the campground and recreation area, with additional trash receptacles at pavilions and the group site. An RV dump station is located adjacent to the campground. The site is supported by an on-site wastewater treatment system utilizing a recirculating sand filter.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Stuart Recreation Area offers a balanced mix of history, accessibility, and outdoor recreation, making it a versatile destination for families, groups, and individual visitors alike. Stuart typically operates from mid-April through late October, aligning with peak seasonal demand.
               </p>
               <a
                 href="https://www.recreation.gov/camping/campgrounds/232007"

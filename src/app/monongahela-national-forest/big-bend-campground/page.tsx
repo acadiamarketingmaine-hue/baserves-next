@@ -71,7 +71,19 @@ export default function BigBendCampgroundPage() {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Big Bend Campground</h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Big Bend Campground is nestled in a sweeping bend of the South Branch Potomac River within the Monongahela National Forest. The campground offers a mix of tent and RV sites in a lush hardwood forest setting, with direct river access for fishing, swimming, and tubing.
+                Nestled in a sweeping bend of the South Branch of the Potomac River, Big Bend Campground is located within Smoke Hole Canyon in the Monongahela National Forest, approximately 10 miles southwest of Petersburg, West Virginia, at the end of County Route 2. Surrounded by a lush hardwood forest, the campground offers a tranquil, scenic setting with the river just 200 feet away, providing easy access for fishing, swimming, tubing, and non-motorized boating.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Big Bend features 46 standard non-electric campsites, each equipped with a fire ring, lantern post, picnic table, and paved spur suitable for both tent and RV camping. Portions of the campground and select facilities are ABA accessible, supporting a range of visitors&apos; needs.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Recreational opportunities extend beyond the campground itself. A one-mile loop trail is available onsite, while the nearby Seneca Creek Backcountry and Smoke Hole Canyon offer access to more than 60 miles of additional trails for hiking and exploration.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Facilities at Big Bend are well-developed and include two single-unit vault toilets, two double-unit flush toilets, and a four-unit flush restroom with showers, some of which are accessible. Trash dumpsters are conveniently located throughout the campground loops for waste disposal. An RV dump station with an underground holding tank is located adjacent to the campground, supported by an on-site wastewater treatment system (filtered drain field).
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                The campground typically operates from early April through the end of October, aligning with the primary recreation season in the region.
               </p>
               <a
                 href="https://www.recreation.gov/camping/campgrounds/232019"

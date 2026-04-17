@@ -244,13 +244,30 @@ export default function MonongahelaNationalForestPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Monongahela National Forest</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Spanning 921,000 acres across the Allegheny Mountains of eastern West Virginia, the Monongahela National Forest is one of the most ecologically diverse forests in the eastern United States. From highland bogs and spruce forests at the highest elevations to lush hardwood coves in sheltered valleys, the forest supports an extraordinary range of plant and animal life.
+                  Spanning nearly one million acres across ten counties in the Allegheny Mountains of eastern West Virginia, the Monongahela National Forest, established in 1920 and known locally as &ldquo;the Mon&rdquo;, stands among the most ecologically diverse and scenically rich landscapes in the central Appalachians. Elevations range from roughly 1,000 feet to the summit of Spruce Knob, the state&apos;s highest point at 4,863 feet, shaping a remarkable variety of ecosystems from windswept highland bogs and red spruce forests to sheltered hardwood coves deep in the valleys.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Over 800 miles of trails traverse the forest, including portions of the Allegheny Trail, one of West Virginia&apos;s premier long-distance hiking routes. Five federally designated wilderness areas protect some of the wildest landscapes remaining in the Appalachians, including the famous Dolly Sods plateau and the Cranberry Glades botanical area.
+                  This working forest plays a vital role in both conservation and local livelihoods, providing clean water, wildlife habitat, timber, grazing, and mineral resources, while supporting regional economies. At the same time, it offers exceptional recreation across more than 800 miles of trails, including segments of the renowned Allegheny Trail. Five federally designated wilderness areas protect some of the wildest remaining Appalachian terrain, including the distinctive Dolly Sods plateau and the unique Cranberry Glades botanical area.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The forest is home to Spruce Knob, the highest point in West Virginia at 4,863 feet, and Seneca Rocks, an iconic rock formation that attracts climbers from across the country. Mountain streams offer world-class native brook trout fishing, while the diversity of habitats makes this forest a destination for birders, botanists, and wildlife enthusiasts throughout the year.
+                  Natural landmarks such as Seneca Rocks, an iconic vertical formation drawing climbers from across the country, add to the forest&apos;s appeal, while cold mountain streams sustain native brook trout fisheries. The diversity of habitats makes the Monongahela a year-round destination for birders, botanists, and outdoor enthusiasts alike.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  The Cheat-Potomac Ranger District, located in the northern portion of the forest, exemplifies the Monongahela&apos;s accessibility and breadth of recreational opportunity. Within this district, visitors will find a collection of well-situated recreation sites that serve as gateways to the surrounding landscape:
+                </p>
+                <ul className="list-disc pl-6 mb-4 space-y-1">
+                  <li><Link href="/monongahela-national-forest/big-bend-campground" className="text-green-700 hover:text-green-900 underline">Big Bend Campground</Link></li>
+                  <li><Link href="/monongahela-national-forest/jess-judy-group-campground" className="text-green-700 hover:text-green-900 underline">Jess Judy Group Campground</Link></li>
+                  <li><Link href="/monongahela-national-forest/seneca-shadows-campground" className="text-green-700 hover:text-green-900 underline">Seneca Shadows Campground</Link></li>
+                  <li><Link href="/monongahela-national-forest/spruce-knob-lake-campground" className="text-green-700 hover:text-green-900 underline">Spruce Knob Lake Campground</Link></li>
+                  <li><Link href="/monongahela-national-forest/gatewood-group-campground" className="text-green-700 hover:text-green-900 underline">Gatewood Group Campground</Link></li>
+                  <li><Link href="/monongahela-national-forest/stuart-recreation-area" className="text-green-700 hover:text-green-900 underline">Stuart Recreation Area</Link></li>
+                </ul>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  While peak visitation typically runs from Memorial Day through Labor Day, the district supports year-round use across its varied terrain. Visitors can enjoy camping, hiking, hunting, fishing, mountain biking, rock climbing, picnicking, scenic driving, swimming, and boating.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Across this diverse landscape, the Monongahela National Forest maintains a careful balance of rugged natural beauty, productive land use, and lasting public enjoyment. Explore your Forest!
                 </p>
               </div>
 

@@ -71,7 +71,16 @@ export default function SpruceKnobLakeCampgroundPage() {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Spruce Knob Lake Campground</h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Spruce Knob Lake Campground is perched at high elevation near the summit of Spruce Knob — the highest point in West Virginia at 4,863 feet. The campground surrounds a scenic mountain lake and offers a cool, quiet retreat with access to the Spruce Knob summit, highland spruce forests, and panoramic Allegheny Mountain views.
+                Spruce Knob Lake Campground is located at high elevation near Spruce Knob, the highest point in West Virginia at 4,863 feet. Surrounded by red spruce forests and the rugged terrain of the Allegheny Mountains, the campground offers a cool, quiet retreat with access to panoramic views, the Spruce Knob summit, and the extensive Spruce Knob&ndash;Seneca Creek Backcountry, which features more than 60 miles of trails for hiking and exploration.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                At the heart of the campground is Spruce Knob Lake, a 25-acre impoundment originally constructed in 1952 for fishing and regularly stocked with trout by the West Virginia Division of Natural Resources. The lake also supports abundant shoreline fishing for bluegill, making it especially appealing for beginning anglers. Non-motorized boats and electric trolling motors are permitted, and facilities include a small boat launch, parking area, and a wooden fishing pier that provides barrier-free access. Additional fishing opportunities can be found nearby along Gandy Creek.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Spruce Knob Lake Campground includes 28 standard campsites, 2 double sites, and 10 walk-in tent sites. Standard sites are equipped with paved spurs, picnic tables, fire rings, and lantern posts. A developed host site provides solar-powered electricity, water, and a sewage holding tank. Sanitary facilities consist of five single-unit vault restrooms, all of which are accessible. Trash dumpsters are available throughout the campground for waste disposal.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                There are no RV dump stations at Spruce Knob Lake Campground which typically operates from mid-April through late October, aligning with peak seasonal demand.
               </p>
               <a
                 href="https://www.recreation.gov/camping/campgrounds/234132"
