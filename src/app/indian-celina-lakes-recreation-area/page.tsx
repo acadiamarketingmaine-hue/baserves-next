@@ -174,20 +174,39 @@ export default function IndianCelinaLakesPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Indian-Celina Lakes</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Tucked into the hills of southern Indiana&apos;s Perry County, Indian-Celina Lakes Recreation Area is one of the Hoosier National Forest&apos;s best-kept secrets. Two scenic lakes &mdash; Indian Lake and Celina Lake &mdash; anchor a peaceful campground surrounded by dense hardwood forest, rolling terrain, and abundant wildlife.
+                  Indian-Celina Lakes Recreation Area is a peaceful and scenic destination tucked into the rolling hills of Perry County in southern Indiana, within Hoosier National Forest. Located approximately three miles south of Interstate 64 along State Road 37 and about 15 miles north of Tell City, the area is easily accessible while still offering a quiet, less crowded alternative to more heavily visited recreation sites.
                 </p>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  The recreation area offers a genuinely tranquil experience compared to more heavily visited sites in the forest. Whether you&apos;re casting from the accessible fishing pier on Celina Lake, paddling Indian Lake under a canopy of trees, or hiking the Two Lakes Loop trail that connects both waterbodies, the pace here is slower and the crowds are thinner.
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  Anchored by two beautiful lakes&mdash;Indian Lake and Celina Lake&mdash;the recreation area provides a tranquil setting for a wide range of outdoor activities. Visitors can enjoy paddling, fishing, and boating (electric motors only), as well as hiking through the surrounding hardwood forests and varied terrain. The area serves a broad regional market, drawing visitors from Indiana, Kentucky, and Ohio, with more than seven million people within a three-hour drive.
                 </p>
-                <p className="text-gray-600 leading-relaxed">
-                  Multiple campground loops wind through mature forest, providing well-spaced sites with fire rings and picnic tables. Modern restroom and shower house facilities make extended stays comfortable, while the gatehouse entrance adds a sense of arrival to this quiet corner of the Hoosier National Forest.
-                </p>
-              </div>
 
-              <div className="mt-10 bg-green-50 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Two Lakes, One Destination</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Campground Facilities</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  The recreation area includes Celina Campground, which is organized into two loops, North Face and South Slope, offering a total of 63 campsites. Sites are well-spaced within a mature forest setting and are equipped with picnic tables, fire rings, lantern posts, and paved parking spurs suitable for a variety of camping units.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  South Slope Loop features full electric service at all sites, including two host sites with full hookups. North Face Loop includes a mix of electric and non-electric sites, including two host sites with full hookups, as well as several walk-in tent sites. Modern amenities include two flush restroom and shower buildings, five vault toilets, and conveniently located water hydrants throughout the campground.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Recreation Amenities</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Celina Lake offers a boat ramp, parking area, accessible fishing pier, and a nearby amphitheater with seating, lighting, and audio-visual capabilities for interpretive programs. Indian Lake also features a boat ramp, parking area, and basic facilities, providing a quieter, more secluded experience.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  Trail opportunities are a highlight of the area. The Two Lakes Trail, a 12-mile loop, connects both lakes and offers options for extended backpacking or shorter hikes. A one-mile interpretive trail near the historic Rickenbaugh House provides insight into the cultural history of the area and connects to the larger trail system.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Cultural and Natural Features</h3>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  The Rickenbaugh House, listed on the National Register of Historic Places, serves as a focal point for interpretive programming and reflects the area&apos;s cultural heritage. The surrounding forest supports diverse wildlife and offers a peaceful environment for nature study and relaxation.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Operations and Access</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  A gatehouse entrance provides managed access to the recreation area. Indian-Celina Lakes operates seasonally from early April through late October under a Forest Service special use permit. Recognized as one of the Top 100 Family Campgrounds, the area combines modern conveniences with a slower pace and a strong sense of seclusion.
+                </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Indian Lake and Celina Lake each offer a distinct character. Indian Lake is the larger of the two, featuring a boat launch for canoes, kayaks, and electric-motor watercraft. Celina Lake is smaller and quieter, anchored by its fully accessible fishing pier &mdash; a favorite among families and anglers who appreciate the easy shoreline access and consistently good fishing for bass, bluegill, and catfish.
+                  Indian-Celina Lakes Recreation Area offers a balance of accessibility, comfort, and quiet natural beauty&mdash;making it one of the Hoosier National Forest&apos;s most appealing and understated destinations.
                 </p>
               </div>
             </div>

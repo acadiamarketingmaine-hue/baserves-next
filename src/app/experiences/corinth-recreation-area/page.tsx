@@ -133,13 +133,34 @@ export default function CorinthPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Corinth</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The Corinth Recreation Area is a modern, state-of-the-art campground located on the shores of Lewis Smith Lake. It offers facilities for individual and group camping, picnicking, swimming, and boat launching.
+                  Corinth Recreation Area is a modern, well-developed campground located along the upper reaches of Lewis Smith Lake in Winston County, Alabama. Originally constructed in the 1960s and extensively renovated in 1998, the area offers a full range of recreational opportunities, including camping, picnicking, swimming, boating, and hiking in a scenic lakeside setting.
+                </p>
+                <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3">Campground Facilities</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  The campground is organized into two paved loops and includes 52 campsites, all designed to accommodate RV and family camping. Each site features water, 30-amp and 50-amp electrical service, and sewer hookups, along with paved parking spurs, picnic tables, fire rings, and lantern posts. Most sites are level, spacious, and capable of accommodating larger RVs.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Two camping loops contain 52 campsites with electrical, water, and sewer hookups. Four bathhouses with warm showers serve the camping areas. A boat ramp is provided for campers. In addition, 10 tent campsites are available for those seeking a more traditional camping experience.
+                  In addition to the RV sites, Corinth offers eight rustic tent-only campsites, supported by nearby community water hydrants and bathhouse access for a more traditional camping experience. ADA-accessible sites are available throughout the campground.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The day-use area features dressing rooms and warm showers, 29 picnic sites, a reservable 100-person pavilion, a swimming beach, and a double-lane boat ramp. ADA accessible sites are available. Hikers can access the 1.3-mile Bobwhite Trail, and interpretive programs are hosted during the summer months.
+                  Four bathhouses with flush toilets and warm showers serve the camping areas. A trailer dump station is located within the recreation area, and an access-controlled entrance station with an electronic gate helps manage campground entry. Visitors are required to pack out trash from campsites and dispose of it in designated dumpsters located near the dump station.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Camping is by reservation only through Recreation.gov. Check-in begins at 2:00 p.m., and check-out is no later than 12:00 p.m.
+                </p>
+                <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3">Day-Use Amenities</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  The day-use area centers around a popular swimming beach, supported by a bathhouse with showers and changing facilities. Nearby, 29 family picnic sites are connected by paved access paths, offering convenient and comfortable day-use opportunities.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  A reservable group picnic pavilion accommodates up to 100 people and includes a nearby flush restroom. Additional amenities include a year-round boat launch with boat and trailer parking, as well as a separate launch available for campground users.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Visitors can also enjoy a scenic 1.25-mile shoreline trail, often referred to as the Bobwhite Trail, which provides opportunities for walking and nature observation. Interpretive programs are offered during the summer months, enhancing the visitor experience.
+                </p>
+                <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3">Overview</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  With its combination of modern infrastructure, lakeside access, and diverse recreational offerings, Corinth Recreation Area serves as a premier destination within Bankhead National Forest. Its well-maintained facilities and convenient location make it an ideal base for both overnight stays and day-use activities. Corinth opens on the second Friday of March and closes October 31st.
                 </p>
               </div>
 

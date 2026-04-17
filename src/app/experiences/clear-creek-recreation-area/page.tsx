@@ -149,13 +149,28 @@ export default function ClearCreekPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Clear Creek</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The Clear Creek Recreation Area has become one of Alabama&apos;s most popular recreation areas and has many repeat visitors. As the Bankhead National Forest&apos;s largest recreation area, Clear Creek is located on the shore of Lewis Smith Lake and offers facilities for individual and group camping, picnicking, swimming, boat launching, hiking, and biking.
+                  Clear Creek Recreation Area, constructed in 1986, is the largest and one of the most popular recreation areas within Bankhead National Forest. Located in Winston County approximately 13 miles north of Jasper, Alabama, the site sits along the shores of Lewis Smith Lake, a 21,200-acre reservoir, and provides direct access to a wide range of water-based recreation.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Four camping loops contain 102 campsites, including single and double units, with electrical and water hookups. Five bathhouses with warm showers serve the camping areas. A boat ramp and children&apos;s playground are provided for campers. In addition, there are group camps with two units that can each accommodate 25 persons.
+                  The area is a premier destination for boating, water skiing, personal watercraft use, and fishing, with the lake supporting species such as largemouth bass, striped bass, and crappies. Its accessibility and modern amenities make it a favored destination, drawing repeat visitors from across the region.
+                </p>
+                <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3">Campground Facilities</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  The campground is organized into four paved loops and includes 102 RV campsites, including 32 double sites and 11 pull-through sites. All campsites are level and spacious, with paved parking spurs, picnic tables, fire rings, and lantern posts. Each site provides water service and both 30-amp and 50-amp electrical hookups. Single sites accommodate up to six people and two vehicles, while double sites can accommodate up to twelve people and four vehicles.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The day-use area contains a swimming beach, bathroom facilities with dressing rooms and warm showers, three group shelters, a large picnic area, and a double-lane boat ramp. ADA accessible sites are available throughout.
+                  Two reservable group camping areas accommodate up to 25 tent campers each and share access to bathhouse facilities. Camping is by reservation only through Recreation.gov.
+                </p>
+                <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3">Day-Use Amenities</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  The day-use area is centered around a popular swimming beach, supported by a bathhouse with showers and changing facilities. Adjacent to the beach is a reservable 50-person picnic pavilion, while a larger picnic area includes 53 family units connected by paved walkways. Two additional 50-person pavilions are located on a scenic point overlooking the lake.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  A year-round boat launch with boat and trailer parking provides convenient lake access. Additional amenities include a children&apos;s playground and a 1.5-mile paved bicycle trail connecting the campground to the day-use area. The nearby 2.5-mile Raven Cliffs Trail offers additional hiking opportunities through the surrounding forest.
+                </p>
+                <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3">Access and Operations</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  An entry-controlled entrance station with an electronic gate manages campground access. Visitors are required to pack out trash from campsites and dispose of it in designated dumpsters located near the dump station. Check-in begins at 2:00 p.m., and check-out is no later than 12:00 p.m. Clear Creek opens on the second Friday of March and closes October 31st.
                 </p>
               </div>
 

@@ -181,13 +181,45 @@ export default function TipsawLakePage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Tipsaw Lake</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Nestled in the rolling hills of Perry County, Indiana, Tipsaw Lake Recreation Area is a scenic 131-acre lake surrounded by the dense hardwood forests of the Hoosier National Forest. This peaceful retreat draws campers, anglers, swimmers, and hikers looking to disconnect from everyday life and immerse themselves in southern Indiana&apos;s natural beauty.
+                  Tipsaw Lake Recreation Area is a scenic and well-developed destination located in Perry County, Indiana, within Hoosier National Forest. Situated approximately six miles south of Interstate 64 along State Road 37 and about 15 miles north of Tell City, the area is easily accessible while offering a peaceful and secluded forest setting. Located just three miles south of Indian-Celina Lakes Recreation Area, Tipsaw serves a broad regional market, drawing visitors from Indiana, Kentucky, and Ohio, with nearly seven million people within a three-hour drive.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  Centered around a 131-acre lake, Tipsaw offers a quiet, family-friendly environment where boating is limited to electric motors, preserving calm waters ideal for fishing, paddling, and swimming. Recognized as one of America&apos;s Top 100 Family Campgrounds, the area provides a well-rounded mix of overnight and day-use opportunities.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Campground Facilities</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  The recreation area includes multiple camping options across three primary loops—Jackpine, Dogwood, and Catbrier—along with two group camping areas. Jackpine Loop contains 21 electric sites, while Dogwood Loop offers 14 sites, including a small number with electric service. Both loops include one walk-in campsite and feature paved roads and parking spurs, with each site equipped with a picnic table, fire ring, lantern post, and space for tents or RVs.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The lake is reserved exclusively for electric motors, keeping the water calm and the atmosphere tranquil. More than 35 campsites spread across three loops accommodate both tent campers and RV enthusiasts, while over 8 miles of trails wind through the surrounding forest with stunning lake views at every turn. A sandy swimming beach, amphitheater with interpretive trail, and renovated shelter house round out a destination that offers something for every visitor.
+                  The Catbrier RV loop includes 11 sites, including a host site, all with water and electric hookups, and accommodates a wide range of vehicle sizes. Three host sites in Jackpine Loop provide full utility hookups.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Two group camping areas—Primrose and Goldenrod—each accommodate up to 65 people and include electric service, picnic tables, fire rings, lantern posts, water fountains, and vault toilets.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Modern amenities throughout the campground include two flush restroom and shower buildings, additional vault toilets, water fountains, and a conveniently located RV dump station just outside the campground. Trash dumpsters are distributed throughout the recreation area.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Day-Use Amenities</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  The day-use area centers around a sandy swimming beach, complete with a modern bathhouse, changing facilities, and nearby playground equipment. A picnic area includes two reservable shelters—one with electric service—along with picnic tables, grills, and restroom facilities.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  A large boat launch with ample parking provides convenient lake access for visitors. The lake itself supports fishing and quiet water recreation, enhancing its appeal for families and casual users.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Trails and Recreation</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Outdoor recreation extends beyond the lake, with the Tipsaw Lake Trail—a 5.7-mile loop—encircling the lake and offering excellent opportunities for hiking and biking through hardwood forest with scenic lake views. Additional trail connections and interpretive opportunities are available nearby, contributing to a broader network of forest exploration.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Access and Operations</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  A gatehouse located along the entrance road manages access to the recreation area. Tipsaw Lake operates seasonally from early April through late October under a Forest Service special use permit.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Beyond the lake itself, Tipsaw is home to several notable facilities including the Twin Oaks gathering space, the historic Rickenbaugh House, a playground, and modern restroom and shower buildings. Whether you&apos;re planning a weekend camping trip, a family reunion at the shelter, or a quiet afternoon of fishing from shore, Tipsaw Lake delivers an authentic Indiana wilderness experience.
+                  With its combination of calm waters, well-maintained facilities, and forested surroundings, Tipsaw Lake Recreation Area offers a balanced and inviting outdoor experience—well-suited for camping, group gatherings, and quiet recreation in southern Indiana.
                 </p>
               </div>
 

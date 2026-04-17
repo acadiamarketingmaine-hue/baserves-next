@@ -183,13 +183,45 @@ export default function HardinRidgePage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Hardin Ridge</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Hardin Ridge Recreation Area sits on the wooded shores of Monroe Lake &mdash; Indiana&apos;s largest man-made lake at 10,750 acres. Located within the Hoosier National Forest in Monroe County, this premier recreation area offers over 200 campsites across multiple loops, a swimming beach, an accessible boat dock and ramp, and more than 12 miles of hiking trails through rolling hardwood forest.
+                  Hardin Ridge Recreation Area is a premier destination within Hoosier National Forest, located on the wooded shores of Monroe Lake in Monroe County, Indiana. Situated approximately 12 miles south of Bloomington and 60 miles south of Indianapolis, the area is easily accessible and serves a large visitor base, with more than two million people within a two-hour drive and over seven million within a 200-mile radius.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  Set along Indiana&apos;s largest lake, Hardin Ridge offers a well-rounded outdoor experience combining scenic beauty with modern amenities. The recreation area has been recognized as one of America&apos;s top campgrounds and continues to be a popular destination for families, anglers, and outdoor enthusiasts.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Campground Facilities</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  The campground consists of six forested loops with a total of 208 campsites, including several accessible sites and nine host sites. Campsites are designed to accommodate a variety of camping styles, from RVs to walk-in tent sites. Most sites include a picnic table, fire ring with grill, lantern hook, and designated tent space, with many offering electric hookups and some providing water service.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  Interior roads and most parking spurs are paved and level, accommodating a wide range of recreational vehicles. Modern restroom and shower facilities are available throughout the campground, supplemented by vault toilets in select locations. A centralized RV dump station is provided for campers, and trash dumpsters are conveniently located in each loop.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Recreation Amenities</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Hardin Ridge provides extensive access to Monroe Lake, a 10,750-acre reservoir known for boating, fishing, and water sports. The lake supports a variety of fish species, including bass, bluegill, crappie, catfish, and walleye. A three-lane boat launch with parking for approximately 75 vehicles and trailers, along with an accessible courtesy dock, makes lake access convenient.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Monroe Lake is a haven for fishing, boating, and water sports. The lake supports healthy populations of largemouth and smallmouth bass, bluegill, channel catfish, crappie, and walleye. The accessible boat dock and ramp make launching easy, whether you&apos;re heading out for a day of fishing or a leisurely cruise across Indiana&apos;s largest lake.
+                  The recreation area also features a 300-foot seasonal swimming beach with a changing facility, playground, and nearby host site. Two large picnic areas offer open green space, grills, and shelters&mdash;one with electrical service&mdash;while three reservable shelter houses provide gathering space for groups.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  Trails wind throughout the area, including a 1.5-mile recreation trail and a 1.2-mile interpretive trail leading to the lake. An accessible amphitheater with lighting and audio-visual capabilities supports educational and evening programs.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Additional Features</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Two semi-primitive lakeside rental cabins provide a more private overnight option, each equipped with electricity, a picnic table, and fire ring, with shared restroom facilities nearby.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  The recreation area is supported by city water and an on-site wastewater treatment system. Additional administrative facilities, including a maintenance area and staff housing, are located within the site but are not accessible to the public.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Access and Operations</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Hardin Ridge operates seasonally from early April through mid- to late October under a Forest Service special use permit. A staffed entrance station manages visitor access. A private residential area lies beyond the entrance gate; while residents maintain legal access to their properties, general recreation use remains subject to standard fees and regulations.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  From the sandy swimming beach to shelter houses with Monroe Lake views, carry-in campsites tucked into the forest, and modern bath house facilities, Hardin Ridge provides a well-rounded outdoor experience for families, anglers, hikers, and anyone seeking a retreat into southern Indiana&apos;s beautiful landscape.
+                  Hardin Ridge Recreation Area offers a balanced blend of accessibility, modern infrastructure, and natural beauty, making it one of the most significant and well-utilized recreation sites within Hoosier National Forest.
                 </p>
               </div>
 

@@ -215,9 +215,9 @@ export default function HoosierNationalForestPage() {
           </div>
           <div className="flex flex-wrap gap-2">
             {[
-              { name: 'Hardin Ridge', href: 'https://www.recreation.gov/camping/campgrounds/232056' },
-              { name: 'Indian-Celina Lakes', href: 'https://www.recreation.gov/camping/campgrounds/232027' },
-              { name: 'Tipsaw Lake', href: 'https://www.recreation.gov/camping/campgrounds/232114' },
+              { name: 'Hardin Ridge', href: '/hardin-ridge-recreation-area' },
+              { name: 'Indian-Celina Lakes', href: '/indian-celina-lakes-recreation-area' },
+              { name: 'Tipsaw Lake', href: '/tipsaw-lake-recreation-area' },
             ].map((cg) => (
               <a
                 key={cg.name}
@@ -263,13 +263,25 @@ export default function HoosierNationalForestPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Hoosier National Forest</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Covering approximately 200,000 acres across nine counties in southern Indiana, Hoosier National Forest is the state&apos;s only national forest. Managed by the US Forest Service, the forest stretches across Monroe, Brown, Lawrence, Martin, Orange, Perry, Crawford, Dubois, and Jackson counties &mdash; protecting some of the most rugged and scenic terrain in the Midwest.
+                  Hoosier National Forest spans approximately 200,000 acres across nine counties in south-central Indiana, making it the state&apos;s only national forest and a vital public resource in a region where limited land is publicly accessible. Managed by the U.S. Forest Service, the forest stretches across Monroe, Brown, Lawrence, Martin, Orange, Perry, Crawford, Dubois, and Jackson counties, offering a diverse landscape of rolling hills, dense hardwood forests, sandstone bluffs, caves, and winding waterways.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The landscape is defined by dense hardwood forests, dramatic sandstone bluffs, hidden caves, and winding waterways. Over 260 miles of trails thread through the forest, offering everything from easy lakeside walks to challenging backcountry routes. The forest&apos;s lakes and reservoirs &mdash; including Monroe Lake, Indiana&apos;s largest &mdash; provide outstanding opportunities for fishing, swimming, and boating.
+                  The forest is organized into two ranger districts&mdash;Brownstown and Tell City&mdash;with administrative offices located in Bedford and Tell City. Positioned within a 200-mile radius of more than seven million people, Hoosier National Forest serves as a highly accessible destination for visitors from major metropolitan areas including Indianapolis, Chicago, Cincinnati, Louisville, and beyond.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Recreational opportunities are extensive and varied. More than 260 miles of trails support hiking, horseback riding, and mountain biking, while lakes and reservoirs provide opportunities for boating, fishing, swimming, and paddling. The forest is also home to Indiana&apos;s only designated wilderness area, the Charles C. Deam Wilderness, as well as notable destinations such as Hemlock Cliffs, Hickory Ridge Lookout Tower, and scenic overlooks along the Ohio River Scenic Byway.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Three primary developed recreation areas&mdash;Hardin Ridge, Indian-Celina Lakes, and Tipsaw Lake&mdash;serve as focal points for visitor activity. Hardin Ridge Recreation Area is located on the shoreline of Monroe Lake, Indiana&apos;s largest reservoir, and provides access to boating, water sports, and fishing, along with nearby amenities managed by the Indiana Department of Natural Resources and the U.S. Army Corps of Engineers. Indian-Celina Lakes and Tipsaw Lake Recreation Areas, located in the southern portion of the forest, offer quieter settings centered around smaller Forest Service-managed lakes, popular for kayaking, fishing, camping, and relaxation.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Beyond these developed sites, the forest includes additional campgrounds, dispersed recreation areas, and culturally significant sites such as the Pioneer Mothers Memorial Forest and the Lick Creek African American Settlement. Nearby attractions&mdash;including Brown County State Park, Marengo Cave, Lincoln Boyhood Memorial, and the French Lick and West Baden resorts&mdash;further enhance the region&apos;s appeal as a destination.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Hoosier National Forest offers year-round recreation shaped by a four-season climate. Summers are warm and ideal for lake activities, spring brings mild temperatures and seasonal rains, fall is known for vibrant foliage and excellent camping conditions, and winters are generally mild with occasional snowfall.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Three developed recreation areas within the forest &mdash; Hardin Ridge, Indian-Celina Lakes, and Tipsaw Lake &mdash; offer campgrounds, swimming beaches, boat ramps, and trailheads that serve as gateways into the surrounding wilderness.
+                  Through a balance of recreation, conservation, and public stewardship, Hoosier National Forest provides a diverse and accessible outdoor experience, serving both local communities and visitors from across the Midwest.
                 </p>
               </div>
 

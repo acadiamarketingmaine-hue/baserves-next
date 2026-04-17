@@ -169,8 +169,8 @@ export default function BankheadNationalForestPage() {
           </div>
           <div className="flex flex-wrap gap-2">
             {[
-              { name: 'Clear Creek Recreation Area', href: 'https://www.recreation.gov/camping/campgrounds/231990' },
-              { name: 'Corinth Recreation Area', href: 'https://www.recreation.gov/camping/campgrounds/232423' },
+              { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area' },
+              { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area' },
             ].map((cg) => (
               <a
                 key={cg.name}
@@ -216,13 +216,19 @@ export default function BankheadNationalForestPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Bankhead National Forest</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The William B. Bankhead National Forest spans over 180,000 acres across the Cumberland Plateau region of North Alabama. Known as &ldquo;The Land of a Thousand Waterfalls,&rdquo; the forest features dramatic sandstone canyons, pristine streams, old-growth forests, limestone bluffs, and lush canyons that make it one of the most scenic natural areas in the southeastern United States.
+                  The William B. Bankhead National Forest spans more than 180,000 acres across the Cumberland Plateau of north Alabama, primarily within Winston and Lawrence Counties near Double Springs. Known as the &ldquo;Land of a Thousand Waterfalls,&rdquo; the forest is celebrated for its dramatic sandstone canyons, pristine streams, limestone bluffs, and dense hardwood forests, making it one of the most scenic natural landscapes in the southeastern United States.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  At its heart lies the Sipsey Wilderness &mdash; the largest wilderness area east of the Mississippi River. The Sipsey Fork, a designated Wild and Scenic River corridor, carves through deep sandstone canyons, creating a landscape of cascading waterfalls, rock shelters, and towering old-growth hardwoods. The forest&apos;s rich biodiversity has earned it designation as an Important Bird Area by the American Bird Conservancy.
+                  At the heart of the forest lies the Sipsey Wilderness, the largest designated wilderness area east of the Mississippi River. The Sipsey Fork, a federally designated Wild and Scenic River, winds through deep canyons, creating a striking landscape of cascading waterfalls, rock shelters, and towering old-growth trees. The forest&apos;s ecological richness and diverse habitats have also earned it recognition as an Important Bird Area by the American Bird Conservancy.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Two premier campgrounds managed by BA Services &mdash; Clear Creek Recreation Area and Corinth Recreation Area &mdash; provide comfortable base camps for exploring the forest. Additional recreation areas, horse trails, a shooting range, and scenic drives offer something for every outdoor enthusiast.
+                  The Bankhead Ranger District offers a wide range of year-round recreational opportunities, supported by the region&apos;s mild climate. While peak visitation typically occurs from mid-March through late October, the forest remains accessible throughout the year. Visitors can enjoy camping, picnicking, boating, water sports, hiking, mountain biking, horseback riding, off-highway vehicle (OHV) use, fishing, hunting, photography, and scenic driving.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Two primary recreation areas&mdash;Clear Creek Recreation Area and Corinth Recreation Area&mdash;are located along Lewis Smith Lake, a 21,200-acre reservoir managed by Alabama Power Company. These sites provide convenient access to boating and water-based recreation, along with comfortable camping facilities that serve as base camps for exploring the surrounding forest. Additional amenities throughout the district include horse trails, a shooting range, and scenic byways.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Easily accessible from major population centers such as Birmingham and Huntsville, Alabama, as well as Chattanooga, Nashville, and Memphis, most visitors reach the forest within a two- to three-hour drive. This accessibility, combined with its natural beauty and diverse recreational offerings, makes Bankhead National Forest a premier outdoor destination in the Southeast.
                 </p>
               </div>
 
@@ -275,10 +281,10 @@ export default function BankheadNationalForestPage() {
                   (205) 489-5111
                 </a>
                 <div className="space-y-2">
-                  <a href="https://www.recreation.gov/camping/campgrounds/231990" target="_blank" rel="noopener noreferrer" className="block w-full text-center py-3 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+                  <a href="/experiences/clear-creek-recreation-area" className="block w-full text-center py-3 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
                     Clear Creek Recreation Area
                   </a>
-                  <a href="https://www.recreation.gov/camping/campgrounds/232423" target="_blank" rel="noopener noreferrer" className="block w-full text-center py-3 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+                  <a href="/experiences/corinth-recreation-area" className="block w-full text-center py-3 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
                     Corinth Recreation Area
                   </a>
                 </div>
@@ -648,10 +654,10 @@ export default function BankheadNationalForestPage() {
             From the depths of the Sipsey Wilderness to the shores of Lewis Smith Lake, the Bankhead National Forest offers over 180,000 acres of Alabama&apos;s finest natural landscapes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://www.recreation.gov/camping/campgrounds/231990" target="_blank" rel="noopener noreferrer" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">
+            <a href="/experiences/clear-creek-recreation-area" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">
               Clear Creek Recreation Area
             </a>
-            <a href="https://www.recreation.gov/camping/campgrounds/232423" target="_blank" rel="noopener noreferrer" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">
+            <a href="/experiences/corinth-recreation-area" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">
               Corinth Recreation Area
             </a>
             <Link href="/experiences" className="btn-primary bg-white/10 text-white hover:bg-white/20">
