@@ -193,12 +193,12 @@ export default function MonongahelaNationalForestPage() {
           </div>
           <div className="flex flex-wrap gap-2">
             {[
-              { name: 'Big Bend', href: 'https://www.recreation.gov/camping/campgrounds/232019' },
-              { name: 'Jess Judy Group', href: 'https://www.recreation.gov/camping/campgrounds/233725' },
-              { name: 'Seneca Shadows', href: 'https://www.recreation.gov/camping/campgrounds/232095' },
-              { name: 'Spruce Knob Lake', href: 'https://www.recreation.gov/camping/campgrounds/234132' },
-              { name: 'Gatewood Group', href: 'https://www.recreation.gov/camping/campgrounds/233990' },
-              { name: 'Stuart Recreation Area', href: 'https://www.recreation.gov/camping/campgrounds/232007' },
+              { name: 'Big Bend', href: '/monongahela-national-forest/big-bend-campground' },
+              { name: 'Jess Judy Group', href: '/monongahela-national-forest/jess-judy-group-campground' },
+              { name: 'Seneca Shadows', href: '/monongahela-national-forest/seneca-shadows-campground' },
+              { name: 'Spruce Knob Lake', href: '/monongahela-national-forest/spruce-knob-lake-campground' },
+              { name: 'Gatewood Group', href: '/monongahela-national-forest/gatewood-group-campground' },
+              { name: 'Stuart Recreation Area', href: '/monongahela-national-forest/stuart-recreation-area' },
             ].map((cg) => (
               <a
                 key={cg.name}
@@ -316,12 +316,12 @@ export default function MonongahelaNationalForestPage() {
                 </p>
                 <div className="space-y-2">
                   {[
-                    { name: 'Big Bend', href: 'https://www.recreation.gov/camping/campgrounds/232019' },
-                    { name: 'Seneca Shadows', href: 'https://www.recreation.gov/camping/campgrounds/232095' },
-                    { name: 'Spruce Knob Lake', href: 'https://www.recreation.gov/camping/campgrounds/234132' },
-                    { name: 'Stuart Rec Area', href: 'https://www.recreation.gov/camping/campgrounds/232007' },
-                    { name: 'Jess Judy Group', href: 'https://www.recreation.gov/camping/campgrounds/233725' },
-                    { name: 'Gatewood Group', href: 'https://www.recreation.gov/camping/campgrounds/233990' },
+                    { name: 'Big Bend', href: '/monongahela-national-forest/big-bend-campground' },
+                    { name: 'Seneca Shadows', href: '/monongahela-national-forest/seneca-shadows-campground' },
+                    { name: 'Spruce Knob Lake', href: '/monongahela-national-forest/spruce-knob-lake-campground' },
+                    { name: 'Stuart Rec Area', href: '/monongahela-national-forest/stuart-recreation-area' },
+                    { name: 'Jess Judy Group', href: '/monongahela-national-forest/jess-judy-group-campground' },
+                    { name: 'Gatewood Group', href: '/monongahela-national-forest/gatewood-group-campground' },
                   ].map((cg) => (
                     <a key={cg.name} href={cg.href} target="_blank" rel="noopener noreferrer" className="block w-full text-center py-2.5 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
                       {cg.name}
@@ -622,12 +622,12 @@ export default function MonongahelaNationalForestPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {[
-              { name: 'Big Bend', href: 'https://www.recreation.gov/camping/campgrounds/232019' },
-              { name: 'Seneca Shadows', href: 'https://www.recreation.gov/camping/campgrounds/232095' },
-              { name: 'Spruce Knob Lake', href: 'https://www.recreation.gov/camping/campgrounds/234132' },
-              { name: 'Stuart Rec Area', href: 'https://www.recreation.gov/camping/campgrounds/232007' },
-              { name: 'Jess Judy Group', href: 'https://www.recreation.gov/camping/campgrounds/233725' },
-              { name: 'Gatewood Group', href: 'https://www.recreation.gov/camping/campgrounds/233990' },
+              { name: 'Big Bend', href: '/monongahela-national-forest/big-bend-campground' },
+              { name: 'Seneca Shadows', href: '/monongahela-national-forest/seneca-shadows-campground' },
+              { name: 'Spruce Knob Lake', href: '/monongahela-national-forest/spruce-knob-lake-campground' },
+              { name: 'Stuart Rec Area', href: '/monongahela-national-forest/stuart-recreation-area' },
+              { name: 'Jess Judy Group', href: '/monongahela-national-forest/jess-judy-group-campground' },
+              { name: 'Gatewood Group', href: '/monongahela-national-forest/gatewood-group-campground' },
             ].map((cg) => (
               <a key={cg.name} href={cg.href} target="_blank" rel="noopener noreferrer" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100 text-sm">
                 {cg.name}

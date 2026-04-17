@@ -89,12 +89,12 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     icon: '/images/states/west-virginia.png',
     locations: [
       { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg', children: [
-        { name: 'Big Bend Campground', href: '/monongahela-national-forest', image: '/images/monongahela/scenic-drive.jpg' },
-        { name: 'Jess Judy Group Campground', href: '/monongahela-national-forest', image: '/images/monongahela/spruce-treetops.jpg' },
-        { name: 'Seneca Shadows Campground', href: '/monongahela-national-forest', image: '/images/monongahela/seneca-rocks-sign.jpg' },
-        { name: 'Spruce Knob Lake Campground', href: '/monongahela-national-forest', image: '/images/monongahela/spruce-knob-sign.jpg' },
-        { name: 'Gatewood Group Campground', href: '/monongahela-national-forest', image: '/images/monongahela/spruce-knob-panorama.jpg' },
-        { name: 'Stuart Recreation Area', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg' },
+        { name: 'Big Bend Campground', href: '/monongahela-national-forest/big-bend-campground', image: '/images/monongahela/scenic-drive.jpg' },
+        { name: 'Jess Judy Group Campground', href: '/monongahela-national-forest/jess-judy-group-campground', image: '/images/monongahela/spruce-treetops.jpg' },
+        { name: 'Seneca Shadows Campground', href: '/monongahela-national-forest/seneca-shadows-campground', image: '/images/monongahela/seneca-rocks-sign.jpg' },
+        { name: 'Spruce Knob Lake Campground', href: '/monongahela-national-forest/spruce-knob-lake-campground', image: '/images/monongahela/spruce-knob-sign.jpg' },
+        { name: 'Gatewood Group Campground', href: '/monongahela-national-forest/gatewood-group-campground', image: '/images/monongahela/spruce-knob-panorama.jpg' },
+        { name: 'Stuart Recreation Area', href: '/monongahela-national-forest/stuart-recreation-area', image: '/images/monongahela/entrance-sign.jpg' },
       ]},
     ],
   },
