@@ -251,13 +251,25 @@ export default function MeramecStateParkPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Meramec State Park</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Spanning 6,896 acres along the Meramec River in the heart of the Missouri Ozarks, Meramec State Park is one of Missouri&apos;s most treasured natural destinations. The park features 13 miles of hiking trails winding through rugged bluffs, forested hollows, and riverside bottomlands. With more than 40 caves, it holds one of the densest concentrations of caves in the state.
+                  Meramec State Park encompasses 6,896 acres along the scenic Meramec River in the heart of the Missouri Ozarks. Located in Franklin County approximately 60 miles southwest of St. Louis, the park is easily accessible from Interstate 44 via the Sullivan/Hwy. 185 exit. Known for its striking natural beauty and wide range of recreational opportunities, Meramec is one of Missouri&apos;s most popular outdoor destinations.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The Meramec River itself is the centerpiece of the park, offering excellent opportunities for floating, fishing, and swimming. Visitors can rent canoes, kayaks, and rafts from the Riverstop Store to experience the river&apos;s gentle currents and scenic limestone bluffs firsthand.
+                  The Meramec River serves as the centerpiece of the park, winding through a landscape of steep forested hills, limestone bluffs, and cool, spring-fed waters. The river offers excellent opportunities for floating, fishing, and swimming, with canoe, kayak, and raft rentals available for visitors seeking to experience the river firsthand.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Nineteen cabins and the Hickory Ridge Motel provide comfortable lodging options ranging from cozy one-bedroom retreats to large group cabins, all surrounded by the beauty of the Ozark landscape.
+                  The park&apos;s terrain is defined by rugged Ozark topography, featuring dense hardwood forests, pine stands, and more than 40 caves—one of the highest concentrations in the state. Thirteen miles of hiking trails traverse the park, leading visitors through wooded hollows, along riverbanks, and up to scenic overlooks.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Meramec State Park offers a variety of overnight accommodations to suit different preferences. Nineteen cabins range from cozy one-bedroom retreats to larger units suitable for groups, while the 22-room Hickory Ridge Motel provides comfortable, modern lodging in a hilltop setting.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Adjacent to the motel, the Hickory Ridge Conference Center accommodates up to 125 guests and serves as a venue for meetings, weddings, reunions, and other group events. Nearby, the Overlook Pavilion offers a scenic outdoor venue with sweeping views of the Meramec River valley.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Visitors enjoy hiking, camping, fishing, floating, caving, and picnicking. Additional amenities include a fully stocked Riverstop Store, dining options overlooking the river valley, and easy access to outdoor recreation equipment and services.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  With its combination of natural beauty, accessible location, and well-developed facilities, Meramec State Park offers a balanced blend of adventure and comfort.
                 </p>
               </div>
 

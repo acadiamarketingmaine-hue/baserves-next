@@ -109,18 +109,18 @@ const activities = [
 
 const subProperties = [
   {
-    name: 'Long Lake Outdoor Center',
-    href: '/long-lake-outdoor-center',
-    description: 'Historic CCC property with 16 cabins, 4 bunkhouses, a 120-seat lodge, and private lake access. Ideal for weddings, retreats, and group camps.',
-    image: '/images/yankee-springs/hill-cabins.jpg',
-    badge: 'Historic CCC Property',
-  },
-  {
     name: 'Chief Noonday Outdoor Center',
     href: '/chief-noonday-outdoor-center',
     description: 'A rustic outdoor center within the recreation area, offering cabins and group camping for youth programs, retreats, and family gatherings.',
     image: '/images/yankee-springs/lake-cabins.jpg',
     badge: 'Outdoor Center',
+  },
+  {
+    name: 'Long Lake Outdoor Center',
+    href: '/long-lake-outdoor-center',
+    description: 'Historic CCC property with 16 cabins, 4 bunkhouses, a 120-seat lodge, and private lake access. Ideal for weddings, retreats, and group camps.',
+    image: '/images/yankee-springs/hill-cabins.jpg',
+    badge: 'Historic CCC Property',
   },
 ]
 
@@ -217,13 +217,16 @@ export default function YankeeSpringsPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Yankee Springs</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Spanning over 5,200 acres in Barry County, Michigan, Yankee Springs Recreation Area is one of the state&apos;s most diverse outdoor destinations. The landscape &mdash; sculpted by glaciers thousands of years ago &mdash; features rolling hills, kettle lakes, bogs, and dense hardwood forests that put on a spectacular show every fall.
+                  Yankee Springs Recreation Area encompasses more than 5,200 acres in Barry County, Michigan, offering one of the state&apos;s most diverse and historically rich outdoor destinations. Shaped by glacial activity thousands of years ago, the landscape features rolling hills, kettle lakes, bogs, and dense hardwood forests.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  With more than 200 campsites and over 30 miles of multi-use trails, Yankee Springs draws hikers, mountain bikers, anglers, equestrians, and winter sports enthusiasts year-round. Multiple lakes offer swimming, fishing, and boating, while the surrounding woodlands provide habitat for white-tailed deer, wild turkey, and a rich variety of songbirds.
+                  The area&apos;s unique geology, formed within the Jackson Interlobe where glaciers once collided, produced a rugged terrain of sandy soils, steep slopes, and scattered lakes. Beginning in the 1930s, the federal Recreational Demonstration Area program&mdash;supported by the National Park Service and constructed in part by the Civilian Conservation Corps&mdash;helped establish Yankee Springs as a model for public recreation and conservation.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Today, Yankee Springs offers more than 30 miles of multi-use trails for hiking, mountain biking, and horseback riding, while over 10 lakes provide opportunities for swimming, fishing, and boating. Two designated swimming areas, accessible fishing piers, and numerous picnic shelters enhance the visitor experience.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  The recreation area is also home to two historic outdoor centers &mdash; Long Lake Outdoor Center and Chief Noonday Outdoor Center &mdash; both offering cabins, bunkhouses, and group facilities built by the Civilian Conservation Corps in the 1930s.
+                  The recreation area features two historic outdoor centers&mdash;Chief Noonday Outdoor Center and Long Lake Outdoor Center&mdash;both originally developed in the 1930s. Notable features include Devil&apos;s Soupbowl, a distinctive glacial formation, and Graves Hill Overlook with sweeping views. Open in all seasons for summer boating to winter sports.
                 </p>
               </div>
 

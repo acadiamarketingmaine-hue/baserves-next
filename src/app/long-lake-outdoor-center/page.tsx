@@ -245,13 +245,16 @@ export default function LongLakePage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Long Lake Outdoor Center</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Nestled within the Yankee Springs Recreation Area in Barry County, Michigan, Long Lake Outdoor Center is a historic retreat built by the Civilian Conservation Corps (CCC) in 1939. Listed on the National Registry of Historic Sites, the property preserves the craftsmanship of Depression-era conservation workers while offering modern amenities for groups of all sizes.
+                  Long Lake Outdoor Center is a historic group retreat facility located within Yankee Springs Recreation Area in Barry County, Michigan. Situated along the eastern shore of Long Lake, a 146-acre lake, the center offers a scenic and well-preserved setting.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  With a total capacity of 120 people, the center features 16 cabins divided between scenic Hill Cabins and waterfront Lake Cabins, four distinctive bunkhouses, and a grand lodge that seats 120. A commercial kitchen supports catering and group meals, making Long Lake a self-contained destination for multi-day events.
+                  Originally constructed in 1939 by the Civilian Conservation Corps as part of the National Park Service&apos;s Recreation Demonstration Area program, Long Lake Outdoor Center is listed on the National Register of Historic Places.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  The center accommodates approximately 120 people with 16 cabins divided between the Hill Unit and the Lake Unit, four bunkhouses, and a central lodge with dining space. A commercial kitchen supports group meals and catering. The Hill Unit features cabins in a semi-circle around a central fire pit. The Lake Unit is set near the shoreline with cabins overlooking the lake.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Long Lake operates as a year-round facility. Spring and summer bring lake swimming, fishing, and hiking, while fall showcases Michigan&apos;s legendary color. In winter, the grounds transform for cross-country skiing, snowshoeing, and fireside gatherings in the lodge.
+                  Long Lake Outdoor Center operates year-round with swimming, fishing, and hiking in warmer months, vibrant fall foliage, and cross-country skiing and snowshoeing in winter.
                 </p>
               </div>
 

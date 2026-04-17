@@ -188,13 +188,22 @@ export default function WashingtonStateParkPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Washington State Park</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Washington State Park encompasses 2,157.57 acres along the Big River in De Soto, Missouri. A destination for history and nature lovers alike, the park welcomed 307,643 visitors in 2021 — drawn by its ancient petroglyphs, scenic trails, and diverse wildlife.
+                  Washington State Park encompasses approximately 2,157 acres along the Big River in De Soto, Missouri, just a short drive south of St. Louis along Highway 21. Located on the border of Jefferson and Washington Counties, the park is a popular destination for both outdoor recreation and cultural heritage, welcoming more than 300,000 visitors annually.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The park is home to over 350 Native American petroglyphs, some dating back more than 1,000 years. These ancient rock carvings are among the most significant archaeological sites in the Midwest, offering a window into the lives and spiritual practices of the region&apos;s earliest inhabitants.
+                  Renowned for its historical significance, the park is home to more than 350 Native American petroglyphs—some over 1,000 years old—making it one of the most important archaeological sites in the Midwest. These ancient carvings offer a rare glimpse into the spiritual and cultural practices of the region&apos;s earliest inhabitants.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  With 50 campsites, 11 lodging cabins, a swimming pool, camp store, 9.7 miles of trails, and 140 recorded bird species, Washington State Park is a complete outdoor destination for families, birders, anglers, and history enthusiasts.
+                  The park&apos;s natural setting features rolling Ozark terrain, forested hills, and access to the Big River, providing a wide range of recreational opportunities. Visitors can enjoy hiking along nearly 10 miles of trails, fishing, swimming, floating the river, birdwatching among more than 140 recorded species, or simply relaxing in a scenic riverside environment.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Washington State Park offers a variety of accommodations and visitor services. The park includes 11 lodging cabins, many originally constructed by the Civilian Conservation Corps (CCC). The recently renovated Thunderbird Lodge serves as a central hub for retail services, lodging check-in, and watercraft rentals.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Additional amenities include a swimming pool, camp store, and food and beverage services. Concession operations are conducted under agreement with Missouri State Parks and include lodging, retail, food and beverage, swimming pool operations, and watercraft rentals.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Washington State Park offers a balanced combination of history, recreation, and modern amenities—creating a well-rounded destination where visitors can connect with both the natural landscape and the deep cultural roots of the region.
                 </p>
               </div>
 

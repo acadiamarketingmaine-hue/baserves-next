@@ -121,9 +121,13 @@ The center features comfortable lodging options, a beautiful lake for water acti
     name: 'Chief Noonday Outdoor Center',
     tagline: 'Premier Group Camping in Michigan',
     description: 'Exceptional facilities for group outdoor adventures',
-    longDescription: `Chief Noonday Outdoor Center offers premier group camping and retreat facilities in the beautiful Yankee Springs Recreation Area. Named after a prominent Potawatomi chief, this center honors the region's Native American heritage while providing modern amenities for group gatherings.
+    longDescription: `Chief Noonday Outdoor Center is a historic group camp and retreat facility located within Yankee Springs Recreation Area in Barry County, Michigan. Named for a prominent Potawatomi leader, the center reflects both the cultural heritage of the region and the legacy of early conservation efforts.
 
-The facility can accommodate large groups with its multiple cabin clusters, dining hall, and extensive outdoor spaces. Whether you're planning a scout campout, church retreat, family reunion, or corporate team-building event, Chief Noonday provides the infrastructure and natural setting to make your gathering memorable.`,
+Originally developed in 1938 as part of the National Park Service's Recreation Demonstration Area program, the site is listed on the National Register of Historic Places. Its layout and architecture follow a naturalistic design philosophy, integrating buildings with the surrounding terrain.
+
+The facility includes multiple cabin clusters, a central lodge, dining and gathering spaces, and expansive outdoor areas suited for scout outings, church retreats, family reunions, and team-building programs.
+
+Currently four semi-rustic cabins are available along Chief Noonday Lake: Bear Den (sleeps 6, stone fireplace, three bunk beds), Chickadee Cabin (sleeps 4, two bunk beds), Crane House/Jee-Jak Wigwam (sleeps 8, stone fireplace, three bunk beds, roll-out bed), and Deer Lodge (sleeps 8, stone fireplace, three bunk beds, roll-out bed). Each cabin includes electricity, electric heat, mini fridge, microwave, coffee maker. Outdoor features include picnic table, fire pit, grill, with hand water pump and vault toilet nearby.`,
     location: 'Middleville, MI',
     features: ['Group Cabins', 'Dining Hall', 'Meeting Spaces', 'Lake Access', 'Hiking Trails', 'Campfire Areas', 'Sports Fields'],
     stats: { capacity: '300+ guests', cabins: '12+', acres: '100+' },
