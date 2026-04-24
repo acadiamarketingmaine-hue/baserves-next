@@ -205,7 +205,7 @@ export default function LongLakePage() {
             Yankee Springs, Michigan
           </div>
           <a
-            href="https://escape.baserves.com"
+            href="https://escape.baserves.com/long-lake-outdoor-center"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
@@ -289,7 +289,7 @@ export default function LongLakePage() {
                   From weddings to group camps, Long Lake Outdoor Center is the perfect setting for your next gathering.
                 </p>
                 <a
-                  href="https://escape.baserves.com"
+                  href="https://escape.baserves.com/long-lake-outdoor-center"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
@@ -535,7 +535,7 @@ export default function LongLakePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://escape.baserves.com"
+              href="https://escape.baserves.com/long-lake-outdoor-center"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
