@@ -12,7 +12,50 @@ const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: fal
 import ScopeAccordion from '@/components/ScopeAccordion'
 
 // All featured destinations — 3 shown at a time, rotating every 6 seconds
+// Ordered alphabetically by state, then by campground/recreation area name
 const allLocations = [
+  // Alabama
+  {
+    name: 'Clear Creek Recreation Area',
+    tagline: '102 Campsites on Lewis Smith Lake',
+    description: 'Swimming beach, boat ramps, and hiking trails in Bankhead NF',
+    location: 'Bankhead National Forest, AL',
+    features: ['Camping', 'Swimming', 'Boat Ramp', 'Hiking', 'Group Camping'],
+    stats: { campsites: '102', loops: '4', trails: '2' },
+    image: '/images/clear-creek-overview.jpg',
+    slug: 'experiences/clear-creek-recreation-area'
+  },
+  {
+    name: 'Corinth Recreation Area',
+    tagline: 'Modern Full-Hookup Campground',
+    description: '52 full-hookup sites on Lewis Smith Lake with pavilion and beach',
+    location: 'Bankhead National Forest, AL',
+    features: ['Full Hookup Camping', 'Swimming', 'Boat Ramp', 'Pavilion'],
+    stats: { sites: '52 + 10 tent', pavilion: '100-person', trail: '1.3 mi' },
+    image: '/images/corinth-boat-ramp.jpg',
+    slug: 'experiences/corinth-recreation-area'
+  },
+  // Indiana
+  {
+    name: 'Hardin Ridge Recreation Area',
+    tagline: "Indiana's Largest Lake Campground",
+    description: '200+ campsites on Monroe Lake with beach, boat ramp, and hiking',
+    location: 'Bloomington, IN | Hoosier National Forest',
+    features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
+    stats: { campsites: '200+', lake: '10,750 ac', trails: '12+ mi' },
+    image: '/images/hardin-ridge-entrance-sign.jpg',
+    slug: 'hardin-ridge-recreation-area'
+  },
+  {
+    name: 'Indian-Celina Lakes Recreation Area',
+    tagline: 'Twin Lakes in the Heart of Hoosier National Forest',
+    description: 'Accessible fishing pier, camping, boat launch, and hiking trails',
+    location: 'Perry County, IN | Hoosier National Forest',
+    features: ['Fishing', 'Kayaking', 'Hiking', 'Swimming', 'RV & Tent Camping'],
+    stats: { lakes: '2', campsites: '80+', trails: 'Multiple' },
+    image: '/images/indian-celina-entrance-sign.jpg',
+    slug: 'indian-celina-lakes-recreation-area'
+  },
   {
     name: 'Tipsaw Lake Recreation Area',
     tagline: 'Scenic Lakeside Camping & Outdoor Adventure in Indiana',
@@ -22,6 +65,38 @@ const allLocations = [
     stats: { campsites: '35+', lakeSize: '131 acres', trails: '8+ miles' },
     image: '/images/tipsaw-entrance-sign.jpg',
     slug: 'tipsaw-lake-recreation-area'
+  },
+  // Maine
+  {
+    name: 'Canal Bridge Campground',
+    tagline: 'Scenic Riverside Camping in Maine',
+    description: 'A peaceful retreat for paddlers, anglers, and nature lovers',
+    location: 'Fryeburg, ME',
+    features: ['Kayaking', 'Fishing', 'Hiking', 'Wildlife Viewing', 'RV & Tent Camping'],
+    stats: { sites: '36', waterfront: 'Saco River', views: 'White Mtns' },
+    image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
+    slug: 'experiences/canal-bridge'
+  },
+  // Michigan
+  {
+    name: 'Chief Noonday Outdoor Center',
+    tagline: 'Rustic Group Camp & Retreat Center',
+    description: 'Lodge accommodations and group camping in Yankee Springs',
+    location: 'Middleville, MI | Yankee Springs',
+    features: ['Group Camping', 'Team Building', 'Nature Education', 'Retreats'],
+    stats: { lodges: '3', cabins: '10+', capacity: '150+' },
+    image: '/images/chief-noonday/deer-lodge.jpg',
+    slug: 'chief-noonday-outdoor-center'
+  },
+  {
+    name: 'Long Lake Outdoor Center',
+    tagline: 'Year-Round Outdoor Education & Recreation',
+    description: 'CCC-built retreat center with cabins, a private lake, and lodge',
+    location: 'Middleville, MI',
+    features: ['Group Camping', 'Outdoor Education', 'Team Building', 'Lake Activities'],
+    stats: { cabins: '16', capacity: '200+', lake: 'Private' },
+    image: '/images/long-lake/fall-foliage.jpg',
+    slug: 'long-lake-outdoor-center'
   },
   {
     name: 'Yankee Springs Recreation Area',
@@ -33,16 +108,7 @@ const allLocations = [
     image: '/images/yankee-springs/hill-cabins.jpg',
     slug: 'yankee-springs-recreation-area'
   },
-  {
-    name: 'Canal Bridge Campground',
-    tagline: 'Scenic Riverside Camping in Maine',
-    description: 'A peaceful retreat for paddlers, anglers, and nature lovers',
-    location: 'Fryeburg, ME',
-    features: ['Kayaking', 'Fishing', 'Hiking', 'Wildlife Viewing', 'RV & Tent Camping'],
-    stats: { sites: '36', waterfront: 'Saco River', views: 'White Mtns' },
-    image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
-    slug: 'experiences/canal-bridge'
-  },
+  // Missouri
   {
     name: 'Meramec State Park',
     tagline: 'Premier Camping & Caving on the Meramec River',
@@ -63,6 +129,7 @@ const allLocations = [
     image: '/images/washington-thunderbird-lodge.png',
     slug: 'washington-state-park'
   },
+  // Rhode Island
   {
     name: 'Burlingame State Park',
     tagline: "Rhode Island's Largest Campground Since 1934",
@@ -72,76 +139,6 @@ const allLocations = [
     stats: { campsites: '755', cabins: '20', acres: '3,100+' },
     image: '/images/burlingame-entrance-sign.jpg',
     slug: 'experiences/burlingame-state-park'
-  },
-  {
-    name: 'Hardin Ridge Recreation Area',
-    tagline: "Indiana's Largest Lake Campground",
-    description: '200+ campsites on Monroe Lake with beach, boat ramp, and hiking',
-    location: 'Bloomington, IN | Hoosier National Forest',
-    features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
-    stats: { campsites: '200+', lake: '10,750 ac', trails: '12+ mi' },
-    image: '/images/hardin-ridge-entrance-sign.jpg',
-    slug: 'hardin-ridge-recreation-area'
-  },
-  {
-    name: 'Clear Creek Recreation Area',
-    tagline: '102 Campsites on Lewis Smith Lake',
-    description: 'Swimming beach, boat ramps, and hiking trails in Bankhead NF',
-    location: 'Bankhead National Forest, AL',
-    features: ['Camping', 'Swimming', 'Boat Ramp', 'Hiking', 'Group Camping'],
-    stats: { campsites: '102', loops: '4', trails: '2' },
-    image: '/images/clear-creek-overview.jpg',
-    slug: 'experiences/clear-creek-recreation-area'
-  },
-  {
-    name: 'Monongahela National Forest',
-    tagline: 'Untamed Wilderness in West Virginia',
-    description: '900,000+ acres across the Alleghenies with 800+ miles of trails',
-    location: 'West Virginia',
-    features: ['Hiking', 'Scenic Drives', 'Fishing', 'Rock Climbing', 'Camping'],
-    stats: { acres: '921,000+', trails: '800+ mi', peaks: '4,863 ft' },
-    image: '/images/monongahela/entrance-sign.jpg',
-    slug: 'monongahela-national-forest'
-  },
-  {
-    name: 'Long Lake Outdoor Center',
-    tagline: 'Year-Round Outdoor Education & Recreation',
-    description: 'CCC-built retreat center with cabins, a private lake, and lodge',
-    location: 'Middleville, MI',
-    features: ['Group Camping', 'Outdoor Education', 'Team Building', 'Lake Activities'],
-    stats: { cabins: '16', capacity: '200+', lake: 'Private' },
-    image: '/images/long-lake/fall-foliage.jpg',
-    slug: 'long-lake-outdoor-center'
-  },
-  {
-    name: 'Indian-Celina Lakes Recreation Area',
-    tagline: 'Twin Lakes in the Heart of Hoosier National Forest',
-    description: 'Accessible fishing pier, camping, boat launch, and hiking trails',
-    location: 'Perry County, IN | Hoosier National Forest',
-    features: ['Fishing', 'Kayaking', 'Hiking', 'Swimming', 'RV & Tent Camping'],
-    stats: { lakes: '2', campsites: '80+', trails: 'Multiple' },
-    image: '/images/indian-celina-entrance-sign.jpg',
-    slug: 'indian-celina-lakes-recreation-area'
-  },
-  {
-    name: 'Bankhead National Forest',
-    tagline: 'The Land of a Thousand Waterfalls',
-    description: '180,000 acres of canyons, waterfalls, and the Sipsey Wilderness',
-    location: 'Northwest Alabama',
-    features: ['Birding', 'Waterfall Hikes', 'Sipsey Wilderness', 'Scenic Drives'],
-    stats: { acres: '180,000+', species: '84 birds', wilderness: 'Sipsey' },
-    image: '/images/bankhead-forest.jpg',
-    slug: 'bankhead-national-forest'
-  },
-  {
-    name: 'Corinth Recreation Area',
-    tagline: 'Modern Full-Hookup Campground',
-    description: '52 full-hookup sites on Lewis Smith Lake with pavilion and beach',
-    location: 'Bankhead National Forest, AL',
-    features: ['Full Hookup Camping', 'Swimming', 'Boat Ramp', 'Pavilion'],
-    stats: { sites: '52 + 10 tent', pavilion: '100-person', trail: '1.3 mi' },
-    image: '/images/corinth-boat-ramp.jpg',
-    slug: 'experiences/corinth-recreation-area'
   },
 ]
 
@@ -207,6 +204,15 @@ const statesData = [
     heading: 'Camping, Birding & Waterfalls in Alabama',
     properties: [
       {
+        name: 'Bankhead National Forest',
+        tagline: 'The Land of a Thousand Waterfalls',
+        location: 'Northwest Alabama',
+        stats: { acres: '180,000+', birdSpecies: '84', wilderness: 'Sipsey' },
+        activities: ['Birding', 'Waterfall Hikes', 'Sipsey Wilderness', 'Shooting Range', 'Scenic Drives'],
+        href: '/bankhead-national-forest',
+        image: '/images/bankhead-forest.jpg',
+      },
+      {
         name: 'Clear Creek Recreation Area',
         tagline: '102 Campsites on Lewis Smith Lake',
         location: 'Bankhead National Forest, AL',
@@ -224,15 +230,6 @@ const statesData = [
         href: '/experiences/corinth-recreation-area',
         image: '/images/corinth-boat-ramp.jpg',
       },
-      {
-        name: 'Bankhead National Forest',
-        tagline: 'The Land of a Thousand Waterfalls',
-        location: 'Northwest Alabama',
-        stats: { acres: '180,000+', birdSpecies: '84', wilderness: 'Sipsey' },
-        activities: ['Birding', 'Waterfall Hikes', 'Sipsey Wilderness', 'Shooting Range', 'Scenic Drives'],
-        href: '/bankhead-national-forest',
-        image: '/images/bankhead-forest.jpg',
-      },
     ],
   },
   {
@@ -240,6 +237,15 @@ const statesData = [
     icon: '/images/states/indiana.png',
     heading: 'Lakeside Adventures in Indiana',
     properties: [
+      {
+        name: 'Hoosier National Forest',
+        tagline: 'Southern Indiana\'s Natural Treasure',
+        location: 'Southern Indiana',
+        stats: { acres: '200,000+', recAreas: '3', trails: '260+ miles' },
+        activities: ['Camping', 'Hiking', 'Fishing', 'Swimming', 'Scenic Drives'],
+        href: '/hoosier-national-forest',
+        image: '/images/hardin-ridge-entrance-sign.jpg',
+      },
       {
         name: 'Hardin Ridge Recreation Area',
         tagline: 'Scenic Lakeside Camping & Outdoor Fun in Indiana',
@@ -301,15 +307,6 @@ const statesData = [
         image: '/images/yankee-springs/hill-cabins.jpg',
       },
       {
-        name: 'Long Lake Outdoor Center',
-        tagline: 'Year-Round Outdoor Education & Recreation',
-        location: 'Middleville, MI',
-        stats: { capacity: '200+', cabins: '20', lake: 'Private Lake' },
-        activities: ['Group Camping', 'Outdoor Education', 'Team Building', 'Lake Activities'],
-        href: '/long-lake-outdoor-center',
-        image: '/images/long-lake/fall-foliage.jpg',
-      },
-      {
         name: 'Chief Noonday Outdoor Center',
         tagline: 'Rustic Group Camp & Retreat Center',
         location: 'Middleville, MI | Yankee Springs',
@@ -317,6 +314,15 @@ const statesData = [
         activities: ['Group Camping', 'Team Building', 'Nature Education', 'Retreats'],
         href: '/chief-noonday-outdoor-center',
         image: '/images/chief-noonday/deer-lodge.jpg',
+      },
+      {
+        name: 'Long Lake Outdoor Center',
+        tagline: 'Year-Round Outdoor Education & Recreation',
+        location: 'Middleville, MI',
+        stats: { capacity: '200+', cabins: '20', lake: 'Private Lake' },
+        activities: ['Group Camping', 'Outdoor Education', 'Team Building', 'Lake Activities'],
+        href: '/long-lake-outdoor-center',
+        image: '/images/long-lake/fall-foliage.jpg',
       },
     ],
   },
@@ -326,15 +332,6 @@ const statesData = [
     heading: 'Historic & Scenic Outdoor Escape in Missouri',
     properties: [
       {
-        name: 'Washington State Park',
-        tagline: 'Historic & Scenic Outdoor Escape in Missouri',
-        location: 'De Soto, MO',
-        stats: { campsites: '50+', trails: '10+ miles', acres: '2,147+' },
-        activities: ['Hiking', 'Camping', 'Swimming', 'Historic Sites', 'Watercraft Rentals'],
-        href: '/washington-state-park',
-        image: '/images/Burlingame2-1536x1152.jpg',
-      },
-      {
         name: 'Meramec State Park',
         tagline: 'Premier Camping & Caving Destination on the Meramec River',
         location: 'Sullivan, MO',
@@ -342,6 +339,15 @@ const statesData = [
         activities: ['Watercraft Rentals', 'Camping', 'Hiking', 'Fishing', 'Swimming'],
         href: '/experiences/meramec-state-park',
         image: '/images/meramec-entrance-sign.jpg',
+      },
+      {
+        name: 'Washington State Park',
+        tagline: 'Historic & Scenic Outdoor Escape in Missouri',
+        location: 'De Soto, MO',
+        stats: { campsites: '50+', trails: '10+ miles', acres: '2,147+' },
+        activities: ['Hiking', 'Camping', 'Swimming', 'Historic Sites', 'Watercraft Rentals'],
+        href: '/washington-state-park',
+        image: '/images/Burlingame2-1536x1152.jpg',
       },
     ],
   },
@@ -373,6 +379,60 @@ const statesData = [
         stats: { acres: '921,000+', trails: '800+ miles', elevation: '4,863 ft' },
         activities: ['Hiking', 'Scenic Drives', 'Fishing', 'Rock Climbing', 'Camping'],
         href: '/monongahela-national-forest',
+        image: '/images/monongahela/entrance-sign.jpg',
+      },
+      {
+        name: 'Big Bend Campground',
+        tagline: 'Riverside Camping on the South Branch',
+        location: 'Monongahela National Forest, WV',
+        stats: { sites: '46', river: 'South Branch', trails: 'Multiple' },
+        activities: ['Camping', 'Fishing', 'Hiking', 'Swimming', 'Wildlife Viewing'],
+        href: '/monongahela-national-forest/big-bend-campground',
+        image: '/images/monongahela/entrance-sign.jpg',
+      },
+      {
+        name: 'Jess Judy Group Campground',
+        tagline: 'Group Camping in the Alleghenies',
+        location: 'Monongahela National Forest, WV',
+        stats: { sites: '3 group', capacity: '75+', setting: 'Forested' },
+        activities: ['Group Camping', 'Hiking', 'Fishing', 'Nature Study'],
+        href: '/monongahela-national-forest/jess-judy-group-campground',
+        image: '/images/monongahela/entrance-sign.jpg',
+      },
+      {
+        name: 'Seneca Shadows Campground',
+        tagline: 'Camping Beneath Seneca Rocks',
+        location: 'Monongahela National Forest, WV',
+        stats: { sites: '80+', landmark: 'Seneca Rocks', river: 'North Fork' },
+        activities: ['Camping', 'Rock Climbing', 'Hiking', 'Fishing', 'Scenic Views'],
+        href: '/monongahela-national-forest/seneca-shadows-campground',
+        image: '/images/monongahela/entrance-sign.jpg',
+      },
+      {
+        name: 'Spruce Knob Lake Campground',
+        tagline: 'Camping at West Virginia\'s Highest Point',
+        location: 'Monongahela National Forest, WV',
+        stats: { elevation: '4,863 ft', lake: 'Spruce Knob Lake', sites: '42' },
+        activities: ['Camping', 'Fishing', 'Hiking', 'Stargazing', 'Nature Study'],
+        href: '/monongahela-national-forest/spruce-knob-lake-campground',
+        image: '/images/monongahela/entrance-sign.jpg',
+      },
+      {
+        name: 'Gatewood Group Campground',
+        tagline: 'Group Retreat in the Forest',
+        location: 'Monongahela National Forest, WV',
+        stats: { sites: '2 group', capacity: '50+', setting: 'Secluded' },
+        activities: ['Group Camping', 'Hiking', 'Fishing', 'Nature Study'],
+        href: '/monongahela-national-forest/gatewood-group-campground',
+        image: '/images/monongahela/entrance-sign.jpg',
+      },
+      {
+        name: 'Stuart Recreation Area',
+        tagline: 'Lakeside Day Use & Picnicking',
+        location: 'Monongahela National Forest, WV',
+        stats: { lake: 'Stuart Lake', activities: 'Day Use', setting: 'Scenic' },
+        activities: ['Picnicking', 'Fishing', 'Swimming', 'Hiking', 'Nature Study'],
+        href: '/monongahela-national-forest/stuart-recreation-area',
         image: '/images/monongahela/entrance-sign.jpg',
       },
     ],
@@ -1180,11 +1240,16 @@ export default function HomePage() {
             </h1>
 
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-10 max-w-2xl animate-fade-in-up delay-200 drop-shadow-md">
-              From <span className="text-white font-semibold">the rolling forests of Alabama</span> to{' '}
-              <span className="text-white font-semibold">the rugged landscapes of Missouri</span>, our
-              managed sites provide <span className="text-green-400 font-semibold">well-maintained facilities</span>,{' '}
-              <span className="text-green-400 font-semibold">pristine landscapes</span>, and{' '}
-              <span className="text-green-400 font-semibold">seamless visitor experiences</span>.
+              From <span className="text-white font-semibold">the rockbound coast of Maine</span> to{' '}
+              <span className="text-white font-semibold">the salt flats of Utah</span>, from{' '}
+              <span className="text-white font-semibold">the storied mountains of West Virginia</span> to{' '}
+              <span className="text-white font-semibold">the sandy shores of Rhode Island</span>, across{' '}
+              <span className="text-white font-semibold">the endless plains of Iowa</span> and{' '}
+              <span className="text-white font-semibold">the richly contoured landscapes of Indiana and Michigan</span>, to{' '}
+              <span className="text-white font-semibold">the rugged heart of Missouri</span>—our
+              managed sites offer <span className="text-green-400 font-semibold">well-kept facilities</span>,{' '}
+              <span className="text-green-400 font-semibold">unspoiled scenery</span>, and{' '}
+              <span className="text-green-400 font-semibold">seamless experiences for every visitor</span>.
             </p>
 
             <div className="flex flex-wrap gap-4 animate-fade-in-up delay-300">

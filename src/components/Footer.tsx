@@ -120,8 +120,8 @@ export default function Footer() {
               />
             </Link>
             <p className="text-white/70 leading-relaxed mb-6 max-w-md">
-              From the rolling forests of Alabama to the rugged landscapes of Missouri, our managed sites provide
-              well-maintained facilities, pristine landscapes, and seamless visitor experiences.
+              From the rockbound coast of Maine to the salt flats of Utah, our managed sites offer
+              well-kept facilities, unspoiled scenery, and seamless experiences for every visitor.
             </p>
             <div className="text-white/70 text-sm space-y-1 mb-4">
               <p className="font-semibold text-white">BA Services, Inc.</p>

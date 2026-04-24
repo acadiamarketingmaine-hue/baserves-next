@@ -83,9 +83,9 @@ export default function AboutPage() {
               Connecting People with <span className="text-green-400">Nature</span>
             </h1>
             <p className="text-xl text-white/80 leading-relaxed">
-              From the rolling forests of Alabama to the rugged landscapes of Missouri, we're
-              dedicated to providing well-maintained facilities, pristine landscapes, and
-              seamless <Link href="/" className="underline hover:text-white transition-colors">visitor experiences</Link>.
+              From the rockbound coast of Maine to the salt flats of Utah, we're
+              dedicated to offering well-kept facilities, unspoiled scenery, and
+              seamless <Link href="/" className="underline hover:text-white transition-colors">experiences for every visitor</Link>.
             </p>
           </div>
         </div>
