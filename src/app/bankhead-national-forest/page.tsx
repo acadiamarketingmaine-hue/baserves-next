@@ -294,6 +294,60 @@ export default function BankheadNationalForestPage() {
         </div>
       </section>
 
+      {/* Campgrounds */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">Campgrounds</h2>
+          <p className="text-gray-600 mb-8 max-w-2xl">
+            Two campgrounds managed by BA Services provide comfortable base camps for exploring the Bankhead National Forest.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {campgrounds.map((campground) => (
+              <Link key={campground.name} href={campground.link} className="group">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+                  <div className="relative h-56">
+                    <Image
+                      src={campground.image}
+                      alt={campground.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 text-gray-900 font-semibold rounded-full text-sm">
+                      {campground.sites}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">
+                      {campground.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{campground.description}</p>
+                    <span className="inline-flex items-center gap-1 mt-4 text-green-700 font-semibold text-sm">
+                      Learn more
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Other Recreation Areas */}
+          <div className="mt-12">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Other Recreation Areas</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {recreationAreas.map((area) => (
+                <div key={area.name} className="bg-white rounded-xl p-5 border border-gray-200 hover:border-green-300 transition-colors">
+                  <h4 className="font-bold text-gray-900 mb-2">{area.name}</h4>
+                  <p className="text-gray-600 text-sm">{area.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Birding */}
       <section className="py-16 bg-blue-50">
         <div className="container-custom px-6">
@@ -484,60 +538,6 @@ export default function BankheadNationalForestPage() {
                 </svg>
                 Download Quail Habitat Guide (PDF)
               </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Campgrounds */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Campgrounds</h2>
-          <p className="text-gray-600 mb-8 max-w-2xl">
-            Two campgrounds managed by BA Services provide comfortable base camps for exploring the Bankhead National Forest.
-          </p>
-          <div className="grid md:grid-cols-2 gap-8">
-            {campgrounds.map((campground) => (
-              <Link key={campground.name} href={campground.link} className="group">
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
-                  <div className="relative h-56">
-                    <Image
-                      src={campground.image}
-                      alt={campground.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 text-gray-900 font-semibold rounded-full text-sm">
-                      {campground.sites}
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">
-                      {campground.name}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{campground.description}</p>
-                    <span className="inline-flex items-center gap-1 mt-4 text-green-700 font-semibold text-sm">
-                      Learn more
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* Other Recreation Areas */}
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Other Recreation Areas</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {recreationAreas.map((area) => (
-                <div key={area.name} className="bg-white rounded-xl p-5 border border-gray-200 hover:border-green-300 transition-colors">
-                  <h4 className="font-bold text-gray-900 mb-2">{area.name}</h4>
-                  <p className="text-gray-600 text-sm">{area.description}</p>
-                </div>
-              ))}
             </div>
           </div>
         </div>

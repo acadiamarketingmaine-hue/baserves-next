@@ -281,6 +281,43 @@ export default function YankeeSpringsPage() {
         </div>
       </section>
 
+      {/* Sub-Properties */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom px-6">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Properties at Yankee Springs</h2>
+          <p className="text-gray-600 mb-10 max-w-2xl">Two historic outdoor centers within the recreation area offer lodging, event spaces, and group facilities.</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {subProperties.map((property) => (
+              <Link
+                key={property.name}
+                href={property.href}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group"
+              >
+                <div className="relative h-64">
+                  <Image src={property.image} alt={property.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <span className="absolute top-4 left-4 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">
+                    {property.badge}
+                  </span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-forest-DEFAULT transition-colors">
+                    {property.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4">{property.description}</p>
+                  <span className="inline-flex items-center gap-2 text-forest-DEFAULT font-semibold text-sm">
+                    Learn More
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Historic Lodging */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
@@ -339,43 +376,6 @@ export default function YankeeSpringsPage() {
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{activity.name}</h3>
                 <p className="text-gray-600 text-sm">{activity.description}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sub-Properties */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Properties at Yankee Springs</h2>
-          <p className="text-gray-600 mb-10 max-w-2xl">Two historic outdoor centers within the recreation area offer lodging, event spaces, and group facilities.</p>
-          <div className="grid md:grid-cols-2 gap-8">
-            {subProperties.map((property) => (
-              <Link
-                key={property.name}
-                href={property.href}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group"
-              >
-                <div className="relative h-64">
-                  <Image src={property.image} alt={property.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <span className="absolute top-4 left-4 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">
-                    {property.badge}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-forest-DEFAULT transition-colors">
-                    {property.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4">{property.description}</p>
-                  <span className="inline-flex items-center gap-2 text-forest-DEFAULT font-semibold text-sm">
-                    Learn More
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </span>
-                </div>
-              </Link>
             ))}
           </div>
         </div>

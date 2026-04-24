@@ -365,7 +365,7 @@ export default function LongLakePage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden">
-              <Image src="/images/long-lake/lodge.jpg" alt="The Lodge at Long Lake Outdoor Center" fill className="object-cover" />
+              <Image src="/images/long-lake/dining-hall.png" alt="The Lodge at Long Lake Outdoor Center" fill className="object-cover" />
             </div>
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">The Lodge</h2>
