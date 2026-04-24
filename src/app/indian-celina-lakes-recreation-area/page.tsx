@@ -185,7 +185,7 @@ export default function IndianCelinaLakesPage() {
                   The recreation area includes Celina Campground, which is organized into two loops, North Face and South Slope, offering a total of 63 campsites. Sites are well-spaced within a mature forest setting and are equipped with picnic tables, fire rings, lantern posts, and paved parking spurs suitable for a variety of camping units.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  South Slope Loop features full electric service at all sites, including two host sites with full hookups. North Face Loop includes a mix of electric and non-electric sites, including two host sites with full hookups, as well as several walk-in tent sites. Modern amenities include two flush restroom and shower buildings, five vault toilets, and conveniently located water hydrants throughout the campground.
+                  The South Slope Loop features full electric service at all sites, while the North Face Loop includes a mix of electric and non-electric sites, as well as several walk-in tent sites. Modern amenities include two flush restroom and shower buildings, five vault toilets, and conveniently located water hydrants throughout the campground.
                 </p>
 
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">Recreation Amenities</h3>

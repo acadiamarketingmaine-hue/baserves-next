@@ -77,7 +77,7 @@ export default function GatewoodGroupCampgroundPage() {
                 Located approximately two miles east of Spruce Knob Lake Campground at the end of Forest Road 131, access to Gatewood is controlled by a gated road, which is unlocked for visitors with a valid reservation. The campground&apos;s remote location enhances its sense of isolation while still providing access to nearby recreational opportunities, including fishing at Spruce Knob Lake and along Gandy Creek.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                The campground features a single reservable group site that can accommodate up to approximately 30 people. Facilities include fire rings, picnic tables, and two single-unit vault restrooms. As a primitive site, there is no electric service or drinking water available, and the campground is not ABA accessible.
+                The campground features a single reservable group site that can accommodate up to approximately 30 people. Facilities include fire rings, picnic tables, and two single-unit vault restrooms. As a primitive site, there is no electric service or drinking water available, and the campground is not ADA accessible.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
                 Trash bins are provided for waste collection; however, there are no RV dump stations on-site. Gatewood Group Campground typically operates from mid-April through late October, aligning with the primary recreation season in the region.

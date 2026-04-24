@@ -192,7 +192,7 @@ export default function TipsawLakePage() {
                   The recreation area includes multiple camping options across three primary loops—Jackpine, Dogwood, and Catbrier—along with two group camping areas. Jackpine Loop contains 21 electric sites, while Dogwood Loop offers 14 sites, including a small number with electric service. Both loops include one walk-in campsite and feature paved roads and parking spurs, with each site equipped with a picnic table, fire ring, lantern post, and space for tents or RVs.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The Catbrier RV loop includes 11 sites, including a host site, all with water and electric hookups, and accommodates a wide range of vehicle sizes. Three host sites in Jackpine Loop provide full utility hookups.
+                  The Catbrier RV loop includes 11 sites, all with water and electric hookups, and accommodates a wide range of vehicle sizes.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
                   Two group camping areas—Primrose and Goldenrod—each accommodate up to 65 people and include electric service, picnic tables, fire rings, lantern posts, water fountains, and vault toilets.

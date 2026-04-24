@@ -74,7 +74,7 @@ export default function BigBendCampgroundPage() {
                 Nestled in a sweeping bend of the South Branch of the Potomac River, Big Bend Campground is located within Smoke Hole Canyon in the Monongahela National Forest, approximately 10 miles southwest of Petersburg, West Virginia, at the end of County Route 2. Surrounded by a lush hardwood forest, the campground offers a tranquil, scenic setting with the river just 200 feet away, providing easy access for fishing, swimming, tubing, and non-motorized boating.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Big Bend features 46 standard non-electric campsites, each equipped with a fire ring, lantern post, picnic table, and paved spur suitable for both tent and RV camping. Portions of the campground and select facilities are ABA accessible, supporting a range of visitors&apos; needs.
+                Big Bend features 46 standard non-electric campsites, each equipped with a fire ring, lantern post, picnic table, and paved spur suitable for both tent and RV camping. Portions of the campground and select facilities are ADA accessible, supporting a range of visitors&apos; needs.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
                 Recreational opportunities extend beyond the campground itself. A one-mile loop trail is available onsite, while the nearby Seneca Creek Backcountry and Smoke Hole Canyon offer access to more than 60 miles of additional trails for hiking and exploration.

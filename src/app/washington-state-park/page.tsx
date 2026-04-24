@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Washington State Park | De Soto, Missouri | BA Services',
-  description: 'Explore Washington State Park in De Soto, Missouri. 2,157 acres along the Big River with 50 campsites, 11 cabins, ancient petroglyphs, swimming pool, 9.7 miles of trails, and 140 bird species.',
+  description: 'Explore Washington State Park in De Soto, Missouri. 2,157 acres along the Big River with 11 lodging cabins, ancient petroglyphs, swimming pool, 9.7 miles of trails, and 140 bird species.',
   alternates: { canonical: '/washington-state-park' },
 }
 
@@ -28,7 +28,7 @@ const fishPDFs = [
 const scopeOfWork = [
   {
     title: 'Lodging & Guest Accommodations',
-    description: 'Full-service cabin and campsite operations designed for comfort, consistency, and a hassle-free guest experience.',
+    description: 'Full-service cabin and lodging operations designed for comfort, consistency, and a hassle-free guest experience.',
     items: [
       'Operation of cabins and overnight accommodations',
       'Housekeeping and facility maintenance to strict quality standards',
@@ -167,7 +167,7 @@ export default function WashingtonStateParkPage() {
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
             {[
               { value: '2,157', label: 'Acres' },
-              { value: '50', label: 'Campsites' },
+              { value: '11', label: 'Lodging Cabins' },
               { value: '9.7 mi', label: 'Trails' },
               { value: '140', label: 'Bird Species' },
             ].map((stat) => (
@@ -222,7 +222,6 @@ export default function WashingtonStateParkPage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Park Amenities</h3>
                 <ul className="space-y-3">
                   {[
-                    '50 Campsites',
                     '11 Lodging Cabins',
                     'Swimming Pool',
                     'Camp Store',
@@ -246,7 +245,7 @@ export default function WashingtonStateParkPage() {
               <div className="bg-forest-DEFAULT rounded-2xl p-6 text-white">
                 <h3 className="text-xl font-bold mb-4">Ready to Visit?</h3>
                 <p className="text-white/80 mb-6">
-                  Reserve your campsite or cabin at Washington State Park.
+                  Reserve your cabin or watercraft at Washington State Park.
                 </p>
                 <a
                   href="https://www.washingtonstateparkmo.com/"
@@ -272,7 +271,6 @@ export default function WashingtonStateParkPage() {
                 Washington State Park offers 11 lodging cabins nestled among the trees along the Big River. These cabins provide a comfortable home base for exploring the park&apos;s trails, petroglyphs, and natural beauty.
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
-                In addition to cabins, the park has 50 campsites — some with electric hookups and others offering a more basic, back-to-nature experience. Whether you prefer the comfort of a cabin or the simplicity of a tent, Washington State Park has a spot for you.
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="bg-white rounded-xl p-4">
@@ -281,7 +279,7 @@ export default function WashingtonStateParkPage() {
                 </div>
                 <div className="bg-white rounded-xl p-4">
                   <div className="text-2xl font-bold text-forest-DEFAULT mb-1">50</div>
-                  <div className="text-gray-600 text-sm">Campsites</div>
+                  <div className="text-gray-600 text-sm">
                 </div>
               </div>
             </div>
@@ -483,7 +481,7 @@ export default function WashingtonStateParkPage() {
             Plan Your Visit to Washington State Park
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            Ancient petroglyphs, the Big River, and 2,157 acres of Missouri wilderness await. Reserve your campsite or cabin today.
+            Ancient petroglyphs, the Big River, and 2,157 acres of Missouri wilderness await. Reserve your cabin or watercraft today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
