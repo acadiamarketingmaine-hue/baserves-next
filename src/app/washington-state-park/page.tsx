@@ -277,10 +277,6 @@ export default function WashingtonStateParkPage() {
                   <div className="text-2xl font-bold text-forest-DEFAULT mb-1">11</div>
                   <div className="text-gray-600 text-sm">Lodging Cabins</div>
                 </div>
-                <div className="bg-white rounded-xl p-4">
-                  <div className="text-2xl font-bold text-forest-DEFAULT mb-1">50</div>
-                  <div className="text-gray-600 text-sm">
-                </div>
               </div>
             </div>
             <div className="space-y-4">

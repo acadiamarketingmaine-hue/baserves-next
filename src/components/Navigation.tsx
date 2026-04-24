@@ -28,9 +28,7 @@ interface LocationItem {
   children?: LocationItem[]
 }
 
-const locationsByState: { state: string; icon: string; locations: LocationItem[
-,
-] }[] = [
+const locationsByState: { state: string; icon: string; locations: LocationItem[] }[] = [
   {
     state: 'Alabama',
     icon: '/images/states/alabama.png',

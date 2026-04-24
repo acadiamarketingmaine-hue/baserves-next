@@ -5,7 +5,114 @@ import Footer from '@/components/Footer'
 import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon, MountainIcon } from '@/components/Icons'
 
 const locations = [
-,
+  {
+    name: 'Bankhead National Forest',
+    tagline: 'The Land of a Thousand Waterfalls',
+    description: '180,000+ acres of canyons, waterfalls, old-growth forests, and exceptional birding',
+    location: 'Lawrence, Winston & Franklin Counties, AL',
+    features: ['Sipsey Wilderness', '84 Bird Species', 'Waterfalls', 'Shooting Range', 'Horse Trails'],
+    image: '/images/bankhead-forest.jpg',
+    slug: 'bankhead-national-forest'
+  },
+  {
+    name: 'Clear Creek Recreation Area',
+    tagline: 'Alabama\'s Premier Lakeside Campground',
+    description: '102 campsites on Lewis Smith Lake with swimming, trails, and group camping',
+    location: 'Bankhead National Forest, AL',
+    features: ['102 Campsites', 'Swimming Beach', 'Boat Ramp', 'Hiking Trails', 'Group Camping'],
+    image: '/images/clear-creek-overview.jpg',
+    slug: 'experiences/clear-creek-recreation-area'
+  },
+  {
+    name: 'Corinth Recreation Area',
+    tagline: 'Modern Full-Hookup Campground',
+    description: '52 full-hookup sites and 10 tent sites on Lewis Smith Lake',
+    location: 'Bankhead National Forest, AL',
+    features: ['Full Hookups', 'Swimming Beach', '100-Person Pavilion', 'Bobwhite Trail', 'Boat Ramp'],
+    image: '/images/corinth-boat-ramp.jpg',
+    slug: 'experiences/corinth-recreation-area'
+  },
+  {
+    name: 'Tipsaw Lake Recreation Area',
+    tagline: 'Lakeside Camping in Hoosier National Forest',
+    description: '47 campsites on a 131-acre lake with beach, trails, and group camping',
+    location: 'Perry County, IN',
+    features: ['131-Acre Lake', '47 Campsites', 'Swimming Beach', '5.9-mi Trail', 'Group Camps'],
+    image: '/images/tipsaw-lake/lake-view.jpg',
+    slug: 'tipsaw-lake-recreation-area'
+  },
+  {
+    name: 'Hardin Ridge Recreation Area',
+    tagline: 'Lakeside Camping on Monroe Lake',
+    description: '203 campsites on Indiana\'s largest lake with beach, boat ramp, and cabins',
+    location: 'Monroe County, IN',
+    features: ['203 Sites', '10,750-Acre Lake', 'Swimming Beach', '2 Cabins', 'Boat Ramp'],
+    image: '/images/hardin-ridge-entrance-sign.jpg',
+    slug: 'hardin-ridge-recreation-area'
+  },
+  {
+    name: 'Canal Bridge Campground',
+    tagline: 'Scenic Riverside Camping in Maine',
+    description: '36 campsites on the Saco River with White Mountain views',
+    location: 'Fryeburg, ME',
+    features: ['Saco River', 'Kayaking', 'Fishing', 'Mountain Views', 'Pet Friendly'],
+    image: '/images/canal-bridge/entrance.jpg',
+    slug: 'experiences/canal-bridge'
+  },
+  {
+    name: 'Yankee Springs Recreation Area',
+    tagline: 'Michigan\'s Ultimate Outdoor Escape',
+    description: '5,200+ acres with 200+ campsites, 30+ miles of trails, and year-round recreation',
+    location: 'Barry County, MI',
+    features: ['200+ Campsites', '30+ mi Trails', 'Mountain Biking', 'Swimming', 'Winter Sports'],
+    image: '/images/yankee-springs/hill-cabins.jpg',
+    slug: 'yankee-springs-recreation-area'
+  },
+  {
+    name: 'Long Lake Outdoor Center',
+    tagline: 'Historic CCC Property Since 1939',
+    description: '16 cabins, 4 bunkhouses, and a 120-seat lodge on the National Registry',
+    location: 'Yankee Springs, MI',
+    features: ['16 Cabins', 'Lodge', 'Weddings', 'Group Retreats', 'Commercial Kitchen'],
+    image: '/images/long-lake/fall-aerial.jpg',
+    slug: 'long-lake-outdoor-center'
+  },
+  {
+    name: 'Meramec State Park',
+    tagline: 'Missouri\'s Scenic CCC-Built State Park',
+    description: '19 cabins, 40+ caves, motel, and river float rentals along the Meramec River',
+    location: 'Sullivan, MO',
+    features: ['19 Cabins', '40+ Caves', 'Float Rentals', 'Motel', '13 mi Trails'],
+    image: '/images/meramec-entrance-sign.jpg',
+    slug: 'experiences/meramec-state-park'
+  },
+  {
+    name: 'Washington State Park',
+    tagline: 'Ancient Petroglyphs & Natural Beauty',
+    description: '2,157 acres with 11 cabins, pool, 140 bird species, and Fish of the Big River series',
+    location: 'De Soto, MO',
+    features: ['11 Cabins', '350+ Petroglyphs', 'Swimming Pool', '140 Bird Species', '9.7 mi Trails'],
+    image: '/images/washington-thunderbird-lodge.png',
+    slug: 'washington-state-park'
+  },
+  {
+    name: 'Burlingame State Park',
+    tagline: 'Rhode Island\'s Premier Campground Since 1934',
+    description: '755 campsites, 20 cabins, and a rich history on Watchaug Pond',
+    location: 'Charlestown, RI',
+    features: ['755 Campsites', '20 Cabins', 'Swimming', 'Boating', 'Wildlife Viewing'],
+    image: '/images/burlingame-entrance-sign.jpg',
+    slug: 'experiences/burlingame-state-park'
+  },
+  {
+    name: 'Monongahela National Forest',
+    tagline: 'Wild & Wonderful West Virginia',
+    description: '921,000 acres with 800+ miles of trails, 5 wilderness areas, and Spruce Knob',
+    location: 'Eastern West Virginia',
+    features: ['921,000 Acres', '800+ mi Trails', '5 Wilderness Areas', 'Rock Climbing', 'Scenic Drives'],
+    image: '/images/monongahela/entrance-sign.jpg',
+    slug: 'monongahela-national-forest'
+  },
 ]
 
 const categories = [
