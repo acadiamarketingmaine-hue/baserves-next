@@ -116,6 +116,7 @@ The center features comfortable lodging options, a beautiful lake for water acti
       '/images/DSC_0103-2048x1365.jpg',
     ],
     bookingUrl: 'https://escape.baserves.com/long-lake-outdoor-center',
+    phone: '616-644-9459',
   },
   'chief-noonday-outdoor-center': {
     name: 'Chief Noonday Outdoor Center',
@@ -138,6 +139,7 @@ Currently four semi-rustic cabins are available along Chief Noonday Lake: Bear D
       '/images/chief-noonday/mess-hall.jpg',
     ],
     bookingUrl: 'https://escape.baserves.com/chief-noonday-outdoor-center',
+    phone: '616-644-9459',
   },
   'bankhead-national-forest': {
     name: 'Bankhead National Forest',
@@ -321,11 +323,11 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
                 >
                   Check Availability
                 </a>
-                <a href="tel:+12073077903" className="flex items-center justify-center gap-2 mt-4 text-white/80 hover:text-white transition-colors">
+                <a href={`tel:${(location.phone || '207-307-7903').replace(/[^+\d]/g, '')}`} className="flex items-center justify-center gap-2 mt-4 text-white/80 hover:text-white transition-colors">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  Call +1 207 307-7903
+                  Call {location.phone ? location.phone : '+1 207 307-7903'}
                 </a>
               </div>
             </div>
