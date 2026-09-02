@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/sms-terms`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${baseUrl}/leave-a-review`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${baseUrl}/rewards`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
+      { url: `${baseUrl}/small-business-connection`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.3 },
   ];
 
   // Dedicated location pages ([slug])
