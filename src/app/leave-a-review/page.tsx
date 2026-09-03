@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
@@ -62,6 +62,16 @@ export default function LeaveReviewPage() {
   const selectReviewType = (reviewType: 'rest-area' | 'campground') => {
     setFormData({ ...blankForm, reviewType, name: formData.name, phone: formData.phone, email: formData.email })
   }
+
+  // Guests arriving from a FareHarbor post-stay email are redirected here with
+  // ?type=campground, so open on the category that matches their stay. Read from
+  // the URL directly to keep the page statically rendered.
+  useEffect(() => {
+    const type = new URLSearchParams(window.location.search).get('type')
+    if (type === 'campground' || type === 'rest-area') {
+      setFormData(prev => ({ ...prev, reviewType: type }))
+    }
+  }, [])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
