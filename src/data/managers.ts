@@ -110,6 +110,14 @@ export const RECREATION_SITES: { label: string; manager: Manager }[] = [
   { label: 'UDOT Rest Areas (Utah)', manager: UDOT_PROJECT_MANAGER },
 ]
 
+/**
+ * The campgrounds and parks a guest can leave feedback about. The UDOT bucket is
+ * excluded because rest areas are chosen individually on their own list.
+ */
+export const CAMPGROUND_SITES = RECREATION_SITES.filter(
+  site => site.label !== 'UDOT Rest Areas (Utah)'
+)
+
 // --- Lookups ---------------------------------------------------------------
 
 /** Andrew asked to be copied on every site's feedback. */
@@ -133,4 +141,14 @@ export function recipientsForRestArea(label: string): Manager[] {
 export function managerForSite(label: string | undefined): Manager | undefined {
   if (!label) return undefined
   return RECREATION_SITES.find(s => s.label === label)?.manager
+}
+
+/**
+ * Everyone who should receive feedback about a campground or park: its manager
+ * and Andrew. Falls back to Andrew alone when the site is unrecognised.
+ */
+export function recipientsForSite(label: string): Manager[] {
+  const manager = managerForSite(label)
+  if (!manager) return [...ALWAYS_NOTIFY]
+  return [manager, ...ALWAYS_NOTIFY]
 }

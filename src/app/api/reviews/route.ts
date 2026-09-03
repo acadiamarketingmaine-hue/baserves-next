@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendMail, escapeHtml } from '@/lib/mailer'
-import { recipientsForRestArea } from '@/data/managers'
+import { recipientsForRestArea, recipientsForSite } from '@/data/managers'
 
 export const dynamic = 'force-dynamic'
 
@@ -22,7 +22,30 @@ function withinRateLimit(ip: string): boolean {
   return true
 }
 
-const QUESTIONS: [keyof SubmittedReview, string][] = [
+interface SubmittedReview {
+  reviewType?: 'rest-area' | 'campground'
+  restArea?: string
+  site?: string
+  // Rest area answers
+  restroomCleanliness?: string
+  maintenance?: string
+  groundsCleanliness?: string
+  vending?: string
+  staffCourtesy?: string
+  // Campground answers
+  accommodationCleanliness?: string
+  facilityCondition?: string
+  bathhouseCleanliness?: string
+  checkInExperience?: string
+  // Shared
+  feedback?: string
+  followUp?: boolean
+  name?: string
+  phone?: string
+  email?: string
+}
+
+const REST_AREA_QUESTIONS: [keyof SubmittedReview, string][] = [
   ['restroomCleanliness', 'Cleanliness of the restrooms'],
   ['maintenance', 'Overall maintenance of the facility'],
   ['groundsCleanliness', 'Cleanliness of the grounds and parking'],
@@ -30,19 +53,14 @@ const QUESTIONS: [keyof SubmittedReview, string][] = [
   ['staffCourtesy', 'Courtesy of our staff'],
 ]
 
-interface SubmittedReview {
-  restArea?: string
-  restroomCleanliness?: string
-  maintenance?: string
-  groundsCleanliness?: string
-  vending?: string
-  staffCourtesy?: string
-  feedback?: string
-  followUp?: boolean
-  name?: string
-  phone?: string
-  email?: string
-}
+const CAMPGROUND_QUESTIONS: [keyof SubmittedReview, string][] = [
+  ['accommodationCleanliness', 'Cleanliness of the cabin or site'],
+  ['facilityCondition', 'Condition and upkeep of the facilities'],
+  ['bathhouseCleanliness', 'Cleanliness of the restrooms and shower house'],
+  ['groundsCleanliness', 'Cleanliness of the grounds'],
+  ['checkInExperience', 'Check-in and reservation experience'],
+  ['staffCourtesy', 'Courtesy of our staff'],
+]
 
 function row(label: string, value: string) {
   return `<tr>
@@ -51,8 +69,14 @@ function row(label: string, value: string) {
   </tr>`
 }
 
-function buildHtml(data: SubmittedReview, recipientNames: string[]) {
-  const answers = QUESTIONS.filter(([key]) => data[key])
+function buildHtml(
+  data: SubmittedReview,
+  locationName: string,
+  questions: [keyof SubmittedReview, string][],
+  recipientNames: string[]
+) {
+  const answers = questions
+    .filter(([key]) => data[key])
     .map(([key, label]) => row(label, escapeHtml(String(data[key]))))
     .join('')
 
@@ -70,10 +94,12 @@ function buildHtml(data: SubmittedReview, recipientNames: string[]) {
        </p>`
     : ''
 
+  const heading = data.reviewType === 'campground' ? 'Campground Feedback' : 'Rest Area Feedback'
+
   return `
     <div style="font-family:Arial,sans-serif;max-width:640px;margin:0 auto;padding:20px;">
-      <h2 style="margin:0 0 4px;">Rest Area Feedback</h2>
-      <p style="margin:0 0 16px;color:#6b7280;font-size:14px;">${escapeHtml(data.restArea || 'Rest area not specified')}</p>
+      <h2 style="margin:0 0 4px;">${heading}</h2>
+      <p style="margin:0 0 16px;color:#6b7280;font-size:14px;">${escapeHtml(locationName)}</p>
       ${followUpBanner}
       <table style="border-collapse:collapse;width:100%;">
         ${answers}
@@ -102,17 +128,28 @@ export async function POST(request: NextRequest) {
     }
 
     const data = (await request.json()) as SubmittedReview
+    const isCampground = data.reviewType === 'campground'
 
-    if (!data.restArea) {
-      return NextResponse.json({ error: 'Please choose a rest area' }, { status: 400 })
+    // Older clients only ever sent restArea, so treat a missing type as a rest area.
+    const locationName = isCampground ? data.site : data.restArea
+    if (!locationName) {
+      return NextResponse.json(
+        { error: isCampground ? 'Please choose a campground' : 'Please choose a rest area' },
+        { status: 400 }
+      )
     }
 
-    const recipients = recipientsForRestArea(data.restArea)
+    const recipients = isCampground
+      ? recipientsForSite(locationName)
+      : recipientsForRestArea(locationName)
+
+    const questions = isCampground ? CAMPGROUND_QUESTIONS : REST_AREA_QUESTIONS
+    const subjectPrefix = isCampground ? 'Campground Feedback' : 'Rest Area Feedback'
 
     await sendMail({
       to: recipients.map(r => r.email),
-      subject: `Rest Area Feedback: ${data.restArea}`,
-      html: buildHtml(data, recipients.map(r => `${r.name} (${r.role})`)),
+      subject: `${subjectPrefix}: ${locationName}`,
+      html: buildHtml(data, locationName, questions, recipients.map(r => `${r.name} (${r.role})`)),
       replyTo: data.email?.trim() || undefined,
     })
 

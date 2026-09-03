@@ -4,27 +4,64 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
-import { REST_AREAS } from '@/data/managers'
+import { REST_AREAS, CAMPGROUND_SITES } from '@/data/managers'
 import Footer from '@/components/Footer'
 
 
 const ratingOptions = ['Excellent', 'Good', 'Fair', 'Poor']
 const vendingOptions = ['Very satisfied', 'Satisfied', 'Neutral', 'Dissatisfied']
 
+type Question = { name: string; label: string; options: string[]; wide?: boolean }
+
+// Rest areas and campgrounds are judged on different things, so each gets its
+// own question set. The `name` values are what /api/reviews reads.
+const restAreaQuestions: Question[] = [
+  { name: 'restroomCleanliness', label: 'Cleanliness of the restrooms today?', options: ratingOptions },
+  { name: 'maintenance', label: 'Overall maintenance of this facility?', options: ratingOptions },
+  { name: 'groundsCleanliness', label: 'Cleanliness of the grounds and parking?', options: ratingOptions },
+  { name: 'vending', label: 'Satisfaction with vending offerings?', options: vendingOptions },
+  { name: 'staffCourtesy', label: 'Courtesy of our staff?', options: ratingOptions, wide: true },
+]
+
+const campgroundQuestions: Question[] = [
+  { name: 'accommodationCleanliness', label: 'Cleanliness of your cabin or site?', options: ratingOptions },
+  { name: 'facilityCondition', label: 'Condition and upkeep of the facilities?', options: ratingOptions },
+  { name: 'bathhouseCleanliness', label: 'Cleanliness of the restrooms and shower house?', options: ratingOptions },
+  { name: 'groundsCleanliness', label: 'Cleanliness of the grounds?', options: ratingOptions },
+  { name: 'checkInExperience', label: 'Check-in and reservation experience?', options: ratingOptions },
+  { name: 'staffCourtesy', label: 'Courtesy of our staff?', options: ratingOptions },
+]
+
+const blankForm = {
+  reviewType: 'rest-area' as 'rest-area' | 'campground',
+  restArea: '',
+  site: '',
+  restroomCleanliness: '',
+  maintenance: '',
+  groundsCleanliness: '',
+  vending: '',
+  staffCourtesy: '',
+  accommodationCleanliness: '',
+  facilityCondition: '',
+  bathhouseCleanliness: '',
+  checkInExperience: '',
+  feedback: '',
+  followUp: false,
+  name: '',
+  phone: '',
+  email: '',
+}
+
 export default function LeaveReviewPage() {
-  const [formData, setFormData] = useState({
-    restArea: '',
-    restroomCleanliness: '',
-    maintenance: '',
-    groundsCleanliness: '',
-    vending: '',
-    staffCourtesy: '',
-    feedback: '',
-    followUp: false,
-    name: '',
-    phone: '',
-    email: '',
-  })
+  const [formData, setFormData] = useState(blankForm)
+  const isCampground = formData.reviewType === 'campground'
+  const questions = isCampground ? campgroundQuestions : restAreaQuestions
+
+  // Switching category clears the previous set's answers so a half-filled rest
+  // area review can't ride along on a campground submission.
+  const selectReviewType = (reviewType: 'rest-area' | 'campground') => {
+    setFormData({ ...blankForm, reviewType, name: formData.name, phone: formData.phone, email: formData.email })
+  }
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -105,19 +142,7 @@ export default function LeaveReviewPage() {
                 <button
                   onClick={() => {
                     setSubmitted(false)
-                    setFormData({
-                      restArea: '',
-                      restroomCleanliness: '',
-                      maintenance: '',
-                      groundsCleanliness: '',
-                      vending: '',
-                      staffCourtesy: '',
-                      feedback: '',
-                      followUp: false,
-                      name: '',
-                      phone: '',
-                      email: '',
-                    })
+                    setFormData(blankForm)
                   }}
                   className="text-forest-DEFAULT font-semibold hover:underline"
                 >
@@ -126,124 +151,101 @@ export default function LeaveReviewPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-8">Rest Area Feedback Form</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-8">
+                  {isCampground ? 'Campground Feedback Form' : 'Rest Area Feedback Form'}
+                </h2>
 
-                {/* Rest Area Selection */}
+                {/* What are you reviewing? */}
                 <div className="mb-6">
-                  <label htmlFor="restArea" className="block text-sm font-medium text-gray-700 mb-2">
-                    Which rest area did you visit? *
-                  </label>
-                  <select
-                    id="restArea"
-                    name="restArea"
-                    required
-                    value={formData.restArea}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
-                  >
-                    <option value="">Select a rest area</option>
-                    {REST_AREAS.map(({ label }) => (
-                      <option key={label} value={label}>{label}</option>
+                  <span className="block text-sm font-medium text-gray-700 mb-2">
+                    What would you like to give feedback on? *
+                  </span>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {([
+                      { value: 'rest-area', title: 'A rest area', detail: 'Utah rest stops we maintain' },
+                      { value: 'campground', title: 'A campground or park', detail: 'Cabins, campsites and day use' },
+                    ] as const).map(option => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => selectReviewType(option.value)}
+                        aria-pressed={formData.reviewType === option.value}
+                        className={`text-left px-4 py-3 rounded-lg border transition-colors ${
+                          formData.reviewType === option.value
+                            ? 'border-forest-DEFAULT bg-forest-DEFAULT/5 ring-2 ring-forest-DEFAULT'
+                            : 'border-gray-300 hover:border-gray-400 bg-white'
+                        }`}
+                      >
+                        <span className="block font-semibold text-gray-900">{option.title}</span>
+                        <span className="block text-sm text-gray-600">{option.detail}</span>
+                      </button>
                     ))}
-                  </select>
+                  </div>
                 </div>
+
+                {/* Location Selection */}
+                {isCampground ? (
+                  <div className="mb-6">
+                    <label htmlFor="site" className="block text-sm font-medium text-gray-700 mb-2">
+                      Which campground or park did you visit? *
+                    </label>
+                    <select
+                      id="site"
+                      name="site"
+                      required
+                      value={formData.site}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
+                    >
+                      <option value="">Select a location</option>
+                      {CAMPGROUND_SITES.map(({ label }) => (
+                        <option key={label} value={label}>{label}</option>
+                      ))}
+                    </select>
+                  </div>
+                ) : (
+                  <div className="mb-6">
+                    <label htmlFor="restArea" className="block text-sm font-medium text-gray-700 mb-2">
+                      Which rest area did you visit? *
+                    </label>
+                    <select
+                      id="restArea"
+                      name="restArea"
+                      required
+                      value={formData.restArea}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
+                    >
+                      <option value="">Select a rest area</option>
+                      {REST_AREAS.map(({ label }) => (
+                        <option key={label} value={label}>{label}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
 
                 {/* Ratings Grid */}
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label htmlFor="restroomCleanliness" className="block text-sm font-medium text-gray-700 mb-2">
-                      Cleanliness of the restrooms today? *
-                    </label>
-                    <select
-                      id="restroomCleanliness"
-                      name="restroomCleanliness"
-                      required
-                      value={formData.restroomCleanliness}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
-                    >
-                      <option value="">Select rating</option>
-                      {ratingOptions.map((opt) => (
-                        <option key={opt} value={opt}>{opt}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="maintenance" className="block text-sm font-medium text-gray-700 mb-2">
-                      Overall maintenance of this facility? *
-                    </label>
-                    <select
-                      id="maintenance"
-                      name="maintenance"
-                      required
-                      value={formData.maintenance}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
-                    >
-                      <option value="">Select rating</option>
-                      {ratingOptions.map((opt) => (
-                        <option key={opt} value={opt}>{opt}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="groundsCleanliness" className="block text-sm font-medium text-gray-700 mb-2">
-                      Cleanliness of the grounds and parking? *
-                    </label>
-                    <select
-                      id="groundsCleanliness"
-                      name="groundsCleanliness"
-                      required
-                      value={formData.groundsCleanliness}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
-                    >
-                      <option value="">Select rating</option>
-                      {ratingOptions.map((opt) => (
-                        <option key={opt} value={opt}>{opt}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="vending" className="block text-sm font-medium text-gray-700 mb-2">
-                      Satisfaction with vending offerings? *
-                    </label>
-                    <select
-                      id="vending"
-                      name="vending"
-                      required
-                      value={formData.vending}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
-                    >
-                      <option value="">Select rating</option>
-                      {vendingOptions.map((opt) => (
-                        <option key={opt} value={opt}>{opt}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="md:col-span-2">
-                    <label htmlFor="staffCourtesy" className="block text-sm font-medium text-gray-700 mb-2">
-                      Courtesy of our staff? *
-                    </label>
-                    <select
-                      id="staffCourtesy"
-                      name="staffCourtesy"
-                      required
-                      value={formData.staffCourtesy}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
-                    >
-                      <option value="">Select rating</option>
-                      {ratingOptions.map((opt) => (
-                        <option key={opt} value={opt}>{opt}</option>
-                      ))}
-                    </select>
-                  </div>
+                  {questions.map(({ name, label, options, wide }) => (
+                    <div key={name} className={wide ? 'md:col-span-2' : undefined}>
+                      <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-2">
+                        {label} *
+                      </label>
+                      <select
+                        id={name}
+                        name={name}
+                        required
+                        value={(formData as Record<string, string | boolean>)[name] as string}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
+                      >
+                        <option value="">Select rating</option>
+                        {options.map((opt) => (
+                          <option key={opt} value={opt}>{opt}</option>
+                        ))}
+                      </select>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Feedback */}
