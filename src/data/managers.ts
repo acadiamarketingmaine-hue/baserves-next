@@ -102,8 +102,10 @@ export const RECREATION_SITES: { label: string; manager: Manager }[] = [
     manager: { name: 'Dallas McCue', email: 'Dallas@BAServes.com', role: 'Owner' },
   },
   {
+    // Elle replaced Nathan Nugent here around 8 May 2026 — Andrew announced the
+    // hire on 24 Apr 2026 and Dallas called her "our site manager" on 16 Aug 2026.
     label: 'Yankee Springs Recreation Area — Chief Noonday & Long Lake Outdoor Center',
-    manager: { name: 'Nathan Nugent', email: 'YankeeSpringsRA@gmail.com', role: 'Area Manager' },
+    manager: { name: 'Elle Brousseau', email: 'elle@baserves.com', role: 'Site Manager' },
   },
   { label: 'UDOT Rest Areas (Utah)', manager: UDOT_PROJECT_MANAGER },
 ]
