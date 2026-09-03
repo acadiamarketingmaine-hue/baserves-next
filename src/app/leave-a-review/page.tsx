@@ -4,38 +4,9 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
+import { REST_AREAS } from '@/data/managers'
 import Footer from '@/components/Footer'
 
-const restAreas = [
-  'Bear Lake - SR-30 - Laketown, Utah',
-  'Bear Lake Overlook - SR-89 - Garden City, Utah',
-  'Brigham City - I-15 - Brigham City, Utah',
-  'Crescent Junction - I-70 - Crescent Junction, Utah',
-  'Echo Canyon Eastbound - I-80S - Coalville, Utah',
-  'Echo Canyon Westbound - I-80N - Echo, Utah',
-  'Grassy Mountain Eastbound - I-80S - Wendover, Utah',
-  'Grassy Mountain Westbound - I-80N - Wendover, Utah',
-  "Hoover's - US-89 - Sevier, Utah",
-  'Ivie Creek - I-70 - Salina, Utah',
-  'Jensen Welcome Center - US-40 - Jensen, Utah',
-  'Kanarraville Northbound - I-15N - Cedar City, Utah',
-  'Kanarraville Southbound - I-15S - Cedar City, Utah',
-  'Kane Springs - US-191 - Monticello, Utah',
-  'Lunt Park Northbound - I-15S - Paragonah, Utah',
-  'Lunt Park Southbound - I-15N - Paragonah, Utah',
-  'Mountain Green - I-84 - Morgan, Utah',
-  'Oak Springs - SR-24 - Richfield, Utah',
-  'Perry - I-15 - Perry, Utah',
-  'Pinion Ridge - US-40 - Duchesne, Utah',
-  'Salt Flats Eastbound - I-80N - Wendover, Utah',
-  'Salt Flats Westbound - I-80S - Wendover, Utah',
-  'Shingle Creek - US-89 - Glendale, Utah',
-  'Silver City - US-6 - Jericho Junction, Utah',
-  'The Pines - SR-12 - Bryce Canyon City, Utah',
-  'Thompson Springs - I-70 - Thompson Springs, Utah',
-  'Tie-Fork - US-6 - Spanish Fork, Utah',
-  'Weber Canyon - I-84 - Morgan, Utah',
-]
 
 const ratingOptions = ['Excellent', 'Good', 'Fair', 'Poor']
 const vendingOptions = ['Very satisfied', 'Satisfied', 'Neutral', 'Dissatisfied']
@@ -62,15 +33,12 @@ export default function LeaveReviewPage() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('https://formspree.io/f/xpwzgvqk', {
+      const response = await fetch('/api/reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...formData,
-          _subject: `Rest Area Feedback: ${formData.restArea}`,
-        }),
+        body: JSON.stringify(formData),
       })
 
       if (response.ok) {
@@ -174,8 +142,8 @@ export default function LeaveReviewPage() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
                   >
                     <option value="">Select a rest area</option>
-                    {restAreas.map((area) => (
-                      <option key={area} value={area}>{area}</option>
+                    {REST_AREAS.map(({ label }) => (
+                      <option key={label} value={label}>{label}</option>
                     ))}
                   </select>
                 </div>

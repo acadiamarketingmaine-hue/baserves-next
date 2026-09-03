@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
+import { sendMail, escapeHtml } from '@/lib/mailer'
+import { managerForSite } from '@/data/managers'
 
-function getResend() {
-  return new Resend(process.env.RESEND_API_KEY)
-}
+// Applications always reach the office; the site's area manager is added when
+// the applicant picked a location.
+const OFFICE_RECIPIENTS = ['OfficeManager@BAServes.com', 'andrew@baserves.com', 'Eric@BAServes.com']
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,11 +15,11 @@ export async function POST(request: NextRequest) {
     }
 
     const html = buildEmailHtml(data)
+    const areaManager = managerForSite(data.siteApplyingTo)
 
-    await getResend().emails.send({
-      from: 'BA Services <noreply@escape.baserves.com>',
-      to: ['OfficeManager@BAServes.com', 'andrew@baserves.com', 'Eric@BAServes.com'],
-      subject: `Employment Application - ${data.fullName}`,
+    await sendMail({
+      to: areaManager ? [areaManager.email, ...OFFICE_RECIPIENTS] : OFFICE_RECIPIENTS,
+      subject: `Employment Application - ${data.fullName}${data.siteApplyingTo ? ` (${data.siteApplyingTo})` : ''}`,
       replyTo: data.emailAddress,
       html,
     })
@@ -100,6 +101,7 @@ function buildEmailHtml(data: any): string {
           ${field('Home Phone', data.emergencyHomePhone)}
 
           ${sectionHeader('Job / Position Information')}
+          ${field('Location Applying To', data.siteApplyingTo)}
           ${field('Position Applying For', data.positionApplyingFor)}
           ${field('Full or Part-Time', data.fullOrPartTime)}
           ${field('Salary Desired', data.salaryDesired && data.salaryPer ? `$${data.salaryDesired} per ${data.salaryPer}` : data.salaryDesired)}
@@ -136,13 +138,4 @@ function buildEmailHtml(data: any): string {
     </body>
     </html>
   `
-}
-
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;')
 }

@@ -1,13 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { sendMail } from '@/lib/mailer'
 
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json()
-    const apiKey = process.env.RESEND_API_KEY
-
-    if (!apiKey) {
-      return NextResponse.json({ error: 'Email not configured' }, { status: 500 })
-    }
 
     const html = `
       <h2>New Partnership Inquiry from baserves.com</h2>
@@ -23,17 +19,12 @@ export async function POST(request: NextRequest) {
       <p style="color:#6b7280;font-size:12px;margin-top:16px;">Submitted via baserves.com Contact Us page</p>
     `
 
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from: 'BA Services <bookings@escape.baserves.com>',
-        to: ['andrew@baserves.com'],
-        bcc: ['acadiamarketingmaine@gmail.com'],
-        reply_to: data.email,
-        subject: `Partnership Inquiry: ${data.name}${data.organization ? ` — ${data.organization}` : ''}`,
-        html,
-      }),
+    await sendMail({
+      to: ['andrew@baserves.com'],
+      bcc: ['acadiamarketingmaine@gmail.com'],
+      replyTo: data.email,
+      subject: `Partnership Inquiry: ${data.name}${data.organization ? ` — ${data.organization}` : ''}`,
+      html,
     })
 
     return NextResponse.json({ success: true })

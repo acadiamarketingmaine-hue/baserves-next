@@ -1,16 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { sendMail } from '@/lib/mailer'
 
 export const dynamic = 'force-dynamic'
 
 export async function POST(request: NextRequest) {
   try {
     const { intakeData, conversation } = await request.json()
-
-    const apiKey = process.env.RESEND_API_KEY
-    if (!apiKey) {
-      console.error('No RESEND_API_KEY')
-      return NextResponse.json({ error: 'Email not configured' }, { status: 500 })
-    }
 
     const htmlBody = `
       <h2>New Lead from Treeko (Website Chat Assistant)</h2>
@@ -37,25 +32,11 @@ export async function POST(request: NextRequest) {
       <p style="color:#6b7280;font-size:12px;">This lead was captured by Treeko, the BA Services website assistant, at ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} ET.</p>
     `
 
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: 'Treeko <bookings@escape.baserves.com>',
-        to: ['andrew@baserves.com', 'acadiamarketingmaine@gmail.com'],
-        subject: `New Lead from Treeko: ${intakeData.name || intakeData.organization || 'Website Visitor'}`,
-        html: htmlBody,
-      }),
+    await sendMail({
+      to: ['andrew@baserves.com', 'acadiamarketingmaine@gmail.com'],
+      subject: `New Lead from Treeko: ${intakeData.name || intakeData.organization || 'Website Visitor'}`,
+      html: htmlBody,
     })
-
-    if (!res.ok) {
-      const errText = await res.text()
-      console.error('Resend error:', errText)
-      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 })
-    }
 
     return NextResponse.json({ success: true })
   } catch (error) {

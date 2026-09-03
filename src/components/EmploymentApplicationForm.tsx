@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { RECREATION_SITES } from '@/data/managers'
 
 interface Employer {
   employerName: string
@@ -59,6 +60,7 @@ export default function EmploymentApplicationForm() {
   const [emergencyHomePhone, setEmergencyHomePhone] = useState('')
 
   // Job / Position
+  const [siteApplyingTo, setSiteApplyingTo] = useState('')
   const [positionApplyingFor, setPositionApplyingFor] = useState('')
   const [fullOrPartTime, setFullOrPartTime] = useState('')
   const [salaryDesired, setSalaryDesired] = useState('')
@@ -121,7 +123,7 @@ export default function EmploymentApplicationForm() {
           dateOfBirth, driversLicense, drivingRecordConsent, shirtSize, vestSize, jacketSize,
           emergencyFullName, emergencyRelationship, emergencyAddress, emergencyCityStateZip,
           emergencyMobilePhone, emergencyHomePhone,
-          positionApplyingFor, fullOrPartTime, salaryDesired, salaryPer, referredBy,
+          siteApplyingTo, positionApplyingFor, fullOrPartTime, salaryDesired, salaryPer, referredBy,
           howGetToWork, willingToWorkAnyShift, availableForOvertime, whenCanStart,
           convictedOfFelony, convictionDetails, convictionDate, convictionCityState,
           employers: employers.filter(e => e.employerName),
@@ -268,6 +270,16 @@ export default function EmploymentApplicationForm() {
         <h3 className="text-xl font-bold text-gray-900 mb-4">Job / Position Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
+            <label className={labelClass}>Location Applying To</label>
+            <select value={siteApplyingTo} onChange={e => setSiteApplyingTo(e.target.value)} className={inputClass}>
+              <option value="">Select a location</option>
+              {RECREATION_SITES.map(({ label }) => (
+                <option key={label} value={label}>{label}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
             <label className={labelClass}>Job / Position Applying For</label>
             <input type="text" value={positionApplyingFor} onChange={e => setPositionApplyingFor(e.target.value)} className={inputClass} />
           </div>
