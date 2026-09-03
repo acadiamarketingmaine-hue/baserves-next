@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
-import { REST_AREAS, CAMPGROUND_SITES } from '@/data/managers'
+import { ALL_REST_AREAS, CAMPGROUND_SITES, siteForFareharborItem } from '@/data/managers'
 import Footer from '@/components/Footer'
 
 
@@ -63,14 +63,30 @@ export default function LeaveReviewPage() {
     setFormData({ ...blankForm, reviewType, name: formData.name, phone: formData.phone, email: formData.email })
   }
 
-  // Guests arriving from a FareHarbor post-stay email are redirected here with
-  // ?type=campground, so open on the category that matches their stay. Read from
-  // the URL directly to keep the page statically rendered.
+  // FareHarbor post-stay emails land here via /customer-comment-survey with
+  // ?item=<fareharborItemId>. That ID names the park they stayed at, so open
+  // the campground form on that site instead of a blank picker.
   useEffect(() => {
-    const type = new URLSearchParams(window.location.search).get('type')
-    if (type === 'campground' || type === 'rest-area') {
-      setFormData(prev => ({ ...prev, reviewType: type }))
-    }
+    const params = new URLSearchParams(window.location.search)
+    const fromItem = siteForFareharborItem(params.get('item'))
+    const siteParam = params.get('site')
+    const site = CAMPGROUND_SITES.some(s => s.label === siteParam) ? siteParam : fromItem
+    const type = params.get('type')
+
+    const reviewType =
+      type === 'rest-area' || type === 'campground'
+        ? type
+        : site
+          ? 'campground'
+          : null
+
+    if (!reviewType && !site) return
+
+    setFormData(prev => ({
+      ...prev,
+      ...(reviewType ? { reviewType } : {}),
+      ...(site ? { site } : {}),
+    }))
   }, [])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -227,8 +243,12 @@ export default function LeaveReviewPage() {
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
                     >
                       <option value="">Select a rest area</option>
-                      {REST_AREAS.map(({ label }) => (
-                        <option key={label} value={label}>{label}</option>
+                      {(['Utah', 'Iowa'] as const).map(group => (
+                        <optgroup key={group} label={group}>
+                          {ALL_REST_AREAS.filter(a => a.group === group).map(({ label }) => (
+                            <option key={label} value={label}>{label}</option>
+                          ))}
+                        </optgroup>
                       ))}
                     </select>
                   </div>

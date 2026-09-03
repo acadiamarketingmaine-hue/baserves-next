@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendMail, escapeHtml } from '@/lib/mailer'
-import { managerForSite } from '@/data/managers'
+import { extraRecipientsForSite, managerForSite } from '@/data/managers'
 
 // Applications always reach the office; the site's area manager is added when
 // the applicant picked a location.
@@ -16,9 +16,14 @@ export async function POST(request: NextRequest) {
 
     const html = buildEmailHtml(data)
     const areaManager = managerForSite(data.siteApplyingTo)
+    const extras = extraRecipientsForSite(data.siteApplyingTo)
+    const siteRecipients = [
+      ...(areaManager ? [areaManager.email] : []),
+      ...extras.map(m => m.email),
+    ]
 
     await sendMail({
-      to: areaManager ? [areaManager.email, ...OFFICE_RECIPIENTS] : OFFICE_RECIPIENTS,
+      to: siteRecipients.length ? [...siteRecipients, ...OFFICE_RECIPIENTS] : OFFICE_RECIPIENTS,
       subject: `Employment Application - ${data.fullName}${data.siteApplyingTo ? ` (${data.siteApplyingTo})` : ''}`,
       replyTo: data.emailAddress,
       html,

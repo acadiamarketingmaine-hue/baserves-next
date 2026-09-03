@@ -8,22 +8,8 @@ import { BriefcaseIcon, HandshakeIcon, ClipboardIcon } from '@/components/Icons'
 const topics = [
   { id: 'careers', label: 'Careers', icon: <BriefcaseIcon className="w-8 h-8" />, description: 'Apply for a position with BA Services' },
   { id: 'partnership', label: 'Partnerships', icon: <HandshakeIcon className="w-8 h-8" />, description: 'Explore a management partnership' },
-  { id: 'feedback', label: 'Rest Stop Feedback', icon: <ClipboardIcon className="w-8 h-8" />, description: 'Share feedback about a rest area' },
+  { id: 'feedback', label: 'Rest Stop Feedback', icon: <ClipboardIcon className="w-8 h-8" />, description: 'Share feedback about a rest area', href: '/leave-a-review' },
 ]
-
-const utahRestAreas = [
-  'Bear Lake Overlook', 'Bear Lake', 'Brigham City', 'Echo Canyon Eastbound', 'Echo Canyon Westbound',
-  'Grassy Mountain Eastbound', 'Grassy Mountain Westbound', 'Mountain Green', 'Perry',
-  'Salt Flats Eastbound', 'Salt Flats Westbound', 'Weber Canyon',
-  'Crescent Junction', 'Ivie Creek', 'Jensen', 'Kane Springs', 'Pinion Ridge',
-  'Silver City', 'Thompson Springs', 'Tie-Fork',
-  "Hoover's", 'Kanarraville Northbound', 'Kanarraville Southbound',
-  'Lunt Park Northbound', 'Lunt Park Southbound', 'Oak Springs', 'Shingle Creek', 'The Pines',
-]
-
-const iowaRestAreas = ['Sergeant Bluff Northbound', 'Sergeant Bluff Southbound']
-
-const ratings = ['Excellent', 'Good', 'Fair', 'Poor']
 
 export default function ContactForm() {
   const searchParams = useSearchParams()
@@ -32,7 +18,11 @@ export default function ContactForm() {
   // Read topic from URL params (works with Next.js client-side navigation)
   useEffect(() => {
     const t = searchParams.get('topic')
-    if (t && ['careers', 'partnership', 'feedback'].includes(t)) {
+    if (t === 'feedback') {
+      window.location.replace('/leave-a-review')
+      return
+    }
+    if (t && ['careers', 'partnership'].includes(t)) {
       setTopic(t)
     }
   }, [searchParams])
@@ -41,9 +31,6 @@ export default function ContactForm() {
 
   // Partnership form
   const [partnerForm, setPartnerForm] = useState({ name: '', email: '', phone: '', organization: '', propertyType: '', location: '', message: '' })
-
-  // Feedback form
-  const [feedbackForm, setFeedbackForm] = useState({ restArea: '', restrooms: '', maintenance: '', grounds: '', staff: '', feedback: '', name: '', email: '', followUp: false })
 
   const handlePartnerSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -59,22 +46,6 @@ export default function ContactForm() {
     finally { setSubmitting(false) }
   }
 
-  const handleFeedbackSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitting(true)
-    try {
-      await fetch('https://formspree.io/f/xpwzgvqk', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          _subject: `Rest Area Feedback: ${feedbackForm.restArea}`,
-          ...feedbackForm,
-        }),
-      })
-      setSubmitted(true)
-    } catch { setSubmitted(true) }
-    finally { setSubmitting(false) }
-  }
 
   if (submitted) {
     return (
@@ -100,17 +71,32 @@ export default function ContactForm() {
         <h2 className="text-2xl font-bold text-gray-900 mb-2">What can we help you with?</h2>
         <p className="text-gray-600 mb-8">Select a topic and we&apos;ll show you the right form.</p>
         <div className="grid sm:grid-cols-3 gap-4">
-          {topics.map((t) => (
-            <button
-              key={t.id}
-              onClick={() => setTopic(t.id)}
-              className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg hover:border-forest-DEFAULT/30 transition-all text-left group"
-            >
-              <span className="text-3xl mb-4 block">{t.icon}</span>
-              <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-forest-DEFAULT transition-colors">{t.label}</h3>
-              <p className="text-sm text-gray-500">{t.description}</p>
-            </button>
-          ))}
+          {topics.map((t) => {
+            const className = "bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg hover:border-forest-DEFAULT/30 transition-all text-left group"
+            const inner = (
+              <>
+                <span className="text-3xl mb-4 block">{t.icon}</span>
+                <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-forest-DEFAULT transition-colors">{t.label}</h3>
+                <p className="text-sm text-gray-500">{t.description}</p>
+              </>
+            )
+            if ('href' in t && t.href) {
+              return (
+                <Link key={t.id} href={t.href} className={className}>
+                  {inner}
+                </Link>
+              )
+            }
+            return (
+              <button
+                key={t.id}
+                onClick={() => setTopic(t.id)}
+                className={className}
+              >
+                {inner}
+              </button>
+            )
+          })}
         </div>
       </div>
     )
@@ -207,62 +193,6 @@ export default function ContactForm() {
           </div>
           <button type="submit" disabled={submitting} className="btn-primary">
             {submitting ? 'Sending...' : 'Submit Partnership Inquiry'}
-          </button>
-        </form>
-      )}
-
-      {/* Rest Stop Feedback form */}
-      {topic === 'feedback' && (
-        <form onSubmit={handleFeedbackSubmit} className="bg-white rounded-2xl border border-gray-200 p-8 space-y-6">
-          <p className="text-gray-600">Help us improve! Share your experience at one of our managed rest areas.</p>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Rest Area *</label>
-            <select required value={feedbackForm.restArea} onChange={e => setFeedbackForm(p => ({ ...p, restArea: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT">
-              <option value="">Select a rest area...</option>
-              <optgroup label="Iowa">
-                {iowaRestAreas.map(ra => <option key={ra}>{ra}</option>)}
-              </optgroup>
-              <optgroup label="Utah">
-                {utahRestAreas.map(ra => <option key={ra}>{ra}</option>)}
-              </optgroup>
-            </select>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {[
-              { key: 'restrooms', label: 'Restroom Cleanliness' },
-              { key: 'maintenance', label: 'Overall Maintenance' },
-              { key: 'grounds', label: 'Grounds & Parking' },
-              { key: 'staff', label: 'Staff Courtesy' },
-            ].map(({ key, label }) => (
-              <div key={key}>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{label} *</label>
-                <select required value={(feedbackForm as any)[key]} onChange={e => setFeedbackForm(p => ({ ...p, [key]: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT">
-                  <option value="">Rate...</option>
-                  {ratings.map(r => <option key={r}>{r}</option>)}
-                </select>
-              </div>
-            ))}
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Additional Feedback</label>
-            <textarea rows={4} value={feedbackForm.feedback} onChange={e => setFeedbackForm(p => ({ ...p, feedback: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT" placeholder="Tell us more about your experience..." />
-          </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Your Name (optional)</label>
-              <input type="text" value={feedbackForm.name} onChange={e => setFeedbackForm(p => ({ ...p, name: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT" />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email (optional)</label>
-              <input type="email" value={feedbackForm.email} onChange={e => setFeedbackForm(p => ({ ...p, email: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT" />
-            </div>
-          </div>
-          <label className="flex items-center gap-2 text-sm text-gray-600">
-            <input type="checkbox" checked={feedbackForm.followUp} onChange={e => setFeedbackForm(p => ({ ...p, followUp: e.target.checked }))} className="rounded text-forest-DEFAULT focus:ring-forest-DEFAULT" />
-            May we follow up with you if needed?
-          </label>
-          <button type="submit" disabled={submitting} className="btn-primary">
-            {submitting ? 'Sending...' : 'Submit Feedback'}
           </button>
         </form>
       )}
