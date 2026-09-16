@@ -118,7 +118,7 @@ const pillars: { title: string; body: string; icon: ReactNode }[] = [
 export default function LongLakeWeddingsEditorial() {
   return (
     <>
-      <Navigation ctaLabel="Book Now" ctaHref={BOOKING_URL} />
+      <Navigation ctaLabel="Check Availability" ctaHref={BOOKING_URL} />
 
       <main className={`${s.page} ${cormorant.variable} ${jost.variable}`}>
         {/* 1 — hero */}
@@ -134,7 +134,7 @@ export default function LongLakeWeddingsEditorial() {
             <span className={s.caps}>A whole camp on a private lake</span>
             <div className={s.btnRow}>
               <a href={BOOKING_URL} className={`${s.btn} ${s.btnLight}`}>
-                Book Now
+                Check Availability
               </a>
               <Link href="/contact" className={`${s.btn} ${s.btnLight}`}>
                 Schedule a Tour
@@ -189,7 +189,7 @@ export default function LongLakeWeddingsEditorial() {
               <span>Room for 120 guests.</span>
             </div>
             <p>
-              Nobody is driving back to a hotel at midnight. Your guests wake up in the pines, walk to
+              Nobody’s driving back to a hotel at midnight. Your guests wake up in the pines, walk to
               breakfast in the lodge, and spend the morning on the dock.
             </p>
             <span className={`${s.num} ${s.panelNum}`}>3</span>
@@ -229,9 +229,9 @@ export default function LongLakeWeddingsEditorial() {
           <div className={s.darkShade} />
           <div className={s.darkInner}>
             <h2 className={s.serif}>
-              Pricing isn&apos;t complicated.
+              Pricing isn’t complicated.
               <br />
-              It&apos;s one package.
+              It’s one package.
             </h2>
             <span className={s.rule} />
             <p>Two nights and three days, camp clean-up included. The rate follows the year of your wedding.</p>
@@ -246,7 +246,7 @@ export default function LongLakeWeddingsEditorial() {
             </div>
             <div className={s.btnRow}>
               <a href={BOOKING_URL} className={`${s.btn} ${s.btnLight}`}>
-                Book Now
+                Check Availability
               </a>
             </div>
           </div>
@@ -309,12 +309,12 @@ export default function LongLakeWeddingsEditorial() {
             </h2>
             <span className={s.ruleV} />
             <p>
-              Check the calendar and book your dates at Long Lake Outdoor Center, or reach out and we will
+              Check the calendar and book your dates at Long Lake Outdoor Center, or reach out and we’ll
               walk you through the weekend.
             </p>
             <div className={s.btnRow}>
               <a href={BOOKING_URL} className={`${s.btn} ${s.btnDark}`}>
-                Book Now
+                Check Availability
               </a>
               <Link href="/contact" className={s.btn}>
                 Schedule a Tour

@@ -80,17 +80,13 @@ const spaces = [
 export default function LongLakeWeddingsForest() {
   return (
     <>
-      <Navigation ctaLabel="Book Now" ctaHref={BOOKING_URL} />
+      <Navigation ctaLabel="Check Availability" ctaHref={BOOKING_URL} />
 
       <main className={`${s.page} ${cormorant.variable} ${garamond.variable} ${pinyon.variable}`}>
         {/* Hero */}
         <section className={s.hero}>
-          <Photo pic={photos.canoesPines} className={s.heroA} sizes="200px" />
-          <div className={`${s.polaroid} ${s.heroB}`}>
-            <div className={s.polaroidInner}>
-              <Image src={photos.pinesCabinTall.src} alt={photos.pinesCabinTall.alt} fill sizes="240px" />
-            </div>
-          </div>
+          <Photo pic={photos.canoesPines} className={s.heroA} sizes="220px" />
+          <Photo pic={photos.pinesCabinTall} className={s.heroB} sizes="240px" />
 
           <div className={s.heroBox}>
             <span className={s.caps}>Weddings at</span>
@@ -102,7 +98,7 @@ export default function LongLakeWeddingsForest() {
             </p>
             <div className={s.btnRow}>
               <a href={BOOKING_URL} className={`${s.outline} ${s.solid}`}>
-                Book Now
+                Check Availability
               </a>
               <Link href="/contact" className={s.outline}>
                 Schedule a Tour
@@ -110,17 +106,12 @@ export default function LongLakeWeddingsForest() {
             </div>
           </div>
 
-          <Photo pic={photos.lakeDockWide} className={s.heroC} sizes="(max-width: 720px) 100vw, 310px" />
-          <Photo pic={photos.lodgeChimney} className={s.heroD} sizes="170px" />
-          <span className={`${s.script} ${s.heroScript}`}>
-            a glimpse
-            <br />
-            &nbsp;&nbsp;into the pines
-          </span>
+          <Photo pic={photos.lakeDockWide} className={s.heroC} sizes="(max-width: 720px) 100vw, 320px" />
         </section>
 
-        {/* Kraft band */}
+        {/* The spaces, on deep green */}
         <section className={s.kraft}>
+          <span className={`${s.script} ${s.kraftIntro}`}>a glimpse into the pines</span>
           <div className={s.kraftGrid}>
             {spaces.map((space) => (
               <div key={space.name} className={s.kraftCard}>
@@ -140,14 +131,14 @@ export default function LongLakeWeddingsForest() {
             <div className={s.sectionHead}>
               <span className={s.script}>The weekend is yours</span>
               <h2 className={s.display}>The Wedding Package</h2>
-              <p>One package, and it is the whole camp: two nights and three days with the entire property to yourselves.</p>
+              <p>One package, and it’s the whole camp: two nights and three days with the entire property to yourselves.</p>
             </div>
 
             <div className={`${s.withArch} ${s.withArchLeft}`}>
               <Arch pic={photos.pinesCabinTall2} caption="two nights, three days" />
               <div className={s.packageStack}>
                 <div className={s.packageBox}>
-                  <h3 className={s.display}>What&apos;s Included</h3>
+                  <h3 className={s.display}>What’s Included</h3>
                   <ul className={s.list}>
                     {included.map((item) => (
                       <li key={item}>{item}</li>
@@ -169,7 +160,7 @@ export default function LongLakeWeddingsForest() {
                     Two nights and three days, camp clean-up included. Pricing follows the year of your wedding.
                   </p>
                   <a href={BOOKING_URL} className={`${s.outline} ${s.outlineLight}`}>
-                    Book Now
+                    Check Availability
                   </a>
                 </div>
               </div>
@@ -191,7 +182,7 @@ export default function LongLakeWeddingsForest() {
                   <Image src={photos.lodgePorch.src} alt={photos.lodgePorch.alt} fill sizes="(max-width: 1040px) 50vw, 360px" />
                 </div>
                 <div className={s.historyPhoto}>
-                  <Image src={photos.kitchen.src} alt={photos.kitchen.alt} fill sizes="(max-width: 1040px) 50vw, 360px" />
+                  <Image src={photos.lodgeFront.src} alt={photos.lodgeFront.alt} fill sizes="(max-width: 1040px) 50vw, 360px" />
                 </div>
               </div>
               <div className={s.facts}>
@@ -238,12 +229,12 @@ export default function LongLakeWeddingsForest() {
           <div className={s.storyText}>
             <span className={s.script}>Your story belongs here</span>
             <p>
-              Every love story is its own, and we can&apos;t wait to host yours. Book your weekend, or reach
+              Every love story is its own, and we can’t wait to host yours. Book your weekend, or reach
               out to schedule a tour of Long Lake Outdoor Center.
             </p>
             <div className={s.btnRow}>
               <a href={BOOKING_URL} className={`${s.outline} ${s.solid}`}>
-                Book Now
+                Check Availability
               </a>
               <Link href="/contact" className={s.outline}>
                 Inquire

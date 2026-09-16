@@ -8,6 +8,9 @@ import { SpeakerOnIcon, SpeakerOffIcon, PlayIcon, PauseIcon, CloseIcon } from '@
 
 type ChatState = 'idle' | 'greeting' | 'chatting'
 
+// Pages that keep a quieter, editorial look and shouldn't show Treeko.
+const HIDDEN_ON = ['/noindex1', '/noindex2']
+
 export default function TreekoChat() {
   const [state, setState] = useState<ChatState>('idle')
   const [displayedText, setDisplayedText] = useState('')
@@ -287,7 +290,7 @@ export default function TreekoChat() {
 
   const treekoIsTalking = isTyping || isSpeaking
 
-  if (!imagesLoaded) return null
+  if (!imagesLoaded || HIDDEN_ON.includes(pathname)) return null
 
   return (
     <div className={`fixed z-[9999] flex flex-col items-end gap-2 ${touring ? 'bottom-2 right-2 md:bottom-4 md:right-4' : 'bottom-4 right-4'}`}>

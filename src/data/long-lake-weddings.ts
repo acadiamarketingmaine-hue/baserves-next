@@ -20,7 +20,6 @@ export const photos = {
   lodgeChimney: { src: `${P}lodge-chimney.jpg`, alt: 'The lodge and its stone chimney' },
   lodgeFront: { src: `${P}lodge-front.jpg`, alt: 'The front of the lodge' },
   lodgePorch: { src: `${P}lodge-porch.jpg`, alt: 'The long porch of the lodge' },
-  kitchen: { src: `${P}commercial-kitchen.jpg`, alt: 'The commercial kitchen' },
   cabinPorch: { src: `${P}cabin-porch.jpg`, alt: 'A hill side cabin and its porch' },
   cabinFront: { src: `${P}cabin-front.jpg`, alt: 'A lake side cabin in the woods' },
   fireplaceTall: { src: `${P}fireplace-tall.jpg`, alt: 'Stone fireplace inside the Mansion House' },
@@ -60,7 +59,7 @@ export const faqs = [
   },
   {
     q: 'What is the kitchen like for our caterer?',
-    a: 'It is a full commercial kitchen: a six-burner South Bend gas range with a griddle and four ovens, stainless prep counters and island, prep, dish, and hand sinks, a walk-in cooler, pantry, beverage cooler, and a kitchen porch that doubles as a loading dock.',
+    a: 'It’s a full commercial kitchen: a six-burner South Bend gas range with a griddle and four ovens, stainless prep counters and island, prep, dish, and hand sinks, a walk-in cooler, pantry, beverage cooler, and a kitchen porch that doubles as a loading dock.',
   },
   {
     q: 'When is Long Lake available?',
@@ -69,7 +68,7 @@ export const faqs = [
 ]
 
 export const history = [
-  'The Civilian Conservation Corps built this camp in 1939, and it is listed in the National Registry of Historic Sites. Every building on the property is original.',
-  'The lodge is timber frame, its vaulted ceiling carried on mortise-and-tenon beams, and the stone for both fireplaces was quarried and cut right here. The camp sits in a glacial moraine: sandy ridges, mature white pine, hardwoods, and the lake at the center of it.',
-  'Decorate it however you like. It will still feel like an old-fashioned summer camp, and that is the whole point.',
+  'The Civilian Conservation Corps built this camp in 1939, and it’s listed on the National Register of Historic Places. Every building on the property is original.',
+  'The lodge is timber frame, its vaulted ceiling carried on mortise-and-tenon beams, and the stone in both fireplaces came from right here, quarried and cut on site. The camp sits in a glacial moraine: sandy ridges, mature white pine, hardwoods, and the lake at the center of it.',
+  'Decorate it however you like. It’ll still feel like an old-fashioned summer camp, and that’s the whole point.',
 ]
