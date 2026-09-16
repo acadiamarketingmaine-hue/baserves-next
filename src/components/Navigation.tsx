@@ -158,7 +158,13 @@ const searchIndex: SearchItem[] = [
   { title: 'My Reservations', description: 'View and manage your reservations', href: 'https://escape.baserves.com/customer/login', category: 'Booking', keywords: ['reservations', 'my bookings', 'manage', 'login', 'account'] },
 ]
 
-export default function Navigation() {
+export default function Navigation({
+  ctaLabel = 'Log In',
+  ctaHref = 'https://escape.baserves.com/customer/login',
+}: {
+  ctaLabel?: string
+  ctaHref?: string
+} = {}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [locationsOpen, setLocationsOpen] = useState(false)
@@ -380,12 +386,12 @@ export default function Navigation() {
               </button>
 
               <a
-                href="https://escape.baserves.com/customer/login"
+                href={ctaHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ml-2 px-5 py-2 bg-forest-DEFAULT text-white font-semibold text-sm rounded-md hover:bg-forest-dark transition-colors"
               >
-                Log In
+                {ctaLabel}
               </a>
             </div>
 
@@ -559,12 +565,12 @@ export default function Navigation() {
             </div>
             <div className="px-6 pb-4 space-y-2">
               <a
-                href="https://escape.baserves.com/customer/login"
+                href={ctaHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
               >
-                Log In
+                {ctaLabel}
               </a>
               <a
                 href="tel:+12073077903"
