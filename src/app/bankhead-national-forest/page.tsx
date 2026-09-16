@@ -322,7 +322,7 @@ export default function BankheadNationalForestPage() {
                     </h3>
                     <p className="text-gray-600 text-sm leading-relaxed">{campground.description}</p>
                     <span className="inline-flex items-center gap-1 mt-4 text-green-700 font-semibold text-sm">
-                      Learn more
+                      {campground.name}
                       <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
