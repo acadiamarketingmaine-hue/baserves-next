@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import type { ReactNode } from 'react'
 import { Cormorant_Garamond, Jost } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -29,90 +28,15 @@ export const metadata: Metadata = {
   openGraph: { images: [photos.diningHall.src] },
 }
 
-const stroke = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.2, strokeLinecap: 'round', strokeLinejoin: 'round' } as const
-
-const pillars: { title: string; body: string; icon: ReactNode }[] = [
-  {
-    title: 'The whole camp',
-    body: 'Exclusive use of the property. No other guests, nothing shared.',
-    icon: (
-      <svg viewBox="0 0 24 24" {...stroke}>
-        <path d="M12 3l-6 9h3l-4 6h14l-4-6h3z" />
-        <path d="M12 18v3" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Two nights, three days',
-    body: 'Additional nights available on either end.',
-    icon: (
-      <svg viewBox="0 0 24 24" {...stroke}>
-        <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'The lodge',
-    body: 'A timber-frame dining hall seating 120.',
-    icon: (
-      <svg viewBox="0 0 24 24" {...stroke}>
-        <path d="M3 11l9-7 9 7" />
-        <path d="M5 10v10h14V10" />
-        <path d="M10 20v-5h4v5" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Sleeps 120',
-    body: 'Sixteen cabins and four bunkhouses on site.',
-    icon: (
-      <svg viewBox="0 0 24 24" {...stroke}>
-        <path d="M3 18V8M21 18v-5a3 3 0 0 0-3-3H10v8" />
-        <path d="M3 14h18" />
-        <circle cx="6.5" cy="10.5" r="1.5" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Commercial kitchen',
-    body: 'A full kitchen and loading porch for your caterer.',
-    icon: (
-      <svg viewBox="0 0 24 24" {...stroke}>
-        <path d="M6 3v7a2 2 0 0 0 4 0V3M8 10v11" />
-        <path d="M17 3c-2 2-2 6 0 8v10" />
-      </svg>
-    ),
-  },
-  {
-    title: 'The lakefront',
-    body: 'Dock, shoreline, and wooded grounds for the ceremony.',
-    icon: (
-      <svg viewBox="0 0 24 24" {...stroke}>
-        <path d="M2 16c2 0 2-1.5 4-1.5S8 16 10 16s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5" />
-        <path d="M2 20c2 0 2-1.5 4-1.5S8 20 10 20s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5" />
-        <circle cx="12" cy="8" r="3" />
-      </svg>
-    ),
-  },
-  {
-    title: 'The bath house',
-    body: 'Hot showers, tiled floors, and lighted vanities.',
-    icon: (
-      <svg viewBox="0 0 24 24" {...stroke}>
-        <path d="M12 3c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Clean-up included',
-    body: 'The camp clean-up package comes with every wedding.',
-    icon: (
-      <svg viewBox="0 0 24 24" {...stroke}>
-        <path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z" />
-        <path d="M18 15l.9 2.1L21 18l-2.1.9L18 21l-.9-2.1L15 18l2.1-.9z" />
-      </svg>
-    ),
-  },
+const included = [
+  { title: 'The whole camp', body: 'Exclusive use of the property. No other guests, nothing shared.' },
+  { title: 'Two nights, three days', body: 'Additional nights available on either end.' },
+  { title: 'The lodge', body: 'A timber-frame dining hall seating 120.' },
+  { title: 'Sleeps 120', body: 'Sixteen cabins and four bunkhouses on site.' },
+  { title: 'Commercial kitchen', body: 'A full kitchen and loading porch for your caterer.' },
+  { title: 'The lakefront', body: 'Dock, shoreline, and wooded grounds for the ceremony.' },
+  { title: 'The bath house', body: 'Hot showers, tiled floors, and lighted vanities.' },
+  { title: 'Clean-up included', body: 'The camp clean-up package comes with every wedding.' },
 ]
 
 export default function LongLakeWeddingsEditorial() {
@@ -205,13 +129,10 @@ export default function LongLakeWeddingsEditorial() {
                 <span className={s.rule} />
               </div>
               <ul className={s.pillars}>
-                {pillars.map((p) => (
-                  <li key={p.title} className={s.pillar}>
-                    <span className={s.icon}>{p.icon}</span>
-                    <div>
-                      <b>{p.title}</b>
-                      <span>{p.body}</span>
-                    </div>
+                {included.map((item) => (
+                  <li key={item.title} className={s.pillar}>
+                    <b>{item.title}</b>
+                    <span>{item.body}</span>
                   </li>
                 ))}
               </ul>
@@ -265,10 +186,6 @@ export default function LongLakeWeddingsEditorial() {
             {history.map((para) => (
               <p key={para.slice(0, 24)}>{para}</p>
             ))}
-            <div className={`${s.caps} ${s.wordmark}`}>
-              L O N G &nbsp; L A K E
-              <small>Outdoor Center &middot; BA Services</small>
-            </div>
           </div>
           <div className={s.quarter}>
             <Image src={photos.lodgeChimney.src} alt={photos.lodgeChimney.alt} fill sizes="(max-width: 1000px) 90vw, 50vw" />
