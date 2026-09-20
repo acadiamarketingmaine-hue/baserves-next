@@ -1,6 +1,7 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import { og } from '@/lib/seo'
 
 export const metadata = {
   title: 'Rewards | BA Services',
@@ -8,6 +9,7 @@ export const metadata = {
   alternates: {
     canonical: '/rewards',
   },
+  openGraph: og('/rewards'),
 }
 
 const upcomingPerks = [

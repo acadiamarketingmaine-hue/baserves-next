@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 // This will be replaced with Sanity data
 const locations: Record<string, any> = {
@@ -173,33 +175,21 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {
       title: 'Location Not Found | BA Services',
       alternates: { canonical: `/${params.slug}` },
+      openGraph: og(`/${params.slug}`),
     }
   }
   return {
     title: `${location.name} | BA Services`,
     description: location.longDescription?.split('\n\n')[0] || location.description,
     alternates: { canonical: `/${params.slug}` },
+    openGraph: og(`/${params.slug}`),
   }
 }
 
 export default function LocationPage({ params }: { params: { slug: string } }) {
   const location = locations[params.slug]
 
-  if (!location) {
-    return (
-      <main className="min-h-screen">
-        <Navigation />
-        <div className="pt-32 pb-20 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Location Not Found</h1>
-          <p className="text-gray-600 mb-8">The location you're looking for doesn't exist.</p>
-          <Link href="/experiences" className="btn-primary">
-            View All Locations
-          </Link>
-        </div>
-        <Footer />
-      </main>
-    )
-  }
+  if (!location) notFound()
 
   return (
     <main className="min-h-screen">

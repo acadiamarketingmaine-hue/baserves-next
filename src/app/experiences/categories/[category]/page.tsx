@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon, MountainIcon } from '@/components/Icons'
+import { og } from '@/lib/seo'
 
 const categoryData: Record<string, any> = {
   'kayak-and-watercraft-rentals': {
@@ -97,30 +99,21 @@ export async function generateMetadata({ params }: { params: { category: string 
     return {
       title: 'Category Not Found | BA Services',
       alternates: { canonical: `/experiences/categories/${params.category}` },
+      openGraph: og(`/experiences/categories/${params.category}`),
     }
   }
   return {
     title: `${category.name} | BA Services`,
     description: category.description,
     alternates: { canonical: `/experiences/categories/${params.category}` },
+    openGraph: og(`/experiences/categories/${params.category}`),
   }
 }
 
 export default function CategoryPage({ params }: { params: { category: string } }) {
   const category = categoryData[params.category]
 
-  if (!category) {
-    return (
-      <main className="min-h-screen">
-        <Navigation />
-        <div className="pt-32 pb-20 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Category Not Found</h1>
-          <Link href="/experiences" className="btn-primary">View All Experiences</Link>
-        </div>
-        <Footer />
-      </main>
-    )
-  }
+  if (!category) notFound()
 
   return (
     <main className="min-h-screen">

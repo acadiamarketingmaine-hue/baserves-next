@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata = {
   title: 'SMS Terms & Conditions | BA Services',
@@ -7,6 +8,7 @@ export const metadata = {
   alternates: {
     canonical: '/sms-terms',
   },
+  openGraph: og('/sms-terms'),
 }
 
 export default function SMSTermsPage() {

@@ -3,11 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Bankhead National Forest | Alabama | BA Services',
   description: 'Explore Bankhead National Forest — "The Land of a Thousand Waterfalls." 180,000+ acres featuring the Sipsey Wilderness, 84 breeding bird species, campgrounds, and the Hurricane Creek Shooting Range.',
   alternates: { canonical: '/bankhead-national-forest' },
+  openGraph: og('/bankhead-national-forest'),
 }
 
 const birdingTrailSites = [

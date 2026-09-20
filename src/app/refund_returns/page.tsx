@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata = {
   title: 'Refund Policy | BA Services',
@@ -7,6 +8,7 @@ export const metadata = {
   alternates: {
     canonical: '/refund_returns',
   },
+  openGraph: og('/refund_returns'),
 }
 
 export default function RefundPolicyPage() {

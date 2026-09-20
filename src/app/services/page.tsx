@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ServiceAccordion from '@/components/ServiceAccordion'
+import { og } from '@/lib/seo'
 
 const services = [
   {
@@ -86,6 +87,7 @@ export const metadata = {
   alternates: {
     canonical: '/services',
   },
+  openGraph: og('/services'),
 }
 
 export default function ServicesPage() {

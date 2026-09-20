@@ -3,11 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Monongahela National Forest | Eastern West Virginia | BA Services',
   description: 'Explore Monongahela National Forest — 921,000 acres of Allegheny Mountain wilderness with 800+ miles of trails, 5 wilderness areas, Spruce Knob, Seneca Rocks, highland bogs, and spruce forests.',
   alternates: { canonical: '/monongahela-national-forest' },
+  openGraph: og('/monongahela-national-forest'),
 }
 
 const wildernessAreas = [

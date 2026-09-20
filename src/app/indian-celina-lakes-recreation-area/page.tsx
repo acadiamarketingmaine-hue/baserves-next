@@ -3,11 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Indian-Celina Lakes Recreation Area | Hoosier National Forest, Indiana | BA Services',
   description: 'Explore Indian-Celina Lakes Recreation Area in Hoosier National Forest. Two scenic lakes with camping, accessible fishing pier, boat launch, and hiking trails.',
   alternates: { canonical: '/indian-celina-lakes-recreation-area' },
+  openGraph: og('/indian-celina-lakes-recreation-area'),
 }
 
 const facilities = [

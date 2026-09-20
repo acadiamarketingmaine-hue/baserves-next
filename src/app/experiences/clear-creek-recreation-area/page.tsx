@@ -4,11 +4,13 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { BuildingIcon } from '@/components/Icons'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Clear Creek Recreation Area | Bankhead National Forest | BA Services',
   description: 'Explore Clear Creek Recreation Area on Lewis Smith Lake in Bankhead National Forest. 102 campsites across 4 loops, swimming beach, boat ramps, hiking trails, and group camping.',
   alternates: { canonical: '/experiences/clear-creek-recreation-area' },
+  openGraph: og('/experiences/clear-creek-recreation-area'),
 }
 
 const campingLoops = [

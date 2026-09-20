@@ -16,8 +16,25 @@ const nextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        // Keep the *.vercel.app preview/production alias out of the index.
+        source: '/:path*',
+        has: [{ type: 'host', value: '(.*)\\.vercel\\.app' }],
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+    ]
+  },
   async redirects() {
     return [
+      {
+        // Canonical host is the apex; 308 www -> apex (also set at the Vercel domain layer).
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.baserves.com' }],
+        destination: 'https://baserves.com/:path*',
+        permanent: true,
+      },
       {
         // FareHarbor post-stay emails still point at the old survey path.
         // Query params (item, booking, start-at) pass through; leave-a-review

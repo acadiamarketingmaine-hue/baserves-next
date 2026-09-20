@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon, MountainIcon } from '@/components/Icons'
+import { og } from '@/lib/seo'
 
 const locations = [
   {
@@ -130,6 +131,7 @@ export const metadata = {
   alternates: {
     canonical: '/experiences',
   },
+  openGraph: og('/experiences'),
 }
 
 export default function ExperiencesPage() {

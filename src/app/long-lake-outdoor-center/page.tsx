@@ -3,11 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Long Lake Outdoor Center | Yankee Springs, Michigan | BA Services',
   description: 'Historic CCC-built outdoor center in Yankee Springs Recreation Area. 16 cabins, 4 bunkhouses, 120-seat lodge with stone fireplaces, commercial kitchen, and private lake access. Weddings, retreats, and group camps year-round.',
   alternates: { canonical: '/long-lake-outdoor-center' },
+  openGraph: og('/long-lake-outdoor-center'),
 }
 
 const bunkhouses = [

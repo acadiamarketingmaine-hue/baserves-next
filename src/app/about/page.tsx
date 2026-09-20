@@ -3,6 +3,7 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 
@@ -58,6 +59,7 @@ export const metadata = {
   alternates: {
     canonical: '/about',
   },
+  openGraph: og('/about'),
 }
 
 export default function AboutPage() {

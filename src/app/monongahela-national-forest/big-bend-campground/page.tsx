@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Big Bend Campground | Monongahela National Forest | BA Services',
   description: 'Big Bend Campground is nestled in a sweeping bend of the South Branch Potomac River within the Monongahela National Forest. The campground offers a mix of tent ',
   alternates: { canonical: '/monongahela-national-forest/big-bend-campground' },
+  openGraph: og('/monongahela-national-forest/big-bend-campground'),
 }
 
 export default function BigBendCampgroundPage() {

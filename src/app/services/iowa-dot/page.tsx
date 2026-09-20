@@ -3,6 +3,7 @@ import Footer from '@/components/Footer'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { iowaRestAreas } from '@/data/iowa-rest-areas'
+import { og } from '@/lib/seo'
 
 const RestAreaMap = dynamic(() => import('@/components/RestAreaMap'), { ssr: false })
 
@@ -10,6 +11,7 @@ export const metadata = {
   title: 'Iowa DOT Rest Area Management',
   description: 'BA Services manages 2 rest areas along I-29 in Sergeant Bluff, Iowa for the Iowa DOT — 24/7 janitorial, grounds maintenance, and facility management.',
   alternates: { canonical: '/services/iowa-dot' },
+  openGraph: og('/services/iowa-dot'),
 }
 
 const sowSections = [

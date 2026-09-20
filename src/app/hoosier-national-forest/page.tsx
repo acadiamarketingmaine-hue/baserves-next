@@ -3,11 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Hoosier National Forest | Southern Indiana | BA Services',
   description: 'Explore Hoosier National Forest in southern Indiana. Three recreation areas with camping, swimming, fishing, boating, and hundreds of miles of trails.',
   alternates: { canonical: '/hoosier-national-forest' },
+  openGraph: og('/hoosier-national-forest'),
 }
 
 const subProperties = [

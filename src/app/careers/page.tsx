@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import EmploymentApplicationForm from '@/components/EmploymentApplicationForm'
+import { og } from '@/lib/seo'
 
 const benefits = [
   { title: 'Work Outdoors', description: 'Spend your days in beautiful natural settings' },
@@ -46,6 +47,7 @@ export const metadata = {
   alternates: {
     canonical: '/careers',
   },
+  openGraph: og('/careers'),
 }
 
 export default function CareersPage() {

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Leave a Review | BA Services',
@@ -6,6 +7,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/leave-a-review',
   },
+  openGraph: og('/leave-a-review'),
 }
 
 export default function LeaveReviewLayout({

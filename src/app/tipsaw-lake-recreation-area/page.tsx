@@ -3,11 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Tipsaw Lake Recreation Area | Perry County, Indiana | BA Services',
   description: 'Explore Tipsaw Lake Recreation Area in Hoosier National Forest. 131-acre lake with camping, swimming beach, fishing, amphitheater, and 8+ miles of trails.',
   alternates: { canonical: '/tipsaw-lake-recreation-area' },
+  openGraph: og('/tipsaw-lake-recreation-area'),
 }
 
 const facilities = [

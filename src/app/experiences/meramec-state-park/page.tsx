@@ -3,11 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Meramec State Park | Sullivan, Missouri | BA Services',
   description: 'Explore Meramec State Park along the Meramec River in Sullivan, Missouri. 19 cabins, motel lodging, 40+ caves, Fisher Cave tours, float trips, and CCC-built historic architecture across 6,896 acres.',
   alternates: { canonical: '/experiences/meramec-state-park' },
+  openGraph: og('/experiences/meramec-state-park'),
 }
 
 const cabinCategories = [

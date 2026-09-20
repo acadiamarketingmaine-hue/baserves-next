@@ -3,6 +3,7 @@ import Footer from '@/components/Footer'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { utahRestAreas } from '@/data/utah-rest-areas'
+import { og } from '@/lib/seo'
 
 const RestAreaMap = dynamic(() => import('@/components/RestAreaMap'), { ssr: false })
 
@@ -10,6 +11,7 @@ export const metadata = {
   title: 'Utah DOT Rest Area Management',
   description: 'BA Services manages 28 rest areas across Utah for UDOT — statewide coverage on I-15, I-80, I-70, and scenic byways with full facility management services.',
   alternates: { canonical: '/services/utah-dot' },
+  openGraph: og('/services/utah-dot'),
 }
 
 const regionInfo = [

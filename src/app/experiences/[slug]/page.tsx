@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 // Experience data - will be replaced with Sanity CMS
 const experiences: Record<string, any> = {
@@ -138,33 +140,21 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {
       title: 'Experience Not Found | BA Services',
       alternates: { canonical: `/experiences/${params.slug}` },
+      openGraph: og(`/experiences/${params.slug}`),
     }
   }
   return {
     title: `${experience.name} | BA Services`,
     description: experience.longDescription?.split('\n\n')[0] || experience.description,
     alternates: { canonical: `/experiences/${params.slug}` },
+    openGraph: og(`/experiences/${params.slug}`),
   }
 }
 
 export default function ExperiencePage({ params }: { params: { slug: string } }) {
   const experience = experiences[params.slug]
 
-  if (!experience) {
-    return (
-      <main className="min-h-screen">
-        <Navigation />
-        <div className="pt-32 pb-20 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Experience Not Found</h1>
-          <p className="text-gray-600 mb-8">The experience you're looking for doesn't exist.</p>
-          <Link href="/experiences" className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors">
-            View All Experiences
-          </Link>
-        </div>
-        <Footer />
-      </main>
-    )
-  }
+  if (!experience) notFound()
 
   return (
     <main className="min-h-screen">

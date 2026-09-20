@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Seneca Shadows Campground | Monongahela National Forest | BA Services',
   description: 'Seneca Shadows Campground sits in the shadow of the iconic Seneca Rocks — one of the most famous rock climbing destinations in the eastern United States. Locate',
   alternates: { canonical: '/monongahela-national-forest/seneca-shadows-campground' },
+  openGraph: og('/monongahela-national-forest/seneca-shadows-campground'),
 }
 
 export default function SenecaShadowsCampgroundPage() {

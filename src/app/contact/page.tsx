@@ -2,11 +2,13 @@ import { Suspense } from 'react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ContactForm from '@/components/ContactForm'
+import { og } from '@/lib/seo'
 
 export const metadata = {
   title: 'Contact Us',
   description: 'Reach BA Services for career opportunities, partnership inquiries, or rest area feedback. Call +1-207-307-7903 or email us from Bangor, Maine.',
   alternates: { canonical: '/contact' },
+  openGraph: og('/contact'),
 }
 
 export default function ContactPage() {

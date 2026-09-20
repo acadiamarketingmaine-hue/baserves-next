@@ -3,11 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Burlingame State Park & Campground | Rhode Island | BA Services',
   description: 'Explore Burlingame State Park in Charlestown, RI. 755 campsites, 20 rustic cabins, Watchaug Pond swimming, hiking trails, and a rich history dating back to 1702.',
   alternates: { canonical: '/experiences/burlingame-state-park' },
+  openGraph: og('/experiences/burlingame-state-park'),
 }
 
 const campAreas = [

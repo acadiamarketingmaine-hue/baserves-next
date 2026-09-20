@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Stuart Recreation Area | Monongahela National Forest | BA Services',
   description: 'Stuart Recreation Area offers family-friendly camping along the shores of a scenic mountain lake in the Monongahela National Forest. The area features both tent',
   alternates: { canonical: '/monongahela-national-forest/stuart-recreation-area' },
+  openGraph: og('/monongahela-national-forest/stuart-recreation-area'),
 }
 
 export default function StuartRecreationAreaPage() {

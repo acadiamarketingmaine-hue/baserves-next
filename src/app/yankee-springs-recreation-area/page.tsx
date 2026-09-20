@@ -3,11 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Yankee Springs Recreation Area | Barry County, Michigan | BA Services',
   description: 'Explore Yankee Springs Recreation Area in Barry County, Michigan. 5,200+ acres, 200+ campsites, 30+ miles of trails, historic CCC cabins, and year-round outdoor recreation.',
   alternates: { canonical: '/yankee-springs-recreation-area' },
+  openGraph: og('/yankee-springs-recreation-area'),
 }
 
 const lodging = [
