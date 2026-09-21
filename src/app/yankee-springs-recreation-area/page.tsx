@@ -208,7 +208,7 @@ export default function YankeeSpringsPage() {
               { value: '5,200+', label: 'Acres' },
               { value: '200+', label: 'Campsites' },
               { value: '30+', label: 'Miles Trails' },
-              { value: 'Year-Round', label: 'Open' },
+              { value: 'Seasonal', label: 'Cabins & Camps' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
@@ -412,7 +412,7 @@ export default function YankeeSpringsPage() {
             Explore Yankee Springs Recreation Area
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            5,200+ acres of Michigan wilderness with historic cabins, miles of trails, and year-round adventure. Book your stay today.
+            5,200+ acres of Michigan wilderness with historic cabins, miles of trails. The cabins and group camps are open in season. Book your stay today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
