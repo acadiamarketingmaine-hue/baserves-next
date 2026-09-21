@@ -255,7 +255,7 @@ export default function LongLakePage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About Long Lake Outdoor Center</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Long Lake Outdoor Center is a historic group retreat facility located within Yankee Springs Recreation Area in Barry County, Michigan. Situated along the eastern shore of Long Lake, a 146-acre lake, the center offers a scenic and well-preserved setting.
+                  Long Lake Outdoor Center (LLOC) is a historic group retreat facility located within Yankee Springs Recreation Area in Barry County, Michigan. Situated along the eastern shore of Long Lake, a 146-acre lake, the center offers a scenic and well-preserved setting.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
                   Originally constructed in 1939 by the Civilian Conservation Corps as part of the National Park Service&apos;s Recreation Demonstration Area program, Long Lake Outdoor Center is listed on the National Register of Historic Places.

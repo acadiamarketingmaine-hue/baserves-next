@@ -125,7 +125,7 @@ The center features comfortable lodging options, a beautiful lake for water acti
     name: 'Chief Noonday Outdoor Center',
     tagline: 'Premier Group Camping in Michigan',
     description: 'Exceptional facilities for group outdoor adventures',
-    longDescription: `Chief Noonday Outdoor Center is a historic group camp and retreat facility located within Yankee Springs Recreation Area in Barry County, Michigan. Named for a prominent Potawatomi leader, the center reflects both the cultural heritage of the region and the legacy of early conservation efforts.
+    longDescription: `Chief Noonday Outdoor Center (CNOC) is a historic group camp and retreat facility located within Yankee Springs Recreation Area in Barry County, Michigan. Named for a prominent Potawatomi leader, the center reflects both the cultural heritage of the region and the legacy of early conservation efforts.
 
 Originally developed in 1938 as part of the National Park Service's Recreation Demonstration Area program, the site is listed on the National Register of Historic Places. Its layout and architecture follow a naturalistic design philosophy, integrating buildings with the surrounding terrain.
 
