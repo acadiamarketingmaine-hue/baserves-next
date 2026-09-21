@@ -1,3 +1,21 @@
+/**
+ * Hosts a photograph published through the website editor may be served from.
+ *
+ * The same `CONTENT_IMAGE_HOSTS` list that src/content/overrides.ts checks an
+ * override's `src` against. Two lists that have to agree should be one list:
+ * a host the validator accepts but the image optimiser will not load is a
+ * broken picture on a live page, and a host the optimiser will load but the
+ * validator rejects is dead configuration.
+ *
+ * Empty by default — with nothing configured, no image override is accepted
+ * and nothing is added here.
+ */
+const contentImageHosts = (process.env.CONTENT_IMAGE_HOSTS || '')
+  .split(',')
+  .map((host) => host.trim().toLowerCase())
+  .filter(Boolean)
+  .map((hostname) => ({ protocol: 'https', hostname, port: '', pathname: '/**' }))
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -14,6 +32,7 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      ...contentImageHosts,
     ],
   },
   async headers() {
