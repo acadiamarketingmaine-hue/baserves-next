@@ -55,7 +55,7 @@ const amenities = [
 const eventTypes = [
   {
     name: 'Weddings',
-    description: '$3,300 for a 2-night rental. Ceremony and reception spaces with lakeside views, historic lodge, and full catering kitchen.',
+    description: 'Two-night wedding package: $3,300 for 2026 weddings, $3,800 for 2027, $4,300 from 2028. Ceremony and reception spaces with lakeside views, historic lodge, and full catering kitchen.',
     icon: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -424,7 +424,7 @@ export default function LongLakePage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900">Wedding Package</h3>
-                    <span className="text-green-700 font-semibold">$3,300 for 2-night rental</span>
+                    <span className="text-green-700 font-semibold">2-night rental: $3,300 (2026) &middot; $3,800 (2027) &middot; $4,300 (2028)</span>
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed">

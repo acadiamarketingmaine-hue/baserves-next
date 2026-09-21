@@ -189,7 +189,7 @@ export default function LongLakeWeddingsForest() {
                 <span>Seats 120</span>
                 <span>Sleeps 120</span>
                 <span>National Register</span>
-                <span>Year-Round</span>
+                <span>Seasonal</span>
               </div>
             </div>
             <Arch pic={photos.diningHallTall} caption="the lodge" />

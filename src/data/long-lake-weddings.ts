@@ -39,8 +39,8 @@ export const included = [
 ]
 
 export const tiers = [
-  { year: '2027 Weddings', price: '$3,800', note: 'Additional nights $1,500 each' },
-  { year: '2028 Weddings', price: '$4,300', note: 'Additional nights $1,500 each' },
+  { year: '2027 Weddings', price: '$3,800', note: 'Additional nights available, ask us for the rate' },
+  { year: '2028 Weddings', price: '$4,300', note: 'Additional nights available, ask us for the rate' },
 ]
 
 export const faqs = [
@@ -54,7 +54,7 @@ export const faqs = [
   },
   {
     q: 'Can we add days before or after?',
-    a: 'Yes. Additional nights can be added to either end for setup, a rehearsal, or a slower goodbye, at $1,500 per night.',
+    a: 'Yes. Additional nights can be added to either end for setup, a rehearsal, or a slower goodbye. Ask us for the rate for your dates.',
   },
   {
     q: 'What is the kitchen like for our caterer?',
