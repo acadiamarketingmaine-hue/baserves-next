@@ -6,7 +6,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { service, serviceId } from '@/lib/schema'
+import { service as serviceNode, serviceId } from '@/lib/schema'
 
 const services: Record<string, any> = {
   'campground-park-maintenance': {
@@ -142,7 +142,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         image={service.image}
         mainEntity={serviceId(params.slug)}
         crumbs={[{ name: 'Services', url: '/services' }]}
-        nodes={[service(params.slug, { image: service.image, description: service.description })]}
+        nodes={[serviceNode(params.slug, { image: service.image, description: service.description })]}
       />
 
       {/* Hero */}
