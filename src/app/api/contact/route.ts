@@ -19,9 +19,10 @@ function isRateLimited(ip: string) {
 
   // Opportunistic cleanup so the map cannot grow without bound.
   if (recentByIp.size > 500) {
-    for (const [key, times] of recentByIp) {
-      if (!times.some(t => now - t < RATE_LIMIT_WINDOW_MS)) recentByIp.delete(key)
-    }
+    Array.from(recentByIp.keys()).forEach(key => {
+      const times = recentByIp.get(key) || []
+      if (!times.some((t: number) => now - t < RATE_LIMIT_WINDOW_MS)) recentByIp.delete(key)
+    })
   }
 
   return hits.length > RATE_LIMIT_MAX

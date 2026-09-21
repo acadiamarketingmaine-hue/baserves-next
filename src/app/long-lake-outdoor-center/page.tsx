@@ -264,7 +264,7 @@ export default function LongLakePage() {
                   The center accommodates approximately 120 people with 16 cabins divided between the Hill Unit and the Lake Unit, four bunkhouses, and a central lodge with dining space. A commercial kitchen supports group meals and catering. The Hill Unit features cabins in a semi-circle around a central fire pit. The Lake Unit is set near the shoreline with cabins overlooking the lake.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Long Lake Outdoor Center operates seasonally, with swimming, fishing, and hiking through the warmer months and vibrant fall foliage before the season closes. Contact us for this season's opening and closing dates.
+                  Long Lake Outdoor Center operates seasonally, with swimming, fishing, and hiking through the warmer months and vibrant fall foliage before the season closes. Contact us for this season&apos;s opening and closing dates.
                 </p>
               </div>
 
