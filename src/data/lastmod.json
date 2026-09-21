@@ -48,6 +48,7 @@
     "src/data/long-lake-weddings.ts": "2026-09-16",
     "src/data/managers.ts": "2026-09-03",
     "src/data/property-tour.ts": "2026-04-09",
+    "src/data/schema-sources.json": "2026-09-21",
     "src/data/utah-rest-areas.ts": "2026-04-09"
   }
 }

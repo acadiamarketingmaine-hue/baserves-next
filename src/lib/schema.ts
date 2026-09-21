@@ -28,8 +28,19 @@ export const SITE = {
   description:
     'Professional recreation area management company operating campgrounds, national forests, state parks, and DOT rest areas across Alabama, Indiana, Maine, Michigan, Missouri, Rhode Island, West Virginia, Iowa, and Utah.',
   address: { streetAddress: '1157 Hammond Street', addressLocality: 'Bangor', addressRegion: 'ME', postalCode: '04401', addressCountry: 'US' },
-  geo: { latitude: 44.8237, longitude: -68.7924 },
+  /** Google Business Profile pin (see src/data/schema-sources.json). */
+  geo: { latitude: 44.7947319, longitude: -68.8304155 },
   logo: '/images/logo.png',
+  /** Public-record fields (schema only; sources in src/data/schema-sources.json). */
+  foundingDate: '2001',
+  founders: ['Eric McCue', 'Dallas McCue'],
+  openingHours: [{ days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '17:00' }],
+  hasMap: 'https://www.google.com/maps?cid=3452204696455686904',
+  sameAs: [
+    'https://www.google.com/maps?cid=3452204696455686904',
+    'https://www.bbb.org/us/me/bangor/profile/property-management/ba-services-inc-0021-557314',
+    'https://www.dnb.com/business-directory/company-profiles.ba_services_inc.c719d1437f81ecc3ed54f37957626b79.html',
+  ],
   /** States served (footer/home copy). Wikipedia sameAs are public identifiers. */
   states: [
     ['Alabama', 'AL'], ['Indiana', 'IN'], ['Maine', 'ME'], ['Michigan', 'MI'], ['Missouri', 'MO'],
@@ -110,6 +121,13 @@ export function business(): Node {
     image: ref(ID.logo),
     address: { '@type': 'PostalAddress', ...SITE.address },
     geo: { '@type': 'GeoCoordinates', ...SITE.geo },
+    ...(SITE.hasMap ? { hasMap: SITE.hasMap } : {}),
+    ...(SITE.sameAs?.length ? { sameAs: SITE.sameAs } : {}),
+    ...(SITE.foundingDate ? { foundingDate: SITE.foundingDate } : {}),
+    ...(SITE.founders?.length ? { founder: SITE.founders.map((name) => ({ '@type': 'Person', name })) } : {}),
+    ...(SITE.openingHours?.length
+      ? { openingHoursSpecification: SITE.openingHours.map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.days, opens: h.opens, closes: h.closes })) }
+      : {}),
     areaServed: SITE.states.map(([, a]) => ref(stateId(a))),
     knowsAbout: SITE.serviceTypes,
     hasOfferCatalog: {
