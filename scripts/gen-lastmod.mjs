@@ -35,7 +35,8 @@ function walk(dir, out = []) {
 function dateFor(file) {
   const rel = relative(ROOT, file);
   if (sh(`git status --porcelain -- ":(literal)${rel}"`)) return TODAY; // uncommitted edit
-  const d = sh(`git log -1 --format=%cs -- ":(literal)${rel}"`);
+  // Markup-only commits (message starts with "schema:") do not change page content — skip them.
+  const d = sh(`git log -1 --format=%cs --invert-grep --grep='^schema:' -- ":(literal)${rel}"`);
   return d || TODAY; // untracked file
 }
 

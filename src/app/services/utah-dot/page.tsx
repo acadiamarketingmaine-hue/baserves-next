@@ -141,7 +141,7 @@ export default function UtahDotPage() {
         mainEntity={serviceId('utah-dot')}
         crumbs={[{ name: 'Services', url: '/services' }]}
         dataKeys={['src/data/utah-rest-areas.ts']}
-        nodes={[service('utah-dot', { areaServed: ['UT'] })]}
+        nodes={[service('utah-dot', { areaServed: ['UT'], subServices: scopeOfWork.map((x) => x.title) })]}
       />
 
       {/* Hero */}

@@ -142,7 +142,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         image={service.image}
         mainEntity={serviceId(params.slug)}
         crumbs={[{ name: 'Services', url: '/services' }]}
-        nodes={[serviceNode(params.slug, { image: service.image, description: service.description })]}
+        nodes={[serviceNode(params.slug, { image: service.image, description: service.description, subServices: service.features })]}
       />
 
       {/* Hero */}

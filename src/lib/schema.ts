@@ -125,7 +125,7 @@ export function website(): Node {
 }
 
 /** Service node for /services/{slug}. `areaServed` defaults to every state; DOT pages narrow it. */
-export function service(slug: string, over: Partial<{ areaServed: string[]; image: string; description: string; name: string }> = {}): Node | null {
+export function service(slug: string, over: Partial<{ areaServed: string[]; image: string; description: string; name: string; subServices: string[] }> = {}): Node | null {
   const s = SERVICES.find((x) => x.slug === slug);
   if (!s) return null;
   const url = `${ORIGIN}/services/${slug}`;
@@ -140,6 +140,15 @@ export function service(slug: string, over: Partial<{ areaServed: string[]; imag
     provider: ref(ID.business),
     areaServed: (over.areaServed ?? SITE.states.map(([, a]) => a)).map((a) => ref(stateId(a))),
     ...(img ? { image: imageObject(img) } : {}),
+    ...(over.subServices?.length
+      ? {
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: `${over.name ?? s.name} — what's included`,
+            itemListElement: over.subServices.map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name, provider: ref(ID.business) } })),
+          },
+        }
+      : {}),
   };
 }
 /** Compact Service nodes for every service, emitted on every page so the business's OfferCatalog @id refs resolve. */

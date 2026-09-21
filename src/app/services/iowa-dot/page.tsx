@@ -106,7 +106,7 @@ export default function IowaDotPage() {
         mainEntity={serviceId('iowa-dot')}
         crumbs={[{ name: 'Services', url: '/services' }]}
         dataKeys={['src/data/iowa-rest-areas.ts']}
-        nodes={[service('iowa-dot', { areaServed: ['IA'] })]}
+        nodes={[service('iowa-dot', { areaServed: ['IA'], subServices: sowSections.map((x) => x.title) })]}
       />
 
       {/* Hero */}
