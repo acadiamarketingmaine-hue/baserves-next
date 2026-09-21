@@ -27,7 +27,7 @@ export const SITE = {
   email: 'email@BAServes.com',
   description:
     'Professional recreation area management company operating campgrounds, national forests, state parks, and DOT rest areas across Alabama, Indiana, Maine, Michigan, Missouri, Rhode Island, West Virginia, Iowa, and Utah.',
-  address: { streetAddress: '1157 Hammond Street', addressLocality: 'Bangor', addressRegion: 'ME', postalCode: '04401', addressCountry: 'US' },
+  address: { streetAddress: '1257 Hammond Street', addressLocality: 'Bangor', addressRegion: 'ME', postalCode: '04401', addressCountry: 'US' },
   /** Google Business Profile pin (see src/data/schema-sources.json). */
   geo: { latitude: 44.7947319, longitude: -68.8304155 },
   logo: '/images/logo.png',
