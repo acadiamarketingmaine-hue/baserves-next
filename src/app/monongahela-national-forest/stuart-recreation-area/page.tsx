@@ -6,7 +6,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Stuart Recreation Area | Monongahela National Forest | BA Services',
+  title: { absolute: 'Stuart Recreation Area | Monongahela National Forest | BA Services' },
   description: 'Stuart Recreation Area offers family-friendly camping along the shores of a scenic mountain lake in the Monongahela National Forest. The area features both tent',
   alternates: { canonical: '/monongahela-national-forest/stuart-recreation-area' },
   openGraph: og('/monongahela-national-forest/stuart-recreation-area'),

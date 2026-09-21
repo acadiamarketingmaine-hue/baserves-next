@@ -13,7 +13,7 @@ const SLUG = 'yankee-springs-recreation-area'
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getPropertyContent(SLUG)
   return {
-    title: content?.seo.title,
+    title: content?.seo.title ? { absolute: content?.seo.title } : undefined,
     description: content?.seo.description,
     alternates: { canonical: '/yankee-springs-recreation-area' },
     openGraph: og('/yankee-springs-recreation-area'),

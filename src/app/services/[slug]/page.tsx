@@ -111,13 +111,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const service = services[params.slug]
   if (!service) {
     return {
-      title: 'Service Not Found | BA Services',
+      title: { absolute: 'Service Not Found | BA Services' },
       alternates: { canonical: `/services/${params.slug}` },
       openGraph: og(`/services/${params.slug}`),
     }
   }
   return {
-    title: `${service.name} | BA Services`,
+    title: { absolute: `${service.name} | BA Services` },
     description: service.description,
     alternates: { canonical: `/services/${params.slug}` },
     openGraph: og(`/services/${params.slug}`),

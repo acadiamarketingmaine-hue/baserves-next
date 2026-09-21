@@ -7,7 +7,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Meramec State Park | Sullivan, Missouri | BA Services',
+  title: { absolute: 'Meramec State Park | Sullivan, Missouri | BA Services' },
   description: 'Explore Meramec State Park along the Meramec River in Sullivan, Missouri. 19 cabins, motel lodging, 40+ caves, Fisher Cave tours, float trips, and CCC-built historic architecture across 6,896 acres.',
   alternates: { canonical: '/experiences/meramec-state-park' },
   openGraph: og('/experiences/meramec-state-park'),

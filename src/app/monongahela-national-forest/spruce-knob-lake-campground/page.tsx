@@ -6,7 +6,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Spruce Knob Lake Campground | Monongahela National Forest | BA Services',
+  title: { absolute: 'Spruce Knob Lake Campground | Monongahela National Forest | BA Services' },
   description: 'Spruce Knob Lake Campground is perched at high elevation near the summit of Spruce Knob — the highest point in West Virginia at 4,863 feet. The campground surro',
   alternates: { canonical: '/monongahela-national-forest/spruce-knob-lake-campground' },
   openGraph: og('/monongahela-national-forest/spruce-knob-lake-campground'),

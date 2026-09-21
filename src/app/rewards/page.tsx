@@ -5,7 +5,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata = {
-  title: 'Rewards | BA Services',
+  title: { absolute: 'Rewards | BA Services' },
   description: 'BA Services rewards program - coming soon. Earn points on every booking and unlock exclusive perks.',
   alternates: {
     canonical: '/rewards',

@@ -7,7 +7,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Washington State Park | De Soto, Missouri | BA Services',
+  title: { absolute: 'Washington State Park | De Soto, Missouri | BA Services' },
   description: 'Explore Washington State Park in De Soto, Missouri. 2,157 acres along the Big River with 11 lodging cabins, ancient petroglyphs, swimming pool, 9.7 miles of trails, and 140 bird species.',
   alternates: { canonical: '/washington-state-park' },
   openGraph: og('/washington-state-park'),

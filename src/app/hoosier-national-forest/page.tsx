@@ -7,7 +7,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Hoosier National Forest | Southern Indiana | BA Services',
+  title: { absolute: 'Hoosier National Forest | Southern Indiana | BA Services' },
   description: 'Explore Hoosier National Forest in southern Indiana. Three recreation areas with camping, swimming, fishing, boating, and hundreds of miles of trails.',
   alternates: { canonical: '/hoosier-national-forest' },
   openGraph: og('/hoosier-national-forest'),

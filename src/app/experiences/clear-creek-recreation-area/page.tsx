@@ -8,7 +8,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Clear Creek Recreation Area | Bankhead National Forest | BA Services',
+  title: { absolute: 'Clear Creek Recreation Area | Bankhead National Forest | BA Services' },
   description: 'Explore Clear Creek Recreation Area on Lewis Smith Lake in Bankhead National Forest. 102 campsites across 4 loops, swimming beach, boat ramps, hiking trails, and group camping.',
   alternates: { canonical: '/experiences/clear-creek-recreation-area' },
   openGraph: og('/experiences/clear-creek-recreation-area'),

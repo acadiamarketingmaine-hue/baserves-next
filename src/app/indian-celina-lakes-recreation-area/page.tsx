@@ -7,7 +7,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Indian-Celina Lakes Recreation Area | Hoosier National Forest, Indiana | BA Services',
+  title: { absolute: 'Indian-Celina Lakes Recreation Area | Hoosier National Forest, Indiana | BA Services' },
   description: 'Explore Indian-Celina Lakes Recreation Area in Hoosier National Forest. Two scenic lakes with camping, accessible fishing pier, boat launch, and hiking trails.',
   alternates: { canonical: '/indian-celina-lakes-recreation-area' },
   openGraph: og('/indian-celina-lakes-recreation-area'),

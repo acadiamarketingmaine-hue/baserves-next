@@ -3,7 +3,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Leave a Review | BA Services',
+  title: { absolute: 'Leave a Review | BA Services' },
   description: 'Submit your feedback about BA Services rest areas and recreation facilities.',
   alternates: {
     canonical: '/leave-a-review',

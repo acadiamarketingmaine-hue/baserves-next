@@ -7,7 +7,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Canal Bridge Campground | Saco River, Fryeburg, Maine | BA Services',
+  title: { absolute: 'Canal Bridge Campground | Saco River, Fryeburg, Maine | BA Services' },
   description: 'Discover Canal Bridge Campground on the Saco River in Fryeburg, Maine. 36 numbered campsites, river frontage for kayaking, canoeing, and fishing with stunning White Mountain views.',
   alternates: { canonical: '/experiences/canal-bridge' },
   openGraph: og('/experiences/canal-bridge'),

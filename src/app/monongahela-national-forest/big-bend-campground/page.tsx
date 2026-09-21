@@ -6,7 +6,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Big Bend Campground | Monongahela National Forest | BA Services',
+  title: { absolute: 'Big Bend Campground | Monongahela National Forest | BA Services' },
   description: 'Big Bend Campground is nestled in a sweeping bend of the South Branch Potomac River within the Monongahela National Forest. The campground offers a mix of tent ',
   alternates: { canonical: '/monongahela-national-forest/big-bend-campground' },
   openGraph: og('/monongahela-national-forest/big-bend-campground'),

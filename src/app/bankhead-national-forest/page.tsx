@@ -7,7 +7,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Bankhead National Forest | Alabama | BA Services',
+  title: { absolute: 'Bankhead National Forest | Alabama | BA Services' },
   description: 'Explore Bankhead National Forest — "The Land of a Thousand Waterfalls." 180,000+ acres featuring the Sipsey Wilderness, 84 breeding bird species, campgrounds, and the Hurricane Creek Shooting Range.',
   alternates: { canonical: '/bankhead-national-forest' },
   openGraph: og('/bankhead-national-forest'),

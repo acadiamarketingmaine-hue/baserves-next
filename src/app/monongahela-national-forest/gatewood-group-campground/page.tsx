@@ -6,7 +6,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Gatewood Group Campground | Monongahela National Forest | BA Services',
+  title: { absolute: 'Gatewood Group Campground | Monongahela National Forest | BA Services' },
   description: 'Gatewood Group Campground offers a secluded group camping experience within the Monongahela National Forest. Designed for organized groups, the campground provi',
   alternates: { canonical: '/monongahela-national-forest/gatewood-group-campground' },
   openGraph: og('/monongahela-national-forest/gatewood-group-campground'),

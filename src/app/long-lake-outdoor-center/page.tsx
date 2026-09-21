@@ -13,7 +13,7 @@ const SLUG = 'long-lake-outdoor-center'
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getPropertyContent(SLUG)
   return {
-    title: content?.seo.title,
+    title: content?.seo.title ? { absolute: content?.seo.title } : undefined,
     description: content?.seo.description,
     alternates: { canonical: '/long-lake-outdoor-center' },
     openGraph: og('/long-lake-outdoor-center'),

@@ -8,7 +8,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Corinth Recreation Area | Bankhead National Forest | BA Services',
+  title: { absolute: 'Corinth Recreation Area | Bankhead National Forest | BA Services' },
   description: 'Discover Corinth Recreation Area on Lewis Smith Lake in Bankhead National Forest. 52 full-hookup campsites, 10 tent sites, swimming beach, pavilion, and Bobwhite Trail.',
   alternates: { canonical: '/experiences/corinth-recreation-area' },
   openGraph: og('/experiences/corinth-recreation-area'),

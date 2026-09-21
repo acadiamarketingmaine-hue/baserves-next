@@ -6,7 +6,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Seneca Shadows Campground | Monongahela National Forest | BA Services',
+  title: { absolute: 'Seneca Shadows Campground | Monongahela National Forest | BA Services' },
   description: 'Seneca Shadows Campground sits in the shadow of the iconic Seneca Rocks — one of the most famous rock climbing destinations in the eastern United States. Locate',
   alternates: { canonical: '/monongahela-national-forest/seneca-shadows-campground' },
   openGraph: og('/monongahela-national-forest/seneca-shadows-campground'),

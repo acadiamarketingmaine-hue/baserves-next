@@ -6,7 +6,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: 'Jess Judy Group Campground | Monongahela National Forest | BA Services',
+  title: { absolute: 'Jess Judy Group Campground | Monongahela National Forest | BA Services' },
   description: 'Jess Judy Group Campground provides dedicated group camping facilities in the heart of the Monongahela National Forest. Ideal for scout troops, family reunions,',
   alternates: { canonical: '/monongahela-national-forest/jess-judy-group-campground' },
   openGraph: og('/monongahela-national-forest/jess-judy-group-campground'),

@@ -17,13 +17,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const content = await getPropertyContent(params.slug)
   if (!content) {
     return {
-      title: 'Location Not Found | BA Services',
+      title: { absolute: 'Location Not Found | BA Services' },
       alternates: { canonical: `/${params.slug}` },
       openGraph: og(`/${params.slug}`),
     }
   }
   return {
-    title: content.seo.title,
+    title: content.seo.title ? { absolute: content.seo.title } : undefined,
     description: content.seo.description,
     alternates: { canonical: `/${params.slug}` },
     openGraph: og(`/${params.slug}`),

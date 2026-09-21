@@ -4,7 +4,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata = {
-  title: 'Privacy Policy | BA Services',
+  title: { absolute: 'Privacy Policy | BA Services' },
   description: 'Learn how BA Services collects, uses, and protects your personal information.',
   alternates: {
     canonical: '/privacy',

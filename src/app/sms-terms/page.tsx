@@ -4,7 +4,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata = {
-  title: 'SMS Terms & Conditions | BA Services',
+  title: { absolute: 'SMS Terms & Conditions | BA Services' },
   description: 'Terms and conditions for BA Services SMS messaging services.',
   alternates: {
     canonical: '/sms-terms',
