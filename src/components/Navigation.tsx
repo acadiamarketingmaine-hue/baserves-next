@@ -79,9 +79,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Rhode Island',
     icon: '/images/states/rhode-island.png',
     locations: [
-      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg', children: [
-        { name: 'Burlingame State Campground', href: '/experiences/burlingame-state-park', image: '/images/burlingame-aerial.jpg' },
-      ]},
+      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg' },
     ],
   },
   {
