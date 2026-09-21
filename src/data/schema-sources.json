@@ -1,13 +1,66 @@
 {
   "_note": "Audit trail for every public-record value in the SITE const (src/lib/schema.ts). Schema layer only; nothing here is printed on the page. Maine SoS ICRS (apps3.web.maine.gov/nei-sos-icrs) is behind reCAPTCHA and could not be fetched programmatically on 2026-09-21.",
-  "legalName": { "value": "BA Services, Inc.", "source": "https://web.archive.org/web/20231207111104/https://baserves.com/ (client's prior site: 'BA Services, Inc. was born' Nov 2017); BBB 'Ba Services Inc'; SAM/GovCon 'BA SERVICES INC'. Maine SoS not fetchable (reCAPTCHA) — punctuation unconfirmed against SoS.", "checked": "2026-09-21" },
-  "geo": { "value": { "latitude": 44.7947319, "longitude": -68.8304155 }, "source": "Google Business Profile pin, https://maps.google.com/maps?cid=3452204696455686904&output=embed (resolves to 'BA Services, 1257 Hammond St, Bangor, ME 04401'; place_id ChIJ7xmBfvtLrkwR-CotgOGx6C8)", "checked": "2026-09-21" },
-  "hasMap": { "value": "https://www.google.com/maps?cid=3452204696455686904", "source": "CID from Birdeye listing's Google Maps link (0x2fe8b1e1802d2af8) https://reviews.birdeye.com/ba-services-inc-164592817644504, confirmed via maps embed endpoint returning 'BA Services, 1257 Hammond St'", "checked": "2026-09-21" },
-  "openingHours": { "value": "Mo-Fr 09:00-17:00; Sa,Su closed", "source": "Google Business Profile hours, https://maps.google.com/maps?cid=3452204696455686904&output=embed (also mirrored at https://reviews.birdeye.com/ba-services-inc-164592817644504)", "checked": "2026-09-21" },
-  "foundingDate": { "value": "2001", "source": "https://web.archive.org/web/20231207111104/https://baserves.com/ — 'Founded in 2001 as Bangor Abatement, Inc., a family owned and operated ... dba BA Services (2007) ... in November of 2017 ... BA Services, Inc. was born becoming a standalone entity'. BBB lists business start 2017-11-28 (https://www.bbb.org/us/me/bangor/profile/property-management/ba-services-inc-0021-557314); playbook prefers the earlier established date stated by the client's own site.", "checked": "2026-09-21" },
-  "founders": { "value": ["Eric McCue", "Dallas McCue"], "source": "https://web.archive.org/web/20231207111104/https://baserves.com/ — 'BA Services, Inc. was born ... with Eric & Dallas McCue managing day to day operations ... In January of 2021 the McCue's bought out their partner to become the sole owners'; BBB lists Eric McCue, Owner. No source uses the word 'founder' — these are the named owners.", "checked": "2026-09-21" },
-  "sameAs": { "value": ["https://www.google.com/maps?cid=3452204696455686904", "https://www.bbb.org/us/me/bangor/profile/property-management/ba-services-inc-0021-557314", "https://www.dnb.com/business-directory/company-profiles.ba_services_inc.c719d1437f81ecc3ed54f37957626b79.html"], "source": "GBP (see hasMap), BBB profile, D&B profile. No Facebook/Instagram/LinkedIn page for the company found in Google, DuckDuckGo, BBB, Birdeye, Chamber, or the archived site.", "checked": "2026-09-21" },
-  "priceRange": { "value": null, "source": "GBP shows no $ price band; omitted", "checked": "2026-09-21" },
-  "paymentAccepted": { "value": null, "source": "Not stated on GBP, site, BBB, or archived site; omitted", "checked": "2026-09-21" },
-  "address_discrepancy": { "value": "config/footer print 1157 Hammond Street; GBP, D&B, Chamber, the 2023 archived site, and src/app/api/treeko/route.ts all say 1257 Hammond St (older listings: 263 State St Suite 1)", "source": "https://maps.google.com/maps?cid=3452204696455686904&output=embed ; https://web.archive.org/web/20231207111104/https://baserves.com/ ; https://www.dnb.com/business-directory/company-profiles.ba_services_inc.c719d1437f81ecc3ed54f37957626b79.html", "checked": "2026-09-21" }
+  "legalName": {
+    "value": "BA Services, Inc.",
+    "source": "https://web.archive.org/web/20231207111104/https://baserves.com/ (client's prior site: 'BA Services, Inc. was born' Nov 2017); BBB 'Ba Services Inc'; SAM/GovCon 'BA SERVICES INC'. Maine SoS not fetchable (reCAPTCHA) \u2014 punctuation unconfirmed against SoS.",
+    "checked": "2026-09-21"
+  },
+  "geo": {
+    "value": {
+      "latitude": 44.7947319,
+      "longitude": -68.8304155
+    },
+    "source": "Google Business Profile pin, https://maps.google.com/maps?cid=3452204696455686904&output=embed (resolves to 'BA Services, 1257 Hammond St, Bangor, ME 04401'; place_id ChIJ7xmBfvtLrkwR-CotgOGx6C8)",
+    "checked": "2026-09-21"
+  },
+  "hasMap": {
+    "value": "https://www.google.com/maps?cid=3452204696455686904",
+    "source": "CID from Birdeye listing's Google Maps link (0x2fe8b1e1802d2af8) https://reviews.birdeye.com/ba-services-inc-164592817644504, confirmed via maps embed endpoint returning 'BA Services, 1257 Hammond St'",
+    "checked": "2026-09-21"
+  },
+  "openingHours": {
+    "value": "Mo-Fr 09:00-17:00; Sa,Su closed",
+    "source": "Google Business Profile hours, https://maps.google.com/maps?cid=3452204696455686904&output=embed (also mirrored at https://reviews.birdeye.com/ba-services-inc-164592817644504)",
+    "checked": "2026-09-21"
+  },
+  "foundingDate": {
+    "value": "2001",
+    "source": "https://web.archive.org/web/20231207111104/https://baserves.com/ \u2014 'Founded in 2001 as Bangor Abatement, Inc., a family owned and operated ... dba BA Services (2007) ... in November of 2017 ... BA Services, Inc. was born becoming a standalone entity'. BBB lists business start 2017-11-28 (https://www.bbb.org/us/me/bangor/profile/property-management/ba-services-inc-0021-557314); playbook prefers the earlier established date stated by the client's own site.",
+    "checked": "2026-09-21"
+  },
+  "founders": {
+    "value": [
+      "Eric McCue",
+      "Dallas McCue"
+    ],
+    "source": "https://web.archive.org/web/20231207111104/https://baserves.com/ \u2014 'BA Services, Inc. was born ... with Eric & Dallas McCue managing day to day operations ... In January of 2021 the McCue's bought out their partner to become the sole owners'; BBB lists Eric McCue, Owner. No source uses the word 'founder' \u2014 these are the named owners.",
+    "checked": "2026-09-21"
+  },
+  "sameAs": {
+    "value": [
+      "https://www.google.com/maps?cid=3452204696455686904",
+      "https://www.bbb.org/us/me/bangor/profile/property-management/ba-services-inc-0021-557314",
+      "https://www.dnb.com/business-directory/company-profiles.ba_services_inc.c719d1437f81ecc3ed54f37957626b79.html"
+    ],
+    "source": "GBP (see hasMap), BBB profile, D&B profile. No Facebook/Instagram/LinkedIn page for the company found in Google, DuckDuckGo, BBB, Birdeye, Chamber, or the archived site.",
+    "checked": "2026-09-21",
+    "recheck_2026-09-21": "No Facebook or Instagram page for BA Services / baserves.com found (Google + Bing web search, BBB profile, D&B profile, Greater Bangor business directory, chamberofcommerce.com listing, archived 2023 site). The footer's placeholder links to https://facebook.com / https://instagram.com were removed on 2026-09-21 because they pointed at the networks' home pages, not the company."
+  },
+  "priceRange": {
+    "value": null,
+    "source": "GBP shows no $ price band; omitted",
+    "checked": "2026-09-21",
+    "recheck_2026-09-21": "Still none: no $ band on the GBP listing, none on the BBB profile (payment methods and price range both blank), none on the site."
+  },
+  "paymentAccepted": {
+    "value": null,
+    "source": "Not stated on GBP, site, BBB, or archived site; omitted",
+    "checked": "2026-09-21",
+    "recheck_2026-09-21": "Still none: BBB profile lists no payment methods; site copy mentions payment only in /refund_returns ('original payment method'), which names no methods."
+  },
+  "address_discrepancy": {
+    "value": "config/footer print 1157 Hammond Street; GBP, D&B, Chamber, the 2023 archived site, and src/app/api/treeko/route.ts all say 1257 Hammond St (older listings: 263 State St Suite 1)",
+    "source": "https://maps.google.com/maps?cid=3452204696455686904&output=embed ; https://web.archive.org/web/20231207111104/https://baserves.com/ ; https://www.dnb.com/business-directory/company-profiles.ba_services_inc.c719d1437f81ecc3ed54f37957626b79.html",
+    "checked": "2026-09-21"
+  }
 }
