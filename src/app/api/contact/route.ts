@@ -1,9 +1,57 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendMail } from '@/lib/mailer'
 
+// Spam guards. Deliberately no third-party service and no new dependency, and
+// nothing here changes what a real visitor sees or has to do.
+const MIN_FILL_MS = 3000        // a human cannot read and complete this form faster
+const RATE_LIMIT_MAX = 5        // submissions per IP...
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000 // ...per 10 minutes
+
+// Per-instance memory. A serverless cold start clears it, which is fine: this
+// is here to stop a flood from one source, not to be an audit log.
+const recentByIp = new Map<string, number[]>()
+
+function isRateLimited(ip: string) {
+  const now = Date.now()
+  const hits = (recentByIp.get(ip) || []).filter(t => now - t < RATE_LIMIT_WINDOW_MS)
+  hits.push(now)
+  recentByIp.set(ip, hits)
+
+  // Opportunistic cleanup so the map cannot grow without bound.
+  if (recentByIp.size > 500) {
+    for (const [key, times] of recentByIp) {
+      if (!times.some(t => now - t < RATE_LIMIT_WINDOW_MS)) recentByIp.delete(key)
+    }
+  }
+
+  return hits.length > RATE_LIMIT_MAX
+}
+
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json()
+
+    // 1. Honeypot: a field hidden from real visitors. Anything in it is a bot.
+    if (typeof data.website === 'string' && data.website.trim() !== '') {
+      console.warn('Contact form: honeypot tripped, dropping submission')
+      return NextResponse.json({ success: true })
+    }
+
+    // 2. Time to submit. Bots post instantly.
+    const elapsedMs = Number(data.elapsedMs)
+    if (Number.isFinite(elapsedMs) && elapsedMs < MIN_FILL_MS) {
+      console.warn(`Contact form: submitted in ${elapsedMs}ms, dropping submission`)
+      return NextResponse.json({ success: true })
+    }
+
+    // 3. Per-IP rate limit.
+    const ip = (request.headers.get('x-forwarded-for') || '').split(',')[0].trim()
+      || request.headers.get('x-real-ip')
+      || 'unknown'
+    if (isRateLimited(ip)) {
+      console.warn('Contact form: rate limit hit')
+      return NextResponse.json({ error: 'Too many submissions. Please try again later.' }, { status: 429 })
+    }
 
     const html = `
       <h2>New Partnership Inquiry from baserves.com</h2>

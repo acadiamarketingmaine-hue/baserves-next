@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { BriefcaseIcon, HandshakeIcon, ClipboardIcon } from '@/components/Icons'
@@ -32,6 +32,14 @@ export default function ContactForm() {
   // Partnership form
   const [partnerForm, setPartnerForm] = useState({ name: '', email: '', phone: '', organization: '', propertyType: '', location: '', message: '' })
 
+  // Spam guards (see src/app/api/contact/route.ts). Invisible to real visitors:
+  // a honeypot field only a bot will fill, and how long the form was open.
+  const [honeypot, setHoneypot] = useState('')
+  const formOpenedAt = useRef<number>(Date.now())
+  useEffect(() => {
+    if (topic === 'partnership') formOpenedAt.current = Date.now()
+  }, [topic])
+
   const handlePartnerSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
@@ -39,7 +47,12 @@ export default function ContactForm() {
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic: 'partnership', ...partnerForm }),
+        body: JSON.stringify({
+          topic: 'partnership',
+          ...partnerForm,
+          website: honeypot,
+          elapsedMs: Date.now() - formOpenedAt.current,
+        }),
       })
       setSubmitted(true)
     } catch { setSubmitted(true) }
@@ -153,6 +166,11 @@ export default function ContactForm() {
       {topic === 'partnership' && (
         <form onSubmit={handlePartnerSubmit} className="bg-white rounded-2xl border border-gray-200 p-8 space-y-6">
           <p className="text-gray-600">Interested in partnering with BA Services for property management? Tell us about your facility.</p>
+          {/* Honeypot — hidden from people and from screen readers, bots fill it. */}
+          <div aria-hidden="true" className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden">
+            <label htmlFor="website">Website</label>
+            <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={e => setHoneypot(e.target.value)} />
+          </div>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
