@@ -6,173 +6,16 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { getPropertyContent, getSiteSettings } from '@/content'
+import NoticeBanner from '@/content/NoticeBanner'
 
-// This will be replaced with Sanity data
-const locations: Record<string, any> = {
-  'tipsaw-lake-recreation-area': {
-    name: 'Tipsaw Lake Recreation Area',
-    tagline: 'Scenic Lakeside Camping & Outdoor Adventure in Indiana',
-    description: 'A perfect getaway for families, anglers, and outdoor enthusiasts',
-    longDescription: `Nestled in the heart of Hoosier National Forest, Tipsaw Lake Recreation Area offers a serene escape into nature. With 131 acres of pristine lake waters and over 8 miles of scenic trails, this destination provides the perfect backdrop for your outdoor adventures.
-
-Whether you're casting a line for bass and bluegill, hiking through the rolling hills, or simply relaxing by the water, Tipsaw Lake delivers an authentic Indiana wilderness experience. Our well-maintained campsites accommodate both tent campers and RV enthusiasts, with modern amenities that don't compromise the natural beauty.`,
-    location: 'Perry County, IN | Hoosier National Forest',
-    features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping', 'Picnic Areas', 'Wildlife Viewing'],
-    stats: { campsites: '35+', lakeSize: '131 acres', trails: '8+ miles' },
-    image: '/images/DSC_0001-2048x1365.jpg',
-    gallery: [
-      '/images/DSC_0001-2048x1365.jpg',
-      '/images/DSC_0103-2048x1365.jpg',
-      '/images/monongahela/spruce-knob-panorama.jpg',
-    ],
-    bookingUrl: 'https://www.recreation.gov/camping/campgrounds/232114',
-  },
-  'yankee-springs-recreation-area': {
-    name: 'Yankee Springs Recreation Area',
-    tagline: "Michigan's Ultimate Outdoor Escape",
-    description: 'A year-round haven for outdoor lovers, families, and adventure seekers',
-    longDescription: `Spanning over 5,200 acres of diverse Michigan landscape, Yankee Springs Recreation Area stands as one of the Midwest's premier outdoor destinations. From tranquil lakes to challenging mountain biking trails, this recreation area offers something for every type of adventurer.
-
-With over 200 campsites and 30+ miles of trails winding through forests, wetlands, and rolling terrain, Yankee Springs provides endless opportunities for exploration. Year-round activities include swimming, fishing, hiking, mountain biking, cross-country skiing, and snowmobiling.`,
-    location: 'Barry County, MI',
-    features: ['Boating', 'Fishing', 'Hiking', 'Mountain Biking', 'RV & Tent Camping', 'Swimming Beach', 'Winter Sports'],
-    stats: { campsites: '200+', trails: '30+ miles', acres: '5,200+' },
-    image: '/images/Burlingame1-2048x1365.jpg',
-    gallery: [
-      '/images/Burlingame1-2048x1365.jpg',
-      '/images/Burlingame2-1536x1152.jpg',
-      '/images/long-lake/lodge.jpg',
-    ],
-    bookingUrl: 'https://escape.baserves.com/chief-noonday-outdoor-center',
-  },
-  'hardin-ridge-recreation-area': {
-    name: 'Hardin Ridge Recreation Area',
-    tagline: 'Lakeside Camping on Monroe Lake',
-    description: 'Experience the beauty of Indiana\'s largest lake',
-    longDescription: `Located on the shores of Monroe Lake, Indiana's largest man-made lake, Hardin Ridge Recreation Area offers an exceptional outdoor experience in the heart of Hoosier National Forest. The area features beautiful wooded campsites, a swimming beach, and direct access to over 10,000 acres of water.
-
-Whether you're looking to spend a weekend fishing, hiking the surrounding trails, or simply enjoying the tranquil lake views, Hardin Ridge provides the perfect setting. The campground offers both electric and non-electric sites, accommodating everything from tent campers to large RVs.`,
-    location: 'Monroe County, IN | Hoosier National Forest',
-    features: ['Boating', 'Fishing', 'Swimming Beach', 'Hiking', 'RV & Tent Camping', 'Picnic Shelters', 'Boat Ramp'],
-    stats: { campsites: '200+', lakeSize: '10,750 acres', trails: '12+ miles' },
-    image: '/images/DSC_0103-2048x1365.jpg',
-    gallery: [
-      '/images/DSC_0103-2048x1365.jpg',
-      '/images/monongahela/spruce-knob-panorama.jpg',
-      '/images/DSC_0001-2048x1365.jpg',
-    ],
-    bookingUrl: 'https://www.recreation.gov/camping/campgrounds/232056',
-  },
-  'monongahela-national-forest': {
-    name: 'Monongahela National Forest',
-    tagline: 'Wild & Wonderful West Virginia',
-    description: 'Over 900,000 acres of Appalachian wilderness',
-    longDescription: `The Monongahela National Forest spans over 900,000 acres across the Allegheny Mountains of eastern West Virginia. This vast wilderness area is home to some of the most diverse ecosystems in the eastern United States, featuring spruce forests, highland bogs, and pristine mountain streams.
-
-Visitors can explore hundreds of miles of hiking trails, including portions of the Allegheny Trail and numerous wilderness areas. The forest offers exceptional opportunities for camping, fishing, hunting, rock climbing, and wildlife viewing. Several developed campgrounds provide convenient access to the forest's most scenic areas.`,
-    location: 'Eastern West Virginia',
-    features: ['Hiking', 'Camping', 'Fishing', 'Rock Climbing', 'Wildlife Viewing', 'Scenic Drives', 'Winter Sports'],
-    stats: { acres: '900,000+', trails: '800+ miles', wilderness: '5 areas' },
-    image: '/images/monongahela/entrance-sign.jpg',
-    gallery: [
-      '/images/monongahela/entrance-sign.jpg',
-      '/images/monongahela/spruce-knob-panorama.jpg',
-      '/images/monongahela/scenic-drive.jpg',
-      '/images/monongahela/spruce-knob-sign.jpg',
-      '/images/monongahela/seneca-rocks-sign.jpg',
-      '/images/monongahela/spruce-treetops.jpg',
-    ],
-    bookingUrl: 'https://www.recreation.gov/gateways/1090',
-  },
-  'washington-state-park': {
-    name: 'Washington State Park',
-    tagline: 'Ancient Petroglyphs & Natural Beauty',
-    description: 'Discover Missouri\'s rich history and stunning landscapes',
-    longDescription: `Washington State Park, located along the Big River in Missouri, is renowned for its ancient Native American petroglyphs and diverse recreational opportunities. The park preserves over 350 prehistoric rock carvings, some dating back over 1,000 years, making it one of the most significant archaeological sites in the Midwest.
-
-Beyond its historical significance, the park offers excellent hiking trails, a swimming pool, and beautiful picnic areas. The campground provides both basic and electric sites nestled among the Ozark hills, perfect for families and outdoor enthusiasts looking to connect with nature and history.`,
-    location: 'De Soto, MO',
-    features: ['Historic Petroglyphs', 'Hiking', 'Swimming Pool', 'Camping', 'Picnic Areas', 'Nature Programs', 'Fishing'],
-    stats: { acres: '2,100+', petroglyphs: '350+', trails: '10+ miles' },
-    image: '/images/Burlingame2-1536x1152.jpg',
-    gallery: [
-      '/images/Burlingame2-1536x1152.jpg',
-      '/images/Burlingame1-2048x1365.jpg',
-      '/images/long-lake/lodge.jpg',
-    ],
-    bookingUrl: 'https://escape.baserves.com',
-  },
-  'long-lake-outdoor-center': {
-    name: 'Long Lake Outdoor Center',
-    tagline: 'Seasonal Outdoor Education & Recreation',
-    description: 'Where adventure meets education in Michigan',
-    longDescription: `Long Lake Outdoor Center provides a unique blend of outdoor recreation and environmental education in the heart of Michigan. This facility offers programs for school groups, summer camps, and family retreats, all centered around connecting people with nature.
-
-The center features comfortable lodging options, a beautiful lake for water activities, and extensive trail systems for hiking and nature study. Whether you're looking for a team-building retreat, an educational field trip, or a family getaway, Long Lake Outdoor Center provides the perfect setting for meaningful outdoor experiences.`,
-    location: 'Yankee Springs, MI',
-    features: ['Lodging', 'Conference Facilities', 'Lake Activities', 'Hiking Trails', 'Environmental Education', 'Team Building', 'Summer Camps'],
-    stats: { capacity: '200+ guests', lake: 'Private Lake', programs: '50+ annually' },
-    image: '/images/long-lake/lodge.jpg',
-    gallery: [
-      '/images/long-lake/lodge.jpg',
-      '/images/Burlingame1-2048x1365.jpg',
-      '/images/DSC_0103-2048x1365.jpg',
-    ],
-    bookingUrl: 'https://escape.baserves.com/long-lake-outdoor-center',
-    phone: '616-644-9459',
-  },
-  'chief-noonday-outdoor-center': {
-    name: 'Chief Noonday Outdoor Center',
-    tagline: 'Premier Group Camping in Michigan',
-    description: 'Exceptional facilities for group outdoor adventures',
-    longDescription: `Chief Noonday Outdoor Center (CNOC) is a historic group camp and retreat facility located within Yankee Springs Recreation Area in Barry County, Michigan. Named for a prominent Potawatomi leader, the center reflects both the cultural heritage of the region and the legacy of early conservation efforts.
-
-Originally developed in 1938 as part of the National Park Service's Recreation Demonstration Area program, the site is listed on the National Register of Historic Places. Its layout and architecture follow a naturalistic design philosophy, integrating buildings with the surrounding terrain.
-
-The facility includes multiple cabin clusters, a central lodge, dining and gathering spaces, and expansive outdoor areas suited for scout outings, church retreats, family reunions, and team-building programs.
-
-Currently four semi-rustic cabins are available along Chief Noonday Lake: Bear Den (sleeps 6, stone fireplace, three bunk beds), Chickadee Cabin (sleeps 4, two bunk beds), Crane House/Jee-Jak Wigwam (sleeps 8, stone fireplace, three bunk beds, roll-out bed), and Deer Lodge (sleeps 8, stone fireplace, three bunk beds, roll-out bed). Each cabin includes electricity, electric heat, mini fridge, microwave, coffee maker. Outdoor features include picnic table, fire pit, grill, with hand water pump and vault toilet nearby.`,
-    location: 'Middleville, MI',
-    features: ['Group Cabins', 'Dining Hall', 'Meeting Spaces', 'Lake Access', 'Hiking Trails', 'Campfire Areas', 'Sports Fields'],
-    stats: { capacity: '300+ guests', cabins: '12+', acres: '100+' },
-    image: '/images/chief-noonday/deer-lodge.jpg',
-    gallery: [
-      '/images/chief-noonday/deer-lodge.jpg',
-      '/images/chief-noonday/long-house.jpg',
-      '/images/chief-noonday/mess-hall.jpg',
-    ],
-    bookingUrl: 'https://escape.baserves.com/chief-noonday-outdoor-center',
-    phone: '616-644-9459',
-  },
-  'bankhead-national-forest': {
-    name: 'Bankhead National Forest',
-    tagline: 'Alabama\'s Land of a Thousand Waterfalls',
-    description: 'Explore canyons, waterfalls, pristine wilderness, and incredible birding',
-    longDescription: `The William B. Bankhead National Forest spans over 180,000 acres across Lawrence, Winston, and Franklin counties within the Cumberland Plateau region of North Alabama. Known as "The Land of a Thousand Waterfalls," it features dramatic sandstone canyons, pristine streams, old-growth forests, limestone bluffs, and lush canyons.
-
-The Sipsey Wilderness, located within the forest, is the largest wilderness area east of the Mississippi River. The Sipsey Fork is a designated Wild and Scenic River corridor, famous for its nesting Cerulean Warblers. The American Bird Conservancy designated the Bankhead as an Important Bird Area — 84 species of birds have been recorded during the breeding season, making it part of the North Alabama Birding Trail.
-
-The forest is home to two premier campgrounds managed by BA Services: Clear Creek Recreation Area (102 sites on Lewis Smith Lake) and Corinth Recreation Area (52 full-hookup sites). Other highlights include Brushy Lake and Houston Recreation Areas, Natural Bridge Day Use Area, Owl Creek Horse Camp, the Flint-Creek Multi-Use Trail, and the Hurricane Creek Shooting Range — an accessible, year-round facility with eight shooting benches marked at 25, 50, and 100 yards.
-
-Visit the Ranger Station on Highway 33 in Double Springs for maps, birding brochures and checklists, and current sighting reports. Call (205) 489-5111 for more information.`,
-    location: 'Lawrence, Winston & Franklin Counties, AL',
-    features: ['Sipsey Wilderness', 'Birding (84 species)', 'Waterfalls', 'Canyon Hiking', 'Camping', 'Fishing', 'Shooting Range', 'Horse Trails', 'Scenic Drives'],
-    stats: { acres: '180,000+', birdSpecies: '84 breeding', wilderness: 'Sipsey 25K acres', campgrounds: '2 managed' },
-    image: '/images/bankhead-forest.jpg',
-    gallery: [
-      '/images/bankhead-forest.jpg',
-      '/images/Bankhead-Waterfall.png',
-      '/images/bankhead-bicycle-trail.jpg',
-      '/images/clear-creek-overview.jpg',
-      '/images/corinth-campground.jpg',
-    ],
-    bookingUrl: 'https://www.recreation.gov',
-  },
-}
+// Content comes from src/content. Of the slugs it knows about, only
+// chief-noonday-outdoor-center reaches this template: every other one has a
+// bespoke page under src/app/<slug>/ that wins the route.
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const location = locations[params.slug]
-  if (!location) {
+  const content = await getPropertyContent(params.slug)
+  if (!content) {
     return {
       title: 'Location Not Found | BA Services',
       alternates: { canonical: `/${params.slug}` },
@@ -180,17 +23,19 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   }
   return {
-    title: `${location.name} | BA Services`,
-    description: location.longDescription?.split('\n\n')[0] || location.description,
+    title: content.seo.title,
+    description: content.seo.description,
     alternates: { canonical: `/${params.slug}` },
     openGraph: og(`/${params.slug}`),
   }
 }
 
-export default function LocationPage({ params }: { params: { slug: string } }) {
-  const location = locations[params.slug]
+export default async function LocationPage({ params }: { params: { slug: string } }) {
+  const content = await getPropertyContent(params.slug)
 
-  if (!location) notFound()
+  if (!content) notFound()
+
+  const site = await getSiteSettings()
 
   return (
     <main className="min-h-screen">
@@ -198,18 +43,19 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
       <PageSchema
         url={`/${params.slug}`}
         routeKey="/[slug]"
-        name={`${location.name} | BA Services`}
-        crumbName={location.name}
-        description={location.longDescription?.split('\n\n')[0] || location.description}
-        image={location.image}
+        name={content.seo.title}
+        crumbName={content.name}
+        description={content.seo.description}
+        image={content.hero.src}
       />
+      <NoticeBanner notices={content.notices} />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src={location.image}
-            alt={location.name}
+            src={content.hero.src}
+            alt={content.hero.alt}
             fill
             className="object-cover"
             priority
@@ -219,24 +65,24 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
 
         <div className="relative z-10 container-custom px-6 pb-16">
           <span className="inline-block px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-full mb-4">
-            {location.tagline}
+            {content.tagline}
           </span>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4">
-            {location.name}
+            {content.name}
           </h1>
           <div className="flex items-center text-white/80 mb-6">
             <svg className="w-5 h-5 mr-2 text-red-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
-            {location.location}
+            {content.locationLine}
           </div>
           <a
-            href={location.bookingUrl}
+            href={content.ctas.hero.url}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
           >
-            Book Your Stay
+            {content.ctas.hero.label}
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -248,10 +94,10 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
       <section className="bg-forest-DEFAULT py-8">
         <div className="container-custom px-6">
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-            {Object.entries(location.stats).map(([key, value]) => (
-              <div key={key} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-white">{value as string}</div>
-                <div className="text-white/70 text-sm capitalize">{key.replace(/([A-Z])/g, ' $1')}</div>
+            {content.stats.map((stat) => (
+              <div key={stat.key} className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
+                <div className="text-white/70 text-sm capitalize">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -266,7 +112,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">About This Location</h2>
               <div className="prose prose-lg max-w-none">
-                {location.longDescription.split('\n\n').map((paragraph: string, index: number) => (
+                {content.paragraphs.map((paragraph: string, index: number) => (
                   <p key={index} className="text-gray-600 leading-relaxed mb-4">
                     {paragraph}
                   </p>
@@ -277,11 +123,11 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               <div className="mt-12">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Photo Gallery</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {location.gallery.map((image: string, index: number) => (
+                  {content.gallery.map((photo, index: number) => (
                     <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
                       <Image
-                        src={image}
-                        alt={`${location.name} gallery image ${index + 1}`}
+                        src={photo.src}
+                        alt={photo.alt}
                         fill
                         className="object-cover hover:scale-110 transition-transform duration-500"
                       />
@@ -297,7 +143,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               <div className="bg-gray-50 rounded-2xl p-6 mb-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Activities & Amenities</h3>
                 <ul className="space-y-3">
-                  {location.features.map((feature: string) => (
+                  {content.features.map((feature: string) => (
                     <li key={feature} className="flex items-center text-gray-700">
                       <svg className="w-5 h-5 mr-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -312,21 +158,21 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               <div className="bg-forest-DEFAULT rounded-2xl p-6 text-white">
                 <h3 className="text-xl font-bold mb-4">Ready to Visit?</h3>
                 <p className="text-white/80 mb-6">
-                  Book your stay and experience everything {location.name} has to offer.
+                  Book your stay and experience everything {content.name} has to offer.
                 </p>
                 <a
-                  href={location.bookingUrl}
+                  href={content.ctas.sidebar.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
                 >
-                  Check Availability
+                  {content.ctas.sidebar.label}
                 </a>
-                <a href={`tel:${(location.phone || '207-307-7903').replace(/[^+\d]/g, '')}`} className="flex items-center justify-center gap-2 mt-4 text-white/80 hover:text-white transition-colors">
+                <a href={`tel:${(content.phone || site.phone).replace(/[^+\d]/g, '')}`} className="flex items-center justify-center gap-2 mt-4 text-white/80 hover:text-white transition-colors">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  Call {location.phone ? location.phone : '+1 207 307-7903'}
+                  Call {content.phone ? content.phone : site.phoneDisplay}
                 </a>
               </div>
             </div>
