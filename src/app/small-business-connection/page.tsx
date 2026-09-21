@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: "Small Business Connection",
@@ -9,6 +10,12 @@ export const metadata: Metadata = {
 export default function SmallBusinessConnectionPage() {
   return (
     <section style={ { padding: "80px 20px", maxWidth: 800, margin: "0 auto" } }>
+      <PageSchema
+        url="/small-business-connection"
+        name="Small Business Connection | BA Services"
+        crumbName="Small Business Connection"
+        description="A network of trusted local service businesses across Maine and New England."
+      />
       <h1 style={ { fontSize: "2rem", fontWeight: 700, marginBottom: 12 } }>Small Business Connection</h1>
       <p style={ { fontSize: "1.05rem", color: "#555", marginBottom: 32, lineHeight: 1.7 } }>
         We are proud to be part of a network of trusted local service businesses across Maine and New England.

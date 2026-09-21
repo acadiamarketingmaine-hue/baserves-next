@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 // Experience data - will be replaced with Sanity CMS
 const experiences: Record<string, any> = {
@@ -159,6 +160,15 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url={`/experiences/${params.slug}`}
+        routeKey="/experiences/[slug]"
+        name={`${experience.name} | BA Services`}
+        crumbName={experience.name}
+        description={experience.longDescription?.split('\n\n')[0] || experience.description}
+        image={experience.image}
+        crumbs={[{ name: 'Experiences', url: '/experiences' }]}
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

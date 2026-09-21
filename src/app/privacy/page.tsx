@@ -1,6 +1,7 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata = {
   title: 'Privacy Policy | BA Services',
@@ -15,6 +16,12 @@ export default function PrivacyPolicyPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/privacy"
+        name="Privacy Policy | BA Services"
+        crumbName="Privacy Policy"
+        description="Learn how BA Services collects, uses, and protects your personal information."
+      />
 
       <section className="pt-32 pb-20">
         <div className="container-custom px-6">

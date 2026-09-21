@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 
@@ -66,6 +67,14 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/about"
+        name="About Us | BA Services"
+        crumbName="About Us"
+        description="BA Services, Inc. manages 15+ recreation areas across 7 states — campgrounds, national forests, state parks, and DOT rest areas with 100+ dedicated team members."
+        type="AboutPage"
+        image="/images/monongahela/spruce-knob-panorama.jpg"
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20">

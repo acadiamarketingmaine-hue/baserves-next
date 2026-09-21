@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Seneca Shadows Campground | Monongahela National Forest | BA Services',
@@ -15,6 +16,14 @@ export default function SenecaShadowsCampgroundPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/monongahela-national-forest/seneca-shadows-campground"
+        name="Seneca Shadows Campground | Monongahela National Forest | BA Services"
+        crumbName="Seneca Shadows Campground"
+        description="Seneca Shadows Campground sits in the shadow of the iconic Seneca Rocks — one of the most famous rock climbing destinations in the eastern United States. Locate"
+        image="/images/monongahela/entrance-sign.jpg"
+        crumbs={[{ name: "Monongahela National Forest", url: "/monongahela-national-forest" }]}
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">

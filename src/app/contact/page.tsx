@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ContactForm from '@/components/ContactForm'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata = {
   title: 'Contact Us',
@@ -15,6 +16,14 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/contact"
+        name="Contact Us | BA Services"
+        crumbName="Contact Us"
+        description="Reach BA Services for career opportunities, partnership inquiries, or rest area feedback. Call +1-207-307-7903 or email us from Bangor, Maine."
+        type="ContactPage"
+        image="/images/bankhead-forest.jpg"
+      />
 
       <section className="relative pt-32 pb-16 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">

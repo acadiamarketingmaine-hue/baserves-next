@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Meramec State Park | Sullivan, Missouri | BA Services',
@@ -186,6 +187,14 @@ export default function MeramecStateParkPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/experiences/meramec-state-park"
+        name="Meramec State Park | Sullivan, Missouri | BA Services"
+        crumbName="Meramec State Park"
+        description="Explore Meramec State Park along the Meramec River in Sullivan, Missouri. 19 cabins, motel lodging, 40+ caves, Fisher Cave tours, float trips, and CCC-built historic architecture across 6,896 acres."
+        image="/images/meramec-state-park/cabin-2.jpg"
+        crumbs={[{ name: "Experiences", url: "/experiences" }]}
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

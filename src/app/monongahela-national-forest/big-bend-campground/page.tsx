@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Big Bend Campground | Monongahela National Forest | BA Services',
@@ -15,6 +16,14 @@ export default function BigBendCampgroundPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/monongahela-national-forest/big-bend-campground"
+        name="Big Bend Campground | Monongahela National Forest | BA Services"
+        crumbName="Big Bend Campground"
+        description="Big Bend Campground is nestled in a sweeping bend of the South Branch Potomac River within the Monongahela National Forest. The campground offers a mix of tent "
+        image="/images/monongahela/entrance-sign.jpg"
+        crumbs={[{ name: "Monongahela National Forest", url: "/monongahela-national-forest" }]}
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">

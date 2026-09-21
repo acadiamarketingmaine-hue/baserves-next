@@ -5,6 +5,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { BuildingIcon } from '@/components/Icons'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Clear Creek Recreation Area | Bankhead National Forest | BA Services',
@@ -83,6 +84,14 @@ export default function ClearCreekPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/experiences/clear-creek-recreation-area"
+        name="Clear Creek Recreation Area | Bankhead National Forest | BA Services"
+        crumbName="Clear Creek Recreation Area"
+        description="Explore Clear Creek Recreation Area on Lewis Smith Lake in Bankhead National Forest. 102 campsites across 4 loops, swimming beach, boat ramps, hiking trails, and group camping."
+        image="/images/clear-creek-overview.jpg"
+        crumbs={[{ name: "Experiences", url: "/experiences" }]}
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

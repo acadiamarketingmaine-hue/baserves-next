@@ -2,6 +2,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata = {
   title: 'Rewards | BA Services',
@@ -55,6 +56,12 @@ export default function RewardsPage() {
   return (
     <>
       <Navigation />
+      <PageSchema
+        url="/rewards"
+        name="Rewards | BA Services"
+        crumbName="Rewards"
+        description="BA Services rewards program - coming soon. Earn points on every booking and unlock exclusive perks."
+      />
       <main className="pt-28">
         {/* Hero */}
         <section className="relative bg-forest-DEFAULT py-24 overflow-hidden">

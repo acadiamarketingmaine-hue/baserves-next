@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Canal Bridge Campground | Saco River, Fryeburg, Maine | BA Services',
@@ -135,6 +136,14 @@ export default function CanalBridgePage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/experiences/canal-bridge"
+        name="Canal Bridge Campground | Saco River, Fryeburg, Maine | BA Services"
+        crumbName="Canal Bridge Campground"
+        description="Discover Canal Bridge Campground on the Saco River in Fryeburg, Maine. 36 numbered campsites, river frontage for kayaking, canoeing, and fishing with stunning White Mountain views."
+        image="/images/canal-bridge/entrance.jpg"
+        crumbs={[{ name: "Experiences", url: "/experiences" }]}
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

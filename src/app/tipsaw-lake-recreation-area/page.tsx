@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Tipsaw Lake Recreation Area | Perry County, Indiana | BA Services',
@@ -108,6 +109,13 @@ export default function TipsawLakePage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/tipsaw-lake-recreation-area"
+        name="Tipsaw Lake Recreation Area | Perry County, Indiana | BA Services"
+        crumbName="Tipsaw Lake Recreation Area"
+        description="Explore Tipsaw Lake Recreation Area in Hoosier National Forest. 131-acre lake with camping, swimming beach, fishing, amphitheater, and 8+ miles of trails."
+        image="/images/tipsaw-lake/lake-view.jpg"
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

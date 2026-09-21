@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 // This will be replaced with Sanity data
 const locations: Record<string, any> = {
@@ -194,6 +195,14 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url={`/${params.slug}`}
+        routeKey="/[slug]"
+        name={`${location.name} | BA Services`}
+        crumbName={location.name}
+        description={location.longDescription?.split('\n\n')[0] || location.description}
+        image={location.image}
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

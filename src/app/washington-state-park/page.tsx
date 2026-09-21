@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Washington State Park | De Soto, Missouri | BA Services',
@@ -123,6 +124,13 @@ export default function WashingtonStateParkPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/washington-state-park"
+        name="Washington State Park | De Soto, Missouri | BA Services"
+        crumbName="Washington State Park"
+        description="Explore Washington State Park in De Soto, Missouri. 2,157 acres along the Big River with 11 lodging cabins, ancient petroglyphs, swimming pool, 9.7 miles of trails, and 140 bird species."
+        image="/images/washington-thunderbird-lodge.png"
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

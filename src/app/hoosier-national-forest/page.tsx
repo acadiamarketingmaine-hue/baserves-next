@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Hoosier National Forest | Southern Indiana | BA Services',
@@ -189,6 +190,13 @@ export default function HoosierNationalForestPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/hoosier-national-forest"
+        name="Hoosier National Forest | Southern Indiana | BA Services"
+        crumbName="Hoosier National Forest"
+        description="Explore Hoosier National Forest in southern Indiana. Three recreation areas with camping, swimming, fishing, boating, and hundreds of miles of trails."
+        image="/images/hardin-ridge/aerial.jpg"
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

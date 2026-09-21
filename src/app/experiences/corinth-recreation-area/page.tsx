@@ -5,6 +5,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { BuildingIcon, HikeIcon } from '@/components/Icons'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Corinth Recreation Area | Bankhead National Forest | BA Services',
@@ -64,6 +65,14 @@ export default function CorinthPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/experiences/corinth-recreation-area"
+        name="Corinth Recreation Area | Bankhead National Forest | BA Services"
+        crumbName="Corinth Recreation Area"
+        description="Discover Corinth Recreation Area on Lewis Smith Lake in Bankhead National Forest. 52 full-hookup campsites, 10 tent sites, swimming beach, pavilion, and Bobwhite Trail."
+        image="/images/corinth-boat-ramp.jpg"
+        crumbs={[{ name: "Experiences", url: "/experiences" }]}
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

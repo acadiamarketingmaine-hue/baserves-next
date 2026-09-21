@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "lastmod": "node scripts/gen-lastmod.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "image-dims": "node scripts/gen-image-dims.mjs"
   },
   "dependencies": {
     "@sanity/client": "^6.29.1",

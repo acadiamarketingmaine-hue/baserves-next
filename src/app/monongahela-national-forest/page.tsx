@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Monongahela National Forest | Eastern West Virginia | BA Services',
@@ -167,6 +168,13 @@ export default function MonongahelaNationalForestPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/monongahela-national-forest"
+        name="Monongahela National Forest | Eastern West Virginia | BA Services"
+        crumbName="Monongahela National Forest"
+        description="Explore Monongahela National Forest — 921,000 acres of Allegheny Mountain wilderness with 800+ miles of trails, 5 wilderness areas, Spruce Knob, Seneca Rocks, highland bogs, and spruce forests."
+        image="/images/monongahela/spruce-knob-panorama.jpg"
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

@@ -4,6 +4,8 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { utahRestAreas } from '@/data/utah-rest-areas'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
+import { service, serviceId } from '@/lib/schema'
 
 const RestAreaMap = dynamic(() => import('@/components/RestAreaMap'), { ssr: false })
 
@@ -129,6 +131,18 @@ export default function UtahDotPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/services/utah-dot"
+        name={`${metadata.title} | BA Services`}
+        crumbName={metadata.title}
+        description={metadata.description}
+        type="ItemPage"
+        image="/images/utah-welcome-sign.jpg"
+        mainEntity={serviceId('utah-dot')}
+        crumbs={[{ name: 'Services', url: '/services' }]}
+        dataKeys={['src/data/utah-rest-areas.ts']}
+        nodes={[service('utah-dot', { areaServed: ['UT'] })]}
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">

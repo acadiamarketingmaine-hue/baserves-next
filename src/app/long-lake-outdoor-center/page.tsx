@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Long Lake Outdoor Center | Yankee Springs, Michigan | BA Services',
@@ -180,6 +181,13 @@ export default function LongLakePage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/long-lake-outdoor-center"
+        name="Long Lake Outdoor Center | Yankee Springs, Michigan | BA Services"
+        crumbName="Long Lake Outdoor Center"
+        description="Historic CCC-built outdoor center in Yankee Springs Recreation Area. 16 cabins, 4 bunkhouses, 120-seat lodge with stone fireplaces, commercial kitchen, and private lake access. Weddings, retreats, and group camps year-round."
+        image="/images/long-lake/fall-aerial.jpg"
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

@@ -1,10 +1,12 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/seo';
+import { lastmodFor } from '@/lib/lastmod';
 
 type Freq = NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>;
 
-// [path, lastmod (git commit date of the page file), changeFrequency, priority]
-// Keep lastmod stable — never new Date() — so Google trusts the value.
+// [path, fallback lastmod, changeFrequency, priority]
+// lastmod comes from src/data/lastmod.json (git commit dates via scripts/gen-lastmod.mjs) — the same
+// value WebPage.dateModified uses — with the hand date as fallback. Never new Date().
 const ROUTES: [string, string, Freq, number][] = [
   // Static pages
   ['/', '2026-04-24', 'weekly', 1],
@@ -68,7 +70,7 @@ const ROUTES: [string, string, Freq, number][] = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return ROUTES.map(([path, lastmod, changeFrequency, priority]) => ({
     url: path === '/' ? SITE_URL : `${SITE_URL}${path}`,
-    lastModified: new Date(lastmod),
+    lastModified: lastmodFor(path, lastmod),
     changeFrequency,
     priority,
   }));

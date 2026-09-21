@@ -5,6 +5,8 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
+import { service, serviceId } from '@/lib/schema'
 
 const services: Record<string, any> = {
   'campground-park-maintenance': {
@@ -130,6 +132,18 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url={`/services/${params.slug}`}
+        routeKey="/services/[slug]"
+        name={`${service.name} | BA Services`}
+        crumbName={service.name}
+        description={service.description}
+        type="ItemPage"
+        image={service.image}
+        mainEntity={serviceId(params.slug)}
+        crumbs={[{ name: 'Services', url: '/services' }]}
+        nodes={[service(params.slug, { image: service.image, description: service.description })]}
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20">

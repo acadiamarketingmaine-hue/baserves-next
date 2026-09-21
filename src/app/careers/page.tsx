@@ -4,6 +4,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import EmploymentApplicationForm from '@/components/EmploymentApplicationForm'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
+import { jobPosting } from '@/lib/schema'
 
 const benefits = [
   { title: 'Work Outdoors', description: 'Spend your days in beautiful natural settings' },
@@ -41,6 +43,16 @@ const positions = [
   },
 ]
 
+// JSON-LD JobPosting locations, from the `location` strings above (never invented).
+const JOB_LOCATIONS: Record<string, { locality?: string; region?: string; name?: string }[]> = {
+  'Multiple Locations': [{ name: 'Multiple BA Services locations' }],
+  'Michigan & Indiana': [{ region: 'MI' }, { region: 'IN' }],
+  'Long Lake Outdoor Center': [{ name: 'Long Lake Outdoor Center', locality: 'Middleville', region: 'MI' }],
+}
+const EMPLOYMENT_TYPE: Record<string, string> = { Seasonal: 'TEMPORARY', 'Full-Time': 'FULL_TIME', 'Part-Time': 'PART_TIME' }
+// First commit that published these openings (git log --diff-filter=A -- src/app/careers/page.tsx).
+const JOBS_DATE_POSTED = '2026-01-16'
+
 export const metadata = {
   title: 'Careers',
   description: 'Join BA Services — seasonal and full-time outdoor jobs at campgrounds, state parks, and rest areas across 7 states. Apply online today.',
@@ -54,6 +66,23 @@ export default function CareersPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/careers"
+        name="Careers | BA Services"
+        crumbName="Careers"
+        description={metadata.description}
+        image="/images/long-lake/fall-foliage.jpg"
+        nodes={positions.map((p) =>
+          jobPosting({
+            url: '/careers',
+            title: p.title,
+            description: p.description,
+            datePosted: JOBS_DATE_POSTED,
+            employmentType: EMPLOYMENT_TYPE[p.type] ?? 'OTHER',
+            locations: JOB_LOCATIONS[p.location] ?? [{ name: p.location }],
+          }),
+        )}
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Leave a Review | BA Services',
@@ -15,5 +16,17 @@ export default function LeaveReviewLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return (
+    <>
+      <PageSchema
+        url="/leave-a-review"
+        name="Leave a Review | BA Services"
+        crumbName="Leave a Review"
+        description="Submit your feedback about BA Services rest areas and recreation facilities."
+        type="ContactPage"
+        image="/images/Burlingame1-2048x1365.jpg"
+      />
+      {children}
+    </>
+  )
 }

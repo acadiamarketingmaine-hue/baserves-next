@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ServiceAccordion from '@/components/ServiceAccordion'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 const services = [
   {
@@ -94,6 +95,14 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/services"
+        name="Services | BA Services"
+        crumbName="Services"
+        description="Campground maintenance, landscaping, rest area cleaning, and preventive repairs. BA Services manages federal, state, and DOT recreation facilities across America."
+        type="CollectionPage"
+        image="/images/bankhead-forest.jpg"
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">

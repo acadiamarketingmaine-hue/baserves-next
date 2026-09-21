@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon, MountainIcon } from '@/components/Icons'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 const locations = [
   {
@@ -138,6 +139,14 @@ export default function ExperiencesPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/experiences"
+        name="Experiences | BA Services"
+        crumbName="Experiences"
+        description="Explore 12+ recreation areas managed by BA Services — campgrounds, national forests, and state parks across AL, IN, ME, MI, MO, RI, and WV. Book your stay today."
+        type="CollectionPage"
+        image="/images/bankhead-forest.jpg"
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">

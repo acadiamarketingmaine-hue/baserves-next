@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Bankhead National Forest | Alabama | BA Services',
@@ -140,6 +141,13 @@ export default function BankheadNationalForestPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/bankhead-national-forest"
+        name="Bankhead National Forest | Alabama | BA Services"
+        crumbName="Bankhead National Forest"
+        description={'Explore Bankhead National Forest — "The Land of a Thousand Waterfalls." 180,000+ acres featuring the Sipsey Wilderness, 84 breeding bird species, campgrounds, and the Hurricane Creek Shooting Range.'}
+        image="/images/bankhead-forest.jpg"
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

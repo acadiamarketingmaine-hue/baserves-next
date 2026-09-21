@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Gatewood Group Campground | Monongahela National Forest | BA Services',
@@ -15,6 +16,14 @@ export default function GatewoodGroupCampgroundPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/monongahela-national-forest/gatewood-group-campground"
+        name="Gatewood Group Campground | Monongahela National Forest | BA Services"
+        crumbName="Gatewood Group Campground"
+        description="Gatewood Group Campground offers a secluded group camping experience within the Monongahela National Forest. Designed for organized groups, the campground provi"
+        image="/images/monongahela/entrance-sign.jpg"
+        crumbs={[{ name: "Monongahela National Forest", url: "/monongahela-national-forest" }]}
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">

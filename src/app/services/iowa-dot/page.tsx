@@ -4,6 +4,8 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { iowaRestAreas } from '@/data/iowa-rest-areas'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
+import { service, serviceId } from '@/lib/schema'
 
 const RestAreaMap = dynamic(() => import('@/components/RestAreaMap'), { ssr: false })
 
@@ -94,6 +96,18 @@ export default function IowaDotPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/services/iowa-dot"
+        name={`${metadata.title} | BA Services`}
+        crumbName={metadata.title}
+        description={metadata.description}
+        type="ItemPage"
+        image="/images/iowa-dot-collage.png"
+        mainEntity={serviceId('iowa-dot')}
+        crumbs={[{ name: 'Services', url: '/services' }]}
+        dataKeys={['src/data/iowa-rest-areas.ts']}
+        nodes={[service('iowa-dot', { areaServed: ['IA'] })]}
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">

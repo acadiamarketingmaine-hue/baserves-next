@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Spruce Knob Lake Campground | Monongahela National Forest | BA Services',
@@ -15,6 +16,14 @@ export default function SpruceKnobLakeCampgroundPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/monongahela-national-forest/spruce-knob-lake-campground"
+        name="Spruce Knob Lake Campground | Monongahela National Forest | BA Services"
+        crumbName="Spruce Knob Lake Campground"
+        description="Spruce Knob Lake Campground is perched at high elevation near the summit of Spruce Knob — the highest point in West Virginia at 4,863 feet. The campground surro"
+        image="/images/monongahela/entrance-sign.jpg"
+        crumbs={[{ name: "Monongahela National Forest", url: "/monongahela-national-forest" }]}
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">

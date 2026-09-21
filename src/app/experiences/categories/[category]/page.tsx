@@ -6,6 +6,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon, MountainIcon } from '@/components/Icons'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 const categoryData: Record<string, any> = {
   'kayak-and-watercraft-rentals': {
@@ -118,6 +119,16 @@ export default function CategoryPage({ params }: { params: { category: string } 
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url={`/experiences/categories/${params.category}`}
+        routeKey="/experiences/categories/[category]"
+        name={`${category.name} | BA Services`}
+        crumbName={category.name}
+        description={category.description}
+        type="CollectionPage"
+        image={category.image}
+        crumbs={[{ name: 'Experiences', url: '/experiences' }]}
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20">

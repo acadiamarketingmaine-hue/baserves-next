@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Stuart Recreation Area | Monongahela National Forest | BA Services',
@@ -15,6 +16,14 @@ export default function StuartRecreationAreaPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/monongahela-national-forest/stuart-recreation-area"
+        name="Stuart Recreation Area | Monongahela National Forest | BA Services"
+        crumbName="Stuart Recreation Area"
+        description="Stuart Recreation Area offers family-friendly camping along the shores of a scenic mountain lake in the Monongahela National Forest. The area features both tent"
+        image="/images/monongahela/entrance-sign.jpg"
+        crumbs={[{ name: "Monongahela National Forest", url: "/monongahela-national-forest" }]}
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">

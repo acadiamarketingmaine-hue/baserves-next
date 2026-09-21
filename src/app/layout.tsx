@@ -48,38 +48,6 @@ export const metadata: Metadata = {
   },
 }
 
-const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'BA Services, Inc.',
-  url: 'https://baserves.com',
-  logo: 'https://baserves.com/images/logo.png',
-  description: 'Professional recreation area management company operating campgrounds, national forests, state parks, and DOT rest areas across 7 states.',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '1157 Hammond Street',
-    addressLocality: 'Bangor',
-    addressRegion: 'ME',
-    postalCode: '04401',
-    addressCountry: 'US',
-  },
-  telephone: '+1-207-307-7903',
-  email: 'email@BAServes.com',
-  sameAs: [],
-}
-
-const websiteJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'BA Services',
-  url: 'https://baserves.com',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: 'https://baserves.com/experiences?q={search_term_string}',
-    'query-input': 'required name=search_term_string',
-  },
-}
-
 export default function RootLayout({
   children,
 }: {
@@ -88,14 +56,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-gray-900 antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-        />
         {children}
         <TreekoChat />
       </body>

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Hardin Ridge Recreation Area | Monroe County, Indiana | BA Services',
@@ -110,6 +111,13 @@ export default function HardinRidgePage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/hardin-ridge-recreation-area"
+        name="Hardin Ridge Recreation Area | Monroe County, Indiana | BA Services"
+        crumbName="Hardin Ridge Recreation Area"
+        description="Explore Hardin Ridge Recreation Area on Monroe Lake in Hoosier National Forest. 200+ campsites, swimming beach, boat ramp, and 12+ miles of trails."
+        image="/images/hardin-ridge-entrance-sign.jpg"
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

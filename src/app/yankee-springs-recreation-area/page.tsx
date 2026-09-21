@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Yankee Springs Recreation Area | Barry County, Michigan | BA Services',
@@ -139,6 +140,13 @@ export default function YankeeSpringsPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/yankee-springs-recreation-area"
+        name="Yankee Springs Recreation Area | Barry County, Michigan | BA Services"
+        crumbName="Yankee Springs Recreation Area"
+        description="Explore Yankee Springs Recreation Area in Barry County, Michigan. 5,200+ acres, 200+ campsites, 30+ miles of trails, historic CCC cabins, and year-round outdoor recreation."
+        image="/images/yankee-springs/hill-cabins.jpg"
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">

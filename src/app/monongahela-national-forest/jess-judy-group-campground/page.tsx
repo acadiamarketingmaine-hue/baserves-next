@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Jess Judy Group Campground | Monongahela National Forest | BA Services',
@@ -15,6 +16,14 @@ export default function JessJudyGroupCampgroundPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/monongahela-national-forest/jess-judy-group-campground"
+        name="Jess Judy Group Campground | Monongahela National Forest | BA Services"
+        crumbName="Jess Judy Group Campground"
+        description="Jess Judy Group Campground provides dedicated group camping facilities in the heart of the Monongahela National Forest. Ideal for scout troops, family reunions,"
+        image="/images/monongahela/entrance-sign.jpg"
+        crumbs={[{ name: "Monongahela National Forest", url: "/monongahela-national-forest" }]}
+      />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">

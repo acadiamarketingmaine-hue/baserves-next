@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Indian-Celina Lakes Recreation Area | Hoosier National Forest, Indiana | BA Services',
@@ -101,6 +102,13 @@ export default function IndianCelinaLakesPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageSchema
+        url="/indian-celina-lakes-recreation-area"
+        name="Indian-Celina Lakes Recreation Area | Hoosier National Forest, Indiana | BA Services"
+        crumbName="Indian-Celina Lakes Recreation Area"
+        description="Explore Indian-Celina Lakes Recreation Area in Hoosier National Forest. Two scenic lakes with camping, accessible fishing pier, boat launch, and hiking trails."
+        image="/images/indian-celina-entrance-sign.jpg"
+      />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
