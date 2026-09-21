@@ -30,7 +30,7 @@ Maine:
 Michigan (Yankee Springs area):
 - Yankee Springs Recreation Area — 200+ campsites, 30+ miles of trails, 5,200+ acres. Barry County, MI. Book at baserves.com/yankee-springs-recreation-area
 - Long Lake Outdoor Center — 20 cabins, private lake, outdoor education, group camping, wedding venue. Middleville, MI. Book at escape.baserves.com (select Long Lake). Phone: 616-644-9459, Email: yankee@baserves.com
-- Chief Noonday Outdoor Center — 10+ cabins, 3 lodges, 150+ capacity group camp & retreat center. Middleville, MI. Book at escape.baserves.com (select Chief Noonday). Phone: 616-644-9459, Email: yankee@baserves.com
+- Chief Noonday Outdoor Center — four rentable cabins and lodges sleeping 26 in total (Bear Den sleeps 6, Chickadee Cabin 4, Deer Lodge 8, Crane House 8); a small group camp & retreat center. Middleville, MI. Book at escape.baserves.com (select Chief Noonday). Phone: 616-644-9459, Email: yankee@baserves.com
 
 Missouri:
 - Meramec State Park — 6,896 acres along the Meramec River. 19 cabins, motel, float trips, Fisher Cave. Sullivan, MO. Book at mostateparks.com/park/meramec-state-park
