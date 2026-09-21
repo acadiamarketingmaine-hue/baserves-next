@@ -1,18 +1,23 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon } from '@/components/Icons'
+import { rotateFeatured } from '@/lib/featured-rotation'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 import ScopeAccordion from '@/components/ScopeAccordion'
 
-// All featured destinations — 3 shown at a time, rotating every 6 seconds
-// Ordered alphabetically by state, then by campground/recreation area name
+// All featured destinations — 3 shown at a time, auto-advancing every 6
+// seconds through the carousel below (see `next()`). The order rendered is
+// this array reordered per calendar day by rotateFeatured() in HomeClient(),
+// so a different destination leads on different days; this base array's own
+// order (alphabetical by state, then by name) only matters as the tiebreak
+// within rotateFeatured's state-interleaving.
 const allLocations = [
   // Alabama
   {
@@ -1010,7 +1015,16 @@ function AnimatedCounter({ target, suffix = '', isActive }: { target: number; su
   return <span>{count}{suffix}</span>
 }
 
-export default function HomeClient() {
+interface HomeClientProps {
+  /** Today's UTC calendar day (YYYY-MM-DD), computed server-side in
+   *  src/app/page.tsx and passed down so the Featured Destinations rotation
+   *  (see src/lib/featured-rotation.ts) is identical on the server-rendered
+   *  HTML and the client hydration pass — no Date.now() read in this
+   *  component, so there's nothing to mismatch. */
+  featuredDateKey: string
+}
+
+export default function HomeClient({ featuredDateKey }: HomeClientProps) {
   const [loading, setLoading] = useState(true)
   const [loadProgress, setLoadProgress] = useState(0)
   const [fadeOut, setFadeOut] = useState(false)
@@ -1026,8 +1040,15 @@ export default function HomeClient() {
   const [isDragging, setIsDragging] = useState(false)
   const [dragOffset, setDragOffset] = useState(0)
   const autoAdvanceRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const maxIndex = Math.max(0, allLocations.length - cardsPerView)
-  const totalDots = Math.ceil(allLocations.length / cardsPerView)
+  // Same 12 cards, same design — just reordered so a different destination
+  // leads each UTC day (see src/lib/featured-rotation.ts). Deterministic on
+  // `featuredDateKey` alone, so this matches on server and client.
+  const featuredLocations = useMemo(
+    () => rotateFeatured(featuredDateKey, allLocations),
+    [featuredDateKey]
+  )
+  const maxIndex = Math.max(0, featuredLocations.length - cardsPerView)
+  const totalDots = Math.ceil(featuredLocations.length / cardsPerView)
   const activeDot = Math.min(Math.floor(currentIndex / cardsPerView), totalDots - 1)
 
   // Loading screen — runs once per session
@@ -1315,7 +1336,7 @@ export default function HomeClient() {
                   transition: isDragging ? 'none' : 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
               >
-                {allLocations.map((location) => (
+                {featuredLocations.map((location) => (
                   <button
                     key={location.name}
                     onClick={() => setSelectedLocation(location)}
