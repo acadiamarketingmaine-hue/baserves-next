@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "lastmod": "node scripts/gen-lastmod.mjs",
+    "test": "node --test --experimental-strip-types tests/*.test.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

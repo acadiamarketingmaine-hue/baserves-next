@@ -10,6 +10,17 @@ import NoticeBanner from '@/content/NoticeBanner'
 
 const SLUG = 'yankee-springs-recreation-area'
 
+/**
+ * This page reads the content layer, so it must not be frozen at build time:
+ * once a camp publishes an edit, a page that only changes when somebody
+ * deploys is a page the editor cannot reach. Five minutes is the floor — the
+ * publish webhook (POST /api/revalidate) drops this slug's cache tag and makes
+ * a change visible in seconds, and this is what happens when that webhook does
+ * not arrive. Kept as a literal because Next.js reads it statically; the same
+ * number is CONTENT_POLICY.revalidateSeconds.
+ */
+export const revalidate = 300
+
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getPropertyContent(SLUG)
   return {
