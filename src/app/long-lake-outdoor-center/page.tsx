@@ -8,7 +8,7 @@ import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
   title: 'Long Lake Outdoor Center | Yankee Springs, Michigan | BA Services',
-  description: 'Historic CCC-built outdoor center in Yankee Springs Recreation Area. 16 cabins, 4 bunkhouses, 120-seat lodge with stone fireplaces, commercial kitchen, and private lake access. Weddings, retreats, and group camps year-round.',
+  description: 'Historic CCC-built outdoor center in Yankee Springs Recreation Area. 16 cabins, 4 bunkhouses, 120-seat lodge with stone fireplaces, commercial kitchen, and private lake access. Weddings, retreats, and group camps in season.',
   alternates: { canonical: '/long-lake-outdoor-center' },
   openGraph: og('/long-lake-outdoor-center'),
 }
@@ -48,7 +48,7 @@ const amenities = [
   '2 Stone Fireplaces',
   '16 Cabins',
   '4 Bunkhouses',
-  'Year-Round Facility',
+  'Seasonal Facility',
   'ADA Accessible',
 ]
 
@@ -185,7 +185,7 @@ export default function LongLakePage() {
         url="/long-lake-outdoor-center"
         name="Long Lake Outdoor Center | Yankee Springs, Michigan | BA Services"
         crumbName="Long Lake Outdoor Center"
-        description="Historic CCC-built outdoor center in Yankee Springs Recreation Area. 16 cabins, 4 bunkhouses, 120-seat lodge with stone fireplaces, commercial kitchen, and private lake access. Weddings, retreats, and group camps year-round."
+        description="Historic CCC-built outdoor center in Yankee Springs Recreation Area. 16 cabins, 4 bunkhouses, 120-seat lodge with stone fireplaces, commercial kitchen, and private lake access. Weddings, retreats, and group camps in season."
         image="/images/long-lake/fall-aerial.jpg"
       />
 
@@ -264,7 +264,7 @@ export default function LongLakePage() {
                   The center accommodates approximately 120 people with 16 cabins divided between the Hill Unit and the Lake Unit, four bunkhouses, and a central lodge with dining space. A commercial kitchen supports group meals and catering. The Hill Unit features cabins in a semi-circle around a central fire pit. The Lake Unit is set near the shoreline with cabins overlooking the lake.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Long Lake Outdoor Center operates year-round with swimming, fishing, and hiking in warmer months, vibrant fall foliage, and cross-country skiing and snowshoeing in winter.
+                  Long Lake Outdoor Center operates seasonally, with swimming, fishing, and hiking through the warmer months and vibrant fall foliage before the season closes. Contact us for this season's opening and closing dates.
                 </p>
               </div>
 
@@ -541,7 +541,7 @@ export default function LongLakePage() {
             Host Your Next Event at Long Lake
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            A historic CCC property with private lake access, lodging for 120, and year-round availability. Start planning your wedding, retreat, or group camp today.
+            A historic CCC property with private lake access, lodging for 120, and a full season of open dates. Start planning your wedding, retreat, or group camp today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

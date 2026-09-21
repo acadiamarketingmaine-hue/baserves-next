@@ -90,7 +90,7 @@ const allLocations = [
   },
   {
     name: 'Long Lake Outdoor Center',
-    tagline: 'Year-Round Outdoor Education & Recreation',
+    tagline: 'Seasonal Outdoor Education & Recreation',
     description: 'CCC-built retreat center with cabins, a private lake, and lodge',
     location: 'Middleville, MI',
     features: ['Group Camping', 'Outdoor Education', 'Team Building', 'Lake Activities'],
@@ -317,7 +317,7 @@ const statesData = [
       },
       {
         name: 'Long Lake Outdoor Center',
-        tagline: 'Year-Round Outdoor Education & Recreation',
+        tagline: 'Seasonal Outdoor Education & Recreation',
         location: 'Middleville, MI',
         stats: { capacity: '200+', cabins: '20', lake: 'Private Lake' },
         activities: ['Group Camping', 'Outdoor Education', 'Team Building', 'Lake Activities'],
