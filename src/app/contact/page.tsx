@@ -47,6 +47,30 @@ export default function ContactPage() {
           <Suspense fallback={<div className="text-center py-8 text-gray-500">Loading...</div>}>
             <ContactForm />
           </Suspense>
+
+          {/* Business address and contact details — Bar Harbor Bank card-brand review */}
+          <div className="mt-12 grid sm:grid-cols-3 gap-6">
+            <div className="bg-white rounded-2xl border border-gray-200 p-6">
+              <h3 className="font-semibold text-gray-900">Mailing Address</h3>
+              <p className="text-gray-600 mt-1 text-sm leading-relaxed">
+                BA Services, Inc.<br />
+                1257 Hammond Street<br />
+                Bangor, ME 04401
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl border border-gray-200 p-6">
+              <h3 className="font-semibold text-gray-900">Phone</h3>
+              <p className="text-gray-600 mt-1 text-sm">
+                <a href="tel:+12073077903" className="text-forest-DEFAULT hover:underline">+1 207 307-7903</a>
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl border border-gray-200 p-6">
+              <h3 className="font-semibold text-gray-900">Email</h3>
+              <p className="text-gray-600 mt-1 text-sm break-words">
+                <a href="mailto:email@BAServes.com" className="text-forest-DEFAULT hover:underline">email@BAServes.com</a>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
