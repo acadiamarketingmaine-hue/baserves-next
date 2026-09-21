@@ -47,8 +47,8 @@ const locationsByState = [
     state: 'Missouri',
     icon: '/images/states/missouri.png',
     locations: [
-      { name: 'Washington State Park', href: '/washington-state-park' },
       { name: 'Meramec State Park', href: '/experiences/meramec-state-park' },
+      { name: 'Washington State Park', href: '/washington-state-park' },
     ],
   },
   {
