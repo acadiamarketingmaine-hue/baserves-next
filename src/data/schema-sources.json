@@ -59,7 +59,7 @@
     "recheck_2026-09-21": "Still none: BBB profile lists no payment methods; site copy mentions payment only in /refund_returns ('original payment method'), which names no methods."
   },
   "address_discrepancy": {
-    "value": "config/footer print 1157 Hammond Street; GBP, D&B, Chamber, the 2023 archived site, and src/app/api/treeko/route.ts all say 1257 Hammond St (older listings: 263 State St Suite 1)",
+    "value": "RESOLVED 2026-09-21 to 1257 (site, footer, contact page and JSON-LD now agree; also Dallas McCue's email signature and the bank-reviewed booking site). History: config/footer printed 1157 Hammond Street; GBP, D&B, Chamber, the 2023 archived site, and src/app/api/treeko/route.ts all say 1257 Hammond St (older listings: 263 State St Suite 1)",
     "source": "https://maps.google.com/maps?cid=3452204696455686904&output=embed ; https://web.archive.org/web/20231207111104/https://baserves.com/ ; https://www.dnb.com/business-directory/company-profiles.ba_services_inc.c719d1437f81ecc3ed54f37957626b79.html",
     "checked": "2026-09-21"
   }

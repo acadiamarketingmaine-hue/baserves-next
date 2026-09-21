@@ -62,7 +62,7 @@ export const faqs = [
   },
   {
     q: 'When is Long Lake available?',
-    a: 'Long Lake Outdoor Center is a year-round facility. Check the calendar online, or contact us to ask about a specific weekend.',
+    a: 'Long Lake Outdoor Center is a seasonal facility. Check the calendar online, or contact us for this season’s opening and closing dates and to ask about a specific weekend.',
   },
 ]
 

@@ -47,17 +47,15 @@ const locationsByState = [
     state: 'Missouri',
     icon: '/images/states/missouri.png',
     locations: [
-      { name: 'Washington State Park', href: '/washington-state-park' },
       { name: 'Meramec State Park', href: '/experiences/meramec-state-park' },
+      { name: 'Washington State Park', href: '/washington-state-park' },
     ],
   },
   {
     state: 'Rhode Island',
     icon: '/images/states/rhode-island.png',
     locations: [
-      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', children: [
-        { name: 'Burlingame State Campground', href: '/experiences/burlingame-state-park' },
-      ]},
+      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park' },
     ],
   },
   {
@@ -125,8 +123,8 @@ export default function Footer() {
             </p>
             <div className="text-white/70 text-sm space-y-1 mb-4">
               <p className="font-semibold text-white">BA Services, Inc.</p>
-              <p>1157 Hammond Street</p>
-              <p>Bangor, Maine 04401</p>
+              <p>1257 Hammond Street</p>
+              <p>Bangor, ME 04401</p>
               <a href="mailto:email@BAServes.com" className="text-green-400 hover:text-green-300 transition-colors">email@BAServes.com</a>
               <a href="tel:+12073077903" className="flex items-center gap-2 text-white/70 hover:text-white transition-colors mt-1">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
@@ -222,6 +220,13 @@ export default function Footer() {
             <p className="text-white/60 text-sm">
               © {new Date().getFullYear()} BA Services. All rights reserved.
             </p>
+            {/* Card-brand acceptance marks — Bar Harbor Bank card-brand review */}
+            <div className="flex items-center gap-3">
+              <svg viewBox="0 0 48 32" className="h-6" aria-label="Visa"><rect width="48" height="32" rx="4" fill="#1A1F71"/><path d="M19.5 21h-2.7l1.7-10.5h2.7L19.5 21zm11.2-10.2c-.5-.2-1.4-.4-2.4-.4-2.7 0-4.5 1.4-4.5 3.4 0 1.5 1.3 2.3 2.4 2.8 1 .5 1.4.8 1.4 1.3 0 .7-.8 1-1.6 1-.6 0-1.1-.1-1.8-.4l-.3-.1-.3 1.7c.7.3 1.5.4 2.4.4 2.8 0 4.6-1.4 4.6-3.5 0-1.2-.7-2.1-2.2-2.8-1-.5-1.5-.8-1.5-1.3 0-.4.5-.9 1.6-.9.9 0 1.5.2 2 .4l.2.1.3-1.7zm6.8-.3h-2.1c-.6 0-1.1.2-1.4.9L30 21h2.8l.6-1.6h3.5l.3 1.6H40l-2.3-10.5h-2.2zm-2 6.8l1.5-3.8.6 3.8h-2.1zM17 10.5L14.3 18l-.3-1.4c-.5-1.7-2.1-3.5-3.8-4.4l2.4 8.8h2.8l4.3-10.5H17z" fill="#fff"/><path d="M12.2 10.5H8l0 .2c3.3.8 5.5 2.9 6.4 5.3l-.9-4.6c-.2-.7-.7-.9-1.3-.9z" fill="#F9A533"/></svg>
+              <svg viewBox="0 0 48 32" className="h-6" aria-label="Mastercard"><rect width="48" height="32" rx="4" fill="#252525"/><circle cx="19" cy="16" r="8" fill="#EB001B"/><circle cx="29" cy="16" r="8" fill="#F79E1B"/><path d="M24 10.3a8 8 0 010 11.4 8 8 0 000-11.4z" fill="#FF5F00"/></svg>
+              <svg viewBox="0 0 48 32" className="h-6" aria-label="American Express"><rect width="48" height="32" rx="4" fill="#006FCF"/><text x="24" y="18" textAnchor="middle" fill="white" fontSize="7" fontWeight="bold" fontFamily="Arial">AMEX</text></svg>
+              <svg viewBox="0 0 48 32" className="h-6" aria-label="Discover"><rect width="48" height="32" rx="4" fill="#FF6600"/><text x="24" y="18" textAnchor="middle" fill="white" fontSize="6.5" fontWeight="bold" fontFamily="Arial">DISCOVER</text></svg>
+            </div>
           </div>
         </div>
         <div className="text-center pb-4">

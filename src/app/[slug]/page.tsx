@@ -104,7 +104,7 @@ Beyond its historical significance, the park offers excellent hiking trails, a s
   },
   'long-lake-outdoor-center': {
     name: 'Long Lake Outdoor Center',
-    tagline: 'Year-Round Outdoor Education & Recreation',
+    tagline: 'Seasonal Outdoor Education & Recreation',
     description: 'Where adventure meets education in Michigan',
     longDescription: `Long Lake Outdoor Center provides a unique blend of outdoor recreation and environmental education in the heart of Michigan. This facility offers programs for school groups, summer camps, and family retreats, all centered around connecting people with nature.
 

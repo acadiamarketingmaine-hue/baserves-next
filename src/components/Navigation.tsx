@@ -71,17 +71,15 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Missouri',
     icon: '/images/states/missouri.png',
     locations: [
-      { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-thunderbird-lodge.png' },
       { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-entrance-sign.jpg' },
+      { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-thunderbird-lodge.png' },
     ],
   },
   {
     state: 'Rhode Island',
     icon: '/images/states/rhode-island.png',
     locations: [
-      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg', children: [
-        { name: 'Burlingame State Campground', href: '/experiences/burlingame-state-park', image: '/images/burlingame-aerial.jpg' },
-      ]},
+      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg' },
     ],
   },
   {
@@ -130,12 +128,12 @@ const searchIndex: SearchItem[] = [
   { title: 'Hoosier National Forest', description: 'Southern Indiana — 200,000 acres with 3 recreation areas, trails, and camping', href: '/hoosier-national-forest', category: 'Locations', keywords: ['hoosier', 'indiana', 'national forest', 'southern indiana', 'hiking', 'camping'] },
   { title: 'Tipsaw Lake Recreation Area', description: 'Hoosier National Forest, Indiana — boating, fishing, swimming, camping', href: '/tipsaw-lake-recreation-area', category: 'Locations', keywords: ['tipsaw', 'lake', 'indiana', 'hoosier', 'boating', 'fishing', 'swimming', 'camping'] },
   { title: 'Indian-Celina Lakes Recreation Area', description: 'Hoosier National Forest, Indiana — twin lakes, fishing pier, camping', href: '/indian-celina-lakes-recreation-area', category: 'Locations', keywords: ['indian', 'celina', 'lakes', 'indiana', 'hoosier', 'fishing', 'camping', 'boating'] },
-  { title: 'Yankee Springs Recreation Area', description: 'Gun Lake, Michigan — camping, hiking, mountain biking, horseback riding', href: '/yankee-springs', category: 'Locations', keywords: ['yankee springs', 'michigan', 'gun lake', 'camping', 'hiking', 'mountain biking', 'horseback'] },
+  { title: 'Yankee Springs Recreation Area', description: 'Gun Lake, Michigan — camping, hiking, mountain biking, horseback riding', href: '/yankee-springs-recreation-area', category: 'Locations', keywords: ['yankee springs', 'michigan', 'gun lake', 'camping', 'hiking', 'mountain biking', 'horseback'] },
   { title: 'Hardin Ridge Recreation Area', description: 'Monroe Lake, Indiana — hiking, swimming, boating, camping', href: '/hardin-ridge-recreation-area', category: 'Locations', keywords: ['hardin ridge', 'indiana', 'monroe lake', 'hiking', 'swimming', 'boating', 'camping'] },
-  { title: 'Monongahela National Forest', description: 'West Virginia — hiking, fishing, wildlife, fall foliage', href: '/monongahela', category: 'Locations', keywords: ['monongahela', 'west virginia', 'hiking', 'fishing', 'wildlife', 'forest', 'foliage'] },
+  { title: 'Monongahela National Forest', description: 'West Virginia — hiking, fishing, wildlife, fall foliage', href: '/monongahela-national-forest', category: 'Locations', keywords: ['monongahela', 'west virginia', 'hiking', 'fishing', 'wildlife', 'forest', 'foliage'] },
   { title: 'Washington State Park', description: 'De Soto, Missouri — cabins, watercraft rentals, hiking', href: '/washington-state-park', category: 'Locations', keywords: ['washington', 'missouri', 'de soto', 'cabins', 'watercraft', 'kayak', 'canoe', 'hiking'] },
   { title: 'Long Lake Outdoor Center', description: 'Michigan — cabins, campgrounds, outdoor activities', href: '/long-lake-outdoor-center', category: 'Locations', keywords: ['long lake', 'michigan', 'cabins', 'campground', 'outdoor'] },
-  { title: 'Chief Noonday Outdoor Center', description: 'Michigan — cabins, camping, outdoor recreation', href: '/chief-noonday', category: 'Locations', keywords: ['chief noonday', 'michigan', 'cabins', 'camping', 'outdoor'] },
+  { title: 'Chief Noonday Outdoor Center', description: 'Michigan — cabins, camping, outdoor recreation', href: '/chief-noonday-outdoor-center', category: 'Locations', keywords: ['chief noonday', 'michigan', 'cabins', 'camping', 'outdoor'] },
   { title: 'Bankhead National Forest', description: 'Alabama — Sipsey Wilderness, birding, waterfalls, shooting range', href: '/bankhead-national-forest', category: 'Locations', keywords: ['bankhead', 'alabama', 'sipsey', 'wilderness', 'hiking', 'waterfalls', 'canyons', 'birding', 'shooting range'] },
 
   // Experiences (detailed pages)
