@@ -25,12 +25,14 @@
  *   yankee-springs-recreation-area  src/app/yankee-springs-recreation-area/page.tsx
  *   chief-noonday-outdoor-center    src/app/[slug]/page.tsx
  *   bankhead-national-forest        src/app/bankhead-national-forest/page.tsx
+ *   washington-state-park           src/app/washington-state-park/page.tsx
  */
 export const CONVERTED_SLUGS: readonly string[] = [
   'long-lake-outdoor-center',
   'yankee-springs-recreation-area',
   'chief-noonday-outdoor-center',
   'bankhead-national-forest',
+  'washington-state-park',
 ]
 
 /** The reserved slug the site-wide settings live under. */
