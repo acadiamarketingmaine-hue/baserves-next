@@ -27,7 +27,12 @@ import {
   signRevalidateBody,
   verifyRevalidateSignature,
 } from '../src/content/signature.ts'
-import { CONVERTED_SLUGS, SITE_SETTINGS_SLUG, isEditableSlug } from '../src/content/slugs.ts'
+import {
+  CONVERTED_SLUGS,
+  SLUG_TEMPLATE_SLUGS,
+  SITE_SETTINGS_SLUG,
+  isEditableSlug,
+} from '../src/content/slugs.ts'
 import { loadOverrideWith, type FailureKind, type Sanitised } from '../src/content/fetch-override.ts'
 
 /* ----------------------------------------------------------------- resolve */
@@ -364,26 +369,47 @@ test('slug pattern: only lower-case, digits, dash and underscore', () => {
 /* ------------------------------------------------ which pages are editable */
 
 test('editable slugs: only the pages that actually read the content layer', () => {
-  // Converted, so an edit reaches the live page.
-  assert.equal(isEditableSlug('long-lake-outdoor-center'), true)
-  assert.equal(isEditableSlug('yankee-springs-recreation-area'), true)
-  assert.equal(isEditableSlug('chief-noonday-outdoor-center'), true)
-  assert.equal(isEditableSlug(SITE_SETTINGS_SLUG), true)
-
-  // Defaults exist for these, but their pages have the copy in the JSX, so
-  // publishing to them would change nothing. Advertising them is the failure.
-  for (const notConverted of [
+  // Every page whose copy now comes from src/content/defaults, so an edit
+  // reaches the live page. Adding a slug here without converting its page is
+  // the failure this list exists to prevent: the camp types into a box and
+  // their own page does not change.
+  for (const converted of [
+    'long-lake-outdoor-center',
+    'yankee-springs-recreation-area',
+    'chief-noonday-outdoor-center',
+    'bankhead-national-forest',
+    'washington-state-park',
+    'meramec-state-park',
     'tipsaw-lake-recreation-area',
     'hardin-ridge-recreation-area',
+    'indian-celina-lakes-recreation-area',
+    'hoosier-national-forest',
     'monongahela-national-forest',
-    'washington-state-park',
-    'bankhead-national-forest',
+    'big-bend-campground',
+    'jess-judy-group-campground',
+    'seneca-shadows-campground',
+    'spruce-knob-lake-campground',
+    'gatewood-group-campground',
+    'stuart-recreation-area',
   ]) {
-    assert.equal(isEditableSlug(notConverted), false, notConverted)
-    assert.equal(CONVERTED_SLUGS.includes(notConverted), false, notConverted)
+    assert.equal(isEditableSlug(converted), true, converted)
+    assert.equal(CONVERTED_SLUGS.includes(converted), true, converted)
   }
+  assert.equal(isEditableSlug(SITE_SETTINGS_SLUG), true)
+
   assert.equal(isEditableSlug('not-a-page-at-all'), false)
-  assert.equal(CONVERTED_SLUGS.length, 3)
+  assert.equal(CONVERTED_SLUGS.includes('not-a-page-at-all'), false)
+  assert.equal(CONVERTED_SLUGS.length, 17)
+})
+
+test('the [slug] template answers only for the slugs whose page it is', () => {
+  // Every other converted slug has a page of its own, at /<slug> or somewhere
+  // else entirely, and /<slug> must not start answering for it. See the
+  // comment on SLUG_TEMPLATE_SLUGS.
+  assert.deepEqual([...SLUG_TEMPLATE_SLUGS], ['chief-noonday-outdoor-center'])
+  for (const slug of SLUG_TEMPLATE_SLUGS) {
+    assert.equal(CONVERTED_SLUGS.includes(slug), true, slug)
+  }
 })
 
 /* ------------------------------------------- fetching, and the last good one */
