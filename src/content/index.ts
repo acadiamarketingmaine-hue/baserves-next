@@ -23,9 +23,10 @@
 import type { PropertyContent, SiteSettings } from './types'
 
 import { resolve } from './resolve'
+import { CONVERTED_SLUGS, SITE_SETTINGS_SLUG } from './slugs'
+import { loadOverrideWith, type FailureKind } from './fetch-override'
 import {
   CONTENT_POLICY,
-  SITE_SETTINGS_SLUG,
   imageHostAllowList,
   sanitisePropertyOverride,
   sanitiseSettingsOverride,
@@ -42,7 +43,8 @@ import { bankheadNationalForest } from './defaults/bankhead-national-forest'
 
 export * from './types'
 export { resolve } from './resolve'
-export { CONTENT_POLICY, SITE_SETTINGS_SLUG } from './overrides'
+export { CONTENT_POLICY } from './overrides'
+export { CONVERTED_SLUGS, SITE_SETTINGS_SLUG, isEditableSlug } from './slugs'
 
 /** The cache tag a slug's fetched override is filed under. */
 export function contentTag(slug: string): string {
@@ -61,15 +63,16 @@ const PROPERTY_DEFAULTS: Record<string, PropertyContent> = {
   'bankhead-national-forest': bankheadNationalForest,
 }
 
-export const propertySlugs = Object.keys(PROPERTY_DEFAULTS)
-
 /**
  * The built-in defaults for one slug, with NOTHING merged onto them.
  *
  * For the editor's placeholder endpoint, which has to show a camp what is on
- * the page today rather than what they have already changed it to.
+ * the page today rather than what they have already changed it to. Only the
+ * converted pages answer: a placeholder for a page that would ignore the edit
+ * is worse than no placeholder at all.
  */
 export function propertyDefaults(slug: string): PropertyContent | undefined {
+  if (!CONVERTED_SLUGS.includes(slug)) return undefined
   return PROPERTY_DEFAULTS[slug]
 }
 
@@ -93,15 +96,13 @@ function overrideBaseUrl(): string | undefined {
 }
 
 /**
- * Why an override could not be used. Each one is logged ONCE per process.
+ * Each kind of failure is logged ONCE per process.
  *
- * A property page that cannot reach the editor cannot reach it for every
+ * A property page that cannot reach the editor cannot reach it for any
  * visitor, and a log line per render turns one broken environment variable
  * into a bill. The first occurrence is worth knowing about; the ten thousandth
  * says nothing the first did not.
  */
-type FailureKind = 'unreachable' | 'timeout' | 'status' | 'json' | 'shape' | 'dropped'
-
 const reported = new Set<FailureKind>()
 
 function reportOnce(kind: FailureKind, detail: string): void {
@@ -111,78 +112,43 @@ function reportOnce(kind: FailureKind, detail: string): void {
 }
 
 /**
- * Fetch one slug's published override, or undefined.
+ * The last answer the editor gave us for a slug, per instance.
  *
- * Every failure is swallowed deliberately. The caller cannot tell "there is no
- * override" from "we could not get one", and it does not need to: both render
- * the built-in defaults, which is always a correct page.
+ * Why this exists rather than "on failure, render the defaults" is written out
+ * in fetch-override.ts. Short version: Next only caches 200s, so without this
+ * an editor outage silently un-publishes every edit a camp has made — a live
+ * closure notice included — and the page looks fine while saying the wrong
+ * thing.
  */
+const lastGood = new Map<string, Record<string, unknown>>()
+
+/** Test seam and operational escape hatch: forget every remembered answer. */
+export function forgetLastGoodOverrides(): void {
+  lastGood.clear()
+  reported.clear()
+}
+
+/** Today's override if we can get it, the last good one if we cannot. */
 async function loadOverride(slug: string): Promise<Record<string, unknown> | undefined> {
   const base = overrideBaseUrl()
   if (!base) return undefined
 
-  const url = `${base}/api/site-content/${encodeURIComponent(slug)}`
-  const controller = new AbortController()
-  const timer = setTimeout(() => controller.abort(), CONTENT_POLICY.fetchTimeoutMs)
-
-  try {
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: { accept: 'application/json' },
-      // The tag is what a publish drops; the interval is what happens when the
-      // publish webhook never arrives.
-      next: { tags: [contentTag(slug)], revalidate: CONTENT_POLICY.revalidateSeconds },
-    })
-
-    if (!response.ok) {
-      reportOnce('status', `${url} answered ${response.status}`)
-      return undefined
-    }
-
-    let body: unknown
-    try {
-      body = await response.json()
-    } catch {
-      reportOnce('json', `${url} did not answer JSON`)
-      return undefined
-    }
-
-    // The contract: { slug, override, publishedAt, version }. An unknown slug
-    // and an unpublished page both answer 200 with an empty override, which is
-    // not an error on either side.
-    if (typeof body !== 'object' || body === null || Array.isArray(body)) {
-      reportOnce('shape', `${url} answered something that is not an object`)
-      return undefined
-    }
-    const override = (body as Record<string, unknown>).override
-    if (override === undefined || override === null) return undefined
-    if (typeof override !== 'object' || Array.isArray(override)) {
-      reportOnce('shape', `${url} answered an override that is not an object`)
-      return undefined
-    }
-
-    // Defence in depth: the editor validated this on the way in, and we do not
-    // assume the thing that answered was the editor.
-    const hosts = imageHostAllowList(process.env)
-    const cleaned =
+  const hosts = imageHostAllowList(process.env)
+  return loadOverrideWith({
+    slug,
+    url: `${base}/api/site-content/${encodeURIComponent(slug)}`,
+    timeoutMs: CONTENT_POLICY.fetchTimeoutMs,
+    // The tag is what a publish drops; the interval is what happens when the
+    // publish webhook never arrives.
+    next: { tags: [contentTag(slug)], revalidate: CONTENT_POLICY.revalidateSeconds },
+    sanitise: (input) =>
       slug === SITE_SETTINGS_SLUG
-        ? sanitiseSettingsOverride(override, { imageHosts: hosts })
-        : sanitisePropertyOverride(override, { imageHosts: hosts })
-
-    if (cleaned.dropped.length > 0) {
-      reportOnce('dropped', `${slug} sent fields this site will not render: ${cleaned.dropped.join(', ')}`)
-    }
-    return cleaned.value
-  } catch (error) {
-    const aborted = error instanceof Error && error.name === 'AbortError'
-    reportOnce(
-      aborted ? 'timeout' : 'unreachable',
-      aborted ? `${url} took longer than ${CONTENT_POLICY.fetchTimeoutMs}ms` : `${url} could not be reached`,
-    )
-    return undefined
-  } finally {
-    clearTimeout(timer)
-  }
+        ? sanitiseSettingsOverride(input, { imageHosts: hosts })
+        : sanitisePropertyOverride(input, { imageHosts: hosts }),
+    fetchImpl: fetch,
+    report: reportOnce,
+    lastGood,
+  })
 }
 
 // ───────────────────────────── public API ─────────────────────────────

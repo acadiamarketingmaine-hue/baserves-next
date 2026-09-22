@@ -6,8 +6,17 @@ developers wrote — and merges a published override onto them at request time.
 
 **Nothing here is required.** With none of these variables set, this site
 fetches nothing, renders the copy in `src/content/defaults/` and behaves
-exactly as it did before the editor existed. Every failure mode below ends the
-same way: the built-in default renders.
+exactly as it did before the editor existed.
+
+**Only three pages are editable in release 1** — `long-lake-outdoor-center`,
+`yankee-springs-recreation-area`, `chief-noonday-outdoor-center`, plus the
+site-wide `_settings`. The list lives in `src/content/slugs.ts`
+(`CONVERTED_SLUGS`) and everything facing the editor derives from it. The other
+five properties have defaults here but bespoke pages with the copy written into
+the JSX, so an override published against them would change nothing on the live
+site; they answer 404 from the defaults endpoint, so the editor never offers a
+form that does nothing. Converting a page means adding its slug to that list in
+the same commit.
 
 ## The four environment variables
 
@@ -30,6 +39,20 @@ same way: the built-in default renders.
   `https://baserves.com/api/content-defaults`; it appends `/<slug>` itself.
   `_settings` is a valid slug here. Public, cached for an hour, and no
   environment or internal state is in the response.
+
+## When the editor cannot be reached
+
+A failed read does **not** fall back to the built-in defaults if this instance
+has ever had a good answer for that slug — it serves the last one it received.
+Next's data cache only stores 200s, so the naive behaviour would silently
+un-publish every edit a camp has made for the length of an outage, live closure
+notices included, on a page that looks perfectly fine. Serving yesterday's
+published words is always better than replacing them with the developers'. The
+memory is per instance and empties on a deploy; an instance that never got a
+good answer renders the defaults. The timeout is enforced with a race rather
+than only an `AbortController`, because Next strips the signal from a
+background revalidation and a hung API would otherwise hold a page
+regeneration open indefinitely.
 
 ## How fresh a published edit is
 

@@ -27,6 +27,8 @@ import {
   signRevalidateBody,
   verifyRevalidateSignature,
 } from '../src/content/signature.ts'
+import { CONVERTED_SLUGS, SITE_SETTINGS_SLUG, isEditableSlug } from '../src/content/slugs.ts'
+import { loadOverrideWith, type FailureKind, type Sanitised } from '../src/content/fetch-override.ts'
 
 /* ----------------------------------------------------------------- resolve */
 
@@ -147,6 +149,39 @@ test('validator: CTA urls must be https or a path on this site, and agree with k
     ctas: { hero: { label: 'Go', url: '/somewhere', kind: 'external' } },
   })
   assert.deepEqual(mismatched.value.ctas, {})
+})
+
+test('validator: a backslash never makes a URL look internal', () => {
+  // `/\evil.com` passes a naive "starts with / but not //" check, and then
+  // every browser reads it as `//evil.com`.
+  for (const url of ['/\\evil.com', '/\\/evil.com', '/\\\\evil.com', '/ok\\path', '/\tx']) {
+    const bad = sanitisePropertyOverride({
+      ctas: { hero: { label: 'Go', url, kind: 'internal' } },
+    })
+    assert.deepEqual(bad.value.ctas, {}, url)
+  }
+  // Real paths on this site still work, including the home page.
+  for (const url of ['/', '/contact', '/experiences/meramec-state-park?a=1#b']) {
+    const good = sanitisePropertyOverride({
+      ctas: { hero: { label: 'Go', url, kind: 'internal' } },
+    })
+    assert.deepEqual(Object.keys(good.value.ctas as object), ['hero'], url)
+  }
+  // And a backslash is refused in an image source too.
+  const photo = sanitisePropertyOverride(
+    { hero: { src: 'https://images.example.com/a\\b.jpg', alt: 'x' } },
+    HOSTS,
+  )
+  assert.deepEqual(photo.value, {})
+})
+
+test('validator: invisible characters are refused as well as control ones', () => {
+  for (const sneaky of ['Book\u200Bnow', 'Book\u202Enow', 'Book\u2066now', '\uFEFFBook now']) {
+    assert.deepEqual(sanitisePropertyOverride({ tagline: sneaky }).value, {}, JSON.stringify(sneaky))
+  }
+  // A normal sentence with punctuation and accents is untouched.
+  const fine = 'Réservez — cabins, canoes & campfires.'
+  assert.deepEqual(sanitisePropertyOverride({ tagline: fine }).value, { tagline: fine })
 })
 
 test('validator: images need https AND an allow-listed host', () => {
@@ -302,4 +337,128 @@ test('slug pattern: only lower-case, digits, dash and underscore', () => {
   assert.equal(isValidSlug('with space'), false)
   assert.equal(isValidSlug(''), false)
   assert.equal(isValidSlug(42), false)
+})
+
+/* ------------------------------------------------ which pages are editable */
+
+test('editable slugs: only the pages that actually read the content layer', () => {
+  // Converted, so an edit reaches the live page.
+  assert.equal(isEditableSlug('long-lake-outdoor-center'), true)
+  assert.equal(isEditableSlug('yankee-springs-recreation-area'), true)
+  assert.equal(isEditableSlug('chief-noonday-outdoor-center'), true)
+  assert.equal(isEditableSlug(SITE_SETTINGS_SLUG), true)
+
+  // Defaults exist for these, but their pages have the copy in the JSX, so
+  // publishing to them would change nothing. Advertising them is the failure.
+  for (const notConverted of [
+    'tipsaw-lake-recreation-area',
+    'hardin-ridge-recreation-area',
+    'monongahela-national-forest',
+    'washington-state-park',
+    'bankhead-national-forest',
+  ]) {
+    assert.equal(isEditableSlug(notConverted), false, notConverted)
+    assert.equal(CONVERTED_SLUGS.includes(notConverted), false, notConverted)
+  }
+  assert.equal(isEditableSlug('not-a-page-at-all'), false)
+  assert.equal(CONVERTED_SLUGS.length, 3)
+})
+
+/* ------------------------------------------- fetching, and the last good one */
+
+/** The editor's response envelope. */
+function answer(override: unknown, status = 200): Response {
+  return new Response(JSON.stringify({ slug: 's', override, publishedAt: null, version: null }), {
+    status,
+    headers: { 'content-type': 'application/json' },
+  })
+}
+
+function harness(fetchImpl: typeof fetch, lastGood = new Map<string, Record<string, unknown>>()) {
+  const reports: FailureKind[] = []
+  return {
+    lastGood,
+    reports,
+    load: (slug = 'long-lake-outdoor-center') =>
+      loadOverrideWith({
+        slug,
+        url: 'https://editor.invalid/api/site-content/' + slug,
+        timeoutMs: 50,
+        sanitise: (input): Sanitised => sanitisePropertyOverride(input),
+        fetchImpl,
+        report: (kind) => reports.push(kind),
+        lastGood,
+      }),
+  }
+}
+
+test('fetch: a good answer is returned and remembered', async () => {
+  const h = harness(async () => answer({ tagline: 'Published words' }))
+  assert.deepEqual(await h.load(), { tagline: 'Published words' })
+  assert.deepEqual(h.lastGood.get('long-lake-outdoor-center'), { tagline: 'Published words' })
+  assert.deepEqual(h.reports, [])
+})
+
+test('fetch: an editor outage keeps the last published words, not the defaults', async () => {
+  const lastGood = new Map<string, Record<string, unknown>>()
+  assert.deepEqual(await harness(async () => answer({ tagline: 'Published words' }), lastGood).load(), {
+    tagline: 'Published words',
+  })
+
+  // Every way the editor can fail must still serve what it last told us.
+  const failures: Array<[string, typeof fetch]> = [
+    ['500', async () => answer({}, 500)],
+    ['network', async () => { throw new TypeError('fetch failed') }],
+    ['not json', async () => new Response('<html>502</html>', { status: 200 })],
+    ['wrong shape', async () => new Response('[1,2,3]', { status: 200, headers: { 'content-type': 'application/json' } })],
+  ]
+  for (const [label, impl] of failures) {
+    const h = harness(impl, lastGood)
+    assert.deepEqual(await h.load(), { tagline: 'Published words' }, label)
+    assert.equal(h.reports.length, 1, label)
+  }
+})
+
+test('fetch: with no last good answer, a failure renders the defaults', async () => {
+  const h = harness(async () => answer({}, 503))
+  assert.equal(await h.load(), undefined)
+  assert.deepEqual(h.reports, ['status'])
+})
+
+test('fetch: an unpublished page replaces the last good answer', async () => {
+  const lastGood = new Map<string, Record<string, unknown>>()
+  await harness(async () => answer({ tagline: 'Published words' }), lastGood).load()
+  // A camp unpublishing is a change, not a fault: the page goes back to the
+  // built-in copy rather than keeping words nobody publishes any more.
+  assert.deepEqual(await harness(async () => answer({}), lastGood).load(), {})
+  assert.deepEqual(lastGood.get('long-lake-outdoor-center'), {})
+})
+
+test('fetch: a hung editor cannot hold a render open past the timeout', async () => {
+  const lastGood = new Map<string, Record<string, unknown>>()
+  await harness(async () => answer({ tagline: 'Published words' }), lastGood).load()
+
+  // Next strips the AbortSignal on a background revalidation, so the abort is
+  // not what saves us here — the race is. This fetch ignores the signal
+  // entirely, exactly like a hung connection would.
+  const hangs: typeof fetch = () => new Promise<Response>(() => {})
+  const h = harness(hangs, lastGood)
+  const started = Date.now()
+  assert.deepEqual(await h.load(), { tagline: 'Published words' })
+  assert.ok(Date.now() - started < 1000, 'returned promptly')
+  assert.deepEqual(h.reports, ['timeout'])
+})
+
+test('fetch: a body that never finishes arriving times out too', async () => {
+  const stalled: typeof fetch = async () =>
+    ({ ok: true, status: 200, json: () => new Promise<unknown>(() => {}) }) as unknown as Response
+  const h = harness(stalled)
+  assert.equal(await h.load(), undefined)
+  assert.deepEqual(h.reports, ['json'])
+})
+
+test('fetch: what the editor sends is still validated before it is remembered', async () => {
+  const h = harness(async () => answer({ tagline: '<script>x</script>', summary: 'Fine' }))
+  assert.deepEqual(await h.load(), { summary: 'Fine' })
+  assert.deepEqual(h.reports, ['dropped'])
 })

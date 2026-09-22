@@ -91,9 +91,6 @@ export const CONTENT_POLICY = {
   },
 } as const
 
-/** The reserved slug the site-wide settings live under. */
-export const SITE_SETTINGS_SLUG = '_settings'
-
 /** The keys each document accepts. Anything else is dropped by name. */
 const PAGE_KEYS = [
   'tagline',
@@ -166,10 +163,18 @@ function join(parent: string, child: string | number): string {
  * rather than execute — but a page printing half a tag is still broken, and a
  * content field containing markup means something upstream is not the editor.
  * Newline and tab are allowed because a real paragraph contains them.
+ *
+ * The second range is the invisible half: zero-width spaces and joiners, the
+ * bidirectional overrides, the word joiner and a byte-order mark. None of them
+ * are typed by a person writing about a campground, all of them survive a
+ * round trip through JSON, and the bidi ones can make a rendered sentence read
+ * in an order that is not the order it is stored in. A field holding any of
+ * them is dropped, which renders the built-in text — the cheapest possible
+ * outcome for something nobody can see on screen to debug.
  */
 const MARKUP = /[<>]/
 // eslint-disable-next-line no-control-regex
-const CONTROL_CHARS = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/
+const CONTROL_CHARS = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
 
@@ -276,22 +281,59 @@ export function isAllowedImageHost(host: string, allowList: string[]): boolean {
   return allowList.some((allowed) => lower === allowed || lower.endsWith(`.${allowed}`))
 }
 
-/** Is this a path on this same site, rather than an absolute address? */
+/**
+ * Is this a path on this same site, rather than an absolute address?
+ *
+ * "Starts with a slash and not two slashes" is NOT enough, and the hole is
+ * worth spelling out because it is easy to look at and see nothing wrong.
+ * Browsers and `new URL` both treat a backslash in the authority position as a
+ * slash, so `/\evil.com` is read as `//evil.com` — a protocol-relative address
+ * pointing at somebody else's site — while passing a naive `!startsWith('//')`
+ * check. The same trick works with `/\/evil.com` and `/\\evil.com`.
+ *
+ * So: a slash, then an unambiguous path character. A bare `/` is the home
+ * page and is allowed; anything whose second character is a slash, a
+ * backslash, a colon or whitespace is not a path on this site.
+ */
+const ROOT_RELATIVE = /^\/(?:[A-Za-z0-9](?:[^\s\\]*)?)?$/
+
 function isRootRelative(url: string): boolean {
-  // `//host/x` is a protocol-relative ABSOLUTE url, not a path on this site.
-  return url.startsWith('/') && !url.startsWith('//')
+  return ROOT_RELATIVE.test(url)
+}
+
+/**
+ * A backslash never belongs in a URL this site publishes.
+ *
+ * In a path it is an escape that different parsers disagree about, and
+ * disagreeing parsers are exactly how a link that reads as internal gets
+ * followed as external. Refused everywhere, in buttons and in image sources,
+ * rather than only in the one position where the trick is known to work.
+ */
+function hasBackslash(url: string): boolean {
+  return url.includes('\\')
 }
 
 /**
  * A URL a button may point at: https, or a path on this site.
  *
- * Anything else — http, `javascript:`, `data:`, a bare hostname — is dropped,
- * which leaves the built-in button in place.
+ * Anything else — http, `javascript:`, `data:`, a bare hostname, anything
+ * carrying a backslash — is dropped, which leaves the built-in button in
+ * place.
  */
 function ctaUrl(value: unknown, dropped: string[], path: string): string | undefined {
   const raw = requiredText(value, CONTENT_POLICY.text.url, dropped, path)
   if (raw === undefined) return undefined
+  if (hasBackslash(raw)) {
+    dropped.push(path)
+    return undefined
+  }
   if (isRootRelative(raw)) return raw
+  // A slash-led value that is not a clean path is not an absolute URL either.
+  // Refuse it here rather than letting `new URL` decide what it meant.
+  if (raw.startsWith('/')) {
+    dropped.push(path)
+    return undefined
+  }
   let parsed: URL
   try {
     parsed = new URL(raw)
@@ -324,6 +366,10 @@ function imageUrl(
 ): string | undefined {
   const raw = requiredText(value, CONTENT_POLICY.text.url, dropped, path)
   if (raw === undefined) return undefined
+  if (hasBackslash(raw)) {
+    dropped.push(path)
+    return undefined
+  }
   let parsed: URL
   try {
     parsed = new URL(raw)
@@ -737,17 +783,6 @@ export function sanitiseSettingsOverride(
 /** Enough of an address to catch a typed mistake. Not a deliverability check. */
 function looksLikeEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-}
-
-/** Which cleaner a slug uses. Settings live under a reserved slug. */
-export function sanitiseOverrideForSlug(
-  slug: string,
-  input: unknown,
-  options: SanitiseOptions = {},
-): SanitisedOverride<Record<string, unknown>> {
-  return slug === SITE_SETTINGS_SLUG
-    ? sanitiseSettingsOverride(input, options)
-    : sanitisePropertyOverride(input, options)
 }
 
 /* ------------------------------------------------------- the notice window - */

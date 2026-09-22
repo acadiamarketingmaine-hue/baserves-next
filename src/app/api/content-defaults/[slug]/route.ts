@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { propertyDefaults, propertySlugs, settingsDefaults, SITE_SETTINGS_SLUG } from '@/content'
+import { CONVERTED_SLUGS, propertyDefaults, settingsDefaults, SITE_SETTINGS_SLUG } from '@/content'
 
 /**
  * What this site would render if nobody had overridden anything.
@@ -29,9 +29,16 @@ export const runtime = 'nodejs'
 /** Defaults change when this repository is deployed, which is rarely. */
 export const revalidate = 3600
 
-/** Prerender the slugs this site knows about; anything else is a 404. */
+/**
+ * The pages that actually read the content layer, and nothing else.
+ *
+ * A slug that has defaults here but a bespoke page that ignores them would
+ * hand the editor a full set of placeholders for a form whose Save button
+ * changes nothing on the live site. Answering 404 is what stops a camp typing
+ * into a dead end.
+ */
 export function generateStaticParams() {
-  return [...propertySlugs, SITE_SETTINGS_SLUG].map((slug) => ({ slug }))
+  return [...CONVERTED_SLUGS, SITE_SETTINGS_SLUG].map((slug) => ({ slug }))
 }
 
 const CACHE_CONTROL = 'public, s-maxage=3600, stale-while-revalidate=86400'
@@ -55,8 +62,15 @@ export function GET(_request: Request, { params }: { params: { slug: string } })
   const content = propertyDefaults(params.slug)
   if (!content) {
     // The editor reads any non-200 as "no placeholders", which is the right
-    // outcome for a slug this site does not have.
-    return NextResponse.json({ error: 'Unknown page' }, { status: 404 })
+    // outcome for a slug this site does not render from the content layer.
+    //
+    // `no-store` matters: a 404 here is a statement about what this deployment
+    // has been converted so far, and converting the next page is a deploy, not
+    // an hour's wait. A cached 404 would outlive the reason for it.
+    return NextResponse.json(
+      { error: 'Unknown page' },
+      { status: 404, headers: { 'cache-control': 'no-store' } },
+    )
   }
 
   return NextResponse.json(

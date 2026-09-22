@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { revalidatePath, revalidateTag } from 'next/cache'
-import { contentTag, propertySlugs, SITE_SETTINGS_SLUG } from '@/content'
+import { CONVERTED_SLUGS, contentTag, isEditableSlug, SITE_SETTINGS_SLUG } from '@/content'
 import { SIGNATURE_HEADER, isValidSlug, verifyRevalidateSignature } from '@/content/signature'
 
 /**
@@ -33,13 +33,19 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 /**
- * A burst guard, not a rate limit.
+ * A burst guard, not a rate limit, and it counts ONLY requests that have
+ * already proved they came from the editor.
  *
- * The signature is what keeps strangers out; this is what stops a retry loop
- * at the other end from turning into a thousand cache invalidations. It lives
- * in one process's memory, which means it is approximate across regions — and
- * approximate is the right amount of machinery for a webhook that a correct
- * sender calls once per publish.
+ * The order matters more than the limit does. Counting every request that
+ * arrives would mean anybody who found this URL could spend the minute's
+ * budget with unsigned rubbish and have the real publish webhook answered 429
+ * — a public denial of service against a camp's own edits, built out of the
+ * thing meant to protect them. The signature is the control; this only stops a
+ * retry loop at the far end from becoming a thousand cache invalidations.
+ *
+ * It lives in one process's memory, so it is approximate across regions, which
+ * is the right amount of machinery for a webhook a correct sender calls once
+ * per publish.
  */
 const BURST_LIMIT = 60
 const BURST_WINDOW_MS = 60 * 1000
@@ -60,8 +66,6 @@ function refuse(status: number): NextResponse {
 }
 
 export async function POST(request: Request): Promise<NextResponse> {
-  if (overBurstLimit(Date.now())) return refuse(429)
-
   const secret = process.env.SITE_REVALIDATE_SECRET?.trim()
   // Fail closed, and say "not configured" rather than "forbidden" so that an
   // operator reading the sender's logs can tell the two apart. The body is the
@@ -82,6 +86,9 @@ export async function POST(request: Request): Promise<NextResponse> {
     return refuse(401)
   }
 
+  // Signed, and only now counted.
+  if (overBurstLimit(Date.now())) return refuse(429)
+
   let payload: unknown
   try {
     payload = JSON.parse(raw)
@@ -93,13 +100,13 @@ export async function POST(request: Request): Promise<NextResponse> {
   const slug = (payload as Record<string, unknown>).slug
   if (!isValidSlug(slug)) return refuse(400)
 
-  const isSettings = slug === SITE_SETTINGS_SLUG
-  if (!isSettings && !propertySlugs.includes(slug)) {
-    // A slug this site does not render. Signed, so not an attack — most likely
-    // a page that exists in the editor and not here yet. Nothing to drop, and
-    // nothing worth failing over.
+  if (!isEditableSlug(slug)) {
+    // A page the editor knows about and this site does not read from the
+    // content layer yet. Signed, so not an attack — nothing to drop, and
+    // nothing worth failing a publish over.
     return NextResponse.json({ ok: true }, { headers: { 'cache-control': 'no-store' } })
   }
+  const isSettings = slug === SITE_SETTINGS_SLUG
 
   // The tag is the part that matters: it is what `getPropertyContent` and
   // `getSiteSettings` filed their fetch under, and dropping it is what makes
@@ -110,7 +117,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   // this list: it does not read the content layer, so nothing it renders can
   // have changed. Add it here on the day it does.
   if (isSettings) {
-    for (const propertySlug of propertySlugs) revalidatePath(`/${propertySlug}`)
+    for (const converted of CONVERTED_SLUGS) revalidatePath(`/${converted}`)
   } else {
     revalidatePath(`/${slug}`)
   }
