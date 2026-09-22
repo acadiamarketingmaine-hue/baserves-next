@@ -5,205 +5,96 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { getPropertyContent } from '@/content'
+import NoticeBanner from '@/content/NoticeBanner'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Hoosier National Forest | Southern Indiana | BA Services' },
-  description: 'Explore Hoosier National Forest in southern Indiana. Three recreation areas with camping, swimming, fishing, boating, and hundreds of miles of trails.',
-  alternates: { canonical: '/hoosier-national-forest' },
-  openGraph: og('/hoosier-national-forest'),
+const SLUG = 'hoosier-national-forest'
+
+/**
+ * This page reads the content layer, so it must not be frozen at build time:
+ * once a camp publishes an edit, a page that only changes when somebody
+ * deploys is a page the editor cannot reach. Five minutes is the floor — the
+ * publish webhook (POST /api/revalidate) drops this slug's cache tag and makes
+ * a change visible in seconds, and this is what happens when that webhook does
+ * not arrive. Kept as a literal because Next.js reads it statically; the same
+ * number is CONTENT_POLICY.revalidateSeconds.
+ */
+export const revalidate = 300
+
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getPropertyContent(SLUG)
+  return {
+    title: content?.seo.title ? { absolute: content?.seo.title } : undefined,
+    description: content?.seo.description,
+    alternates: { canonical: '/hoosier-national-forest' },
+    openGraph: og('/hoosier-national-forest'),
+  }
 }
 
-const subProperties = [
-  {
-    name: 'Hardin Ridge Recreation Area',
-    href: '/hardin-ridge-recreation-area',
-    description: '200+ campsites on Monroe Lake — Indiana\'s largest reservoir. Features a swimming beach, boat ramp, and over 12 miles of trails winding through hardwood forest.',
-    image: '/images/hardin-ridge-entrance-sign.jpg',
-    badge: 'Monroe Lake',
-  },
-  {
-    name: 'Indian-Celina Lakes Recreation Area',
-    href: '/indian-celina-lakes-recreation-area',
-    description: 'Two scenic lakes nestled in the forest with an accessible fishing pier, camping, boat launch, and hiking trails through rolling southern Indiana terrain.',
-    image: '/images/indian-celina-entrance-sign.jpg',
-    badge: 'Twin Lakes',
-  },
-  {
-    name: 'Tipsaw Lake Recreation Area',
-    href: '/tipsaw-lake-recreation-area',
-    description: '131-acre lake with 35+ campsites, a swimming beach, amphitheater, and over 8 miles of trails through some of the most rugged terrain in the forest.',
-    image: '/images/tipsaw-lake/lake-view.jpg',
-    badge: 'Lake Recreation',
-  },
-]
-
-const scopeOfWork = [
-  {
-    title: 'Recreation Area Operations',
-    description: 'Full operation of campgrounds, cabins, beaches, and day-use areas throughout the Hoosier National Forest.',
-    items: [
-      'Operate campgrounds, cabins, beaches, and day-use areas on approved seasonal schedules',
-      'Adjust operations based on weather, safety conditions, and visitor demand',
-      'Coordinate closely with the U.S. Forest Service on all operational decisions',
-      'Manage extended operating seasons at select sites',
-      'Provide cabin accommodations and strategic amenities that complement the natural setting',
-    ],
-  },
-  {
-    title: 'Visitor Services & Guest Experience',
-    description: 'Front-line customer service and visitor engagement rooted in traditional camping values.',
-    items: [
-      'Campground hosts, gate attendants, and on-site staff providing front-line service',
-      'Visitor information, education, and assistance throughout each stay',
-      'Fee collection and Recreation.gov reservation coordination',
-      'Text-based support and modern communication tools',
-      'Respectful, family-oriented outdoor experience rooted in traditional camping values',
-    ],
-  },
-  {
-    title: 'Facility Maintenance & Cleanliness',
-    description: 'Rigorous maintenance protocols that meet or exceed National Forest Service quality standards.',
-    items: [
-      'Restroom and sanitation system maintenance',
-      'Campsite, picnic area, and common space upkeep',
-      'Road, trail, and signage maintenance',
-      'Daily and scheduled cleaning to ensure high standards',
-      'Pre-season, mid-season, and post-season facility inspections',
-    ],
-  },
-  {
-    title: 'Staffing & On-Site Management',
-    description: 'A full team of trained personnel providing continuous presence at key recreation sites.',
-    items: [
-      'Area Managers and Unit Managers',
-      'Campground Hosts and Gate Attendants',
-      'Maintenance Technicians and Security Staff',
-      '24/7 staffing presence at key recreation sites during operating seasons',
-      'Recruiting and training staff to meet federal service, safety, and hospitality standards',
-    ],
-  },
-  {
-    title: 'Safety, Security & Emergency Response',
-    description: 'Comprehensive safety programs including inspections, fire prevention, and emergency coordination.',
-    items: [
-      'Regular safety inspections and hazard mitigation for trees, infrastructure, and facilities',
-      'Fire prevention and response protocols',
-      'Campground security, rule enforcement, and incident reporting',
-      'Emergency response coordination with appropriate agencies',
-      'Continuous visitor and employee safety assurance',
-    ],
-  },
-  {
-    title: 'Environmental Stewardship',
-    description: 'Responsible operations that protect natural resources and preserve the forest atmosphere.',
-    items: [
-      'Protect natural resources through responsible operations and maintenance practices',
-      'Vegetation management and wildlife interaction protocols',
-      'Waste system management and recycling programs',
-      'Eco-friendly and sustainability initiatives',
-      'Preserve the non-commercialized forest atmosphere valued by visitors',
-    ],
-  },
-  {
-    title: 'Forest Service Partnership',
-    description: 'Transparent, collaborative partnership with the U.S. Forest Service as the primary on-the-ground operator.',
-    items: [
-      'Serve as primary on-the-ground partner to the U.S. Forest Service',
-      'Regular inspections, reporting, and performance evaluations',
-      'Full compliance with federal regulations and concession requirements',
-      'Adherence to approved operating plans',
-      'Collaborative, transparent working relationship with Forest Service personnel',
-    ],
-  },
-  {
-    title: 'Quality Standards & Visitor Enhancement',
-    description: 'Proven results-driven model that transforms recreation sites into welcoming, well-managed destinations.',
-    items: [
-      'Meet or exceed National Quality Standards for Recreation Management',
-      'Full compliance with U.S. Forest Service operating requirements',
-      'Federal employment, safety, and civil rights standards adherence',
-      'Informational materials and forest-specific visitor guides',
-      'Initial facility improvement followed by ongoing high standards of maintenance',
-    ],
-  },
-]
-
-const activities = [
-  {
-    name: 'Hiking & Backpacking',
-    description: 'Over 260 miles of trails traverse hardwood forests, sandstone bluffs, and ridgelines. Routes range from easy lakeside loops to multi-day backcountry treks through the Deam Wilderness.',
-    icon: (
+// The words and photos live in src/content/defaults/hoosier-national-forest.ts.
+// Only the icons stay here - they are JSX and cannot be serialised - and they
+// are matched to the activity copy by key.
+const activityIcons: Record<string, JSX.Element> = {
+  hiking: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
       </svg>
-    ),
-  },
-  {
-    name: 'Fishing',
-    description: 'Cast a line in Monroe Lake, Tipsaw Lake, Indian Lake, or Celina Lake. Species include largemouth bass, bluegill, catfish, and crappie. Accessible fishing piers available.',
-    icon: (
+  ),
+  fishing: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
       </svg>
-    ),
-  },
-  {
-    name: 'Swimming',
-    description: 'Sandy beaches at Hardin Ridge and Tipsaw Lake provide refreshing summer swimming with designated swim areas, changing facilities, and nearby picnic grounds.',
-    icon: (
+  ),
+  swimming: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
-    ),
-  },
-  {
-    name: 'Boating',
-    description: 'Boat ramps at Monroe Lake, Tipsaw Lake, and Indian-Celina Lakes provide access for canoes, kayaks, and motorized boats. Monroe Lake alone covers 10,750 acres.',
-    icon: (
+  ),
+  boating: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
       </svg>
-    ),
-  },
-  {
-    name: 'Camping',
-    description: 'Hundreds of campsites across three recreation areas, from developed sites with electric hookups to primitive backcountry camping in the Deam Wilderness.',
-    icon: (
+  ),
+  camping: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" />
       </svg>
-    ),
-  },
-  {
-    name: 'Wildlife Viewing',
-    description: 'The forest supports white-tailed deer, wild turkey, bald eagles, Indiana bats, and over 100 bird species. Fall migration and spring wildflower seasons are especially rewarding.',
-    icon: (
+  ),
+  'wildlife-viewing': (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
       </svg>
-    ),
-  },
-]
+  ),
+}
 
-export default function HoosierNationalForestPage() {
+export default async function HoosierNationalForestPage() {
+  const content = (await getPropertyContent(SLUG))!
+  const heroLinks = [content.ctas.heroHardinRidge, content.ctas.heroIndianCelina, content.ctas.heroTipsaw]
+  const subProperties = content.sections.recreationAreas.items ?? []
+  const activities = content.sections.activities.items ?? []
+  const scopeItems = content.sections.scopeOfServices.items ?? []
+  const scopeBadge = scopeItems.find((i) => i.key === 'badge')
+  const scopeOfWork = scopeItems.filter((c) => c.items)
+
   return (
     <main className="min-h-screen">
       <Navigation />
       <PageSchema
         url="/hoosier-national-forest"
-        name="Hoosier National Forest | Southern Indiana | BA Services"
-        crumbName="Hoosier National Forest"
-        description="Explore Hoosier National Forest in southern Indiana. Three recreation areas with camping, swimming, fishing, boating, and hundreds of miles of trails."
-        image="/images/hardin-ridge/aerial.jpg"
+        name={content.seo.title}
+        crumbName={content.name}
+        description={content.seo.description}
+        image={content.hero.src}
       />
+      <NoticeBanner notices={content.notices} />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/hardin-ridge/aerial.jpg"
-            alt="Hoosier National Forest, Southern Indiana"
+            src={content.hero.src}
+            alt={content.hero.alt}
             fill
             className="object-cover"
             priority
@@ -212,31 +103,27 @@ export default function HoosierNationalForestPage() {
         </div>
         <div className="relative z-10 container-custom px-6 pb-16">
           <span className="inline-block px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-full mb-4">
-            Indiana National Forest
+            {content.tagline}
           </span>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4">
-            Hoosier National Forest
+            {content.name}
           </h1>
           <div className="flex items-center text-white/80 mb-6">
             <svg className="w-5 h-5 mr-2 text-red-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
-            Southern Indiana &mdash; US Forest Service
+            {content.locationLine}
           </div>
           <div className="flex flex-wrap gap-2">
-            {[
-              { name: 'Hardin Ridge', href: '/hardin-ridge-recreation-area' },
-              { name: 'Indian-Celina Lakes', href: '/indian-celina-lakes-recreation-area' },
-              { name: 'Tipsaw Lake', href: '/tipsaw-lake-recreation-area' },
-            ].map((cg) => (
+            {heroLinks.map((cg) => (
               <a
-                key={cg.name}
-                href={cg.href}
+                key={cg.label}
+                href={cg.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-forest-DEFAULT text-white text-sm font-semibold rounded-lg hover:bg-forest-dark transition-colors"
               >
-                {cg.name}
+                {cg.label}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
@@ -250,13 +137,8 @@ export default function HoosierNationalForestPage() {
       <section className="bg-forest-DEFAULT py-8">
         <div className="container-custom px-6">
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-            {[
-              { value: '200,000', label: 'Acres' },
-              { value: '260+', label: 'Miles Trails' },
-              { value: '3', label: 'Recreation Areas' },
-              { value: 'Year-Round', label: 'Open' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
+            {content.stats.map((stat) => (
+              <div key={stat.key} className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
                 <div className="text-white/70 text-sm">{stat.label}</div>
               </div>
@@ -270,35 +152,35 @@ export default function HoosierNationalForestPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">About Hoosier National Forest</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Hoosier National Forest spans approximately 200,000 acres across nine counties in south-central Indiana, making it the state&apos;s only national forest and a vital public resource in a region where limited land is publicly accessible. Managed by the U.S. Forest Service, the forest stretches across Monroe, Brown, Lawrence, Martin, Orange, Perry, Crawford, Dubois, and Jackson counties, offering a diverse landscape of rolling hills, dense hardwood forests, sandstone bluffs, caves, and winding waterways.
+                  {content.paragraphs[0]}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The forest is organized into two ranger districts&mdash;Brownstown and Tell City&mdash;with administrative offices located in Bedford and Tell City. Positioned within a 200-mile radius of more than seven million people, Hoosier National Forest serves as a highly accessible destination for visitors from major metropolitan areas including Indianapolis, Chicago, Cincinnati, Louisville, and beyond.
+                  {content.paragraphs[1]}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Recreational opportunities are extensive and varied. More than 260 miles of trails support hiking, horseback riding, and mountain biking, while lakes and reservoirs provide opportunities for boating, fishing, swimming, and paddling. The forest is also home to Indiana&apos;s only designated wilderness area, the Charles C. Deam Wilderness, as well as notable destinations such as Hemlock Cliffs, Hickory Ridge Lookout Tower, and scenic overlooks along the Ohio River Scenic Byway.
+                  {content.paragraphs[2]}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Three primary developed recreation areas&mdash;Hardin Ridge, Indian-Celina Lakes, and Tipsaw Lake&mdash;serve as focal points for visitor activity. Hardin Ridge Recreation Area is located on the shoreline of Monroe Lake, Indiana&apos;s largest reservoir, and provides access to boating, water sports, and fishing, along with nearby amenities managed by the Indiana Department of Natural Resources and the U.S. Army Corps of Engineers. Indian-Celina Lakes and Tipsaw Lake Recreation Areas, located in the southern portion of the forest, offer quieter settings centered around smaller Forest Service-managed lakes, popular for kayaking, fishing, camping, and relaxation.
+                  {content.paragraphs[3]}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Beyond these developed sites, the forest includes additional campgrounds, dispersed recreation areas, and culturally significant sites such as the Pioneer Mothers Memorial Forest and the Lick Creek African American Settlement. Nearby attractions&mdash;including Brown County State Park, Marengo Cave, Lincoln Boyhood Memorial, and the French Lick and West Baden resorts&mdash;further enhance the region&apos;s appeal as a destination.
+                  {content.paragraphs[4]}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Hoosier National Forest offers year-round recreation shaped by a four-season climate. Summers are warm and ideal for lake activities, spring brings mild temperatures and seasonal rains, fall is known for vibrant foliage and excellent camping conditions, and winters are generally mild with occasional snowfall.
+                  {content.paragraphs[5]}
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Through a balance of recreation, conservation, and public stewardship, Hoosier National Forest provides a diverse and accessible outdoor experience, serving both local communities and visitors from across the Midwest.
+                  {content.paragraphs[6]}
                 </p>
               </div>
 
               <div className="mt-10 bg-green-50 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Charles C. Deam Wilderness</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{content.sections.deamWilderness.heading}</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  At 13,000 acres, the Charles C. Deam Wilderness Area is Indiana&apos;s only federally designated wilderness. Named for Indiana&apos;s first state forester, the area features rugged ridgelines, deep ravines, and old-growth forest remnants along the southern shore of Monroe Lake. No motorized vehicles or mechanized equipment are permitted, preserving a truly wild experience for hikers and backpackers.
+                  {content.sections.deamWilderness.paragraphs?.[0]}
                 </p>
               </div>
             </div>
@@ -306,9 +188,9 @@ export default function HoosierNationalForestPage() {
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Things to Do</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{content.sections.thingsToDo.heading}</h3>
                 <ul className="space-y-3">
-                  {['Hiking & Backpacking', 'Camping', 'Fishing', 'Swimming', 'Boating & Kayaking', 'Mountain Biking', 'Horseback Riding', 'Rock Climbing', 'Wildlife Watching', 'Hunting'].map((item) => (
+                  {content.features.map((item) => (
                     <li key={item} className="flex items-center text-gray-700">
                       <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -320,15 +202,15 @@ export default function HoosierNationalForestPage() {
               </div>
 
               <div className="bg-forest-DEFAULT rounded-2xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-4">Plan Your Visit</h3>
+                <h3 className="text-xl font-bold mb-4">{content.sections.planYourVisit.heading}</h3>
                 <p className="text-white/80 mb-6">
-                  Explore three recreation areas offering camping, swimming, fishing, and hundreds of miles of trails in southern Indiana.
+                  {content.sections.planYourVisit.intro}
                 </p>
                 <Link
-                  href="#recreation-areas"
+                  href={content.ctas.sidebar.url}
                   className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
                 >
-                  View Recreation Areas
+                  {content.ctas.sidebar.label}
                 </Link>
               </div>
             </div>
@@ -339,17 +221,17 @@ export default function HoosierNationalForestPage() {
       {/* Recreation Areas (Sub-Properties) */}
       <section id="recreation-areas" className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Recreation Areas</h2>
-          <p className="text-gray-600 mb-10 max-w-2xl">Three developed recreation areas serve as gateways into Hoosier National Forest, each offering campgrounds, water access, and miles of trails.</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.recreationAreas.heading}</h2>
+          <p className="text-gray-600 mb-10 max-w-2xl">{content.sections.recreationAreas.intro}</p>
           <div className="grid md:grid-cols-3 gap-8">
             {subProperties.map((property) => (
               <Link
-                key={property.name}
-                href={property.href}
+                key={property.key}
+                href={property.href!}
                 className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group"
               >
                 <div className="relative h-64">
-                  <Image src={property.image} alt={property.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <Image src={property.photo!.src} alt={property.photo!.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <span className="absolute top-4 left-4 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">
                     {property.badge}
@@ -357,9 +239,9 @@ export default function HoosierNationalForestPage() {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-forest-DEFAULT transition-colors">
-                    {property.name}
+                    {property.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4">{property.description}</p>
+                  <p className="text-gray-600 text-sm mb-4">{property.body}</p>
                   <span className="inline-flex items-center gap-2 text-forest-DEFAULT font-semibold text-sm">
                     Explore
                     <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -376,16 +258,16 @@ export default function HoosierNationalForestPage() {
       {/* Activities */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Activities</h2>
-          <p className="text-gray-600 mb-10 max-w-2xl">200,000 acres of hardwood forests, lakes, and sandstone bluffs provide year-round recreation across southern Indiana.</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.activities.heading}</h2>
+          <p className="text-gray-600 mb-10 max-w-2xl">{content.sections.activities.intro}</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {activities.map((activity) => (
-              <div key={activity.name} className="bg-gray-50 rounded-2xl p-6 hover:bg-green-50 transition-colors">
+              <div key={activity.key} className="bg-gray-50 rounded-2xl p-6 hover:bg-green-50 transition-colors">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                  {activity.icon}
+                  {activityIcons[activity.key]}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{activity.name}</h3>
-                <p className="text-gray-600 text-sm">{activity.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{activity.title}</h3>
+                <p className="text-gray-600 text-sm">{activity.body}</p>
               </div>
             ))}
           </div>
@@ -397,20 +279,20 @@ export default function HoosierNationalForestPage() {
         <div className="container-custom px-6">
           <div className="max-w-3xl mb-12">
             <span className="inline-block px-4 py-2 bg-green-600/10 text-green-700 text-sm font-semibold rounded-full mb-4">
-              Statement of Work
+              {scopeBadge?.title}
             </span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              BA Services provides comprehensive concession services for the Hoosier National Forest under a U.S. Forest Service contract &mdash; managing the full operation, maintenance, and visitor services across designated campgrounds, cabins, and day-use recreation areas.
+              {content.sections.scopeOfServices.intro}
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {scopeOfWork.map((category) => (
-              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div key={category.key} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
-                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
+                <p className="text-sm text-gray-500 mb-4">{category.body}</p>
                 <ul className="space-y-2">
-                  {category.items.map((item) => (
+                  {category.items!.map((item) => (
                     <li key={item} className="flex items-start text-sm text-gray-700">
                       <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -429,26 +311,26 @@ export default function HoosierNationalForestPage() {
       <section className="py-20 bg-forest-DEFAULT">
         <div className="container-custom px-6 text-center">
           <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
-            Discover Hoosier National Forest
+            {content.sections.closingCta.heading}
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            200,000 acres of southern Indiana wilderness with three recreation areas, hundreds of miles of trails, and Indiana&apos;s only designated wilderness. Start exploring today.
+            {content.sections.closingCta.intro}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/hardin-ridge-recreation-area"
+              href={content.ctas.footerHardinRidge.url}
               className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
             >
-              Hardin Ridge
+              {content.ctas.footerHardinRidge.label}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link href="/indian-celina-lakes-recreation-area" className="btn-primary bg-white/10 text-white hover:bg-white/20">
-              Indian-Celina Lakes
+            <Link href={content.ctas.footerIndianCelina.url} className="btn-primary bg-white/10 text-white hover:bg-white/20">
+              {content.ctas.footerIndianCelina.label}
             </Link>
-            <Link href="/tipsaw-lake-recreation-area" className="btn-primary bg-white/10 text-white hover:bg-white/20">
-              Tipsaw Lake
+            <Link href={content.ctas.footerTipsaw.url} className="btn-primary bg-white/10 text-white hover:bg-white/20">
+              {content.ctas.footerTipsaw.label}
             </Link>
           </div>
         </div>

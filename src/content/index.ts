@@ -42,6 +42,7 @@ import { washingtonStatePark } from './defaults/washington-state-park'
 import { bankheadNationalForest } from './defaults/bankhead-national-forest'
 import { meramecStatePark } from './defaults/meramec-state-park'
 import { indianCelinaLakesRecreationArea } from './defaults/indian-celina-lakes-recreation-area'
+import { hoosierNationalForest } from './defaults/hoosier-national-forest'
 
 export * from './types'
 export { resolve } from './resolve'
@@ -65,6 +66,7 @@ const PROPERTY_DEFAULTS: Record<string, PropertyContent> = {
   'bankhead-national-forest': bankheadNationalForest,
   'meramec-state-park': meramecStatePark,
   'indian-celina-lakes-recreation-area': indianCelinaLakesRecreationArea,
+  'hoosier-national-forest': hoosierNationalForest,
 }
 
 /**
