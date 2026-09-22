@@ -28,6 +28,7 @@
  *   washington-state-park           src/app/washington-state-park/page.tsx
  *   meramec-state-park              src/app/experiences/meramec-state-park/page.tsx
  *   tipsaw-lake-recreation-area     src/app/tipsaw-lake-recreation-area/page.tsx
+ *   hardin-ridge-recreation-area    src/app/hardin-ridge-recreation-area/page.tsx
  */
 export const CONVERTED_SLUGS: readonly string[] = [
   'long-lake-outdoor-center',
@@ -37,6 +38,7 @@ export const CONVERTED_SLUGS: readonly string[] = [
   'washington-state-park',
   'meramec-state-park',
   'tipsaw-lake-recreation-area',
+  'hardin-ridge-recreation-area',
 ]
 
 /**

@@ -5,126 +5,93 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { getPropertyContent } from '@/content'
+import NoticeBanner from '@/content/NoticeBanner'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Hardin Ridge Recreation Area | Monroe County, Indiana | BA Services' },
-  description: 'Explore Hardin Ridge Recreation Area on Monroe Lake in Hoosier National Forest. 200+ campsites, swimming beach, boat ramp, and 12+ miles of trails.',
-  alternates: { canonical: '/hardin-ridge-recreation-area' },
-  openGraph: og('/hardin-ridge-recreation-area'),
+const SLUG = 'hardin-ridge-recreation-area'
+
+/**
+ * This page reads the content layer, so it must not be frozen at build time:
+ * once a camp publishes an edit, a page that only changes when somebody
+ * deploys is a page the editor cannot reach. Five minutes is the floor — the
+ * publish webhook (POST /api/revalidate) drops this slug's cache tag and makes
+ * a change visible in seconds, and this is what happens when that webhook does
+ * not arrive. Kept as a literal because Next.js reads it statically; the same
+ * number is CONTENT_POLICY.revalidateSeconds.
+ */
+export const revalidate = 300
+
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getPropertyContent(SLUG)
+  return {
+    title: content?.seo.title ? { absolute: content?.seo.title } : undefined,
+    description: content?.seo.description,
+    alternates: { canonical: '/hardin-ridge-recreation-area' },
+    openGraph: og('/hardin-ridge-recreation-area'),
+  }
 }
 
-const facilities = [
-  {
-    name: 'Campsites',
-    description: '200+ campsites spread across multiple loops, including electric and non-electric sites as well as carry-in tent sites for a more primitive experience in the Hoosier National Forest.',
-    image: '/images/hardin-ridge/campsite.jpg',
-  },
-  {
-    name: 'Accessible Boat Dock & Ramp',
-    description: 'A fully accessible boat dock and ramp provide easy launching into Monroe Lake, whether you are trailering a fishing boat, dropping in a kayak, or heading out on a pontoon cruise.',
-    image: '/images/hardin-ridge/boat-dock.jpg',
-  },
-  {
-    name: 'Shelter Houses',
-    description: 'Shelter houses with views of Monroe Lake are available for group gatherings, family reunions, picnics, and special events within the recreation area.',
-    image: '/images/hardin-ridge/shelter.jpg',
-  },
-  {
-    name: 'Restroom & Bath House',
-    description: 'Modern restroom and bath house facilities with showers and changing areas are conveniently located throughout the campground loops.',
-    image: '/images/hardin-ridge/bathhouse.jpg',
-  },
-]
-
-const activities = [
-  {
-    name: 'Hiking',
-    description: 'Over 12 miles of trails wind through the rolling hardwood forests of the Hoosier National Forest, from interpretive nature walks to longer woodland treks.',
-    icon: (
+// The words and photos live in src/content/defaults/hardin-ridge-recreation-area.ts.
+// Only the icons stay here - they are JSX and cannot be serialised - and they
+// are matched to the activity copy by key.
+const activityIcons: Record<string, JSX.Element> = {
+  hiking: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
       </svg>
-    ),
-  },
-  {
-    name: 'Fishing',
-    description: 'Monroe Lake supports excellent populations of largemouth bass, smallmouth bass, bluegill, channel catfish, crappie, and walleye. Cast from shore or launch from the boat ramp.',
-    icon: (
+  ),
+  fishing: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
       </svg>
-    ),
-  },
-  {
-    name: 'Swimming',
-    description: 'The sandy swimming beach on Monroe Lake is one of the most popular features at Hardin Ridge, offering a safe and inviting place for families to cool off all summer long.',
-    icon: (
+  ),
+  swimming: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
-    ),
-  },
-  {
-    name: 'Boating',
-    description: 'Explore 10,750 acres of Monroe Lake by canoe, kayak, pontoon, or motorboat. The accessible boat dock and ramp make launching easy for watercraft of all sizes.',
-    icon: (
+  ),
+  boating: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
       </svg>
-    ),
-  },
-  {
-    name: 'Wildlife Watching',
-    description: 'The forests and shoreline of Monroe Lake attract white-tailed deer, wild turkey, bald eagles, great blue herons, and a rich variety of songbirds throughout the year.',
-    icon: (
+  ),
+  'wildlife-watching': (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
       </svg>
-    ),
-  },
-  {
-    name: 'Camping',
-    description: 'From full-hookup electric sites to primitive carry-in tent camping, Hardin Ridge offers 200+ campsites across multiple loops to suit every style of outdoor stay.',
-    icon: (
+  ),
+  camping: (
       <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
       </svg>
-    ),
-  },
-]
+  ),
+}
 
-const galleryPhotos = [
-  { src: '/images/hardin-ridge/beach.jpg', alt: 'Swimming beach on Monroe Lake at Hardin Ridge' },
-  { src: '/images/hardin-ridge/boat-dock.jpg', alt: 'Accessible boat dock and ramp' },
-  { src: '/images/hardin-ridge/cabin-front.jpg', alt: 'Cabin front at Hardin Ridge' },
-  { src: '/images/hardin-ridge/cabin-interior.jpg', alt: 'Cabin interior' },
-  { src: '/images/hardin-ridge/overlook.jpg', alt: 'Monroe Lake overlook and interpretive sign' },
-  { src: '/images/hardin-ridge/aerial.jpg', alt: 'Aerial view of Hardin Ridge Recreation Area' },
-  { src: '/images/hardin-ridge/campsite.jpg', alt: 'Campsite in the Hoosier National Forest' },
-  { src: '/images/hardin-ridge/shelter.jpg', alt: 'Shelter house with Monroe Lake view' },
-  { src: '/images/hardin-ridge/entrance.jpg', alt: 'Hardin Ridge entrance sign' },
-  { src: '/images/hardin-ridge/bathhouse.jpg', alt: 'Restroom and bath house facilities' },
-]
+export default async function HardinRidgePage() {
+  const content = (await getPropertyContent(SLUG))!
+  const facilities = content.sections.facilities.items ?? []
+  const activities = content.sections.activities.items ?? []
+  const galleryPhotos = content.gallery
 
-export default function HardinRidgePage() {
   return (
     <main className="min-h-screen">
       <Navigation />
       <PageSchema
         url="/hardin-ridge-recreation-area"
-        name="Hardin Ridge Recreation Area | Monroe County, Indiana | BA Services"
-        crumbName="Hardin Ridge Recreation Area"
-        description="Explore Hardin Ridge Recreation Area on Monroe Lake in Hoosier National Forest. 200+ campsites, swimming beach, boat ramp, and 12+ miles of trails."
-        image="/images/hardin-ridge-entrance-sign.jpg"
+        name={content.seo.title}
+        crumbName={content.name}
+        description={content.seo.description}
+        image={content.hero.src}
       />
+      <NoticeBanner notices={content.notices} />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/hardin-ridge-entrance-sign.jpg"
-            alt="Hardin Ridge Recreation Area beach on Monroe Lake, Indiana"
+            src={content.hero.src}
+            alt={content.hero.alt}
             fill
             className="object-cover"
             priority
@@ -133,31 +100,31 @@ export default function HardinRidgePage() {
         </div>
         <div className="relative z-10 container-custom px-6 pb-16">
           <span className="inline-block px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-full mb-4">
-            Indiana Recreation Area
+            {content.tagline}
           </span>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4">
-            Hardin Ridge Recreation Area
+            {content.name}
           </h1>
           <div className="flex items-center text-white/80 mb-2">
             <svg className="w-5 h-5 mr-2 text-red-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
-            Monroe County, Indiana
+            {content.locationLine}
           </div>
-          <Link href="/hoosier-national-forest" className="inline-flex items-center text-white/70 hover:text-white transition-colors mb-6">
+          <Link href={content.ctas.parentForest.url} className="inline-flex items-center text-white/70 hover:text-white transition-colors mb-6">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
-            Part of Hoosier National Forest
+            {content.ctas.parentForest.label}
           </Link>
           <div>
             <a
-              href="https://www.recreation.gov/camping/campgrounds/232056"
+              href={content.ctas.hero.url}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
             >
-              Reserve on Recreation.gov
+              {content.ctas.hero.label}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -170,13 +137,8 @@ export default function HardinRidgePage() {
       <section className="bg-forest-DEFAULT py-8">
         <div className="container-custom px-6">
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-            {[
-              { value: '200+', label: 'Campsites' },
-              { value: '10,750', label: 'Acre Lake' },
-              { value: '12+', label: 'Miles Trails' },
-              { value: 'Year-Round', label: 'Open' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
+            {content.stats.map((stat) => (
+              <div key={stat.key} className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
                 <div className="text-white/70 text-sm">{stat.label}</div>
               </div>
@@ -190,55 +152,55 @@ export default function HardinRidgePage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">About Hardin Ridge</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Hardin Ridge Recreation Area is a premier destination within Hoosier National Forest, located on the wooded shores of Monroe Lake in Monroe County, Indiana. Situated approximately 12 miles south of Bloomington and 60 miles south of Indianapolis, the area is easily accessible and serves a large visitor base, with more than two million people within a two-hour drive and over seven million within a 200-mile radius.
+                  {content.paragraphs[0]}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  Set along Indiana&apos;s largest lake, Hardin Ridge offers a well-rounded outdoor experience combining scenic beauty with modern amenities. The recreation area has been recognized as one of America&apos;s top campgrounds and continues to be a popular destination for families, anglers, and outdoor enthusiasts.
+                  {content.paragraphs[1]}
                 </p>
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Campground Facilities</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{content.sections.campgroundFacilities.heading}</h3>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The campground consists of six forested loops with a total of 208 campsites, including several accessible sites and nine host sites. Campsites are designed to accommodate a variety of camping styles, from RVs to walk-in tent sites. Most sites include a picnic table, fire ring with grill, lantern hook, and designated tent space, with many offering electric hookups and some providing water service.
+                  {content.sections.campgroundFacilities.paragraphs?.[0]}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  Interior roads and most parking spurs are paved and level, accommodating a wide range of recreational vehicles. Modern restroom and shower facilities are available throughout the campground, supplemented by vault toilets in select locations. A centralized RV dump station is provided for campers, and trash dumpsters are conveniently located in each loop.
+                  {content.sections.campgroundFacilities.paragraphs?.[1]}
                 </p>
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Recreation Amenities</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{content.sections.recreationAmenities.heading}</h3>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Hardin Ridge provides extensive access to Monroe Lake, a 10,750-acre reservoir known for boating, fishing, and water sports. The lake supports a variety of fish species, including bass, bluegill, crappie, catfish, and walleye. A three-lane boat launch with parking for approximately 75 vehicles and trailers, along with an accessible courtesy dock, makes lake access convenient.
+                  {content.sections.recreationAmenities.paragraphs?.[0]}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  The recreation area also features a 300-foot seasonal swimming beach with a changing facility, playground, and nearby host site. Two large picnic areas offer open green space, grills, and shelters&mdash;one with electrical service&mdash;while three reservable shelter houses provide gathering space for groups.
+                  {content.sections.recreationAmenities.paragraphs?.[1]}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  Trails wind throughout the area, including a 1.5-mile recreation trail and a 1.2-mile interpretive trail leading to the lake. An accessible amphitheater with lighting and audio-visual capabilities supports educational and evening programs.
+                  {content.sections.recreationAmenities.paragraphs?.[2]}
                 </p>
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Additional Features</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{content.sections.additionalFeatures.heading}</h3>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Two semi-primitive lakeside rental cabins provide a more private overnight option, each equipped with electricity, a picnic table, and fire ring, with shared restroom facilities nearby.
+                  {content.sections.additionalFeatures.paragraphs?.[0]}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  The recreation area is supported by city water and an on-site wastewater treatment system. Additional administrative facilities, including a maintenance area and staff housing, are located within the site but are not accessible to the public.
+                  {content.sections.additionalFeatures.paragraphs?.[1]}
                 </p>
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Access and Operations</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{content.sections.accessAndOperations.heading}</h3>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  Hardin Ridge operates seasonally from early April through mid- to late October under a Forest Service special use permit. A staffed entrance station manages visitor access. A private residential area lies beyond the entrance gate; while residents maintain legal access to their properties, general recreation use remains subject to standard fees and regulations.
+                  {content.sections.accessAndOperations.paragraphs?.[0]}
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Hardin Ridge Recreation Area offers a balanced blend of accessibility, modern infrastructure, and natural beauty, making it one of the most significant and well-utilized recreation sites within Hoosier National Forest.
+                  {content.sections.accessAndOperations.paragraphs?.[1]}
                 </p>
               </div>
 
               <div className="mt-10 bg-green-50 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Hoosier National Forest</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{content.sections.hoosierCallout.heading}</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Hardin Ridge is nestled within the Hoosier National Forest, which covers over 200,000 acres of southern Indiana&apos;s hill country. The forest&apos;s rolling terrain, carved by ancient rivers and glacial meltwater, creates a varied landscape of ridgetops, ravines, and lake shoreline that supports exceptional biodiversity and year-round recreation opportunities.
+                  {content.sections.hoosierCallout.paragraphs?.[0]}
                 </p>
               </div>
             </div>
@@ -246,9 +208,9 @@ export default function HardinRidgePage() {
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Things to Do</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{content.sections.thingsToDo.heading}</h3>
                 <ul className="space-y-3">
-                  {['Hiking & Trail Walking', 'Fishing', 'Swimming', 'Boating & Kayaking', 'Camping (Electric & Primitive)', 'Carry-In Tent Camping', 'Wildlife Watching', 'Picnicking', 'Group Gatherings', 'Nature Photography'].map((item) => (
+                  {content.features.map((item) => (
                     <li key={item} className="flex items-center text-gray-700">
                       <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -260,17 +222,17 @@ export default function HardinRidgePage() {
               </div>
 
               <div className="bg-forest-DEFAULT rounded-2xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-4">Ready to Visit?</h3>
+                <h3 className="text-xl font-bold mb-4">{content.sections.readyToVisit.heading}</h3>
                 <p className="text-white/80 mb-6">
-                  Reserve your campsite or cabin at Hardin Ridge Recreation Area on the shores of Indiana&apos;s largest lake.
+                  {content.sections.readyToVisit.intro}
                 </p>
                 <a
-                  href="https://www.recreation.gov/camping/campgrounds/232056"
+                  href={content.ctas.sidebar.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
                 >
-                  Reserve on Recreation.gov
+                  {content.ctas.sidebar.label}
                 </a>
               </div>
             </div>
@@ -281,18 +243,18 @@ export default function HardinRidgePage() {
       {/* Facilities */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Facilities</h2>
-          <p className="text-gray-600 mb-10 max-w-2xl">Hardin Ridge offers well-maintained facilities on the shores of Monroe Lake, from spacious campsites and an accessible boat ramp to shelter houses and modern bath houses.</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.facilities.heading}</h2>
+          <p className="text-gray-600 mb-10 max-w-2xl">{content.sections.facilities.intro}</p>
 
           <div className="grid md:grid-cols-2 gap-8">
             {facilities.map((facility) => (
-              <div key={facility.name} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              <div key={facility.key} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div className="relative h-56">
-                  <Image src={facility.image} alt={facility.name} fill className="object-cover" />
+                  <Image src={facility.photo!.src} alt={facility.photo!.alt} fill className="object-cover" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{facility.name}</h3>
-                  <p className="text-gray-600">{facility.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{facility.title}</h3>
+                  <p className="text-gray-600">{facility.body}</p>
                 </div>
               </div>
             ))}
@@ -303,16 +265,16 @@ export default function HardinRidgePage() {
       {/* Activities */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Activities</h2>
-          <p className="text-gray-600 mb-10 max-w-2xl">With 10,750 acres of lake, 12+ miles of trails, and the forests of the Hoosier National Forest, Hardin Ridge provides year-round recreation for every interest.</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.activities.heading}</h2>
+          <p className="text-gray-600 mb-10 max-w-2xl">{content.sections.activities.intro}</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {activities.map((activity) => (
-              <div key={activity.name} className="bg-gray-50 rounded-2xl p-6 hover:bg-green-50 transition-colors">
+              <div key={activity.key} className="bg-gray-50 rounded-2xl p-6 hover:bg-green-50 transition-colors">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                  {activity.icon}
+                  {activityIcons[activity.key]}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{activity.name}</h3>
-                <p className="text-gray-600 text-sm">{activity.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{activity.title}</h3>
+                <p className="text-gray-600 text-sm">{activity.body}</p>
               </div>
             ))}
           </div>
@@ -322,7 +284,7 @@ export default function HardinRidgePage() {
       {/* Photo Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryPhotos.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
@@ -337,25 +299,25 @@ export default function HardinRidgePage() {
       <section className="py-20 bg-forest-DEFAULT">
         <div className="container-custom px-6 text-center">
           <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
-            Experience Indiana&apos;s Largest Lake
+            {content.sections.closingCta.heading}
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            200+ campsites, a swimming beach, accessible boat ramp, and 12+ miles of trails on the shores of Monroe Lake. Hardin Ridge Recreation Area is southern Indiana&apos;s premier outdoor destination.
+            {content.sections.closingCta.intro}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://www.recreation.gov/camping/campgrounds/232056"
+              href={content.ctas.footer.url}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
             >
-              Reserve on Recreation.gov
+              {content.ctas.footer.label}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <Link href="/hoosier-national-forest" className="btn-primary bg-white/10 text-white hover:bg-white/20">
-              Hoosier National Forest
+            <Link href={content.ctas.footerForest.url} className="btn-primary bg-white/10 text-white hover:bg-white/20">
+              {content.ctas.footerForest.label}
             </Link>
           </div>
         </div>
