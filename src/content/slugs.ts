@@ -35,6 +35,27 @@ export const CONVERTED_SLUGS: readonly string[] = [
   'washington-state-park',
 ]
 
+/**
+ * Which slugs the shared template at src/app/[slug]/page.tsx is allowed to
+ * render.
+ *
+ * `[slug]` is a dynamic route with no generateStaticParams, so it answers for
+ * ANY slug the content layer has defaults for. That was harmless while every
+ * property either had a bespoke page at /<slug> that won the route or was
+ * meant to be served by the template. It stops being harmless the moment the
+ * content layer learns about a page whose real URL is somewhere else -
+ * /experiences/meramec-state-park, or a campground under
+ * /monongahela-national-forest/ - because /<slug> would quietly start
+ * answering 200 where it answers 404 today, and the site would have two URLs
+ * for the same words with nothing pointing at the second one.
+ *
+ * So the template renders this list and nothing else. A slug converted in
+ * place, on a page of its own, does not belong here.
+ *
+ * PURE: no imports at all.
+ */
+export const SLUG_TEMPLATE_SLUGS: readonly string[] = ['chief-noonday-outdoor-center']
+
 /** The reserved slug the site-wide settings live under. */
 export const SITE_SETTINGS_SLUG = '_settings'
 

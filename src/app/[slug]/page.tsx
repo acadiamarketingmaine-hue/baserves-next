@@ -6,15 +6,24 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { getPropertyContent, getSiteSettings } from '@/content'
+import { getPropertyContent, getSiteSettings, SLUG_TEMPLATE_SLUGS } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 
 // Content comes from src/content. Of the slugs it knows about, only
 // chief-noonday-outdoor-center reaches this template: every other one has a
-// bespoke page under src/app/<slug>/ that wins the route.
+// bespoke page that wins the route, or lives at a URL that is not /<slug> at
+// all. SLUG_TEMPLATE_SLUGS is the list this template answers for, and
+// everything else 404s here exactly as it does today - see the comment on the
+// constant for why this route cannot simply serve whatever has defaults.
+
+/** The content this template renders, or undefined if the slug is not its to serve. */
+async function templateContent(slug: string) {
+  if (!SLUG_TEMPLATE_SLUGS.includes(slug)) return undefined
+  return getPropertyContent(slug)
+}
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const content = await getPropertyContent(params.slug)
+  const content = await templateContent(params.slug)
   if (!content) {
     return {
       title: { absolute: 'Location Not Found | BA Services' },
@@ -31,7 +40,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function LocationPage({ params }: { params: { slug: string } }) {
-  const content = await getPropertyContent(params.slug)
+  const content = await templateContent(params.slug)
 
   if (!content) notFound()
 

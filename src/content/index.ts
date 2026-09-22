@@ -44,7 +44,7 @@ import { bankheadNationalForest } from './defaults/bankhead-national-forest'
 export * from './types'
 export { resolve } from './resolve'
 export { CONTENT_POLICY } from './overrides'
-export { CONVERTED_SLUGS, SITE_SETTINGS_SLUG, isEditableSlug } from './slugs'
+export { CONVERTED_SLUGS, SLUG_TEMPLATE_SLUGS, SITE_SETTINGS_SLUG, isEditableSlug } from './slugs'
 
 /** The cache tag a slug's fetched override is filed under. */
 export function contentTag(slug: string): string {
