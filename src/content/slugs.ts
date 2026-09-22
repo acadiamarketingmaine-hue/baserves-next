@@ -26,6 +26,7 @@
  *   chief-noonday-outdoor-center    src/app/[slug]/page.tsx
  *   bankhead-national-forest        src/app/bankhead-national-forest/page.tsx
  *   washington-state-park           src/app/washington-state-park/page.tsx
+ *   meramec-state-park              src/app/experiences/meramec-state-park/page.tsx
  */
 export const CONVERTED_SLUGS: readonly string[] = [
   'long-lake-outdoor-center',
@@ -33,6 +34,7 @@ export const CONVERTED_SLUGS: readonly string[] = [
   'chief-noonday-outdoor-center',
   'bankhead-national-forest',
   'washington-state-park',
+  'meramec-state-park',
 ]
 
 /**

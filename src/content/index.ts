@@ -40,6 +40,7 @@ import { hardinRidgeRecreationArea } from './defaults/hardin-ridge-recreation-ar
 import { monongahelaNationalForest } from './defaults/monongahela-national-forest'
 import { washingtonStatePark } from './defaults/washington-state-park'
 import { bankheadNationalForest } from './defaults/bankhead-national-forest'
+import { meramecStatePark } from './defaults/meramec-state-park'
 
 export * from './types'
 export { resolve } from './resolve'
@@ -61,6 +62,7 @@ const PROPERTY_DEFAULTS: Record<string, PropertyContent> = {
   'long-lake-outdoor-center': longLakeOutdoorCenter,
   'chief-noonday-outdoor-center': chiefNoondayOutdoorCenter,
   'bankhead-national-forest': bankheadNationalForest,
+  'meramec-state-park': meramecStatePark,
 }
 
 /**
