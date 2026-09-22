@@ -5,156 +5,91 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { getPropertyContent } from '@/content'
+import NoticeBanner from '@/content/NoticeBanner'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Bankhead National Forest | Alabama | BA Services' },
-  description: 'Explore Bankhead National Forest — "The Land of a Thousand Waterfalls." 180,000+ acres featuring the Sipsey Wilderness, 84 breeding bird species, campgrounds, and the Hurricane Creek Shooting Range.',
-  alternates: { canonical: '/bankhead-national-forest' },
-  openGraph: og('/bankhead-national-forest'),
+const SLUG = 'bankhead-national-forest'
+
+/**
+ * This page reads the content layer, so it must not be frozen at build time:
+ * once a camp publishes an edit, a page that only changes when somebody
+ * deploys is a page the editor cannot reach. Five minutes is the floor — the
+ * publish webhook (POST /api/revalidate) drops this slug's cache tag and makes
+ * a change visible in seconds, and this is what happens when that webhook does
+ * not arrive. Kept as a literal because Next.js reads it statically; the same
+ * number is CONTENT_POLICY.revalidateSeconds.
+ */
+export const revalidate = 300
+
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getPropertyContent(SLUG)
+  return {
+    title: content?.seo.title ? { absolute: content?.seo.title } : undefined,
+    description: content?.seo.description,
+    alternates: { canonical: '/bankhead-national-forest' },
+    openGraph: og('/bankhead-national-forest'),
+  }
 }
 
-const birdingTrailSites = [
-  {
-    name: 'Walston Ridge',
-    description: 'Ridgetop habitat offering excellent views and opportunities to spot raptors, warblers, and vireos during migration and breeding season.',
-  },
-  {
-    name: 'Brushy Lake',
-    description: 'Lakeside habitat attracting waterfowl, herons, and songbirds. A quiet spot for observing diverse species in a wetland setting.',
-  },
-  {
-    name: 'Northwest Road',
-    description: 'A forested corridor supporting a variety of woodland species including woodpeckers, thrushes, and the Cerulean Warbler.',
-  },
-  {
-    name: 'Sipsey Wilderness',
-    description: 'Deep canyon habitat with old-growth forests. A stronghold for the Cerulean Warbler and other neotropical migrants.',
-  },
-]
+// The words and photos live in src/content/defaults/bankhead-national-forest.ts.
+// Only the markup stays here: the download icon is JSX and cannot be
+// serialised, and the paragraphs that carry an inline <strong> keep the tag
+// here and read their three text runs from the content layer by key.
 
-const campgrounds = [
-  {
-    name: 'Clear Creek Recreation Area',
-    sites: '102 sites',
-    description: 'Located on the shore of Lewis Smith Lake, Clear Creek is the Bankhead&apos;s largest recreation area. Features four camping loops with electric and water hookups, swimming beach, boat ramps, hiking trails, and group camping.',
-    image: '/images/clear-creek-bent-twig.jpg',
-    link: '/experiences/clear-creek-recreation-area',
-  },
-  {
-    name: 'Corinth Recreation Area',
-    sites: '52 sites',
-    description: 'A quieter campground offering full-hookup sites (water, electric, and sewer) in a peaceful wooded setting. Ideal for RV campers seeking a more relaxed atmosphere with modern amenities.',
-    image: '/images/clear-creek-acorn-camp.jpg',
-    link: '/experiences/corinth-recreation-area',
-  },
-]
+/** The tint each download tile is painted in, keyed by the stored badge. */
+function downloadTint(color: string | undefined): { wrap: string; icon: string } {
+  if (color === 'blue') return { wrap: 'bg-blue-100', icon: 'text-blue-700' }
+  if (color === 'green') return { wrap: 'bg-green-100', icon: 'text-green-700' }
+  if (color === 'amber') return { wrap: 'bg-amber-100', icon: 'text-amber-700' }
+  return { wrap: 'bg-red-100', icon: 'text-red-700' }
+}
 
-const recreationAreas = [
-  { name: 'Brushy Lake Recreation Area', description: 'Day-use area with fishing, picnicking, and nature trails around a scenic lake.' },
-  { name: 'Houston Recreation Area', description: 'Historic site with picnic facilities, trails, and access to nearby natural attractions.' },
-  { name: 'Natural Bridge Day Use Area', description: 'A unique geological formation — a natural sandstone bridge spanning 148 feet with a 60-foot clearance.' },
-  { name: 'Owl Creek Horse Camp', description: 'Equestrian camping facility with horse stalls, water, and direct trail access.' },
-  { name: 'Flint-Creek Multi-Use Trail', description: 'A multi-use trail system open to hiking, mountain biking, and horseback riding.' },
-]
+export default async function BankheadNationalForestPage() {
+  const content = (await getPropertyContent(SLUG))!
+  const heroLinks = [content.ctas.heroClearCreek, content.ctas.heroCorinth]
+  const contact = content.sections.contact.items ?? []
+  const contactDistrict = contact.find((i) => i.key === 'district')
+  const contactAddress = contact.find((i) => i.key === 'address')
+  const campgrounds = content.sections.campgrounds.items ?? []
+  const recreationAreas = content.sections.otherRecreationAreas.items ?? []
+  const birdingParagraphs = content.sections.birding.items ?? []
+  const birdingCerulean = birdingParagraphs.find((i) => i.key === 'cerulean')!
+  const birdingTrail = birdingParagraphs.find((i) => i.key === 'birding-trail')!
+  const birdingTrailSites = content.sections.birdingTrailSites.items ?? []
+  const sipseyItems = content.sections.sipseyWilderness.items ?? []
+  const sipseyPhoto = sipseyItems.find((i) => i.key === 'photo')!.photo!
+  const sipseyWildAndScenic = sipseyItems.find((i) => i.key === 'wild-and-scenic')!
+  const rangeItems = content.sections.shootingRange.items ?? []
+  const rangePhoto = rangeItems.find((i) => i.key === 'photo')!.photo!
+  const rangeFacts = rangeItems.filter((i) => i.key !== 'photo')
+  const quailItems = content.sections.quailHabitat.items ?? []
+  const quailPhoto = quailItems.find((i) => i.key === 'photo')!.photo!
+  const quailEmphasis = quailItems.find((i) => i.key === 'emphasis-areas')!
+  const quailPines = quailItems.find((i) => i.key === 'pine-restoration')!
+  const downloads = content.sections.downloads.items ?? []
+  const galleryPhotos = content.gallery
+  const scopeItems = content.sections.scopeOfServices.items ?? []
+  const scopeBadge = scopeItems.find((i) => i.key === 'badge')
+  const scopeOfWork = scopeItems.filter((c) => c.items)
 
-const scopeOfWork = [
-  {
-    title: 'Guest Services & Public Engagement',
-    description: 'Hospitality-driven visitor services that create welcoming, informative outdoor experiences at every touchpoint.',
-    items: [
-      'Campground check-in and reservation support',
-      'Visitor assistance and information services',
-      'Retail and recreational support services',
-      'Promotion of safe, family-oriented experiences',
-      'Public outreach and guest communication',
-    ],
-  },
-  {
-    title: 'Operations & Maintenance',
-    description: 'Full-spectrum operational and maintenance services keeping all facilities running efficiently to Forest Service standards.',
-    items: [
-      'Grounds and site maintenance',
-      'Road, parking area, and trail upkeep',
-      'Facility repairs and preventative maintenance',
-      'Water system monitoring and compliance support',
-      'Waste collection and disposal',
-      'Janitorial and sanitation services',
-    ],
-  },
-  {
-    title: 'Environmental Stewardship',
-    description: 'Conservation-focused practices that protect natural resources while maintaining public access to recreation areas.',
-    items: [
-      'Environmental remediation and protection practices',
-      'Bio-hazard cleaning and safe material handling',
-      'Natural resource preservation',
-      'Site-sensitive maintenance protocols',
-      'Forest Service environmental compliance support',
-    ],
-  },
-  {
-    title: 'Safety & Compliance',
-    description: 'Strict adherence to federal, state, and local regulations governing recreation sites on National Forest land.',
-    items: [
-      'Site security and public safety oversight',
-      'Health and sanitation regulatory compliance',
-      'Routine inspections and quality control reporting',
-      'Coordination with Forest Service personnel',
-      'Special Use Permit performance standards',
-    ],
-  },
-  {
-    title: 'Facility Operations',
-    description: 'End-to-end management of recreation infrastructure across the Clear Creek and Corinth Recreation Areas.',
-    items: [
-      'Campgrounds and overnight facilities',
-      'Day-use areas and picnic sites',
-      'Swim beaches and boat launches',
-      'Parking areas and access roads',
-      'Accessibility and visitor experience standards',
-    ],
-  },
-  {
-    title: 'Workforce & Management',
-    description: 'Experienced management and trained on-site personnel delivering consistent, professional service across all locations.',
-    items: [
-      'Staffing, training, and supervision',
-      'Quality control and inspections',
-      'Coordination with the U.S. Forest Service',
-      'Continuous operational improvement',
-      'On-site oversight and accountability',
-    ],
-  },
-]
-
-const downloads = [
-  { name: 'Birding Guide', description: 'Complete guide to birding in the Bankhead, including trail descriptions and species lists.', file: '/downloads/bankhead-national-forest/birding-guide.pdf', color: 'blue' },
-  { name: 'Quail Habitat Guide', description: 'Information on Black Pond and Inmanfield Quail Emphasis Areas and conservation efforts.', file: '/downloads/bankhead-national-forest/quail-habitat.pdf', color: 'green' },
-  { name: 'Sipsey Canoe Map', description: 'Paddling map for the Sipsey Fork Wild and Scenic River corridor.', file: '/downloads/bankhead-national-forest/sipsey-canoe-map.pdf', color: 'blue' },
-  { name: 'Sipsey Wilderness Map', description: 'Trail map for the Sipsey Wilderness, the largest eastern wilderness area.', file: '/downloads/bankhead-national-forest/sipsey-wilderness-map.pdf', color: 'green' },
-  { name: 'Clear Creek Campground Map', description: 'Detailed map of Clear Creek Recreation Area camping loops and facilities.', file: '/downloads/bankhead-national-forest/clear-creek-map.pdf', color: 'amber' },
-  { name: 'Corinth Campground Map', description: 'Map of Corinth Recreation Area campsites and amenities.', file: '/downloads/bankhead-national-forest/corinth-map.pdf', color: 'amber' },
-  { name: 'Forest Visitor Rules', description: 'Rules, regulations, and guidelines for visiting the Bankhead National Forest.', file: '/downloads/bankhead-national-forest/forest-visitor-rules.pdf', color: 'red' },
-]
-
-export default function BankheadNationalForestPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
       <PageSchema
         url="/bankhead-national-forest"
-        name="Bankhead National Forest | Alabama | BA Services"
-        crumbName="Bankhead National Forest"
-        description={'Explore Bankhead National Forest — "The Land of a Thousand Waterfalls." 180,000+ acres featuring the Sipsey Wilderness, 84 breeding bird species, campgrounds, and the Hurricane Creek Shooting Range.'}
-        image="/images/bankhead-forest.jpg"
+        name={content.seo.title}
+        crumbName={content.name}
+        description={content.seo.description}
+        image={content.hero.src}
       />
+      <NoticeBanner notices={content.notices} />
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/bankhead-forest.jpg"
-            alt="Bankhead National Forest — The Land of a Thousand Waterfalls"
+            src={content.hero.src}
+            alt={content.hero.alt}
             fill
             className="object-cover"
             priority
@@ -163,33 +98,30 @@ export default function BankheadNationalForestPage() {
         </div>
         <div className="relative z-10 container-custom px-6 pb-16">
           <span className="inline-block px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-full mb-4">
-            National Forest
+            {content.tagline}
           </span>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-3">
-            Bankhead National Forest
+            {content.name}
           </h1>
           <p className="text-xl md:text-2xl text-white/90 font-light italic mb-4">
-            The Land of a Thousand Waterfalls
+            {content.summary}
           </p>
           <div className="flex items-center text-white/80 mb-6">
             <svg className="w-5 h-5 mr-2 text-red-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
-            Lawrence, Winston &amp; Franklin Counties, Alabama &mdash; Cumberland Plateau
+            {content.locationLine}
           </div>
           <div className="flex flex-wrap gap-2">
-            {[
-              { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area' },
-              { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area' },
-            ].map((cg) => (
+            {heroLinks.map((cg) => (
               <a
-                key={cg.name}
-                href={cg.href}
+                key={cg.label}
+                href={cg.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-forest-DEFAULT text-white text-sm font-semibold rounded-lg hover:bg-forest-dark transition-colors"
               >
-                {cg.name}
+                {cg.label}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
@@ -203,13 +135,8 @@ export default function BankheadNationalForestPage() {
       <section className="bg-forest-DEFAULT py-8">
         <div className="container-custom px-6">
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-            {[
-              { value: '180,000+', label: 'Acres' },
-              { value: '84', label: 'Bird Species' },
-              { value: '2', label: 'Campgrounds' },
-              { value: 'Sipsey', label: 'Wilderness' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
+            {content.stats.map((stat) => (
+              <div key={stat.key} className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
                 <div className="text-white/70 text-sm">{stat.label}</div>
               </div>
@@ -223,30 +150,20 @@ export default function BankheadNationalForestPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">About Bankhead National Forest</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
               <div className="prose prose-lg max-w-none">
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  The William B. Bankhead National Forest spans more than 180,000 acres across the Cumberland Plateau of north Alabama, primarily within Winston and Lawrence Counties near Double Springs. Known as the &ldquo;Land of a Thousand Waterfalls,&rdquo; the forest is celebrated for its dramatic sandstone canyons, pristine streams, limestone bluffs, and dense hardwood forests, making it one of the most scenic natural landscapes in the southeastern United States.
-                </p>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  At the heart of the forest lies the Sipsey Wilderness, the largest designated wilderness area east of the Mississippi River. The Sipsey Fork, a federally designated Wild and Scenic River, winds through deep canyons, creating a striking landscape of cascading waterfalls, rock shelters, and towering old-growth trees. The forest&apos;s ecological richness and diverse habitats have also earned it recognition as an Important Bird Area by the American Bird Conservancy.
-                </p>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  The Bankhead Ranger District offers a wide range of year-round recreational opportunities, supported by the region&apos;s mild climate. While peak visitation typically occurs from mid-March through late October, the forest remains accessible throughout the year. Visitors can enjoy camping, picnicking, boating, water sports, hiking, mountain biking, horseback riding, off-highway vehicle (OHV) use, fishing, hunting, photography, and scenic driving.
-                </p>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Two primary recreation areas&mdash;Clear Creek Recreation Area and Corinth Recreation Area&mdash;are located along Lewis Smith Lake, a 21,200-acre reservoir managed by Alabama Power Company. These sites provide convenient access to boating and water-based recreation, along with comfortable camping facilities that serve as base camps for exploring the surrounding forest. Additional amenities throughout the district include horse trails, a shooting range, and scenic byways.
-                </p>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Easily accessible from major population centers such as Birmingham and Huntsville, Alabama, as well as Chattanooga, Nashville, and Memphis, most visitors reach the forest within a two- to three-hour drive. This accessibility, combined with its natural beauty and diverse recreational offerings, makes Bankhead National Forest a premier outdoor destination in the Southeast.
-                </p>
+                {content.paragraphs.map((paragraph, index) => (
+                  <p key={index} className="text-gray-600 leading-relaxed mb-4">
+                    {paragraph}
+                  </p>
+                ))}
               </div>
 
               {/* Natural Features */}
               <div className="mt-10 bg-green-50 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Natural Features</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{content.sections.naturalFeatures.heading}</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  The Bankhead sits atop the Cumberland Plateau, where millions of years of erosion have carved deep sandstone canyons laced with waterfalls. Old-growth forests cling to canyon walls, while pristine streams flow through the valley floors. Lewis Smith Lake, with over 500 miles of shoreline marked by high rock bluffs, borders the southern edge of the forest. The combination of geology, hydrology, and ecology creates one of the richest natural landscapes in the Southeast.
+                  {content.sections.naturalFeatures.paragraphs?.[0]}
                 </p>
               </div>
             </div>
@@ -254,22 +171,9 @@ export default function BankheadNationalForestPage() {
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Activities</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{content.sections.activities.heading}</h3>
                 <ul className="space-y-3">
-                  {[
-                    'Hiking & Backpacking',
-                    'Birding (84 breeding species)',
-                    'Waterfall Hunting',
-                    'Canyon Exploration',
-                    'Camping',
-                    'Fishing',
-                    'Canoeing & Kayaking',
-                    'Horseback Riding',
-                    'Target Shooting',
-                    'Scenic Drives',
-                    'Wildlife Viewing',
-                    'Swimming',
-                  ].map((activity) => (
+                  {content.features.map((activity) => (
                     <li key={activity} className="flex items-center text-gray-700">
                       <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -281,21 +185,21 @@ export default function BankheadNationalForestPage() {
               </div>
 
               <div className="bg-forest-DEFAULT rounded-2xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-4">Contact &amp; Info</h3>
-                <p className="text-white/80 mb-2">Bankhead Ranger District</p>
-                <p className="text-white/80 mb-1 text-sm">Highway 33, Double Springs, AL</p>
-                <a href="tel:+12054895111" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-6">
+                <h3 className="text-xl font-bold mb-4">{content.sections.contact.heading}</h3>
+                <p className="text-white/80 mb-2">{contactDistrict?.body}</p>
+                <p className="text-white/80 mb-1 text-sm">{contactAddress?.body}</p>
+                <a href={content.ctas.rangerPhone.url} className="flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-6">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  (205) 489-5111
+                  {content.ctas.rangerPhone.label}
                 </a>
                 <div className="space-y-2">
-                  <a href="/experiences/clear-creek-recreation-area" className="block w-full text-center py-3 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
-                    Clear Creek Recreation Area
+                  <a href={content.ctas.sidebarClearCreek.url} className="block w-full text-center py-3 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+                    {content.ctas.sidebarClearCreek.label}
                   </a>
-                  <a href="/experiences/corinth-recreation-area" className="block w-full text-center py-3 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
-                    Corinth Recreation Area
+                  <a href={content.ctas.sidebarCorinth.url} className="block w-full text-center py-3 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+                    {content.ctas.sidebarCorinth.label}
                   </a>
                 </div>
               </div>
@@ -307,32 +211,32 @@ export default function BankheadNationalForestPage() {
       {/* Campgrounds */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Campgrounds</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.campgrounds.heading}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">
-            Two campgrounds managed by BA Services provide comfortable base camps for exploring the Bankhead National Forest.
+            {content.sections.campgrounds.intro}
           </p>
           <div className="grid md:grid-cols-2 gap-8">
             {campgrounds.map((campground) => (
-              <Link key={campground.name} href={campground.link} className="group">
+              <Link key={campground.key} href={campground.href!} className="group">
                 <div className="bg-white rounded-2xl overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
                   <div className="relative h-56">
                     <Image
-                      src={campground.image}
-                      alt={campground.name}
+                      src={campground.photo!.src}
+                      alt={campground.photo!.alt}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 text-gray-900 font-semibold rounded-full text-sm">
-                      {campground.sites}
+                      {campground.meta}
                     </div>
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">
-                      {campground.name}
+                      {campground.title}
                     </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{campground.description}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">{campground.body}</p>
                     <span className="inline-flex items-center gap-1 mt-4 text-green-700 font-semibold text-sm">
-                      {campground.name}
+                      {campground.title}
                       <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
@@ -345,12 +249,12 @@ export default function BankheadNationalForestPage() {
 
           {/* Other Recreation Areas */}
           <div className="mt-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Other Recreation Areas</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">{content.sections.otherRecreationAreas.heading}</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {recreationAreas.map((area) => (
-                <div key={area.name} className="bg-white rounded-xl p-5 border border-gray-200 hover:border-green-300 transition-colors">
-                  <h4 className="font-bold text-gray-900 mb-2">{area.name}</h4>
-                  <p className="text-gray-600 text-sm">{area.description}</p>
+                <div key={area.key} className="bg-white rounded-xl p-5 border border-gray-200 hover:border-green-300 transition-colors">
+                  <h4 className="font-bold text-gray-900 mb-2">{area.title}</h4>
+                  <p className="text-gray-600 text-sm">{area.body}</p>
                 </div>
               ))}
             </div>
@@ -371,21 +275,21 @@ export default function BankheadNationalForestPage() {
                   </svg>
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900">Birding in the Bankhead</h2>
-                  <span className="text-blue-700 font-semibold text-sm">American Bird Conservancy &mdash; Important Bird Area</span>
+                  <h2 className="text-3xl font-bold text-gray-900">{content.sections.birding.heading}</h2>
+                  <span className="text-blue-700 font-semibold text-sm">{content.sections.birding.intro}</span>
                 </div>
               </div>
               <p className="text-gray-600 leading-relaxed mb-4">
-                With 84 breeding bird species recorded during the breeding season, the Bankhead National Forest is a premier birding destination in the Southeast. The American Bird Conservancy has designated it as an Important Bird Area, recognizing its critical role in supporting neotropical migrants and resident species.
+                {content.sections.birding.paragraphs?.[0]}
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                The forest is a stronghold for the <strong className="text-gray-900">Cerulean Warbler</strong>, a species of conservation concern that nests in the old-growth canopy of the Sipsey Wilderness canyons. The deep, moist canyons and diverse forest structure provide ideal habitat for this declining species.
+                {birdingCerulean.items![0]}<strong className="text-gray-900">{birdingCerulean.items![1]}</strong>{birdingCerulean.items![2]}
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Four sites within the forest are part of the <strong className="text-gray-900">North Alabama Birding Trail</strong>, each offering distinct habitats and birding opportunities throughout the year.
+                {birdingTrail.items![0]}<strong className="text-gray-900">{birdingTrail.items![1]}</strong>{birdingTrail.items![2]}
               </p>
               <a
-                href="/downloads/bankhead-national-forest/birding-guide.pdf"
+                href={content.ctas.birdingGuide.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
@@ -393,21 +297,21 @@ export default function BankheadNationalForestPage() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                Download Birding Guide (PDF)
+                {content.ctas.birdingGuide.label}
               </a>
             </div>
 
             {/* Birding Trail Sites */}
             <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">North Alabama Birding Trail Sites</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">{content.sections.birdingTrailSites.heading}</h3>
               <div className="space-y-4">
                 {birdingTrailSites.map((site) => (
-                  <div key={site.name} className="bg-white rounded-xl p-5 shadow-sm">
+                  <div key={site.key} className="bg-white rounded-xl p-5 shadow-sm">
                     <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
                       <span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
-                      {site.name}
+                      {site.title}
                     </h4>
-                    <p className="text-gray-600 text-sm">{site.description}</p>
+                    <p className="text-gray-600 text-sm">{site.body}</p>
                   </div>
                 ))}
               </div>
@@ -422,29 +326,29 @@ export default function BankheadNationalForestPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-96 rounded-2xl overflow-hidden">
               <Image
-                src="/images/Bankhead-Waterfall.png"
-                alt="Waterfall in the Sipsey Wilderness"
+                src={sipseyPhoto.src}
+                alt={sipseyPhoto.alt}
                 fill
                 className="object-cover"
               />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Sipsey Wilderness</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.sipseyWilderness.heading}</h2>
               <p className="text-lg text-green-700 font-semibold mb-4">
-                Largest Wilderness Area East of the Mississippi
+                {content.sections.sipseyWilderness.intro}
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                The Sipsey Wilderness encompasses over 25,000 acres of rugged sandstone canyons, old-growth forests, and cascading waterfalls. Deep, narrow canyons shelter some of the last remaining old-growth hardwood forests in Alabama, with trees towering over 100 feet above the canyon floors.
+                {content.sections.sipseyWilderness.paragraphs?.[0]}
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                The Sipsey Fork &mdash; a designated <strong className="text-gray-900">Wild and Scenic River</strong> corridor &mdash; is the central artery of the wilderness. Its clear waters wind through dramatic sandstone gorges, past ancient rock shelters, and over countless waterfalls. The river corridor is popular for canoeing and kayaking, especially during spring flows.
+                {sipseyWildAndScenic.items![0]}<strong className="text-gray-900">{sipseyWildAndScenic.items![1]}</strong>{sipseyWildAndScenic.items![2]}
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Multiple trailheads provide access to a network of trails that explore the canyon bottoms, ridgetops, and creek crossings. Backpacking, day hiking, and fishing are all popular activities within the wilderness.
+                {content.sections.sipseyWilderness.paragraphs?.[1]}
               </p>
               <div className="flex gap-3">
                 <a
-                  href="/downloads/bankhead-national-forest/sipsey-wilderness-map.pdf"
+                  href={content.ctas.sipseyWildernessMap.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors text-sm"
@@ -452,10 +356,10 @@ export default function BankheadNationalForestPage() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
-                  Wilderness Map
+                  {content.ctas.sipseyWildernessMap.label}
                 </a>
                 <a
-                  href="/downloads/bankhead-national-forest/sipsey-canoe-map.pdf"
+                  href={content.ctas.sipseyCanoeMap.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors text-sm"
@@ -463,7 +367,7 @@ export default function BankheadNationalForestPage() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
-                  Canoe Map
+                  {content.ctas.sipseyCanoeMap.label}
                 </a>
               </div>
             </div>
@@ -476,36 +380,26 @@ export default function BankheadNationalForestPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Hurricane Creek Shooting Range</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.shootingRange.heading}</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                The Hurricane Creek Shooting Range is a public, accessible facility within the Bankhead National Forest offering year-round target shooting in a safe, managed environment. Whether you&apos;re sighting in a rifle before hunting season or practicing with a handgun, the range provides a well-maintained venue for shooters of all experience levels.
+                {content.sections.shootingRange.paragraphs?.[0]}
               </p>
               <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                <div className="bg-white rounded-xl p-4">
-                  <h4 className="font-bold text-gray-900 mb-1">Target Distances</h4>
-                  <p className="text-gray-600 text-sm">25, 50, and 100 yard lanes</p>
-                </div>
-                <div className="bg-white rounded-xl p-4">
-                  <h4 className="font-bold text-gray-900 mb-1">Shooting Benches</h4>
-                  <p className="text-gray-600 text-sm">8 covered benches available</p>
-                </div>
-                <div className="bg-white rounded-xl p-4">
-                  <h4 className="font-bold text-gray-900 mb-1">Admission</h4>
-                  <p className="text-gray-600 text-sm">$3 per person</p>
-                </div>
-                <div className="bg-white rounded-xl p-4">
-                  <h4 className="font-bold text-gray-900 mb-1">Availability</h4>
-                  <p className="text-gray-600 text-sm">Open year-round, ADA accessible</p>
-                </div>
+                {rangeFacts.map((fact) => (
+                  <div key={fact.key} className="bg-white rounded-xl p-4">
+                    <h4 className="font-bold text-gray-900 mb-1">{fact.title}</h4>
+                    <p className="text-gray-600 text-sm">{fact.body}</p>
+                  </div>
+                ))}
               </div>
               <p className="text-gray-500 text-sm">
-                Bring your own targets and ammunition. Paper targets only &mdash; no glass, electronics, or explosive targets. All shooters must follow posted range rules and safety guidelines.
+                {content.sections.shootingRange.paragraphs?.[1]}
               </p>
             </div>
             <div className="relative h-80 rounded-2xl overflow-hidden">
               <Image
-                src="/images/bankhead-bicycle-trail.jpg"
-                alt="Bankhead National Forest recreation area"
+                src={rangePhoto.src}
+                alt={rangePhoto.alt}
                 fill
                 className="object-cover"
               />
@@ -520,25 +414,25 @@ export default function BankheadNationalForestPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-80 rounded-2xl overflow-hidden order-2 lg:order-1">
               <Image
-                src="/images/clear-creek-fox-loop.jpg"
-                alt="Forest habitat in Bankhead National Forest"
+                src={quailPhoto.src}
+                alt={quailPhoto.alt}
                 fill
                 className="object-cover"
               />
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Quail Habitat &amp; Conservation</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.quailHabitat.heading}</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                The Bankhead National Forest is home to two designated <strong className="text-gray-900">Quail Emphasis Areas</strong> &mdash; Black Pond and Inmanfield &mdash; where the U.S. Forest Service is actively managing habitat to support the Northern Bobwhite and other grassland-dependent wildlife.
+                {quailEmphasis.items![0]}<strong className="text-gray-900">{quailEmphasis.items![1]}</strong>{quailEmphasis.items![2]}
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                These areas focus on <strong className="text-gray-900">longleaf and shortleaf pine restoration</strong>, using prescribed fire and selective thinning to recreate the open, park-like forests that once covered much of the Southeast. The result is a mosaic of native grasses, wildflowers, and young pines that provides ideal nesting and foraging habitat for bobwhite quail.
+                {quailPines.items![0]}<strong className="text-gray-900">{quailPines.items![1]}</strong>{quailPines.items![2]}
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
-                The conservation work here benefits not only quail but a wide range of species that depend on early successional and open-forest habitats, contributing to the overall biodiversity of the Bankhead.
+                {content.sections.quailHabitat.paragraphs?.[0]}
               </p>
               <a
-                href="/downloads/bankhead-national-forest/quail-habitat.pdf"
+                href={content.ctas.quailHabitatGuide.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
@@ -546,7 +440,7 @@ export default function BankheadNationalForestPage() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                Download Quail Habitat Guide (PDF)
+                {content.ctas.quailHabitatGuide.label}
               </a>
             </div>
           </div>
@@ -556,38 +450,28 @@ export default function BankheadNationalForestPage() {
       {/* Resources & Downloads */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.downloads.heading}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">
-            Download maps, guides, and resources to plan your visit to the Bankhead National Forest.
+            {content.sections.downloads.intro}
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {downloads.map((item) => (
               <a
-                key={item.name}
-                href={item.file}
+                key={item.key}
+                href={item.href!}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-50 rounded-xl p-5 hover:bg-green-50 transition-colors group"
               >
                 <div className="flex items-start gap-3">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                    item.color === 'blue' ? 'bg-blue-100' :
-                    item.color === 'green' ? 'bg-green-100' :
-                    item.color === 'amber' ? 'bg-amber-100' :
-                    'bg-red-100'
-                  }`}>
-                    <svg className={`w-5 h-5 ${
-                      item.color === 'blue' ? 'text-blue-700' :
-                      item.color === 'green' ? 'text-green-700' :
-                      item.color === 'amber' ? 'text-amber-700' :
-                      'text-red-700'
-                    }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${downloadTint(item.badge).wrap}`}>
+                    <svg className={`w-5 h-5 ${downloadTint(item.badge).icon}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-1 group-hover:text-green-700 transition-colors">{item.name}</h4>
-                    <p className="text-gray-500 text-xs">{item.description}</p>
+                    <h4 className="font-bold text-gray-900 mb-1 group-hover:text-green-700 transition-colors">{item.title}</h4>
+                    <p className="text-gray-500 text-xs">{item.body}</p>
                   </div>
                 </div>
               </a>
@@ -599,17 +483,9 @@ export default function BankheadNationalForestPage() {
       {/* Photo Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              { src: '/images/bankhead-forest.jpg', alt: 'Bankhead National Forest landscape' },
-              { src: '/images/Bankhead-Waterfall.png', alt: 'Waterfall in the Sipsey Wilderness' },
-              { src: '/images/bankhead-bicycle-trail.jpg', alt: 'Trail in Bankhead National Forest' },
-              { src: '/images/clear-creek-bent-twig.jpg', alt: 'Clear Creek Recreation Area' },
-              { src: '/images/clear-creek-acorn-camp.jpg', alt: 'Camping at Clear Creek' },
-              { src: '/images/clear-creek-fox-loop.jpg', alt: 'Fox Loop at Clear Creek' },
-              { src: '/images/clear-creek-fox-entrance.jpg', alt: 'Clear Creek campground entrance' },
-            ].map((photo, index) => (
+            {galleryPhotos.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
                 <Image
                   src={photo.src}
@@ -627,19 +503,19 @@ export default function BankheadNationalForestPage() {
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
           <div className="max-w-3xl mb-12">
-            <span className="inline-block px-4 py-2 bg-forest-DEFAULT/10 text-forest-DEFAULT text-sm font-semibold rounded-full mb-4">Statement of Work</span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <span className="inline-block px-4 py-2 bg-forest-DEFAULT/10 text-forest-DEFAULT text-sm font-semibold rounded-full mb-4">{scopeBadge?.title}</span>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              BA Services delivers full-service recreation management for the William B. Bankhead National Forest under a U.S. Forest Service concession contract, operating and maintaining the Clear Creek and Corinth Recreation Areas to ensure safe, clean, and welcoming outdoor experiences.
+              {content.sections.scopeOfServices.intro}
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {scopeOfWork.map((category) => (
-              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div key={category.key} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
-                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
+                <p className="text-sm text-gray-500 mb-4">{category.body}</p>
                 <ul className="space-y-2">
-                  {category.items.map((item) => (
+                  {category.items!.map((item) => (
                     <li key={item} className="flex items-start text-sm text-gray-700">
                       <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -658,24 +534,24 @@ export default function BankheadNationalForestPage() {
       <section className="py-20 bg-forest-DEFAULT">
         <div className="container-custom px-6 text-center">
           <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
-            Discover the Land of a Thousand Waterfalls
+            {content.sections.closingCta.heading}
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            From the depths of the Sipsey Wilderness to the shores of Lewis Smith Lake, the Bankhead National Forest offers over 180,000 acres of Alabama&apos;s finest natural landscapes.
+            {content.sections.closingCta.intro}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/experiences/clear-creek-recreation-area" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">
-              Clear Creek Recreation Area
+            <a href={content.ctas.footerClearCreek.url} className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">
+              {content.ctas.footerClearCreek.label}
             </a>
-            <a href="/experiences/corinth-recreation-area" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">
-              Corinth Recreation Area
+            <a href={content.ctas.footerCorinth.url} className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">
+              {content.ctas.footerCorinth.label}
             </a>
-            <Link href="/experiences" className="btn-primary bg-white/10 text-white hover:bg-white/20">
-              View All Experiences
+            <Link href={content.ctas.footerExperiences.url} className="btn-primary bg-white/10 text-white hover:bg-white/20">
+              {content.ctas.footerExperiences.label}
             </Link>
           </div>
           <div className="mt-6 text-white/60 text-sm">
-            Bankhead Ranger District: (205) 489-5111 &mdash; Highway 33, Double Springs, AL
+            {content.sections.closingCta.paragraphs?.[0]}
           </div>
         </div>
       </section>
