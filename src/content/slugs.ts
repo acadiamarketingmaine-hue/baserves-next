@@ -32,6 +32,7 @@
  *   indian-celina-lakes-recreation-area
  *                                   src/app/indian-celina-lakes-recreation-area/page.tsx
  *   hoosier-national-forest         src/app/hoosier-national-forest/page.tsx
+ *   monongahela-national-forest     src/app/monongahela-national-forest/page.tsx
  */
 export const CONVERTED_SLUGS: readonly string[] = [
   'long-lake-outdoor-center',
@@ -44,6 +45,7 @@ export const CONVERTED_SLUGS: readonly string[] = [
   'hardin-ridge-recreation-area',
   'indian-celina-lakes-recreation-area',
   'hoosier-national-forest',
+  'monongahela-national-forest',
 ]
 
 /**
