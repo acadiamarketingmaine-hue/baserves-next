@@ -43,6 +43,12 @@ import { bankheadNationalForest } from './defaults/bankhead-national-forest'
 import { meramecStatePark } from './defaults/meramec-state-park'
 import { indianCelinaLakesRecreationArea } from './defaults/indian-celina-lakes-recreation-area'
 import { hoosierNationalForest } from './defaults/hoosier-national-forest'
+import { bigBendCampground } from './defaults/big-bend-campground'
+import { jessJudyGroupCampground } from './defaults/jess-judy-group-campground'
+import { senecaShadowsCampground } from './defaults/seneca-shadows-campground'
+import { spruceKnobLakeCampground } from './defaults/spruce-knob-lake-campground'
+import { gatewoodGroupCampground } from './defaults/gatewood-group-campground'
+import { stuartRecreationArea } from './defaults/stuart-recreation-area'
 
 export * from './types'
 export { resolve } from './resolve'
@@ -67,6 +73,12 @@ const PROPERTY_DEFAULTS: Record<string, PropertyContent> = {
   'meramec-state-park': meramecStatePark,
   'indian-celina-lakes-recreation-area': indianCelinaLakesRecreationArea,
   'hoosier-national-forest': hoosierNationalForest,
+  'big-bend-campground': bigBendCampground,
+  'jess-judy-group-campground': jessJudyGroupCampground,
+  'seneca-shadows-campground': senecaShadowsCampground,
+  'spruce-knob-lake-campground': spruceKnobLakeCampground,
+  'gatewood-group-campground': gatewoodGroupCampground,
+  'stuart-recreation-area': stuartRecreationArea,
 }
 
 /**

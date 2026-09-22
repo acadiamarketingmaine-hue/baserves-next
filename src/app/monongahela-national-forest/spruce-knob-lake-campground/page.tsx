@@ -4,51 +4,75 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { getPropertyContent } from '@/content'
+import NoticeBanner from '@/content/NoticeBanner'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Spruce Knob Lake Campground | Monongahela National Forest | BA Services' },
-  description: 'Spruce Knob Lake Campground is perched at high elevation near the summit of Spruce Knob — the highest point in West Virginia at 4,863 feet. The campground surro',
-  alternates: { canonical: '/monongahela-national-forest/spruce-knob-lake-campground' },
-  openGraph: og('/monongahela-national-forest/spruce-knob-lake-campground'),
+const SLUG = 'spruce-knob-lake-campground'
+
+/**
+ * This page reads the content layer, so it must not be frozen at build time:
+ * once a camp publishes an edit, a page that only changes when somebody
+ * deploys is a page the editor cannot reach. Five minutes is the floor — the
+ * publish webhook (POST /api/revalidate) drops this slug's cache tag and makes
+ * a change visible in seconds, and this is what happens when that webhook does
+ * not arrive. Kept as a literal because Next.js reads it statically; the same
+ * number is CONTENT_POLICY.revalidateSeconds.
+ */
+export const revalidate = 300
+
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getPropertyContent(SLUG)
+  return {
+    title: content?.seo.title ? { absolute: content?.seo.title } : undefined,
+    description: content?.seo.description,
+    alternates: { canonical: '/monongahela-national-forest/spruce-knob-lake-campground' },
+    openGraph: og('/monongahela-national-forest/spruce-knob-lake-campground'),
+  }
 }
 
-export default function SpruceKnobLakeCampgroundPage() {
+// The words live in src/content/defaults/spruce-knob-lake-campground.ts. Only the
+// icons stay here - they are JSX and cannot be serialised.
+
+export default async function SpruceKnobLakeCampgroundPage() {
+  const content = (await getPropertyContent(SLUG))!
+
   return (
     <main className="min-h-screen">
       <Navigation />
       <PageSchema
         url="/monongahela-national-forest/spruce-knob-lake-campground"
-        name="Spruce Knob Lake Campground | Monongahela National Forest | BA Services"
-        crumbName="Spruce Knob Lake Campground"
-        description="Spruce Knob Lake Campground is perched at high elevation near the summit of Spruce Knob — the highest point in West Virginia at 4,863 feet. The campground surro"
-        image="/images/monongahela/entrance-sign.jpg"
+        name={content.seo.title}
+        crumbName={content.name}
+        description={content.seo.description}
+        image={content.hero.src}
         crumbs={[{ name: "Monongahela National Forest", url: "/monongahela-national-forest" }]}
       />
+      <NoticeBanner notices={content.notices} />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/monongahela/entrance-sign.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src={content.hero.src} alt={content.hero.alt} className="w-full h-full object-cover opacity-20" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">
-            <Link href="/monongahela-national-forest" className="inline-flex items-center gap-2 text-green-300 hover:text-white text-sm mb-4 transition-colors">
+            <Link href={content.ctas.parentForest.url} className="inline-flex items-center gap-2 text-green-300 hover:text-white text-sm mb-4 transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-              Monongahela National Forest
+              {content.ctas.parentForest.label}
             </Link>
             <h1 className="font-display headline-xl text-white mb-4">
-              Spruce Knob Lake Campground
+              {content.name}
             </h1>
             <p className="text-xl text-white/80 leading-relaxed mb-8">
-              High-Elevation Camping Near West Virginia's Highest Peak
+              {content.tagline}
             </p>
             <a
-              href="https://www.recreation.gov/camping/campgrounds/234132"
+              href={content.ctas.hero.url}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-flex items-center gap-2"
             >
-              Book on Recreation.gov
+              {content.ctas.hero.label}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
             </a>
           </div>
@@ -59,18 +83,12 @@ export default function SpruceKnobLakeCampgroundPage() {
       <section className="bg-gray-900 py-8">
         <div className="container-custom px-6">
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-                        <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white">42</div>
-              <div className="text-white/60 text-sm">Sites</div>
+            {content.stats.map((stat) => (
+            <div key={stat.key} className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
+              <div className="text-white/60 text-sm">{stat.label}</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white">~4,000 ft</div>
-              <div className="text-white/60 text-sm">Elevation</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white">May–Oct</div>
-              <div className="text-white/60 text-sm">Season</div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -80,56 +98,31 @@ export default function SpruceKnobLakeCampgroundPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">About Spruce Knob Lake Campground</h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Spruce Knob Lake Campground is located at high elevation near Spruce Knob, the highest point in West Virginia at 4,863 feet. Surrounded by red spruce forests and the rugged terrain of the Allegheny Mountains, the campground offers a cool, quiet retreat with access to panoramic views, the Spruce Knob summit, and the extensive Spruce Knob&ndash;Seneca Creek Backcountry, which features more than 60 miles of trails for hiking and exploration.
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
+              {content.paragraphs.map((paragraph, index) => (
+              <p key={index} className="text-lg text-gray-600 leading-relaxed mb-6">
+                {paragraph}
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                At the heart of the campground is Spruce Knob Lake, a 25-acre impoundment originally constructed in 1952 for fishing and regularly stocked with trout by the West Virginia Division of Natural Resources. The lake also supports abundant shoreline fishing for bluegill, making it especially appealing for beginning anglers. Non-motorized boats and electric trolling motors are permitted, and facilities include a small boat launch, parking area, and a wooden fishing pier that provides barrier-free access. Additional fishing opportunities can be found nearby along Gandy Creek.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Spruce Knob Lake Campground includes 28 standard campsites, 2 double sites, and 10 walk-in tent sites. Standard sites are equipped with paved spurs, picnic tables, fire rings, and lantern posts. A developed host site provides solar-powered electricity, water, and a sewage holding tank. Sanitary facilities consist of five single-unit vault restrooms, all of which are accessible. Trash dumpsters are available throughout the campground for waste disposal.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                There are no RV dump stations at Spruce Knob Lake Campground which typically operates from mid-April through late October, aligning with peak seasonal demand.
-              </p>
+              ))}
               <a
-                href="https://www.recreation.gov/camping/campgrounds/234132"
+                href={content.ctas.reserve.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center gap-2"
               >
-                Reserve Your Site
+                {content.ctas.reserve.label}
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
               </a>
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Features &amp; Amenities</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">{content.sections.features.heading}</h3>
               <ul className="space-y-3">
-                <li className="flex items-center text-gray-700">
+                {content.features.map((feature) => (
+                <li key={feature} className="flex items-center text-gray-700">
                   <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Mountain lake setting
+                  {feature}
                 </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Near WV highest point (4,863 ft)
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Fishing in Spruce Knob Lake
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Hiking to Spruce Knob summit
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Vault restrooms
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Cool high-elevation climate
-                </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -139,17 +132,17 @@ export default function SpruceKnobLakeCampgroundPage() {
       {/* CTA */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Visit?</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{content.sections.closingCta.heading}</h2>
           <p className="text-gray-600 max-w-xl mx-auto mb-8">
-            Reservations are managed through Recreation.gov. Book your campsite today and experience the Monongahela National Forest.
+            {content.sections.closingCta.intro}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="https://www.recreation.gov/camping/campgrounds/234132" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2">
-              Book on Recreation.gov
+            <a href={content.ctas.footer.url} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2">
+              {content.ctas.footer.label}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
             </a>
-            <Link href="/monongahela-national-forest" className="btn-secondary">
-              Back to Monongahela NF
+            <Link href={content.ctas.footerBack.url} className="btn-secondary">
+              {content.ctas.footerBack.label}
             </Link>
           </div>
         </div>

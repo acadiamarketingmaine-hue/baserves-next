@@ -33,6 +33,18 @@
  *                                   src/app/indian-celina-lakes-recreation-area/page.tsx
  *   hoosier-national-forest         src/app/hoosier-national-forest/page.tsx
  *   monongahela-national-forest     src/app/monongahela-national-forest/page.tsx
+ *   big-bend-campground
+ *                                   src/app/monongahela-national-forest/big-bend-campground/page.tsx
+ *   jess-judy-group-campground
+ *                                   src/app/monongahela-national-forest/jess-judy-group-campground/page.tsx
+ *   seneca-shadows-campground
+ *                                   src/app/monongahela-national-forest/seneca-shadows-campground/page.tsx
+ *   spruce-knob-lake-campground
+ *                                   src/app/monongahela-national-forest/spruce-knob-lake-campground/page.tsx
+ *   gatewood-group-campground
+ *                                   src/app/monongahela-national-forest/gatewood-group-campground/page.tsx
+ *   stuart-recreation-area
+ *                                   src/app/monongahela-national-forest/stuart-recreation-area/page.tsx
  */
 export const CONVERTED_SLUGS: readonly string[] = [
   'long-lake-outdoor-center',
@@ -46,6 +58,12 @@ export const CONVERTED_SLUGS: readonly string[] = [
   'indian-celina-lakes-recreation-area',
   'hoosier-national-forest',
   'monongahela-national-forest',
+  'big-bend-campground',
+  'jess-judy-group-campground',
+  'seneca-shadows-campground',
+  'spruce-knob-lake-campground',
+  'gatewood-group-campground',
+  'stuart-recreation-area',
 ]
 
 /**

@@ -4,51 +4,75 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { getPropertyContent } from '@/content'
+import NoticeBanner from '@/content/NoticeBanner'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Big Bend Campground | Monongahela National Forest | BA Services' },
-  description: 'Big Bend Campground is nestled in a sweeping bend of the South Branch Potomac River within the Monongahela National Forest. The campground offers a mix of tent ',
-  alternates: { canonical: '/monongahela-national-forest/big-bend-campground' },
-  openGraph: og('/monongahela-national-forest/big-bend-campground'),
+const SLUG = 'big-bend-campground'
+
+/**
+ * This page reads the content layer, so it must not be frozen at build time:
+ * once a camp publishes an edit, a page that only changes when somebody
+ * deploys is a page the editor cannot reach. Five minutes is the floor — the
+ * publish webhook (POST /api/revalidate) drops this slug's cache tag and makes
+ * a change visible in seconds, and this is what happens when that webhook does
+ * not arrive. Kept as a literal because Next.js reads it statically; the same
+ * number is CONTENT_POLICY.revalidateSeconds.
+ */
+export const revalidate = 300
+
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getPropertyContent(SLUG)
+  return {
+    title: content?.seo.title ? { absolute: content?.seo.title } : undefined,
+    description: content?.seo.description,
+    alternates: { canonical: '/monongahela-national-forest/big-bend-campground' },
+    openGraph: og('/monongahela-national-forest/big-bend-campground'),
+  }
 }
 
-export default function BigBendCampgroundPage() {
+// The words live in src/content/defaults/big-bend-campground.ts. Only the
+// icons stay here - they are JSX and cannot be serialised.
+
+export default async function BigBendCampgroundPage() {
+  const content = (await getPropertyContent(SLUG))!
+
   return (
     <main className="min-h-screen">
       <Navigation />
       <PageSchema
         url="/monongahela-national-forest/big-bend-campground"
-        name="Big Bend Campground | Monongahela National Forest | BA Services"
-        crumbName="Big Bend Campground"
-        description="Big Bend Campground is nestled in a sweeping bend of the South Branch Potomac River within the Monongahela National Forest. The campground offers a mix of tent "
-        image="/images/monongahela/entrance-sign.jpg"
+        name={content.seo.title}
+        crumbName={content.name}
+        description={content.seo.description}
+        image={content.hero.src}
         crumbs={[{ name: "Monongahela National Forest", url: "/monongahela-national-forest" }]}
       />
+      <NoticeBanner notices={content.notices} />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/monongahela/entrance-sign.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src={content.hero.src} alt={content.hero.alt} className="w-full h-full object-cover opacity-20" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">
-            <Link href="/monongahela-national-forest" className="inline-flex items-center gap-2 text-green-300 hover:text-white text-sm mb-4 transition-colors">
+            <Link href={content.ctas.parentForest.url} className="inline-flex items-center gap-2 text-green-300 hover:text-white text-sm mb-4 transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-              Monongahela National Forest
+              {content.ctas.parentForest.label}
             </Link>
             <h1 className="font-display headline-xl text-white mb-4">
-              Big Bend Campground
+              {content.name}
             </h1>
             <p className="text-xl text-white/80 leading-relaxed mb-8">
-              Riverside Camping on the South Branch Potomac
+              {content.tagline}
             </p>
             <a
-              href="https://www.recreation.gov/camping/campgrounds/232019"
+              href={content.ctas.hero.url}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-flex items-center gap-2"
             >
-              Book on Recreation.gov
+              {content.ctas.hero.label}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
             </a>
           </div>
@@ -59,18 +83,12 @@ export default function BigBendCampgroundPage() {
       <section className="bg-gray-900 py-8">
         <div className="container-custom px-6">
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-                        <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white">46</div>
-              <div className="text-white/60 text-sm">Sites</div>
+            {content.stats.map((stat) => (
+            <div key={stat.key} className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
+              <div className="text-white/60 text-sm">{stat.label}</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white">S. Branch Potomac</div>
-              <div className="text-white/60 text-sm">River</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white">Apr–Nov</div>
-              <div className="text-white/60 text-sm">Season</div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -80,59 +98,31 @@ export default function BigBendCampgroundPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">About Big Bend Campground</h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Nestled in a sweeping bend of the South Branch of the Potomac River, Big Bend Campground is located within Smoke Hole Canyon in the Monongahela National Forest, approximately 10 miles southwest of Petersburg, West Virginia, at the end of County Route 2. Surrounded by a lush hardwood forest, the campground offers a tranquil, scenic setting with the river just 200 feet away, providing easy access for fishing, swimming, tubing, and non-motorized boating.
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
+              {content.paragraphs.map((paragraph, index) => (
+              <p key={index} className="text-lg text-gray-600 leading-relaxed mb-6">
+                {paragraph}
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Big Bend features 46 standard non-electric campsites, each equipped with a fire ring, lantern post, picnic table, and paved spur suitable for both tent and RV camping. Portions of the campground and select facilities are ADA accessible, supporting a range of visitors&apos; needs.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Recreational opportunities extend beyond the campground itself. A one-mile loop trail is available onsite, while the nearby Seneca Creek Backcountry and Smoke Hole Canyon offer access to more than 60 miles of additional trails for hiking and exploration.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Facilities at Big Bend are well-developed and include two single-unit vault toilets, two double-unit flush toilets, and a four-unit flush restroom with showers, some of which are accessible. Trash dumpsters are conveniently located throughout the campground loops for waste disposal. An RV dump station with an underground holding tank is located adjacent to the campground, supported by an on-site wastewater treatment system (filtered drain field).
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                The campground typically operates from early April through the end of October, aligning with the primary recreation season in the region.
-              </p>
+              ))}
               <a
-                href="https://www.recreation.gov/camping/campgrounds/232019"
+                href={content.ctas.reserve.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center gap-2"
               >
-                Reserve Your Site
+                {content.ctas.reserve.label}
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
               </a>
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Features &amp; Amenities</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">{content.sections.features.heading}</h3>
               <ul className="space-y-3">
-                <li className="flex items-center text-gray-700">
+                {content.features.map((feature) => (
+                <li key={feature} className="flex items-center text-gray-700">
                   <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Riverside campsites
+                  {feature}
                 </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Fishing and swimming access
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Picnic areas and grills
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Vault restrooms
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Hiking trail access
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Wildlife viewing
-                </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -142,17 +132,17 @@ export default function BigBendCampgroundPage() {
       {/* CTA */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Visit?</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{content.sections.closingCta.heading}</h2>
           <p className="text-gray-600 max-w-xl mx-auto mb-8">
-            Reservations are managed through Recreation.gov. Book your campsite today and experience the Monongahela National Forest.
+            {content.sections.closingCta.intro}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="https://www.recreation.gov/camping/campgrounds/232019" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2">
-              Book on Recreation.gov
+            <a href={content.ctas.footer.url} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2">
+              {content.ctas.footer.label}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
             </a>
-            <Link href="/monongahela-national-forest" className="btn-secondary">
-              Back to Monongahela NF
+            <Link href={content.ctas.footerBack.url} className="btn-secondary">
+              {content.ctas.footerBack.label}
             </Link>
           </div>
         </div>

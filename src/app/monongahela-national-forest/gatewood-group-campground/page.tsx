@@ -4,51 +4,75 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { getPropertyContent } from '@/content'
+import NoticeBanner from '@/content/NoticeBanner'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Gatewood Group Campground | Monongahela National Forest | BA Services' },
-  description: 'Gatewood Group Campground offers a secluded group camping experience within the Monongahela National Forest. Designed for organized groups, the campground provi',
-  alternates: { canonical: '/monongahela-national-forest/gatewood-group-campground' },
-  openGraph: og('/monongahela-national-forest/gatewood-group-campground'),
+const SLUG = 'gatewood-group-campground'
+
+/**
+ * This page reads the content layer, so it must not be frozen at build time:
+ * once a camp publishes an edit, a page that only changes when somebody
+ * deploys is a page the editor cannot reach. Five minutes is the floor — the
+ * publish webhook (POST /api/revalidate) drops this slug's cache tag and makes
+ * a change visible in seconds, and this is what happens when that webhook does
+ * not arrive. Kept as a literal because Next.js reads it statically; the same
+ * number is CONTENT_POLICY.revalidateSeconds.
+ */
+export const revalidate = 300
+
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getPropertyContent(SLUG)
+  return {
+    title: content?.seo.title ? { absolute: content?.seo.title } : undefined,
+    description: content?.seo.description,
+    alternates: { canonical: '/monongahela-national-forest/gatewood-group-campground' },
+    openGraph: og('/monongahela-national-forest/gatewood-group-campground'),
+  }
 }
 
-export default function GatewoodGroupCampgroundPage() {
+// The words live in src/content/defaults/gatewood-group-campground.ts. Only the
+// icons stay here - they are JSX and cannot be serialised.
+
+export default async function GatewoodGroupCampgroundPage() {
+  const content = (await getPropertyContent(SLUG))!
+
   return (
     <main className="min-h-screen">
       <Navigation />
       <PageSchema
         url="/monongahela-national-forest/gatewood-group-campground"
-        name="Gatewood Group Campground | Monongahela National Forest | BA Services"
-        crumbName="Gatewood Group Campground"
-        description="Gatewood Group Campground offers a secluded group camping experience within the Monongahela National Forest. Designed for organized groups, the campground provi"
-        image="/images/monongahela/entrance-sign.jpg"
+        name={content.seo.title}
+        crumbName={content.name}
+        description={content.seo.description}
+        image={content.hero.src}
         crumbs={[{ name: "Monongahela National Forest", url: "/monongahela-national-forest" }]}
       />
+      <NoticeBanner notices={content.notices} />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/monongahela/entrance-sign.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src={content.hero.src} alt={content.hero.alt} className="w-full h-full object-cover opacity-20" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">
-            <Link href="/monongahela-national-forest" className="inline-flex items-center gap-2 text-green-300 hover:text-white text-sm mb-4 transition-colors">
+            <Link href={content.ctas.parentForest.url} className="inline-flex items-center gap-2 text-green-300 hover:text-white text-sm mb-4 transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-              Monongahela National Forest
+              {content.ctas.parentForest.label}
             </Link>
             <h1 className="font-display headline-xl text-white mb-4">
-              Gatewood Group Campground
+              {content.name}
             </h1>
             <p className="text-xl text-white/80 leading-relaxed mb-8">
-              Secluded Group Retreat in the National Forest
+              {content.tagline}
             </p>
             <a
-              href="https://www.recreation.gov/camping/campgrounds/233990"
+              href={content.ctas.hero.url}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-flex items-center gap-2"
             >
-              Book on Recreation.gov
+              {content.ctas.hero.label}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
             </a>
           </div>
@@ -59,18 +83,12 @@ export default function GatewoodGroupCampgroundPage() {
       <section className="bg-gray-900 py-8">
         <div className="container-custom px-6">
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-                        <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white">Group Only</div>
-              <div className="text-white/60 text-sm">Type</div>
+            {content.stats.map((stat) => (
+            <div key={stat.key} className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
+              <div className="text-white/60 text-sm">{stat.label}</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white">Secluded Forest</div>
-              <div className="text-white/60 text-sm">Setting</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white">May–Oct</div>
-              <div className="text-white/60 text-sm">Season</div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -80,56 +98,31 @@ export default function GatewoodGroupCampgroundPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">About Gatewood Group Campground</h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Gatewood Group Campground offers a secluded and rustic group camping experience within the Monongahela National Forest. Situated on a ridge at a former fire tower site, the campground provides a quiet, elevated setting surrounded by forest, ideal for organized groups seeking privacy and a back-to-basics outdoor experience.
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
+              {content.paragraphs.map((paragraph, index) => (
+              <p key={index} className="text-lg text-gray-600 leading-relaxed mb-6">
+                {paragraph}
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Located approximately two miles east of Spruce Knob Lake Campground at the end of Forest Road 131, access to Gatewood is controlled by a gated road, which is unlocked for visitors with a valid reservation. The campground&apos;s remote location enhances its sense of isolation while still providing access to nearby recreational opportunities, including fishing at Spruce Knob Lake and along Gandy Creek.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                The campground features a single reservable group site that can accommodate up to approximately 30 people. Facilities include fire rings, picnic tables, and two single-unit vault restrooms. As a primitive site, there is no electric service or drinking water available, and the campground is not ADA accessible.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Trash bins are provided for waste collection; however, there are no RV dump stations on-site. Gatewood Group Campground typically operates from mid-April through late October, aligning with the primary recreation season in the region.
-              </p>
+              ))}
               <a
-                href="https://www.recreation.gov/camping/campgrounds/233990"
+                href={content.ctas.reserve.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center gap-2"
               >
-                Reserve Your Site
+                {content.ctas.reserve.label}
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
               </a>
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Features &amp; Amenities</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">{content.sections.features.heading}</h3>
               <ul className="space-y-3">
-                <li className="flex items-center text-gray-700">
+                {content.features.map((feature) => (
+                <li key={feature} className="flex items-center text-gray-700">
                   <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Reservable group sites
+                  {feature}
                 </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Secluded forest setting
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Picnic and gathering areas
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Vault restrooms
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Campfire rings
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Nearby hiking trails
-                </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -139,17 +132,17 @@ export default function GatewoodGroupCampgroundPage() {
       {/* CTA */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Visit?</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{content.sections.closingCta.heading}</h2>
           <p className="text-gray-600 max-w-xl mx-auto mb-8">
-            Reservations are managed through Recreation.gov. Book your campsite today and experience the Monongahela National Forest.
+            {content.sections.closingCta.intro}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="https://www.recreation.gov/camping/campgrounds/233990" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2">
-              Book on Recreation.gov
+            <a href={content.ctas.footer.url} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2">
+              {content.ctas.footer.label}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
             </a>
-            <Link href="/monongahela-national-forest" className="btn-secondary">
-              Back to Monongahela NF
+            <Link href={content.ctas.footerBack.url} className="btn-secondary">
+              {content.ctas.footerBack.label}
             </Link>
           </div>
         </div>
