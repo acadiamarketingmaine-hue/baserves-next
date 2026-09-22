@@ -24,7 +24,7 @@ the same commit.
 | --- | --- | --- |
 | `CONTENT_API_URL` | *unset* | The origin of the booking system, e.g. `https://book.example.com`. When set, `getPropertyContent(slug)` / `getSiteSettings()` fetch `<CONTENT_API_URL>/api/site-content/<slug>` (site settings use the reserved slug `_settings`) and merge the published override onto the defaults. Unset means no fetch at all. |
 | `CONTENT_OVERRIDES` | *unset* (on) | Set to `off` to ignore every override and render the built-in defaults. The kill switch: it takes one environment change and a redeploy-free restart to put the site back to the developers' copy if an edit goes wrong. Any other value, or unset, leaves overrides on. |
-| `CONTENT_IMAGE_HOSTS` | *unset* (empty) | Comma-separated hostnames a published photograph may be served from, e.g. `uploads.example.com,cdn.example.com`. A listed host also covers its subdomains. **Empty means every image override is ignored** and the photographs in this repository are the ones that render. The same list is turned into a `next.config.js` `images.remotePatterns` entry, so the validator and the image optimiser can never disagree. |
+| `CONTENT_IMAGE_HOSTS` | *unset* (empty) | Comma-separated hostnames a published photograph may be served from, e.g. `uploads.example.com,cdn.example.com`. A listed host also covers its subdomains. **Empty means every REMOTE image override is ignored.** A `src` under `/images/` is a photograph this repository already ships, so it is always accepted and needs no allow-list — that is how a camp picks one of the site's own photographs for a different slot. The same list is turned into a `next.config.js` `images.remotePatterns` entry, so the validator and the image optimiser can never disagree. |
 | `SITE_REVALIDATE_SECRET` | *unset* (closed) | The shared secret the booking system signs its publish webhook with — the **same value** as `SITE_REVALIDATE_SECRET` there. `POST /api/revalidate` verifies an HMAC-SHA256 of the raw request body against it. **Unset refuses every request**, which costs at most one revalidation interval of staleness; it never opens the endpoint. |
 
 ## What this site exposes
@@ -72,8 +72,7 @@ copy of a rule the editor already enforces. Only the release-1 fields
 `season`, `notices`, `ctas`; and for `_settings`, `phone`, `phoneDisplay`,
 `phoneE164`, `address`, `emails`, `notices`) survive. Plain text only — no
 angle brackets, no control characters, every length and list capped. Button
-URLs must be `https://` or a path on this site; image URLs must be `https://`
-**and** on `CONTENT_IMAGE_HOSTS`. Unknown keys, `__proto__` and `constructor`
+URLs must be `https://` or a path on this site; image URLs must be either a path under `/images/` (a photograph this repository ships) or `https://` **and** on `CONTENT_IMAGE_HOSTS`. Unknown keys, `__proto__` and `constructor`
 are dropped. A field that fails a rule is dropped, and a dropped field renders
 the built-in default.
 

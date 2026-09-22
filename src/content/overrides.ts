@@ -349,14 +349,27 @@ function ctaUrl(value: unknown, dropped: string[], path: string): string | undef
 }
 
 /**
- * An image address: https, on an allow-listed host, and nothing else.
+ * Where this site's own photographs live: `public/images/`, which is every
+ * `src` in `src/content/defaults/`.
+ *
+ * A camp picking one of the site's existing photographs for a different slot
+ * is a normal edit and the editor accepts it, so refusing it here would mean a
+ * save that reports success and changes nothing on the page — the quietest
+ * kind of broken.
+ */
+const LOCAL_IMAGE_PREFIX = '/images/'
+
+/**
+ * An image address: one of this site's own photographs, or https on an
+ * allow-listed host. Nothing else.
  *
  * Deliberately stricter than a button's URL. A button is a link somebody
  * chooses to follow; an image is fetched by every visitor's browser and passed
  * through this site's own image optimiser, so an unknown host is a request
  * this site makes on a stranger's behalf. With no allow-list configured every
- * image override is dropped and every photograph on the site stays the one in
- * the repository.
+ * REMOTE image override is dropped and every photograph on the site stays the
+ * one in the repository — but a path under `/images/` is a file this
+ * repository already ships, so it needs no allow-list to be trustworthy.
  */
 function imageUrl(
   value: unknown,
@@ -370,6 +383,25 @@ function imageUrl(
     dropped.push(path)
     return undefined
   }
+
+  // One of ours: the same root-relative rule a button gets, confined to the
+  // photographs folder, and with no way to climb out of it. `..` is refused
+  // outright rather than normalised, because deciding what a path "meant" is
+  // how a folder becomes a directory listing.
+  if (raw.startsWith('/')) {
+    if (
+      isRootRelative(raw) &&
+      raw.startsWith(LOCAL_IMAGE_PREFIX) &&
+      raw.length > LOCAL_IMAGE_PREFIX.length &&
+      !raw.includes('..') &&
+      !/%2e/i.test(raw)
+    ) {
+      return raw
+    }
+    dropped.push(path)
+    return undefined
+  }
+
   let parsed: URL
   try {
     parsed = new URL(raw)

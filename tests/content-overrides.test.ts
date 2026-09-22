@@ -204,6 +204,28 @@ test('validator: images need https AND an allow-listed host', () => {
   assert.deepEqual(noAlt.value, {})
 })
 
+test("validator: one of the site's own photographs needs no allow-list", () => {
+  // The editor lets a camp pick a photograph this repository already ships.
+  // Refusing it here would be a save that succeeds and changes nothing.
+  const own = { src: '/images/long-lake/lodge.jpg', alt: 'The lodge' }
+  assert.deepEqual(sanitisePropertyOverride({ hero: own }).value.hero, own)
+  assert.deepEqual(sanitisePropertyOverride({ hero: own }, HOSTS).value.hero, own)
+
+  // But only that folder, and no climbing out of it.
+  for (const src of [
+    '/etc/passwd',
+    '/images',
+    '/images/',
+    '/images/../../secret.jpg',
+    '/images/%2e%2e/secret.jpg',
+    '/Images/lodge.jpg',
+    '//images.example.com/lodge.jpg',
+    '/\\images/lodge.jpg',
+  ]) {
+    assert.deepEqual(sanitisePropertyOverride({ hero: { src, alt: 'x' } }, HOSTS).value, {}, src)
+  }
+})
+
 test('validator: the image host list reads the environment and covers subdomains', () => {
   assert.deepEqual(imageHostAllowList({}), [])
   assert.deepEqual(imageHostAllowList({ CONTENT_IMAGE_HOSTS: ' A.com , b.com ' }), ['a.com', 'b.com'])
