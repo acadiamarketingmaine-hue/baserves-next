@@ -41,6 +41,7 @@ import { monongahelaNationalForest } from './defaults/monongahela-national-fores
 import { washingtonStatePark } from './defaults/washington-state-park'
 import { bankheadNationalForest } from './defaults/bankhead-national-forest'
 import { meramecStatePark } from './defaults/meramec-state-park'
+import { indianCelinaLakesRecreationArea } from './defaults/indian-celina-lakes-recreation-area'
 
 export * from './types'
 export { resolve } from './resolve'
@@ -63,6 +64,7 @@ const PROPERTY_DEFAULTS: Record<string, PropertyContent> = {
   'chief-noonday-outdoor-center': chiefNoondayOutdoorCenter,
   'bankhead-national-forest': bankheadNationalForest,
   'meramec-state-park': meramecStatePark,
+  'indian-celina-lakes-recreation-area': indianCelinaLakesRecreationArea,
 }
 
 /**
