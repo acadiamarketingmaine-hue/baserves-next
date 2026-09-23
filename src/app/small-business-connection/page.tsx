@@ -4,7 +4,7 @@ import { PageSchema } from '@/components/SchemaMarkup'
 export const metadata: Metadata = {
   title: "Small Business Connection",
   description: "A network of trusted local service businesses across Maine and New England.",
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
 };
 
 export default function SmallBusinessConnectionPage() {

@@ -20,6 +20,7 @@ const ROUTES: [string, string, Freq, number][] = [
   ['/sms-terms', '2026-03-21', 'yearly', 0.3],
   ['/leave-a-review', '2026-09-03', 'monthly', 0.6],
   ['/rewards', '2026-03-21', 'monthly', 0.5],
+  ['/small-business-connection', '2026-09-02', 'monthly', 0.3],
 
   // Location pages (dedicated routes + [slug] fallbacks)
   ['/hoosier-national-forest', '2026-04-17', 'weekly', 0.8],
