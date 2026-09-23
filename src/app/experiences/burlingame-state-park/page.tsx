@@ -171,7 +171,7 @@ export default function BurlingamePage() {
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4">
             Burlingame State Park
           </h1>
-          <div className="flex items-center text-white/80 mb-6">
+          <div className="flex items-center text-white/90 mb-6">
             <svg className="w-5 h-5 mr-2 text-red-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
@@ -248,9 +248,9 @@ export default function BurlingamePage() {
 
               <div className="bg-forest-DEFAULT rounded-2xl p-6 text-white">
                 <h3 className="text-xl font-bold mb-4">Contact</h3>
-                <p className="text-white/80 mb-2">1 Burlingame State Park Road</p>
-                <p className="text-white/80 mb-4">Charlestown, RI 02813</p>
-                <a href="tel:+14013227337" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-6">
+                <p className="text-white/90 mb-2">1 Burlingame State Park Road</p>
+                <p className="text-white/90 mb-4">Charlestown, RI 02813</p>
+                <a href="tel:+14013227337" className="flex items-center gap-2 text-white/90 hover:text-white transition-colors mb-6">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
@@ -340,7 +340,7 @@ export default function BurlingamePage() {
             >
               <Image src="/images/burlingame-campground-map.png" alt="Burlingame State Park campground map" fill sizes="(min-width: 1280px) 1232px, 100vw" className="object-contain bg-white" />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 text-gray-800 text-sm font-medium px-4 py-2 rounded-lg shadow">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 text-gray-900 text-sm font-medium px-4 py-2 rounded-lg shadow">
                   Click to enlarge
                 </span>
               </div>
@@ -399,7 +399,7 @@ export default function BurlingamePage() {
               <ul className="space-y-2">
                 {wildlife.birds.map((bird) => (
                   <li key={bird} className="text-gray-600 text-sm flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-blue-600 rounded-full flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 bg-forest-DEFAULT rounded-full flex-shrink-0" />
                     {bird}
                   </li>
                 ))}
@@ -535,7 +535,7 @@ export default function BurlingamePage() {
           <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
             Experience Rhode Island&apos;s Premier Campground
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
             From its CCC-era origins to today, Burlingame State Park offers 755 campsites on the shores of Watchaug Pond. Reserve your spot today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

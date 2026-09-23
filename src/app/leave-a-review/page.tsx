@@ -145,7 +145,7 @@ export default function LeaveReviewPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Submit Your <span className="text-green-400">Feedback</span>
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               Your feedback helps us maintain the highest standards at our rest areas. Please take a moment to share your experience. Learn more <Link href="/about" className="underline hover:text-white transition-colors">about our company</Link> and the <Link href="/services" className="underline hover:text-white transition-colors">services</Link> we provide.
             </p>
           </div>
@@ -304,7 +304,7 @@ export default function LeaveReviewPage() {
                       name="followUp"
                       checked={formData.followUp}
                       onChange={handleChange}
-                      className="w-5 h-5 mt-0.5 text-forest-DEFAULT rounded focus:ring-forest-DEFAULT"
+                      className="w-5 h-5 mt-0.5 text-forest-DEFAULT rounded-lg focus:ring-forest-DEFAULT"
                     />
                     <span className="text-sm text-gray-700">
                       If your feedback highlights any issues, may we follow up with you directly? Yes, you may contact me.

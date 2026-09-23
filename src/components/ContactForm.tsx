@@ -158,7 +158,7 @@ export default function ContactForm() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
-          <p className="text-xs text-gray-400 mt-4">Or email your resume to <a href="mailto:OfficeManager@BAServes.com" className="text-forest-DEFAULT underline">OfficeManager@BAServes.com</a></p>
+          <p className="text-xs text-gray-500 mt-4">Or email your resume to <a href="mailto:OfficeManager@BAServes.com" className="text-forest-DEFAULT underline">OfficeManager@BAServes.com</a></p>
         </div>
       )}
 

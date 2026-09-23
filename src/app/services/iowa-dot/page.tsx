@@ -121,7 +121,7 @@ export default function IowaDotPage() {
             <h1 className="font-display headline-xl text-white mb-6">
               Iowa <span className="text-green-400">Rest Area</span> Management
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               BA Services partners with the Iowa Department of Transportation to maintain safe, clean, and welcoming rest areas along the I-29 corridor in western Iowa.
             </p>
           </div>
@@ -140,7 +140,7 @@ export default function IowaDotPage() {
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                <div className="text-white/60 text-sm">{stat.label}</div>
+                <div className="text-white/70 text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -178,7 +178,7 @@ export default function IowaDotPage() {
                 </div>
                 <div className="space-y-2 text-sm text-gray-600">
                   <div className="flex items-center gap-2">
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
                     Route: {ra.route} {ra.direction}
                   </div>
                 </div>

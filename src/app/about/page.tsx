@@ -95,7 +95,7 @@ export default function AboutPage() {
             <h1 className="font-display headline-xl text-white mb-6">
               Connecting People with <span className="text-green-400">Nature</span>
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               From the rockbound coast of Maine to the salt flats of Utah, we're
               dedicated to offering well-kept facilities, unspoiled scenery, and
               seamless <Link href="/" className="underline hover:text-white transition-colors">experiences for every visitor</Link>.
@@ -185,7 +185,7 @@ export default function AboutPage() {
           <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
             Ready to Experience the Difference?
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
             Visit one of our recreation areas and see firsthand why thousands of visitors choose BA Services. <Link href="/contact" className="underline hover:text-white transition-colors">Get in touch</Link> to learn more.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

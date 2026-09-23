@@ -298,7 +298,7 @@ export default function Navigation({
                                 </Link>
                               </div>
                               <div className="mt-4 pt-3 border-t border-gray-100">
-                                <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Services</div>
+                                <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Services</div>
                                 <div className="space-y-1">
                                   {[
                                     { name: 'Campground & Park Maintenance', href: '/services/campground-park-maintenance' },
@@ -373,20 +373,20 @@ export default function Navigation({
               {/* Search Button */}
               <button
                 onClick={() => setSearchOpen(true)}
-                className="flex items-center gap-2 px-3 py-1.5 text-gray-400 hover:text-forest-DEFAULT border border-gray-200 rounded-md hover:border-gray-300 transition-colors text-sm"
+                className="flex items-center gap-2 px-3 py-1.5 text-gray-500 hover:text-forest-DEFAULT border border-gray-200 rounded-lg hover:border-gray-300 transition-colors text-sm"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <span className="hidden xl:inline text-gray-500">Search</span>
-                <kbd className="hidden xl:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono bg-gray-100 rounded text-gray-500">⌘K</kbd>
+                <kbd className="hidden xl:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-gray-100 rounded-lg text-gray-500">⌘K</kbd>
               </button>
 
               <a
                 href={ctaHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-2 px-5 py-2 bg-forest-DEFAULT text-white font-semibold text-sm rounded-md hover:bg-forest-dark transition-colors"
+                className="ml-2 px-5 py-2 bg-forest-DEFAULT text-white font-semibold text-sm rounded-lg hover:bg-forest-dark transition-colors"
               >
                 {ctaLabel}
               </a>
@@ -592,7 +592,7 @@ export default function Navigation({
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="flex items-center justify-between py-3 text-gray-800 font-medium border-b border-gray-50"
+                  className="flex items-center justify-between py-3 text-gray-900 font-medium border-b border-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -605,7 +605,7 @@ export default function Navigation({
 
             {/* Locations Section */}
             <div className="px-6 py-4 bg-gray-50">
-              <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-3">Locations</p>
+              <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-3">Locations</p>
               <div className="space-y-0">
                 {locationsByState.map((group) => (
                   <div key={group.state}>
@@ -659,7 +659,7 @@ export default function Navigation({
 
             {/* Experiences Section */}
             <div className="px-6 py-4">
-              <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-3">Quick Links</p>
+              <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-3">Quick Links</p>
               <div className="space-y-1">
                 {secondaryNavLinks.map((item) => (
                   item.external ? (
@@ -722,7 +722,7 @@ export default function Navigation({
             <div className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200">
               {/* Search Input */}
               <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-100">
-                <svg className="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <input
@@ -735,7 +735,7 @@ export default function Navigation({
                 />
                 <button
                   onClick={() => setSearchOpen(false)}
-                  className="text-xs text-gray-400 border border-gray-200 rounded px-1.5 py-0.5 hover:text-gray-600"
+                  className="text-xs text-gray-500 border border-gray-200 rounded-lg px-1.5 py-0.5 hover:text-gray-600"
                 >
                   ESC
                 </button>
@@ -744,7 +744,7 @@ export default function Navigation({
               {/* Results */}
               <div className="max-h-[60vh] overflow-y-auto">
                 {query.trim() && results.length === 0 && (
-                  <div className="px-4 py-8 text-center text-gray-400 text-sm">
+                  <div className="px-4 py-8 text-center text-gray-500 text-sm">
                     No results for &ldquo;{query}&rdquo;
                   </div>
                 )}
@@ -760,7 +760,7 @@ export default function Navigation({
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
                             <span className="text-sm font-medium text-gray-900">{item.title}</span>
-                            <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full ${categoryColors[item.category] || 'bg-gray-100 text-gray-600'}`}>
+                            <span className={`text-xs font-medium px-1.5 py-0.5 rounded-full ${categoryColors[item.category] || 'bg-gray-100 text-gray-600'}`}>
                               {item.category}
                             </span>
                           </div>
@@ -776,7 +776,7 @@ export default function Navigation({
 
                 {!query.trim() && (
                   <div className="py-3 px-4">
-                    <p className="text-xs text-gray-400 font-medium uppercase tracking-wide mb-2">Quick Links</p>
+                    <p className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-2">Quick Links</p>
                     {[
                       { title: 'All Locations', href: '/experiences' },
                       { title: 'Book a Reservation', href: '/experiences#all-recreation-areas' },

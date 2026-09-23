@@ -209,7 +209,7 @@ export default function EmploymentApplicationForm() {
                 type="checkbox"
                 checked={drivingRecordConsent}
                 onChange={e => setDrivingRecordConsent(e.target.checked)}
-                className="mt-1 rounded border-gray-300"
+                className="mt-1 rounded-lg border-gray-300"
               />
               <span>
                 If part of your job will include driving on company business (in your vehicle or a company owned vehicle),
@@ -499,7 +499,7 @@ export default function EmploymentApplicationForm() {
               required
               checked={certificationAgreed}
               onChange={e => setCertificationAgreed(e.target.checked)}
-              className="mt-1 rounded border-gray-300"
+              className="mt-1 rounded-lg border-gray-300"
             />
             <span className="font-semibold">
               I have carefully read the above certification and understand and agree to its terms. <span className="text-red-500">*</span>

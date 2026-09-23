@@ -115,7 +115,7 @@ export default function ServicesPage() {
             <h1 className="font-display headline-xl text-white mb-6">
               Professional Property & Facility <span className="text-green-400">Management</span>
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               From campgrounds and national forests to interstate rest areas, we deliver comprehensive management
               services across recreation and transportation infrastructure. <Link href="/about" className="underline hover:text-white transition-colors">Learn more about our company</Link> and mission.
             </p>

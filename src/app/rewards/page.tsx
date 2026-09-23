@@ -78,7 +78,7 @@ export default function RewardsPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               BA Services Rewards
             </h1>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
               We&apos;re building a rewards program to thank our loyal guests. Earn points on every booking and unlock exclusive perks across all BA Services properties.
             </p>
           </div>

@@ -155,7 +155,7 @@ export default function Footer() {
                 <div key={group.state} className="mb-3">
                   <div className="inline-flex items-center gap-1.5 mb-1 px-2 py-0.5 bg-white/10 rounded-full">
                     <Image src={group.icon} alt={group.state} width={12} height={12} className="brightness-0 invert opacity-70" />
-                    <span className="text-[10px] font-semibold text-white/60 uppercase tracking-wider">{group.state}</span>
+                    <span className="text-xs font-semibold text-white/70 uppercase tracking-wider">{group.state}</span>
                   </div>
                   <ul className="lg:space-y-1">
                     {group.locations.map((loc: any) => (
@@ -167,7 +167,7 @@ export default function Footer() {
                           <ul className="lg:space-y-0.5 lg:mt-0.5">
                             {loc.children.map((child: any) => (
                               <li key={child.name}>
-                                <Link href={child.href} className="text-white/50 hover:text-white transition-colors text-xs flex items-center ml-3 min-h-[44px] lg:min-h-0">
+                                <Link href={child.href} className="text-white/70 hover:text-white transition-colors text-xs flex items-center ml-3 min-h-[44px] lg:min-h-0">
                                   {child.name}
                                 </Link>
                               </li>
@@ -217,7 +217,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-custom py-6 px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/60 text-sm">
+            <p className="text-white/70 text-sm">
               © {new Date().getFullYear()} BA Services. All rights reserved.
             </p>
             {/* Card-brand acceptance marks — Bar Harbor Bank card-brand review */}

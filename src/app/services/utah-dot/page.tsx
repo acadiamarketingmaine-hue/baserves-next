@@ -156,7 +156,7 @@ export default function UtahDotPage() {
             <h1 className="font-display headline-xl text-white mb-6">
               Utah <span className="text-green-400">Rest Area</span> Management
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               BA Services partners with the Utah Department of Transportation to maintain 28 rest area facilities across three regions, from the Bonneville Salt Flats in the west to Bear Lake in the north and from the dinosaurs in the east to Bryce Canyon National Park in southern Utah.
             </p>
           </div>
@@ -175,7 +175,7 @@ export default function UtahDotPage() {
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                <div className="text-white/60 text-sm">{stat.label}</div>
+                <div className="text-white/70 text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -221,7 +221,7 @@ export default function UtahDotPage() {
                     <div className="flex items-start justify-between mb-3">
                       <h3 className="font-bold text-gray-900 text-sm">{ra.name}</h3>
                       {ra.direction && (
-                        <span className={`inline-flex items-center px-2 py-0.5 text-[11px] font-semibold rounded-full ${regionColorClasses[region.id].badge}`}>
+                        <span className={`inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full ${regionColorClasses[region.id].badge}`}>
                           {ra.direction}
                         </span>
                       )}

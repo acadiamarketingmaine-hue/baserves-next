@@ -103,7 +103,7 @@ export default function CareersPage() {
             <h1 className="font-display headline-xl text-white mb-6">
               Join Our <span className="text-green-400">Team</span>
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               Love the outdoors? Want to make a difference? Join our team of dedicated
               professionals who are passionate about creating memorable <Link href="/experiences" className="underline hover:text-white transition-colors">experiences</Link> for visitors.
             </p>
@@ -148,7 +148,7 @@ export default function CareersPage() {
                   </svg>
                 </div>
                 <h3 className="font-semibold text-white mb-1">{benefit.title}</h3>
-                <p className="text-white/60 text-sm">{benefit.description}</p>
+                <p className="text-white/70 text-sm">{benefit.description}</p>
               </div>
             ))}
           </div>

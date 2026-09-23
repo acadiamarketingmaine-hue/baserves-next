@@ -149,7 +149,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <div className="relative container-custom px-6">
-          <Link href="/experiences" className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors">
+          <Link href="/experiences" className="inline-flex items-center text-white/90 hover:text-white mb-6 transition-colors">
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
@@ -158,7 +158,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
           <div className="max-w-3xl">
             <span className="text-5xl mb-4 block">{category.icon}</span>
             <h1 className="font-display headline-xl text-white mb-6">{category.name}</h1>
-            <p className="text-xl text-white/80 leading-relaxed">{category.description}</p>
+            <p className="text-xl text-white/90 leading-relaxed">{category.description}</p>
           </div>
         </div>
       </section>

@@ -296,7 +296,7 @@ export default function TreekoChat() {
     <div className={`fixed z-[9999] flex flex-col items-end gap-2 ${touring ? 'bottom-2 right-2 md:bottom-4 md:right-4' : 'bottom-2 right-2 sm:bottom-4 sm:right-4'}`}>
       {/* Sound choice overlay — shown before tour starts */}
       {tourChoosing && (
-        <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-sm mx-4 text-center animate-slideUp">
             <div className="w-16 h-16 mx-auto mb-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -308,10 +308,10 @@ export default function TreekoChat() {
               <button onClick={() => beginTourLoop(true)} className="w-full py-3 px-6 bg-forest-DEFAULT text-white font-semibold rounded-xl hover:bg-forest-dark transition-colors flex items-center justify-center gap-2">
                 <SpeakerOnIcon className="w-5 h-5" /> Tour with Sound
               </button>
-              <button onClick={() => beginTourLoop(false)} className="w-full py-3 px-6 bg-gray-100 text-gray-800 font-semibold rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
+              <button onClick={() => beginTourLoop(false)} className="w-full py-3 px-6 bg-gray-100 text-gray-900 font-semibold rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
                 <SpeakerOffIcon className="w-5 h-5" /> Tour without Sound
               </button>
-              <button onClick={() => { setTourChoosing(false); closeTourMap(); setTouring(false) }} className="text-sm text-gray-400 hover:text-gray-600 mt-1">
+              <button onClick={() => { setTourChoosing(false); closeTourMap(); setTouring(false) }} className="text-sm text-gray-500 hover:text-gray-600 mt-1">
                 Cancel
               </button>
             </div>
@@ -354,7 +354,7 @@ export default function TreekoChat() {
                 <p className="text-green-300 text-xs">BA Services Assistant</p>
               </div>
             </div>
-            <button onClick={handleClose} className="text-white/60 hover:text-white transition-colors">
+            <button onClick={handleClose} className="text-white/70 hover:text-white transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
@@ -394,7 +394,7 @@ export default function TreekoChat() {
       {/* Speech Bubble (greeting) */}
       {state === 'greeting' && displayedText && (
         <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-4 max-w-72 mb-2 mr-2 animate-slideUp relative">
-          <div className="text-sm text-gray-800 leading-relaxed">{displayedText}</div>
+          <div className="text-sm text-gray-900 leading-relaxed">{displayedText}</div>
           <div className="absolute -bottom-2 right-10 w-4 h-4 bg-white border-r border-b border-gray-200 transform rotate-45" />
         </div>
       )}

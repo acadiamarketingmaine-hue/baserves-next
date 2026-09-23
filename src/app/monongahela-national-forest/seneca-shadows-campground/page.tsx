@@ -64,7 +64,7 @@ export default async function SenecaShadowsCampgroundPage() {
             <h1 className="font-display headline-xl text-white mb-4">
               {content.name}
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed mb-8">
+            <p className="text-xl text-white/90 leading-relaxed mb-8">
               {content.tagline}
             </p>
             <a
@@ -87,7 +87,7 @@ export default async function SenecaShadowsCampgroundPage() {
             {content.stats.map((stat) => (
             <div key={stat.key} className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-              <div className="text-white/60 text-sm">{stat.label}</div>
+              <div className="text-white/70 text-sm">{stat.label}</div>
             </div>
             ))}
           </div>

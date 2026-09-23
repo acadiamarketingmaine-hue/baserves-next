@@ -900,7 +900,7 @@ function StatesGrid() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-white">{selectedState.name}</h3>
-                  <p className="text-white/80 text-sm">{selectedState.heading}</p>
+                  <p className="text-white/90 text-sm">{selectedState.heading}</p>
                 </div>
               </div>
             </div>
@@ -1251,7 +1251,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <svg className="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>
@@ -1559,7 +1559,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                     {service.icon}
                   </div>
                   <h3 className="font-semibold text-white mb-2">{service.title}</h3>
-                  <p className="text-white/60 text-sm">{service.description}</p>
+                  <p className="text-white/70 text-sm">{service.description}</p>
                 </div>
               ))}
             </div>
@@ -1580,7 +1580,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 bg-forest-DEFAULT/70" />
         </div>
 
@@ -1588,7 +1588,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
           <h2 className="font-display headline-lg text-white mb-6">
             Ready for Your Next Adventure?
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">
             Book your stay at one of our pristine recreation areas and create memories that last a lifetime. <Link href="/contact" className="underline hover:text-white transition-colors">Contact us</Link> to plan your trip.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

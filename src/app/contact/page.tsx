@@ -36,7 +36,7 @@ export default function ContactPage() {
             <h1 className="font-display headline-xl text-white mb-6">
               Contact <span className="text-green-400">Us</span>
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               Whether you&apos;re interested in a career, exploring a partnership, or sharing feedback about one of our rest areas — we&apos;d love to hear from you.
             </p>
           </div>

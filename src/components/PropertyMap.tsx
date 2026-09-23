@@ -368,7 +368,7 @@ export default function PropertyMap() {
         }`}
         style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}
       >
-        <div className="bg-white/95 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg text-sm font-medium text-gray-800">
+        <div className="bg-white/95 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg text-sm font-medium text-gray-900">
           Use {isMac ? '⌘' : 'Ctrl'} + scroll to zoom the map
         </div>
       </div>

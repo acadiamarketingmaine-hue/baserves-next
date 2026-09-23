@@ -28,7 +28,7 @@ export default function NotFound() {
             <h1 className="font-display headline-xl text-white mb-6">
               We couldn&apos;t find that <span className="text-green-400">page</span>
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               The link may be old or mistyped. Try one of these, or call us at{' '}
               <a href="tel:+12073077903" className="underline underline-offset-4 hover:text-white">207-307-7903</a>.
             </p>

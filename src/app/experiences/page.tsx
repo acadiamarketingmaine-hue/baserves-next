@@ -159,7 +159,7 @@ export default function ExperiencesPage() {
             <h1 className="font-display headline-xl text-white mb-6">
               Explore Our <span className="text-green-400">Recreation Areas</span>
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               From coast to coast, discover pristine outdoor destinations managed with care and dedication
               to preserving natural beauty while providing exceptional visitor experiences. <Link href="/about" className="underline hover:text-white transition-colors">Learn about our story</Link> and the <Link href="/services" className="underline hover:text-white transition-colors">services</Link> that make it possible.
             </p>
@@ -185,7 +185,7 @@ export default function ExperiencesPage() {
                   sizes="(min-width: 1280px) 200px, (min-width: 1024px) 17vw, (min-width: 768px) 33vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition-colors" />
+                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/60 transition-colors" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4">
                   <span className="text-3xl mb-2">{category.icon}</span>
                   <span className="font-semibold text-center text-sm">{category.name}</span>
@@ -254,7 +254,7 @@ export default function ExperiencesPage() {
           <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
             Ready to Start Your Adventure?
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
             Book your stay at one of our pristine recreation areas today. <Link href="/contact" className="underline hover:text-white transition-colors">Reach out</Link> with any questions, <Link href="/leave-a-review" className="underline hover:text-white transition-colors">share your feedback</Link> after your visit, or explore <Link href="/careers" className="underline hover:text-white transition-colors">career opportunities</Link> with our team. Return to our <Link href="/" className="underline hover:text-white transition-colors">homepage</Link> to see everything we offer.
           </p>
           <a

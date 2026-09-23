@@ -94,13 +94,13 @@ export default function CorinthPage() {
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4">
             Corinth Recreation Area
           </h1>
-          <div className="flex items-center text-white/80 mb-6">
+          <div className="flex items-center text-white/90 mb-6">
             <svg className="w-5 h-5 mr-2 text-red-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
             Lewis Smith Lake, Winston County, Alabama
           </div>
-          <p className="text-xl text-white/80 max-w-2xl mb-6">
+          <p className="text-xl text-white/90 max-w-2xl mb-6">
             A modern, state-of-the-art campground on the shores of Lewis Smith Lake with full-hookup sites, a swimming beach, and the scenic Bobwhite Trail.
           </p>
           <a
@@ -205,7 +205,7 @@ export default function CorinthPage() {
 
               <div className="bg-forest-DEFAULT rounded-2xl p-6 text-white">
                 <h3 className="text-xl font-bold mb-4">Ready to Visit?</h3>
-                <p className="text-white/80 mb-4">
+                <p className="text-white/90 mb-4">
                   Camping is first come, first serve — no reservations required. The pavilion can be reserved through Recreation.gov.
                 </p>
                 <a
@@ -381,7 +381,7 @@ export default function CorinthPage() {
           <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
             Plan Your Visit to Corinth
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
             Experience the beauty of Lewis Smith Lake at this modern campground in the Bankhead National Forest.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
