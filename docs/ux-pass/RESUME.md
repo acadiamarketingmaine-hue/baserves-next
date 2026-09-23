@@ -1,5 +1,19 @@
 # baserves.com UX pass: resume point
 
+## 2026-09-24 06:50 +07 (pausing point)
+- **main = `f0ecbe8`**, production READY. Verified live with `vercel curl` (it passes the checkpoint again). The Vercel MCP connector needs `/mcp` re-auth.
+- **Live on Long Lake (the only page on the Lakeside template so far):**
+  - Lakeside design (Figma D1, file dLd7BEIKFWkEJz0swoWfOs).
+  - Scope of Services in a collapsed "Concession management" `<details>` above the footer (`OfficialDisclosure`).
+  - GSAP motion: hero settle, staggered reveals, count-ups, clip wipes, ±6% parallax. Reduced motion gets ≤300ms fades only.
+  - Gallery lightbox and card and button hovers.
+  - Sticky booking: a desktop pill top-right. On phones, ONE compact pill bottom-left, per John's no-full-width-bottom-bar rule (site-finish-manual §6).
+  - Notes: `docs/ux-pass/motion.md`. Probes: CLS 0, loafMax ≤55ms, 0 conflicts, 0 hidden.
+- **Measured:** Lighthouse 89 (initial load 1.1 MB). A full-page scroll on a phone loads 2.2 MB across about 30 photos, over the 1.5 MB budget. Lazy-loading below-the-fold gallery rows further would fix it.
+- **Next step:** roll the Lakeside template to the other property pages (Yankee Springs, Chief Noonday, Bankhead, Hoosier, Tipsaw, Hardin Ridge, Indian-Celina, Monongahela + 6 campgrounds, Missouri parks). Recreation.gov places get "Reserve on Recreation.gov" in the BookingCard. Components live in `src/components/property/lakeside/`; Long Lake's page is the reference. Run the UX runner before and after (protocol at `~/gameover/protocols/ux.md`).
+- **Known small gaps:** the site header sits over the hero instead of the lighter Figma nav. The closing photo is 1024px (on the shot list). The visual consistency score dips until more pages use the template.
+- **Still open for John:** D10 weddings pick, D13 emails, D14 Washington acreage, D15 duplicate Celina 301. Camp items D4–D7 and D11. Shot list in `docs/ux-pass/photo-audit.md`.
+
 ## 2026-09-24 05:34 +07
 - **main = `167bbbd`**, production READY and verified live with the Vercel MCP fetch, one page at a time.
 - **Live now:**
