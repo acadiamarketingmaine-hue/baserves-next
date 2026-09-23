@@ -18,7 +18,7 @@ const campingLoops = [
   {
     name: 'Fox Loop',
     description: 'Scenic loop with electric and water hookups, paved parking spurs, and close access to the campground boat ramp.',
-    image: '/images/clear-creek-camping.jpg',
+    image: '/images/clear-creek-fox-entrance.jpg',
   },
   {
     name: 'Hoot Owl Loop',
@@ -258,7 +258,7 @@ export default function ClearCreekPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-80 rounded-2xl overflow-hidden">
-              <Image src="/images/clear-creek-group-camping.jpg" alt="Group camping at Clear Creek" fill className="object-cover" />
+              <Image src="/images/clear-creek-acorn-camp.jpg" alt="Picnic tables at Acorn Camp, a Clear Creek group camping area" fill className="object-cover" />
             </div>
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Group Camping</h2>
@@ -365,14 +365,12 @@ export default function ClearCreekPage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              { src: '/images/clear-creek-overview.jpg', alt: 'Clear Creek Recreation Area overview' },
+              { src: '/images/clear-creek-overview.jpg', alt: 'Clear Creek Recreation Area entrance sign' },
               { src: '/images/clear-creek-swimming.jpg', alt: 'Swimming beach on Lewis Smith Lake' },
-              { src: '/images/clear-creek-boat-ramp.jpg', alt: 'Boat ramp on Lewis Smith Lake' },
-              { src: '/images/clear-creek-shelter.jpg', alt: 'Group shelter at Clear Creek' },
-              { src: '/images/clear-creek-camping.jpg', alt: 'Campsite at Clear Creek' },
+              { src: '/images/clear-creek-shelter.jpg', alt: 'Shaded walkway and steps in the Clear Creek day-use area' },
+              { src: '/images/clear-creek-camping.jpg', alt: 'Campground road and direction sign at Clear Creek' },
               { src: '/images/clear-creek-hoot-owl-loop.jpg', alt: 'Hoot Owl camping loop' },
-              { src: '/images/clear-creek-fawn-loop.jpg', alt: 'Fawn camping loop' },
-              { src: '/images/clear-creek-group-camping.jpg', alt: 'Group camping area' },
+              { src: '/images/clear-creek-fawn-loop.jpg', alt: 'Information board in the Fawn camping loop' },
               { src: '/images/clear-creek-bent-twig.jpg', alt: 'Bent Twig Camp' },
               { src: '/images/clear-creek-acorn-camp.jpg', alt: 'Acorn Camp' },
               { src: '/images/clear-creek-fox-loop.jpg', alt: 'Fox Loop' },

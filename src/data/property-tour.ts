@@ -13,7 +13,7 @@ export const tourStops = [
     name: 'Clear Creek Recreation Area',
     lat: 34.27, lng: -87.33,
     summary: "Now this is Clear Creek — right on Lewis Smith Lake. 102 campsites across 4 loops, a swimming beach that's perfect on a hot Alabama day, a boat ramp to get out on the water, and some killer hiking trails through the Bankhead National Forest. It's a gem!",
-    images: ['/images/clear-creek-overview.jpg', '/images/clear-creek-swimming.jpg', '/images/clear-creek-boat-ramp.jpg', '/images/clear-creek-camping.jpg', '/images/clear-creek-shelter.jpg'],
+    images: ['/images/clear-creek-swimming.jpg', '/images/clear-creek-hoot-owl-loop.jpg', '/images/clear-creek-camping.jpg', '/images/clear-creek-shelter.jpg', '/images/clear-creek-overview.jpg'],
   },
   {
     slug: 'experiences/corinth-recreation-area',
@@ -21,7 +21,7 @@ export const tourStops = [
     name: 'Corinth Recreation Area',
     lat: 34.15, lng: -87.15,
     summary: "Corinth is also on Lewis Smith Lake — 52 full-hookup sites so you can bring the RV, plus 10 tent sites for the traditionalists. They've got a huge 100-person pavilion and the Bobwhite Trail right there. Great for groups!",
-    images: ['/images/corinth-campground.jpg', '/images/corinth-swimming.jpg', '/images/corinth-boat-ramp.jpg', '/images/corinth-pavilion.jpg', '/images/corinth-camping-loop.jpg'],
+    images: ['/images/corinth-boat-ramp.jpg', '/images/corinth-pavilion.jpg', '/images/corinth-camping-loop.jpg', '/images/corinth-campground.jpg'],
   },
   {
     slug: 'hardin-ridge-recreation-area',
