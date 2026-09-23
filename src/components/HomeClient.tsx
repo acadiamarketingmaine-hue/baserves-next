@@ -57,7 +57,7 @@ const allLocations = [
     description: 'Accessible fishing pier, camping, boat launch, and hiking trails',
     location: 'Perry County, IN | Hoosier National Forest',
     features: ['Fishing', 'Kayaking', 'Hiking', 'Swimming', 'RV & Tent Camping'],
-    stats: { lakes: '2', campsites: '80+', trails: 'Multiple' },
+    stats: { lakes: '2', campsites: '59', trails: 'Multiple' },
     image: '/images/indian-celina-entrance-sign.jpg',
     slug: 'indian-celina-lakes-recreation-area'
   },
@@ -264,7 +264,7 @@ const statesData = [
         name: 'Indian-Celina Lakes Recreation Area',
         tagline: 'Lakeside Adventure & Tranquil Camping in Indiana',
         location: 'Perry County, IN | Hoosier National Forest',
-        stats: { campsites: '60+', lakes: '2', trails: '10+ miles' },
+        stats: { campsites: '59', lakes: '2', trails: '10+ miles' },
         activities: ['Fishing', 'Kayaking', 'Hiking', 'Swimming', 'RV & Tent Camping'],
         href: '/indian-celina-lakes-recreation-area',
         image: '/images/indian-celina-entrance-sign.jpg',

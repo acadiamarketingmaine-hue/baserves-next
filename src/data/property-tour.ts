@@ -36,7 +36,7 @@ export const tourStops = [
     state: 'IN',
     name: 'Indian-Celina Lakes',
     lat: 38.35, lng: -86.60,
-    summary: "Indian-Celina is a special one — twin lakes tucked away in Perry County with 60 campsites, a fully accessible fishing pier, kayaking, and 10 miles of trails. It's the kind of place where you can really disconnect and just enjoy nature.",
+    summary: "Indian-Celina is a special one — twin lakes tucked away in Perry County with 59 campsites, a fully accessible fishing pier, kayaking, and 10 miles of trails. It's the kind of place where you can really disconnect and just enjoy nature.",
     images: ['/images/indian-celina/entrance.jpg', '/images/indian-celina/fishing-pier.jpg', '/images/indian-celina/fall-road.jpg', '/images/indian-celina/lake-view.jpg', '/images/indian-celina/boat-launch.jpg'],
   },
   {

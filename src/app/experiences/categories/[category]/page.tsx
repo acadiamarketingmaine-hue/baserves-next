@@ -34,7 +34,7 @@ const categoryData: Record<string, any> = {
       { name: 'Washington State Park', location: 'De Soto, MO', duration: 'Nightly', price: 'Cabins + campsites', image: '/images/washington-thunderbird-lodge.png', href: '/washington-state-park' },
       { name: 'Tipsaw Lake Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '35+ sites — 3 loops', image: '/images/tipsaw-lake/lake-view.jpg', href: '/tipsaw-lake-recreation-area' },
       { name: 'Hardin Ridge Recreation Area', location: 'Monroe County, IN', duration: 'Nightly', price: '200+ sites', image: '/images/hardin-ridge-entrance-sign.jpg', href: '/hardin-ridge-recreation-area' },
-      { name: 'Indian-Celina Lakes Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '80+ sites', image: '/images/indian-celina-entrance-sign.jpg', href: '/indian-celina-lakes-recreation-area' },
+      { name: 'Indian-Celina Lakes Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '59 sites', image: '/images/indian-celina-entrance-sign.jpg', href: '/indian-celina-lakes-recreation-area' },
       { name: 'Yankee Springs Recreation Area', location: 'Barry County, MI', duration: 'Nightly', price: '200+ sites', image: '/images/yankee-springs/hill-cabins.jpg', href: '/yankee-springs-recreation-area' },
       { name: 'Long Lake Outdoor Center', location: 'Middleville, MI', duration: 'Nightly / Weekly', price: '16 cabins + lodge', image: '/images/long-lake/fall-aerial.jpg', href: '/long-lake-outdoor-center' },
       { name: 'Monongahela National Forest', location: 'Eastern West Virginia', duration: 'Nightly', price: 'Multiple campgrounds', image: '/images/monongahela/entrance-sign.jpg', href: '/monongahela-national-forest' },

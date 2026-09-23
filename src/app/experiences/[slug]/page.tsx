@@ -80,7 +80,7 @@ The campground provides a variety of camping options from basic tent sites to fu
 The campground features well-maintained sites with access to both lakes. Whether you prefer to spend your days fishing from the shore, paddling the calm waters, or exploring the forest trails, Indian-Celina Lakes provides a peaceful retreat from everyday life.`,
     location: 'Hoosier National Forest, IN',
     features: ['Fishing', 'Camping', 'Hiking', 'Boating', 'Wildlife Viewing', 'Picnic Areas', 'Swimming'],
-    stats: { lakes: '2', sites: '63', forest: 'Hoosier NF' },
+    stats: { lakes: '2', sites: '59', forest: 'Hoosier NF' },
     image: '/images/Burlingame1-2048x1365.jpg',
     gallery: [
       '/images/Burlingame1-2048x1365.jpg',

@@ -3,12 +3,10 @@ import type { PropertyContent } from '../types'
 /**
  * Moved verbatim out of src/app/indian-celina-lakes-recreation-area/page.tsx.
  *
- * The page disagrees with itself in two places and is left that way: the stat
- * bar says "80+ Campsites" while the Campground Facilities paragraph says
- * Celina Campground has 63, and the stat bar says "Year-Round / Open" while
- * the Operations and Access paragraph says the area operates seasonally from
- * early April through late October. Recorded in
- * design-audit/website-editor-inventory.md, not reconciled here.
+ * Campsite count: 59, from Recreation.gov (campground 232027: North Face 34,
+ * South Slope 25), checked Sep 24 2026. The page used to say 80+ in the stat
+ * bar and 63 in the paragraph. The season stat reads Apr–Oct to match the
+ * Operations and Access paragraph (UX pass, Sep 2026).
  */
 export const indianCelinaLakesRecreationArea: PropertyContent = {
   slug: 'indian-celina-lakes-recreation-area',
@@ -54,7 +52,7 @@ export const indianCelinaLakesRecreationArea: PropertyContent = {
   ],
   stats: [
     { key: 'lakes', value: '2', label: 'Lakes' },
-    { key: 'campsites', value: '63', label: 'Campsites' },
+    { key: 'campsites', value: '59', label: 'Campsites' },
     { key: 'trailLoops', value: 'Trail', label: 'Loops' },
     { key: 'open', value: 'Apr–Oct', label: 'Season' },
   ],
@@ -97,7 +95,7 @@ export const indianCelinaLakesRecreationArea: PropertyContent = {
     campgroundFacilities: {
       heading: 'Campground Facilities',
       paragraphs: [
-        'The recreation area includes Celina Campground, which is organized into two loops, North Face and South Slope, offering a total of 63 campsites. Sites are well-spaced within a mature forest setting and are equipped with picnic tables, fire rings, lantern posts, and paved parking spurs suitable for a variety of camping units.',
+        'The recreation area includes Celina Campground, which is organized into two loops, North Face and South Slope, offering a total of 59 campsites. Sites are well-spaced within a mature forest setting and are equipped with picnic tables, fire rings, lantern posts, and paved parking spurs suitable for a variety of camping units.',
         'The South Slope Loop features full electric service at all sites, while the North Face Loop includes a mix of electric and non-electric sites, as well as several walk-in tent sites. Modern amenities include two flush restroom and shower buildings, five vault toilets, and conveniently located water hydrants throughout the campground.',
       ],
     },
