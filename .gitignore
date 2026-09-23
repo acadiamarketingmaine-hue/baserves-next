@@ -34,3 +34,5 @@ docs/ux-sweep/*/pages.json
 docs/ux-sweep/*/server.log
 docs/ux-sweep/*/build.log
 docs/ux-sweep/*/recs.partial.json
+
+.claude/
