@@ -15,6 +15,7 @@ import {
   LakesideShell,
   Mosaic,
   RuledRows,
+  OfficialDisclosure,
   SectionHeader,
   SplitFeature,
   body,
@@ -243,33 +244,6 @@ export default async function LongLakePage() {
           </div>
         </section>
 
-        {/* Scope of Services */}
-        <section className={block}>
-          <div className={frame}>
-            <SectionHeader
-              split={false}
-              eyebrow={scopeBadge?.title}
-              heading={sections.scopeOfServices.heading ?? 'Scope of Services'}
-              intro={sections.scopeOfServices.intro}
-            />
-            <div className="grid gap-x-12 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-              {scopeOfWork.map((category) => (
-                <div key={category.key}>
-                  <h3 className="font-lake-serif text-[26px] leading-tight text-lake-ink">{category.title}</h3>
-                  <p className="mt-2 text-[15px] leading-[1.6] text-lake-mute">{category.body}</p>
-                  <ul className="mt-4 border-t border-lake-line">
-                    {category.items!.map((item) => (
-                      <li key={item} className="border-b border-lake-line py-3 text-[15px] leading-[1.5] text-lake-ink">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <ClosingCta
           photo={closingPhoto}
           heading={sections.closingCta.heading ?? content.name}
@@ -277,6 +251,12 @@ export default async function LongLakePage() {
           primary={ctas.footerPrimary}
           phone={phone}
           secondary={ctas.footerSecondary}
+        />
+        <OfficialDisclosure
+          label={scopeBadge?.title ?? 'Concession management'}
+          title={sections.scopeOfServices.heading ?? 'Scope of Services'}
+          intro={sections.scopeOfServices.intro}
+          groups={scopeOfWork.map((c) => ({ key: c.key, title: c.title ?? '', body: c.body, items: c.items ?? [] }))}
         />
       </LakesideShell>
 
