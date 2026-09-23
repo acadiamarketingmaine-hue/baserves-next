@@ -81,6 +81,14 @@ export default function RewardsPage() {
             <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
               We&apos;re building a rewards program to thank our loyal guests. Earn points on every booking and unlock exclusive perks across all BA Services properties.
             </p>
+            <div className="mt-8">
+              <Link href="/experiences" className="btn-primary">
+                Book Your Next Adventure
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </section>
 

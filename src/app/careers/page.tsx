@@ -107,6 +107,14 @@ export default function CareersPage() {
               Love the outdoors? Want to make a difference? Join our team of dedicated
               professionals who are passionate about creating memorable <Link href="/experiences" className="underline hover:text-white transition-colors">experiences</Link> for visitors.
             </p>
+            <div className="mt-8">
+              <a href="#apply" className="btn-primary">
+                Apply Now
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>

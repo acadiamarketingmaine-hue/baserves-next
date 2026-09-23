@@ -163,6 +163,14 @@ export default function ExperiencesPage() {
               From coast to coast, discover pristine outdoor destinations managed with care and dedication
               to preserving natural beauty while providing exceptional visitor experiences. <Link href="/about" className="underline hover:text-white transition-colors">Learn about our story</Link> and the <Link href="/services" className="underline hover:text-white transition-colors">services</Link> that make it possible.
             </p>
+            <div className="mt-8">
+              <a href="#all-recreation-areas" className="btn-primary">
+                Book Now
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
