@@ -35,8 +35,8 @@ export default function TreekoChat() {
   useEffect(() => {
     let loaded = 0
     const check = () => { loaded++; if (loaded >= 3) setImagesLoaded(true) }
-    const i1 = new window.Image(); i1.onload = check; i1.src = '/images/treeko-idle.png'
-    const i2 = new window.Image(); i2.onload = check; i2.src = '/images/treeko-talking.png'
+    const i1 = new window.Image(); i1.onload = check; i1.src = '/images/treeko-idle-256.png'
+    const i2 = new window.Image(); i2.onload = check; i2.src = '/images/treeko-talking-256.png'
     const i3 = new window.Image(); i3.onload = check; i3.src = '/images/treeko-thumb.png'
     setTimeout(() => setImagesLoaded(true), 2000)
   }, [])
@@ -300,7 +300,7 @@ export default function TreekoChat() {
           <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-sm mx-4 text-center animate-slideUp">
             <div className="w-16 h-16 mx-auto mb-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/treeko-idle.png" alt="Treeko" className="w-full h-full object-contain" />
+              <img src="/images/treeko-idle-256.png" alt="Treeko" className="w-full h-full object-contain" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2">Ready for the tour!</h3>
             <p className="text-gray-600 text-sm mb-6">How would you like to experience it?</p>
@@ -418,7 +418,7 @@ export default function TreekoChat() {
         <div className={`w-24 h-28 relative transition-transform ${treekoIsTalking ? 'animate-treeko-talk' : 'animate-treeko-sway group-hover:scale-105'}`}>
           <Image src="/images/treeko-idle.png" alt="Treeko" width={96} height={112} className={`w-full h-full object-contain object-bottom drop-shadow-lg absolute inset-0 transition-opacity duration-200 ${treekoIsTalking ? 'opacity-0' : 'opacity-100'}`} priority />
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/treeko-talking.png" alt="Treeko talking" className={`w-full h-full object-contain object-bottom drop-shadow-lg absolute inset-0 transition-opacity duration-200 ${treekoIsTalking ? 'opacity-100' : 'opacity-0'}`} />
+          <img src="/images/treeko-talking-256.png" alt="Treeko talking" className={`w-full h-full object-contain object-bottom drop-shadow-lg absolute inset-0 transition-opacity duration-200 ${treekoIsTalking ? 'opacity-100' : 'opacity-0'}`} />
         </div>
       </button>
 
