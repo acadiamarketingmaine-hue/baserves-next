@@ -185,7 +185,7 @@ export default function UtahDotPage() {
       {/* Map */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">All 28 Rest Area Locations</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">All 28 Rest Area Locations</h2>
           <p className="text-gray-600 mb-4">Interactive map of every rest area managed by BA Services across Utah. Click any pin for details.</p>
           <div className="flex flex-wrap gap-4 mb-6">
             {regionInfo.map((r) => (
@@ -252,7 +252,7 @@ export default function UtahDotPage() {
         <div className="container-custom px-6">
           <div className="max-w-3xl mb-12">
             <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Statement of Work</span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Contract Scope of Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Contract Scope of Services</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               BA Services provides comprehensive facility management, operations, and maintenance services for 28 UDOT Rest Areas, View Areas, and Welcome Centers across the state.
             </p>
@@ -281,7 +281,7 @@ export default function UtahDotPage() {
       {/* CTA */}
       <section className="py-20">
         <div className="container-custom px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Interested in Our DOT Services?
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">

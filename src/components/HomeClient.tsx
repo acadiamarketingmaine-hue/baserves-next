@@ -540,7 +540,7 @@ function PartnershipJourney() {
             <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-emerald-400 text-sm font-semibold tracking-wide uppercase">Partnership Opportunities</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
             Your Success Is <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-300">Our Mission</span>
           </h2>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">

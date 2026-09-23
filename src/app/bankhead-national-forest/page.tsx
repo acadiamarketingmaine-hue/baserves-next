@@ -149,7 +149,7 @@ export default async function BankheadNationalForestPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
               <div className="prose prose-lg max-w-none">
                 {content.paragraphs.map((paragraph, index) => (
                   <p key={index} className="text-gray-600 leading-relaxed mb-4">
@@ -218,7 +218,7 @@ export default async function BankheadNationalForestPage() {
       {/* Campgrounds */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.campgrounds.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.campgrounds.heading}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">
             {content.sections.campgrounds.intro}
           </p>
@@ -283,7 +283,7 @@ export default async function BankheadNationalForestPage() {
                   </svg>
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900">{content.sections.birding.heading}</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900">{content.sections.birding.heading}</h2>
                   <span className="text-blue-700 font-semibold text-sm">{content.sections.birding.intro}</span>
                 </div>
               </div>
@@ -342,7 +342,7 @@ export default async function BankheadNationalForestPage() {
               />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.sipseyWilderness.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.sipseyWilderness.heading}</h2>
               <p className="text-lg text-green-700 font-semibold mb-4">
                 {content.sections.sipseyWilderness.intro}
               </p>
@@ -389,7 +389,7 @@ export default async function BankheadNationalForestPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.shootingRange.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.shootingRange.heading}</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 {content.sections.shootingRange.paragraphs?.[0]}
               </p>
@@ -432,7 +432,7 @@ export default async function BankheadNationalForestPage() {
               />
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.quailHabitat.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.quailHabitat.heading}</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
                 {quailEmphasis.items![0]}<strong className="text-gray-900">{quailEmphasis.items![1]}</strong>{quailEmphasis.items![2]}
               </p>
@@ -461,7 +461,7 @@ export default async function BankheadNationalForestPage() {
       {/* Resources & Downloads */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.downloads.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.downloads.heading}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">
             {content.sections.downloads.intro}
           </p>
@@ -494,7 +494,7 @@ export default async function BankheadNationalForestPage() {
       {/* Photo Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryPhotos.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
@@ -516,7 +516,7 @@ export default async function BankheadNationalForestPage() {
         <div className="container-custom px-6">
           <div className="max-w-3xl mb-12">
             <span className="inline-block px-4 py-2 bg-forest-DEFAULT/10 text-forest-DEFAULT text-sm font-semibold rounded-full mb-4">{scopeBadge?.title}</span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               {content.sections.scopeOfServices.intro}
             </p>

@@ -138,7 +138,7 @@ export default function CareersPage() {
       {/* Benefits */}
       <section className="py-16 bg-forest-DEFAULT">
         <div className="container-custom px-6">
-          <h2 className="text-2xl font-bold text-white text-center mb-12">Why Work With Us</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">Why Work With Us</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {benefits.map((benefit) => (
               <div key={benefit.title} className="text-center">

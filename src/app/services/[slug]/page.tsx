@@ -176,7 +176,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Overview</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Overview</h2>
               <div className="prose prose-lg max-w-none">
                 {service.longDescription.split('\n\n').map((paragraph: string, index: number) => (
                   <p key={index} className="text-gray-600 leading-relaxed mb-4">
@@ -241,7 +241,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       {/* CTA */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8">
             Let us help you maintain your recreation facilities to the highest standards.
           </p>

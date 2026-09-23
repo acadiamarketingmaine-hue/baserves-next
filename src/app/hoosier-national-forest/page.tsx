@@ -152,7 +152,7 @@ export default async function HoosierNationalForestPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
                   {content.paragraphs[0]}
@@ -221,7 +221,7 @@ export default async function HoosierNationalForestPage() {
       {/* Recreation Areas (Sub-Properties) */}
       <section id="recreation-areas" className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.recreationAreas.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.recreationAreas.heading}</h2>
           <p className="text-gray-600 mb-10 max-w-2xl">{content.sections.recreationAreas.intro}</p>
           <div className="grid md:grid-cols-3 gap-8">
             {subProperties.map((property) => (
@@ -258,7 +258,7 @@ export default async function HoosierNationalForestPage() {
       {/* Activities */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.activities.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.activities.heading}</h2>
           <p className="text-gray-600 mb-10 max-w-2xl">{content.sections.activities.intro}</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {activities.map((activity) => (
@@ -281,7 +281,7 @@ export default async function HoosierNationalForestPage() {
             <span className="inline-block px-4 py-2 bg-green-600/10 text-green-700 text-sm font-semibold rounded-full mb-4">
               {scopeBadge?.title}
             </span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               {content.sections.scopeOfServices.intro}
             </p>

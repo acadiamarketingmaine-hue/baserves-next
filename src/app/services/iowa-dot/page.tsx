@@ -150,7 +150,7 @@ export default function IowaDotPage() {
       {/* Map */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Rest Area Locations</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Rest Area Locations</h2>
           <p className="text-gray-600 mb-8">Both facilities are located at Sergeant Bluff along Interstate 29, serving northbound and southbound travelers.</p>
           <RestAreaMap
             restAreas={iowaRestAreas}
@@ -163,7 +163,7 @@ export default function IowaDotPage() {
       {/* Rest Areas List */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Managed Facilities</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Managed Facilities</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {iowaRestAreas.map((ra) => (
               <div key={`${ra.name}-${ra.direction}`} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
@@ -201,7 +201,7 @@ export default function IowaDotPage() {
       <section className="py-16">
         <div className="container-custom px-6">
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Scope of Services</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               BA Services provides comprehensive janitorial and facility support services for 2 interstate rest areas operated by the Iowa Department of Transportation, ensuring facilities remain clean, safe, fully operational, and welcoming to the traveling public.
             </p>
@@ -230,7 +230,7 @@ export default function IowaDotPage() {
       {/* CTA */}
       <section className="py-20 bg-gray-50">
         <div className="container-custom px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Interested in Our DOT Services?
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">

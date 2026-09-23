@@ -158,7 +158,7 @@ export default function ClearCreekPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">About Clear Creek</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Clear Creek</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
                   Clear Creek Recreation Area, constructed in 1986, is the largest and one of the most popular recreation areas within Bankhead National Forest. Located in Winston County approximately 13 miles north of Jasper, Alabama, the site sits along the shores of Lewis Smith Lake, a 21,200-acre reservoir, and provides direct access to a wide range of water-based recreation.
@@ -236,7 +236,7 @@ export default function ClearCreekPage() {
       {/* Camping Loops */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Camping Loops</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Camping Loops</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">102 campsites across four loops, featuring single and double units with electric and water hookups.</p>
           <div className="grid md:grid-cols-2 gap-8">
             {campingLoops.map((loop) => (
@@ -262,7 +262,7 @@ export default function ClearCreekPage() {
               <Image src="/images/clear-creek-group-camping.jpg" alt="Group camping at Clear Creek" fill sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Group Camping</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Group Camping</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
                 Clear Creek offers two group camping units, each capable of accommodating up to 25 persons. These are ideal for family reunions, scout troops, church groups, and other organizations looking for a shared outdoor experience.
               </p>
@@ -277,7 +277,7 @@ export default function ClearCreekPage() {
       {/* Day-Use Area */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Day-Use Area</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Day-Use Area</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">Full-day access to the swimming beach, boat ramps, shelters, and picnic areas on Lewis Smith Lake.</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {dayUseFeatures.map((feature) => (
@@ -294,7 +294,7 @@ export default function ClearCreekPage() {
       {/* Special Camp Areas */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Special Camp Areas</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Special Camp Areas</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">Clear Creek offers unique camping experiences beyond the standard loops.</p>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
@@ -331,7 +331,7 @@ export default function ClearCreekPage() {
       {/* Resources & Downloads */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
           <p className="text-gray-600 mb-8">Download maps and guides for your visit to Bankhead National Forest.</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
@@ -363,7 +363,7 @@ export default function ClearCreekPage() {
       {/* Photo Gallery */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
               { src: '/images/clear-creek-overview.jpg', alt: 'Clear Creek Recreation Area overview' },
@@ -390,7 +390,7 @@ export default function ClearCreekPage() {
       {/* Trails */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Trails</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Trails</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {trails.map((trail) => (
               <div key={trail.name} className="bg-white rounded-2xl p-8 shadow-sm">
@@ -426,7 +426,7 @@ export default function ClearCreekPage() {
       {/* Nearby Attractions */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Nearby Attractions</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Nearby Attractions</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {nearbyAttractions.map((attraction) => (
               <div key={attraction.name} className="border border-gray-200 rounded-2xl p-6 hover:border-green-300 transition-colors">
@@ -441,7 +441,7 @@ export default function ClearCreekPage() {
       {/* Rules */}
       <section className="py-16 bg-amber-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Campground Rules</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Campground Rules</h2>
           <p className="text-gray-600 mb-8">Please review and follow these rules during your stay at Clear Creek Recreation Area.</p>
           <div className="grid md:grid-cols-2 gap-4">
             {rules.map((rule, index) => (

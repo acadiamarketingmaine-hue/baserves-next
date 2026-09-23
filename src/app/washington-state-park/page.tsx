@@ -143,7 +143,7 @@ export default async function WashingtonStateParkPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
               <div className="prose prose-lg max-w-none">
                 {content.paragraphs.map((paragraph, index) => (
                   <p key={index} className="text-gray-600 leading-relaxed mb-4">
@@ -201,7 +201,7 @@ export default async function WashingtonStateParkPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.lodging.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{content.sections.lodging.heading}</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
                 {content.sections.lodging.paragraphs?.[0]}
               </p>
@@ -229,7 +229,7 @@ export default async function WashingtonStateParkPage() {
       {/* Fish of the Big River */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.fishOfTheBigRiver.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.fishOfTheBigRiver.heading}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">
             {content.sections.fishOfTheBigRiver.intro}
           </p>
@@ -260,7 +260,7 @@ export default async function WashingtonStateParkPage() {
       {/* Recreation */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.recreation.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.recreation.heading}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">{content.sections.recreation.intro}</p>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
@@ -314,7 +314,7 @@ export default async function WashingtonStateParkPage() {
       {/* Resources & Downloads */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.downloads.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.downloads.heading}</h2>
           <p className="text-gray-600 mb-8">{content.sections.downloads.intro}</p>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {downloads.map((item) => (
@@ -343,7 +343,7 @@ export default async function WashingtonStateParkPage() {
       {/* Photo Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {galleryImages.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
@@ -361,7 +361,7 @@ export default async function WashingtonStateParkPage() {
             <span className="inline-block px-4 py-2 bg-green-600/10 text-green-700 text-sm font-semibold rounded-full mb-4">
               {scopeBadge?.title}
             </span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               {content.sections.scopeOfServices.intro}
             </p>

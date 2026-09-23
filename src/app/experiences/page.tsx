@@ -170,7 +170,7 @@ export default function ExperiencesPage() {
       {/* Categories */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Browse by Experience</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Browse by Experience</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {categories.map((category) => (
               <Link
@@ -200,7 +200,7 @@ export default function ExperiencesPage() {
       {/* All Locations */}
       <section id="all-recreation-areas" className="section scroll-mt-24">
         <div className="container-custom px-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">All Recreation Areas</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">All Recreation Areas</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {locations.map((location) => (
               <Link

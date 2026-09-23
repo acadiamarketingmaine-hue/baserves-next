@@ -166,7 +166,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
       {/* Experiences */}
       <section className="section">
         <div className="container-custom px-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Available Experiences</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Available Experiences</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {category.experiences.map((exp: any, index: number) => (
               <div key={index} className="experience-card">

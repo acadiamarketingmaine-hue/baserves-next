@@ -208,7 +208,7 @@ export default function CanalBridgePage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">About Canal Bridge Campground</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Canal Bridge Campground</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
                   Nestled along the banks of the Saco River in Fryeburg, Maine, Canal Bridge Campground offers a peaceful retreat surrounded by the natural beauty of western Maine. With 36 numbered campsites (including 30a), the campground provides the perfect balance of accessibility and seclusion for campers of all kinds.
@@ -297,7 +297,7 @@ export default function CanalBridgePage() {
       {/* Campsite Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Campsites</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Our Campsites</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">36 numbered sites (including 30a) spread across the campground along the Saco River.</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {campsiteImages.map((site) => (
@@ -317,7 +317,7 @@ export default function CanalBridgePage() {
       {/* Beach & River */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Beach &amp; River Access</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Beach &amp; River Access</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">Canal Bridge&apos;s Saco River frontage offers sandy beaches, gentle currents, and some of the best paddling and fishing in western Maine.</p>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="relative h-80 rounded-2xl overflow-hidden">
@@ -359,7 +359,7 @@ export default function CanalBridgePage() {
       {/* Campground Rules */}
       <section className="py-16 bg-amber-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Campground Rules</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Campground Rules</h2>
           <p className="text-gray-600 mb-8">Please review and follow these rules during your stay at Canal Bridge Campground.</p>
           <div className="grid md:grid-cols-2 gap-4">
             {rules.map((rule, index) => (
@@ -380,7 +380,7 @@ export default function CanalBridgePage() {
       {/* Resources & Downloads */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
           <p className="text-gray-600 mb-8">Download the campground map to plan your visit.</p>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             <a
@@ -406,7 +406,7 @@ export default function CanalBridgePage() {
       {/* Photo Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryImages.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
@@ -422,7 +422,7 @@ export default function CanalBridgePage() {
         <div className="container-custom px-6">
           <div className="max-w-3xl mb-12">
             <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Statement of Work</span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Scope of Services</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               BA Services provides full-service campground management, maintenance, and guest services for Canal Bridge Campground under concession agreement with the Town of Fryeburg.
             </p>

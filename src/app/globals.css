@@ -275,9 +275,12 @@ body {
   margin-right: auto;
 }
 
-/* Typography */
+/* Typography — one heading scale site-wide (SMHP house standard):
+   H1 hero  .headline-xl = text-4xl md:text-5xl lg:text-6xl (same as the property-page heroes)
+   H2 section .headline-lg / .headline-md = text-3xl md:text-4xl
+   H3 card  text-xl */
 .headline-xl {
-  font-size: 3rem;
+  font-size: 2.25rem;
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.1;
@@ -285,18 +288,18 @@ body {
 
 @media (min-width: 768px) {
   .headline-xl {
-    font-size: 3.75rem;
+    font-size: 3rem;
   }
 }
 
 @media (min-width: 1024px) {
   .headline-xl {
-    font-size: 4.5rem;
+    font-size: 3.75rem;
   }
 }
 
 .headline-lg {
-  font-size: 2.25rem;
+  font-size: 1.875rem;
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.2;
@@ -304,7 +307,7 @@ body {
 
 @media (min-width: 768px) {
   .headline-lg {
-    font-size: 3rem;
+    font-size: 2.25rem;
   }
 }
 

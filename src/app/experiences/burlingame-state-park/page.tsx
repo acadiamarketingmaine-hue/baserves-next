@@ -216,7 +216,7 @@ export default function BurlingamePage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">About Burlingame</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Burlingame</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
                   Burlingame State Park encompasses over 3,100 acres in Charlestown, Rhode Island, making it the state&apos;s largest camping facility. Named after Edwin A. Burlingame, the long-standing chair of the Metropolitan Park Commission, the park has evolved from a wildlife preserve in 1930 to Rhode Island&apos;s premier campground with 755 campsites and 20 rustic cabins.
@@ -273,7 +273,7 @@ export default function BurlingamePage() {
       {/* History */}
       <section className="py-16 bg-amber-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">A Rich History</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">A Rich History</h2>
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
               <div>
@@ -319,7 +319,7 @@ export default function BurlingamePage() {
       {/* Camp Areas */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Camping Areas</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Camping Areas</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">Six distinct areas across the 3,100-acre park, with sites for tents (A), small trailers (B), large trailers &amp; motorhomes (C/M).</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {campAreas.map((area) => (
@@ -355,7 +355,7 @@ export default function BurlingamePage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Rustic Cabins</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Rustic Cabins</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 20 rustic cabins are located in the Legiontown Camp Area, offering a unique camping experience with a roof over your head. Perfect for those who want to be close to nature without a tent.
               </p>
@@ -380,7 +380,7 @@ export default function BurlingamePage() {
       {/* Wildlife */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Wildlife at Burlingame</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Wildlife at Burlingame</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">With 80+ nesting bird species and diverse mammals, reptiles, and amphibians, Burlingame is a wildlife haven.</p>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-green-50 rounded-2xl p-6">
@@ -423,7 +423,7 @@ export default function BurlingamePage() {
       {/* Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
               { src: '/images/burlingame-entrance-sign.jpg', alt: 'Burlingame State Park entrance sign' },
@@ -445,7 +445,7 @@ export default function BurlingamePage() {
       {/* Key Policies */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Key Campground Policies</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Key Campground Policies</h2>
           <p className="text-gray-600 mb-8">Important policies for your visit to Burlingame State Campground.</p>
           <div className="grid md:grid-cols-2 gap-4">
             {keyPolicies.map((policy, index) => (
@@ -472,7 +472,7 @@ export default function BurlingamePage() {
       {/* Resources & Downloads */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
           <p className="text-gray-600 mb-8">Download maps, policies, and other helpful documents for your visit.</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
@@ -503,7 +503,7 @@ export default function BurlingamePage() {
         <div className="container-custom px-6">
           <div className="max-w-3xl mb-12">
             <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Statement of Work</span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Scope of Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Scope of Services</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               BA Services serves as the contracted concessionaire for Burlingame State Campground, delivering comprehensive campground operations, retail services, and recreational amenities under agreement with the Rhode Island Department of Environmental Management.
             </p>

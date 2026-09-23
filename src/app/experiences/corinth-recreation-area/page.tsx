@@ -142,7 +142,7 @@ export default function CorinthPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">About Corinth</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Corinth</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
                   Corinth Recreation Area is a modern, well-developed campground located along the upper reaches of Lewis Smith Lake in Winston County, Alabama. Originally constructed in the 1960s and extensively renovated in 1998, the area offers a full range of recreational opportunities, including camping, picnicking, swimming, boating, and hiking in a scenic lakeside setting.
@@ -228,7 +228,7 @@ export default function CorinthPage() {
       {/* Camping Loops */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Camping Loops</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Camping Loops</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">52 full-hookup campsites across two loops, plus 10 tent-only sites. Sites can accommodate RVs of any size.</p>
           <div className="grid md:grid-cols-2 gap-8">
             {campingLoops.map((loop) => (
@@ -255,7 +255,7 @@ export default function CorinthPage() {
       {/* Day-Use Area */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Day-Use Area & Activities</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Day-Use Area & Activities</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">Swimming, boating, picnicking, and hiking — all on the shores of Lewis Smith Lake.</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {dayUseFeatures.map((feature) => (
@@ -272,7 +272,7 @@ export default function CorinthPage() {
       {/* Photo Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
               { src: '/images/corinth-campground.jpg', alt: 'Corinth Recreation Area' },
@@ -295,7 +295,7 @@ export default function CorinthPage() {
         <div className="container-custom px-6">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Nearby Attractions</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Nearby Attractions</h2>
               <div className="space-y-4">
                 {[
                   { name: 'The Little Natural Bridge', desc: 'A unique geological formation within the Bankhead.' },
@@ -310,7 +310,7 @@ export default function CorinthPage() {
               </div>
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">More in Bankhead National Forest</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">More in Bankhead National Forest</h2>
               <ul className="space-y-3">
                 {otherRecreation.map((item) => (
                   <li key={item} className="flex items-center text-gray-700">
@@ -329,7 +329,7 @@ export default function CorinthPage() {
       {/* Rules */}
       <section className="py-16 bg-amber-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Campground Rules</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Campground Rules</h2>
           <p className="text-gray-600 mb-8">Please review and follow these rules during your stay at Corinth Recreation Area.</p>
           <div className="grid md:grid-cols-2 gap-4">
             {rules.map((rule, index) => (
@@ -347,7 +347,7 @@ export default function CorinthPage() {
       {/* Resources & Downloads */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
           <p className="text-gray-600 mb-8">Download maps and guides for your visit to the Bankhead National Forest.</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
