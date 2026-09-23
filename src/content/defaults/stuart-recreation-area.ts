@@ -51,7 +51,7 @@ export const stuartRecreationArea: PropertyContent = {
     'Vault restrooms',
   ],
   stats: [
-    { key: 'sites', value: '30+', label: 'Sites' },
+    { key: 'sites', value: '31', label: 'Sites' },
     { key: 'feature', value: 'Mountain Lake', label: 'Feature' },
     { key: 'season', value: 'May–Oct', label: 'Season' },
   ],
