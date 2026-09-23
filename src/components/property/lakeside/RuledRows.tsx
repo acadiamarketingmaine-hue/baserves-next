@@ -39,7 +39,7 @@ export default function RuledRows({ rows, twoUp = true, as: Title = 'h3' }: Rule
             {row.href && row.linkLabel && (
               <span className="mt-3 inline-flex items-center gap-1.5 text-[15px] font-medium text-lake-ink group-hover:underline group-hover:underline-offset-4">
                 {row.linkLabel}
-                <Arrow />
+                <Arrow className="lk-nudge h-4 w-4" />
               </span>
             )}
           </>
@@ -50,7 +50,7 @@ export default function RuledRows({ rows, twoUp = true, as: Title = 'h3' }: Rule
               <a
                 href={row.href}
                 {...externalProps(row.href)}
-                className="group block py-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
+                className="lk-card group block py-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
               >
                 {inner}
               </a>

@@ -22,8 +22,13 @@ export const h3 = 'font-lake-serif text-[26px] leading-[1.15] md:text-[32px]'
 /** Body copy on paper. */
 export const body = 'text-[16px] leading-[1.65] text-lake-mute md:text-[17px]'
 
+/*
+ * Hover: colour change plus a 2px lift and a soft shadow (lift only on a real
+ * pointer and with motion allowed). Pills are never animated by GSAP, so the
+ * transform transition here cannot fight a reveal.
+ */
 const pillBase =
-  'inline-flex min-h-[56px] items-center justify-center gap-2 rounded-full px-8 text-base font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
+  'inline-flex min-h-[56px] items-center justify-center gap-2 rounded-full px-8 text-base font-medium transition-[color,background-color,border-color,box-shadow,transform] duration-200 ease-out [@media(hover:hover)]:hover:shadow-[0_10px_24px_-14px_rgba(0,0,0,0.45)] motion-safe:[@media(hover:hover)]:hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
 
 /** Solid spruce pill, for paper backgrounds. */
 export const pillPrimary = `${pillBase} bg-lake-spruce text-lake-paper hover:bg-lake-spruce-dark focus-visible:outline-lake-spruce`
