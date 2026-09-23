@@ -173,11 +173,11 @@ export default function EmploymentApplicationForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
             <label htmlFor="app-f1" className={labelClass}>Full Name <span className="text-red-500">*</span></label>
-            <input id="app-f1" type="text" required value={fullName} onChange={e => setFullName(e.target.value)} className={inputClass} />
+            <input id="app-f1" autoComplete="name" type="text" required value={fullName} onChange={e => setFullName(e.target.value)} className={inputClass} />
           </div>
           <div className="md:col-span-2">
             <label htmlFor="app-f2" className={labelClass}>Home Address</label>
-            <input id="app-f2" type="text" value={homeAddress} onChange={e => setHomeAddress(e.target.value)} className={inputClass} />
+            <input id="app-f2" autoComplete="street-address" type="text" value={homeAddress} onChange={e => setHomeAddress(e.target.value)} className={inputClass} />
           </div>
           <div className="md:col-span-2">
             <label htmlFor="app-f3" className={labelClass}>City, State & Zip</label>
@@ -189,15 +189,15 @@ export default function EmploymentApplicationForm() {
           </div>
           <div>
             <label htmlFor="app-f5" className={labelClass}>Mobile Phone <span className="text-red-500">*</span></label>
-            <input id="app-f5" type="tel" required value={mobilePhone} onChange={e => setMobilePhone(e.target.value)} className={inputClass} />
+            <input id="app-f5" autoComplete="tel" type="tel" required value={mobilePhone} onChange={e => setMobilePhone(e.target.value)} className={inputClass} />
           </div>
           <div>
             <label htmlFor="app-f6" className={labelClass}>Email Address <span className="text-red-500">*</span></label>
-            <input id="app-f6" type="email" required value={emailAddress} onChange={e => setEmailAddress(e.target.value)} className={inputClass} />
+            <input id="app-f6" autoComplete="email" type="email" required value={emailAddress} onChange={e => setEmailAddress(e.target.value)} className={inputClass} />
           </div>
           <div>
             <label htmlFor="app-f7" className={labelClass}>Date of Birth</label>
-            <input id="app-f7" type="date" value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)} className={inputClass} />
+            <input id="app-f7" autoComplete="bday" type="date" value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)} className={inputClass} />
           </div>
           <div className="md:col-span-2">
             <label htmlFor="app-f8" className={labelClass}>Driver&apos;s License (State & Number)</label>
@@ -240,27 +240,27 @@ export default function EmploymentApplicationForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
             <label htmlFor="app-f12" className={labelClass}>Full Name</label>
-            <input id="app-f12" type="text" value={emergencyFullName} onChange={e => setEmergencyFullName(e.target.value)} className={inputClass} />
+            <input id="app-f12" autoComplete="off" type="text" value={emergencyFullName} onChange={e => setEmergencyFullName(e.target.value)} className={inputClass} />
           </div>
           <div>
             <label htmlFor="app-f13" className={labelClass}>Relationship to You</label>
-            <input id="app-f13" type="text" value={emergencyRelationship} onChange={e => setEmergencyRelationship(e.target.value)} className={inputClass} />
+            <input id="app-f13" autoComplete="off" type="text" value={emergencyRelationship} onChange={e => setEmergencyRelationship(e.target.value)} className={inputClass} />
           </div>
           <div>
             <label htmlFor="app-f14" className={labelClass}>Address</label>
-            <input id="app-f14" type="text" value={emergencyAddress} onChange={e => setEmergencyAddress(e.target.value)} className={inputClass} />
+            <input id="app-f14" autoComplete="off" type="text" value={emergencyAddress} onChange={e => setEmergencyAddress(e.target.value)} className={inputClass} />
           </div>
           <div>
             <label htmlFor="app-f15" className={labelClass}>City, State & Zip</label>
-            <input id="app-f15" type="text" value={emergencyCityStateZip} onChange={e => setEmergencyCityStateZip(e.target.value)} className={inputClass} />
+            <input id="app-f15" autoComplete="off" type="text" value={emergencyCityStateZip} onChange={e => setEmergencyCityStateZip(e.target.value)} className={inputClass} />
           </div>
           <div>
             <label htmlFor="app-f16" className={labelClass}>Mobile Phone</label>
-            <input id="app-f16" type="tel" value={emergencyMobilePhone} onChange={e => setEmergencyMobilePhone(e.target.value)} className={inputClass} />
+            <input id="app-f16" autoComplete="off" type="tel" value={emergencyMobilePhone} onChange={e => setEmergencyMobilePhone(e.target.value)} className={inputClass} />
           </div>
           <div>
             <label htmlFor="app-f17" className={labelClass}>Home Phone</label>
-            <input id="app-f17" type="tel" value={emergencyHomePhone} onChange={e => setEmergencyHomePhone(e.target.value)} className={inputClass} />
+            <input id="app-f17" autoComplete="off" type="tel" value={emergencyHomePhone} onChange={e => setEmergencyHomePhone(e.target.value)} className={inputClass} />
           </div>
         </div>
       </div>
@@ -379,35 +379,35 @@ export default function EmploymentApplicationForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor={`app-f30-${index}`} className={labelClass}>Employer Name</label>
-                <input id={`app-f30-${index}`} type="text" value={emp.employerName} onChange={e => updateEmployer(index, 'employerName', e.target.value)} className={inputClass} />
+                <input id={`app-f30-${index}`} autoComplete="off" type="text" value={emp.employerName} onChange={e => updateEmployer(index, 'employerName', e.target.value)} className={inputClass} />
               </div>
               <div>
                 <label htmlFor={`app-f31-${index}`} className={labelClass}>Supervisor&apos;s Name</label>
-                <input id={`app-f31-${index}`} type="text" value={emp.supervisorName} onChange={e => updateEmployer(index, 'supervisorName', e.target.value)} className={inputClass} />
+                <input id={`app-f31-${index}`} autoComplete="off" type="text" value={emp.supervisorName} onChange={e => updateEmployer(index, 'supervisorName', e.target.value)} className={inputClass} />
               </div>
               <div>
                 <label htmlFor={`app-f32-${index}`} className={labelClass}>Address</label>
-                <input id={`app-f32-${index}`} type="text" value={emp.address} onChange={e => updateEmployer(index, 'address', e.target.value)} className={inputClass} />
+                <input id={`app-f32-${index}`} autoComplete="off" type="text" value={emp.address} onChange={e => updateEmployer(index, 'address', e.target.value)} className={inputClass} />
               </div>
               <div>
                 <label htmlFor={`app-f33-${index}`} className={labelClass}>City, State & Zip</label>
-                <input id={`app-f33-${index}`} type="text" value={emp.cityStateZip} onChange={e => updateEmployer(index, 'cityStateZip', e.target.value)} className={inputClass} />
+                <input id={`app-f33-${index}`} autoComplete="off" type="text" value={emp.cityStateZip} onChange={e => updateEmployer(index, 'cityStateZip', e.target.value)} className={inputClass} />
               </div>
               <div className="md:col-span-2">
                 <label htmlFor={`app-f34-${index}`} className={labelClass}>Job Duties</label>
-                <input id={`app-f34-${index}`} type="text" value={emp.jobDuties} onChange={e => updateEmployer(index, 'jobDuties', e.target.value)} className={inputClass} />
+                <input id={`app-f34-${index}`} autoComplete="off" type="text" value={emp.jobDuties} onChange={e => updateEmployer(index, 'jobDuties', e.target.value)} className={inputClass} />
               </div>
               <div className="md:col-span-2">
                 <label htmlFor={`app-f35-${index}`} className={labelClass}>Reason for Leaving</label>
-                <input id={`app-f35-${index}`} type="text" value={emp.reasonForLeaving} onChange={e => updateEmployer(index, 'reasonForLeaving', e.target.value)} className={inputClass} />
+                <input id={`app-f35-${index}`} autoComplete="off" type="text" value={emp.reasonForLeaving} onChange={e => updateEmployer(index, 'reasonForLeaving', e.target.value)} className={inputClass} />
               </div>
               <div>
                 <label htmlFor={`app-f36-${index}`} className={labelClass}>Dates of Employment - From (Month / Year)</label>
-                <input id={`app-f36-${index}`} type="text" placeholder="e.g. 01/2024" value={emp.datesFrom} onChange={e => updateEmployer(index, 'datesFrom', e.target.value)} className={inputClass} />
+                <input id={`app-f36-${index}`} autoComplete="off" type="text" placeholder="e.g. 01/2024" value={emp.datesFrom} onChange={e => updateEmployer(index, 'datesFrom', e.target.value)} className={inputClass} />
               </div>
               <div>
                 <label htmlFor={`app-f37-${index}`} className={labelClass}>Dates of Employment - To (Month / Year)</label>
-                <input id={`app-f37-${index}`} type="text" placeholder="e.g. 12/2025" value={emp.datesTo} onChange={e => updateEmployer(index, 'datesTo', e.target.value)} className={inputClass} />
+                <input id={`app-f37-${index}`} autoComplete="off" type="text" placeholder="e.g. 12/2025" value={emp.datesTo} onChange={e => updateEmployer(index, 'datesTo', e.target.value)} className={inputClass} />
               </div>
             </div>
           </div>
@@ -426,27 +426,27 @@ export default function EmploymentApplicationForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor={`app-f38-${index}`} className={labelClass}>Name</label>
-                <input id={`app-f38-${index}`} type="text" value={ref.name} onChange={e => updateReference(index, 'name', e.target.value)} className={inputClass} />
+                <input id={`app-f38-${index}`} autoComplete="off" type="text" value={ref.name} onChange={e => updateReference(index, 'name', e.target.value)} className={inputClass} />
               </div>
               <div>
                 <label htmlFor={`app-f39-${index}`} className={labelClass}>Relationship</label>
-                <input id={`app-f39-${index}`} type="text" value={ref.relationship} onChange={e => updateReference(index, 'relationship', e.target.value)} className={inputClass} />
+                <input id={`app-f39-${index}`} autoComplete="off" type="text" value={ref.relationship} onChange={e => updateReference(index, 'relationship', e.target.value)} className={inputClass} />
               </div>
               <div>
                 <label htmlFor={`app-f40-${index}`} className={labelClass}>Address</label>
-                <input id={`app-f40-${index}`} type="text" value={ref.address} onChange={e => updateReference(index, 'address', e.target.value)} className={inputClass} />
+                <input id={`app-f40-${index}`} autoComplete="off" type="text" value={ref.address} onChange={e => updateReference(index, 'address', e.target.value)} className={inputClass} />
               </div>
               <div>
                 <label htmlFor={`app-f41-${index}`} className={labelClass}>City, State & Zip</label>
-                <input id={`app-f41-${index}`} type="text" value={ref.cityStateZip} onChange={e => updateReference(index, 'cityStateZip', e.target.value)} className={inputClass} />
+                <input id={`app-f41-${index}`} autoComplete="off" type="text" value={ref.cityStateZip} onChange={e => updateReference(index, 'cityStateZip', e.target.value)} className={inputClass} />
               </div>
               <div>
                 <label htmlFor={`app-f42-${index}`} className={labelClass}>Phone</label>
-                <input id={`app-f42-${index}`} type="tel" value={ref.phone} onChange={e => updateReference(index, 'phone', e.target.value)} className={inputClass} />
+                <input id={`app-f42-${index}`} autoComplete="off" type="tel" value={ref.phone} onChange={e => updateReference(index, 'phone', e.target.value)} className={inputClass} />
               </div>
               <div>
                 <label htmlFor={`app-f43-${index}`} className={labelClass}>Email</label>
-                <input id={`app-f43-${index}`} type="email" value={ref.email} onChange={e => updateReference(index, 'email', e.target.value)} className={inputClass} />
+                <input id={`app-f43-${index}`} autoComplete="off" type="email" value={ref.email} onChange={e => updateReference(index, 'email', e.target.value)} className={inputClass} />
               </div>
             </div>
           </div>
@@ -508,7 +508,7 @@ export default function EmploymentApplicationForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="app-f44" className={labelClass}>Signature (Type Your Full Name) <span className="text-red-500">*</span></label>
-              <input id="app-f44" type="text" required value={signatureName} onChange={e => setSignatureName(e.target.value)} className={`${inputClass} italic`} />
+              <input id="app-f44" autoComplete="name" type="text" required value={signatureName} onChange={e => setSignatureName(e.target.value)} className={`${inputClass} italic`} />
             </div>
             <div>
               <label htmlFor="app-f45" className={labelClass}>Date <span className="text-red-500">*</span></label>
