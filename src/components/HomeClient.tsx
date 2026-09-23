@@ -130,7 +130,7 @@ const allLocations = [
     description: 'Historic petroglyphs, rustic cabins, and trails along the Big River',
     location: 'De Soto, MO',
     features: ['Hiking', 'Cabins', 'Swimming', 'Historic Sites', 'Watercraft'],
-    stats: { campsites: '50+', trails: '10+ mi', acres: '2,147+' },
+    stats: { campsites: '50+', trails: '10+ mi', acres: '2,157' },
     image: '/images/washington-thunderbird-lodge.png',
     slug: 'washington-state-park'
   },
@@ -349,7 +349,7 @@ const statesData = [
         name: 'Washington State Park',
         tagline: 'Historic & Scenic Outdoor Escape in Missouri',
         location: 'De Soto, MO',
-        stats: { campsites: '50+', trails: '10+ miles', acres: '2,147+' },
+        stats: { campsites: '50+', trails: '10+ miles', acres: '2,157' },
         activities: ['Hiking', 'Camping', 'Swimming', 'Historic Sites', 'Watercraft Rentals'],
         href: '/washington-state-park',
         image: '/images/Burlingame2-1536x1152.jpg',

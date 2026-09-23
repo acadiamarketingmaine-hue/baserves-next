@@ -107,7 +107,7 @@ const contractGroups: ContractGroup[] = [
         name: 'Washington State Park',
         href: '/washington-state-park',
         location: 'De Soto, Missouri',
-        stats: '2,147+ Acres — Cabins, Pool, Watercraft',
+        stats: '2,157 Acres — Cabins, Pool, Watercraft',
         scope: [
           { title: 'Guest Accommodations', items: ['Cabin and lodging management', 'Pool and recreation facility operations', 'Camp store and retail'] },
           { title: 'Grounds & Operations', items: ['Watercraft rentals and recreation', 'Facility maintenance and grounds management', 'Quality control and guest experience'] },
