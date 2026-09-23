@@ -21,7 +21,7 @@ export default function SectionHeader({ eyebrow, heading, intro, split = true, c
         <h2 className={`${h2} text-lake-ink`}>{heading}</h2>
       </div>
       {intro && (
-        <p className={`${body} mt-4 max-w-[440px] ${split ? 'lg:mt-0 lg:pb-2' : 'md:mt-6'}`}>{intro}</p>
+        <p className={`${body} mt-4 ${split ? 'max-w-[440px] lg:mt-0 lg:pb-2' : 'max-w-[720px] md:mt-6'}`}>{intro}</p>
       )}
     </div>
   )
