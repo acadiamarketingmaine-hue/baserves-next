@@ -1,5 +1,17 @@
 # baserves.com UX pass: resume point
 
+## 2026-09-24 05:34 +07
+- **main = `167bbbd`**, production READY and verified live with the Vercel MCP fetch, one page at a time.
+- **Live now:**
+  - Fix round: map pin names, contrast, video 22→1.1 MB, `sizes` on all 91 images, hero `priority`, 44px tap targets, style consolidation, careers autofill.
+  - Photo audit: about 125 slots swapped, about 55 alt texts fixed. Shot list in `docs/ux-pass/photo-audit.md`.
+  - Finish pass: heading scale, a hero button on phones for 20 pages, light category icons, calm motion, two-column Locations menu. Notes in `docs/ux-pass/finish-pass.md`.
+  - Stage House and Infirmary photos rotated upright. The fake home loading screen is removed.
+- **Sweeps:** baseline → after-fixes → after-design in `docs/ux-sweep/`. Medians: speed 70→91, accessibility 42→57, visual consistency 0→45. The runner now counts gradient-filled buttons (`.btn-primary`), so the next run's Content (J) score will reflect the new hero buttons.
+- **Design:** Figma file https://www.figma.com/design/dLd7BEIKFWkEJz0swoWfOs. D1 Lakeside chosen (common-sense call per John). The template is being built on branch `ux-template` (Long Lake pilot).
+- **Decisions made on common sense (2026-09-24):** DSC_0103 is Clear Creek's Raven Trail. Keep adults at public events; don't feature identifiable children. The loading screen is removed.
+- **Still open:** D10 (weddings pick), D13 (emails), D14 (Washington acreage), D15 (duplicate Celina 301), camp items D4–D7 and D11.
+
 ## 2026-09-24 02:27 +07
 - **Full UX protocol now exists:** `~/gameover/protocols/ux.md` plus the runner `~/gameover/protocols/ux/runner/ux-sweep.mjs`. The baseline run is `docs/ux-sweep/2026-09-24-baseline/report.md` (48 pages × 6 configs, local build, 18 min).
 - **Baseline:** 0/48 pages meet every bar. Medians: A 100, B 100 (6/6 journeys pass), C 100, D 0, E 100, F 42, G 70, H 100, I 100, J 70.
