@@ -8,11 +8,11 @@ import type { PropertyContent } from '../types'
  * shadowed by it. Nothing in the content layer should make /meramec-state-park
  * start answering - see SLUG_TEMPLATE_SLUGS in ../slugs.ts.
  *
- * Two things on this page disagree with themselves and are recorded, not
- * fixed, in design-audit/website-editor-inventory.md: the "Book Cabins &
- * Motel" tile tells the visitor to reserve "at escape.baserves.com" while its
- * link goes to meramecpark.com, and the Fisher Cave photograph is cabin-19.jpg
- * with the alt text "Fisher Cave at Meramec State Park".
+ * Still open (design-audit/website-editor-inventory.md): the Fisher Cave
+ * photograph is cabin-19.jpg with the alt text "Fisher Cave at Meramec State
+ * Park". The "Book Cabins & Motel" tile used to say "at escape.baserves.com"
+ * while linking to meramecpark.com; it now names meramecpark.com (UX pass,
+ * Sep 2026).
  */
 export const meramecStatePark: PropertyContent = {
   slug: 'meramec-state-park',
@@ -263,8 +263,7 @@ export const meramecStatePark: PropertyContent = {
       items: [
         {
           key: 'book-lodging',
-          // Verbatim: the tile names a different booking host than its own link.
-          body: 'Reserve your lodging at escape.baserves.com',
+          body: 'Reserve your lodging at meramecpark.com',
         },
         {
           key: 'watercraft',
