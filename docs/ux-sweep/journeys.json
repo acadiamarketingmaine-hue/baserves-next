@@ -8,7 +8,7 @@
       "steps": [ { "click": "text=/Reserve on Recreation\\.gov/i" } ],
       "expect": { "offsiteIncludes": "recreation.gov/camping/campgrounds/232114" } },
     { "name": "Book it (Long Lake, house booking site)", "start": "/long-lake-outdoor-center", "maxTaps": 1,
-      "steps": [ { "click": "text=/Book Your Stay/i" } ],
+      "steps": [ { "click": "text=/^(Check availability|Book Your Stay)$/i" } ],
       "expect": { "offsiteIncludes": "escape.baserves.com/long-lake-outdoor-center" } },
     { "name": "Book from the menu", "start": "/about", "maxTaps": 3,
       "steps": [ { "click": "button:has-text(\"Open menu\")" }, { "click": "text=/^Book$/" } ],
