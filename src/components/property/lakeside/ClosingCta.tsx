@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Cta, Photo } from '@/content'
-import { externalProps, pillGhostLight, pillLight, pillPrimary, telHref } from './styles'
+import { externalProps, pillGhost, pillGhostLight, pillLight, pillPrimary, telHref } from './styles'
 
 export interface ClosingCtaProps {
   photo?: Photo
@@ -39,9 +39,14 @@ export default function ClosingCta({ photo, heading, text, primary, phone, secon
             {primary.label}
           </a>
           {phone && (
-            <a href={telHref(phone)} className={`${pillGhostLight} !border-lake-ink/40 !text-lake-ink md:!border-white/80 md:!text-white`}>
-              Call {phone}
-            </a>
+            <>
+              <a href={telHref(phone)} className={`${pillGhost} md:hidden`}>
+                Call {phone}
+              </a>
+              <a href={telHref(phone)} className={`${pillGhostLight} hidden md:inline-flex`}>
+                Call {phone}
+              </a>
+            </>
           )}
         </div>
         {secondary && (

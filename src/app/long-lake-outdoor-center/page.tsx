@@ -144,13 +144,10 @@ export default async function LongLakePage() {
               ))}
             </ul>
 
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+            <div className="mt-10 flex flex-col sm:flex-row">
               <a href={ctas.sidebar.url} {...externalProps(ctas.sidebar.url)} className={pillPrimary}>
                 {ctas.sidebar.label}
               </a>
-              {content.season.label && (
-                <p className="text-[15px] text-lake-mute">{content.season.label}</p>
-              )}
             </div>
           </div>
         </section>
