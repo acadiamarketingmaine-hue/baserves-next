@@ -145,13 +145,13 @@ export default function ExperiencesPage() {
         crumbName="Experiences"
         description="Explore 12+ recreation areas managed by BA Services — campgrounds, national forests, and state parks across AL, IN, ME, MI, MO, RI, and WV. Book your stay today."
         type="CollectionPage"
-        image="/images/bankhead-forest.jpg"
+        image="/images/Burlingame1-2048x1365.jpg"
       />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/bankhead-forest-1600.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src="/images/Burlingame1-1536x1024.jpg" alt="" className="w-full h-full object-cover opacity-20" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">

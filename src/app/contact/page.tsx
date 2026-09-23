@@ -22,12 +22,12 @@ export default function ContactPage() {
         crumbName="Contact Us"
         description="Reach BA Services for career opportunities, partnership inquiries, or rest area feedback. Call +1-207-307-7903 or email us from Bangor, Maine."
         type="ContactPage"
-        image="/images/bankhead-forest.jpg"
+        image="/images/long-lake/weddings/lake-dock-wide.jpg"
       />
 
       <section className="relative pt-32 pb-16 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/bankhead-forest-1600.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src="/images/long-lake/weddings/lake-dock-wide.jpg" alt="" className="w-full h-full object-cover opacity-20" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">

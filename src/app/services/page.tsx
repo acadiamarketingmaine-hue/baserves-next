@@ -101,13 +101,13 @@ export default function ServicesPage() {
         crumbName="Services"
         description="Campground maintenance, landscaping, rest area cleaning, and preventive repairs. BA Services manages federal, state, and DOT recreation facilities across America."
         type="CollectionPage"
-        image="/images/bankhead-forest.jpg"
+        image="/images/Burlingame2-1536x1152.jpg"
       />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/bankhead-forest-1600.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src="/images/Burlingame2-1536x1152.jpg" alt="" className="w-full h-full object-cover opacity-20" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">
