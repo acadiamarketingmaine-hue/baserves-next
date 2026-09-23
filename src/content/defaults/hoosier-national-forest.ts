@@ -121,7 +121,7 @@ export const hoosierNationalForest: PropertyContent = {
           key: 'hardin-ridge',
           title: 'Hardin Ridge Recreation Area',
           href: '/hardin-ridge-recreation-area',
-          body: '200+ campsites on Monroe Lake — Indiana\'s largest reservoir. Features a swimming beach, boat ramp, and over 12 miles of trails winding through hardwood forest.',
+          body: '195 campsites on Monroe Lake — Indiana\'s largest reservoir. Features a swimming beach, boat ramp, and over 12 miles of trails winding through hardwood forest.',
           photo: { src: '/images/hardin-ridge-entrance-sign.jpg', alt: 'Hardin Ridge Recreation Area' },
           badge: 'Monroe Lake',
         },

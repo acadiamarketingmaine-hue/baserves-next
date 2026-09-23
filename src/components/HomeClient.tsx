@@ -44,10 +44,10 @@ const allLocations = [
   {
     name: 'Hardin Ridge Recreation Area',
     tagline: "Indiana's Largest Lake Campground",
-    description: '200+ campsites on Monroe Lake with beach, boat ramp, and hiking',
+    description: '195 campsites on Monroe Lake with beach, boat ramp, and hiking',
     location: 'Bloomington, IN | Hoosier National Forest',
     features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
-    stats: { campsites: '200+', lake: '10,750 ac', trails: '12+ mi' },
+    stats: { campsites: '195', lake: '10,750 ac', trails: '12+ mi' },
     image: '/images/hardin-ridge-entrance-sign.jpg',
     slug: 'hardin-ridge-recreation-area'
   },
@@ -255,7 +255,7 @@ const statesData = [
         name: 'Hardin Ridge Recreation Area',
         tagline: 'Scenic Lakeside Camping & Outdoor Fun in Indiana',
         location: 'Bloomington, IN | Hoosier National Forest',
-        stats: { campsites: '200+', trails: 'Multiple', lake: 'Monroe Lake' },
+        stats: { campsites: '195', trails: 'Multiple', lake: 'Monroe Lake' },
         activities: ['Hiking', 'Boating', 'Fishing', 'Swimming', 'RV & Tent Camping'],
         href: '/hardin-ridge-recreation-area',
         image: '/images/hardin-ridge-entrance-sign.jpg',

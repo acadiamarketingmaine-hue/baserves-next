@@ -20,7 +20,7 @@ Alabama:
 - Bankhead National Forest — 180,000+ acres, "Land of a Thousand Waterfalls", Sipsey Wilderness, 84 bird species. Info at baserves.com/bankhead-national-forest
 
 Indiana (Hoosier National Forest):
-- Hardin Ridge Recreation Area — 200+ campsites on Monroe Lake (Indiana's largest at 10,750 acres). Swimming beach, boat dock, 12+ miles of trails. Bloomington, IN. Book at baserves.com/hardin-ridge-recreation-area
+- Hardin Ridge Recreation Area — 195 campsites on Monroe Lake (Indiana's largest at 10,750 acres). Swimming beach, boat dock, 12+ miles of trails. Bloomington, IN. Book at baserves.com/hardin-ridge-recreation-area
 - Indian-Celina Lakes Recreation Area — 59 campsites, 2 lakes, 10+ miles of trails. Perry County, IN. Book at baserves.com/indian-celina-lakes-recreation-area
 - Tipsaw Lake Recreation Area — 49 campsites, 131-acre lake, 8+ miles of trails. Perry County, IN. Book at baserves.com/tipsaw-lake-recreation-area
 

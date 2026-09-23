@@ -20,7 +20,7 @@ const properties = [
   { name: 'Canal Bridge Campground', slug: 'experiences/canal-bridge', lat: 44.02, lng: -70.97, image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg', excerpt: 'Family campground on the Saco River with 36 sites, river access, and White Mountain views.' },
   // Indiana
   { name: 'Tipsaw Lake Recreation Area', slug: 'tipsaw-lake-recreation-area', lat: 38.23, lng: -86.62, image: '/images/tipsaw-lake/lake-view.jpg', excerpt: 'Scenic 131-acre lake in Hoosier National Forest with camping, fishing, and 8+ miles of trails.' },
-  { name: 'Hardin Ridge Recreation Area', slug: 'hardin-ridge-recreation-area', lat: 39.07, lng: -86.47, image: '/images/hardin-ridge-entrance-sign.jpg', excerpt: '200+ campsites on Monroe Lake — Indiana\'s largest — with beach, boat ramp, and hiking.' },
+  { name: 'Hardin Ridge Recreation Area', slug: 'hardin-ridge-recreation-area', lat: 39.07, lng: -86.47, image: '/images/hardin-ridge-entrance-sign.jpg', excerpt: '195 campsites on Monroe Lake — Indiana\'s largest — with beach, boat ramp, and hiking.' },
   { name: 'Indian-Celina Lakes Recreation Area', slug: 'indian-celina-lakes-recreation-area', lat: 38.35, lng: -86.60, image: '/images/indian-celina-entrance-sign.jpg', excerpt: 'Twin lakes with accessible fishing pier, camping, boat launch, and hiking in Hoosier National Forest.' },
   // Michigan
   { name: 'Yankee Springs Recreation Area', slug: 'yankee-springs-recreation-area', lat: 42.62, lng: -85.32, image: '/images/yankee-springs/hill-cabins.jpg', excerpt: '5,200 acres with 200+ campsites, 30+ miles of trails, and year-round outdoor adventure.' },

@@ -28,7 +28,7 @@ export const tourStops = [
     state: 'IN',
     name: 'Hardin Ridge Recreation Area',
     lat: 39.07, lng: -86.47,
-    summary: "Now we're heading to Indiana! Hardin Ridge sits on Monroe Lake — the biggest lake in the state at over 10,000 acres. We're talking 200 campsites, a sandy swimming beach, a boat dock, and 12 miles of trails through Hoosier National Forest. This place is incredible.",
+    summary: "Now we're heading to Indiana! Hardin Ridge sits on Monroe Lake — the biggest lake in the state at over 10,000 acres. We're talking 195 campsites, a sandy swimming beach, a boat dock, and 12 miles of trails through Hoosier National Forest. This place is incredible.",
     images: ['/images/hardin-ridge/beach.jpg', '/images/hardin-ridge/boat-dock.jpg', '/images/hardin-ridge/overlook.jpg', '/images/hardin-ridge/cabin-front.jpg', '/images/hardin-ridge/aerial.jpg'],
   },
   {

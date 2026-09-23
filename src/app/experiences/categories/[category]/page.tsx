@@ -33,7 +33,7 @@ const categoryData: Record<string, any> = {
       { name: 'Meramec State Park', location: 'Sullivan, MO', duration: 'Nightly', price: '19 cabins + motel', image: '/images/meramec-entrance-sign.jpg', href: '/experiences/meramec-state-park' },
       { name: 'Washington State Park', location: 'De Soto, MO', duration: 'Nightly', price: 'Cabins + campsites', image: '/images/washington-thunderbird-lodge.png', href: '/washington-state-park' },
       { name: 'Tipsaw Lake Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '49 sites — 3 loops', image: '/images/tipsaw-lake/lake-view.jpg', href: '/tipsaw-lake-recreation-area' },
-      { name: 'Hardin Ridge Recreation Area', location: 'Monroe County, IN', duration: 'Nightly', price: '200+ sites', image: '/images/hardin-ridge-entrance-sign.jpg', href: '/hardin-ridge-recreation-area' },
+      { name: 'Hardin Ridge Recreation Area', location: 'Monroe County, IN', duration: 'Nightly', price: '195 sites', image: '/images/hardin-ridge-entrance-sign.jpg', href: '/hardin-ridge-recreation-area' },
       { name: 'Indian-Celina Lakes Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '59 sites', image: '/images/indian-celina-entrance-sign.jpg', href: '/indian-celina-lakes-recreation-area' },
       { name: 'Yankee Springs Recreation Area', location: 'Barry County, MI', duration: 'Nightly', price: '200+ sites', image: '/images/yankee-springs/hill-cabins.jpg', href: '/yankee-springs-recreation-area' },
       { name: 'Long Lake Outdoor Center', location: 'Middleville, MI', duration: 'Nightly / Weekly', price: '16 cabins + lodge', image: '/images/long-lake/fall-aerial.jpg', href: '/long-lake-outdoor-center' },

@@ -12,11 +12,10 @@ import type { PropertyContent } from '../types'
  * both CTA labels. Recorded in design-audit/website-editor-inventory.md, not
  * reconciled here.
  *
- * The page also disagrees with itself and is left that way: the stat bar says
- * "Year-Round / Open" while the Access and Operations paragraph says the area
- * operates seasonally from early April through mid- to late October; the stat
- * bar and the Campsites card say 200+ campsites while the Campground
- * Facilities paragraph says 208; and the hero photograph is the entrance sign
+ * UX pass, Sep 2026: the season stat now reads Apr–Oct to match the Access and
+ * Operations paragraph, and every campsite count is 195, from Recreation.gov
+ * (campground 232056, checked Sep 24 2026). The page used to say 200+ and 208.
+ * Still open: the hero photograph is the entrance sign
  * carrying the alt text "Hardin Ridge Recreation Area beach on Monroe Lake,
  * Indiana".
  */
@@ -26,11 +25,11 @@ export const hardinRidgeRecreationArea: PropertyContent = {
   tagline: 'Indiana Recreation Area',
   locationLine: 'Monroe County, Indiana',
   summary:
-    'Explore Hardin Ridge Recreation Area on Monroe Lake in Hoosier National Forest. 200+ campsites, swimming beach, boat ramp, and 12+ miles of trails.',
+    'Explore Hardin Ridge Recreation Area on Monroe Lake in Hoosier National Forest. 195 campsites, swimming beach, boat ramp, and 12+ miles of trails.',
   seo: {
     title: 'Hardin Ridge Recreation Area | Monroe County, Indiana | BA Services',
     description:
-      'Explore Hardin Ridge Recreation Area on Monroe Lake in Hoosier National Forest. 200+ campsites, swimming beach, boat ramp, and 12+ miles of trails.',
+      'Explore Hardin Ridge Recreation Area on Monroe Lake in Hoosier National Forest. 195 campsites, swimming beach, boat ramp, and 12+ miles of trails.',
   },
   hero: {
     src: '/images/hardin-ridge-entrance-sign.jpg',
@@ -65,7 +64,7 @@ export const hardinRidgeRecreationArea: PropertyContent = {
     'Nature Photography',
   ],
   stats: [
-    { key: 'campsites', value: '200+', label: 'Campsites' },
+    { key: 'campsites', value: '195', label: 'Campsites' },
     { key: 'lake', value: '10,750', label: 'Acre Lake' },
     { key: 'trails', value: '12+', label: 'Miles Trails' },
     { key: 'open', value: 'Apr–Oct', label: 'Season' },
@@ -109,7 +108,7 @@ export const hardinRidgeRecreationArea: PropertyContent = {
     campgroundFacilities: {
       heading: 'Campground Facilities',
       paragraphs: [
-        'The campground consists of six forested loops with a total of 208 campsites, including several accessible sites and nine host sites. Campsites are designed to accommodate a variety of camping styles, from RVs to walk-in tent sites. Most sites include a picnic table, fire ring with grill, lantern hook, and designated tent space, with many offering electric hookups and some providing water service.',
+        'The campground consists of six forested loops with a total of 195 campsites, including several accessible sites and nine host sites. Campsites are designed to accommodate a variety of camping styles, from RVs to walk-in tent sites. Most sites include a picnic table, fire ring with grill, lantern hook, and designated tent space, with many offering electric hookups and some providing water service.',
         'Interior roads and most parking spurs are paved and level, accommodating a wide range of recreational vehicles. Modern restroom and shower facilities are available throughout the campground, supplemented by vault toilets in select locations. A centralized RV dump station is provided for campers, and trash dumpsters are conveniently located in each loop.',
       ],
     },
@@ -157,7 +156,7 @@ export const hardinRidgeRecreationArea: PropertyContent = {
         {
           key: 'campsites',
           title: 'Campsites',
-          body: '200+ campsites spread across multiple loops, including electric and non-electric sites as well as carry-in tent sites for a more primitive experience in the Hoosier National Forest.',
+          body: '195 campsites spread across multiple loops, including electric and non-electric sites as well as carry-in tent sites for a more primitive experience in the Hoosier National Forest.',
           photo: { src: '/images/hardin-ridge/campsite.jpg', alt: 'Campsites' },
         },
         {
@@ -213,7 +212,7 @@ export const hardinRidgeRecreationArea: PropertyContent = {
         {
           key: 'camping',
           title: 'Camping',
-          body: 'From full-hookup electric sites to primitive carry-in tent camping, Hardin Ridge offers 200+ campsites across multiple loops to suit every style of outdoor stay.',
+          body: 'From full-hookup electric sites to primitive carry-in tent camping, Hardin Ridge offers 195 campsites across multiple loops to suit every style of outdoor stay.',
         },
       ],
     },
@@ -223,7 +222,7 @@ export const hardinRidgeRecreationArea: PropertyContent = {
     closingCta: {
       heading: 'Experience Indiana\'s Largest Lake',
       intro:
-        '200+ campsites, a swimming beach, accessible boat ramp, and 12+ miles of trails on the shores of Monroe Lake. Hardin Ridge Recreation Area is southern Indiana\'s premier outdoor destination.',
+        '195 campsites, a swimming beach, accessible boat ramp, and 12+ miles of trails on the shores of Monroe Lake. Hardin Ridge Recreation Area is southern Indiana\'s premier outdoor destination.',
     },
   },
 }
