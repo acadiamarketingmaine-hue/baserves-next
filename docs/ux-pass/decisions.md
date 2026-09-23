@@ -55,3 +55,9 @@ Where the site contradicted itself, every mention now uses Recreation.gov's rese
 
 ## D12. Rewards (decided by John 2026-09-24, done)
 Removed from the top menu (desktop and mobile). `/rewards` is still reachable by URL and is still listed in site search and the sitemap. Its "Book Your Next Adventure" button now goes to `/experiences`.
+
+## D13. Which email addresses are real? (John, added 2026-09-24)
+The site uses five addresses: `email@BAServes.com` (footer, contact, schema), `OfficeManager@BAServes.com` (careers, contact form), `support@baserves.com` (refunds, SMS terms), `privacy@baserves.com` (privacy) and `yankee@baserves.com` (Michigan, chat guide). None were changed. **Needed:** confirm each one receives mail, or say which to consolidate on.
+
+## D14. Washington State Park acreage (camp, added 2026-09-24)
+The home page and the Services list said 2,147+ acres. The park's own page (camp-editable) says 2,157 in five places. Everything now says **2,157**. I couldn't reach mostateparks.com to confirm. The camp can correct it.
