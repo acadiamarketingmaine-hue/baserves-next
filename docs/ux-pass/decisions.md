@@ -32,10 +32,9 @@ Clear Creek (`experiences/clear-creek-recreation-area/page.tsx:180`) and Corinth
 ## D8. CARTO map tiles now need an API key (John, information)
 Both maps were stamped "API KEY REQUIRED". They were switched to standard OpenStreetMap tiles (free, attribution shown). OSM's tile policy is fine for a site this size. If you'd rather keep the CARTO light style, you'll need a CARTO account and key.
 
-## D9. Small Business Connection (hidden per John, 2026-09-24, done)
-- Not linked from any menu, footer, site search or page (verified 2026-09-23 on all 47 crawled pages; no references in code).
-- **Removed from `src/app/sitemap.ts`**, and the page now sends `robots: { index: false, follow: false }`. It stays reachable only by direct URL.
-- `src/data/lastmod.json:39` still has its entry. It's harmless, since the sitemap no longer lists the page.
+## D9. Small Business Connection (per John, 2026-09-24, done)
+- **Not in any menu.** No menu, footer, site search or page links to it (verified 2026-09-23 on all 47 crawled pages).
+- **Stays in the sitemap and indexable** (`index: true`), per John. A brief removal on 2026-09-24 was reverted the same day.
 - Three of its partner links are dead (apexroofnh.com 404, blackmajicsealcoating.com 404, maineheatpumpcleaning.com no connection). Not changed.
 
 ## D10. Weddings page (unchanged)
