@@ -11,11 +11,10 @@ import type { PropertyContent } from '../types'
  * recreation.gov, the live page points at two internal experience pages).
  * Recorded in design-audit/website-editor-inventory.md, not reconciled here.
  *
- * VERBATIM WARTS, do not "fix" without a rendering check: the two campground
- * descriptions below already lived in a JS array in the page rather than as
- * JSX text, so their "&apos;" is never decoded and the live page really does
- * print "the Bankhead&apos;s largest recreation area". Changing it here
- * changes the live page.
+ * The campground descriptions below are plain strings, not JSX text, so an
+ * HTML entity in them is printed literally. The Clear Creek card used to show
+ * "the Bankhead&apos;s largest recreation area" on the live page; it now uses
+ * a real apostrophe (UX pass, Sep 23 2026).
  */
 export const bankheadNationalForest: PropertyContent = {
   slug: 'bankhead-national-forest',
@@ -172,7 +171,7 @@ export const bankheadNationalForest: PropertyContent = {
           title: 'Clear Creek Recreation Area',
           meta: '102 sites',
           // Verbatim: the live page really does render the undecoded entity here.
-          body: 'Located on the shore of Lewis Smith Lake, Clear Creek is the Bankhead&apos;s largest recreation area. Features four camping loops with electric and water hookups, swimming beach, boat ramps, hiking trails, and group camping.',
+          body: 'Located on the shore of Lewis Smith Lake, Clear Creek is the Bankhead\'s largest recreation area. Features four camping loops with electric and water hookups, swimming beach, boat ramps, hiking trails, and group camping.',
           photo: { src: '/images/clear-creek-bent-twig.jpg', alt: 'Clear Creek Recreation Area' },
           href: '/experiences/clear-creek-recreation-area',
         },
