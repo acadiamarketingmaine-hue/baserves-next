@@ -24,6 +24,8 @@ interface LocationItem {
   name: string
   href: string
   image: string
+  /** One line under the name in the desktop Locations menu (same facts as the Services menu). */
+  blurb?: string
   children?: LocationItem[]
 }
 
@@ -32,7 +34,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Alabama',
     icon: '/images/states/alabama.png',
     locations: [
-      { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-forest.jpg', children: [
+      { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-forest.jpg', blurb: '2 recreation areas', children: [
         { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area', image: '/images/clear-creek-overview.jpg' },
         { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area', image: '/images/corinth-boat-ramp.jpg' },
       ]},
@@ -42,7 +44,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Indiana',
     icon: '/images/states/indiana.png',
     locations: [
-      { name: 'Hoosier National Forest', href: '/hoosier-national-forest', image: '/images/hardin-ridge/aerial.jpg', children: [
+      { name: 'Hoosier National Forest', href: '/hoosier-national-forest', image: '/images/hardin-ridge/aerial.jpg', blurb: '3 recreation areas', children: [
         { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area', image: '/images/hardin-ridge-entrance-sign.jpg' },
         { name: 'Indian-Celina Lakes Recreation Area', href: '/indian-celina-lakes-recreation-area', image: '/images/indian-celina-entrance-sign.jpg' },
         { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area', image: '/images/tipsaw-lake/lake-view.jpg' },
@@ -53,14 +55,14 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Maine',
     icon: '/images/states/maine.png',
     locations: [
-      { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg' },
+      { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg', blurb: '36 sites on the Saco River' },
     ],
   },
   {
     state: 'Michigan',
     icon: '/images/states/michigan.png',
     locations: [
-      { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area', image: '/images/yankee-springs/hill-cabins.jpg', children: [
+      { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area', image: '/images/yankee-springs/hill-cabins.jpg', blurb: '200+ sites, 30+ miles of trails', children: [
         { name: 'Chief Noonday Outdoor Center', href: '/chief-noonday-outdoor-center', image: '/images/chief-noonday/deer-lodge.jpg' },
         { name: 'Long Lake Outdoor Center', href: '/long-lake-outdoor-center', image: '/images/long-lake/fall-aerial.jpg' },
       ]},
@@ -70,22 +72,22 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Missouri',
     icon: '/images/states/missouri.png',
     locations: [
-      { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-entrance-sign.jpg' },
-      { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-thunderbird-lodge.png' },
+      { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-entrance-sign.jpg', blurb: 'Lodging, dining, watercraft' },
+      { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-thunderbird-lodge.png', blurb: 'Cabins, pool, trails' },
     ],
   },
   {
     state: 'Rhode Island',
     icon: '/images/states/rhode-island.png',
     locations: [
-      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg' },
+      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg', blurb: '755 sites, 20 cabins' },
     ],
   },
   {
     state: 'West Virginia',
     icon: '/images/states/west-virginia.png',
     locations: [
-      { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg', children: [
+      { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg', blurb: '6 campgrounds', children: [
         { name: 'Big Bend Campground', href: '/monongahela-national-forest/big-bend-campground', image: '/images/monongahela/scenic-drive.jpg' },
         { name: 'Jess Judy Group Campground', href: '/monongahela-national-forest/jess-judy-group-campground', image: '/images/monongahela/spruce-treetops.jpg' },
         { name: 'Seneca Shadows Campground', href: '/monongahela-national-forest/seneca-shadows-campground', image: '/images/monongahela/seneca-rocks-sign.jpg' },
@@ -428,14 +430,15 @@ export default function Navigation({
       {/* Secondary Bar - Green */}
       <div className="hidden lg:block bg-forest-DEFAULT">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between h-12 px-6">
+          {/* relative: the Locations panel is placed against this bar (right-aligned), not the button, so the 680px panel never runs off screen at 1024px */}
+          <div className="relative flex items-center justify-between h-12 px-6">
             {/* Branding */}
             <span className="text-white font-bold text-sm tracking-wide">EXPERIENCES</span>
 
             {/* Secondary Nav Links */}
             <nav className="flex items-center gap-1">
               {/* Locations Dropdown */}
-              <div ref={locationsRef} className="relative" onMouseEnter={() => setLocationsOpen(true)} onMouseLeave={() => setLocationsOpen(false)}>
+              <div ref={locationsRef} className="h-12 flex items-center" onMouseEnter={() => setLocationsOpen(true)} onMouseLeave={() => setLocationsOpen(false)}>
                 <button
                   className="flex items-center gap-1 px-4 py-2 text-white/90 hover:text-white font-medium text-sm transition-colors"
                 >
@@ -444,56 +447,62 @@ export default function Navigation({
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                  <div className={`absolute top-full left-0 pt-1 w-80 z-50 transition-all duration-300 ease-out ${
+                  <div className={`absolute top-full right-6 pt-2 z-50 transition-all duration-200 ease-out ${
                     locationsOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
-                  }`}><div className="bg-white rounded-xl shadow-2xl border border-gray-200 py-2">
-                    <div className="px-4 py-2 border-b border-gray-100">
-                      <Link
-                        href="/experiences"
-                        onClick={() => setLocationsOpen(false)}
-                        className="text-xs font-semibold text-forest-DEFAULT hover:underline uppercase tracking-wide"
-                      >
-                        View All Locations
-                      </Link>
-                    </div>
-                    <div className="max-h-[28rem] overflow-y-auto py-1">
-                      {locationsByState.map((group) => (
-                        <div key={group.state}>
-                          <div className="px-4 pt-3 pb-1.5">
-                            <span className="inline-flex items-center gap-2 px-2.5 py-1 bg-gray-100 rounded-full">
-                              <Image src={group.icon} alt={group.state} width={18} height={18} className="opacity-70" />
-                              <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">{group.state}</span>
-                            </span>
-                          </div>
-                          {group.locations.map((loc) => (
-                            <div key={loc.href}>
-                              <Link
-                                href={loc.href}
-                                onClick={() => setLocationsOpen(false)}
-                                className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                              >
-                                <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
-                                  <Image src={loc.image} alt={loc.name} fill sizes="28px" className="object-cover" />
+                  }`}><div className="w-[680px] bg-white rounded-2xl shadow-2xl border border-gray-200 p-5">
+                    {/* Two columns, split so both run about the same height: AL/IN/ME/MI | MO/RI/WV */}
+                    <div className="grid grid-cols-2 gap-6 max-h-[calc(100vh-12rem)] overflow-y-auto">
+                      {[locationsByState.slice(0, 4), locationsByState.slice(4)].map((column, ci) => (
+                        <div key={ci} className="space-y-4">
+                          {column.map((group) => (
+                            <div key={group.state}>
+                              <div className="flex items-center gap-2 px-3 mb-1.5">
+                                <Image src={group.icon} alt="" width={14} height={14} className="opacity-60" />
+                                <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">{group.state}</span>
+                              </div>
+                              {group.locations.map((loc) => (
+                                <div key={loc.href}>
+                                  <Link
+                                    href={loc.href}
+                                    onClick={() => setLocationsOpen(false)}
+                                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-gray-50 transition-colors group"
+                                  >
+                                    <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
+                                      <Image src={loc.image} alt="" fill sizes="40px" className="object-cover" />
+                                    </div>
+                                    <div className="min-w-0">
+                                      <div className="text-sm font-semibold text-gray-900 group-hover:text-forest-DEFAULT">{loc.name}</div>
+                                      {loc.blurb ? <div className="text-xs text-gray-500 truncate">{loc.blurb}</div> : null}
+                                    </div>
+                                  </Link>
+                                  {loc.children?.length ? (
+                                    <div className="ml-[3.25rem] mb-1 border-l border-gray-100 pl-2">
+                                      {loc.children.map((child) => (
+                                        <Link
+                                          key={child.href}
+                                          href={child.href}
+                                          onClick={() => setLocationsOpen(false)}
+                                          className="block px-2 py-1 text-sm text-gray-600 rounded-lg hover:bg-gray-50 hover:text-forest-DEFAULT transition-colors"
+                                        >
+                                          {child.name}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  ) : null}
                                 </div>
-                                {loc.name}
-                              </Link>
-                              {loc.children?.map((child) => (
-                                <Link
-                                  key={child.href}
-                                  href={child.href}
-                                  onClick={() => setLocationsOpen(false)}
-                                  className="flex items-center gap-3 pl-8 pr-4 py-1.5 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition-colors"
-                                >
-                                  <div className="relative w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
-                                    <Image src={child.image} alt={child.name} fill sizes="20px" className="object-cover" />
-                                  </div>
-                                  {child.name}
-                                </Link>
                               ))}
                             </div>
                           ))}
                         </div>
                       ))}
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                      <Link href="/experiences/categories/campground-rentals" onClick={() => setLocationsOpen(false)} className="text-sm font-semibold text-forest-DEFAULT hover:underline">
+                        Browse Campgrounds &rarr;
+                      </Link>
+                      <Link href="/experiences" onClick={() => setLocationsOpen(false)} className="text-sm font-semibold text-white bg-forest-DEFAULT px-4 py-2 rounded-lg hover:bg-forest-dark transition-colors">
+                        View All Locations
+                      </Link>
                     </div>
                   </div></div>
               </div>
