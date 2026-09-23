@@ -1,5 +1,22 @@
 # baserves.com UX pass: resume point
 
+## 2026-09-24 00:57 +07
+- **main = `a84e22b`** (plus this notes commit). Production deployment `dpl_FkSdZtPH6YBm6VKFXAuBRcsdN38s` is **READY**.
+- **Release 4 is live.**
+  - Chat mascot: fake "1" badge gone, 64×75 on phones, focus ring.
+  - Services: "Select portfolio highlights" placeholder gone, accordions have `aria-expanded`.
+  - Experience category cards have per-category labels (Size/Cost, Stays/Sites, …).
+  - Home destination-card stats are spaced.
+  - Washington is 2,157 acres on the home page and Services list.
+  - Yankee Springs buttons say "Reserve at Chief Noonday / Long Lake".
+  - Review form says "Utah and Iowa rest areas".
+  - Kayak category hero is the Burlingame kayaks photo.
+- **Verified with the Vercel MCP fetch**, one page at a time: `/`, `/services`, `/experiences/categories/{hiking,campground-rentals,kayak-and-watercraft-rentals}`, `/yankee-springs-recreation-area`, `/leave-a-review`, and the layout JS chunk for the mascot. **`vercel curl` now gets the Security Checkpoint too**, so use the MCP fetch.
+- **Utah DOT "clipped headline" was not a bug.** It was a screenshot taken while scrolled. A fresh render has the h1 at 181 px, below the 105 px header.
+- **Still open:** footer and mobile-menu tap targets (needs a layout call), DOT-page layout shift on tablet, Chief Noonday's slow frame with motion on, the dark category-hero icons, and the Monongahela navy stat band.
+- **Waiting on the camp:** D4, D5, D6, D7, D11 (incl. Clear Creek 102 vs 105), D14 (Washington acreage).
+- **Waiting on John:** D10 (weddings pick), D13 (which email addresses are real).
+
 ## 2026-09-24 00:31 +07
 - **main = `41dd826`** (plus this RESUME commit). Production deployment `dpl_7ogfXidqjLCoHk8nCtrtoihv1TfJ` is **READY**.
 - **Release 3 is live**, verified with `vercel curl` one page at a time (no crawling):

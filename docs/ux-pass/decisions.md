@@ -51,13 +51,15 @@ Where the site contradicted itself, every mention now uses Recreation.gov's rese
 | Spruce Knob Lake 234132 | **42** (paragraph now 28 + 2 double + **12** walk-in) | paragraph added up to 40 | 30 drive-up · 12 walk-to |
 | Stuart 232007 | **31** sites | 30+ | 26 main-campground sites (matches the paragraph's "26 campsites") + group, 3 day-use shelters, 1 cabin |
 
+**Clear Creek** says 102 campsites everywhere on our site (consistent, so not changed). Recreation.gov lists 105 reservable sites, which may include shelters. The camp can confirm.
+
 **Home "500+ Campsites"** (`HomeClient.tsx:200`, also `opengraph-image.tsx:129`) **was kept**. Recreation.gov counts for our eleven Recreation.gov campgrounds total 673 (Tipsaw 49, Hardin 195, Celina 59, Spruce Knob 42, Stuart 31, Big Bend 46, Seneca Shadows 81, Jess Judy 3, Gatewood 1, Clear Creek 105, Corinth 61). That's over 500 even without shelters and cabins, and before Burlingame (755 per its page) and Yankee Springs.
 
 ## D12. Rewards (decided by John 2026-09-24, done)
 Removed from the top menu (desktop and mobile). `/rewards` is still reachable by URL and is still listed in site search and the sitemap. Its "Book Your Next Adventure" button now goes to `/experiences`.
 
 ## D13. Which email addresses are real? (John, added 2026-09-24)
-The site uses five addresses: `email@BAServes.com` (footer, contact, schema), `OfficeManager@BAServes.com` (careers, contact form), `support@baserves.com` (refunds, SMS terms), `privacy@baserves.com` (privacy) and `yankee@baserves.com` (Michigan, chat guide). None were changed. **Needed:** confirm each one receives mail, or say which to consolidate on.
+The site uses five addresses: `email@BAServes.com` (footer, contact, schema), `OfficeManager@BAServes.com` (careers, contact form), `support@baserves.com` (refunds, SMS terms), `privacy@baserves.com` (privacy), `yankee@baserves.com` (Michigan, chat guide) and `info@baserves.com` (the chat window's connection-error message, `TreekoChat.tsx`). None were changed. **Needed:** confirm each one receives mail, or say which to consolidate on.
 
 ## D14. Washington State Park acreage (camp, added 2026-09-24)
 The home page and the Services list said 2,147+ acres. The park's own page (camp-editable) says 2,157 in five places. Everything now says **2,157**. I couldn't reach mostateparks.com to confirm. The camp can correct it.
