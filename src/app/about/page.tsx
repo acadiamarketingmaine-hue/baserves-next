@@ -100,6 +100,14 @@ export default function AboutPage() {
               dedicated to offering well-kept facilities, unspoiled scenery, and
               seamless <Link href="/" className="underline hover:text-white transition-colors">experiences for every visitor</Link>.
             </p>
+            <div className="mt-8">
+              <Link href="/experiences" className="btn-primary">
+                Explore Locations
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

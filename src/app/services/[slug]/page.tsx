@@ -167,6 +167,14 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             <p className="text-xl text-white/90 leading-relaxed">
               {service.tagline}
             </p>
+            <div className="mt-8">
+              <Link href="/contact" className="btn-primary">
+                Request a Quote
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -176,7 +184,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Overview</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Overview</h2>
               <div className="prose prose-lg max-w-none">
                 {service.longDescription.split('\n\n').map((paragraph: string, index: number) => (
                   <p key={index} className="text-gray-600 leading-relaxed mb-4">
@@ -241,7 +249,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       {/* CTA */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8">
             Let us help you maintain your recreation facilities to the highest standards.
           </p>

@@ -150,7 +150,7 @@ export default async function MeramecStateParkPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
               <div className="prose prose-lg max-w-none">
                 {content.paragraphs.map((paragraph, index) => (
                   <p key={index} className="text-gray-600 leading-relaxed mb-4">
@@ -220,7 +220,7 @@ export default async function MeramecStateParkPage() {
       {/* Lodging - Cabins */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.cabinLodging.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.cabinLodging.heading}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">
             {content.sections.cabinLodging.intro}
           </p>
@@ -265,7 +265,7 @@ export default async function MeramecStateParkPage() {
                 <span className="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-sm font-semibold rounded-full mb-4">
                   {content.sections.fisherCave.intro}
                 </span>
-                <h2 className="text-3xl font-bold mb-6">{content.sections.fisherCave.heading}</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">{content.sections.fisherCave.heading}</h2>
                 <p className="text-white/90 leading-relaxed mb-4">
                   {content.sections.fisherCave.paragraphs?.[0]}
                 </p>
@@ -312,7 +312,7 @@ export default async function MeramecStateParkPage() {
               />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.watercraft.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{content.sections.watercraft.heading}</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 {content.sections.watercraft.intro}
               </p>
@@ -350,7 +350,7 @@ export default async function MeramecStateParkPage() {
       {/* Facilities */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.facilities.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.facilities.heading}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">
             {content.sections.facilities.intro}
           </p>
@@ -373,7 +373,7 @@ export default async function MeramecStateParkPage() {
       {/* Photo Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryImages.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
@@ -387,7 +387,7 @@ export default async function MeramecStateParkPage() {
       {/* Resources & Downloads */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">{content.sections.resources.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">{content.sections.resources.heading}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <a
               href={content.ctas.resourceBookLodging.url}
@@ -441,7 +441,7 @@ export default async function MeramecStateParkPage() {
         <div className="container-custom px-6">
           <div className="max-w-3xl mb-12">
             <span className="inline-block px-4 py-2 bg-forest-DEFAULT/10 text-forest-DEFAULT text-sm font-semibold rounded-full mb-4">{scopeBadge?.title}</span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               {content.sections.scopeOfServices.intro}
             </p>

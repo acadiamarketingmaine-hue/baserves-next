@@ -81,6 +81,14 @@ export default function RewardsPage() {
             <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
               We&apos;re building a rewards program to thank our loyal guests. Earn points on every booking and unlock exclusive perks across all BA Services properties.
             </p>
+            <div className="mt-8">
+              <Link href="/experiences" className="btn-primary">
+                Book Your Next Adventure
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -88,7 +96,7 @@ export default function RewardsPage() {
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-14">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">What to Expect</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What to Expect</h2>
               <p className="text-gray-500 max-w-xl mx-auto">
                 Here&apos;s a preview of what&apos;s in store when the rewards program launches.
               </p>
@@ -116,7 +124,7 @@ export default function RewardsPage() {
         {/* CTA */}
         <section className="py-20 bg-stone-50">
           <div className="max-w-2xl mx-auto text-center px-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Be the First to Know
             </h2>
             <p className="text-gray-500 mb-8">

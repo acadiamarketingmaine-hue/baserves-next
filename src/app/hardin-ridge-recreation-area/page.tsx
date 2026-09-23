@@ -153,7 +153,7 @@ export default async function HardinRidgePage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
                   {content.paragraphs[0]}
@@ -244,7 +244,7 @@ export default async function HardinRidgePage() {
       {/* Facilities */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.facilities.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.facilities.heading}</h2>
           <p className="text-gray-600 mb-10 max-w-2xl">{content.sections.facilities.intro}</p>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -266,7 +266,7 @@ export default async function HardinRidgePage() {
       {/* Activities */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.activities.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.activities.heading}</h2>
           <p className="text-gray-600 mb-10 max-w-2xl">{content.sections.activities.intro}</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {activities.map((activity) => (
@@ -285,7 +285,7 @@ export default async function HardinRidgePage() {
       {/* Photo Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryPhotos.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">

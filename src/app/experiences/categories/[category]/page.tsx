@@ -156,17 +156,25 @@ export default function CategoryPage({ params }: { params: { category: string } 
             Back to Experiences
           </Link>
           <div className="max-w-3xl">
-            <span className="text-5xl mb-4 block">{category.icon}</span>
+            <span aria-hidden="true" className="mb-5 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 text-white ring-1 ring-white/25 [&>svg]:h-9 [&>svg]:w-9">{category.icon}</span>
             <h1 className="font-display headline-xl text-white mb-6">{category.name}</h1>
             <p className="text-xl text-white/90 leading-relaxed">{category.description}</p>
+            <div className="mt-8">
+              <a href="#available-experiences" className="btn-primary">
+                See Available Experiences
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Experiences */}
-      <section className="section">
+      <section id="available-experiences" className="section scroll-mt-24">
         <div className="container-custom px-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Available Experiences</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Available Experiences</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {category.experiences.map((exp: any, index: number) => (
               <div key={index} className="experience-card">

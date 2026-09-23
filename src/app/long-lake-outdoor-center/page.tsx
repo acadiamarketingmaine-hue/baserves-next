@@ -143,7 +143,7 @@ export default async function LongLakePage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
                   {content.paragraphs[0]}
@@ -206,7 +206,7 @@ export default async function LongLakePage() {
       {/* Lodging */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.lodging.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.lodging.heading}</h2>
           <p className="text-gray-600 mb-10 max-w-2xl">{content.sections.lodging.intro}</p>
 
           {/* Cabins */}
@@ -269,7 +269,7 @@ export default async function LongLakePage() {
               <Image src={lodgePhoto.src} alt={lodgePhoto.alt} fill sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.lodge.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{content.sections.lodge.heading}</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
                 {content.sections.lodge.paragraphs?.[0]}
               </p>
@@ -292,7 +292,7 @@ export default async function LongLakePage() {
       {/* Weddings & Events */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.weddings.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.weddings.heading}</h2>
           <p className="text-gray-600 mb-10 max-w-2xl">{content.sections.weddings.intro}</p>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
@@ -317,7 +317,7 @@ export default async function LongLakePage() {
                 </p>
               </div>
               <p className="text-gray-600 text-sm">
-                Download the <a href={content.ctas.weddingPacket.url} className="text-forest-DEFAULT font-semibold hover:underline">{content.ctas.weddingPacket.label}</a> for full details on ceremony locations, catering options, and rental inclusions.
+                Download the <a href={content.ctas.weddingPacket.url} className="text-forest-DEFAULT underline decoration-forest/40 decoration-2 underline-offset-4 hover:decoration-forest">{content.ctas.weddingPacket.label}</a> for full details on ceremony locations, catering options, and rental inclusions.
               </p>
             </div>
           </div>
@@ -340,7 +340,7 @@ export default async function LongLakePage() {
       {/* Photo Gallery */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">{content.sections.photoGallery.heading}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryPhotos.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
@@ -354,7 +354,7 @@ export default async function LongLakePage() {
       {/* Resources & Downloads */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.downloads.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.downloads.heading}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">{content.sections.downloads.intro}</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {downloads.map((doc) => (
@@ -393,7 +393,7 @@ export default async function LongLakePage() {
         <div className="container-custom px-6">
           <div className="max-w-3xl mb-12">
             <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">{scopeBadge?.title}</span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               {content.sections.scopeOfServices.intro}
             </p>

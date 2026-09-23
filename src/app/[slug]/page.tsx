@@ -120,7 +120,7 @@ export default async function LocationPage({ params }: { params: { slug: string 
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Description */}
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">About This Location</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About This Location</h2>
               <div className="prose prose-lg max-w-none">
                 {content.paragraphs.map((paragraph: string, index: number) => (
                   <p key={index} className="text-gray-600 leading-relaxed mb-4">

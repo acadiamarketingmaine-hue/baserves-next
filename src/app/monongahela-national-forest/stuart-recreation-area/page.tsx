@@ -99,7 +99,7 @@ export default async function StuartRecreationAreaPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
               {content.paragraphs.map((paragraph, index) => (
               <p key={index} className="text-lg text-gray-600 leading-relaxed mb-6">
                 {paragraph}
@@ -133,7 +133,7 @@ export default async function StuartRecreationAreaPage() {
       {/* CTA */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{content.sections.closingCta.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.closingCta.heading}</h2>
           <p className="text-gray-600 max-w-xl mx-auto mb-8">
             {content.sections.closingCta.intro}
           </p>

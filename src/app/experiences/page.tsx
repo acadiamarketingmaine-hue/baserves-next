@@ -163,6 +163,14 @@ export default function ExperiencesPage() {
               From coast to coast, discover pristine outdoor destinations managed with care and dedication
               to preserving natural beauty while providing exceptional visitor experiences. <Link href="/about" className="underline hover:text-white transition-colors">Learn about our story</Link> and the <Link href="/services" className="underline hover:text-white transition-colors">services</Link> that make it possible.
             </p>
+            <div className="mt-8">
+              <a href="#all-recreation-areas" className="btn-primary">
+                Book Now
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -170,7 +178,7 @@ export default function ExperiencesPage() {
       {/* Categories */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Browse by Experience</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Browse by Experience</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {categories.map((category) => (
               <Link
@@ -200,7 +208,7 @@ export default function ExperiencesPage() {
       {/* All Locations */}
       <section id="all-recreation-areas" className="section scroll-mt-24">
         <div className="container-custom px-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">All Recreation Areas</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">All Recreation Areas</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {locations.map((location) => (
               <Link

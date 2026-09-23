@@ -130,7 +130,7 @@ export default async function MonongahelaNationalForestPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{content.sections.about.heading}</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed mb-4">
                   {content.paragraphs[0]}
@@ -213,7 +213,7 @@ export default async function MonongahelaNationalForestPage() {
       {/* Wilderness Areas */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.wildernessAreas.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.wildernessAreas.heading}</h2>
           <p className="text-gray-600 mb-8 max-w-3xl">
             {content.sections.wildernessAreas.intro}
           </p>
@@ -236,7 +236,7 @@ export default async function MonongahelaNationalForestPage() {
       {/* Notable Destinations */}
       <section className="py-16">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">{content.sections.notableDestinations.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">{content.sections.notableDestinations.heading}</h2>
           <div className="grid lg:grid-cols-2 gap-8">
             {notableDestinations.map((dest) => (
               <div key={dest.key} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100">
@@ -267,7 +267,7 @@ export default async function MonongahelaNationalForestPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-1">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.bloomingSchedule.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.bloomingSchedule.heading}</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 {content.sections.bloomingSchedule.intro}
               </p>
@@ -316,7 +316,7 @@ export default async function MonongahelaNationalForestPage() {
               />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.birding.heading}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.birding.heading}</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
                 {content.sections.birding.paragraphs?.[0]}
               </p>
@@ -342,7 +342,7 @@ export default async function MonongahelaNationalForestPage() {
       {/* Resources & Downloads */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{content.sections.resources.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{content.sections.resources.heading}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl">
             {content.sections.resources.intro}
           </p>
@@ -439,7 +439,7 @@ export default async function MonongahelaNationalForestPage() {
             <span className="inline-block px-4 py-2 bg-green-600/10 text-green-700 text-sm font-semibold rounded-full mb-4">
               {scopeBadge?.title}
             </span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.sections.scopeOfServices.heading}</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               {content.sections.scopeOfServices.intro}
             </p>
