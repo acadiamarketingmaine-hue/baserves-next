@@ -1,5 +1,20 @@
 # baserves.com UX pass: resume point
 
+## 2026-09-24 02:27 +07
+- **Full UX protocol now exists:** `~/gameover/protocols/ux.md` plus the runner `~/gameover/protocols/ux/runner/ux-sweep.mjs`. The baseline run is `docs/ux-sweep/2026-09-24-baseline/report.md` (48 pages × 6 configs, local build, 18 min).
+- **Baseline:** 0/48 pages meet every bar. Medians: A 100, B 100 (6/6 journeys pass), C 100, D 0, E 100, F 42, G 70, H 100, I 100, J 70.
+- **Top fixes, in order of impact:**
+  1. Leaflet map markers have no accessible name: 13,080 nodes on all 48 pages. The property map sits in the nav, so the fix is marker `title`/`alt` in `PropertyMap.tsx` (and `RestAreaMap.tsx`).
+  2. Colour contrast: `text-white/40` (90), the nav `xl:inline` label (48), white on `bg-green-600` badges (45+).
+  3. Home hero video `public/videos/hero.mp4` is 22 MB. Card images load at w=1920 on desktop (up to 887 KB each) because `next/image` has no `sizes`.
+  4. LCP 10–13 s locally on the Big Bend, services and Iowa DOT pages. Check the hero images there.
+  5. Phone tap targets: footer and menu links 32 px tall on every page (the open layout call).
+  6. A raw `&apos;` on Yankee Springs ("recreation area&apos;s lakes").
+  7. `/experiences/celina-lakes-recreation-area` is in the sitemap, but nothing links to it (it duplicates `/indian-celina-lakes-recreation-area`).
+  8. Visual consistency: 17 button variants (target 3), 22 text colours (target 12), 11 font sizes (target 8). This needs the token pass (protocol D.02).
+  9. Careers form: 34 name/address/phone/email fields have no `autocomplete`.
+- **Nothing was changed on the site in this step.**
+
 ## 2026-09-24 00:57 +07
 - **main = `a84e22b`** (plus this notes commit). Production deployment `dpl_FkSdZtPH6YBm6VKFXAuBRcsdN38s` is **READY**.
 - **Release 4 is live.**

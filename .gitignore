@@ -26,3 +26,11 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# UX sweep runs: keep report.md, scores.csv, journeys.json; drop heavy artefacts
+docs/ux-sweep/*/shots/
+docs/ux-sweep/*/lighthouse/
+docs/ux-sweep/*/pages.json
+docs/ux-sweep/*/server.log
+docs/ux-sweep/*/build.log
+docs/ux-sweep/*/recs.partial.json

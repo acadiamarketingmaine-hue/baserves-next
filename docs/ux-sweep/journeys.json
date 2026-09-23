@@ -1,0 +1,23 @@
+{
+  "_how": "Protocol B.01. Phone 390x844. Off-site navigations are recorded, never loaded. 'Get back to baserves.com from the booking site' happens on escape.baserves.com (for-booking-session.md B1) and cannot be scripted from here.",
+  "journeys": [
+    { "name": "Find a place", "start": "/", "maxTaps": 3,
+      "steps": [ { "click": "text=/^Explore Locations/i" }, { "click": "a[href=\"/tipsaw-lake-recreation-area\"]" } ],
+      "expect": { "urlIncludes": "/tipsaw-lake-recreation-area" } },
+    { "name": "Book it (Recreation.gov place)", "start": "/tipsaw-lake-recreation-area", "maxTaps": 1,
+      "steps": [ { "click": "text=/Reserve on Recreation\\.gov/i" } ],
+      "expect": { "offsiteIncludes": "recreation.gov/camping/campgrounds/232114" } },
+    { "name": "Book it (Long Lake, house booking site)", "start": "/long-lake-outdoor-center", "maxTaps": 1,
+      "steps": [ { "click": "text=/Book Your Stay/i" } ],
+      "expect": { "offsiteIncludes": "escape.baserves.com/long-lake-outdoor-center" } },
+    { "name": "Book from the menu", "start": "/about", "maxTaps": 3,
+      "steps": [ { "click": "button:has-text(\"Open menu\")" }, { "click": "text=/^Book$/" } ],
+      "expect": { "urlIncludes": "/experiences" } },
+    { "name": "Contact the camp", "start": "/", "maxTaps": 2,
+      "steps": [ { "click": "button:has-text(\"Open menu\")" }, { "click": "text=/^Contact Us$/" } ],
+      "expect": { "urlIncludes": "/contact", "text": "207" } },
+    { "name": "Apply for a job", "start": "/", "maxTaps": 2,
+      "steps": [ { "click": "button:has-text(\"Open menu\")" }, { "click": "text=/^Careers$/" } ],
+      "expect": { "urlIncludes": "/careers", "text": "Full Name" } }
+  ]
+}
