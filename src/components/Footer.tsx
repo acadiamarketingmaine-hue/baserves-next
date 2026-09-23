@@ -230,7 +230,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="text-center pb-4">
-          <a href="https://acadiamarketingmaine.com" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white/60 transition-colors" style={{ fontSize: '5px' }}>
+          <a href="https://acadiamarketingmaine.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors" style={{ fontSize: '5px' }}>
             Website by Acadia Marketing of Maine
           </a>
         </div>

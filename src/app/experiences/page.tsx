@@ -216,7 +216,7 @@ export default function ExperiencesPage() {
                   />
                   <div className="location-card-overlay" />
                   <div className="absolute bottom-4 left-4 right-4">
-                    <span className="inline-block px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">
+                    <span className="inline-block px-3 py-1 bg-green-700 text-white text-xs font-semibold rounded-full">
                       {location.tagline}
                     </span>
                   </div>

@@ -378,8 +378,8 @@ export default function Navigation({
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-                <span className="hidden xl:inline">Search</span>
-                <kbd className="hidden xl:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono bg-gray-100 rounded text-gray-400">⌘K</kbd>
+                <span className="hidden xl:inline text-gray-500">Search</span>
+                <kbd className="hidden xl:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono bg-gray-100 rounded text-gray-500">⌘K</kbd>
               </button>
 
               <a

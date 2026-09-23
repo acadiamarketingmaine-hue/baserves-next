@@ -100,7 +100,7 @@ export default async function YankeeSpringsPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         </div>
         <div className="relative z-10 container-custom px-6 pb-16">
-          <span className="inline-block px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-full mb-4">
+          <span className="inline-block px-4 py-2 bg-green-700 text-white text-sm font-semibold rounded-full mb-4">
             {content.tagline}
           </span>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4">
@@ -240,7 +240,7 @@ export default async function YankeeSpringsPage() {
                 <div className="relative h-64">
                   <Image src={property.photo!.src} alt={property.photo!.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <span className="absolute top-4 left-4 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">
+                  <span className="absolute top-4 left-4 px-3 py-1 bg-green-700 text-white text-xs font-semibold rounded-full">
                     {property.badge}
                   </span>
                 </div>
