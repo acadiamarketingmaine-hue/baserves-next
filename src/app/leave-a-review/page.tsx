@@ -188,7 +188,7 @@ export default function LeaveReviewPage() {
                   </span>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {([
-                      { value: 'rest-area', title: 'A rest area', detail: 'Utah rest stops we maintain' },
+                      { value: 'rest-area', title: 'A rest area', detail: 'Utah and Iowa rest areas we maintain' },
                       { value: 'campground', title: 'A campground or park', detail: 'Cabins, campsites and day use' },
                     ] as const).map(option => (
                       <button
