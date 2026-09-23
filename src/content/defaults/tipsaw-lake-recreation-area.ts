@@ -64,7 +64,7 @@ export const tipsawLakeRecreationArea: PropertyContent = {
     { key: 'lake', value: '131 Acre', label: 'Lake' },
     { key: 'campsites', value: '35+', label: 'Campsites' },
     { key: 'trails', value: '8+', label: 'Miles Trails' },
-    { key: 'open', value: 'Year-Round', label: 'Open' },
+    { key: 'open', value: 'Apr–Oct', label: 'Season' },
   ],
   season: {
     isSeasonal: true,

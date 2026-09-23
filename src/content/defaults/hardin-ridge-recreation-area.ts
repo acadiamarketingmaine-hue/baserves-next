@@ -68,7 +68,7 @@ export const hardinRidgeRecreationArea: PropertyContent = {
     { key: 'campsites', value: '200+', label: 'Campsites' },
     { key: 'lake', value: '10,750', label: 'Acre Lake' },
     { key: 'trails', value: '12+', label: 'Miles Trails' },
-    { key: 'open', value: 'Year-Round', label: 'Open' },
+    { key: 'open', value: 'Apr–Oct', label: 'Season' },
   ],
   season: {
     isSeasonal: true,
