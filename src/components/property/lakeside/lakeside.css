@@ -101,25 +101,6 @@
   }
 }
 
-/*
- * While the phone booking bar is up, lift the Treeko chat button above it.
- * `bottom`, not transform: a transform would become the containing block for
- * Treeko's own fixed overlays (tour bar, sound prompt) and misplace them.
- */
-@media (max-width: 767px) {
-  [data-chat-dock] {
-    transition: bottom 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  body.lk-bar-on [data-chat-dock] {
-    bottom: calc(8px + 56px + env(safe-area-inset-bottom, 0px));
-  }
-}
-@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
-  [data-chat-dock] {
-    transition: none;
-  }
-}
-
 /* Gallery lightbox. */
 @keyframes lk-fade-in {
   from {

@@ -21,7 +21,7 @@ const phoneIcon = (
 /**
  * Appears once the hero has scrolled away and steps aside again when the
  * closing call-to-action comes into view. Desktop: a compact paper pill at the
- * top right, under the site header. Phone: a slim bottom bar (Check
+ * top right, under the site header. Phone: one compact pill bottom-left (Check
  * availability + call), with the Treeko chat button lifted above it.
  * Nothing here is server-rendered as visible, so no-JS pages are unchanged.
  */
@@ -62,12 +62,6 @@ export default function StickyBooking({ name, cta, phone }: StickyBookingProps) 
     }
   }, [])
 
-  // Lets the Treeko chat button lift above the phone bar (lakeside.css).
-  useEffect(() => {
-    document.body.classList.toggle('lk-bar-on', shown)
-    return () => document.body.classList.remove('lk-bar-on')
-  }, [shown])
-
   // inert keeps the hidden bar out of the tab order (React 18 passes it through as an attribute).
   const hiddenProps = (shown ? {} : { 'aria-hidden': true, inert: '' }) as Record<string, unknown>
 
@@ -100,31 +94,17 @@ export default function StickyBooking({ name, cta, phone }: StickyBookingProps) 
         </a>
       </div>
 
-      {/* Phone: slim bottom bar. */}
-      <div
+      {/* Phone: one compact pill, bottom-left (John: no full-width phone bottom bar). Treeko keeps bottom-right. */}
+      <a
         data-shown={shown}
         {...hiddenProps}
-        className="lk-sticky lk-sticky--bottom fixed inset-x-0 bottom-0 z-40 border-t border-lake-line bg-lake-paper/[0.97] px-3 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_24px_-16px_rgba(0,0,0,0.3)] md:hidden"
+        href={cta.url}
+        {...externalProps(cta.url)}
+        className="lk-sticky lk-sticky--bottom fixed bottom-[calc(12px+env(safe-area-inset-bottom,0px))] left-4 z-40 inline-flex min-h-[48px] items-center gap-2 rounded-full bg-lake-spruce px-5 text-[15px] font-medium text-lake-paper shadow-[0_12px_28px_-10px_rgba(20,30,24,0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce md:hidden"
       >
-        <div className="flex h-14 items-center gap-2">
-          <a
-            href={cta.url}
-            {...externalProps(cta.url)}
-            className="inline-flex h-11 flex-1 items-center justify-center rounded-full bg-lake-spruce px-5 text-[15px] font-medium text-lake-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
-          >
-            {cta.label}
-          </a>
-          {phone && (
-            <a
-              href={telHref(phone)}
-              aria-label={`Call ${phone}`}
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-lake-ink/30 text-lake-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
-            >
-              {phoneIcon}
-            </a>
-          )}
-        </div>
-      </div>
+        {cta.label}
+        <Arrow className="h-4 w-4" />
+      </a>
     </>
   )
 }
