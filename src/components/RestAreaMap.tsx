@@ -96,6 +96,8 @@ function RestAreaMarker({ restArea, showRegionColor }: { restArea: RestArea; sho
       ref={markerRef}
       position={[restArea.lat, restArea.lng]}
       icon={icon}
+      title={`${restArea.name} rest area${restArea.direction ? ` (${restArea.direction})` : ''}`}
+      alt={`${restArea.name} rest area`}
       eventHandlers={{
         mouseover: () => markerRef.current?.openPopup(),
       }}

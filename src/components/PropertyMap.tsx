@@ -67,6 +67,8 @@ function HoverMarker({ property }: { property: typeof properties[number] }) {
       ref={markerRef}
       position={[property.lat, property.lng]}
       icon={pinIcon}
+      title={property.name}
+      alt={property.name}
       eventHandlers={{
         mouseover: () => markerRef.current?.openPopup(),
         mouseout: (e) => {
@@ -133,6 +135,8 @@ function RestAreaMarker({ restArea }: { restArea: typeof allRestAreas[number] })
       ref={markerRef}
       position={[restArea.lat, restArea.lng]}
       icon={dotPinIcon}
+      title={`${restArea.name} rest area${restArea.direction ? ` (${restArea.direction})` : ''}`}
+      alt={`${restArea.name} rest area`}
       eventHandlers={{
         mouseover: () => markerRef.current?.openPopup(),
         mouseout: (e) => {
