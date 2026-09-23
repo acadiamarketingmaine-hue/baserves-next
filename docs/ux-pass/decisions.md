@@ -63,3 +63,9 @@ The site uses five addresses: `email@BAServes.com` (footer, contact, schema), `O
 
 ## D14. Washington State Park acreage (camp, added 2026-09-24)
 The home page and the Services list said 2,147+ acres. The park's own page (camp-editable) says 2,157 in five places. Everything now says **2,157**. I couldn't reach mostateparks.com to confirm. The camp can correct it.
+
+## D15. Duplicate Celina page (John, added 2026-09-24)
+`/experiences/celina-lakes-recreation-area` (a short entry in the `experiences/[slug]` template) duplicates `/indian-celina-lakes-recreation-area`. It's in the sitemap with its own canonical, and **no page links to it** (UX sweep C.01). Google sees two pages about the same place. **Recommendation:** 301 it to `/indian-celina-lakes-recreation-area` and drop it from `sitemap.ts`. Not done, because the brief says redirects and the sitemap are yours to change.
+
+## D16. Footer credit link (information, 2026-09-24)
+"Website by Acadia Marketing of Maine" in the footer is deliberately 5 px. Its contrast was raised (white/40 → white/70), but at 97×6 px it stays below the 44 px tap-target rule. It's recorded as a known exception, so sweeps will keep listing it. Say if you want it readable instead.
