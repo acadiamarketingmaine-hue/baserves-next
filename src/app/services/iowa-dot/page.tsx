@@ -6,6 +6,7 @@ import { iowaRestAreas } from '@/data/iowa-rest-areas'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 import { service, serviceId } from '@/lib/schema'
+import Image from 'next/image'
 
 const RestAreaMap = dynamic(() => import('@/components/RestAreaMap'), { ssr: false })
 
@@ -112,7 +113,7 @@ export default function IowaDotPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/iowa-dot-collage-web.jpg" alt="Iowa DOT Rest Areas" className="w-full h-full object-cover opacity-30" />
+          <Image src="/images/iowa-dot-collage-web.jpg" alt="Iowa DOT Rest Areas" fill sizes="100vw" priority className="object-cover opacity-30" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">

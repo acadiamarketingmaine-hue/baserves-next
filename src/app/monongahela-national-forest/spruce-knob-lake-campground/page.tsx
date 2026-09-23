@@ -6,6 +6,7 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 import { getPropertyContent } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
+import Image from 'next/image'
 
 const SLUG = 'spruce-knob-lake-campground'
 
@@ -52,7 +53,7 @@ export default async function SpruceKnobLakeCampgroundPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src={content.hero.src} alt={content.hero.alt} className="w-full h-full object-cover opacity-20" />
+          <Image src={content.hero.src} alt={content.hero.alt} fill sizes="100vw" priority className="object-cover opacity-20" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">

@@ -84,6 +84,7 @@ export default function AboutPage() {
             alt="About BA Services"
             fill
             sizes="100vw"
+            priority
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />

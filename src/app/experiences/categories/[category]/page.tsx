@@ -145,7 +145,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
       {/* Hero */}
       <section className="relative pt-32 pb-20">
         <div className="absolute inset-0">
-          <Image src={category.image} alt={category.name} fill sizes="100vw" className="object-cover" />
+          <Image src={category.image} alt={category.name} fill sizes="100vw" priority className="object-cover" />
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <div className="relative container-custom px-6">
