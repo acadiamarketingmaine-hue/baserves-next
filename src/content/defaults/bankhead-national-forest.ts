@@ -34,9 +34,9 @@ export const bankheadNationalForest: PropertyContent = {
   gallery: [
     { src: '/images/DSC_0103-2048x1365.jpg', alt: 'Raven Trail sign and wooden steps into the forest' },
     { src: '/images/Bankhead-Waterfall.png', alt: 'Waterfall in the Sipsey Wilderness' },
-    { src: '/images/bankhead-bicycle-trail.jpg', alt: 'Trail in Bankhead National Forest' },
-    { src: '/images/clear-creek-bent-twig.jpg', alt: 'Clear Creek Recreation Area' },
-    { src: '/images/clear-creek-acorn-camp.jpg', alt: 'Camping at Clear Creek' },
+    { src: '/images/bankhead-bicycle-trail.jpg', alt: 'Paved bicycle trail beside the lake at Clear Creek' },
+    { src: '/images/clear-creek-bent-twig.jpg', alt: 'Bent Twig Camp at Clear Creek' },
+    { src: '/images/clear-creek-acorn-camp.jpg', alt: 'Picnic tables at Acorn Camp, Clear Creek' },
     { src: '/images/clear-creek-fox-loop.jpg', alt: 'Fox Loop at Clear Creek' },
     { src: '/images/clear-creek-fox-entrance.jpg', alt: 'Clear Creek campground entrance' },
   ],
@@ -172,7 +172,7 @@ export const bankheadNationalForest: PropertyContent = {
           meta: '102 sites',
           // Verbatim: the live page really does render the undecoded entity here.
           body: 'Located on the shore of Lewis Smith Lake, Clear Creek is the Bankhead\'s largest recreation area. Features four camping loops with electric and water hookups, swimming beach, boat ramps, hiking trails, and group camping.',
-          photo: { src: '/images/clear-creek-bent-twig.jpg', alt: 'Clear Creek Recreation Area' },
+          photo: { src: '/images/clear-creek-bent-twig.jpg', alt: 'Bent Twig Camp at Clear Creek Recreation Area' },
           href: '/experiences/clear-creek-recreation-area',
         },
         {
@@ -180,7 +180,7 @@ export const bankheadNationalForest: PropertyContent = {
           title: 'Corinth Recreation Area',
           meta: '52 sites',
           body: 'A quieter campground offering full-hookup sites (water, electric, and sewer) in a peaceful wooded setting. Ideal for RV campers seeking a more relaxed atmosphere with modern amenities.',
-          photo: { src: '/images/clear-creek-acorn-camp.jpg', alt: 'Corinth Recreation Area' },
+          photo: { src: '/images/corinth-boat-ramp.jpg', alt: 'Road down to Lewis Smith Lake at Corinth Recreation Area' },
           href: '/experiences/corinth-recreation-area',
         },
       ],
@@ -302,7 +302,7 @@ export const bankheadNationalForest: PropertyContent = {
         { key: 'availability', title: 'Availability', body: 'Open year-round, ADA accessible' },
         {
           key: 'photo',
-          photo: { src: '/images/bankhead-bicycle-trail.jpg', alt: 'Bankhead National Forest recreation area' },
+          photo: { src: '/images/bankhead-bicycle-trail.jpg', alt: 'Paved bicycle trail beside the lake at Clear Creek' },
         },
       ],
     },
@@ -314,7 +314,7 @@ export const bankheadNationalForest: PropertyContent = {
       items: [
         {
           key: 'photo',
-          photo: { src: '/images/clear-creek-fox-loop.jpg', alt: 'Forest habitat in Bankhead National Forest' },
+          photo: { src: '/images/clear-creek-fox-loop.jpg', alt: 'Pine and hardwood forest along the Fox Loop road at Clear Creek' },
         },
         {
           key: 'emphasis-areas',

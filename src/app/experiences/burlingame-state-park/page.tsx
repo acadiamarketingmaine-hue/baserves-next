@@ -370,7 +370,7 @@ export default function BurlingamePage() {
               </ul>
             </div>
             <div className="relative h-80 rounded-2xl overflow-hidden">
-              <Image src="/images/Burlingame2-1536x1152.jpg" alt="Camping at Burlingame" fill className="object-cover" />
+              <Image src="/images/Burlingame2-1536x1152.jpg" alt="Rocky shoreline of Watchaug Pond at Burlingame" fill className="object-cover" />
             </div>
           </div>
         </div>

@@ -41,7 +41,7 @@ export const hardinRidgeRecreationArea: PropertyContent = {
     { src: '/images/hardin-ridge/cabin-front.jpg', alt: 'Cabin front at Hardin Ridge' },
     { src: '/images/hardin-ridge/cabin-interior.jpg', alt: 'Cabin interior' },
     { src: '/images/hardin-ridge/overlook.jpg', alt: 'Monroe Lake overlook and interpretive sign' },
-    { src: '/images/hardin-ridge/aerial.jpg', alt: 'Aerial view of Hardin Ridge Recreation Area' },
+    { src: '/images/hardin-ridge/aerial.jpg', alt: 'Monroe Lake seen through the trees from a wooden deck at Hardin Ridge' },
     { src: '/images/hardin-ridge/campsite.jpg', alt: 'Campsite in the Hoosier National Forest' },
     { src: '/images/hardin-ridge/shelter.jpg', alt: 'Shelter house with Monroe Lake view' },
     { src: '/images/hardin-ridge/entrance.jpg', alt: 'Hardin Ridge entrance sign' },
