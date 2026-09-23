@@ -229,10 +229,6 @@ export const monongahelaNationalForest: PropertyContent = {
     campgroundMaps: {
       heading: 'Campground Maps',
       items: [
-        { key: 'bear-heaven', title: 'Bear Heaven Recreation Area Map', href: '/downloads/monongahela-national-forest/campground-maps/bear-heaven.pdf' },
-        { key: 'cranberry', title: 'Cranberry Campground Map', href: '/downloads/monongahela-national-forest/campground-maps/cranberry.pdf' },
-        { key: 'island', title: 'Island Campground Map', href: '/downloads/monongahela-national-forest/campground-maps/island.pdf' },
-        { key: 'kumbrabow', title: 'Kumbrabow State Forest Map', href: '/downloads/monongahela-national-forest/campground-maps/kumbrabow.pdf' },
         { key: 'seneca-shadows', title: 'Seneca Shadows Campground Map', href: '/downloads/monongahela-national-forest/campground-maps/seneca-shadows.pdf' },
         { key: 'spruce-knob-lake', title: 'Spruce Knob Lake Campground Map', href: '/downloads/monongahela-national-forest/campground-maps/spruce-knob-lake.pdf' },
       ],
@@ -241,9 +237,6 @@ export const monongahelaNationalForest: PropertyContent = {
       heading: 'Wilderness Maps',
       items: [
         { key: 'dolly-sods', title: 'Dolly Sods Wilderness Map', href: '/downloads/monongahela-national-forest/wilderness-maps/dolly-sods.pdf' },
-        { key: 'otter-creek', title: 'Otter Creek Wilderness Map', href: '/downloads/monongahela-national-forest/wilderness-maps/otter-creek.pdf' },
-        { key: 'cranberry', title: 'Cranberry Wilderness Map', href: '/downloads/monongahela-national-forest/wilderness-maps/cranberry.pdf' },
-        { key: 'laurel-fork', title: 'Laurel Fork Wilderness Map', href: '/downloads/monongahela-national-forest/wilderness-maps/laurel-fork.pdf' },
       ],
     },
     guides: {
