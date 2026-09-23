@@ -293,7 +293,7 @@ export default function TreekoChat() {
   if (!imagesLoaded || HIDDEN_ON.includes(pathname)) return null
 
   return (
-    <div className={`fixed z-[9999] flex flex-col items-end gap-2 ${touring ? 'bottom-2 right-2 md:bottom-4 md:right-4' : 'bottom-4 right-4'}`}>
+    <div className={`fixed z-[9999] flex flex-col items-end gap-2 ${touring ? 'bottom-2 right-2 md:bottom-4 md:right-4' : 'bottom-2 right-2 sm:bottom-4 sm:right-4'}`}>
       {/* Sound choice overlay — shown before tour starts */}
       {tourChoosing && (
         <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/50 backdrop-blur-sm">
@@ -409,13 +409,8 @@ export default function TreekoChat() {
       )}
 
       {/* Treeko */}
-      <button onClick={handleClick} className="relative group cursor-pointer focus:outline-none" aria-label="Chat with Treeko">
-        {state === 'idle' && (
-          <div className="absolute top-0 right-0 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center z-10 animate-bounce">
-            <span className="text-white text-[10px] font-bold">1</span>
-          </div>
-        )}
-        <div className={`w-24 h-28 relative transition-transform ${treekoIsTalking ? 'animate-treeko-talk' : 'animate-treeko-sway group-hover:scale-105'}`}>
+      <button onClick={handleClick} className="relative group cursor-pointer rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-DEFAULT focus-visible:ring-offset-2" aria-label="Chat with Treeko">
+        <div className={`w-16 h-[75px] sm:w-24 sm:h-28 relative transition-transform ${treekoIsTalking ? 'animate-treeko-talk' : 'animate-treeko-sway group-hover:scale-105'}`}>
           <Image src="/images/treeko-idle.png" alt="Treeko" width={96} height={112} className={`w-full h-full object-contain object-bottom drop-shadow-lg absolute inset-0 transition-opacity duration-200 ${treekoIsTalking ? 'opacity-0' : 'opacity-100'}`} priority />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/treeko-talking-256.png" alt="Treeko talking" className={`w-full h-full object-contain object-bottom drop-shadow-lg absolute inset-0 transition-opacity duration-200 ${treekoIsTalking ? 'opacity-100' : 'opacity-0'}`} />
