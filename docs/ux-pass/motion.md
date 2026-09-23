@@ -110,4 +110,21 @@ Rules kept from manual §1: nothing clips the hero photo, the booking card lost 
 | Playwright, motion on, desktop | hero photo mid-settle at 250ms (scale 1.028); bar hidden at top, shown at 1400px, hidden at the closing section; lightbox opens on thumbnail 3 ("3 / 12", caption = alt, focus on Close, scroll locked), → gives "4 / 12", Tab stays inside, Esc closes and focus returns to "View photo 3 of 12…", scroll unlocked; details open (402→441px mid-animation) and close |
 | Playwright, motion on, phone 390 | bar shown after scroll: 57px tall, 314×44 and 44×44 targets; Treeko bottom 780 above the bar top 787 (no overlap) |
 
-UX sweep (`--quick`, `/long-lake-outdoor-center` and `/`): see below.
+### UX sweep (`--quick --no-build`, out `/tmp/ll-motion-sweep`)
+
+| page | A | B | C | D | E | F | G | H | I | J |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `/long-lake-outdoor-center` | 100 | 100 | 100 | 0 | 100 | 57 | 90 | – | 100 | 100 |
+| `/` | 60 | 100 | 100 | 0 | 100 | 44 | 90 | – | 100 | 100 |
+
+"Content still hidden with Reduce Motion on (F.04)": `/` 7, `/long-lake-outdoor-center` 5.
+A re-run of the same filter lists every flagged Long Lake node, and none is Lakeside content.
+They are site-wide chrome that is closed by design:
+- the phone menu drawer (`fixed inset-0 … transition-opacity`, opacity 0 while closed)
+- two desktop mega-menu panels (Locations/Services)
+- the footer map's "Use ⌘ + scroll to zoom the map" hint
+
+The home page shows the same nodes. Zero Lakeside elements are hidden (confirmed by the Playwright
+check above). D (style inventory) and the F axe items (kbd contrast, nested-interactive in a
+max-h-0 accordion, landmark-unique nav, footer heading order, footer redundant alt) are also
+site-wide. This brief did not touch them.
