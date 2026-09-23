@@ -9,7 +9,6 @@ const topNavLinks = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' },
-  { name: 'Rewards', href: '/rewards' },
   { name: 'Careers', href: '/careers' },
   { name: 'Contact Us', href: '/contact' },
 ]
