@@ -172,36 +172,36 @@ export default function EmploymentApplicationForm() {
         <h3 className="text-xl font-bold text-gray-900 mb-4">Applicant Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
-            <label className={labelClass}>Full Name <span className="text-red-500">*</span></label>
-            <input type="text" required value={fullName} onChange={e => setFullName(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f1" className={labelClass}>Full Name <span className="text-red-500">*</span></label>
+            <input id="app-f1" type="text" required value={fullName} onChange={e => setFullName(e.target.value)} className={inputClass} />
           </div>
           <div className="md:col-span-2">
-            <label className={labelClass}>Home Address</label>
-            <input type="text" value={homeAddress} onChange={e => setHomeAddress(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f2" className={labelClass}>Home Address</label>
+            <input id="app-f2" type="text" value={homeAddress} onChange={e => setHomeAddress(e.target.value)} className={inputClass} />
           </div>
           <div className="md:col-span-2">
-            <label className={labelClass}>City, State & Zip</label>
-            <input type="text" value={cityStateZip} onChange={e => setCityStateZip(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f3" className={labelClass}>City, State & Zip</label>
+            <input id="app-f3" type="text" value={cityStateZip} onChange={e => setCityStateZip(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Number of Years at This Address</label>
-            <input type="text" value={yearsAtAddress} onChange={e => setYearsAtAddress(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f4" className={labelClass}>Number of Years at This Address</label>
+            <input id="app-f4" type="text" value={yearsAtAddress} onChange={e => setYearsAtAddress(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Mobile Phone <span className="text-red-500">*</span></label>
-            <input type="tel" required value={mobilePhone} onChange={e => setMobilePhone(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f5" className={labelClass}>Mobile Phone <span className="text-red-500">*</span></label>
+            <input id="app-f5" type="tel" required value={mobilePhone} onChange={e => setMobilePhone(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Email Address <span className="text-red-500">*</span></label>
-            <input type="email" required value={emailAddress} onChange={e => setEmailAddress(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f6" className={labelClass}>Email Address <span className="text-red-500">*</span></label>
+            <input id="app-f6" type="email" required value={emailAddress} onChange={e => setEmailAddress(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Date of Birth</label>
-            <input type="date" value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f7" className={labelClass}>Date of Birth</label>
+            <input id="app-f7" type="date" value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)} className={inputClass} />
           </div>
           <div className="md:col-span-2">
-            <label className={labelClass}>Driver&apos;s License (State & Number)</label>
-            <input type="text" value={driversLicense} onChange={e => setDriversLicense(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f8" className={labelClass}>Driver&apos;s License (State & Number)</label>
+            <input id="app-f8" type="text" value={driversLicense} onChange={e => setDriversLicense(e.target.value)} className={inputClass} />
           </div>
           <div className="md:col-span-2">
             <label className="flex items-start gap-2 text-sm text-gray-700">
@@ -219,16 +219,16 @@ export default function EmploymentApplicationForm() {
             </label>
           </div>
           <div>
-            <label className={labelClass}>Shirt Size</label>
-            <input type="text" value={shirtSize} onChange={e => setShirtSize(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f9" className={labelClass}>Shirt Size</label>
+            <input id="app-f9" type="text" value={shirtSize} onChange={e => setShirtSize(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Vest Size</label>
-            <input type="text" value={vestSize} onChange={e => setVestSize(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f10" className={labelClass}>Vest Size</label>
+            <input id="app-f10" type="text" value={vestSize} onChange={e => setVestSize(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Jacket Size</label>
-            <input type="text" value={jacketSize} onChange={e => setJacketSize(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f11" className={labelClass}>Jacket Size</label>
+            <input id="app-f11" type="text" value={jacketSize} onChange={e => setJacketSize(e.target.value)} className={inputClass} />
           </div>
         </div>
       </div>
@@ -239,28 +239,28 @@ export default function EmploymentApplicationForm() {
         <p className="text-sm text-gray-500 mb-4">Whom should be contacted in the event of an emergency?</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
-            <label className={labelClass}>Full Name</label>
-            <input type="text" value={emergencyFullName} onChange={e => setEmergencyFullName(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f12" className={labelClass}>Full Name</label>
+            <input id="app-f12" type="text" value={emergencyFullName} onChange={e => setEmergencyFullName(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Relationship to You</label>
-            <input type="text" value={emergencyRelationship} onChange={e => setEmergencyRelationship(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f13" className={labelClass}>Relationship to You</label>
+            <input id="app-f13" type="text" value={emergencyRelationship} onChange={e => setEmergencyRelationship(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Address</label>
-            <input type="text" value={emergencyAddress} onChange={e => setEmergencyAddress(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f14" className={labelClass}>Address</label>
+            <input id="app-f14" type="text" value={emergencyAddress} onChange={e => setEmergencyAddress(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>City, State & Zip</label>
-            <input type="text" value={emergencyCityStateZip} onChange={e => setEmergencyCityStateZip(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f15" className={labelClass}>City, State & Zip</label>
+            <input id="app-f15" type="text" value={emergencyCityStateZip} onChange={e => setEmergencyCityStateZip(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Mobile Phone</label>
-            <input type="tel" value={emergencyMobilePhone} onChange={e => setEmergencyMobilePhone(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f16" className={labelClass}>Mobile Phone</label>
+            <input id="app-f16" type="tel" value={emergencyMobilePhone} onChange={e => setEmergencyMobilePhone(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Home Phone</label>
-            <input type="tel" value={emergencyHomePhone} onChange={e => setEmergencyHomePhone(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f17" className={labelClass}>Home Phone</label>
+            <input id="app-f17" type="tel" value={emergencyHomePhone} onChange={e => setEmergencyHomePhone(e.target.value)} className={inputClass} />
           </div>
         </div>
       </div>
@@ -270,8 +270,8 @@ export default function EmploymentApplicationForm() {
         <h3 className="text-xl font-bold text-gray-900 mb-4">Job / Position Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
-            <label className={labelClass}>Location Applying To</label>
-            <select value={siteApplyingTo} onChange={e => setSiteApplyingTo(e.target.value)} className={inputClass}>
+            <label htmlFor="app-f18" className={labelClass}>Location Applying To</label>
+            <select id="app-f18" value={siteApplyingTo} onChange={e => setSiteApplyingTo(e.target.value)} className={inputClass}>
               <option value="">Select a location</option>
               {RECREATION_SITES.map(({ label }) => (
                 <option key={label} value={label}>{label}</option>
@@ -280,12 +280,12 @@ export default function EmploymentApplicationForm() {
           </div>
 
           <div>
-            <label className={labelClass}>Job / Position Applying For</label>
-            <input type="text" value={positionApplyingFor} onChange={e => setPositionApplyingFor(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f19" className={labelClass}>Job / Position Applying For</label>
+            <input id="app-f19" type="text" value={positionApplyingFor} onChange={e => setPositionApplyingFor(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Full or Part-Time</label>
-            <select value={fullOrPartTime} onChange={e => setFullOrPartTime(e.target.value)} className={inputClass}>
+            <label htmlFor="app-f20" className={labelClass}>Full or Part-Time</label>
+            <select id="app-f20" value={fullOrPartTime} onChange={e => setFullOrPartTime(e.target.value)} className={inputClass}>
               <option value="">Select...</option>
               <option value="Full-Time">Full-Time</option>
               <option value="Part-Time">Part-Time</option>
@@ -293,13 +293,13 @@ export default function EmploymentApplicationForm() {
             </select>
           </div>
           <div>
-            <label className={labelClass}>Salary Desired</label>
+            <label htmlFor="app-salary" className={labelClass}>Salary Desired</label>
             <div className="flex gap-2">
               <div className="relative flex-1">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">$</span>
-                <input type="text" value={salaryDesired} onChange={e => setSalaryDesired(e.target.value)} className={`${inputClass} pl-7`} />
+                <input id="app-salary" type="text" value={salaryDesired} onChange={e => setSalaryDesired(e.target.value)} className={`${inputClass} pl-7`} />
               </div>
-              <select value={salaryPer} onChange={e => setSalaryPer(e.target.value)} className={`${inputClass} w-28`}>
+              <select aria-label="Salary period" value={salaryPer} onChange={e => setSalaryPer(e.target.value)} className={`${inputClass} w-28`}>
                 <option value="Hour">Per Hour</option>
                 <option value="Week">Per Week</option>
                 <option value="Month">Per Month</option>
@@ -308,24 +308,24 @@ export default function EmploymentApplicationForm() {
             </div>
           </div>
           <div>
-            <label className={labelClass}>Who Referred You to BA Services?</label>
-            <input type="text" value={referredBy} onChange={e => setReferredBy(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f21" className={labelClass}>Who Referred You to BA Services?</label>
+            <input id="app-f21" type="text" value={referredBy} onChange={e => setReferredBy(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>How Will You Get to Work?</label>
-            <input type="text" value={howGetToWork} onChange={e => setHowGetToWork(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f22" className={labelClass}>How Will You Get to Work?</label>
+            <input id="app-f22" type="text" value={howGetToWork} onChange={e => setHowGetToWork(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Willing to Work Any Shift, Including Nights & Weekends?</label>
-            <select value={willingToWorkAnyShift} onChange={e => setWillingToWorkAnyShift(e.target.value)} className={inputClass}>
+            <label htmlFor="app-f23" className={labelClass}>Willing to Work Any Shift, Including Nights & Weekends?</label>
+            <select id="app-f23" value={willingToWorkAnyShift} onChange={e => setWillingToWorkAnyShift(e.target.value)} className={inputClass}>
               <option value="">Select...</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
           </div>
           <div>
-            <label className={labelClass}>Available to Work Overtime?</label>
-            <select value={availableForOvertime} onChange={e => setAvailableForOvertime(e.target.value)} className={inputClass}>
+            <label htmlFor="app-f24" className={labelClass}>Available to Work Overtime?</label>
+            <select id="app-f24" value={availableForOvertime} onChange={e => setAvailableForOvertime(e.target.value)} className={inputClass}>
               <option value="">Select...</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
@@ -333,12 +333,12 @@ export default function EmploymentApplicationForm() {
             </select>
           </div>
           <div>
-            <label className={labelClass}>If Offered Employment, When Can You Start?</label>
-            <input type="text" value={whenCanStart} onChange={e => setWhenCanStart(e.target.value)} className={inputClass} />
+            <label htmlFor="app-f25" className={labelClass}>If Offered Employment, When Can You Start?</label>
+            <input id="app-f25" type="text" value={whenCanStart} onChange={e => setWhenCanStart(e.target.value)} className={inputClass} />
           </div>
           <div className="md:col-span-2">
-            <label className={labelClass}>Have You Ever Been Convicted of a Felony or Misdemeanor? *</label>
-            <select value={convictedOfFelony} onChange={e => setConvictedOfFelony(e.target.value)} className={inputClass}>
+            <label htmlFor="app-f26" className={labelClass}>Have You Ever Been Convicted of a Felony or Misdemeanor? *</label>
+            <select id="app-f26" value={convictedOfFelony} onChange={e => setConvictedOfFelony(e.target.value)} className={inputClass}>
               <option value="">Select...</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
@@ -350,16 +350,16 @@ export default function EmploymentApplicationForm() {
           {convictedOfFelony === 'Yes' && (
             <>
               <div className="md:col-span-2">
-                <label className={labelClass}>If Yes, What Were You Convicted Of?</label>
-                <input type="text" value={convictionDetails} onChange={e => setConvictionDetails(e.target.value)} className={inputClass} />
+                <label htmlFor="app-f27" className={labelClass}>If Yes, What Were You Convicted Of?</label>
+                <input id="app-f27" type="text" value={convictionDetails} onChange={e => setConvictionDetails(e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>Date of Conviction</label>
-                <input type="text" value={convictionDate} onChange={e => setConvictionDate(e.target.value)} className={inputClass} />
+                <label htmlFor="app-f28" className={labelClass}>Date of Conviction</label>
+                <input id="app-f28" type="text" value={convictionDate} onChange={e => setConvictionDate(e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>City and State of Conviction</label>
-                <input type="text" value={convictionCityState} onChange={e => setConvictionCityState(e.target.value)} className={inputClass} />
+                <label htmlFor="app-f29" className={labelClass}>City and State of Conviction</label>
+                <input id="app-f29" type="text" value={convictionCityState} onChange={e => setConvictionCityState(e.target.value)} className={inputClass} />
               </div>
             </>
           )}
@@ -378,36 +378,36 @@ export default function EmploymentApplicationForm() {
             <h4 className="font-semibold text-gray-700 mb-3">Employer {index + 1}</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className={labelClass}>Employer Name</label>
-                <input type="text" value={emp.employerName} onChange={e => updateEmployer(index, 'employerName', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f30-${index}`} className={labelClass}>Employer Name</label>
+                <input id={`app-f30-${index}`} type="text" value={emp.employerName} onChange={e => updateEmployer(index, 'employerName', e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>Supervisor&apos;s Name</label>
-                <input type="text" value={emp.supervisorName} onChange={e => updateEmployer(index, 'supervisorName', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f31-${index}`} className={labelClass}>Supervisor&apos;s Name</label>
+                <input id={`app-f31-${index}`} type="text" value={emp.supervisorName} onChange={e => updateEmployer(index, 'supervisorName', e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>Address</label>
-                <input type="text" value={emp.address} onChange={e => updateEmployer(index, 'address', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f32-${index}`} className={labelClass}>Address</label>
+                <input id={`app-f32-${index}`} type="text" value={emp.address} onChange={e => updateEmployer(index, 'address', e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>City, State & Zip</label>
-                <input type="text" value={emp.cityStateZip} onChange={e => updateEmployer(index, 'cityStateZip', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f33-${index}`} className={labelClass}>City, State & Zip</label>
+                <input id={`app-f33-${index}`} type="text" value={emp.cityStateZip} onChange={e => updateEmployer(index, 'cityStateZip', e.target.value)} className={inputClass} />
               </div>
               <div className="md:col-span-2">
-                <label className={labelClass}>Job Duties</label>
-                <input type="text" value={emp.jobDuties} onChange={e => updateEmployer(index, 'jobDuties', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f34-${index}`} className={labelClass}>Job Duties</label>
+                <input id={`app-f34-${index}`} type="text" value={emp.jobDuties} onChange={e => updateEmployer(index, 'jobDuties', e.target.value)} className={inputClass} />
               </div>
               <div className="md:col-span-2">
-                <label className={labelClass}>Reason for Leaving</label>
-                <input type="text" value={emp.reasonForLeaving} onChange={e => updateEmployer(index, 'reasonForLeaving', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f35-${index}`} className={labelClass}>Reason for Leaving</label>
+                <input id={`app-f35-${index}`} type="text" value={emp.reasonForLeaving} onChange={e => updateEmployer(index, 'reasonForLeaving', e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>Dates of Employment - From (Month / Year)</label>
-                <input type="text" placeholder="e.g. 01/2024" value={emp.datesFrom} onChange={e => updateEmployer(index, 'datesFrom', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f36-${index}`} className={labelClass}>Dates of Employment - From (Month / Year)</label>
+                <input id={`app-f36-${index}`} type="text" placeholder="e.g. 01/2024" value={emp.datesFrom} onChange={e => updateEmployer(index, 'datesFrom', e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>Dates of Employment - To (Month / Year)</label>
-                <input type="text" placeholder="e.g. 12/2025" value={emp.datesTo} onChange={e => updateEmployer(index, 'datesTo', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f37-${index}`} className={labelClass}>Dates of Employment - To (Month / Year)</label>
+                <input id={`app-f37-${index}`} type="text" placeholder="e.g. 12/2025" value={emp.datesTo} onChange={e => updateEmployer(index, 'datesTo', e.target.value)} className={inputClass} />
               </div>
             </div>
           </div>
@@ -425,28 +425,28 @@ export default function EmploymentApplicationForm() {
             <h4 className="font-semibold text-gray-700 mb-3">Reference {index + 1}</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className={labelClass}>Name</label>
-                <input type="text" value={ref.name} onChange={e => updateReference(index, 'name', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f38-${index}`} className={labelClass}>Name</label>
+                <input id={`app-f38-${index}`} type="text" value={ref.name} onChange={e => updateReference(index, 'name', e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>Relationship</label>
-                <input type="text" value={ref.relationship} onChange={e => updateReference(index, 'relationship', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f39-${index}`} className={labelClass}>Relationship</label>
+                <input id={`app-f39-${index}`} type="text" value={ref.relationship} onChange={e => updateReference(index, 'relationship', e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>Address</label>
-                <input type="text" value={ref.address} onChange={e => updateReference(index, 'address', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f40-${index}`} className={labelClass}>Address</label>
+                <input id={`app-f40-${index}`} type="text" value={ref.address} onChange={e => updateReference(index, 'address', e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>City, State & Zip</label>
-                <input type="text" value={ref.cityStateZip} onChange={e => updateReference(index, 'cityStateZip', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f41-${index}`} className={labelClass}>City, State & Zip</label>
+                <input id={`app-f41-${index}`} type="text" value={ref.cityStateZip} onChange={e => updateReference(index, 'cityStateZip', e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>Phone</label>
-                <input type="tel" value={ref.phone} onChange={e => updateReference(index, 'phone', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f42-${index}`} className={labelClass}>Phone</label>
+                <input id={`app-f42-${index}`} type="tel" value={ref.phone} onChange={e => updateReference(index, 'phone', e.target.value)} className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>Email</label>
-                <input type="email" value={ref.email} onChange={e => updateReference(index, 'email', e.target.value)} className={inputClass} />
+                <label htmlFor={`app-f43-${index}`} className={labelClass}>Email</label>
+                <input id={`app-f43-${index}`} type="email" value={ref.email} onChange={e => updateReference(index, 'email', e.target.value)} className={inputClass} />
               </div>
             </div>
           </div>
@@ -460,6 +460,7 @@ export default function EmploymentApplicationForm() {
           Please provide any other information that you believe should be considered, including whether you are bound by any agreement with any current employer.
         </p>
         <textarea
+          aria-label="Additional information"
           rows={4}
           value={additionalInfo}
           onChange={e => setAdditionalInfo(e.target.value)}
@@ -506,12 +507,12 @@ export default function EmploymentApplicationForm() {
           </label>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className={labelClass}>Signature (Type Your Full Name) <span className="text-red-500">*</span></label>
-              <input type="text" required value={signatureName} onChange={e => setSignatureName(e.target.value)} className={`${inputClass} italic`} />
+              <label htmlFor="app-f44" className={labelClass}>Signature (Type Your Full Name) <span className="text-red-500">*</span></label>
+              <input id="app-f44" type="text" required value={signatureName} onChange={e => setSignatureName(e.target.value)} className={`${inputClass} italic`} />
             </div>
             <div>
-              <label className={labelClass}>Date <span className="text-red-500">*</span></label>
-              <input type="date" required value={signatureDate} onChange={e => setSignatureDate(e.target.value)} className={inputClass} />
+              <label htmlFor="app-f45" className={labelClass}>Date <span className="text-red-500">*</span></label>
+              <input id="app-f45" type="date" required value={signatureDate} onChange={e => setSignatureDate(e.target.value)} className={inputClass} />
             </div>
           </div>
         </div>
