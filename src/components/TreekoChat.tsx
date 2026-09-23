@@ -293,7 +293,7 @@ export default function TreekoChat() {
   if (!imagesLoaded || HIDDEN_ON.includes(pathname)) return null
 
   return (
-    <div className={`fixed z-[9999] flex flex-col items-end gap-2 ${touring ? 'bottom-2 right-2 md:bottom-4 md:right-4' : 'bottom-2 right-2 sm:bottom-4 sm:right-4'}`}>
+    <div data-chat-dock className={`fixed z-[9999] flex flex-col items-end gap-2 ${touring ? 'bottom-2 right-2 md:bottom-4 md:right-4' : 'bottom-2 right-2 sm:bottom-4 sm:right-4'}`}>
       {/* Sound choice overlay — shown before tour starts */}
       {tourChoosing && (
         <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/60 backdrop-blur-sm">

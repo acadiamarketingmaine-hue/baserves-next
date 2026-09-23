@@ -18,6 +18,7 @@ import {
   OfficialDisclosure,
   SectionHeader,
   SplitFeature,
+  StickyBooking,
   body,
   eyebrow,
   externalProps,
@@ -258,6 +259,7 @@ export default async function LongLakePage() {
           intro={sections.scopeOfServices.intro}
           groups={scopeOfWork.map((c) => ({ key: c.key, title: c.title ?? '', body: c.body, items: c.items ?? [] }))}
         />
+        <StickyBooking name={content.name} cta={ctas.hero} phone={phone} />
       </LakesideShell>
 
       <Footer />
