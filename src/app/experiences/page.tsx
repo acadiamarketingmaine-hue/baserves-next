@@ -22,7 +22,7 @@ const locations = [
     description: '102 campsites on Lewis Smith Lake with swimming, trails, and group camping',
     location: 'Bankhead National Forest, AL',
     features: ['102 Campsites', 'Swimming Beach', 'Boat Ramp', 'Hiking Trails', 'Group Camping'],
-    image: '/images/clear-creek-overview.jpg',
+    image: '/images/clear-creek-swimming.jpg',
     slug: 'experiences/clear-creek-recreation-area'
   },
   {
@@ -40,7 +40,7 @@ const locations = [
     description: '49 campsites on a 131-acre lake with beach, trails, and group camping',
     location: 'Perry County, IN',
     features: ['131-Acre Lake', '49 Campsites', 'Swimming Beach', '5.9-mi Trail', 'Group Camps'],
-    image: '/images/tipsaw-lake/lake-view.jpg',
+    image: '/images/tipsaw-lake/beach-swimming.jpg',
     slug: 'tipsaw-lake-recreation-area'
   },
   {
@@ -49,7 +49,7 @@ const locations = [
     description: '195 campsites on Indiana\'s largest lake with beach, boat ramp, and cabins',
     location: 'Monroe County, IN',
     features: ['195 Sites', '10,750-Acre Lake', 'Swimming Beach', '2 Cabins', 'Boat Ramp'],
-    image: '/images/hardin-ridge-entrance-sign.jpg',
+    image: '/images/hardin-ridge/beach.jpg',
     slug: 'hardin-ridge-recreation-area'
   },
   {
@@ -58,7 +58,7 @@ const locations = [
     description: '36 campsites on the Saco River with White Mountain views',
     location: 'Fryeburg, ME',
     features: ['Saco River', 'Kayaking', 'Fishing', 'Mountain Views', 'Pet Friendly'],
-    image: '/images/canal-bridge/entrance.jpg',
+    image: '/images/canal-bridge/beach-1.jpg',
     slug: 'experiences/canal-bridge'
   },
   {
@@ -85,7 +85,7 @@ const locations = [
     description: '19 cabins, 40+ caves, motel, and river float rentals along the Meramec River',
     location: 'Sullivan, MO',
     features: ['19 Cabins', '40+ Caves', 'Float Rentals', 'Motel', '13 mi Trails'],
-    image: '/images/meramec-entrance-sign.jpg',
+    image: '/images/meramec-state-park/cabin-2.jpg',
     slug: 'experiences/meramec-state-park'
   },
   {
@@ -103,7 +103,7 @@ const locations = [
     description: '755 campsites, 20 cabins, and a rich history on Watchaug Pond',
     location: 'Charlestown, RI',
     features: ['755 Campsites', '20 Cabins', 'Swimming', 'Boating', 'Wildlife Viewing'],
-    image: '/images/burlingame-entrance-sign.jpg',
+    image: '/images/Burlingame2-1536x1152.jpg',
     slug: 'experiences/burlingame-state-park'
   },
   {
@@ -112,7 +112,7 @@ const locations = [
     description: '921,000 acres with 800+ miles of trails, 5 wilderness areas, and Spruce Knob',
     location: 'Eastern West Virginia',
     features: ['921,000 Acres', '800+ mi Trails', '5 Wilderness Areas', 'Rock Climbing', 'Scenic Drives'],
-    image: '/images/monongahela/entrance-sign.jpg',
+    image: '/images/monongahela/spruce-knob-panorama.jpg',
     slug: 'monongahela-national-forest'
   },
 ]

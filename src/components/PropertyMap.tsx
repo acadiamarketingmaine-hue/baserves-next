@@ -12,24 +12,24 @@ import { tourStops } from '@/data/property-tour'
 const properties = [
   // Alabama
   { name: 'Bankhead National Forest', slug: 'bankhead-national-forest', lat: 34.20, lng: -87.35, image: '/images/bankhead-bicycle-trail.jpg', excerpt: '180,000 acres of canyons, waterfalls, and the Sipsey Wilderness — Alabama\'s birding paradise.' },
-  { name: 'Clear Creek Recreation Area', slug: 'experiences/clear-creek-recreation-area', lat: 34.27, lng: -87.33, image: '/images/clear-creek-overview.jpg', excerpt: '102 campsites on Lewis Smith Lake with swimming beach, boat ramps, and hiking trails.' },
+  { name: 'Clear Creek Recreation Area', slug: 'experiences/clear-creek-recreation-area', lat: 34.27, lng: -87.33, image: '/images/clear-creek-swimming.jpg', excerpt: '102 campsites on Lewis Smith Lake with swimming beach, boat ramps, and hiking trails.' },
   { name: 'Corinth Recreation Area', slug: 'experiences/corinth-recreation-area', lat: 34.15, lng: -87.15, image: '/images/corinth-boat-ramp.jpg', excerpt: '52 full-hookup sites on Lewis Smith Lake with swimming beach, pavilion, and Bobwhite Trail.' },
   // Rhode Island
-  { name: 'Burlingame State Park', slug: 'experiences/burlingame-state-park', lat: 41.38, lng: -71.72, image: '/images/burlingame-entrance-sign.jpg', excerpt: 'Rhode Island\'s largest campground since 1934 — 755 sites, 20 cabins on Watchaug Pond.' },
+  { name: 'Burlingame State Park', slug: 'experiences/burlingame-state-park', lat: 41.38, lng: -71.72, image: '/images/Burlingame2-1536x1152.jpg', excerpt: 'Rhode Island\'s largest campground since 1934 — 755 sites, 20 cabins on Watchaug Pond.' },
   // Maine
-  { name: 'Canal Bridge Campground', slug: 'experiences/canal-bridge', lat: 44.02, lng: -70.97, image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg', excerpt: 'Family campground on the Saco River with 36 sites, river access, and White Mountain views.' },
+  { name: 'Canal Bridge Campground', slug: 'experiences/canal-bridge', lat: 44.02, lng: -70.97, image: '/images/canal-bridge/beach-1.jpg', excerpt: 'Family campground on the Saco River with 36 sites, river access, and White Mountain views.' },
   // Indiana
-  { name: 'Tipsaw Lake Recreation Area', slug: 'tipsaw-lake-recreation-area', lat: 38.23, lng: -86.62, image: '/images/tipsaw-lake/lake-view.jpg', excerpt: 'Scenic 131-acre lake in Hoosier National Forest with camping, fishing, and 8+ miles of trails.' },
-  { name: 'Hardin Ridge Recreation Area', slug: 'hardin-ridge-recreation-area', lat: 39.07, lng: -86.47, image: '/images/hardin-ridge-entrance-sign.jpg', excerpt: '195 campsites on Monroe Lake — Indiana\'s largest — with beach, boat ramp, and hiking.' },
-  { name: 'Indian-Celina Lakes Recreation Area', slug: 'indian-celina-lakes-recreation-area', lat: 38.35, lng: -86.60, image: '/images/indian-celina-entrance-sign.jpg', excerpt: 'Twin lakes with accessible fishing pier, camping, boat launch, and hiking in Hoosier National Forest.' },
+  { name: 'Tipsaw Lake Recreation Area', slug: 'tipsaw-lake-recreation-area', lat: 38.23, lng: -86.62, image: '/images/tipsaw-lake/beach-swimming.jpg', excerpt: 'Scenic 131-acre lake in Hoosier National Forest with camping, fishing, and 8+ miles of trails.' },
+  { name: 'Hardin Ridge Recreation Area', slug: 'hardin-ridge-recreation-area', lat: 39.07, lng: -86.47, image: '/images/hardin-ridge/beach.jpg', excerpt: '195 campsites on Monroe Lake — Indiana\'s largest — with beach, boat ramp, and hiking.' },
+  { name: 'Indian-Celina Lakes Recreation Area', slug: 'indian-celina-lakes-recreation-area', lat: 38.35, lng: -86.60, image: '/images/indian-celina/lake-view.jpg', excerpt: 'Twin lakes with accessible fishing pier, camping, boat launch, and hiking in Hoosier National Forest.' },
   // Michigan
   { name: 'Yankee Springs Recreation Area', slug: 'yankee-springs-recreation-area', lat: 42.62, lng: -85.32, image: '/images/yankee-springs/hill-cabins.jpg', excerpt: '5,200 acres with 200+ campsites, 30+ miles of trails, and year-round outdoor adventure.' },
   { name: 'Long Lake Outdoor Center', slug: 'long-lake-outdoor-center', lat: 42.55, lng: -85.40, image: '/images/long-lake/fall-aerial.jpg', excerpt: 'CCC-built retreat center with 16 cabins, a private lake, lodge, and wedding venue.' },
   // West Virginia
-  { name: 'Monongahela National Forest', slug: 'monongahela-national-forest', lat: 38.70, lng: -79.80, image: '/images/monongahela/entrance-sign.jpg', excerpt: '900,000+ acres across the Alleghenies with 800+ miles of trails and 5 wilderness areas.' },
+  { name: 'Monongahela National Forest', slug: 'monongahela-national-forest', lat: 38.70, lng: -79.80, image: '/images/monongahela/spruce-knob-panorama.jpg', excerpt: '900,000+ acres across the Alleghenies with 800+ miles of trails and 5 wilderness areas.' },
   // Missouri
   { name: 'Washington State Park', slug: 'washington-state-park', lat: 38.09, lng: -90.68, image: '/images/washington-thunderbird-lodge.png', excerpt: 'Ancient petroglyphs, cabins, and 10+ miles of trails along the Big River in the Ozarks.' },
-  { name: 'Meramec State Park', slug: 'experiences/meramec-state-park', lat: 38.22, lng: -91.08, image: '/images/meramec-entrance-sign.jpg', excerpt: '6,896 acres along the Meramec River with 19 cabins, motel, float trips, and Fisher Cave.' },
+  { name: 'Meramec State Park', slug: 'experiences/meramec-state-park', lat: 38.22, lng: -91.08, image: '/images/meramec-state-park/cabin-2.jpg', excerpt: '6,896 acres along the Meramec River with 19 cabins, motel, float trips, and Fisher Cave.' },
 ]
 
 const pinIcon = new L.DivIcon({

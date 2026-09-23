@@ -33,7 +33,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     icon: '/images/states/alabama.png',
     locations: [
       { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-bicycle-trail.jpg', children: [
-        { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area', image: '/images/clear-creek-overview.jpg' },
+        { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area', image: '/images/clear-creek-swimming.jpg' },
         { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area', image: '/images/corinth-boat-ramp.jpg' },
       ]},
     ],
@@ -43,9 +43,9 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     icon: '/images/states/indiana.png',
     locations: [
       { name: 'Hoosier National Forest', href: '/hoosier-national-forest', image: '/images/hardin-ridge/aerial.jpg', children: [
-        { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area', image: '/images/hardin-ridge-entrance-sign.jpg' },
-        { name: 'Indian-Celina Lakes Recreation Area', href: '/indian-celina-lakes-recreation-area', image: '/images/indian-celina-entrance-sign.jpg' },
-        { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area', image: '/images/tipsaw-lake/lake-view.jpg' },
+        { name: 'Hardin Ridge Recreation Area', href: '/hardin-ridge-recreation-area', image: '/images/hardin-ridge/beach.jpg' },
+        { name: 'Indian-Celina Lakes Recreation Area', href: '/indian-celina-lakes-recreation-area', image: '/images/indian-celina/lake-view.jpg' },
+        { name: 'Tipsaw Lake Recreation Area', href: '/tipsaw-lake-recreation-area', image: '/images/tipsaw-lake/beach-swimming.jpg' },
       ]},
     ],
   },
@@ -53,7 +53,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Maine',
     icon: '/images/states/maine.png',
     locations: [
-      { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg' },
+      { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge', image: '/images/canal-bridge/beach-1.jpg' },
     ],
   },
   {
@@ -70,7 +70,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Missouri',
     icon: '/images/states/missouri.png',
     locations: [
-      { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-entrance-sign.jpg' },
+      { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-state-park/cabin-2.jpg' },
       { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-thunderbird-lodge.png' },
     ],
   },
@@ -78,14 +78,14 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Rhode Island',
     icon: '/images/states/rhode-island.png',
     locations: [
-      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg' },
+      { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/Burlingame2-1536x1152.jpg' },
     ],
   },
   {
     state: 'West Virginia',
     icon: '/images/states/west-virginia.png',
     locations: [
-      { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg', children: [
+      { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/spruce-knob-panorama.jpg', children: [
         { name: 'Big Bend Campground', href: '/monongahela-national-forest/big-bend-campground', image: '/images/monongahela/scenic-drive.jpg' },
         { name: 'Jess Judy Group Campground', href: '/monongahela-national-forest/jess-judy-group-campground', image: '/images/monongahela/spruce-treetops.jpg' },
         { name: 'Seneca Shadows Campground', href: '/monongahela-national-forest/seneca-shadows-campground', image: '/images/monongahela/seneca-rocks-sign.jpg' },
@@ -323,11 +323,11 @@ export default function Navigation({
                               <div className="space-y-1">
                                 {[
                                   { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-bicycle-trail.jpg', sub: 'Alabama — 2 Recreation Areas' },
-                                  { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg', sub: 'Rhode Island — 755 sites, 20 cabins' },
-                                  { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg', sub: 'Maine — 36 sites on the Saco River' },
-                                  { name: 'Hoosier National Forest', href: '/hoosier-national-forest', image: '/images/hardin-ridge-entrance-sign.jpg', sub: 'Indiana — 3 recreation areas' },
-                                  { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-entrance-sign.jpg', sub: 'Missouri — lodging, dining, watercraft' },
-                                  { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/entrance-sign.jpg', sub: 'West Virginia — 6 campgrounds' },
+                                  { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/Burlingame2-1536x1152.jpg', sub: 'Rhode Island — 755 sites, 20 cabins' },
+                                  { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge', image: '/images/canal-bridge/beach-1.jpg', sub: 'Maine — 36 sites on the Saco River' },
+                                  { name: 'Hoosier National Forest', href: '/hoosier-national-forest', image: '/images/indian-celina/fall-road.jpg', sub: 'Indiana — 3 recreation areas' },
+                                  { name: 'Meramec State Park', href: '/experiences/meramec-state-park', image: '/images/meramec-state-park/cabin-2.jpg', sub: 'Missouri — lodging, dining, watercraft' },
+                                  { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/spruce-knob-panorama.jpg', sub: 'West Virginia — 6 campgrounds' },
                                   { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-thunderbird-lodge.png', sub: 'Missouri — cabins, pool, trails' },
                                   { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area', image: '/images/yankee-springs/hill-cabins.jpg', sub: 'Michigan — 200+ sites, 30+ miles of trails' },
                                 ].map((p) => (
