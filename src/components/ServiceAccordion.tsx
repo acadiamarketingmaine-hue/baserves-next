@@ -166,12 +166,12 @@ export default function ServiceAccordion({ compact = false }: { compact?: boolea
           {/* Group header */}
           <button
             onClick={() => setOpenGroup(openGroup === group.id ? null : group.id)}
+            aria-expanded={openGroup === group.id}
             className="w-full flex items-center justify-between px-6 py-4 hover:bg-gray-50 transition-colors"
           >
             <div className="flex items-center gap-3">
               <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${group.badgeColor}`}>{group.badge}</span>
-              <span className="font-bold text-gray-900">{group.label}</span>
-              <span className="text-sm text-gray-400">Select portfolio highlights</span>
+              <span className="font-bold text-gray-900 text-left">{group.label}</span>
             </div>
             <svg className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${openGroup === group.id ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -186,6 +186,7 @@ export default function ServiceAccordion({ compact = false }: { compact?: boolea
                   {/* Contract header */}
                   <button
                     onClick={() => setOpenContract(openContract === contract.name ? null : contract.name)}
+                    aria-expanded={openContract === contract.name}
                     className="w-full flex items-center justify-between px-5 py-3.5 bg-gray-50 hover:bg-gray-100 transition-colors"
                   >
                     <div className="text-left">
