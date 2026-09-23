@@ -1190,9 +1190,10 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             loop
             playsInline
             preload="auto"
+            poster="/videos/hero-poster.jpg"
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src="/videos/hero.mp4" type="video/mp4" />
+            <source src="/videos/hero-720.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
         </div>
