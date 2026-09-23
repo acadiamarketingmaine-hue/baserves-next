@@ -317,7 +317,7 @@ export default async function LongLakePage() {
                 </p>
               </div>
               <p className="text-gray-600 text-sm">
-                Download the <a href={content.ctas.weddingPacket.url} className="text-forest-DEFAULT font-semibold hover:underline">{content.ctas.weddingPacket.label}</a> for full details on ceremony locations, catering options, and rental inclusions.
+                Download the <a href={content.ctas.weddingPacket.url} className="text-forest-DEFAULT underline decoration-forest/40 decoration-2 underline-offset-4 hover:decoration-forest">{content.ctas.weddingPacket.label}</a> for full details on ceremony locations, catering options, and rental inclusions.
               </p>
             </div>
           </div>
