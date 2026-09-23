@@ -147,7 +147,7 @@ export default function UtahDotPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/utah-welcome-sign.jpg" alt="Welcome to Utah" className="w-full h-full object-cover opacity-30" />
+          <img src="/images/utah-welcome-sign-1600.jpg" alt="Welcome to Utah" className="w-full h-full object-cover opacity-30" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">

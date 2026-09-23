@@ -27,7 +27,7 @@ export default function ContactPage() {
 
       <section className="relative pt-32 pb-16 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/bankhead-forest.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src="/images/bankhead-forest-1600.jpg" alt="" className="w-full h-full object-cover opacity-20" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">
