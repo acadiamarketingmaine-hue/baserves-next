@@ -9,10 +9,9 @@ import type { PropertyContent } from '../types'
  * that points at Chief Noonday) - recorded in
  * design-audit/website-editor-inventory.md, not reconciled here.
  *
- * VERBATIM WART, do not "fix" without a rendering check: the Boating activity
- * text below contains a literal "&apos;" because the page stores it in a JS
- * string rather than as JSX text, so it is never decoded and the page really
- * does print "area&apos;s lakes". Changing it here changes the live page.
+ * The Boating activity text is a plain JS string, not JSX, so an HTML entity
+ * in it prints literally. It used to show "area&apos;s lakes"; it now uses a
+ * real apostrophe (UX sweep, Sep 2026).
  */
 export const yankeeSpringsRecreationArea: PropertyContent = {
   slug: 'yankee-springs-recreation-area',
@@ -232,7 +231,7 @@ export const yankeeSpringsRecreationArea: PropertyContent = {
           key: 'boating',
           // Verbatim: the live page really does render the undecoded entity here.
           title: 'Boating',
-          body: 'Bring your canoe, kayak, or small motorboat and explore the recreation area&apos;s lakes. Boat launches are available at multiple access points.',
+          body: 'Bring your canoe, kayak, or small motorboat and explore the recreation area\'s lakes. Boat launches are available at multiple access points.',
         },
       ],
     },
