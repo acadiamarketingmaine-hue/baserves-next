@@ -5,7 +5,7 @@ export const tourStops = [
     name: 'Bankhead National Forest',
     lat: 34.20, lng: -87.35,
     summary: "First up, Bankhead National Forest in Alabama! 180,000 acres they call the 'Land of a Thousand Waterfalls' — and let me tell you, it lives up to the name. The Sipsey Wilderness out here is absolutely stunning, 84 species of birds, and we've got two awesome campgrounds right in the heart of it.",
-    images: ['/images/bankhead-forest.jpg', '/images/Bankhead-Waterfall.png', '/images/bankhead-bicycle-trail.jpg', '/images/clear-creek-bent-twig.jpg'],
+    images: ['/images/Bankhead-Waterfall.png', '/images/bankhead-bicycle-trail.jpg', '/images/clear-creek-swimming.jpg', '/images/clear-creek-bent-twig.jpg'],
   },
   {
     slug: 'experiences/clear-creek-recreation-area',

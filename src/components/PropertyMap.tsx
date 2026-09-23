@@ -11,7 +11,7 @@ import { tourStops } from '@/data/property-tour'
 
 const properties = [
   // Alabama
-  { name: 'Bankhead National Forest', slug: 'bankhead-national-forest', lat: 34.20, lng: -87.35, image: '/images/bankhead-forest.jpg', excerpt: '180,000 acres of canyons, waterfalls, and the Sipsey Wilderness — Alabama\'s birding paradise.' },
+  { name: 'Bankhead National Forest', slug: 'bankhead-national-forest', lat: 34.20, lng: -87.35, image: '/images/bankhead-bicycle-trail.jpg', excerpt: '180,000 acres of canyons, waterfalls, and the Sipsey Wilderness — Alabama\'s birding paradise.' },
   { name: 'Clear Creek Recreation Area', slug: 'experiences/clear-creek-recreation-area', lat: 34.27, lng: -87.33, image: '/images/clear-creek-overview.jpg', excerpt: '102 campsites on Lewis Smith Lake with swimming beach, boat ramps, and hiking trails.' },
   { name: 'Corinth Recreation Area', slug: 'experiences/corinth-recreation-area', lat: 34.15, lng: -87.15, image: '/images/corinth-boat-ramp.jpg', excerpt: '52 full-hookup sites on Lewis Smith Lake with swimming beach, pavilion, and Bobwhite Trail.' },
   // Rhode Island
@@ -236,7 +236,7 @@ function TourHandler() {
       const makeContent = (idx: number) => `
         <div style="width:280px;overflow:hidden;border-radius:12px;margin:-14px -14px -24px;">
           <div style="position:relative;height:160px;overflow:hidden;">
-            <img src="${images[idx] || '/images/bankhead-forest.jpg'}" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <img src="${images[idx] || '/images/bankhead-bicycle-trail.jpg'}" style="width:100%;height:100%;object-fit:cover;display:block;" />
             ${images.length > 1 ? `<div style="position:absolute;bottom:6px;right:8px;background:rgba(0,0,0,0.6);color:white;font-size:10px;padding:2px 6px;border-radius:8px;">${idx + 1}/${images.length}</div>` : ''}
           </div>
           <div style="padding:10px 14px 14px;">

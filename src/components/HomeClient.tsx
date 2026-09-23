@@ -215,7 +215,7 @@ const statesData = [
         stats: { acres: '180,000+', birdSpecies: '84', wilderness: 'Sipsey' },
         activities: ['Birding', 'Waterfall Hikes', 'Sipsey Wilderness', 'Shooting Range', 'Scenic Drives'],
         href: '/bankhead-national-forest',
-        image: '/images/bankhead-forest.jpg',
+        image: '/images/bankhead-bicycle-trail.jpg',
       },
       {
         name: 'Clear Creek Recreation Area',

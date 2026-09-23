@@ -13,7 +13,7 @@ const locations = [
     description: '180,000+ acres of canyons, waterfalls, old-growth forests, and exceptional birding',
     location: 'Lawrence, Winston & Franklin Counties, AL',
     features: ['Sipsey Wilderness', '84 Bird Species', 'Waterfalls', 'Shooting Range', 'Horse Trails'],
-    image: '/images/bankhead-forest.jpg',
+    image: '/images/bankhead-bicycle-trail.jpg',
     slug: 'bankhead-national-forest'
   },
   {

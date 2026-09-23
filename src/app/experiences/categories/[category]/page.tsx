@@ -53,7 +53,7 @@ const categoryData: Record<string, any> = {
     image: '/images/bankhead-bicycle-trail.jpg',
     experiences: [
       { name: 'Monongahela National Forest Trails', location: 'Eastern West Virginia', duration: '800+ miles', price: 'Free', image: '/images/monongahela/entrance-sign.jpg', href: '/monongahela-national-forest' },
-      { name: 'Sipsey Wilderness Trails', location: 'Bankhead National Forest, AL', duration: '25,000 acres', price: 'Free', image: '/images/bankhead-forest.jpg', href: '/bankhead-national-forest' },
+      { name: 'Sipsey Wilderness Trails', location: 'Bankhead National Forest, AL', duration: '25,000 acres', price: 'Free', image: '/images/Bankhead-Waterfall.png', href: '/bankhead-national-forest' },
       { name: 'Yankee Springs Trail System', location: 'Barry County, MI', duration: '30+ miles', price: 'Free', image: '/images/yankee-springs/hill-cabins.jpg', href: '/yankee-springs-recreation-area' },
       { name: 'Hardin Ridge Trails', location: 'Monroe County, IN', duration: '12+ miles', price: 'Free', image: '/images/hardin-ridge-entrance-sign.jpg', href: '/hardin-ridge-recreation-area' },
       { name: 'Indian-Celina Two Lakes Loop', location: 'Perry County, IN', duration: 'Trail loops', price: 'Free', image: '/images/indian-celina/trail-sign.jpg', href: '/indian-celina-lakes-recreation-area' },
@@ -73,7 +73,7 @@ const categoryData: Record<string, any> = {
     image: '/images/monongahela/entrance-sign.jpg',
     experiences: [
       { name: 'Highland Scenic Highway', location: 'Monongahela National Forest, WV', duration: '43 miles', price: 'Free', image: '/images/monongahela/entrance-sign.jpg', href: '/monongahela-national-forest' },
-      { name: 'Bankhead National Forest Scenic Drive', location: 'Northwest Alabama', duration: '2-3 hours', price: 'Free', image: '/images/bankhead-forest.jpg', href: '/bankhead-national-forest' },
+      { name: 'Bankhead National Forest Scenic Drive', location: 'Northwest Alabama', duration: '2-3 hours', price: 'Free', image: '/images/corinth-boat-ramp.jpg', href: '/bankhead-national-forest' },
       { name: 'Hoosier National Forest Drive', location: 'Southern Indiana', duration: '2-3 hours', price: 'Free', image: '/images/DSC_0103-2048x1365.jpg', href: '/hardin-ridge-recreation-area' },
     ]
   },

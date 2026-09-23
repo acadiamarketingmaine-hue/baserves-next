@@ -32,7 +32,7 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
     state: 'Alabama',
     icon: '/images/states/alabama.png',
     locations: [
-      { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-forest.jpg', children: [
+      { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-bicycle-trail.jpg', children: [
         { name: 'Clear Creek Recreation Area', href: '/experiences/clear-creek-recreation-area', image: '/images/clear-creek-overview.jpg' },
         { name: 'Corinth Recreation Area', href: '/experiences/corinth-recreation-area', image: '/images/corinth-boat-ramp.jpg' },
       ]},
@@ -322,7 +322,7 @@ export default function Navigation({
                               </div>
                               <div className="space-y-1">
                                 {[
-                                  { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-forest.jpg', sub: 'Alabama — 2 Recreation Areas' },
+                                  { name: 'Bankhead National Forest', href: '/bankhead-national-forest', image: '/images/bankhead-bicycle-trail.jpg', sub: 'Alabama — 2 Recreation Areas' },
                                   { name: 'Burlingame State Park', href: '/experiences/burlingame-state-park', image: '/images/burlingame-entrance-sign.jpg', sub: 'Rhode Island — 755 sites, 20 cabins' },
                                   { name: 'Canal Bridge Campground', href: '/experiences/canal-bridge', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg', sub: 'Maine — 36 sites on the Saco River' },
                                   { name: 'Hoosier National Forest', href: '/hoosier-national-forest', image: '/images/hardin-ridge-entrance-sign.jpg', sub: 'Indiana — 3 recreation areas' },

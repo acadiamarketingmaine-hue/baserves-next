@@ -28,11 +28,11 @@ export const bankheadNationalForest: PropertyContent = {
       'Explore Bankhead National Forest — "The Land of a Thousand Waterfalls." 180,000+ acres featuring the Sipsey Wilderness, 84 breeding bird species, campgrounds, and the Hurricane Creek Shooting Range.',
   },
   hero: {
-    src: '/images/bankhead-forest.jpg',
-    alt: 'Bankhead National Forest — The Land of a Thousand Waterfalls',
+    src: '/images/clear-creek-swimming.jpg',
+    alt: 'Swimming beach on Lewis Smith Lake at Clear Creek, Bankhead National Forest',
   },
   gallery: [
-    { src: '/images/bankhead-forest.jpg', alt: 'Bankhead National Forest landscape' },
+    { src: '/images/DSC_0103-2048x1365.jpg', alt: 'Raven Trail sign and wooden steps into the forest' },
     { src: '/images/Bankhead-Waterfall.png', alt: 'Waterfall in the Sipsey Wilderness' },
     { src: '/images/bankhead-bicycle-trail.jpg', alt: 'Trail in Bankhead National Forest' },
     { src: '/images/clear-creek-bent-twig.jpg', alt: 'Clear Creek Recreation Area' },
