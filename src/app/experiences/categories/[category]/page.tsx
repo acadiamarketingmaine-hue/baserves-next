@@ -15,7 +15,7 @@ const categoryData: Record<string, any> = {
     name: 'Kayak & Watercraft Rentals',
     icon: <KayakIcon className="w-12 h-12" />,
     description: 'Get out on the water with our selection of kayaks, canoes, rafts, and paddleboards available at multiple locations.',
-    image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
+    image: '/images/burlingame-kayaks.png',
     experiences: [
       { name: 'Meramec River Float Trips', location: 'Meramec State Park, Sullivan, MO', duration: 'Half day – Full day', price: 'Canoe from $54 / Kayak from $42', image: '/images/meramec-state-park/riverstop-store.jpg', href: '/experiences/meramec-state-park' },
       { name: 'Washington State Park Watercraft', location: 'Washington State Park, De Soto, MO', duration: 'Hourly / Half day', price: 'Contact for rates', image: '/images/washington-state-park/store.jpg', href: '/washington-state-park' },
