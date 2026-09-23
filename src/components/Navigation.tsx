@@ -280,7 +280,7 @@ export default function Navigation({
                               <div className="space-y-1">
                                 <Link href="/services/iowa-dot" onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors group">
                                   <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
-                                    <Image src="/images/bankhead-forest.jpg" alt="Iowa" fill className="object-cover" />
+                                    <Image src="/images/iowa-dot-collage-web.jpg" alt="Iowa" fill className="object-cover" />
                                   </div>
                                   <div>
                                     <div className="text-sm font-semibold text-gray-900 group-hover:text-forest-DEFAULT">Iowa DOT</div>
@@ -289,7 +289,7 @@ export default function Navigation({
                                 </Link>
                                 <Link href="/services/utah-dot" onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors group">
                                   <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
-                                    <Image src="/images/monongahela/spruce-knob-panorama.jpg" alt="Utah" fill className="object-cover" />
+                                    <Image src="/images/utah-welcome-sign-1600.jpg" alt="Utah" fill className="object-cover" />
                                   </div>
                                   <div>
                                     <div className="text-sm font-semibold text-gray-900 group-hover:text-forest-DEFAULT">Utah DOT</div>
