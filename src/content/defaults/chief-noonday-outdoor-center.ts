@@ -20,20 +20,20 @@ export const chiefNoondayOutdoorCenter: PropertyContent = {
   },
   hero: {
     src: '/images/chief-noonday/deer-lodge.jpg',
-    alt: 'Chief Noonday Outdoor Center',
+    alt: 'Deer Lodge, a stone-and-timber building at Chief Noonday Outdoor Center',
   },
   gallery: [
     {
       src: '/images/chief-noonday/deer-lodge.jpg',
-      alt: 'Chief Noonday Outdoor Center gallery image 1',
+      alt: 'Deer Lodge at Chief Noonday Outdoor Center',
     },
     {
       src: '/images/chief-noonday/long-house.jpg',
-      alt: 'Chief Noonday Outdoor Center gallery image 2',
+      alt: 'Long House at Chief Noonday Outdoor Center in autumn',
     },
     {
       src: '/images/chief-noonday/mess-hall.jpg',
-      alt: 'Chief Noonday Outdoor Center gallery image 3',
+      alt: 'Mess Hall at Chief Noonday Outdoor Center in autumn',
     },
   ],
   paragraphs: [

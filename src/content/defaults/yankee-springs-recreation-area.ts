@@ -128,8 +128,8 @@ export const yankeeSpringsRecreationArea: PropertyContent = {
           href: '/chief-noonday-outdoor-center',
           body: 'A rustic outdoor center within the recreation area, offering cabins and group camping for youth programs, retreats, and family gatherings.',
           photo: {
-            src: '/images/yankee-springs/lake-cabins.jpg',
-            alt: 'Chief Noonday Outdoor Center',
+            src: '/images/chief-noonday/deer-lodge.jpg',
+            alt: 'Deer Lodge at Chief Noonday Outdoor Center',
           },
           badge: 'Outdoor Center',
         },
@@ -139,8 +139,8 @@ export const yankeeSpringsRecreationArea: PropertyContent = {
           href: '/long-lake-outdoor-center',
           body: 'Historic CCC property with 16 cabins, 4 bunkhouses, a 120-seat lodge, and private lake access. Ideal for weddings, retreats, and group camps.',
           photo: {
-            src: '/images/yankee-springs/hill-cabins.jpg',
-            alt: 'Long Lake Outdoor Center',
+            src: '/images/long-lake/weddings/lake-dock-wide.jpg',
+            alt: 'Long Lake waterfront and dock at Long Lake Outdoor Center',
           },
           badge: 'Historic CCC Property',
         },
