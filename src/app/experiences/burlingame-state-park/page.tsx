@@ -158,6 +158,7 @@ export default function BurlingamePage() {
             src="/images/burlingame-entrance-sign.jpg"
             alt="Burlingame State Park & Campground"
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -308,7 +309,7 @@ export default function BurlingamePage() {
                 </p>
               </div>
               <div className="relative h-64 rounded-2xl overflow-hidden">
-                <Image src="/images/burlingame-lakefront.png" alt="Lakefront at Burlingame State Park" fill className="object-cover" />
+                <Image src="/images/burlingame-lakefront.png" alt="Lakefront at Burlingame State Park" fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
               </div>
             </div>
           </div>
@@ -337,7 +338,7 @@ export default function BurlingamePage() {
               rel="noopener noreferrer"
               className="block relative w-full aspect-[16/10] rounded-xl overflow-hidden group cursor-pointer"
             >
-              <Image src="/images/burlingame-campground-map.png" alt="Burlingame State Park campground map" fill className="object-contain bg-white" />
+              <Image src="/images/burlingame-campground-map.png" alt="Burlingame State Park campground map" fill sizes="(min-width: 1280px) 1232px, 100vw" className="object-contain bg-white" />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 text-gray-800 text-sm font-medium px-4 py-2 rounded-lg shadow">
                   Click to enlarge
@@ -370,7 +371,7 @@ export default function BurlingamePage() {
               </ul>
             </div>
             <div className="relative h-80 rounded-2xl overflow-hidden">
-              <Image src="/images/Burlingame2-1536x1152.jpg" alt="Camping at Burlingame" fill className="object-cover" />
+              <Image src="/images/Burlingame2-1536x1152.jpg" alt="Camping at Burlingame" fill sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
           </div>
         </div>
@@ -434,7 +435,7 @@ export default function BurlingamePage() {
               { src: '/images/burlingame-lakefront.png', alt: 'Lakefront view with picnic tables' },
             ].map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />
+                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 50vw" className="object-cover hover:scale-110 transition-transform duration-500" />
               </div>
             ))}
           </div>

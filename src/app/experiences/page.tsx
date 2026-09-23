@@ -182,6 +182,7 @@ export default function ExperiencesPage() {
                   src={category.image}
                   alt={category.name}
                   fill
+                  sizes="(min-width: 1280px) 200px, (min-width: 1024px) 17vw, (min-width: 768px) 33vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition-colors" />
@@ -212,6 +213,7 @@ export default function ExperiencesPage() {
                     src={location.image}
                     alt={location.name}
                     fill
+                    sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="location-card-overlay" />

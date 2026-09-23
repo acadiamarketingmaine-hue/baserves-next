@@ -91,6 +91,7 @@ export default function CareersPage() {
             src="/images/long-lake/fall-foliage.jpg"
             alt="Careers at BA Services"
             fill
+            sizes="100vw"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />

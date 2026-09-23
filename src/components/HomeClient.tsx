@@ -849,6 +849,7 @@ function StatesGrid() {
                     src={state.icon}
                     alt={state.name}
                     fill
+                    sizes="(min-width: 768px) 112px, 96px"
                     className="object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                   />
                 </div>
@@ -893,6 +894,7 @@ function StatesGrid() {
                     src={selectedState.icon}
                     alt={selectedState.name}
                     fill
+                    sizes="64px"
                     className="object-contain brightness-0 invert opacity-80"
                   />
                 </div>
@@ -925,6 +927,7 @@ function StatesGrid() {
                         src={property.image}
                         alt={property.name}
                         fill
+                        sizes="(min-width: 768px) 448px, 100vw"
                         className="object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -1347,6 +1350,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                         src={location.image}
                         alt={location.name}
                         fill
+                        sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="location-card-overlay" />
@@ -1573,6 +1577,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             src="/images/long-lake/fall-foliage.jpg"
             alt="Adventure awaits"
             fill
+            sizes="100vw"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/50" />
@@ -1638,6 +1643,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                 src={selectedLocation.image}
                 alt={selectedLocation.name}
                 fill
+                sizes="(min-width: 640px) 512px, 100vw"
                 className="object-cover rounded-t-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-t-2xl" />

@@ -66,6 +66,7 @@ export default async function LocationPage({ params }: { params: { slug: string 
             src={content.hero.src}
             alt={content.hero.alt}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -138,6 +139,7 @@ export default async function LocationPage({ params }: { params: { slug: string 
                         src={photo.src}
                         alt={photo.alt}
                         fill
+                        sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 50vw"
                         className="object-cover hover:scale-110 transition-transform duration-500"
                       />
                     </div>

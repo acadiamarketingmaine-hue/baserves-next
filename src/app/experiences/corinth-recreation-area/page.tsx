@@ -81,6 +81,7 @@ export default function CorinthPage() {
             src="/images/corinth-boat-ramp.jpg"
             alt="Corinth Recreation Area on Lewis Smith Lake"
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -233,7 +234,7 @@ export default function CorinthPage() {
             {campingLoops.map((loop) => (
               <div key={loop.name} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div className="relative h-56">
-                  <Image src={loop.image} alt={loop.name} fill className="object-cover" />
+                  <Image src={loop.image} alt={loop.name} fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{loop.name}</h3>
@@ -282,7 +283,7 @@ export default function CorinthPage() {
               { src: '/images/corinth-firefly-loop.jpg', alt: 'Firefly Loop campsite' },
             ].map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />
+                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 50vw" className="object-cover hover:scale-110 transition-transform duration-500" />
               </div>
             ))}
           </div>

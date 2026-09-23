@@ -145,7 +145,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
       {/* Hero */}
       <section className="relative pt-32 pb-20">
         <div className="absolute inset-0">
-          <Image src={category.image} alt={category.name} fill className="object-cover" />
+          <Image src={category.image} alt={category.name} fill sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <div className="relative container-custom px-6">
@@ -171,7 +171,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
             {category.experiences.map((exp: any, index: number) => (
               <div key={index} className="experience-card">
                 <div className="relative h-48">
-                  <Image src={exp.image} alt={exp.name} fill className="object-cover" />
+                  <Image src={exp.image} alt={exp.name} fill sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{exp.name}</h3>

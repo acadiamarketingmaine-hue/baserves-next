@@ -91,6 +91,7 @@ export default async function BankheadNationalForestPage() {
             src={content.hero.src}
             alt={content.hero.alt}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -230,6 +231,7 @@ export default async function BankheadNationalForestPage() {
                       src={campground.photo!.src}
                       alt={campground.photo!.alt}
                       fill
+                      sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 text-gray-900 font-semibold rounded-full text-sm">
@@ -335,6 +337,7 @@ export default async function BankheadNationalForestPage() {
                 src={sipseyPhoto.src}
                 alt={sipseyPhoto.alt}
                 fill
+                sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />
             </div>
@@ -407,6 +410,7 @@ export default async function BankheadNationalForestPage() {
                 src={rangePhoto.src}
                 alt={rangePhoto.alt}
                 fill
+                sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />
             </div>
@@ -423,6 +427,7 @@ export default async function BankheadNationalForestPage() {
                 src={quailPhoto.src}
                 alt={quailPhoto.alt}
                 fill
+                sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />
             </div>
@@ -497,6 +502,7 @@ export default async function BankheadNationalForestPage() {
                   src={photo.src}
                   alt={photo.alt}
                   fill
+                  sizes="(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                   className="object-cover hover:scale-110 transition-transform duration-500"
                 />
               </div>

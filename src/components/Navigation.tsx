@@ -280,7 +280,7 @@ export default function Navigation({
                               <div className="space-y-1">
                                 <Link href="/services/iowa-dot" onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors group">
                                   <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
-                                    <Image src="/images/bankhead-forest.jpg" alt="Iowa" fill className="object-cover" />
+                                    <Image src="/images/bankhead-forest.jpg" alt="Iowa" fill sizes="40px" className="object-cover" />
                                   </div>
                                   <div>
                                     <div className="text-sm font-semibold text-gray-900 group-hover:text-forest-DEFAULT">Iowa DOT</div>
@@ -289,7 +289,7 @@ export default function Navigation({
                                 </Link>
                                 <Link href="/services/utah-dot" onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors group">
                                   <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
-                                    <Image src="/images/monongahela/spruce-knob-panorama.jpg" alt="Utah" fill className="object-cover" />
+                                    <Image src="/images/monongahela/spruce-knob-panorama.jpg" alt="Utah" fill sizes="40px" className="object-cover" />
                                   </div>
                                   <div>
                                     <div className="text-sm font-semibold text-gray-900 group-hover:text-forest-DEFAULT">Utah DOT</div>
@@ -333,7 +333,7 @@ export default function Navigation({
                                 ].map((p) => (
                                   <Link key={p.href} href={p.href} onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-gray-50 transition-colors group">
                                     <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
-                                      <Image src={p.image} alt={p.name} fill className="object-cover" />
+                                      <Image src={p.image} alt={p.name} fill sizes="40px" className="object-cover" />
                                     </div>
                                     <div>
                                       <div className="text-sm font-semibold text-gray-900 group-hover:text-forest-DEFAULT">{p.name}</div>
@@ -473,7 +473,7 @@ export default function Navigation({
                                 className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                               >
                                 <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
-                                  <Image src={loc.image} alt={loc.name} fill className="object-cover" />
+                                  <Image src={loc.image} alt={loc.name} fill sizes="28px" className="object-cover" />
                                 </div>
                                 {loc.name}
                               </Link>
@@ -485,7 +485,7 @@ export default function Navigation({
                                   className="flex items-center gap-3 pl-8 pr-4 py-1.5 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition-colors"
                                 >
                                   <div className="relative w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
-                                    <Image src={child.image} alt={child.name} fill className="object-cover" />
+                                    <Image src={child.image} alt={child.name} fill sizes="20px" className="object-cover" />
                                   </div>
                                   {child.name}
                                 </Link>
@@ -623,7 +623,7 @@ export default function Navigation({
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
-                            <Image src={loc.image} alt={loc.name} fill className="object-cover" />
+                            <Image src={loc.image} alt={loc.name} fill sizes="28px" className="object-cover" />
                           </div>
                           {loc.name}
                         </Link>
@@ -635,7 +635,7 @@ export default function Navigation({
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             <div className="relative w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
-                              <Image src={child.image} alt={child.name} fill className="object-cover" />
+                              <Image src={child.image} alt={child.name} fill sizes="20px" className="object-cover" />
                             </div>
                             {child.name}
                           </Link>

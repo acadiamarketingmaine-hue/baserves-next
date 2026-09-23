@@ -152,6 +152,7 @@ export default function CanalBridgePage() {
             src="/images/canal-bridge/entrance.jpg"
             alt="Canal Bridge Campground on the Saco River in Fryeburg, Maine"
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -302,7 +303,7 @@ export default function CanalBridgePage() {
             {campsiteImages.map((site) => (
               <div key={site.label} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div className="relative h-56">
-                  <Image src={site.src} alt={site.alt} fill className="object-cover" />
+                  <Image src={site.src} alt={site.alt} fill sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
                 </div>
                 <div className="p-4">
                   <h3 className="text-lg font-bold text-gray-900">{site.label}</h3>
@@ -320,7 +321,7 @@ export default function CanalBridgePage() {
           <p className="text-gray-600 mb-8 max-w-2xl">Canal Bridge&apos;s Saco River frontage offers sandy beaches, gentle currents, and some of the best paddling and fishing in western Maine.</p>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="relative h-80 rounded-2xl overflow-hidden">
-              <Image src="/images/canal-bridge/beach-1.jpg" alt="Beach area along the Saco River at Canal Bridge" fill className="object-cover" />
+              <Image src="/images/canal-bridge/beach-1.jpg" alt="Beach area along the Saco River at Canal Bridge" fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <span className="px-4 py-2 bg-white/90 text-gray-900 font-semibold rounded-full text-sm">
@@ -329,7 +330,7 @@ export default function CanalBridgePage() {
               </div>
             </div>
             <div className="relative h-80 rounded-2xl overflow-hidden">
-              <Image src="/images/canal-bridge/beach-2.jpg" alt="Sandy river beach for swimming and kayaking" fill className="object-cover" />
+              <Image src="/images/canal-bridge/beach-2.jpg" alt="Sandy river beach for swimming and kayaking" fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <span className="px-4 py-2 bg-white/90 text-gray-900 font-semibold rounded-full text-sm">
@@ -409,7 +410,7 @@ export default function CanalBridgePage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryImages.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />
+                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" className="object-cover hover:scale-110 transition-transform duration-500" />
               </div>
             ))}
           </div>

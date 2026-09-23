@@ -98,6 +98,7 @@ export default async function MeramecStateParkPage() {
             src={content.hero.src}
             alt={content.hero.alt}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -227,7 +228,7 @@ export default async function MeramecStateParkPage() {
             {cabinCategories.map((cabin) => (
               <div key={cabin.key} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div className="relative h-56">
-                  <Image src={cabin.photo!.src} alt={cabin.photo!.alt} fill className="object-cover" />
+                  <Image src={cabin.photo!.src} alt={cabin.photo!.alt} fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw" className="object-cover" />
                   <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 text-gray-900 font-bold rounded-full text-sm">
                     {cabin.meta}/night
                   </div>
@@ -287,6 +288,7 @@ export default async function MeramecStateParkPage() {
                   src={cavePhoto.src}
                   alt={cavePhoto.alt}
                   fill
+                  sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent" />
@@ -305,6 +307,7 @@ export default async function MeramecStateParkPage() {
                 src={watercraftPhoto.src}
                 alt={watercraftPhoto.alt}
                 fill
+                sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />
             </div>
@@ -355,7 +358,7 @@ export default async function MeramecStateParkPage() {
             {facilities.map((facility) => (
               <div key={facility.key} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100">
                 <div className="relative h-48">
-                  <Image src={facility.photo!.src} alt={facility.photo!.alt} fill className="object-cover" />
+                  <Image src={facility.photo!.src} alt={facility.photo!.alt} fill sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{facility.title}</h3>
@@ -374,7 +377,7 @@ export default async function MeramecStateParkPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryImages.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />
+                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" className="object-cover hover:scale-110 transition-transform duration-500" />
               </div>
             ))}
           </div>

@@ -100,6 +100,7 @@ export default function ClearCreekPage() {
             src="/images/clear-creek-overview.jpg"
             alt="Clear Creek Recreation Area on Lewis Smith Lake"
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -241,7 +242,7 @@ export default function ClearCreekPage() {
             {campingLoops.map((loop) => (
               <div key={loop.name} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div className="relative h-56">
-                  <Image src={loop.image} alt={loop.name} fill className="object-cover" />
+                  <Image src={loop.image} alt={loop.name} fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{loop.name}</h3>
@@ -258,7 +259,7 @@ export default function ClearCreekPage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-80 rounded-2xl overflow-hidden">
-              <Image src="/images/clear-creek-group-camping.jpg" alt="Group camping at Clear Creek" fill className="object-cover" />
+              <Image src="/images/clear-creek-group-camping.jpg" alt="Group camping at Clear Creek" fill sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Group Camping</h2>
@@ -298,7 +299,7 @@ export default function ClearCreekPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="relative h-56">
-                <Image src="/images/clear-creek-bent-twig.jpg" alt="Bent Twig Camp at Clear Creek" fill className="object-cover" />
+                <Image src="/images/clear-creek-bent-twig.jpg" alt="Bent Twig Camp at Clear Creek" fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw" className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Bent Twig Camp</h3>
@@ -307,7 +308,7 @@ export default function ClearCreekPage() {
             </div>
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="relative h-56">
-                <Image src="/images/clear-creek-acorn-camp.jpg" alt="Acorn Camp at Clear Creek" fill className="object-cover" />
+                <Image src="/images/clear-creek-acorn-camp.jpg" alt="Acorn Camp at Clear Creek" fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw" className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Acorn Camp</h3>
@@ -316,7 +317,7 @@ export default function ClearCreekPage() {
             </div>
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="relative h-56">
-                <Image src="/images/clear-creek-fox-loop.jpg" alt="Fox Loop entrance at Clear Creek" fill className="object-cover" />
+                <Image src="/images/clear-creek-fox-loop.jpg" alt="Fox Loop entrance at Clear Creek" fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw" className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Fox Loop Entrance</h3>
@@ -379,7 +380,7 @@ export default function ClearCreekPage() {
               { src: '/images/clear-creek-fox-entrance.jpg', alt: 'Fox Loop entrance' },
             ].map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />
+                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" className="object-cover hover:scale-110 transition-transform duration-500" />
               </div>
             ))}
           </div>
@@ -410,7 +411,7 @@ export default function ClearCreekPage() {
           </div>
           <div className="mt-8">
             <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden">
-              <Image src="/images/bankhead-bicycle-trail.jpg" alt="Paved bicycle trail at Clear Creek" fill className="object-cover" />
+              <Image src="/images/bankhead-bicycle-trail.jpg" alt="Paved bicycle trail at Clear Creek" fill sizes="(min-width: 1280px) 1232px, 100vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <span className="px-4 py-2 bg-white/90 text-gray-900 font-semibold rounded-full text-sm">

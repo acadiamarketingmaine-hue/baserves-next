@@ -177,6 +177,7 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
             src={experience.image}
             alt={experience.name}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -249,6 +250,7 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
                         src={image}
                         alt={`${experience.name} gallery image ${index + 1}`}
                         fill
+                        sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 50vw"
                         className="object-cover hover:scale-110 transition-transform duration-500"
                       />
                     </div>

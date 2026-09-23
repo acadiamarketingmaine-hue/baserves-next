@@ -91,6 +91,7 @@ export default async function WashingtonStateParkPage() {
             src={content.hero.src}
             alt={content.hero.alt}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -215,10 +216,10 @@ export default async function WashingtonStateParkPage() {
             </div>
             <div className="space-y-4">
               <div className="relative h-64 rounded-2xl overflow-hidden">
-                <Image src={cabinExterior.src} alt={cabinExterior.alt} fill className="object-cover" />
+                <Image src={cabinExterior.src} alt={cabinExterior.alt} fill sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw" className="object-cover" />
               </div>
               <div className="relative h-64 rounded-2xl overflow-hidden">
-                <Image src={cabinInterior.src} alt={cabinInterior.alt} fill className="object-cover" />
+                <Image src={cabinInterior.src} alt={cabinInterior.alt} fill sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw" className="object-cover" />
               </div>
             </div>
           </div>
@@ -264,7 +265,7 @@ export default async function WashingtonStateParkPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
               <div className="relative h-56">
-                <Image src={pool.photo!.src} alt={pool.photo!.alt} fill className="object-cover" />
+                <Image src={pool.photo!.src} alt={pool.photo!.alt} fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw" className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{pool.title}</h3>
@@ -297,7 +298,7 @@ export default async function WashingtonStateParkPage() {
           <div className="mt-8">
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
               <div className="relative h-56">
-                <Image src={campStore.photo!.src} alt={campStore.photo!.alt} fill className="object-cover" />
+                <Image src={campStore.photo!.src} alt={campStore.photo!.alt} fill sizes="(min-width: 1280px) 1232px, 100vw" className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{campStore.title}</h3>
@@ -346,7 +347,7 @@ export default async function WashingtonStateParkPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {galleryImages.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />
+                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1280px) 300px, (min-width: 768px) 25vw, 50vw" className="object-cover hover:scale-110 transition-transform duration-500" />
               </div>
             ))}
           </div>

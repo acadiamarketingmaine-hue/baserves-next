@@ -152,6 +152,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             src={service.image}
             alt={service.name}
             fill
+            sizes="100vw"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />

@@ -94,6 +94,7 @@ export default async function YankeeSpringsPage() {
             src={content.hero.src}
             alt={content.hero.alt}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -238,7 +239,7 @@ export default async function YankeeSpringsPage() {
                 className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group"
               >
                 <div className="relative h-64">
-                  <Image src={property.photo!.src} alt={property.photo!.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <Image src={property.photo!.src} alt={property.photo!.alt} fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <span className="absolute top-4 left-4 px-3 py-1 bg-green-700 text-white text-xs font-semibold rounded-full">
                     {property.badge}
@@ -273,7 +274,7 @@ export default async function YankeeSpringsPage() {
             {lodging.map((cabin) => (
               <div key={cabin.key} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div className="relative h-56">
-                  <Image src={cabin.photo!.src} alt={cabin.photo!.alt} fill className="object-cover" />
+                  <Image src={cabin.photo!.src} alt={cabin.photo!.alt} fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{cabin.title}</h3>
@@ -289,7 +290,7 @@ export default async function YankeeSpringsPage() {
             {bunkhouses.map((bunk) => (
               <div key={bunk.key} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div className="relative h-40">
-                  <Image src={bunk.photo!.src} alt={bunk.photo!.alt} fill className="object-cover" />
+                  <Image src={bunk.photo!.src} alt={bunk.photo!.alt} fill sizes="(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover" />
                 </div>
                 <div className="p-5">
                   <div className="flex items-center justify-between mb-2">
@@ -332,7 +333,7 @@ export default async function YankeeSpringsPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryPhotos.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />
+                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 50vw" className="object-cover hover:scale-110 transition-transform duration-500" />
               </div>
             ))}
           </div>

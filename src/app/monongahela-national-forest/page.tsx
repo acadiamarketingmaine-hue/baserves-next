@@ -74,6 +74,7 @@ export default async function MonongahelaNationalForestPage() {
             src={content.hero.src}
             alt={content.hero.alt}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -244,6 +245,7 @@ export default async function MonongahelaNationalForestPage() {
                     src={dest.photo!.src}
                     alt={dest.photo!.alt}
                     fill
+                    sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
                   />
                   <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 text-gray-900 font-semibold rounded-full text-sm">
@@ -309,6 +311,7 @@ export default async function MonongahelaNationalForestPage() {
                 src={birdingPhoto.src}
                 alt={birdingPhoto.alt}
                 fill
+                sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />
             </div>

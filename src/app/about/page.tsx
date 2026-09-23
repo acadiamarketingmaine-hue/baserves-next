@@ -83,6 +83,7 @@ export default function AboutPage() {
             src="/images/monongahela/spruce-knob-panorama.jpg"
             alt="About BA Services"
             fill
+            sizes="100vw"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />

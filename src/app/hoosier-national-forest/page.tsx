@@ -96,6 +96,7 @@ export default async function HoosierNationalForestPage() {
             src={content.hero.src}
             alt={content.hero.alt}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -230,7 +231,7 @@ export default async function HoosierNationalForestPage() {
                 className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group"
               >
                 <div className="relative h-64">
-                  <Image src={property.photo!.src} alt={property.photo!.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <Image src={property.photo!.src} alt={property.photo!.alt} fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <span className="absolute top-4 left-4 px-3 py-1 bg-green-700 text-white text-xs font-semibold rounded-full">
                     {property.badge}

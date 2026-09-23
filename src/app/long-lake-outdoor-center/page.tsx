@@ -91,6 +91,7 @@ export default async function LongLakePage() {
             src={content.hero.src}
             alt={content.hero.alt}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -212,7 +213,7 @@ export default async function LongLakePage() {
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="relative h-56">
-                <Image src={lodgingCabins[0].photo!.src} alt={lodgingCabins[0].photo!.alt} fill className="object-cover" />
+                <Image src={lodgingCabins[0].photo!.src} alt={lodgingCabins[0].photo!.alt} fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{lodgingCabins[0].title}</h3>
@@ -223,7 +224,7 @@ export default async function LongLakePage() {
             </div>
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="relative h-56">
-                <Image src={lodgingCabins[1].photo!.src} alt={lodgingCabins[1].photo!.alt} fill className="object-cover" />
+                <Image src={lodgingCabins[1].photo!.src} alt={lodgingCabins[1].photo!.alt} fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{lodgingCabins[1].title}</h3>
@@ -265,7 +266,7 @@ export default async function LongLakePage() {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden">
-              <Image src={lodgePhoto.src} alt={lodgePhoto.alt} fill className="object-cover" />
+              <Image src={lodgePhoto.src} alt={lodgePhoto.alt} fill sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">{content.sections.lodge.heading}</h2>
@@ -296,7 +297,7 @@ export default async function LongLakePage() {
 
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
             <div className="relative h-80 rounded-2xl overflow-hidden">
-              <Image src={weddingPhoto.src} alt={weddingPhoto.alt} fill className="object-cover" />
+              <Image src={weddingPhoto.src} alt={weddingPhoto.alt} fill sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div>
               <div className="bg-white rounded-2xl p-8 shadow-sm mb-6">
@@ -343,7 +344,7 @@ export default async function LongLakePage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryPhotos.map((photo, index) => (
               <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-110 transition-transform duration-500" />
+                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" className="object-cover hover:scale-110 transition-transform duration-500" />
               </div>
             ))}
           </div>
