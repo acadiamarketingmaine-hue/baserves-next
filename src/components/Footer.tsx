@@ -125,8 +125,8 @@ export default function Footer() {
               <p className="font-semibold text-white">BA Services, Inc.</p>
               <p>1257 Hammond Street</p>
               <p>Bangor, ME 04401</p>
-              <a href="mailto:email@BAServes.com" className="text-green-400 hover:text-green-300 transition-colors">email@BAServes.com</a>
-              <a href="tel:+12073077903" className="flex items-center gap-2 text-white/70 hover:text-white transition-colors mt-1">
+              <a href="mailto:email@BAServes.com" className="inline-flex items-center text-green-400 hover:text-green-300 transition-colors min-h-[44px] lg:min-h-0">email@BAServes.com</a>
+              <a href="tel:+12073077903" className="flex items-center gap-2 text-white/70 hover:text-white transition-colors mt-1 min-h-[44px] lg:min-h-0">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                 +1 207 307-7903
               </a>
@@ -139,7 +139,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.experiences.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-white/70 hover:text-white transition-colors">
+                  <Link href={link.href} className="inline-flex items-center text-white/70 hover:text-white transition-colors min-h-[44px] lg:min-h-0">
                     {link.name}
                   </Link>
                 </li>
@@ -157,17 +157,17 @@ export default function Footer() {
                     <Image src={group.icon} alt={group.state} width={12} height={12} className="brightness-0 invert opacity-70" />
                     <span className="text-[10px] font-semibold text-white/60 uppercase tracking-wider">{group.state}</span>
                   </div>
-                  <ul className="space-y-1">
+                  <ul className="lg:space-y-1">
                     {group.locations.map((loc: any) => (
                       <li key={loc.href}>
-                        <Link href={loc.href} className="text-white/70 hover:text-white transition-colors text-sm">
+                        <Link href={loc.href} className="inline-flex items-center text-white/70 hover:text-white transition-colors text-sm min-h-[44px] lg:min-h-0">
                           {loc.name}
                         </Link>
                         {loc.children && (
-                          <ul className="space-y-0.5 mt-0.5">
+                          <ul className="lg:space-y-0.5 lg:mt-0.5">
                             {loc.children.map((child: any) => (
                               <li key={child.name}>
-                                <Link href={child.href} className="text-white/50 hover:text-white transition-colors text-xs block ml-3">
+                                <Link href={child.href} className="text-white/50 hover:text-white transition-colors text-xs flex items-center ml-3 min-h-[44px] lg:min-h-0">
                                   {child.name}
                                 </Link>
                               </li>
@@ -180,7 +180,7 @@ export default function Footer() {
                 </div>
               ))}
               <div className="mb-3">
-                <Link href="/experiences" className="text-green-400 hover:text-green-300 transition-colors text-sm font-semibold">
+                <Link href="/experiences" className="inline-flex items-center text-green-400 hover:text-green-300 transition-colors text-sm font-semibold min-h-[44px] lg:min-h-0">
                   View All Locations →
                 </Link>
               </div>
@@ -193,7 +193,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-white/70 hover:text-white transition-colors">
+                  <Link href={link.href} className="inline-flex items-center text-white/70 hover:text-white transition-colors min-h-[44px] lg:min-h-0">
                     {link.name}
                   </Link>
                 </li>
@@ -203,7 +203,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-white/70 hover:text-white transition-colors">
+                  <Link href={link.href} className="inline-flex items-center text-white/70 hover:text-white transition-colors min-h-[44px] lg:min-h-0">
                     {link.name}
                   </Link>
                 </li>
