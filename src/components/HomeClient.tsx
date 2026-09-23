@@ -537,7 +537,7 @@ function PartnershipJourney() {
         {/* Header */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="w-2 h-2 rounded-full bg-emerald-400" />
             <span className="text-emerald-400 text-sm font-semibold tracking-wide uppercase">Partnership Opportunities</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
@@ -1250,7 +1250,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
           <svg className="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>

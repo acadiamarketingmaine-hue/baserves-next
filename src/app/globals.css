@@ -476,3 +476,36 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #2d5a3c;
 }
+
+/* ------------------------------------------------------------------
+   Finish pass: calm motion (Site Finish Manual §1, Sep 2026)
+   One place for every motion override, so it is easy to find and undo.
+   - No GSAP / data-reveal on this site, so there is nothing scrubbed to
+     un-transition and no reveal/transition conflicts (motion-probe: 0).
+   - No grain / noise overlays exist.
+   - Looping template animations: the home hero's bouncing scroll arrow and
+     the pulsing dot on the Partnership badge were removed in HomeClient.tsx;
+     .animate-float (unused template leftover) is switched off here. The chat
+     typing dots and form spinners keep their loops (they show work in progress).
+   - Hovers used `transition: all 0.3s`; they now move only transform, shadow
+     and colour, in 200ms, so buttons and cards answer the pointer at once.
+   ------------------------------------------------------------------ */
+.animate-float {
+  animation: none;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-outline-white,
+.card-hover,
+.location-card,
+.experience-card {
+  transition-property: transform, box-shadow, background-color, border-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+.nav-link,
+.nav-link::after {
+  transition-duration: 200ms;
+}
