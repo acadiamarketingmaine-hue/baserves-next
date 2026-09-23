@@ -246,8 +246,8 @@ export const longLakeOutdoorCenter: PropertyContent = {
         {
           key: 'photo',
           photo: {
-            src: '/images/long-lake/wedding-ceremony.jpg',
-            alt: 'Wedding ceremony at Long Lake Outdoor Center',
+            src: '/images/long-lake/dock.jpg',
+            alt: 'Two guests in costume jumping off the dock on Long Lake',
           },
         },
         {
@@ -266,8 +266,8 @@ export const longLakeOutdoorCenter: PropertyContent = {
           title: 'Weddings',
           href: '#weddings',
           photo: {
-            src: '/images/long-lake/weddings/lake-dock-wide.jpg',
-            alt: 'Long Lake and its dock under a blue sky',
+            src: '/images/long-lake/wedding-ceremony.jpg',
+            alt: 'Wedding ceremony under the pines beside Long Lake',
           },
           body: 'Two-night wedding package: $3,300 for 2026 weddings, $3,800 for 2027, $4,300 from 2028. Ceremony and reception spaces with lakeside views, historic lodge, and full catering kitchen.',
         },
@@ -427,7 +427,7 @@ export const longLakeOutdoorCenter: PropertyContent = {
       items: [
         {
           key: 'photo',
-          photo: { src: '/images/long-lake/dock.jpg', alt: 'Two guests jumping off the dock on Long Lake' },
+          photo: { src: '/images/long-lake/weddings/lake-dock-wide.jpg', alt: 'Long Lake and its dock under a spring sky' },
         },
       ],
     },
