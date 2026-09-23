@@ -68,7 +68,7 @@ export const tourStops = [
     state: 'MI',
     name: 'Long Lake Outdoor Center',
     lat: 42.55, lng: -85.40,
-    summary: "Long Lake is something special — a retreat center originally built by the Civilian Conservation Corps. 20 cabins, a private lake, outdoor education programs, and honestly one of the most beautiful wedding venues in Michigan. It's got that rustic charm you can't fake.",
+    summary: "Long Lake is something special — a retreat center originally built by the Civilian Conservation Corps. 16 cabins, a private lake, outdoor education programs, and honestly one of the most beautiful wedding venues in Michigan. It's got that rustic charm you can't fake.",
     images: ['/images/long-lake/fall-aerial.jpg', '/images/long-lake/lodge.jpg', '/images/long-lake/wedding-ceremony.jpg', '/images/long-lake/cabins.jpg', '/images/long-lake/lake.jpg'],
   },
   {
