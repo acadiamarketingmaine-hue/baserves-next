@@ -15,7 +15,7 @@ export default function HeritageBand({ id, photo, eyebrow, heading, paragraphs =
   return (
     <section id={id} className="bg-lake-spruce py-14 text-lake-paper md:py-24 lg:py-[120px]">
       <div className={`${frame} grid items-center gap-8 lg:grid-cols-12 lg:gap-12`}>
-        <div className="lg:order-2 lg:col-span-6 lg:col-start-7 xl:col-span-5 xl:col-start-8">
+        <div data-reveal="up" className="lg:order-2lg:col-span-6 lg:col-start-7 xl:col-span-5 xl:col-start-8">
           {eyebrow && <p className={`${eyebrowClass} text-lake-ember-light`}>{eyebrow}</p>}
           <h2 className="mt-4 font-lake-serif text-[36px] leading-[1.08] tracking-[-0.01em] [text-wrap:balance] md:text-[52px] lg:text-[60px]">
             {heading}
@@ -28,13 +28,16 @@ export default function HeritageBand({ id, photo, eyebrow, heading, paragraphs =
         </div>
         {photo && (
           <div className="relative aspect-[350/260] overflow-hidden rounded-md lg:order-1 lg:col-span-6 lg:aspect-[600/520]">
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              fill
-              sizes="(min-width: 1440px) 600px, (min-width: 1024px) 45vw, 100vw"
-              className="object-cover"
-            />
+            {/* 8% of spare photo above and below, so the scrubbed parallax never shows an edge. */}
+            <div data-parallax="" className="absolute inset-x-0 -bottom-[8%] -top-[8%]">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="(min-width: 1440px) 600px, (min-width: 1024px) 45vw, 100vw"
+                className="object-cover"
+              />
+            </div>
           </div>
         )}
       </div>

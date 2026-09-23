@@ -16,18 +16,19 @@ export interface HeroProps {
  * Full-bleed photo with the name set large at the bottom left. On desktop the
  * booking card floats bottom right; below `lg` it collapses to one full-width
  * pill under the subline.
+ *
+ * Motion hooks (LakesideMotion): the photo wrapper settles from 1.06 to 1, and
+ * each [data-lk-hero] rises and fades in turn. Nothing clips the photo.
  */
 export default function Hero({ photo, eyebrow, title, subline, booking }: HeroProps) {
   return (
-    <section className="relative isolate flex h-[720px] items-end overflow-hidden bg-lake-spruce md:h-[880px]">
-      <Image
-        src={photo.src}
-        alt={photo.alt}
-        fill
-        priority
-        sizes="100vw"
-        className="-z-10 object-cover"
-      />
+    <section
+      data-lk-hero-section=""
+      className="relative isolate flex h-[720px] items-end overflow-hidden bg-lake-spruce md:h-[880px]"
+    >
+      <div data-lk-hero-img="" className="absolute inset-0 -z-10">
+        <Image src={photo.src} alt={photo.alt} fill priority sizes="100vw" className="object-cover" />
+      </div>
       {/* Shade: dark at the bottom where the words sit, light at the top. */}
       <div
         aria-hidden="true"
@@ -37,24 +38,32 @@ export default function Hero({ photo, eyebrow, title, subline, booking }: HeroPr
 
       <div className={`${frame} flex items-end justify-between gap-12 pb-8 md:pb-10 lg:!px-14`}>
         <div className="max-w-[760px] text-white">
-          {eyebrow && <p className={`${eyebrowClass} text-white/90`}>{eyebrow}</p>}
-          <h1 className="mt-4 font-lake-serif text-[52px] leading-[0.98] tracking-[-0.015em] [text-wrap:balance] md:text-[88px] lg:text-[120px]">
+          {eyebrow && (
+            <p data-lk-hero="" className={`${eyebrowClass} text-white/90`}>
+              {eyebrow}
+            </p>
+          )}
+          <h1
+            data-lk-hero=""
+            data-lk-hero-title=""
+            className="mt-4 font-lake-serif text-[52px] leading-[0.98] tracking-[-0.015em] [text-wrap:balance] md:text-[88px] lg:text-[120px]"
+          >
             {title}
           </h1>
           {subline && (
-            <p className="mt-5 max-w-[560px] text-[16px] leading-[1.55] text-white/95 md:mt-7 md:text-[19px]">
+            <p data-lk-hero="" className="mt-5 max-w-[560px] text-[16px] leading-[1.55] text-white/95 md:mt-7 md:text-[19px]">
               {subline}
             </p>
           )}
-          <a
-            href={booking.cta.url}
-            {...externalProps(booking.cta.url)}
-            className={`${pillLight} mt-6 w-full lg:hidden`}
-          >
-            {booking.cta.label}
-          </a>
+          <div data-lk-hero="" className="mt-6 lg:hidden">
+            <a href={booking.cta.url} {...externalProps(booking.cta.url)} className={`${pillLight} w-full`}>
+              {booking.cta.label}
+            </a>
+          </div>
         </div>
-        <BookingCard {...booking} className="mb-0 hidden shrink-0 lg:block" />
+        <div data-lk-hero="" className="hidden shrink-0 lg:block">
+          <BookingCard {...booking} />
+        </div>
       </div>
     </section>
   )

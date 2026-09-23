@@ -17,7 +17,7 @@ export default function Mosaic({ photos, caption, className = '' }: MosaicProps)
   return (
     <figure className={`${frame} ${className}`}>
       <div className="grid grid-cols-2 gap-3 md:gap-6 lg:h-[620px] lg:grid-cols-[1.75fr_1fr] lg:grid-rows-2">
-        <div className="relative col-span-2 aspect-[350/260] overflow-hidden rounded-md lg:col-span-1 lg:row-span-2 lg:aspect-auto">
+        <div data-reveal="fade" className="lk-zoom relative col-span-2 aspect-[350/260] overflow-hidden rounded-md lg:col-span-1 lg:row-span-2 lg:aspect-auto">
           <Image
             src={large.src}
             alt={large.alt}
@@ -27,7 +27,7 @@ export default function Mosaic({ photos, caption, className = '' }: MosaicProps)
           />
         </div>
         {small.map((photo) => (
-          <div key={photo.src} className="relative aspect-[170/200] overflow-hidden rounded-md md:aspect-[4/3] lg:aspect-auto">
+          <div key={photo.src} data-reveal="wipe" className="lk-zoom relative aspect-[170/200] overflow-hidden rounded-md md:aspect-[4/3] lg:aspect-auto">
             <Image
               src={photo.src}
               alt={photo.alt}

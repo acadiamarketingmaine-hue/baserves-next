@@ -39,10 +39,11 @@ export default function CardRow({ items, columns = 3, shape = 'tall' }: CardRowP
   return (
     <ul className={`grid gap-x-6 gap-y-12 ${cols[columns]}`}>
       {items.map((item) => (
-        <li key={item.key} className="flex flex-col">
+        <li key={item.key} data-reveal="card" className="lk-card flex flex-col">
           {item.photo && (
             <div
-              className={`relative overflow-hidden rounded-md ${shape === 'tall' ? 'aspect-[350/240] md:aspect-[4/5]' : 'aspect-[3/2]'}`}
+              data-reveal="wipe"
+              className={`lk-zoom relative overflow-hidden rounded-md ${shape === 'tall' ? 'aspect-[350/240] md:aspect-[4/5]' : 'aspect-[3/2]'}`}
             >
               <Image src={item.photo.src} alt={item.photo.alt} fill sizes={sizes[columns]} className="object-cover" />
             </div>
@@ -60,7 +61,7 @@ export default function CardRow({ items, columns = 3, shape = 'tall' }: CardRowP
             >
               {item.linkLabel ?? 'Learn more'}
               {item.title && <span className="sr-only">: {item.title}</span>}
-              <Arrow />
+              <Arrow className="lk-nudge h-4 w-4" />
             </a>
           )}
         </li>

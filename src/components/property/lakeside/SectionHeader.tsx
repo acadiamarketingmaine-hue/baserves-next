@@ -14,6 +14,7 @@ export interface SectionHeaderProps {
 export default function SectionHeader({ eyebrow, heading, intro, split = true, className = '' }: SectionHeaderProps) {
   return (
     <div
+      data-reveal="up"
       className={`${split ? 'lg:flex lg:items-end lg:justify-between lg:gap-16' : ''} mb-8 md:mb-12 ${className}`}
     >
       <div>

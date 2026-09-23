@@ -17,22 +17,28 @@ export interface IntroFactsProps {
   children?: ReactNode
 }
 
+/** Purely numeric values ("16", "4") count up; anything with words stays as written. */
+const isCountable = (value: string) => /^\d+$/.test(value)
+
 /** Label + lead, then a hairline-ruled row of facts. */
 export default function IntroFacts({ id, eyebrow, heading, lead, paragraphs = [], facts, children }: IntroFactsProps) {
   return (
     <section id={id} className={sectionPad}>
       <div className={frame}>
         <div className="grid gap-6 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-4 lg:pt-3">
+          <div data-reveal="up" className="lg:col-span-4 lg:pt-3">
             {eyebrow && <p className={`${eyebrowClass} text-lake-ember`}>{eyebrow}</p>}
             {heading && <h2 className="mt-3 text-[15px] font-medium text-lake-moss">{heading}</h2>}
           </div>
           <div className="lg:col-span-8">
-            <p className="font-lake-serif text-[30px] leading-[1.18] tracking-[-0.01em] text-lake-ink [text-wrap:pretty] md:text-[40px] lg:text-[46px]">
+            <p
+              data-reveal="up"
+              className="font-lake-serif text-[30px] leading-[1.18] tracking-[-0.01em] text-lake-ink [text-wrap:pretty] md:text-[40px] lg:text-[46px]"
+            >
               {lead}
             </p>
             {paragraphs.length > 0 && (
-              <div className="mt-8 grid gap-5 md:mt-12 md:grid-cols-2 md:gap-x-12">
+              <div data-reveal="up" className="mt-8 grid gap-5 md:mt-12 md:grid-cols-2 md:gap-x-12">
                 {paragraphs.map((p) => (
                   <p key={p} className={body}>
                     {p}
@@ -56,7 +62,18 @@ export default function IntroFacts({ id, eyebrow, heading, lead, paragraphs = []
               >
                 <dt className={`${eyebrowClass} text-[11px] text-lake-moss`}>{fact.label}</dt>
                 <dd className="font-lake-serif text-[24px] leading-tight text-lake-ink md:mt-3 md:text-[32px]">
-                  {fact.value}
+                  {isCountable(fact.value) ? (
+                    // Fixed-width box so the count-up never nudges its neighbours.
+                    <span
+                      data-count={fact.value}
+                      className="inline-block text-right tabular-nums md:text-left"
+                      style={{ minWidth: `${fact.value.length}ch` }}
+                    >
+                      {fact.value}
+                    </span>
+                  ) : (
+                    fact.value
+                  )}
                 </dd>
               </div>
             ))}

@@ -19,14 +19,20 @@ export interface ClosingCtaProps {
  */
 export default function ClosingCta({ photo, heading, text, primary, phone, secondary }: ClosingCtaProps) {
   return (
-    <section className="relative isolate overflow-hidden py-14 md:flex md:min-h-[640px] md:items-center md:py-24">
+    <section
+      data-lk-closing=""
+      className="relative isolate overflow-hidden py-14 md:flex md:min-h-[640px] md:items-center md:py-24"
+    >
       {photo && (
-        <div className="absolute inset-0 -z-10 hidden md:block">
-          <Image src={photo.src} alt={photo.alt} fill sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 -z-10 hidden overflow-hidden md:block">
+          {/* Spare photo above and below for the scrubbed parallax. */}
+          <div data-parallax="" className="absolute inset-x-0 -bottom-[8%] -top-[8%]">
+            <Image src={photo.src} alt={photo.alt} fill sizes="100vw" className="object-cover" />
+          </div>
           <div aria-hidden="true" className="absolute inset-0 bg-black/45" />
         </div>
       )}
-      <div className="mx-auto w-full max-w-[880px] px-5 text-center md:px-12 md:text-white">
+      <div data-reveal="up" className="mx-auto w-full max-w-[880px] px-5 text-center md:px-12 md:text-white">
         <h2 className="font-lake-serif text-[44px] leading-[1.05] tracking-[-0.01em] md:text-[72px] lg:text-[88px]">
           {heading}
         </h2>

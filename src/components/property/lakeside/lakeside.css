@@ -1,0 +1,145 @@
+/*
+ * Lakeside template: motion and interaction styles.
+ * Every selector here is scoped to Lakeside-only attributes or classes, so no
+ * other page is affected. GSAP owns transform/opacity/clip-path on anything
+ * marked [data-reveal], [data-parallax] or [data-lk-hero*]; nothing below puts a
+ * CSS transition on those elements (the hover zoom lives on the <img> inside).
+ */
+
+/*
+ * Before the motion runtime arms, an inline script adds .lk-pre to <html> so
+ * the hero words start hidden instead of flashing visible and then hiding.
+ * No JS = no class = everything visible. If the runtime never arrives, the
+ * failsafe animation shows the words after 2.5s anyway.
+ */
+@keyframes lk-failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.lk-pre [data-lk-hero] {
+  opacity: 0;
+  animation: lk-failsafe 0.3s ease 2.5s forwards;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lk-pre [data-lk-hero-img] {
+    transform: scale(1.06);
+    animation: lk-failsafe 0.6s ease 2.5s forwards;
+  }
+}
+
+/*
+ * The site sets `scroll-behavior: smooth` on <html>. With Reduce Motion on,
+ * this page jumps instead of gliding (anchor links, the sticky bar), which is
+ * what that setting asks for, and scroll reveals keep up with the jump.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html:has([data-lakeside]) {
+    scroll-behavior: auto;
+  }
+}
+
+/* Photo cards: a slow zoom inside the rounded mask, desktop pointers only. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .lk-zoom img {
+    transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .lk-card:hover .lk-zoom img,
+  .lk-card:focus-within .lk-zoom img,
+  .lk-zoom:hover img {
+    transform: scale(1.04);
+  }
+  .lk-nudge {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .lk-card:hover .lk-nudge,
+  .lk-card:focus-within .lk-nudge,
+  a:hover > .lk-nudge,
+  a:focus-visible > .lk-nudge {
+    transform: translateX(4px);
+  }
+}
+
+/* Sticky booking bar: fades (and on motion, glides) in and out. */
+.lk-sticky {
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear 0.45s;
+}
+.lk-sticky[data-shown='true'] {
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s;
+}
+.lk-sticky[data-shown='false'] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.lk-sticky--top[data-shown='false'] {
+  transform: translateY(-8px);
+}
+.lk-sticky--bottom[data-shown='false'] {
+  transform: translateY(12px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .lk-sticky,
+  .lk-sticky[data-shown='true'] {
+    transition:
+      opacity 0.2s ease,
+      visibility 0s linear 0.2s;
+  }
+  .lk-sticky[data-shown='true'] {
+    transition: opacity 0.2s ease;
+  }
+  .lk-sticky--top[data-shown='false'],
+  .lk-sticky--bottom[data-shown='false'] {
+    transform: none;
+  }
+}
+
+/*
+ * While the phone booking bar is up, lift the Treeko chat button above it.
+ * `bottom`, not transform: a transform would become the containing block for
+ * Treeko's own fixed overlays (tour bar, sound prompt) and misplace them.
+ */
+@media (max-width: 767px) {
+  [data-chat-dock] {
+    transition: bottom 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  body.lk-bar-on [data-chat-dock] {
+    bottom: calc(8px + 56px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  [data-chat-dock] {
+    transition: none;
+  }
+}
+
+/* Gallery lightbox. */
+@keyframes lk-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes lk-settle-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+.lk-lightbox {
+  animation: lk-fade-in 0.25s ease both;
+}
+.lk-lightbox-photo {
+  animation: lk-settle-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lk-lightbox-photo {
+    animation: lk-fade-in 0.2s ease both;
+  }
+}

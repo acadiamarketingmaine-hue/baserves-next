@@ -18,7 +18,7 @@ export default function SplitFeature({ photo, eyebrow, heading, paragraphs = [],
   return (
     <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
       {photo && (
-        <div className={`relative aspect-[4/3] overflow-hidden rounded-md ${reverse ? 'lg:order-2' : ''}`}>
+        <div data-reveal="fade" className={`relative aspect-[4/3] overflow-hidden rounded-md ${reverse ? 'lg:order-2' : ''}`}>
           <Image
             src={photo.src}
             alt={photo.alt}
@@ -28,7 +28,7 @@ export default function SplitFeature({ photo, eyebrow, heading, paragraphs = [],
           />
         </div>
       )}
-      <div>
+      <div data-reveal="up">
         {eyebrow && <p className={`${eyebrowClass} mb-4 text-lake-ember`}>{eyebrow}</p>}
         <h2 className={`${h2} text-lake-ink`}>{heading}</h2>
         {paragraphs.map((p) => (
