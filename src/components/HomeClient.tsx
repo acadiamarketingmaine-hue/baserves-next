@@ -1028,9 +1028,6 @@ interface HomeClientProps {
 }
 
 export default function HomeClient({ featuredDateKey }: HomeClientProps) {
-  const [loading, setLoading] = useState(true)
-  const [loadProgress, setLoadProgress] = useState(0)
-  const [fadeOut, setFadeOut] = useState(false)
   const [statsVisible, setStatsVisible] = useState(false)
   const statsRef = useRef<HTMLDivElement>(null)
 
@@ -1053,35 +1050,6 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
   const maxIndex = Math.max(0, featuredLocations.length - cardsPerView)
   const totalDots = Math.ceil(featuredLocations.length / cardsPerView)
   const activeDot = Math.min(Math.floor(currentIndex / cardsPerView), totalDots - 1)
-
-  // Loading screen — runs once per session
-  useEffect(() => {
-    const hasLoaded = sessionStorage.getItem('ba-loaded')
-    if (hasLoaded) {
-      setLoading(false)
-      setLoadProgress(100)
-      return
-    }
-    let progress = 0
-    const interval = setInterval(() => {
-      progress += Math.random() * 15 + 5
-      if (progress >= 100) {
-        progress = 100
-        clearInterval(interval)
-        setLoadProgress(100)
-        setTimeout(() => {
-          setFadeOut(true)
-          setTimeout(() => {
-            setLoading(false)
-            sessionStorage.setItem('ba-loaded', '1')
-          }, 600)
-        }, 400)
-      } else {
-        setLoadProgress(progress)
-      }
-    }, 200)
-    return () => clearInterval(interval)
-  }, [])
 
   // Detect screen size for cards per view
   useEffect(() => {
@@ -1154,32 +1122,6 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
 
   return (
     <>
-      {/* Loading Screen */}
-      {loading && (
-        <div
-          className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white transition-opacity duration-600 ${
-            fadeOut ? 'opacity-0' : 'opacity-100'
-          }`}
-        >
-          <div className="flex flex-col items-center">
-            <Image
-              src="/images/logo.png"
-              alt="BA Services"
-              width={200}
-              height={80}
-              className="mb-8"
-              priority
-            />
-            <div className="w-64 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-forest-DEFAULT rounded-full transition-all duration-300 ease-out"
-                style={{ width: `${loadProgress}%` }}
-              />
-            </div>
-          </div>
-        </div>
-      )}
-
     <main className="min-h-screen">
       <Navigation />
 
