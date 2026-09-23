@@ -156,7 +156,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
             Back to Experiences
           </Link>
           <div className="max-w-3xl">
-            <span className="text-5xl mb-4 block">{category.icon}</span>
+            <span aria-hidden="true" className="mb-5 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 text-white ring-1 ring-white/25 [&>svg]:h-9 [&>svg]:w-9">{category.icon}</span>
             <h1 className="font-display headline-xl text-white mb-6">{category.name}</h1>
             <p className="text-xl text-white/90 leading-relaxed">{category.description}</p>
           </div>

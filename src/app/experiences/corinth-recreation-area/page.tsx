@@ -260,7 +260,7 @@ export default function CorinthPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {dayUseFeatures.map((feature) => (
               <div key={feature.name} className="bg-gray-50 rounded-2xl p-6">
-                <span className="text-3xl mb-3 block">{feature.icon}</span>
+                <span aria-hidden="true" className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-forest-DEFAULT/10 text-2xl text-forest-DEFAULT">{feature.icon}</span>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.name}</h3>
                 <p className="text-gray-600 text-sm">{feature.description}</p>
               </div>
