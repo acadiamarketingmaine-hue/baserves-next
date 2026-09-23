@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   description:
     'A historic lakeside wedding venue in Yankee Springs, Michigan. Two nights of exclusive use, a 120-seat timber-frame lodge, on-site lodging for every guest, and a commercial kitchen for your caterer.',
   openGraph: { images: [photos.diningHall.src] },
+  robots: { index: false, follow: false },
 }
 
 const included = [
