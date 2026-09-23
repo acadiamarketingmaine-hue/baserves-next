@@ -119,7 +119,7 @@ const locations = [
 
 const categories = [
   { name: 'Campground Rentals', icon: <CampIcon className="w-8 h-8" />, count: 25, slug: 'campground-rentals', image: '/images/indian-celina/campsite2.jpg' },
-  { name: 'Conference Centers', icon: <BuildingIcon className="w-8 h-8" />, count: 4, slug: 'conference-center-rentals', image: '/images/long-lake/lodge.jpg' },
+  { name: 'Conference Centers', icon: <BuildingIcon className="w-8 h-8" />, count: 4, slug: 'conference-center-rentals', image: '/images/long-lake/weddings/dining-hall.jpg' },
   { name: 'Hiking Trails', icon: <HikeIcon className="w-8 h-8" />, count: 30, slug: 'hiking', image: '/images/DSC_0103-2048x1365.jpg' },
   { name: 'Kayak & Watercraft', icon: <KayakIcon className="w-8 h-8" />, count: 12, slug: 'kayak-and-watercraft-rentals', image: '/images/burlingame-kayaks.png' },
   { name: 'Lookout Pavilions', icon: <MountainIcon className="w-8 h-8" />, count: 2, slug: 'lookout-pavillions', image: '/images/meramec-state-park/overlook-pavilion.jpg' },

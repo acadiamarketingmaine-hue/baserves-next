@@ -83,9 +83,9 @@ const categoryData: Record<string, any> = {
     name: 'Conference Center Rentals',
     icon: <BuildingIcon className="w-12 h-12" />,
     description: 'Host your next retreat, wedding, or corporate event in a stunning natural setting.',
-    image: '/images/long-lake/lodge.jpg',
+    image: '/images/long-lake/weddings/dining-hall.jpg',
     experiences: [
-      { name: 'Long Lake Outdoor Center', location: 'Middleville, MI', duration: 'Daily / Weekly', price: 'Contact for rates', image: '/images/long-lake/lodge.jpg', href: '/long-lake-outdoor-center' },
+      { name: 'Long Lake Outdoor Center', location: 'Middleville, MI', duration: 'Daily / Weekly', price: 'Contact for rates', image: '/images/long-lake/weddings/dining-hall.jpg', href: '/long-lake-outdoor-center' },
       { name: 'Meramec State Park Conference Center', location: 'Sullivan, MO', duration: 'Daily', price: 'Contact for rates', image: '/images/meramec-state-park/conference-center.jpg', href: '/experiences/meramec-state-park' },
       { name: 'Corinth Pavilion', location: 'Bankhead National Forest, AL', duration: 'Daily', price: '100-person capacity', image: '/images/corinth-pavilion.jpg', href: '/experiences/corinth-recreation-area' },
     ]
