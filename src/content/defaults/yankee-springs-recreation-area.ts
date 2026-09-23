@@ -80,12 +80,12 @@ export const yankeeSpringsRecreationArea: PropertyContent = {
       kind: 'booking',
     },
     sidebarChiefNoonday: {
-      label: 'Reserve Chief Noonday OC',
+      label: 'Reserve at Chief Noonday',
       url: 'https://escape.baserves.com/chief-noonday-outdoor-center',
       kind: 'booking',
     },
     sidebarLongLake: {
-      label: 'Reserve Long Lake OC',
+      label: 'Reserve at Long Lake',
       url: 'https://escape.baserves.com/long-lake-outdoor-center',
       kind: 'booking',
     },
