@@ -96,6 +96,16 @@ export const bankheadNationalForest: PropertyContent = {
       url: '/experiences/corinth-recreation-area',
       kind: 'internal',
     },
+    reserveClearCreek: {
+      label: 'Reserve Clear Creek on Recreation.gov',
+      url: 'https://www.recreation.gov/camping/campgrounds/231990',
+      kind: 'booking',
+    },
+    reserveCorinth: {
+      label: 'Reserve Corinth on Recreation.gov',
+      url: 'https://www.recreation.gov/camping/campgrounds/232423',
+      kind: 'booking',
+    },
     birdingGuide: {
       label: 'Download Birding Guide (PDF)',
       url: '/downloads/bankhead-national-forest/birding-guide.pdf',

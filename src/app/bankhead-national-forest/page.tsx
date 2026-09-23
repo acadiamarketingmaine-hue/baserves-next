@@ -202,6 +202,14 @@ export default async function BankheadNationalForestPage() {
                     {content.ctas.sidebarCorinth.label}
                   </a>
                 </div>
+                <div className="space-y-2 mt-4 pt-4 border-t border-white/20">
+                  <a href={content.ctas.reserveClearCreek.url} target="_blank" rel="noopener noreferrer" className="block w-full text-center py-3 border border-white/60 text-white text-sm font-semibold rounded-lg hover:bg-white/10 transition-colors">
+                    {content.ctas.reserveClearCreek.label}
+                  </a>
+                  <a href={content.ctas.reserveCorinth.url} target="_blank" rel="noopener noreferrer" className="block w-full text-center py-3 border border-white/60 text-white text-sm font-semibold rounded-lg hover:bg-white/10 transition-colors">
+                    {content.ctas.reserveCorinth.label}
+                  </a>
+                </div>
               </div>
             </div>
           </div>
