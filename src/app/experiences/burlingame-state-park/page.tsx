@@ -147,7 +147,7 @@ export default function BurlingamePage() {
         name="Burlingame State Park & Campground | Rhode Island | BA Services"
         crumbName="Burlingame State Park & Campground"
         description="Explore Burlingame State Park in Charlestown, RI. 755 campsites, 20 rustic cabins, Watchaug Pond swimming, hiking trails, and a rich history dating back to 1702."
-        image="/images/burlingame-entrance-sign.jpg"
+        image="/images/Burlingame1-2048x1365.jpg"
         crumbs={[{ name: "Experiences", url: "/experiences" }]}
       />
 
@@ -155,8 +155,8 @@ export default function BurlingamePage() {
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/burlingame-entrance-sign.jpg"
-            alt="Burlingame State Park & Campground"
+            src="/images/Burlingame1-2048x1365.jpg"
+            alt="Watchaug Pond at Burlingame State Park & Campground"
             fill
             className="object-cover"
             priority

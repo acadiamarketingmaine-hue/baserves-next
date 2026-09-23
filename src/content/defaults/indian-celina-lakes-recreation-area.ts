@@ -21,8 +21,8 @@ export const indianCelinaLakesRecreationArea: PropertyContent = {
       'Explore Indian-Celina Lakes Recreation Area in Hoosier National Forest. Two scenic lakes with camping, accessible fishing pier, boat launch, and hiking trails.',
   },
   hero: {
-    src: '/images/indian-celina-entrance-sign.jpg',
-    alt: 'Indian-Celina Lakes Recreation Area, Hoosier National Forest, Indiana',
+    src: '/images/indian-celina/boat-launch.jpg',
+    alt: 'Boat launch on Indian Lake at Indian-Celina Lakes Recreation Area, Hoosier National Forest, Indiana',
   },
   gallery: [
     { src: '/images/indian-celina/entrance.jpg', alt: 'Indian-Celina Lakes entrance sign' },

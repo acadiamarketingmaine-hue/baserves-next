@@ -89,7 +89,7 @@ export default function ClearCreekPage() {
         name="Clear Creek Recreation Area | Bankhead National Forest | BA Services"
         crumbName="Clear Creek Recreation Area"
         description="Explore Clear Creek Recreation Area on Lewis Smith Lake in Bankhead National Forest. 102 campsites across 4 loops, swimming beach, boat ramps, hiking trails, and group camping."
-        image="/images/clear-creek-overview.jpg"
+        image="/images/clear-creek-swimming.jpg"
         crumbs={[{ name: "Experiences", url: "/experiences" }]}
       />
 
@@ -97,8 +97,8 @@ export default function ClearCreekPage() {
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/clear-creek-overview.jpg"
-            alt="Clear Creek Recreation Area on Lewis Smith Lake"
+            src="/images/clear-creek-swimming.jpg"
+            alt="Swimming beach on Lewis Smith Lake at Clear Creek Recreation Area"
             fill
             className="object-cover"
             priority

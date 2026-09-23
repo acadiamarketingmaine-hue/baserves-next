@@ -30,8 +30,8 @@ export const tipsawLakeRecreationArea: PropertyContent = {
       'Explore Tipsaw Lake Recreation Area in Hoosier National Forest. 131-acre lake with camping, swimming beach, fishing, amphitheater, and 8+ miles of trails.',
   },
   hero: {
-    src: '/images/tipsaw-lake/lake-view.jpg',
-    alt: 'Tipsaw Lake Recreation Area in Hoosier National Forest, Perry County, Indiana',
+    src: '/images/tipsaw-lake/beach-swimming.jpg',
+    alt: 'Swimming beach and playground on Tipsaw Lake, Hoosier National Forest, Perry County, Indiana',
   },
   gallery: [
     { src: '/images/tipsaw-lake/lake-view.jpg', alt: 'Scenic view of Tipsaw Lake' },

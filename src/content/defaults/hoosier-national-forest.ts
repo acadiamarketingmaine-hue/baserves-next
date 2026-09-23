@@ -24,8 +24,8 @@ export const hoosierNationalForest: PropertyContent = {
       'Explore Hoosier National Forest in southern Indiana. Three recreation areas with camping, swimming, fishing, boating, and hundreds of miles of trails.',
   },
   hero: {
-    src: '/images/hardin-ridge/aerial.jpg',
-    alt: 'Hoosier National Forest, Southern Indiana',
+    src: '/images/indian-celina/boat-launch.jpg',
+    alt: 'Forest-lined lake and boat launch at Indian-Celina Lakes, Hoosier National Forest, southern Indiana',
   },
   gallery: [],
   paragraphs: [
