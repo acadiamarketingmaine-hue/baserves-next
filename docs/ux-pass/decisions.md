@@ -32,10 +32,11 @@ Clear Creek (`experiences/clear-creek-recreation-area/page.tsx:180`) and Corinth
 ## D8. CARTO map tiles now need an API key (John, information)
 Both maps were stamped "API KEY REQUIRED". They were switched to standard OpenStreetMap tiles (free, attribution shown). OSM's tile policy is fine for a site this size. If you'd rather keep the CARTO light style, you'll need a CARTO account and key.
 
-## D9. Small Business Connection (logged, left alone per John, 2026-09-24)
-**State:** not linked from any menu, footer or page. Verified on all 47 crawled pages on 2026-09-23; the only reference in code is the sitemap. It's still reachable at `/small-business-connection` and **still listed in `src/app/sitemap.ts:23`** (and `src/data/lastmod.json:39`), so search engines can still find it.
-**Left alone on John's instruction.** No change to the page or the sitemap.
-**Needed from John, if wanted:** remove it from the sitemap and/or add `noindex`. Separately, three of its partner links are dead: apexroofnh.com (404), blackmajicsealcoating.com (404) and maineheatpumpcleaning.com (no connection).
+## D9. Small Business Connection (hidden per John, 2026-09-24, done)
+- Not linked from any menu, footer, site search or page (verified 2026-09-23 on all 47 crawled pages; no references in code).
+- **Removed from `src/app/sitemap.ts`**, and the page now sends `robots: { index: false, follow: false }`. It stays reachable only by direct URL.
+- `src/data/lastmod.json:39` still has its entry. It's harmless, since the sitemap no longer lists the page.
+- Three of its partner links are dead (apexroofnh.com 404, blackmajicsealcoating.com 404, maineheatpumpcleaning.com no connection). Not changed.
 
 ## D10. Weddings page (unchanged)
 Still waiting on John's pick between the two drafts (see D3). Not published.
