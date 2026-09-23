@@ -1373,11 +1373,11 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                         </svg>
                         {location.location}
                       </div>
-                      <div className="flex justify-between text-sm border-t pt-4">
+                      <div className="flex justify-between gap-3 text-sm border-t pt-4">
                         {Object.entries(location.stats).map(([key, value]) => (
-                          <div key={key}>
+                          <div key={key} className="flex flex-col">
                             <span className="font-semibold text-forest-DEFAULT">{value}</span>
-                            <span className="text-gray-500 ml-1 capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
+                            <span className="text-gray-500 capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
                           </div>
                         ))}
                       </div>
