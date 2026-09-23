@@ -10,6 +10,8 @@ import { PageSchema } from '@/components/SchemaMarkup'
 
 const categoryData: Record<string, any> = {
   'kayak-and-watercraft-rentals': {
+    detailLabel: 'Duration',
+    priceLabel: 'Rates',
     name: 'Kayak & Watercraft Rentals',
     icon: <KayakIcon className="w-12 h-12" />,
     description: 'Get out on the water with our selection of kayaks, canoes, rafts, and paddleboards available at multiple locations.',
@@ -21,6 +23,8 @@ const categoryData: Record<string, any> = {
     ]
   },
   'campground-rentals': {
+    detailLabel: 'Stays',
+    priceLabel: 'Sites',
     name: 'Campground Rentals',
     icon: <CampIcon className="w-12 h-12" />,
     description: 'From primitive tent sites to full-hookup RV spots and rustic cabins, find the perfect stay for your outdoor adventure.',
@@ -41,6 +45,8 @@ const categoryData: Record<string, any> = {
     ]
   },
   'hiking': {
+    detailLabel: 'Size',
+    priceLabel: 'Cost',
     name: 'Hiking Trails',
     icon: <HikeIcon className="w-12 h-12" />,
     description: 'Discover hundreds of miles of scenic trails through forests, along lakeshores, and into wilderness areas.',
@@ -59,6 +65,8 @@ const categoryData: Record<string, any> = {
     ]
   },
   'scenic-drives': {
+    detailLabel: 'Drive',
+    priceLabel: 'Cost',
     name: 'Scenic Drives',
     icon: <CarIcon className="w-12 h-12" />,
     description: 'Experience breathtaking vistas and natural beauty from the comfort of your vehicle.',
@@ -70,6 +78,8 @@ const categoryData: Record<string, any> = {
     ]
   },
   'conference-center-rentals': {
+    detailLabel: 'Booking',
+    priceLabel: 'Details',
     name: 'Conference Center Rentals',
     icon: <BuildingIcon className="w-12 h-12" />,
     description: 'Host your next retreat, wedding, or corporate event in a stunning natural setting.',
@@ -81,6 +91,8 @@ const categoryData: Record<string, any> = {
     ]
   },
   'lookout-pavillions': {
+    detailLabel: 'Booking',
+    priceLabel: 'Details',
     name: 'Lookout Pavilions',
     icon: <MountainIcon className="w-12 h-12" />,
     description: 'Reserve scenic overlooks and covered pavilions for picnics, gatherings, and enjoying panoramic views.',
@@ -169,13 +181,16 @@ export default function CategoryPage({ params }: { params: { category: string } 
                     </svg>
                     {exp.location}
                   </div>
-                  <div className="flex justify-between items-center pt-4 border-t">
+                  <dl className="grid grid-cols-2 gap-4 pt-4 border-t">
                     <div>
-                      <span className="text-sm text-gray-500">Duration:</span>
-                      <span className="ml-2 font-medium">{exp.duration}</span>
+                      <dt className="text-xs text-gray-500">{category.detailLabel}</dt>
+                      <dd className="font-medium">{exp.duration}</dd>
                     </div>
-                    <span className="text-forest-DEFAULT font-bold">{exp.price}</span>
-                  </div>
+                    <div>
+                      <dt className="text-xs text-gray-500">{category.priceLabel}</dt>
+                      <dd className="text-forest-DEFAULT font-bold">{exp.price}</dd>
+                    </div>
+                  </dl>
                   <Link
                     href={exp.href || '/experiences'}
                     className="mt-4 block w-full text-center py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
