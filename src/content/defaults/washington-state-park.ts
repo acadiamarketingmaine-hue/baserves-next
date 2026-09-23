@@ -26,11 +26,11 @@ export const washingtonStatePark: PropertyContent = {
   },
   hero: {
     src: '/images/washington-thunderbird-lodge.png',
-    alt: 'Washington State Park along the Big River in De Soto, Missouri',
+    alt: 'Stone Thunderbird Lodge at Washington State Park in De Soto, Missouri',
   },
   gallery: [
-    { src: '/images/washington-thunderbird-lodge.png', alt: 'Cabin 11 exterior at Washington State Park' },
-    { src: '/images/washington-state-park/cabin-11-interior.png', alt: 'Cabin 11 interior' },
+    { src: '/images/washington-thunderbird-lodge.png', alt: 'Thunderbird Lodge at Washington State Park' },
+    { src: '/images/washington-state-park/cabin-11-interior.png', alt: 'Cabin 11 bedroom' },
     { src: '/images/washington-state-park/pool.png', alt: 'Swimming pool at Washington State Park' },
     { src: '/images/washington-state-park/store.jpg', alt: 'Camp store at Washington State Park' },
   ],
@@ -110,15 +110,15 @@ export const washingtonStatePark: PropertyContent = {
         {
           key: 'photo-exterior',
           photo: {
-            src: '/images/washington-thunderbird-lodge.png',
-            alt: 'Cabin 11 exterior at Washington State Park',
+            src: '/images/washington-state-park/cabin-11-exterior.png',
+            alt: 'Cabin 11 living room at Washington State Park',
           },
         },
         {
           key: 'photo-interior',
           photo: {
             src: '/images/washington-state-park/cabin-11-interior.png',
-            alt: 'Cabin 11 interior at Washington State Park',
+            alt: 'Cabin 11 bedroom at Washington State Park',
           },
         },
       ],

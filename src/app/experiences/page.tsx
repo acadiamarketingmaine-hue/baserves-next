@@ -13,7 +13,7 @@ const locations = [
     description: '180,000+ acres of canyons, waterfalls, old-growth forests, and exceptional birding',
     location: 'Lawrence, Winston & Franklin Counties, AL',
     features: ['Sipsey Wilderness', '84 Bird Species', 'Waterfalls', 'Shooting Range', 'Horse Trails'],
-    image: '/images/bankhead-forest.jpg',
+    image: '/images/bankhead-bicycle-trail.jpg',
     slug: 'bankhead-national-forest'
   },
   {
@@ -22,7 +22,7 @@ const locations = [
     description: '102 campsites on Lewis Smith Lake with swimming, trails, and group camping',
     location: 'Bankhead National Forest, AL',
     features: ['102 Campsites', 'Swimming Beach', 'Boat Ramp', 'Hiking Trails', 'Group Camping'],
-    image: '/images/clear-creek-overview.jpg',
+    image: '/images/clear-creek-swimming.jpg',
     slug: 'experiences/clear-creek-recreation-area'
   },
   {
@@ -40,7 +40,7 @@ const locations = [
     description: '49 campsites on a 131-acre lake with beach, trails, and group camping',
     location: 'Perry County, IN',
     features: ['131-Acre Lake', '49 Campsites', 'Swimming Beach', '5.9-mi Trail', 'Group Camps'],
-    image: '/images/tipsaw-lake/lake-view.jpg',
+    image: '/images/tipsaw-lake/beach-swimming.jpg',
     slug: 'tipsaw-lake-recreation-area'
   },
   {
@@ -49,7 +49,7 @@ const locations = [
     description: '195 campsites on Indiana\'s largest lake with beach, boat ramp, and cabins',
     location: 'Monroe County, IN',
     features: ['195 Sites', '10,750-Acre Lake', 'Swimming Beach', '2 Cabins', 'Boat Ramp'],
-    image: '/images/hardin-ridge-entrance-sign.jpg',
+    image: '/images/hardin-ridge/beach.jpg',
     slug: 'hardin-ridge-recreation-area'
   },
   {
@@ -58,7 +58,7 @@ const locations = [
     description: '36 campsites on the Saco River with White Mountain views',
     location: 'Fryeburg, ME',
     features: ['Saco River', 'Kayaking', 'Fishing', 'Mountain Views', 'Pet Friendly'],
-    image: '/images/canal-bridge/entrance.jpg',
+    image: '/images/canal-bridge/beach-1.jpg',
     slug: 'experiences/canal-bridge'
   },
   {
@@ -85,7 +85,7 @@ const locations = [
     description: '19 cabins, 40+ caves, motel, and river float rentals along the Meramec River',
     location: 'Sullivan, MO',
     features: ['19 Cabins', '40+ Caves', 'Float Rentals', 'Motel', '13 mi Trails'],
-    image: '/images/meramec-entrance-sign.jpg',
+    image: '/images/meramec-state-park/cabin-2.jpg',
     slug: 'experiences/meramec-state-park'
   },
   {
@@ -103,7 +103,7 @@ const locations = [
     description: '755 campsites, 20 cabins, and a rich history on Watchaug Pond',
     location: 'Charlestown, RI',
     features: ['755 Campsites', '20 Cabins', 'Swimming', 'Boating', 'Wildlife Viewing'],
-    image: '/images/burlingame-entrance-sign.jpg',
+    image: '/images/Burlingame2-1536x1152.jpg',
     slug: 'experiences/burlingame-state-park'
   },
   {
@@ -112,18 +112,18 @@ const locations = [
     description: '921,000 acres with 800+ miles of trails, 5 wilderness areas, and Spruce Knob',
     location: 'Eastern West Virginia',
     features: ['921,000 Acres', '800+ mi Trails', '5 Wilderness Areas', 'Rock Climbing', 'Scenic Drives'],
-    image: '/images/monongahela/entrance-sign.jpg',
+    image: '/images/monongahela/spruce-knob-panorama.jpg',
     slug: 'monongahela-national-forest'
   },
 ]
 
 const categories = [
-  { name: 'Campground Rentals', icon: <CampIcon className="w-8 h-8" />, count: 25, slug: 'campground-rentals', image: '/images/DSC_0001-2048x1365.jpg' },
-  { name: 'Conference Centers', icon: <BuildingIcon className="w-8 h-8" />, count: 4, slug: 'conference-center-rentals', image: '/images/long-lake/lodge.jpg' },
-  { name: 'Hiking Trails', icon: <HikeIcon className="w-8 h-8" />, count: 30, slug: 'hiking', image: '/images/Burlingame1-2048x1365.jpg' },
-  { name: 'Kayak & Watercraft', icon: <KayakIcon className="w-8 h-8" />, count: 12, slug: 'kayak-and-watercraft-rentals', image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg' },
-  { name: 'Lookout Pavilions', icon: <MountainIcon className="w-8 h-8" />, count: 2, slug: 'lookout-pavillions', image: '/images/monongahela/entrance-sign.jpg' },
-  { name: 'Scenic Drives', icon: <CarIcon className="w-8 h-8" />, count: 8, slug: 'scenic-drives', image: '/images/monongahela/entrance-sign.jpg' },
+  { name: 'Campground Rentals', icon: <CampIcon className="w-8 h-8" />, count: 25, slug: 'campground-rentals', image: '/images/indian-celina/campsite2.jpg' },
+  { name: 'Conference Centers', icon: <BuildingIcon className="w-8 h-8" />, count: 4, slug: 'conference-center-rentals', image: '/images/long-lake/weddings/dining-hall.jpg' },
+  { name: 'Hiking Trails', icon: <HikeIcon className="w-8 h-8" />, count: 30, slug: 'hiking', image: '/images/DSC_0103-2048x1365.jpg' },
+  { name: 'Kayak & Watercraft', icon: <KayakIcon className="w-8 h-8" />, count: 12, slug: 'kayak-and-watercraft-rentals', image: '/images/burlingame-kayaks.png' },
+  { name: 'Lookout Pavilions', icon: <MountainIcon className="w-8 h-8" />, count: 2, slug: 'lookout-pavillions', image: '/images/meramec-state-park/overlook-pavilion.jpg' },
+  { name: 'Scenic Drives', icon: <CarIcon className="w-8 h-8" />, count: 8, slug: 'scenic-drives', image: '/images/monongahela/scenic-drive.jpg' },
 ]
 
 export const metadata = {
@@ -145,13 +145,13 @@ export default function ExperiencesPage() {
         crumbName="Experiences"
         description="Explore 12+ recreation areas managed by BA Services — campgrounds, national forests, and state parks across AL, IN, ME, MI, MO, RI, and WV. Book your stay today."
         type="CollectionPage"
-        image="/images/bankhead-forest.jpg"
+        image="/images/Burlingame1-2048x1365.jpg"
       />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/bankhead-forest-1600.jpg" alt="" fill sizes="100vw" priority className="object-cover opacity-20" />
+          <Image src="/images/Burlingame1-1536x1024.jpg" alt="" fill sizes="100vw" priority className="object-cover opacity-20" />
         </div>
         <div className="container-custom px-6 relative z-10">
           <div className="max-w-3xl">

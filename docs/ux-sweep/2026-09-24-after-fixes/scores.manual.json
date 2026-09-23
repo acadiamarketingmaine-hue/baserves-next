@@ -1,0 +1,4 @@
+{
+  "_how": "path → {layer: 0|50|100}; overrides automatic scores (protocol §Scoring). Rerun with --baseline to diff.",
+  "/": {}
+}

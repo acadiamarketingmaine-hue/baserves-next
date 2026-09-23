@@ -275,8 +275,7 @@ export default function CorinthPage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { src: '/images/corinth-campground.jpg', alt: 'Corinth Recreation Area' },
-              { src: '/images/corinth-swimming.jpg', alt: 'Swimming beach at Corinth' },
+              { src: '/images/corinth-campground.jpg', alt: 'Fee and rules information board at Corinth Recreation Area' },
               { src: '/images/corinth-boat-ramp.jpg', alt: 'Boat ramp on Lewis Smith Lake' },
               { src: '/images/corinth-pavilion.jpg', alt: 'Group pavilion' },
               { src: '/images/corinth-camping-loop.jpg', alt: 'Camping loop at Corinth' },

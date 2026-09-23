@@ -24,8 +24,8 @@ export const hoosierNationalForest: PropertyContent = {
       'Explore Hoosier National Forest in southern Indiana. Three recreation areas with camping, swimming, fishing, boating, and hundreds of miles of trails.',
   },
   hero: {
-    src: '/images/hardin-ridge/aerial.jpg',
-    alt: 'Hoosier National Forest, Southern Indiana',
+    src: '/images/indian-celina/boat-launch.jpg',
+    alt: 'Forest-lined lake and boat launch at Indian-Celina Lakes, Hoosier National Forest, southern Indiana',
   },
   gallery: [],
   paragraphs: [
@@ -122,7 +122,7 @@ export const hoosierNationalForest: PropertyContent = {
           title: 'Hardin Ridge Recreation Area',
           href: '/hardin-ridge-recreation-area',
           body: '195 campsites on Monroe Lake — Indiana\'s largest reservoir. Features a swimming beach, boat ramp, and over 12 miles of trails winding through hardwood forest.',
-          photo: { src: '/images/hardin-ridge-entrance-sign.jpg', alt: 'Hardin Ridge Recreation Area' },
+          photo: { src: '/images/hardin-ridge/beach.jpg', alt: 'Swimming beach on Monroe Lake at Hardin Ridge Recreation Area' },
           badge: 'Monroe Lake',
         },
         {
@@ -130,7 +130,7 @@ export const hoosierNationalForest: PropertyContent = {
           title: 'Indian-Celina Lakes Recreation Area',
           href: '/indian-celina-lakes-recreation-area',
           body: 'Two scenic lakes nestled in the forest with an accessible fishing pier, camping, boat launch, and hiking trails through rolling southern Indiana terrain.',
-          photo: { src: '/images/indian-celina-entrance-sign.jpg', alt: 'Indian-Celina Lakes Recreation Area' },
+          photo: { src: '/images/indian-celina/lake-view.jpg', alt: 'Lake view from the fishing pier at Indian-Celina Lakes Recreation Area' },
           badge: 'Twin Lakes',
         },
         {
@@ -138,7 +138,7 @@ export const hoosierNationalForest: PropertyContent = {
           title: 'Tipsaw Lake Recreation Area',
           href: '/tipsaw-lake-recreation-area',
           body: '131-acre lake with 35+ campsites, a swimming beach, amphitheater, and over 8 miles of trails through some of the most rugged terrain in the forest.',
-          photo: { src: '/images/tipsaw-lake/lake-view.jpg', alt: 'Tipsaw Lake Recreation Area' },
+          photo: { src: '/images/tipsaw-lake/beach.jpg', alt: 'Swimming beach and playground on Tipsaw Lake' },
           badge: 'Lake Recreation',
         },
       ],

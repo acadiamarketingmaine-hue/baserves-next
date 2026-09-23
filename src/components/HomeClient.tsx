@@ -27,7 +27,7 @@ const allLocations = [
     location: 'Bankhead National Forest, AL',
     features: ['Camping', 'Swimming', 'Boat Ramp', 'Hiking', 'Group Camping'],
     stats: { campsites: '102', loops: '4', trails: '2' },
-    image: '/images/clear-creek-overview.jpg',
+    image: '/images/clear-creek-swimming.jpg',
     slug: 'experiences/clear-creek-recreation-area'
   },
   {
@@ -48,7 +48,7 @@ const allLocations = [
     location: 'Bloomington, IN | Hoosier National Forest',
     features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
     stats: { campsites: '195', lake: '10,750 ac', trails: '12+ mi' },
-    image: '/images/hardin-ridge-entrance-sign.jpg',
+    image: '/images/hardin-ridge/beach.jpg',
     slug: 'hardin-ridge-recreation-area'
   },
   {
@@ -58,7 +58,7 @@ const allLocations = [
     location: 'Perry County, IN | Hoosier National Forest',
     features: ['Fishing', 'Kayaking', 'Hiking', 'Swimming', 'RV & Tent Camping'],
     stats: { lakes: '2', campsites: '59', trails: 'Multiple' },
-    image: '/images/indian-celina-entrance-sign.jpg',
+    image: '/images/indian-celina/lake-view.jpg',
     slug: 'indian-celina-lakes-recreation-area'
   },
   {
@@ -68,7 +68,7 @@ const allLocations = [
     location: 'Perry County, IN | Hoosier National Forest',
     features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
     stats: { campsites: '49', lakeSize: '131 acres', trails: '8+ miles' },
-    image: '/images/tipsaw-entrance-sign.jpg',
+    image: '/images/tipsaw-lake/beach-swimming.jpg',
     slug: 'tipsaw-lake-recreation-area'
   },
   // Maine
@@ -79,7 +79,7 @@ const allLocations = [
     location: 'Fryeburg, ME',
     features: ['Kayaking', 'Fishing', 'Hiking', 'Wildlife Viewing', 'RV & Tent Camping'],
     stats: { sites: '36', waterfront: 'Saco River', views: 'White Mtns' },
-    image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
+    image: '/images/canal-bridge/beach-1.jpg',
     slug: 'experiences/canal-bridge'
   },
   // Michigan
@@ -121,7 +121,7 @@ const allLocations = [
     location: 'Sullivan, MO',
     features: ['Cabins', 'Float Trips', 'Cave Tours', 'Fishing', 'Hiking'],
     stats: { acres: '6,896', cabins: '19', river: 'Meramec' },
-    image: '/images/meramec-entrance-sign.jpg',
+    image: '/images/meramec-state-park/cabin-2.jpg',
     slug: 'experiences/meramec-state-park'
   },
   {
@@ -142,7 +142,7 @@ const allLocations = [
     location: 'Charlestown, RI',
     features: ['Swimming', 'Fishing', 'Boating', 'Hiking', 'Cabins'],
     stats: { campsites: '755', cabins: '20', acres: '3,100+' },
-    image: '/images/burlingame-entrance-sign.jpg',
+    image: '/images/Burlingame2-1536x1152.jpg',
     slug: 'experiences/burlingame-state-park'
   },
 ]
@@ -215,7 +215,7 @@ const statesData = [
         stats: { acres: '180,000+', birdSpecies: '84', wilderness: 'Sipsey' },
         activities: ['Birding', 'Waterfall Hikes', 'Sipsey Wilderness', 'Shooting Range', 'Scenic Drives'],
         href: '/bankhead-national-forest',
-        image: '/images/bankhead-forest.jpg',
+        image: '/images/bankhead-bicycle-trail.jpg',
       },
       {
         name: 'Clear Creek Recreation Area',
@@ -224,7 +224,7 @@ const statesData = [
         stats: { campsites: '102', loops: '4', trails: '2' },
         activities: ['Camping', 'Swimming Beach', 'Boat Ramp', 'Hiking Trails', 'Group Camping'],
         href: '/experiences/clear-creek-recreation-area',
-        image: '/images/clear-creek-overview.jpg',
+        image: '/images/clear-creek-swimming.jpg',
       },
       {
         name: 'Corinth Recreation Area',
@@ -249,7 +249,7 @@ const statesData = [
         stats: { acres: '200,000+', recAreas: '3', trails: '260+ miles' },
         activities: ['Camping', 'Hiking', 'Fishing', 'Swimming', 'Scenic Drives'],
         href: '/hoosier-national-forest',
-        image: '/images/hardin-ridge-entrance-sign.jpg',
+        image: '/images/indian-celina/fall-road.jpg',
       },
       {
         name: 'Hardin Ridge Recreation Area',
@@ -258,7 +258,7 @@ const statesData = [
         stats: { campsites: '195', trails: 'Multiple', lake: 'Monroe Lake' },
         activities: ['Hiking', 'Boating', 'Fishing', 'Swimming', 'RV & Tent Camping'],
         href: '/hardin-ridge-recreation-area',
-        image: '/images/hardin-ridge-entrance-sign.jpg',
+        image: '/images/hardin-ridge/beach.jpg',
       },
       {
         name: 'Indian-Celina Lakes Recreation Area',
@@ -267,7 +267,7 @@ const statesData = [
         stats: { campsites: '59', lakes: '2', trails: '10+ miles' },
         activities: ['Fishing', 'Kayaking', 'Hiking', 'Swimming', 'RV & Tent Camping'],
         href: '/indian-celina-lakes-recreation-area',
-        image: '/images/indian-celina-entrance-sign.jpg',
+        image: '/images/indian-celina/lake-view.jpg',
       },
       {
         name: 'Tipsaw Lake Recreation Area',
@@ -276,7 +276,7 @@ const statesData = [
         stats: { campsites: '49', lake: '131 acres', trails: '8+ miles' },
         activities: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
         href: '/tipsaw-lake-recreation-area',
-        image: '/images/tipsaw-entrance-sign.jpg',
+        image: '/images/tipsaw-lake/beach-swimming.jpg',
       },
     ],
   },
@@ -292,7 +292,7 @@ const statesData = [
         stats: { campsites: '36', tentSites: '5', river: 'Saco River' },
         activities: ['Kayaking', 'Fishing', 'River Access', 'Pet Friendly', 'RV & Tent Camping'],
         href: '/experiences/canal-bridge',
-        image: '/images/Canal-Bridge-Entrance-1-2048x1365.jpg',
+        image: '/images/canal-bridge/beach-1.jpg',
       },
     ],
   },
@@ -343,7 +343,7 @@ const statesData = [
         stats: { campsites: 'Multiple', river: 'Meramec River', acres: '6,800+' },
         activities: ['Watercraft Rentals', 'Camping', 'Hiking', 'Fishing', 'Swimming'],
         href: '/experiences/meramec-state-park',
-        image: '/images/meramec-entrance-sign.jpg',
+        image: '/images/meramec-state-park/cabin-2.jpg',
       },
       {
         name: 'Washington State Park',
@@ -352,7 +352,7 @@ const statesData = [
         stats: { campsites: '50+', trails: '10+ miles', acres: '2,157' },
         activities: ['Hiking', 'Camping', 'Swimming', 'Historic Sites', 'Watercraft Rentals'],
         href: '/washington-state-park',
-        image: '/images/Burlingame2-1536x1152.jpg',
+        image: '/images/washington-thunderbird-lodge.png',
       },
     ],
   },
@@ -368,7 +368,7 @@ const statesData = [
         stats: { campsites: '755', cabins: '20', acres: '3,100+' },
         activities: ['Swimming', 'Fishing', 'Boating', 'Hiking', 'Wildlife Viewing'],
         href: '/experiences/burlingame-state-park',
-        image: '/images/burlingame-entrance-sign.jpg',
+        image: '/images/Burlingame2-1536x1152.jpg',
       },
     ],
   },
@@ -384,7 +384,7 @@ const statesData = [
         stats: { acres: '921,000+', trails: '800+ miles', elevation: '4,863 ft' },
         activities: ['Hiking', 'Scenic Drives', 'Fishing', 'Rock Climbing', 'Camping'],
         href: '/monongahela-national-forest',
-        image: '/images/monongahela/entrance-sign.jpg',
+        image: '/images/monongahela/spruce-knob-panorama.jpg',
       },
       {
         name: 'Big Bend Campground',
@@ -411,7 +411,7 @@ const statesData = [
         stats: { sites: '80+', landmark: 'Seneca Rocks', river: 'North Fork' },
         activities: ['Camping', 'Rock Climbing', 'Hiking', 'Fishing', 'Scenic Views'],
         href: '/monongahela-national-forest/seneca-shadows-campground',
-        image: '/images/monongahela/entrance-sign.jpg',
+        image: '/images/monongahela/seneca-rocks-sign.jpg',
       },
       {
         name: 'Spruce Knob Lake Campground',
@@ -420,7 +420,7 @@ const statesData = [
         stats: { elevation: '4,863 ft', lake: 'Spruce Knob Lake', sites: '42' },
         activities: ['Camping', 'Fishing', 'Hiking', 'Stargazing', 'Nature Study'],
         href: '/monongahela-national-forest/spruce-knob-lake-campground',
-        image: '/images/monongahela/entrance-sign.jpg',
+        image: '/images/monongahela/spruce-knob-sign.jpg',
       },
       {
         name: 'Gatewood Group Campground',

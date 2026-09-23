@@ -5,7 +5,7 @@ export const tourStops = [
     name: 'Bankhead National Forest',
     lat: 34.20, lng: -87.35,
     summary: "First up, Bankhead National Forest in Alabama! 180,000 acres they call the 'Land of a Thousand Waterfalls' — and let me tell you, it lives up to the name. The Sipsey Wilderness out here is absolutely stunning, 84 species of birds, and we've got two awesome campgrounds right in the heart of it.",
-    images: ['/images/bankhead-forest.jpg', '/images/Bankhead-Waterfall.png', '/images/bankhead-bicycle-trail.jpg', '/images/clear-creek-bent-twig.jpg'],
+    images: ['/images/Bankhead-Waterfall.png', '/images/bankhead-bicycle-trail.jpg', '/images/clear-creek-swimming.jpg', '/images/clear-creek-bent-twig.jpg'],
   },
   {
     slug: 'experiences/clear-creek-recreation-area',
@@ -13,7 +13,7 @@ export const tourStops = [
     name: 'Clear Creek Recreation Area',
     lat: 34.27, lng: -87.33,
     summary: "Now this is Clear Creek — right on Lewis Smith Lake. 102 campsites across 4 loops, a swimming beach that's perfect on a hot Alabama day, a boat ramp to get out on the water, and some killer hiking trails through the Bankhead National Forest. It's a gem!",
-    images: ['/images/clear-creek-overview.jpg', '/images/clear-creek-swimming.jpg', '/images/clear-creek-boat-ramp.jpg', '/images/clear-creek-camping.jpg', '/images/clear-creek-shelter.jpg'],
+    images: ['/images/clear-creek-swimming.jpg', '/images/clear-creek-hoot-owl-loop.jpg', '/images/clear-creek-camping.jpg', '/images/clear-creek-shelter.jpg', '/images/clear-creek-overview.jpg'],
   },
   {
     slug: 'experiences/corinth-recreation-area',
@@ -21,7 +21,7 @@ export const tourStops = [
     name: 'Corinth Recreation Area',
     lat: 34.15, lng: -87.15,
     summary: "Corinth is also on Lewis Smith Lake — 52 full-hookup sites so you can bring the RV, plus 10 tent sites for the traditionalists. They've got a huge 100-person pavilion and the Bobwhite Trail right there. Great for groups!",
-    images: ['/images/corinth-campground.jpg', '/images/corinth-swimming.jpg', '/images/corinth-boat-ramp.jpg', '/images/corinth-pavilion.jpg', '/images/corinth-camping-loop.jpg'],
+    images: ['/images/corinth-boat-ramp.jpg', '/images/corinth-pavilion.jpg', '/images/corinth-camping-loop.jpg', '/images/corinth-campground.jpg'],
   },
   {
     slug: 'hardin-ridge-recreation-area',
@@ -37,7 +37,7 @@ export const tourStops = [
     name: 'Indian-Celina Lakes',
     lat: 38.35, lng: -86.60,
     summary: "Indian-Celina is a special one — twin lakes tucked away in Perry County with 59 campsites, a fully accessible fishing pier, kayaking, and 10 miles of trails. It's the kind of place where you can really disconnect and just enjoy nature.",
-    images: ['/images/indian-celina/entrance.jpg', '/images/indian-celina/fishing-pier.jpg', '/images/indian-celina/fall-road.jpg', '/images/indian-celina/lake-view.jpg', '/images/indian-celina/boat-launch.jpg'],
+    images: ['/images/indian-celina/lake-view.jpg', '/images/indian-celina/fall-road.jpg', '/images/indian-celina/campsite2.jpg', '/images/indian-celina/entrance.jpg'],
   },
   {
     slug: 'tipsaw-lake-recreation-area',
@@ -45,7 +45,7 @@ export const tourStops = [
     name: 'Tipsaw Lake Recreation Area',
     lat: 38.23, lng: -86.62,
     summary: "Tipsaw Lake! This is a hidden gem — 131-acre lake, 49 campsites, 8 miles of trails, and some of the best fishing in southern Indiana. If you haven't been here, put it on your list!",
-    images: ['/images/tipsaw-lake/lake-view.jpg', '/images/tipsaw-lake/beach-swimming.jpg', '/images/tipsaw-lake/campsite1.jpg', '/images/tipsaw-lake/entrance.jpg', '/images/tipsaw-lake/amphitheater.jpg'],
+    images: ['/images/tipsaw-lake/beach-swimming.jpg', '/images/tipsaw-lake/campsite1.jpg', '/images/tipsaw-lake/amphitheater.jpg', '/images/tipsaw-lake/entrance.jpg'],
   },
   {
     slug: 'experiences/canal-bridge',
@@ -53,7 +53,7 @@ export const tourStops = [
     name: 'Canal Bridge Campground',
     lat: 44.02, lng: -70.97,
     summary: "Let's head up to Maine! Canal Bridge Campground is right on the Saco River in Fryeburg. 36 campsites, fantastic kayaking, great fishing, and you wake up every morning to those White Mountain views. Doesn't get much better than that!",
-    images: ['/images/canal-bridge/entrance.jpg', '/images/canal-bridge/site-1.jpg', '/images/canal-bridge/beach-1.jpg', '/images/canal-bridge/site-6.jpg', '/images/canal-bridge/beach-2.jpg'],
+    images: ['/images/canal-bridge/beach-1.jpg', '/images/canal-bridge/site-1.jpg', '/images/canal-bridge/beach-2.jpg', '/images/canal-bridge/site-6.jpg', '/images/canal-bridge/entrance.jpg'],
   },
   {
     slug: 'yankee-springs-recreation-area',
@@ -61,7 +61,7 @@ export const tourStops = [
     name: 'Yankee Springs Recreation Area',
     lat: 42.62, lng: -85.32,
     summary: "Now Michigan — Yankee Springs is a powerhouse! Over 5,200 acres in Barry County with 200 campsites, 30 miles of trails for hiking and mountain biking, and outdoor adventure year-round. Summer, fall, winter, spring — it's always a good time here.",
-    images: ['/images/yankee-springs/hill-cabins.jpg', '/images/yankee-springs/lake-cabins.jpg', '/images/yankee-springs/mansion-house.jpg', '/images/yankee-springs/stage-house.jpg', '/images/yankee-springs/infirmary.jpg'],
+    images: ['/images/yankee-springs/hill-cabins.jpg', '/images/yankee-springs/lake-cabins.jpg', '/images/yankee-springs/mansion-house.jpg', '/images/yankee-springs/road-house.jpg'],
   },
   {
     slug: 'long-lake-outdoor-center',
@@ -69,7 +69,7 @@ export const tourStops = [
     name: 'Long Lake Outdoor Center',
     lat: 42.55, lng: -85.40,
     summary: "Long Lake is something special — a retreat center originally built by the Civilian Conservation Corps. 16 cabins, a private lake, outdoor education programs, and honestly one of the most beautiful wedding venues in Michigan. It's got that rustic charm you can't fake.",
-    images: ['/images/long-lake/fall-aerial.jpg', '/images/long-lake/lodge.jpg', '/images/long-lake/wedding-ceremony.jpg', '/images/long-lake/cabins.jpg', '/images/long-lake/lake.jpg'],
+    images: ['/images/long-lake/fall-aerial.jpg', '/images/long-lake/lodge.jpg', '/images/long-lake/wedding-ceremony.jpg', '/images/long-lake/weddings/cabins-lawn.jpg', '/images/long-lake/weddings/lake-dock-wide.jpg'],
   },
   {
     slug: 'experiences/meramec-state-park',
@@ -77,7 +77,7 @@ export const tourStops = [
     name: 'Meramec State Park',
     lat: 38.22, lng: -91.08,
     summary: "Over to Missouri! Meramec State Park — nearly 7,000 acres along the Meramec River. 19 cabins, a motel, amazing float trips, and Fisher Cave. If you love caving, this is your spot. The river here is just unbelievable.",
-    images: ['/images/meramec-entrance-sign.jpg', '/images/meramec-state-park/cabin-2.jpg', '/images/meramec-state-park/watercraft-rentals.jpg', '/images/meramec-state-park/float-takeout.jpg', '/images/meramec-state-park/cabin-6.jpg'],
+    images: ['/images/meramec-state-park/cabin-2.jpg', '/images/Fisher-Cave-2-2048x1536.jpg', '/images/meramec-state-park/watercraft-rentals.jpg', '/images/meramec-state-park/float-takeout.jpg', '/images/meramec-state-park/cabin-6.jpg'],
   },
   {
     slug: 'washington-state-park',
@@ -93,7 +93,7 @@ export const tourStops = [
     name: 'Burlingame State Park',
     lat: 41.38, lng: -71.72,
     summary: "Rhode Island's pride and joy! Burlingame has been going strong since 1934 — 755 campsites, 20 rustic cabins right on Watchaug Pond, over 3,100 acres. It's the biggest campground in the state and it's an absolute blast.",
-    images: ['/images/burlingame-entrance-sign.jpg', '/images/burlingame-beach.png', '/images/burlingame-cabin.png', '/images/burlingame-kayaks.png', '/images/burlingame-lakefront.png'],
+    images: ['/images/burlingame-beach.png', '/images/burlingame-cabin.png', '/images/burlingame-kayaks.png', '/images/burlingame-lakefront.png', '/images/burlingame-entrance-sign.jpg'],
   },
   {
     slug: 'monongahela-national-forest',
@@ -101,6 +101,6 @@ export const tourStops = [
     name: 'Monongahela National Forest',
     lat: 38.70, lng: -79.80,
     summary: "And last but definitely not least — the Monongahela in West Virginia. Over 921,000 acres across the Alleghenies, 800 miles of trails, five wilderness areas, and peaks nearly hitting 5,000 feet. This is wild, rugged, breathtaking country. And that wraps our tour!",
-    images: ['/images/monongahela/spruce-knob-panorama.jpg', '/images/monongahela/entrance-sign.jpg', '/images/monongahela/seneca-rocks-sign.jpg', '/images/monongahela/spruce-treetops.jpg'],
+    images: ['/images/monongahela/spruce-knob-panorama.jpg', '/images/monongahela/spruce-treetops.jpg', '/images/monongahela/scenic-drive.jpg', '/images/monongahela/entrance-sign.jpg'],
   },
 ]

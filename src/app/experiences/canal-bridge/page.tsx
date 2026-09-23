@@ -141,7 +141,7 @@ export default function CanalBridgePage() {
         name="Canal Bridge Campground | Saco River, Fryeburg, Maine | BA Services"
         crumbName="Canal Bridge Campground"
         description="Discover Canal Bridge Campground on the Saco River in Fryeburg, Maine. 36 numbered campsites, river frontage for kayaking, canoeing, and fishing with stunning White Mountain views."
-        image="/images/canal-bridge/entrance.jpg"
+        image="/images/canal-bridge/beach-1.jpg"
         crumbs={[{ name: "Experiences", url: "/experiences" }]}
       />
 
@@ -149,8 +149,8 @@ export default function CanalBridgePage() {
       <section className="relative h-[70vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/images/canal-bridge/entrance.jpg"
-            alt="Canal Bridge Campground on the Saco River in Fryeburg, Maine"
+            src="/images/canal-bridge/beach-1.jpg"
+            alt="Sandy beach on the Saco River at Canal Bridge Campground in Fryeburg, Maine"
             fill
             sizes="100vw"
             className="object-cover"

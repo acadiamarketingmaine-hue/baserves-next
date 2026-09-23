@@ -32,8 +32,8 @@ export const hardinRidgeRecreationArea: PropertyContent = {
       'Explore Hardin Ridge Recreation Area on Monroe Lake in Hoosier National Forest. 195 campsites, swimming beach, boat ramp, and 12+ miles of trails.',
   },
   hero: {
-    src: '/images/hardin-ridge-entrance-sign.jpg',
-    alt: 'Hardin Ridge Recreation Area beach on Monroe Lake, Indiana',
+    src: '/images/hardin-ridge/boat-dock.jpg',
+    alt: 'Boat dock and ramp on Monroe Lake at Hardin Ridge Recreation Area, Indiana',
   },
   gallery: [
     { src: '/images/hardin-ridge/beach.jpg', alt: 'Swimming beach on Monroe Lake at Hardin Ridge' },
@@ -41,7 +41,7 @@ export const hardinRidgeRecreationArea: PropertyContent = {
     { src: '/images/hardin-ridge/cabin-front.jpg', alt: 'Cabin front at Hardin Ridge' },
     { src: '/images/hardin-ridge/cabin-interior.jpg', alt: 'Cabin interior' },
     { src: '/images/hardin-ridge/overlook.jpg', alt: 'Monroe Lake overlook and interpretive sign' },
-    { src: '/images/hardin-ridge/aerial.jpg', alt: 'Aerial view of Hardin Ridge Recreation Area' },
+    { src: '/images/hardin-ridge/aerial.jpg', alt: 'Monroe Lake seen through the trees from a wooden deck at Hardin Ridge' },
     { src: '/images/hardin-ridge/campsite.jpg', alt: 'Campsite in the Hoosier National Forest' },
     { src: '/images/hardin-ridge/shelter.jpg', alt: 'Shelter house with Monroe Lake view' },
     { src: '/images/hardin-ridge/entrance.jpg', alt: 'Hardin Ridge entrance sign' },
