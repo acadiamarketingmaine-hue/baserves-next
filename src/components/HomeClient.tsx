@@ -67,7 +67,7 @@ const allLocations = [
     description: 'A perfect getaway for families, anglers, and outdoor enthusiasts',
     location: 'Perry County, IN | Hoosier National Forest',
     features: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
-    stats: { campsites: '35+', lakeSize: '131 acres', trails: '8+ miles' },
+    stats: { campsites: '49', lakeSize: '131 acres', trails: '8+ miles' },
     image: '/images/tipsaw-entrance-sign.jpg',
     slug: 'tipsaw-lake-recreation-area'
   },
@@ -273,7 +273,7 @@ const statesData = [
         name: 'Tipsaw Lake Recreation Area',
         tagline: 'Scenic Lakeside Camping & Outdoor Adventure in Indiana',
         location: 'Perry County, IN | Hoosier National Forest',
-        stats: { campsites: '35+', lake: '131 acres', trails: '8+ miles' },
+        stats: { campsites: '49', lake: '131 acres', trails: '8+ miles' },
         activities: ['Boating', 'Fishing', 'Hiking', 'Swimming', 'RV & Tent Camping'],
         href: '/tipsaw-lake-recreation-area',
         image: '/images/tipsaw-entrance-sign.jpg',

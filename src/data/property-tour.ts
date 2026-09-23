@@ -44,7 +44,7 @@ export const tourStops = [
     state: 'IN',
     name: 'Tipsaw Lake Recreation Area',
     lat: 38.23, lng: -86.62,
-    summary: "Tipsaw Lake! This is a hidden gem — 131-acre lake, 35 campsites, 8 miles of trails, and some of the best fishing in southern Indiana. If you haven't been here, put it on your list!",
+    summary: "Tipsaw Lake! This is a hidden gem — 131-acre lake, 49 campsites, 8 miles of trails, and some of the best fishing in southern Indiana. If you haven't been here, put it on your list!",
     images: ['/images/tipsaw-lake/lake-view.jpg', '/images/tipsaw-lake/beach-swimming.jpg', '/images/tipsaw-lake/campsite1.jpg', '/images/tipsaw-lake/entrance.jpg', '/images/tipsaw-lake/amphitheater.jpg'],
   },
   {

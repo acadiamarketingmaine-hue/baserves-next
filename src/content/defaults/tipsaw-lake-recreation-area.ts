@@ -62,7 +62,7 @@ export const tipsawLakeRecreationArea: PropertyContent = {
   ],
   stats: [
     { key: 'lake', value: '131 Acre', label: 'Lake' },
-    { key: 'campsites', value: '35+', label: 'Campsites' },
+    { key: 'campsites', value: '49', label: 'Campsites' },
     { key: 'trails', value: '8+', label: 'Miles Trails' },
     { key: 'open', value: 'Apr–Oct', label: 'Season' },
   ],
@@ -177,7 +177,7 @@ export const tipsawLakeRecreationArea: PropertyContent = {
         {
           key: 'campgrounds',
           title: 'Campgrounds',
-          body: 'Over 35 campsites spread across three loops accommodate tent campers and RV enthusiasts alike, with electric hookups and well-spaced pads nestled among hardwood forest.',
+          body: '49 campsites spread across three loops and the group area accommodate tent campers and RV enthusiasts alike, with electric hookups and well-spaced pads nestled among hardwood forest.',
           photo: { src: '/images/tipsaw-lake/campsite1.jpg', alt: 'Campgrounds' },
         },
       ],
@@ -232,7 +232,7 @@ export const tipsawLakeRecreationArea: PropertyContent = {
         {
           key: 'camping',
           title: 'Camping',
-          body: 'Choose from over 35 sites across three loops: tent-friendly electric sites near the beach, shaded woodland spots, and full-hookup RV pads with 50-amp service and water.',
+          body: 'Choose from 49 sites across three loops and the group area: tent-friendly electric sites near the beach, shaded woodland spots, and full-hookup RV pads with 50-amp service and water.',
         },
         {
           key: 'picnicking',
