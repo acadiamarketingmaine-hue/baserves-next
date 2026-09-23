@@ -97,8 +97,7 @@ export default async function MonongahelaNationalForestPage() {
               <a
                 key={cg.key}
                 href={cg.href!}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(cg.href!.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-forest-DEFAULT text-white text-sm font-semibold rounded-lg hover:bg-forest-dark transition-colors"
               >
                 {cg.title}
@@ -199,7 +198,7 @@ export default async function MonongahelaNationalForestPage() {
                 </p>
                 <div className="space-y-2">
                   {exploreLinks.map((cg) => (
-                    <a key={cg.key} href={cg.href!} target="_blank" rel="noopener noreferrer" className="block w-full text-center py-2.5 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+                    <a key={cg.key} href={cg.href!} {...(cg.href!.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="block w-full text-center py-2.5 bg-white text-forest-DEFAULT text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
                       {cg.title}
                     </a>
                   ))}
@@ -474,7 +473,7 @@ export default async function MonongahelaNationalForestPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {footerLinks.map((cg) => (
-              <a key={cg.key} href={cg.href!} target="_blank" rel="noopener noreferrer" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100 text-sm">
+              <a key={cg.key} href={cg.href!} {...(cg.href!.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100 text-sm">
                 {cg.title}
               </a>
             ))}

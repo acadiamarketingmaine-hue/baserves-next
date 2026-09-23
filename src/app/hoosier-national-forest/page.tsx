@@ -119,8 +119,7 @@ export default async function HoosierNationalForestPage() {
               <a
                 key={cg.label}
                 href={cg.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(cg.url.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-forest-DEFAULT text-white text-sm font-semibold rounded-lg hover:bg-forest-dark transition-colors"
               >
                 {cg.label}
