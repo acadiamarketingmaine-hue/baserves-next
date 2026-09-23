@@ -37,7 +37,7 @@ export const tourStops = [
     name: 'Indian-Celina Lakes',
     lat: 38.35, lng: -86.60,
     summary: "Indian-Celina is a special one — twin lakes tucked away in Perry County with 59 campsites, a fully accessible fishing pier, kayaking, and 10 miles of trails. It's the kind of place where you can really disconnect and just enjoy nature.",
-    images: ['/images/indian-celina/entrance.jpg', '/images/indian-celina/fishing-pier.jpg', '/images/indian-celina/fall-road.jpg', '/images/indian-celina/lake-view.jpg', '/images/indian-celina/boat-launch.jpg'],
+    images: ['/images/indian-celina/lake-view.jpg', '/images/indian-celina/fall-road.jpg', '/images/indian-celina/campsite2.jpg', '/images/indian-celina/entrance.jpg'],
   },
   {
     slug: 'tipsaw-lake-recreation-area',
@@ -45,7 +45,7 @@ export const tourStops = [
     name: 'Tipsaw Lake Recreation Area',
     lat: 38.23, lng: -86.62,
     summary: "Tipsaw Lake! This is a hidden gem — 131-acre lake, 49 campsites, 8 miles of trails, and some of the best fishing in southern Indiana. If you haven't been here, put it on your list!",
-    images: ['/images/tipsaw-lake/lake-view.jpg', '/images/tipsaw-lake/beach-swimming.jpg', '/images/tipsaw-lake/campsite1.jpg', '/images/tipsaw-lake/entrance.jpg', '/images/tipsaw-lake/amphitheater.jpg'],
+    images: ['/images/tipsaw-lake/beach-swimming.jpg', '/images/tipsaw-lake/campsite1.jpg', '/images/tipsaw-lake/amphitheater.jpg', '/images/tipsaw-lake/entrance.jpg'],
   },
   {
     slug: 'experiences/canal-bridge',
@@ -53,7 +53,7 @@ export const tourStops = [
     name: 'Canal Bridge Campground',
     lat: 44.02, lng: -70.97,
     summary: "Let's head up to Maine! Canal Bridge Campground is right on the Saco River in Fryeburg. 36 campsites, fantastic kayaking, great fishing, and you wake up every morning to those White Mountain views. Doesn't get much better than that!",
-    images: ['/images/canal-bridge/entrance.jpg', '/images/canal-bridge/site-1.jpg', '/images/canal-bridge/beach-1.jpg', '/images/canal-bridge/site-6.jpg', '/images/canal-bridge/beach-2.jpg'],
+    images: ['/images/canal-bridge/beach-1.jpg', '/images/canal-bridge/site-1.jpg', '/images/canal-bridge/beach-2.jpg', '/images/canal-bridge/site-6.jpg', '/images/canal-bridge/entrance.jpg'],
   },
   {
     slug: 'yankee-springs-recreation-area',
@@ -61,7 +61,7 @@ export const tourStops = [
     name: 'Yankee Springs Recreation Area',
     lat: 42.62, lng: -85.32,
     summary: "Now Michigan — Yankee Springs is a powerhouse! Over 5,200 acres in Barry County with 200 campsites, 30 miles of trails for hiking and mountain biking, and outdoor adventure year-round. Summer, fall, winter, spring — it's always a good time here.",
-    images: ['/images/yankee-springs/hill-cabins.jpg', '/images/yankee-springs/lake-cabins.jpg', '/images/yankee-springs/mansion-house.jpg', '/images/yankee-springs/stage-house.jpg', '/images/yankee-springs/infirmary.jpg'],
+    images: ['/images/yankee-springs/hill-cabins.jpg', '/images/yankee-springs/lake-cabins.jpg', '/images/yankee-springs/mansion-house.jpg', '/images/yankee-springs/road-house.jpg'],
   },
   {
     slug: 'long-lake-outdoor-center',
@@ -93,7 +93,7 @@ export const tourStops = [
     name: 'Burlingame State Park',
     lat: 41.38, lng: -71.72,
     summary: "Rhode Island's pride and joy! Burlingame has been going strong since 1934 — 755 campsites, 20 rustic cabins right on Watchaug Pond, over 3,100 acres. It's the biggest campground in the state and it's an absolute blast.",
-    images: ['/images/burlingame-entrance-sign.jpg', '/images/burlingame-beach.png', '/images/burlingame-cabin.png', '/images/burlingame-kayaks.png', '/images/burlingame-lakefront.png'],
+    images: ['/images/burlingame-beach.png', '/images/burlingame-cabin.png', '/images/burlingame-kayaks.png', '/images/burlingame-lakefront.png', '/images/burlingame-entrance-sign.jpg'],
   },
   {
     slug: 'monongahela-national-forest',
@@ -101,6 +101,6 @@ export const tourStops = [
     name: 'Monongahela National Forest',
     lat: 38.70, lng: -79.80,
     summary: "And last but definitely not least — the Monongahela in West Virginia. Over 921,000 acres across the Alleghenies, 800 miles of trails, five wilderness areas, and peaks nearly hitting 5,000 feet. This is wild, rugged, breathtaking country. And that wraps our tour!",
-    images: ['/images/monongahela/spruce-knob-panorama.jpg', '/images/monongahela/entrance-sign.jpg', '/images/monongahela/seneca-rocks-sign.jpg', '/images/monongahela/spruce-treetops.jpg'],
+    images: ['/images/monongahela/spruce-knob-panorama.jpg', '/images/monongahela/spruce-treetops.jpg', '/images/monongahela/scenic-drive.jpg', '/images/monongahela/entrance-sign.jpg'],
   },
 ]
