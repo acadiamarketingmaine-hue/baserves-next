@@ -335,8 +335,8 @@ export default function PropertyMap() {
         style={{ height: '100%', width: '100%', minHeight: tourMode ? '85vh' : '400px', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
       >
         <TileLayer
-          attribution='&copy; <a href="https://carto.com/">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {properties.map((property) => (
           <HoverMarker key={property.slug} property={property} />
