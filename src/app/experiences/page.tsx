@@ -197,7 +197,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* All Locations */}
-      <section className="section">
+      <section id="all-recreation-areas" className="section scroll-mt-24">
         <div className="container-custom px-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">All Recreation Areas</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -256,9 +256,7 @@ export default function ExperiencesPage() {
             Book your stay at one of our pristine recreation areas today. <Link href="/contact" className="underline hover:text-white transition-colors">Reach out</Link> with any questions, <Link href="/leave-a-review" className="underline hover:text-white transition-colors">share your feedback</Link> after your visit, or explore <Link href="/careers" className="underline hover:text-white transition-colors">career opportunities</Link> with our team. Return to our <Link href="/" className="underline hover:text-white transition-colors">homepage</Link> to see everything we offer.
           </p>
           <a
-            href="https://escape.baserves.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#all-recreation-areas"
             className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
           >
             Book Now

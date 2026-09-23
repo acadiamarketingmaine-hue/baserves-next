@@ -177,7 +177,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
                     <span className="text-forest-DEFAULT font-bold">{exp.price}</span>
                   </div>
                   <Link
-                    href={exp.href || 'https://escape.baserves.com'}
+                    href={exp.href || '/experiences'}
                     className="mt-4 block w-full text-center py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
                   >
                     View Details

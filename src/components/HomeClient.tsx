@@ -1227,9 +1227,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
 
             <div className="flex flex-wrap gap-4 animate-fade-in-up delay-300">
               <a
-                href="https://escape.baserves.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/experiences"
                 className="btn-primary text-lg"
               >
                 Book Your Adventure
@@ -1406,9 +1404,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
 
           <div className="text-center mt-12">
             <a
-              href="https://escape.baserves.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/experiences"
               className="btn-secondary"
             >
               Book Your Stay
@@ -1591,9 +1587,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://escape.baserves.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/experiences"
               className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
             >
               Book Now

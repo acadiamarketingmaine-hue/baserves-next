@@ -14,7 +14,7 @@ const topNavLinks = [
 ]
 
 const secondaryNavLinks = [
-  { name: 'Book', href: 'https://escape.baserves.com', external: true },
+  { name: 'Book', href: '/experiences' },
   { name: 'My Reservations', href: 'https://escape.baserves.com/customer/login', external: true },
   { name: 'Campgrounds', href: '/experiences/categories/campground-rentals' },
   { name: 'Watercraft', href: '/experiences/categories/kayak-and-watercraft-rentals' },
@@ -151,7 +151,7 @@ const searchIndex: SearchItem[] = [
   { title: 'Lookout Pavilions', description: 'Scenic overlooks and covered pavilions', href: '/experiences/categories/lookout-pavillions', category: 'Experiences', keywords: ['lookout', 'pavilion', 'overlook', 'picnic', 'gathering'] },
 
   // Booking
-  { title: 'Book a Reservation', description: 'Book cabins, campsites, and watercraft', href: 'https://escape.baserves.com', category: 'Booking', keywords: ['book', 'reserve', 'reservation', 'booking'] },
+  { title: 'Book a Reservation', description: 'Book cabins, campsites, and watercraft', href: '/experiences', category: 'Booking', keywords: ['book', 'reserve', 'reservation', 'booking'] },
   { title: 'My Reservations', description: 'View and manage your reservations', href: 'https://escape.baserves.com/customer/login', category: 'Booking', keywords: ['reservations', 'my bookings', 'manage', 'login', 'account'] },
 ]
 
@@ -779,7 +779,7 @@ export default function Navigation({
                     <p className="text-xs text-gray-400 font-medium uppercase tracking-wide mb-2">Quick Links</p>
                     {[
                       { title: 'All Locations', href: '/experiences' },
-                      { title: 'Book a Reservation', href: 'https://escape.baserves.com' },
+                      { title: 'Book a Reservation', href: '/experiences#all-recreation-areas' },
                       { title: 'Careers', href: '/careers' },
                       { title: 'Contact Us', href: '/contact' },
                     ].map((item) => (

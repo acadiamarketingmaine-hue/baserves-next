@@ -123,7 +123,7 @@ export default function RewardsPage() {
               The rewards program is currently in development. In the meantime, keep booking with us &mdash; your loyalty won&apos;t go unnoticed.
             </p>
             <Link
-              href="https://escape.baserves.com"
+              href="/experiences"
               className="inline-flex items-center gap-2 px-8 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
             >
               Book Your Next Adventure
