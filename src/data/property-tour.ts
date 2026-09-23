@@ -77,7 +77,7 @@ export const tourStops = [
     name: 'Meramec State Park',
     lat: 38.22, lng: -91.08,
     summary: "Over to Missouri! Meramec State Park — nearly 7,000 acres along the Meramec River. 19 cabins, a motel, amazing float trips, and Fisher Cave. If you love caving, this is your spot. The river here is just unbelievable.",
-    images: ['/images/meramec-entrance-sign.jpg', '/images/meramec-state-park/cabin-2.jpg', '/images/meramec-state-park/watercraft-rentals.jpg', '/images/meramec-state-park/float-takeout.jpg', '/images/meramec-state-park/cabin-6.jpg'],
+    images: ['/images/meramec-state-park/cabin-2.jpg', '/images/Fisher-Cave-2-2048x1536.jpg', '/images/meramec-state-park/watercraft-rentals.jpg', '/images/meramec-state-park/float-takeout.jpg', '/images/meramec-state-park/cabin-6.jpg'],
   },
   {
     slug: 'washington-state-park',

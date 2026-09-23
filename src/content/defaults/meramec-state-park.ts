@@ -28,7 +28,7 @@ export const meramecStatePark: PropertyContent = {
   },
   hero: {
     src: '/images/meramec-state-park/cabin-2.jpg',
-    alt: 'Meramec State Park cabin along the Meramec River in Sullivan, Missouri',
+    alt: 'Rustic cabin with picnic table at Meramec State Park in Sullivan, Missouri',
   },
   gallery: [
     { src: '/images/meramec-state-park/cabin-2.jpg', alt: 'Cabin at Meramec State Park' },
@@ -42,10 +42,10 @@ export const meramecStatePark: PropertyContent = {
     { src: '/images/meramec-state-park/cabin-14-15.jpg', alt: 'Paired cabins in the forest' },
     { src: '/images/meramec-state-park/cabin-16-17.jpg', alt: 'Adjacent cabins at Meramec' },
     { src: '/images/meramec-state-park/cabin-19.jpg', alt: 'Cabin 19 at Meramec State Park' },
-    { src: '/images/meramec-state-park/watercraft-rentals.jpg', alt: 'Watercraft rentals on the Meramec River' },
+    { src: '/images/meramec-state-park/watercraft-rentals.jpg', alt: 'Parking lot at the watercraft rental area' },
     { src: '/images/meramec-state-park/riverstop-interior.jpg', alt: 'Inside the Riverstop Store' },
     { src: '/images/meramec-state-park/float-takeout.jpg', alt: 'Float trip takeout on the Meramec River' },
-    { src: '/images/meramec-entrance-sign.jpg', alt: 'CCC monument at Meramec State Park' },
+    { src: '/images/meramec-state-park/ccc-monument.jpg', alt: 'CCC monument at Meramec State Park' },
     { src: '/images/meramec-state-park/fireside-store.jpg', alt: 'Fireside Store & Grill' },
   ],
   paragraphs: [
@@ -183,7 +183,7 @@ export const meramecStatePark: PropertyContent = {
         { key: 'bear-claws', title: 'Bear Claw Marks' },
         {
           key: 'photo',
-          photo: { src: '/images/meramec-state-park/cabin-19.jpg', alt: 'Fisher Cave at Meramec State Park' },
+          photo: { src: '/images/Fisher-Cave-2-2048x1536.jpg', alt: 'Gated entrance to Fisher Cave at Meramec State Park' },
         },
       ],
     },
@@ -196,8 +196,8 @@ export const meramecStatePark: PropertyContent = {
         {
           key: 'photo',
           photo: {
-            src: '/images/meramec-state-park/watercraft-rentals.jpg',
-            alt: 'Watercraft rentals for floating the Meramec River',
+            src: '/images/Meramec-State-Park-Overview-Image.jpg',
+            alt: 'The Meramec River at Meramec State Park',
           },
         },
         { key: 'rates-heading', title: 'Watercraft Rental Rates' },
@@ -227,7 +227,7 @@ export const meramecStatePark: PropertyContent = {
           key: 'visitor-center',
           title: 'Visitor Center',
           body: 'Discover the natural and cultural history of the park through nature exhibits and aquariums featuring native fish species. Helpful staff provide park information and trail recommendations.',
-          photo: { src: '/images/meramec-entrance-sign.jpg', alt: 'Visitor Center' },
+          photo: { src: '/images/meramec-entrance-sign.jpg', alt: 'Meramec State Park stone entrance sign' },
         },
         {
           key: 'hickory-ridge-motel',
