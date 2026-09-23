@@ -54,7 +54,7 @@ export const indianCelinaLakesRecreationArea: PropertyContent = {
   ],
   stats: [
     { key: 'lakes', value: '2', label: 'Lakes' },
-    { key: 'campsites', value: '80+', label: 'Campsites' },
+    { key: 'campsites', value: '63', label: 'Campsites' },
     { key: 'trailLoops', value: 'Trail', label: 'Loops' },
     { key: 'open', value: 'Apr–Oct', label: 'Season' },
   ],
