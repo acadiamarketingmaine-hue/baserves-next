@@ -9,16 +9,19 @@ import type { PropertyContent } from '../types'
  * location line and stats) - recorded in
  * design-audit/website-editor-inventory.md, not reconciled here.
  *
- * Not lifted yet, because the copy is interleaved with JSX: the wedding-packet
- * sentence ("Download the <a>wedding packet</a> for full details ...") and the
- * SVG icons on the event-type cards, which stay in the page and are matched to
- * this content by key.
+ * Laid out with the Lakeside template (src/components/property/lakeside). Not
+ * lifted yet, because the copy is interleaved with JSX: the wedding-packet
+ * sentence ("Download the <a>wedding packet</a> for full details ..."), which
+ * stays in the page.
  */
 export const longLakeOutdoorCenter: PropertyContent = {
   slug: 'long-lake-outdoor-center',
   name: 'Long Lake Outdoor Center',
-  tagline: 'Historic CCC Property',
+  tagline:
+    'A 1939 Civilian Conservation Corps camp on a private lake, for retreats, reunions and weddings.',
   locationLine: 'Yankee Springs, Michigan',
+  // The Long Lake office line (also Chief Noonday's), not the company number.
+  phone: '616-644-9459',
   summary:
     'Historic CCC-built outdoor center in Yankee Springs Recreation Area. 16 cabins, 4 bunkhouses, 120-seat lodge with stone fireplaces, commercial kitchen, and private lake access. Weddings, retreats, and group camps in season.',
   seo: {
@@ -62,9 +65,12 @@ export const longLakeOutdoorCenter: PropertyContent = {
     'ADA Accessible',
   ],
   stats: [
-    { key: 'capacity', value: '120', label: 'Capacity' },
+    { key: 'capacity', value: 'About 120', label: 'Sleeps' },
     { key: 'cabins', value: '16', label: 'Cabins' },
     { key: 'bunkhouses', value: '4', label: 'Bunkhouses' },
+    { key: 'lodge', value: 'Seats 120', label: 'Lodge' },
+    { key: 'lake', value: '146 acres', label: 'Lake' },
+    // Shown as the small "Est. 1939" label above the intro, not in the row.
     { key: 'established', value: '1939', label: 'Est.' },
   ],
   season: {
@@ -75,17 +81,17 @@ export const longLakeOutdoorCenter: PropertyContent = {
   notices: [],
   ctas: {
     hero: {
-      label: 'Book Your Stay',
+      label: 'Check availability',
       url: 'https://escape.baserves.com/long-lake-outdoor-center',
       kind: 'booking',
     },
     sidebar: {
-      label: 'Check Availability',
+      label: 'Check availability',
       url: 'https://escape.baserves.com/long-lake-outdoor-center',
       kind: 'booking',
     },
     footerPrimary: {
-      label: 'Book Your Stay',
+      label: 'Check availability',
       url: 'https://escape.baserves.com/long-lake-outdoor-center',
       kind: 'booking',
     },
@@ -103,20 +109,62 @@ export const longLakeOutdoorCenter: PropertyContent = {
   sections: {
     about: {
       heading: 'About Long Lake Outdoor Center',
+      // The large serif lead at the top of the page.
+      intro:
+        'Sixteen stone-and-timber cabins, four bunkhouses and a lodge with two stone fireplaces, on the quiet eastern shore of a private 146-acre lake.',
+    },
+    // The three-photo mosaic under the intro; `intro` is its caption.
+    mosaic: {
+      intro: 'The lodge dining hall · a CCC-built cabin · canoes under the pines',
+      items: [
+        {
+          key: 'dining-hall',
+          photo: {
+            src: '/images/long-lake/weddings/dining-hall.jpg',
+            alt: 'Lodge dining hall with timber trusses, hanging lanterns and a stone fireplace',
+          },
+        },
+        {
+          key: 'cabin',
+          photo: {
+            src: '/images/long-lake/weddings/cabin-front.jpg',
+            alt: 'Dark-stained CCC cabin with a covered porch in the spring woods',
+          },
+        },
+        {
+          key: 'canoes',
+          photo: {
+            src: '/images/long-lake/weddings/canoes-pines.jpg',
+            alt: 'Canoes resting upside down under the pines by the lake',
+          },
+        },
+      ],
     },
     cccCallout: {
-      heading: 'A Legacy of the CCC',
+      heading: 'Built by hand, from the forest around it.',
+      // The small caps label above the heading.
+      intro: 'National Register of Historic Places',
+      items: [
+        {
+          key: 'photo',
+          photo: {
+            src: '/images/long-lake/weddings/lodge-chimney.jpg',
+            alt: 'CCC-built cabin with a fieldstone chimney among the pines',
+          },
+        },
+      ],
       paragraphs: [
-        "The Civilian Conservation Corps constructed Long Lake Outdoor Center in 1939 as part of Franklin Roosevelt's New Deal. Young men enrolled in the CCC built the cabins, lodge, and bathhouse using native stone and timber harvested from the surrounding forest. The property's enduring craftsmanship earned it a place on the National Registry of Historic Sites — a testament to the skill and dedication of the workers who shaped it nearly a century ago.",
+        "The Civilian Conservation Corps constructed Long Lake Outdoor Center in 1939 as part of Franklin Roosevelt's New Deal. Young men enrolled in the CCC built the cabins, lodge, and bathhouse using native stone and timber harvested from the surrounding forest. The property's enduring craftsmanship earned it a place on the National Register of Historic Places — a testament to the skill and dedication of the workers who shaped it nearly a century ago.",
       ],
     },
     amenities: {
       heading: 'Amenities',
     },
+    // The booking card in the hero.
     planYourEvent: {
-      heading: 'Plan Your Event',
+      heading: 'Stay at Long Lake',
       intro:
-        'From weddings to group camps, Long Lake Outdoor Center is the perfect setting for your next gathering.',
+        'Cabins and bunkhouses for up to 120 guests, with the lodge and kitchen. Open in season.',
     },
     lodging: {
       heading: 'Lodging',
@@ -128,8 +176,8 @@ export const longLakeOutdoorCenter: PropertyContent = {
           title: 'Hill Cabins',
           body: 'Perched on a wooded hillside above the lake, the Hill Cabins offer a shaded, secluded setting with easy access to the lodge and communal areas. Built with CCC-era stone and timber construction.',
           photo: {
-            src: '/images/long-lake/weddings/cabin-front.jpg',
-            alt: 'CCC-built cabin at Long Lake Outdoor Center',
+            src: '/images/long-lake/weddings/cabin-porch.jpg',
+            alt: 'CCC-built cabin with a covered porch under the trees at Long Lake',
           },
         },
         {
@@ -181,7 +229,7 @@ export const longLakeOutdoorCenter: PropertyContent = {
         "A full commercial kitchen adjoins the great room, supporting catered meals, potluck dinners, and self-service group cooking. Whether you're hosting a wedding reception, a corporate retreat, or a camp-wide meal, the Lodge provides the space and atmosphere to bring people together.",
       ],
       items: [
-        { key: 'photo', photo: { src: '/images/long-lake/weddings/dining-hall.jpg', alt: 'Lodge great room at Long Lake with stone fireplace and timber trusses' } },
+        { key: 'photo', photo: { src: '/images/long-lake/weddings/lodge-front.jpg', alt: 'The lodge at Long Lake, a timber building with a covered porch among the pines' } },
         { key: 'seats', title: '120', body: 'Seats' },
         { key: 'fireplaces', title: '2', body: 'Stone Fireplaces' },
         { key: 'kitchen', title: 'Full', body: 'Commercial Kitchen' },
@@ -198,8 +246,8 @@ export const longLakeOutdoorCenter: PropertyContent = {
         {
           key: 'photo',
           photo: {
-            src: '/images/long-lake/wedding-ceremony.jpg',
-            alt: 'Wedding ceremony at Long Lake Outdoor Center',
+            src: '/images/long-lake/dock.jpg',
+            alt: 'Two guests in costume jumping off the dock on Long Lake',
           },
         },
         {
@@ -210,25 +258,47 @@ export const longLakeOutdoorCenter: PropertyContent = {
       ],
     },
     eventTypes: {
+      heading: 'Made for groups',
+      intro: 'The whole camp can be yours: cabins, bunkhouses, the lodge and the waterfront.',
       items: [
         {
           key: 'weddings',
           title: 'Weddings',
+          href: '#weddings',
+          photo: {
+            src: '/images/long-lake/wedding-ceremony.jpg',
+            alt: 'Wedding ceremony under the pines beside Long Lake',
+          },
           body: 'Two-night wedding package: $3,300 for 2026 weddings, $3,800 for 2027, $4,300 from 2028. Ceremony and reception spaces with lakeside views, historic lodge, and full catering kitchen.',
         },
         {
           key: 'group-camps',
           title: 'Group Camps',
+          href: '#lodging',
+          photo: {
+            src: '/images/long-lake/weddings/fire-pit.jpg',
+            alt: 'Fire ring and benches outside a cabin at Long Lake',
+          },
           body: 'Accommodate up to 120 guests across cabins and bunkhouses. Perfect for scout troops, church groups, and outdoor education programs.',
         },
         {
           key: 'retreats',
           title: 'Retreats',
+          href: '#lodge',
+          photo: {
+            src: '/images/long-lake/weddings/cabins-lawn.jpg',
+            alt: 'Two CCC-built cabins on a sunny lawn among tall pines',
+          },
           body: 'A secluded, historic setting for corporate retreats, team-building events, and wellness getaways surrounded by nature.',
         },
         {
           key: 'family-reunions',
           title: 'Family Reunions',
+          href: '#lodging',
+          photo: {
+            src: '/images/long-lake/weddings/lodge-porch.jpg',
+            alt: 'Benches on the long covered porch of the lodge',
+          },
           body: 'Bring the whole family together in a lakeside setting with plenty of room, shared meals in the lodge, and outdoor activities for all ages.',
         },
       ],
@@ -351,9 +421,15 @@ export const longLakeOutdoorCenter: PropertyContent = {
       ],
     },
     closingCta: {
-      heading: 'Host Your Next Event at Long Lake',
+      heading: 'Open in season',
       intro:
-        'A historic CCC property with private lake access, lodging for 120, and a full season of open dates. Start planning your wedding, retreat, or group camp today.',
+        'Swimming, fishing and hiking through the warm months, and fall color before the season closes.',
+      items: [
+        {
+          key: 'photo',
+          photo: { src: '/images/long-lake/weddings/lake-dock-wide.jpg', alt: 'Long Lake and its dock under a spring sky' },
+        },
+      ],
     },
   },
 }
