@@ -397,7 +397,8 @@ export default function Navigation({
             <div className="flex lg:hidden items-center gap-1">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="p-2 text-gray-700"
+                className="p-3 text-gray-700"
+                aria-label="Search"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -405,7 +406,8 @@ export default function Navigation({
               </button>
               <button
                 type="button"
-                className="p-2 text-gray-700"
+                className="p-2.5 text-gray-700"
+                aria-expanded={mobileMenuOpen}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 <span className="sr-only">Open menu</span>
@@ -554,7 +556,8 @@ export default function Navigation({
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-gray-500 hover:text-gray-700 transition-colors"
+                className="p-2.5 text-gray-500 hover:text-gray-700 transition-colors"
+                aria-label="Close menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
