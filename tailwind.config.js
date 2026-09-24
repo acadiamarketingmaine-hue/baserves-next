@@ -41,6 +41,10 @@ module.exports = {
           'ember-light': '#D8B98F',
           line: '#D8D1C2',
           mute: '#5A625B',
+          // A deeper paper tint for alternating section bands (paper / white /
+          // tint), so neighbouring sections read as separate without a hard
+          // divider. Ink stays well over 4.5:1 on it.
+          tint: '#EAE5D6',
         },
       },
       fontFamily: {

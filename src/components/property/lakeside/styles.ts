@@ -9,6 +9,16 @@ export const frame = 'mx-auto w-full max-w-[1440px] px-5 md:px-12 lg:px-24'
 /** Vertical rhythm: ~56px on phones, ~120px on desktop. */
 export const sectionPad = 'py-14 md:py-24 lg:py-[120px]'
 
+/**
+ * Alternating section backgrounds, so neighbouring sections read as separate
+ * without a hard divider line. The page (LakesideShell) is paper by default;
+ * apply one of these to a `<section>` here and there — where it marks a real
+ * change of topic — not on every section.
+ */
+export const bandPaper = 'bg-lake-paper'
+export const bandWhite = 'bg-white'
+export const bandTint = 'bg-lake-tint'
+
 /** Small letterspaced caps label. Pair with a colour class. */
 export const eyebrow = 'text-xs font-medium uppercase tracking-[0.18em]'
 
@@ -55,4 +65,13 @@ export function telHref(phone: string): string {
 /** Opens in a new tab only when the link leaves this site. */
 export function externalProps(url: string) {
   return /^https?:\/\//.test(url) ? { target: '_blank', rel: 'noopener noreferrer' } : {}
+}
+
+/**
+ * A "Get directions" Google Maps link from coordinates already in the site's
+ * data (e.g. src/components/PropertyMap.tsx). Never invent coordinates —
+ * only use a pair that's already published somewhere on the site.
+ */
+export function mapsUrl(lat: number, lng: number): string {
+  return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`
 }

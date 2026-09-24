@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import type { Photo } from '@/content'
 import Arrow from './Arrow'
 import { externalProps, eyebrow as eyebrowClass } from './styles'
 
@@ -13,6 +15,13 @@ export interface RuledRow {
   href?: string
   /** Text after the body on a linked row, e.g. "Download PDF". */
   linkLabel?: string
+  /**
+   * A small photo at the start of the row (the accent that separates one row
+   * from the next). Use a real photo that matches the row's meaning — never
+   * a stock or invented image. Omit it and the row reads as plain text, as
+   * before.
+   */
+  image?: Photo
 }
 
 export interface RuledRowsProps {
@@ -23,12 +32,15 @@ export interface RuledRowsProps {
   as?: 'h3' | 'h4'
 }
 
-/** Hairline-ruled rows: serif title, value on the right, one line of detail. */
+/** Hairline-ruled rows: serif title, value on the right, one line of detail.
+ * A row with an `image` gets a small rounded photo at its start — the accent
+ * that makes each row read as its own thing, not just another line in a
+ * list. */
 export default function RuledRows({ rows, twoUp = true, as: Title = 'h3' }: RuledRowsProps) {
   return (
     <ul className={`grid border-t border-lake-line ${twoUp ? 'md:grid-cols-2 md:gap-x-12' : ''}`}>
       {rows.map((row) => {
-        const inner = (
+        const text = (
           <>
             <div className="flex items-baseline justify-between gap-4">
               {row.title && <Title className="font-lake-serif text-[26px] leading-tight text-lake-ink">{row.title}</Title>}
@@ -43,6 +55,26 @@ export default function RuledRows({ rows, twoUp = true, as: Title = 'h3' }: Rule
               </span>
             )}
           </>
+        )
+        const inner = row.image ? (
+          <div className="flex items-start gap-4 md:gap-5">
+            <div
+              data-reveal="wipe"
+              className="lk-zoom relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-xl md:h-[104px] md:w-[104px] lg:h-[120px] lg:w-[120px]"
+            >
+              <Image
+                src={row.image.src}
+                alt={row.image.alt}
+                fill
+                loading="lazy"
+                sizes="(min-width: 1024px) 120px, (min-width: 768px) 104px, 72px"
+                className="object-cover"
+              />
+            </div>
+            <div className="min-w-0 flex-1">{text}</div>
+          </div>
+        ) : (
+          text
         )
         return (
           <li key={row.key} className="border-b border-lake-line">

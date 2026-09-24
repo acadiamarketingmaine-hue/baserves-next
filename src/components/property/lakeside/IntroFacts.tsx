@@ -1,11 +1,14 @@
 import type { ReactNode } from 'react'
 import type { Stat } from '@/content'
+import Eyebrow from './Eyebrow'
 import { body, eyebrow as eyebrowClass, frame, sectionPad } from './styles'
 
 export interface IntroFactsProps {
   id?: string
   /** Small ember label, e.g. "Est. 1939". */
   eyebrow?: string
+  /** Adds the short ember rule above the eyebrow — see Eyebrow. */
+  eyebrowRule?: boolean
   /** Short moss line under the label; rendered as the section's <h2>. */
   heading?: string
   /** The big serif lead. */
@@ -21,13 +24,13 @@ export interface IntroFactsProps {
 const isCountable = (value: string) => /^\d+$/.test(value)
 
 /** Label + lead, then a hairline-ruled row of facts. */
-export default function IntroFacts({ id, eyebrow, heading, lead, paragraphs = [], facts, children }: IntroFactsProps) {
+export default function IntroFacts({ id, eyebrow, eyebrowRule = false, heading, lead, paragraphs = [], facts, children }: IntroFactsProps) {
   return (
     <section id={id} className={sectionPad}>
       <div className={frame}>
         <div className="grid gap-6 lg:grid-cols-12 lg:gap-12">
           <div data-reveal="up" className="lg:col-span-4 lg:pt-3">
-            {eyebrow && <p className={`${eyebrowClass} text-lake-ember`}>{eyebrow}</p>}
+            {eyebrow && <Eyebrow label={eyebrow} rule={eyebrowRule} />}
             {heading && <h2 className="mt-3 text-[15px] font-medium text-lake-moss">{heading}</h2>}
           </div>
           <div className="lg:col-span-8">

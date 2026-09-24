@@ -1,22 +1,25 @@
 import Image from 'next/image'
 import type { Photo } from '@/content'
-import { eyebrow as eyebrowClass, frame } from './styles'
+import Eyebrow from './Eyebrow'
+import { frame } from './styles'
 
 export interface HeritageBandProps {
   id?: string
   photo?: Photo
   eyebrow?: string
+  /** Adds the short ember rule above the eyebrow — see Eyebrow. */
+  eyebrowRule?: boolean
   heading: string
   paragraphs?: string[]
 }
 
 /** Spruce band: photo on the left, caps label, serif headline and story on the right. */
-export default function HeritageBand({ id, photo, eyebrow, heading, paragraphs = [] }: HeritageBandProps) {
+export default function HeritageBand({ id, photo, eyebrow, eyebrowRule = false, heading, paragraphs = [] }: HeritageBandProps) {
   return (
     <section id={id} className="bg-lake-spruce py-14 text-lake-paper md:py-24 lg:py-[120px]">
       <div className={`${frame} grid items-center gap-8 lg:grid-cols-12 lg:gap-12`}>
         <div data-reveal="up" className="lg:order-2lg:col-span-6 lg:col-start-7 xl:col-span-5 xl:col-start-8">
-          {eyebrow && <p className={`${eyebrowClass} text-lake-ember-light`}>{eyebrow}</p>}
+          {eyebrow && <Eyebrow label={eyebrow} tone="ember-light" rule={eyebrowRule} />}
           <h2 className="mt-4 font-lake-serif text-[36px] leading-[1.08] tracking-[-0.01em] [text-wrap:balance] md:text-[52px] lg:text-[60px]">
             {heading}
           </h2>
