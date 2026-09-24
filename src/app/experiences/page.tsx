@@ -235,6 +235,7 @@ export default async function ExperiencesPage() {
         </section>
 
         <ClosingCta
+          photo={{ src: '/images/Burlingame1-2048x1365.jpg', alt: 'Watchaug Pond, one of the twelve recreation areas BA Services manages' }}
           heading="Ready to Start Your Adventure?"
           text="Book your stay at one of our pristine recreation areas today."
           primary={{ label: 'Book Now', url: '#all-recreation-areas', kind: 'internal' }}

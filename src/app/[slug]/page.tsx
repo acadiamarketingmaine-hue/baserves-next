@@ -126,6 +126,7 @@ export default async function LocationPage({ params }: { params: { slug: string 
         )}
 
         <ClosingCta
+          photo={content.gallery[1] ?? content.hero}
           heading={content.name}
           text={content.summary}
           primary={content.ctas.sidebar}

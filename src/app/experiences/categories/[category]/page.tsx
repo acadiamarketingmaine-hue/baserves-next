@@ -190,6 +190,7 @@ export default async function CategoryPage({ params }: { params: { category: str
         </section>
 
         <ClosingCta
+          photo={{ src: category.image, alt: category.name }}
           heading={`Ready to Experience ${category.name}?`}
           text={category.description}
           primary={{ label: 'See Available Experiences', url: '#available-experiences', kind: 'internal' }}

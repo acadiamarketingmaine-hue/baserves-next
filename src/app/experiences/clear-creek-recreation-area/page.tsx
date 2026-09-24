@@ -269,6 +269,7 @@ export default function ClearCreekPage() {
         </section>
 
         <ClosingCta
+          photo={{ src: '/images/clear-creek-swimming.jpg', alt: 'Swimming beach on Lewis Smith Lake at Clear Creek Recreation Area' }}
           heading="Plan Your Visit to Clear Creek"
           text="Reserve your campsite and experience the beauty of Lewis Smith Lake in Bankhead National Forest."
           primary={BOOK}

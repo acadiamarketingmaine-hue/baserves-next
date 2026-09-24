@@ -248,6 +248,7 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
         )}
 
         <ClosingCta
+          photo={{ src: experience.image, alt: experience.name }}
           heading={experience.name}
           text={`Book your stay and experience everything ${experience.name} has to offer.`}
           primary={bookCta}

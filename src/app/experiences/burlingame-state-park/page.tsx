@@ -326,6 +326,7 @@ export default function BurlingamePage() {
         </section>
 
         <ClosingCta
+          photo={{ src: '/images/burlingame-picnic-area.png', alt: 'Picnic area with tables under trees at Burlingame State Park' }}
           heading="Experience Rhode Island's Premier Campground"
           text="From its CCC-era origins to today, Burlingame State Park offers 755 campsites on the shores of Watchaug Pond. Reserve your spot today."
           primary={RESERVE}

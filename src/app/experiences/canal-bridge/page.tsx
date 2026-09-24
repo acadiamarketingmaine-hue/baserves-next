@@ -235,6 +235,7 @@ export default function CanalBridgePage() {
         </section>
 
         <ClosingCta
+          photo={{ src: '/images/canal-bridge/beach-1.jpg', alt: 'Sandy beach on the Saco River at Canal Bridge Campground' }}
           heading="Plan Your Stay at Canal Bridge"
           text="Experience the Saco River, White Mountain views, and the peace of a Maine campground. Reserve your site today."
           primary={BOOK}

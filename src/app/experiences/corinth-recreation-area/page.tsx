@@ -218,6 +218,7 @@ export default function CorinthPage() {
         </section>
 
         <ClosingCta
+          photo={{ src: '/images/corinth-boat-ramp.jpg', alt: 'Corinth Recreation Area on Lewis Smith Lake' }}
           heading="Plan Your Visit to Corinth"
           text="Experience the beauty of Lewis Smith Lake at this modern campground in the Bankhead National Forest."
           primary={BOOK}

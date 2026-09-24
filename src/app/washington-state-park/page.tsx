@@ -199,6 +199,7 @@ export default async function WashingtonStateParkPage() {
         )}
 
         <ClosingCta
+          photo={content.hero}
           heading={content.sections.closingCta.heading ?? content.name}
           text={content.sections.closingCta.intro}
           primary={content.ctas.footer}

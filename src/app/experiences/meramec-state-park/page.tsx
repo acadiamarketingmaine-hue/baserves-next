@@ -217,6 +217,7 @@ export default async function MeramecStateParkPage() {
         </section>
 
         <ClosingCta
+          photo={content.gallery.find((p) => p.src.includes('ccc-monument')) ?? content.hero}
           heading={content.sections.closingCta.heading ?? content.name}
           text={content.sections.closingCta.intro}
           primary={content.ctas.footer}
