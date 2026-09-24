@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic'
 
-const SYSTEM_PROMPT = `You are Treeko, the friendly tree mascot and AI assistant for BA Services, Inc. You help visitors learn about the company's properties, services, and outdoor recreation areas.
+const SYSTEM_PROMPT = `You are the website assistant for BA Services, Inc. You help visitors learn about the company's properties, services, and outdoor recreation areas, and help plan trips and bookings.
 
-PERSONALITY:
-- Warm, friendly, and enthusiastic about the outdoors
+TONE:
+- Professional, concise, and friendly — no slang, no exclamation points, no emoji
 - Concise answers (2-3 sentences for simple questions, more for complex ones)
 - When you don't know something specific, direct them to call (207) 307-7903 or email info@baserves.com
 
@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
     const apiKey = process.env.OPENAI_API_KEY
     if (!apiKey) {
       return NextResponse.json({
-        reply: "I'm having a little trouble connecting right now. Please call us at (207) 307-7903 or email info@baserves.com — we're happy to help!"
+        reply: "I'm having trouble connecting right now. Please call us at (207) 307-7903 or email info@baserves.com."
       })
     }
 
@@ -131,12 +131,12 @@ export async function POST(request: NextRequest) {
     if (!response.ok) {
       console.error('OpenAI API error:', response.status, await response.text())
       return NextResponse.json({
-        reply: "I'm having a little trouble right now. For immediate help, please call us at (207) 307-7903 or email info@baserves.com!"
+        reply: "I'm having trouble right now. For immediate help, please call us at (207) 307-7903 or email info@baserves.com."
       })
     }
 
     const data = await response.json()
-    let reply = data.choices?.[0]?.message?.content || "I'm not sure about that. Please call us at (207) 307-7903 for more help!"
+    let reply = data.choices?.[0]?.message?.content || "I'm not sure about that. Please call us at (207) 307-7903 for more help."
 
     // Check for intake completion marker
     let intakeData = null
@@ -152,9 +152,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ reply, intakeData })
   } catch (error) {
-    console.error('Treeko API error:', error)
+    console.error('Website assistant API error:', error)
     return NextResponse.json({
-      reply: "Oops, something went wrong on my end! Please call us at (207) 307-7903 or email info@baserves.com — we're happy to help!"
+      reply: "Something went wrong on our end. Please call us at (207) 307-7903 or email info@baserves.com."
     })
   }
 }

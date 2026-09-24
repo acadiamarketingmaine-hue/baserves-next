@@ -195,11 +195,11 @@ function TourHandler() {
       if (tourPopupRef.current) { map.closePopup(tourPopupRef.current); tourPopupRef.current = null }
       if (slideIntervalRef.current) { clearInterval(slideIntervalRef.current); slideIntervalRef.current = null }
     }
-    window.addEventListener('treeko-tour-start', onStart)
-    window.addEventListener('treeko-tour-end', onEnd)
+    window.addEventListener('assistant-tour-start', onStart)
+    window.addEventListener('assistant-tour-end', onEnd)
     return () => {
-      window.removeEventListener('treeko-tour-start', onStart)
-      window.removeEventListener('treeko-tour-end', onEnd)
+      window.removeEventListener('assistant-tour-start', onStart)
+      window.removeEventListener('assistant-tour-end', onEnd)
     }
   }, [map])
 
@@ -269,8 +269,8 @@ function TourHandler() {
       }
     }
 
-    window.addEventListener('treeko-tour-focus', handler)
-    return () => window.removeEventListener('treeko-tour-focus', handler)
+    window.addEventListener('assistant-tour-focus', handler)
+    return () => window.removeEventListener('assistant-tour-focus', handler)
   }, [map])
 
   return null
@@ -322,11 +322,11 @@ export default function PropertyMap() {
   useEffect(() => {
     const onStart = () => setTourMode(true)
     const onEnd = () => setTourMode(false)
-    window.addEventListener('treeko-tour-start', onStart)
-    window.addEventListener('treeko-tour-end', onEnd)
+    window.addEventListener('assistant-tour-start', onStart)
+    window.addEventListener('assistant-tour-end', onEnd)
     return () => {
-      window.removeEventListener('treeko-tour-start', onStart)
-      window.removeEventListener('treeko-tour-end', onEnd)
+      window.removeEventListener('assistant-tour-start', onStart)
+      window.removeEventListener('assistant-tour-end', onEnd)
     }
   }, [])
 

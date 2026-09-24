@@ -22,7 +22,7 @@ const phoneIcon = (
  * Appears once the hero has scrolled away and steps aside again when the
  * closing call-to-action comes into view. Desktop: a compact paper pill at the
  * top right, under the site header. Phone: one compact pill bottom-left (Check
- * availability + call), with the Treeko chat button lifted above it.
+ * availability + call), with the chat assistant button lifted above it.
  * Nothing here is server-rendered as visible, so no-JS pages are unchanged.
  */
 export default function StickyBooking({ name, cta, phone }: StickyBookingProps) {
@@ -94,7 +94,7 @@ export default function StickyBooking({ name, cta, phone }: StickyBookingProps) 
         </a>
       </div>
 
-      {/* Phone: one compact pill, bottom-left (John: no full-width phone bottom bar). Treeko keeps bottom-right. */}
+      {/* Phone: one compact pill, bottom-left (John: no full-width phone bottom bar). Chat assistant keeps bottom-right. */}
       <a
         data-shown={shown}
         {...hiddenProps}

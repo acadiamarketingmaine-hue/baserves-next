@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import TreekoChat from '@/components/TreekoChat'
+import AssistantChat from '@/components/AssistantChat'
 
 export const metadata: Metadata = {
   title: {
@@ -57,7 +57,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-white text-gray-900 antialiased">
         {children}
-        <TreekoChat />
+        <AssistantChat />
       </body>
     </html>
   )

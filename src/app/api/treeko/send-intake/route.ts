@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     const { intakeData, conversation } = await request.json()
 
     const htmlBody = `
-      <h2>New Lead from Treeko (Website Chat Assistant)</h2>
+      <h2>New Lead from the Website Assistant</h2>
       <hr/>
       <h3>Contact Information</h3>
       <table style="border-collapse:collapse;width:100%;max-width:600px;">
@@ -23,18 +23,18 @@ export async function POST(request: NextRequest) {
       <div style="background:#f9fafb;padding:16px;border-radius:8px;font-size:14px;line-height:1.6;">
         ${conversation.map((msg: { role: string; text: string }) => `
           <p style="margin:8px 0;">
-            <strong style="color:${msg.role === 'treeko' ? '#1a472a' : '#1565C0'};">${msg.role === 'treeko' ? 'Treeko' : 'Visitor'}:</strong>
+            <strong style="color:${msg.role === 'assistant' ? '#1a472a' : '#1565C0'};">${msg.role === 'assistant' ? 'Website Assistant' : 'Visitor'}:</strong>
             ${msg.text}
           </p>
         `).join('')}
       </div>
       <hr style="margin-top:24px;"/>
-      <p style="color:#6b7280;font-size:12px;">This lead was captured by Treeko, the BA Services website assistant, at ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} ET.</p>
+      <p style="color:#6b7280;font-size:12px;">This lead was captured by the BA Services website assistant, at ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} ET.</p>
     `
 
     await sendMail({
       to: ['andrew@baserves.com', 'acadiamarketingmaine@gmail.com'],
-      subject: `New Lead from Treeko: ${intakeData.name || intakeData.organization || 'Website Visitor'}`,
+      subject: `New Lead from Website Assistant: ${intakeData.name || intakeData.organization || 'Website Visitor'}`,
       html: htmlBody,
     })
 
