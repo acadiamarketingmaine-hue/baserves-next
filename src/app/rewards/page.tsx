@@ -3,6 +3,8 @@ import Footer from '@/components/Footer'
 import Link from 'next/link'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ListenButton } from '@/components/reader'
+import { LakesideShell, frame, pillLight, bandTint } from '@/components/property/lakeside'
 
 export const metadata = {
   title: { absolute: 'Rewards | BA Services' },
@@ -63,84 +65,89 @@ export default function RewardsPage() {
         description="BA Services rewards program - coming soon. Earn points on every booking and unlock exclusive perks."
       />
       <main className="pt-28">
-        {/* Hero */}
-        <section className="relative bg-forest-DEFAULT py-24 overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
-          </div>
-          <div className="max-w-4xl mx-auto text-center px-6 relative">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              Coming Soon
+        <LakesideShell>
+          {/* Hero */}
+          <section className="relative bg-lake-spruce py-24 overflow-hidden">
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              BA Services Rewards
-            </h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              We&apos;re building a rewards program to thank our loyal guests. Earn points on every booking and unlock exclusive perks across all BA Services properties.
-            </p>
-            <div className="mt-8">
-              <Link href="/experiences" className="btn-primary">
+            <div className={`${frame} max-w-4xl text-center relative`}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Coming Soon
+              </div>
+              <h1 className="font-lake-serif headline-xl text-white mb-6">
+                BA Services Rewards
+              </h1>
+              <div className="mb-6 flex justify-center">
+                <ListenButton variant="light" />
+              </div>
+              <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+                We&apos;re building a rewards program to thank our loyal guests. Earn points on every booking and unlock exclusive perks across all BA Services properties.
+              </p>
+              <div className="mt-8 flex justify-center">
+                <Link href="/experiences" className={pillLight}>
+                  Book Your Next Adventure
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          {/* Perks Preview */}
+          <section className="py-14 md:py-24 lg:py-[120px]">
+            <div className={frame}>
+              <div className="text-center mb-14">
+                <h2 className="font-lake-serif text-[32px] md:text-[40px] text-lake-ink mb-4">What to Expect</h2>
+                <p className="text-lake-mute max-w-xl mx-auto">
+                  Here&apos;s a preview of what&apos;s in store when the rewards program launches.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {upcomingPerks.map((perk) => (
+                  <div
+                    key={perk.title}
+                    className="flex gap-5 rounded-md border border-lake-line bg-white p-6"
+                  >
+                    <div className="flex-shrink-0 w-14 h-14 rounded-full bg-lake-spruce/10 text-lake-spruce flex items-center justify-center">
+                      {perk.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-lake-serif text-[19px] text-lake-ink mb-1">{perk.title}</h3>
+                      <p className="text-lake-mute text-sm leading-relaxed">{perk.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* CTA */}
+          <section className={`py-20 ${bandTint}`}>
+            <div className={`${frame} max-w-2xl text-center`}>
+              <h2 className="font-lake-serif text-[32px] md:text-[40px] text-lake-ink mb-4">
+                Be the First to Know
+              </h2>
+              <p className="text-lake-mute mb-8">
+                The rewards program is currently in development. In the meantime, keep booking with us &mdash; your loyalty won&apos;t go unnoticed.
+              </p>
+              <Link
+                href="/experiences"
+                className="inline-flex min-h-[56px] items-center gap-2 rounded-full bg-lake-spruce px-8 text-base font-medium text-lake-paper hover:bg-lake-spruce-dark transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
+              >
                 Book Your Next Adventure
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </Link>
             </div>
-          </div>
-        </section>
-
-        {/* Perks Preview */}
-        <section className="py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What to Expect</h2>
-              <p className="text-gray-500 max-w-xl mx-auto">
-                Here&apos;s a preview of what&apos;s in store when the rewards program launches.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {upcomingPerks.map((perk) => (
-                <div
-                  key={perk.title}
-                  className="flex gap-5 p-6 rounded-xl border border-gray-100 bg-gray-50/50"
-                >
-                  <div className="flex-shrink-0 w-14 h-14 rounded-lg bg-forest-DEFAULT/10 text-forest-DEFAULT flex items-center justify-center">
-                    {perk.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">{perk.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{perk.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-20 bg-stone-50">
-          <div className="max-w-2xl mx-auto text-center px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Be the First to Know
-            </h2>
-            <p className="text-gray-500 mb-8">
-              The rewards program is currently in development. In the meantime, keep booking with us &mdash; your loyalty won&apos;t go unnoticed.
-            </p>
-            <Link
-              href="/experiences"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
-            >
-              Book Your Next Adventure
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </Link>
-          </div>
-        </section>
+          </section>
+        </LakesideShell>
       </main>
       <Footer />
     </>

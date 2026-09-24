@@ -5,6 +5,19 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ListenButton } from '@/components/reader'
+import {
+  LakesideShell,
+  ClosingCta,
+  Eyebrow,
+  SectionActions,
+  bandTint,
+  frame,
+  h2 as h2Class,
+  body as bodyClass,
+  pillLight,
+  pillGhostLight,
+} from '@/components/property/lakeside'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 
@@ -76,136 +89,135 @@ export default function AboutPage() {
         image="/images/monongahela/spruce-knob-panorama.jpg"
       />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/monongahela/spruce-knob-panorama.jpg"
-            alt="About BA Services"
-            fill
-            sizes="100vw"
-            priority
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
-        <div className="relative container-custom px-6">
-          <div className="max-w-3xl">
-            <span className="badge bg-white/10 text-white mb-4">About Us</span>
-            <h1 className="font-display headline-xl text-white mb-6">
-              Connecting People with <span className="text-green-400">Nature</span>
-            </h1>
-            <p className="text-xl text-white/90 leading-relaxed">
-              From the rockbound coast of Maine to the salt flats of Utah, we're
-              dedicated to offering well-kept facilities, unspoiled scenery, and
-              seamless <Link href="/" className="underline hover:text-white transition-colors">experiences for every visitor</Link>.
-            </p>
-            <div className="mt-8">
-              <Link href="/experiences" className="btn-primary">
-                Explore Locations
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
+      <LakesideShell>
+        {/* Hero */}
+        <section className="relative pt-32 pb-20">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/monongahela/spruce-knob-panorama.jpg"
+              alt="About BA Services"
+              fill
+              sizes="100vw"
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/60" />
           </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-16 bg-forest-DEFAULT">
-        <div className="container-custom px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-white/70 text-sm">{stat.label}</div>
+          <div className={`relative ${frame}`}>
+            <div className="max-w-3xl">
+              <span className="badge bg-white/10 text-white mb-4">About Us</span>
+              <h1 className="font-lake-serif headline-xl text-white mb-6">
+                Connecting People with <span className="text-green-400">Nature</span>
+              </h1>
+              <div className="mb-6">
+                <ListenButton variant="light" />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Mission */}
-      <section className="section">
-        <div className="container-custom px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="badge badge-forest mb-4">Our Mission</span>
-              <h2 className="headline-lg text-gray-900 mb-6">
-                Creating Memorable Outdoor Experiences
-              </h2>
-              <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
-                <p>
-                  At BA Services, we believe that everyone deserves access to beautiful, well-maintained
-                  outdoor spaces. Our mission is to manage recreation areas that inspire connection
-                  with nature while providing the amenities and <Link href="/services">services</Link> visitors need for a
-                  comfortable experience.
-                </p>
-                <p>
-                  We partner with federal, state, and local agencies to operate campgrounds, day-use
-                  areas, and recreation facilities across the country. Our team of dedicated
-                  professionals works tirelessly to ensure that every visitor leaves with memories
-                  that last a lifetime.
-                </p>
-                <p>
-                  Whether you're seeking a weekend camping trip, a day of hiking, or a peaceful
-                  afternoon by the lake, our recreation areas offer something for everyone. We invite you to <Link href="/leave-a-review">share your experience</Link> after your visit.
-                </p>
+              <p className="text-xl text-white/90 leading-relaxed">
+                From the rockbound coast of Maine to the salt flats of Utah, we&apos;re
+                dedicated to offering well-kept facilities, unspoiled scenery, and
+                seamless <Link href="/" className="underline hover:text-white transition-colors">experiences for every visitor</Link>.
+              </p>
+              <div className="mt-8">
+                <Link href="/experiences" className={pillLight}>
+                  Explore Locations
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
               </div>
             </div>
-            <div className="relative aspect-square rounded-2xl overflow-hidden">
-              <PropertyMap />
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Values */}
-      <section className="section bg-gray-50">
-        <div className="container-custom px-6">
-          <div className="text-center mb-16">
-            <span className="badge badge-forest mb-4">Our Values</span>
-            <h2 className="headline-lg text-gray-900 mb-4">What Guides Us</h2>
-            <p className="subheadline max-w-2xl mx-auto">
-              Our core values shape everything we do, from how we manage facilities to how we
-              interact with visitors.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value) => (
-              <div key={value.title} className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="w-16 h-16 rounded-2xl bg-forest-DEFAULT/10 text-forest-DEFAULT flex items-center justify-center mb-6">
-                  {value.icon}
+        {/* Stats */}
+        <section className="py-16 bg-lake-spruce">
+          <div className={frame}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.number}</div>
+                  <div className="text-white/70 text-sm">{stat.label}</div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-forest-DEFAULT">
-        <div className="container-custom px-6 text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
-            Ready to Experience the Difference?
-          </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-            Visit one of our recreation areas and see firsthand why thousands of visitors choose BA Services. <Link href="/contact" className="underline hover:text-white transition-colors">Get in touch</Link> to learn more.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/experiences" className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100">
-              Explore Locations
-            </Link>
-            <Link href="/careers" className="btn-outline-white">
-              Join Our Team
-            </Link>
+        {/* Mission */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+              <div data-reveal="up">
+                <Eyebrow label="Our Mission" rule className="mb-4" />
+                <h2 className={`${h2Class} text-lake-ink`}>Creating Memorable Outdoor Experiences</h2>
+                <div className="mt-6 space-y-4">
+                  <p className={bodyClass}>
+                    At BA Services, we believe that everyone deserves access to beautiful, well-maintained
+                    outdoor spaces. Our mission is to manage recreation areas that inspire connection
+                    with nature while providing the amenities and <Link href="/services" className="font-medium text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">services</Link> visitors need for a
+                    comfortable experience.
+                  </p>
+                  <p className={bodyClass}>
+                    We partner with federal, state, and local agencies to operate campgrounds, day-use
+                    areas, and recreation facilities across the country. Our team of dedicated
+                    professionals works tirelessly to ensure that every visitor leaves with memories
+                    that last a lifetime.
+                  </p>
+                  <p className={bodyClass}>
+                    Whether you&apos;re seeking a weekend camping trip, a day of hiking, or a peaceful
+                    afternoon by the lake, our recreation areas offer something for everyone. We invite you to{' '}
+                    <Link href="/leave-a-review" className="font-medium text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">share your experience</Link> after your visit.
+                  </p>
+                </div>
+                <SectionActions
+                  className="mt-8"
+                  primary={{ label: 'Explore Locations', url: '/experiences', kind: 'internal' }}
+                  secondary={[{ label: 'Contact us', url: '/contact', kind: 'internal' }]}
+                />
+              </div>
+              <div data-reveal="fade" className="relative aspect-square overflow-hidden rounded-md">
+                <PropertyMap />
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Values */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandTint}`}>
+          <div className={frame}>
+            <div className="text-center mb-16">
+              <Eyebrow label="Our Values" className="mb-4 flex flex-col items-center" />
+              <h2 className={`${h2Class} text-lake-ink mb-4`}>What Guides Us</h2>
+              <p className={`${bodyClass} max-w-2xl mx-auto`}>
+                Our core values shape everything we do, from how we manage facilities to how we
+                interact with visitors.
+              </p>
+            </div>
+
+            <div data-reveal="card" className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {values.map((value) => (
+                <div key={value.title} className="lk-card rounded-md border border-lake-line bg-white p-8">
+                  <div className="w-16 h-16 rounded-full bg-lake-spruce/10 text-lake-spruce flex items-center justify-center mb-6">
+                    {value.icon}
+                  </div>
+                  <h3 className="font-lake-serif text-[22px] leading-tight text-lake-ink mb-3">{value.title}</h3>
+                  <p className="text-[15px] leading-[1.6] text-lake-mute">{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <ClosingCta
+          photo={{ src: '/images/bankhead-bicycle-trail.jpg', alt: 'Paved recreation trail beside a lake in Bankhead National Forest' }}
+          heading="Ready to Experience the Difference?"
+          text="Visit one of our recreation areas and see firsthand why thousands of visitors choose BA Services."
+          primary={{ label: 'Explore Locations', url: '/experiences', kind: 'internal' }}
+          phone="+1 207 307-7903"
+          secondary={{ label: 'Join Our Team', url: '/careers', kind: 'internal' }}
+        />
+      </LakesideShell>
 
       <Footer />
     </main>

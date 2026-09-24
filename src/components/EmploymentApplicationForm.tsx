@@ -161,9 +161,9 @@ export default function EmploymentApplicationForm() {
     )
   }
 
-  const inputClass = 'w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-forest-DEFAULT text-sm'
-  const labelClass = 'block text-sm font-medium text-gray-700 mb-1'
-  const sectionClass = 'border-t-2 border-gray-200 pt-6 mt-8'
+  const inputClass = 'w-full px-3 py-2 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce focus:border-lake-spruce text-sm'
+  const labelClass = 'block text-sm font-medium text-lake-ink mb-1'
+  const sectionClass = 'border-t-2 border-lake-line pt-6 mt-8'
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
@@ -528,7 +528,7 @@ export default function EmploymentApplicationForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="w-full md:w-auto px-8 py-3 bg-forest-DEFAULT text-white rounded-lg hover:bg-forest-light disabled:bg-gray-400 font-semibold text-lg transition-colors"
+          className="w-full md:w-auto min-h-[56px] px-8 py-3 rounded-full bg-lake-spruce text-lake-paper hover:bg-lake-spruce-dark disabled:bg-gray-400 font-semibold text-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
         >
           {submitting ? 'Submitting...' : 'Submit Application'}
         </button>

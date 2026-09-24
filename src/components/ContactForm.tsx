@@ -70,7 +70,7 @@ export default function ContactForm() {
         </div>
         <h2 className="text-2xl font-bold text-gray-900 mb-3">Thank you!</h2>
         <p className="text-gray-600 mb-6">We&apos;ve received your submission and will be in touch soon.</p>
-        <button onClick={() => { setSubmitted(false); setTopic(null) }} className="btn-secondary">
+        <button onClick={() => { setSubmitted(false); setTopic(null) }} className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-lake-ink/40 px-8 text-base font-medium text-lake-ink hover:bg-lake-ink/5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce">
           Submit Another
         </button>
       </div>
@@ -85,11 +85,11 @@ export default function ContactForm() {
         <p className="text-gray-600 mb-8">Select a topic and we&apos;ll show you the right form.</p>
         <div className="grid sm:grid-cols-3 gap-4">
           {topics.map((t) => {
-            const className = "bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg hover:border-forest-DEFAULT/30 transition-all text-left group"
+            const className = "bg-white rounded-md p-6 border border-lake-line shadow-sm hover:shadow-lg hover:border-lake-spruce/40 transition-all text-left group"
             const inner = (
               <>
                 <span className="text-3xl mb-4 block">{t.icon}</span>
-                <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-forest-DEFAULT transition-colors">{t.label}</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-lake-spruce transition-colors">{t.label}</h3>
                 <p className="text-sm text-gray-500">{t.description}</p>
               </>
             )
@@ -134,12 +134,12 @@ export default function ContactForm() {
 
       {/* Careers → link to full application */}
       {topic === 'careers' && (
-        <div className="bg-white rounded-2xl border border-gray-200 p-8">
+        <div className="bg-white rounded-md border border-lake-line p-8">
           <h3 className="text-xl font-bold text-gray-900 mb-4">Employment Application</h3>
           <p className="text-gray-600 mb-6">
             We&apos;re always looking for dedicated people to join our team across recreation areas and DOT rest area facilities nationwide.
           </p>
-          <div className="bg-gray-50 rounded-xl p-6 mb-6">
+          <div className="bg-lake-tint rounded-md p-6 mb-6">
             <h4 className="font-semibold text-gray-900 mb-3">What we offer:</h4>
             <ul className="space-y-2 text-sm text-gray-600">
               {['Competitive pay and benefits', 'Positions across 7+ states', 'Recreation area and DOT rest area roles', 'Site Attendants, Maintenance Technicians, Area Managers', 'Training and certification programs'].map(item => (
@@ -152,19 +152,19 @@ export default function ContactForm() {
               ))}
             </ul>
           </div>
-          <Link href="/careers" className="btn-primary inline-flex items-center gap-2">
+          <Link href="/careers" className="inline-flex min-h-[56px] items-center gap-2 rounded-full bg-lake-spruce px-8 text-base font-medium text-lake-paper hover:bg-lake-spruce-dark transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce">
             Go to Full Application
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
-          <p className="text-xs text-gray-500 mt-4">Or email your resume to <a href="mailto:OfficeManager@BAServes.com" className="text-forest-DEFAULT underline">OfficeManager@BAServes.com</a></p>
+          <p className="text-xs text-gray-500 mt-4">Or email your resume to <a href="mailto:OfficeManager@BAServes.com" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">OfficeManager@BAServes.com</a></p>
         </div>
       )}
 
       {/* Partnerships form */}
       {topic === 'partnership' && (
-        <form onSubmit={handlePartnerSubmit} className="bg-white rounded-2xl border border-gray-200 p-8 space-y-6">
+        <form onSubmit={handlePartnerSubmit} className="bg-white rounded-md border border-lake-line p-8 space-y-6">
           <p className="text-gray-600">Interested in partnering with BA Services for property management? Tell us about your facility.</p>
           {/* Honeypot — hidden from people and from screen readers, bots fill it. */}
           <div aria-hidden="true" className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden">
@@ -174,23 +174,23 @@ export default function ContactForm() {
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-              <input type="text" required value={partnerForm.name} onChange={e => setPartnerForm(p => ({ ...p, name: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT" />
+              <input type="text" required value={partnerForm.name} onChange={e => setPartnerForm(p => ({ ...p, name: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Organization</label>
-              <input type="text" value={partnerForm.organization} onChange={e => setPartnerForm(p => ({ ...p, organization: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT" />
+              <input type="text" value={partnerForm.organization} onChange={e => setPartnerForm(p => ({ ...p, organization: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
-              <input type="email" required value={partnerForm.email} onChange={e => setPartnerForm(p => ({ ...p, email: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT" />
+              <input type="email" required value={partnerForm.email} onChange={e => setPartnerForm(p => ({ ...p, email: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-              <input type="tel" value={partnerForm.phone} onChange={e => setPartnerForm(p => ({ ...p, phone: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT" />
+              <input type="tel" value={partnerForm.phone} onChange={e => setPartnerForm(p => ({ ...p, phone: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Property/Facility Type</label>
-              <select value={partnerForm.propertyType} onChange={e => setPartnerForm(p => ({ ...p, propertyType: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT">
+              <select value={partnerForm.propertyType} onChange={e => setPartnerForm(p => ({ ...p, propertyType: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce">
                 <option value="">Select type...</option>
                 <option>Campground / Recreation Area</option>
                 <option>State / National Park</option>
@@ -202,14 +202,14 @@ export default function ContactForm() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Location (State/City)</label>
-              <input type="text" value={partnerForm.location} onChange={e => setPartnerForm(p => ({ ...p, location: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT" />
+              <input type="text" value={partnerForm.location} onChange={e => setPartnerForm(p => ({ ...p, location: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
             </div>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Tell us about your needs *</label>
-            <textarea required rows={4} value={partnerForm.message} onChange={e => setPartnerForm(p => ({ ...p, message: e.target.value }))} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT/30 focus:border-forest-DEFAULT" placeholder="Describe your property, current challenges, and what you're looking for..." />
+            <textarea required rows={4} value={partnerForm.message} onChange={e => setPartnerForm(p => ({ ...p, message: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" placeholder="Describe your property, current challenges, and what you're looking for..." />
           </div>
-          <button type="submit" disabled={submitting} className="btn-primary">
+          <button type="submit" disabled={submitting} className="inline-flex min-h-[56px] items-center justify-center rounded-full bg-lake-spruce px-8 text-base font-medium text-lake-paper hover:bg-lake-spruce-dark transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce">
             {submitting ? 'Sending...' : 'Submit Partnership Inquiry'}
           </button>
         </form>

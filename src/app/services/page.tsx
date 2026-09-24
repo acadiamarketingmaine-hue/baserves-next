@@ -5,6 +5,17 @@ import Footer from '@/components/Footer'
 import ServiceAccordion from '@/components/ServiceAccordion'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ListenButton } from '@/components/reader'
+import {
+  LakesideShell,
+  Eyebrow,
+  SplitFeature,
+  IconChipList,
+  frame,
+  h2 as h2Class,
+  pillLight,
+  pillGhostLight,
+} from '@/components/property/lakeside'
 
 const services = [
   {
@@ -19,11 +30,6 @@ const services = [
       'Emergency response services',
     ],
     image: '/images/long-lake/fall-foliage.jpg',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-      </svg>
-    ),
   },
   {
     name: 'Landscaping & Groundskeeping',
@@ -37,11 +43,6 @@ const services = [
       'Seasonal cleanup',
     ],
     image: '/images/Burlingame1-2048x1365.jpg',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-      </svg>
-    ),
   },
   {
     name: 'Rest Area Cleaning & Upkeep',
@@ -55,11 +56,6 @@ const services = [
       'Signage maintenance',
     ],
     image: '/images/DSC_0103-2048x1365.jpg',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-      </svg>
-    ),
   },
   {
     name: 'Preventive Maintenance & Repairs',
@@ -73,12 +69,6 @@ const services = [
       'Documentation and reporting',
     ],
     image: '/images/monongahela/spruce-knob-panorama.jpg',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
   },
 ]
 
@@ -104,118 +94,106 @@ export default function ServicesPage() {
         image="/images/Burlingame2-1536x1152.jpg"
       />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/Burlingame2-1536x1152.jpg" alt="" fill sizes="100vw" priority className="object-cover opacity-20" />
-        </div>
-        <div className="container-custom px-6 relative z-10">
-          <div className="max-w-3xl">
-            <span className="badge bg-white/10 text-white mb-4">What We Do</span>
-            <h1 className="font-display headline-xl text-white mb-6">
-              Professional Property & Facility <span className="text-green-400">Management</span>
-            </h1>
-            <p className="text-xl text-white/90 leading-relaxed">
-              From campgrounds and national forests to interstate rest areas, we deliver comprehensive management
-              services across recreation and transportation infrastructure. <Link href="/about" className="underline hover:text-white transition-colors">Learn more about our company</Link> and mission.
-            </p>
-            <div className="mt-8">
-              <Link href="/contact?topic=partnership" className="btn-primary">
-                Partnership Inquiries
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
+      <LakesideShell>
+        {/* Hero */}
+        <section className="relative pt-32 pb-20 bg-lake-spruce overflow-hidden">
+          <div className="absolute inset-0">
+            <Image src="/images/Burlingame2-1536x1152.jpg" alt="" fill sizes="100vw" priority className="object-cover opacity-20" />
+          </div>
+          <div className={`relative z-10 ${frame}`}>
+            <div className="max-w-3xl">
+              <span className="badge bg-white/10 text-white mb-4">What We Do</span>
+              <h1 className="font-lake-serif headline-xl text-white mb-6">
+                Professional Property & Facility <span className="text-green-400">Management</span>
+              </h1>
+              <div className="mb-6">
+                <ListenButton variant="light" />
+              </div>
+              <p className="text-xl text-white/90 leading-relaxed">
+                From campgrounds and national forests to interstate rest areas, we deliver comprehensive management
+                services across recreation and transportation infrastructure. <Link href="/about" className="underline hover:text-white transition-colors">Learn more about our company</Link> and mission.
+              </p>
+              <div className="mt-8">
+                <Link href="/contact?topic=partnership" className={pillLight}>
+                  Partnership Inquiries
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Management Portfolio */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <div className="max-w-3xl mb-10">
-            <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Management Portfolio</span>
-            <h2 className="headline-lg text-gray-900 mb-4">Active Contracts & Scope of Services</h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              From federal land concessions to state DOT contracts, we manage a diverse portfolio of properties and facilities across America. Explore our active contracts below.
-            </p>
+        {/* Management Portfolio */}
+        <section className="py-16 bg-white">
+          <div className={frame}>
+            <div className="max-w-3xl mb-10">
+              <Eyebrow label="Management Portfolio" rule className="mb-4" />
+              <h2 className={`${h2Class} text-lake-ink mb-4`}>Active Contracts & Scope of Services</h2>
+              <p className="text-xl text-lake-mute leading-relaxed">
+                From federal land concessions to state DOT contracts, we manage a diverse portfolio of properties and facilities across America. Explore our active contracts below.
+              </p>
+            </div>
+            <ServiceAccordion />
           </div>
-          <ServiceAccordion />
-        </div>
-      </section>
+        </section>
 
-      {/* Services List */}
-      <section className="section">
-        <div className="container-custom px-6">
-          <div className="space-y-16">
+        {/* Services List */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={`${frame} space-y-16 md:space-y-24`}>
             {services.map((service, index) => (
-              <div
+              <SplitFeature
                 key={service.slug}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                }`}
+                reverse={index % 2 === 1}
+                photo={{ src: service.image, alt: service.name }}
+                heading={service.name}
+                paragraphs={[service.description]}
               >
-                <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                  <div className="w-16 h-16 rounded-2xl bg-forest-DEFAULT/10 text-forest-DEFAULT flex items-center justify-center mb-6">
-                    {service.icon}
-                  </div>
-                  <h2 className="headline-md text-gray-900 mb-4">{service.name}</h2>
-                  <p className="text-xl text-gray-600 mb-6">{service.description}</p>
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-gray-700">
-                        <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href={`/services/${service.slug}`} className="btn-secondary">
-                    {service.name}
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <IconChipList items={service.features} className="mt-6" />
+                <div className="mt-8">
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="inline-flex min-h-[44px] items-center gap-1.5 font-medium text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
+                  >
+                    More about {service.name}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </Link>
                 </div>
-                <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                  <Image
-                    src={service.image}
-                    alt={service.name}
-                    fill
-                    sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-              </div>
+              </SplitFeature>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-white">
-        <div className="container-custom px-6 text-center">
-          <h2 className="headline-lg text-gray-900 mb-6">
-            Need Professional Management Services?
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            <Link href="/contact" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">Contact us</Link> to discuss how we can help maintain and improve your recreation area. We're always looking for talented people to <Link href="/careers" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">join our team</Link>. Visit our <Link href="/" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">homepage</Link> to discover all our offerings, or <Link href="/leave-a-review" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">leave a review</Link> of our work.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="tel:+12073077903" className="btn-primary">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call +1 207 307-7903
-            </a>
-            <a href="mailto:info@baserves.com" className="btn-secondary">
-              Send Email
-            </a>
+        {/* CTA */}
+        <section className="relative isolate overflow-hidden py-14 md:flex md:min-h-[560px] md:items-center md:py-24">
+          <div className="absolute inset-0 -z-10">
+            <Image src="/images/bankhead-bicycle-trail.jpg" alt="Paved recreation trail beside a lake in Bankhead National Forest" fill sizes="100vw" className="object-cover" />
+            <div aria-hidden="true" className="absolute inset-0 bg-black/55" />
           </div>
-        </div>
-      </section>
+          <div className={`${frame} text-center md:text-white`}>
+            <h2 className="font-lake-serif text-[36px] leading-[1.08] tracking-[-0.01em] md:text-[52px] lg:text-[60px]">
+              Need Professional Management Services?
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-[1.6] text-lake-mute md:mt-6 md:text-[18px] md:text-white/95">
+              <Link href="/contact" className="underline decoration-1 underline-offset-[6px] hover:decoration-white">Contact us</Link> to discuss how we can help maintain and improve your recreation area. We&apos;re always looking for talented people to <Link href="/careers" className="underline decoration-1 underline-offset-[6px] hover:decoration-white">join our team</Link>. Visit our <Link href="/" className="underline decoration-1 underline-offset-[6px] hover:decoration-white">homepage</Link> to discover all our offerings, or <Link href="/leave-a-review" className="underline decoration-1 underline-offset-[6px] hover:decoration-white">leave a review</Link> of our work.
+            </p>
+            <div className="mt-8 flex flex-col items-stretch gap-3 md:flex-row md:items-center md:justify-center md:gap-4">
+              <a href="tel:+12073077903" className={`${pillLight}`}>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                Call +1 207 307-7903
+              </a>
+              <a href="mailto:info@baserves.com" className={pillGhostLight}>
+                Send Email
+              </a>
+            </div>
+          </div>
+        </section>
+      </LakesideShell>
 
       <Footer />
     </main>

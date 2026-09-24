@@ -7,6 +7,15 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 import { service, serviceId } from '@/lib/schema'
 import Image from 'next/image'
+import { ListenButton } from '@/components/reader'
+import {
+  LakesideShell,
+  Eyebrow,
+  frame,
+  h2 as h2Class,
+  pillLight,
+  pillGhostLight,
+} from '@/components/property/lakeside'
 
 const RestAreaMap = dynamic(() => import('@/components/RestAreaMap'), { ssr: false })
 
@@ -110,149 +119,154 @@ export default function IowaDotPage() {
         nodes={[service('iowa-dot', { areaServed: ['IA'], subServices: sowSections.map((x) => x.title) })]}
       />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/iowa-dot-collage-web.jpg" alt="Iowa DOT Rest Areas" fill sizes="100vw" priority className="object-cover opacity-30" />
-        </div>
-        <div className="container-custom px-6 relative z-10">
-          <div className="max-w-3xl">
-            <span className="badge bg-white/10 text-white mb-4">State DOT Contract</span>
-            <h1 className="font-display headline-xl text-white mb-6">
-              Iowa <span className="text-green-400">Rest Area</span> Management
-            </h1>
-            <p className="text-xl text-white/90 leading-relaxed">
-              BA Services partners with the Iowa Department of Transportation to maintain safe, clean, and welcoming rest areas along the I-29 corridor in western Iowa.
-            </p>
-            <div className="mt-8">
-              <a href="tel:+12073077903" className="btn-primary">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                Call +1 207 307-7903
-              </a>
-            </div>
+      <LakesideShell>
+        {/* Hero */}
+        <section className="relative pt-32 pb-20 bg-lake-spruce overflow-hidden">
+          <div className="absolute inset-0">
+            <Image src="/images/iowa-dot-collage-web.jpg" alt="Iowa DOT Rest Areas" fill sizes="100vw" priority className="object-cover opacity-30" />
           </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="bg-gray-900 py-8">
-        <div className="container-custom px-6">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-            {[
-              { value: '2', label: 'Rest Areas' },
-              { value: 'I-29', label: 'Corridor' },
-              { value: '24/7', label: 'Service' },
-              { value: 'Iowa DOT', label: 'Contract' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                <div className="text-white/70 text-sm">{stat.label}</div>
+          <div className={`relative z-10 ${frame}`}>
+            <div className="max-w-3xl">
+              <span className="badge bg-white/10 text-white mb-4">State DOT Contract</span>
+              <h1 className="font-lake-serif headline-xl text-white mb-6">
+                Iowa <span className="text-green-400">Rest Area</span> Management
+              </h1>
+              <div className="mb-6">
+                <ListenButton variant="light" />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Map */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Rest Area Locations</h2>
-          <p className="text-gray-600 mb-8">Both facilities are located at Sergeant Bluff along Interstate 29, serving northbound and southbound travelers.</p>
-          <RestAreaMap
-            restAreas={iowaRestAreas}
-            center={[42.375, -96.354]}
-            zoom={13}
-          />
-        </div>
-      </section>
-
-      {/* Rest Areas List */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Managed Facilities</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {iowaRestAreas.map((ra) => (
-              <div key={`${ra.name}-${ra.direction}`} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900">{ra.name}</h3>
-                    <p className="text-sm text-gray-500">{ra.city}, Iowa</p>
-                  </div>
-                  <span className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">
-                    {ra.direction}
-                  </span>
-                </div>
-                <div className="space-y-2 text-sm text-gray-600">
-                  <div className="flex items-center gap-2">
-                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
-                    Route: {ra.route} {ra.direction}
-                  </div>
-                </div>
-                <a
-                  href={ra.googleMapsLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-forest-DEFAULT hover:text-forest-dark transition-colors"
-                >
-                  View on Google Maps
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+              <p className="text-xl text-white/90 leading-relaxed">
+                BA Services partners with the Iowa Department of Transportation to maintain safe, clean, and welcoming rest areas along the I-29 corridor in western Iowa.
+              </p>
+              <div className="mt-8">
+                <a href="tel:+12073077903" className={pillLight}>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  Call +1 207 307-7903
                 </a>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Statement of Work */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Scope of Services</h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              BA Services provides comprehensive janitorial and facility support services for 2 interstate rest areas operated by the Iowa Department of Transportation, ensuring facilities remain clean, safe, fully operational, and welcoming to the traveling public.
+        {/* Stats */}
+        <section className="bg-lake-spruce-dark py-8">
+          <div className={frame}>
+            <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+              {[
+                { value: '2', label: 'Rest Areas' },
+                { value: 'I-29', label: 'Corridor' },
+                { value: '24/7', label: 'Service' },
+                { value: 'Iowa DOT', label: 'Contract' },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
+                  <div className="text-white/70 text-sm">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Map */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <h2 className={`${h2Class} text-lake-ink mb-3`}>Rest Area Locations</h2>
+            <p className="text-lake-mute mb-8">Both facilities are located at Sergeant Bluff along Interstate 29, serving northbound and southbound travelers.</p>
+            <RestAreaMap
+              restAreas={iowaRestAreas}
+              center={[42.375, -96.354]}
+              zoom={13}
+            />
+          </div>
+        </section>
+
+        {/* Rest Areas List */}
+        <section className="py-16 bg-lake-tint">
+          <div className={frame}>
+            <h2 className={`${h2Class} text-lake-ink mb-8`}>Managed Facilities</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {iowaRestAreas.map((ra) => (
+                <div key={`${ra.name}-${ra.direction}`} className="rounded-md border border-lake-line bg-white p-6">
+                  <div className="flex items-start justify-between mb-4 gap-4">
+                    <div>
+                      <h3 className="font-lake-serif text-[20px] text-lake-ink">{ra.name}</h3>
+                      <p className="text-sm text-lake-mute">{ra.city}, Iowa</p>
+                    </div>
+                    <span className="inline-flex items-center px-3 py-1 bg-lake-spruce/10 text-lake-spruce text-xs font-semibold rounded-full">
+                      {ra.direction}
+                    </span>
+                  </div>
+                  <div className="space-y-2 text-sm text-lake-mute">
+                    <div className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-lake-moss" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+                      Route: {ra.route} {ra.direction}
+                    </div>
+                  </div>
+                  <a
+                    href={ra.googleMapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-[44px] items-center gap-1 mt-4 text-sm font-medium text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink"
+                  >
+                    View on Google Maps
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Statement of Work */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <div className="max-w-3xl mb-12">
+              <Eyebrow label="Statement of Work" rule className="mb-4" />
+              <h2 className={`${h2Class} text-lake-ink mb-4`}>Scope of Services</h2>
+              <p className="text-lg text-lake-mute leading-relaxed">
+                BA Services provides comprehensive janitorial and facility support services for 2 interstate rest areas operated by the Iowa Department of Transportation, ensuring facilities remain clean, safe, fully operational, and welcoming to the traveling public.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              {sowSections.map((section) => (
+                <div key={section.title} className="rounded-md border border-lake-line bg-white p-6">
+                  <h3 className="font-lake-serif text-[20px] text-lake-ink mb-2">{section.title}</h3>
+                  <p className="text-sm text-lake-mute mb-4">{section.description}</p>
+                  <ul className="space-y-2">
+                    {section.items.map((item) => (
+                      <li key={item} className="flex items-start text-sm text-lake-ink">
+                        <svg className="w-4 h-4 mr-2 mt-0.5 text-lake-spruce flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-20 bg-lake-spruce">
+          <div className={`${frame} text-center`}>
+            <h2 className="font-lake-serif text-[36px] md:text-[44px] leading-[1.08] text-white mb-6">
+              Interested in Our DOT Services?
+            </h2>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
+              Contact us to learn more about our rest area management capabilities and how we can support your transportation infrastructure.
             </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a href="tel:+12073077903" className={pillLight}>
+                Call +1 207 307-7903
+              </a>
+              <Link href="/services" className={pillGhostLight}>
+                All Services
+              </Link>
+            </div>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {sowSections.map((section) => (
-              <div key={section.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{section.title}</h3>
-                <p className="text-sm text-gray-500 mb-4">{section.description}</p>
-                <ul className="space-y-2">
-                  {section.items.map((item) => (
-                    <li key={item} className="flex items-start text-sm text-gray-700">
-                      <svg className="w-4 h-4 mr-2 mt-0.5 text-forest-DEFAULT flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-gray-50">
-        <div className="container-custom px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Interested in Our DOT Services?
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            Contact us to learn more about our rest area management capabilities and how we can support your transportation infrastructure.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="tel:+12073077903" className="btn-primary">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-              Call +1 207 307-7903
-            </a>
-            <Link href="/services" className="btn-secondary">
-              All Services
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      </LakesideShell>
 
       <Footer />
     </main>
