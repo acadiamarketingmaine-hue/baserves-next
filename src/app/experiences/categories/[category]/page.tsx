@@ -1,32 +1,30 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
-import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon, MountainIcon } from '@/components/Icons'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ClosingCta, Hero, IntroFacts, LakesideShell, SectionActions, SectionHeader, StickyBooking, bandWhite, frame } from '@/components/property/lakeside'
+import { resolveBookingCta } from '@/components/pages/experiences/bookingLinks'
+import LocationCard from '@/components/pages/experiences/LocationCard'
 
 const categoryData: Record<string, any> = {
   'kayak-and-watercraft-rentals': {
     detailLabel: 'Duration',
     priceLabel: 'Rates',
     name: 'Kayak & Watercraft Rentals',
-    icon: <KayakIcon className="w-12 h-12" />,
     description: 'Get out on the water with our selection of kayaks, canoes, rafts, and paddleboards available at multiple locations.',
     image: '/images/burlingame-kayaks.png',
     experiences: [
       { name: 'Meramec River Float Trips', location: 'Meramec State Park, Sullivan, MO', duration: 'Half day – Full day', price: 'Canoe from $54 / Kayak from $42', image: '/images/Meramec-State-Park-Overview-Image.jpg', href: '/experiences/meramec-state-park' },
       { name: 'Washington State Park Watercraft', location: 'Washington State Park, De Soto, MO', duration: 'Hourly / Half day', price: 'Contact for rates', image: '/images/washington-state-park/store.jpg', href: '/washington-state-park' },
       { name: 'Burlingame State Park Boating', location: 'Burlingame State Park, Charlestown, RI', duration: 'Daily', price: 'Contact for rates', image: '/images/Burlingame1-2048x1365.jpg', href: '/experiences/burlingame-state-park' },
-    ]
+    ],
   },
   'campground-rentals': {
     detailLabel: 'Stays',
     priceLabel: 'Sites',
     name: 'Campground Rentals',
-    icon: <CampIcon className="w-12 h-12" />,
     description: 'From primitive tent sites to full-hookup RV spots and rustic cabins, find the perfect stay for your outdoor adventure.',
     image: '/images/corinth-boat-ramp.jpg',
     experiences: [
@@ -42,13 +40,12 @@ const categoryData: Record<string, any> = {
       { name: 'Yankee Springs Recreation Area', location: 'Barry County, MI', duration: 'Nightly', price: '200+ sites', image: '/images/yankee-springs/hill-cabins.jpg', href: '/yankee-springs-recreation-area' },
       { name: 'Long Lake Outdoor Center', location: 'Middleville, MI', duration: 'Nightly / Weekly', price: '16 cabins + lodge', image: '/images/long-lake/fall-aerial.jpg', href: '/long-lake-outdoor-center' },
       { name: 'Monongahela National Forest', location: 'Eastern West Virginia', duration: 'Nightly', price: 'Multiple campgrounds', image: '/images/monongahela/spruce-knob-panorama.jpg', href: '/monongahela-national-forest' },
-    ]
+    ],
   },
-  'hiking': {
+  hiking: {
     detailLabel: 'Size',
     priceLabel: 'Cost',
     name: 'Hiking Trails',
-    icon: <HikeIcon className="w-12 h-12" />,
     description: 'Discover hundreds of miles of scenic trails through forests, along lakeshores, and into wilderness areas.',
     image: '/images/bankhead-bicycle-trail.jpg',
     experiences: [
@@ -62,39 +59,36 @@ const categoryData: Record<string, any> = {
       { name: 'Tipsaw Lake Trails', location: 'Perry County, IN', duration: '8+ miles', price: 'Free', image: '/images/tipsaw-lake/amphitheater.jpg', href: '/tipsaw-lake-recreation-area' },
       { name: 'Raven Interpretive Trail', location: 'Clear Creek, Bankhead NF, AL', duration: '2.5 miles', price: 'Free', image: '/images/DSC_0103-2048x1365.jpg', href: '/experiences/clear-creek-recreation-area' },
       { name: 'Burlingame State Park Trails', location: 'Charlestown, RI', duration: 'Multiple trails', price: 'Free', image: '/images/burlingame-entrance-sign.jpg', href: '/experiences/burlingame-state-park' },
-    ]
+    ],
   },
   'scenic-drives': {
     detailLabel: 'Drive',
     priceLabel: 'Cost',
     name: 'Scenic Drives',
-    icon: <CarIcon className="w-12 h-12" />,
     description: 'Experience breathtaking vistas and natural beauty from the comfort of your vehicle.',
     image: '/images/monongahela/scenic-drive.jpg',
     experiences: [
       { name: 'Highland Scenic Highway', location: 'Monongahela National Forest, WV', duration: '43 miles', price: 'Free', image: '/images/monongahela/scenic-drive.jpg', href: '/monongahela-national-forest' },
       { name: 'Bankhead National Forest Scenic Drive', location: 'Northwest Alabama', duration: '2-3 hours', price: 'Free', image: '/images/corinth-boat-ramp.jpg', href: '/bankhead-national-forest' },
       { name: 'Hoosier National Forest Drive', location: 'Southern Indiana', duration: '2-3 hours', price: 'Free', image: '/images/indian-celina/fall-road.jpg', href: '/hardin-ridge-recreation-area' },
-    ]
+    ],
   },
   'conference-center-rentals': {
     detailLabel: 'Booking',
     priceLabel: 'Details',
     name: 'Conference Center Rentals',
-    icon: <BuildingIcon className="w-12 h-12" />,
     description: 'Host your next retreat, wedding, or corporate event in a stunning natural setting.',
     image: '/images/long-lake/weddings/dining-hall.jpg',
     experiences: [
       { name: 'Long Lake Outdoor Center', location: 'Middleville, MI', duration: 'Daily / Weekly', price: 'Contact for rates', image: '/images/long-lake/weddings/dining-hall.jpg', href: '/long-lake-outdoor-center' },
       { name: 'Meramec State Park Conference Center', location: 'Sullivan, MO', duration: 'Daily', price: 'Contact for rates', image: '/images/meramec-state-park/conference-center.jpg', href: '/experiences/meramec-state-park' },
       { name: 'Corinth Pavilion', location: 'Bankhead National Forest, AL', duration: 'Daily', price: '100-person capacity', image: '/images/corinth-pavilion.jpg', href: '/experiences/corinth-recreation-area' },
-    ]
+    ],
   },
   'lookout-pavillions': {
     detailLabel: 'Booking',
     priceLabel: 'Details',
     name: 'Lookout Pavilions',
-    icon: <MountainIcon className="w-12 h-12" />,
     description: 'Reserve scenic overlooks and covered pavilions for picnics, gatherings, and enjoying panoramic views.',
     image: '/images/meramec-state-park/overlook-pavilion.jpg',
     experiences: [
@@ -102,7 +96,7 @@ const categoryData: Record<string, any> = {
       { name: 'Hardin Ridge Picnic Shelters', location: 'Monroe Lake, IN', duration: 'Daily', price: 'From $50', image: '/images/hardin-ridge/shelter.jpg', href: '/hardin-ridge-recreation-area' },
       { name: 'Clear Creek Group Shelters', location: 'Bankhead National Forest, AL', duration: 'Daily', price: 'Reservable', image: '/images/clear-creek-shelter.jpg', href: '/experiences/clear-creek-recreation-area' },
       { name: 'Tipsaw Lake Pavilion', location: 'Perry County, IN', duration: 'Daily', price: 'From $40', image: '/images/tipsaw-lake/shelter.jpg', href: '/tipsaw-lake-recreation-area' },
-    ]
+    ],
   },
 }
 
@@ -123,10 +117,17 @@ export async function generateMetadata({ params }: { params: { category: string 
   }
 }
 
-export default function CategoryPage({ params }: { params: { category: string } }) {
+export default async function CategoryPage({ params }: { params: { category: string } }) {
   const category = categoryData[params.category]
 
   if (!category) notFound()
+
+  const cards = await Promise.all(
+    (category.experiences as any[]).map(async (exp) => ({
+      ...exp,
+      book: await resolveBookingCta(exp.href),
+    })),
+  )
 
   return (
     <main className="min-h-screen">
@@ -142,75 +143,60 @@ export default function CategoryPage({ params }: { params: { category: string } 
         crumbs={[{ name: 'Experiences', url: '/experiences' }]}
       />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20">
-        <div className="absolute inset-0">
-          <Image src={category.image} alt={category.name} fill sizes="100vw" priority className="object-cover" />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
-        <div className="relative container-custom px-6">
-          <Link href="/experiences" className="inline-flex items-center text-white/90 hover:text-white mb-6 transition-colors">
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Experiences
-          </Link>
-          <div className="max-w-3xl">
-            <span aria-hidden="true" className="mb-5 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 text-white ring-1 ring-white/25 [&>svg]:h-9 [&>svg]:w-9">{category.icon}</span>
-            <h1 className="font-display headline-xl text-white mb-6">{category.name}</h1>
-            <p className="text-xl text-white/90 leading-relaxed">{category.description}</p>
-            <div className="mt-8">
-              <a href="#available-experiences" className="btn-primary">
-                See Available Experiences
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <LakesideShell>
+        <Hero
+          photo={{ src: category.image, alt: category.name }}
+          eyebrow="Experiences"
+          title={category.name}
+          subline={category.description}
+          booking={{
+            title: 'Browse This Category',
+            cta: { label: 'See Available Experiences', url: '#available-experiences', kind: 'internal' },
+          }}
+        />
 
-      {/* Experiences */}
-      <section id="available-experiences" className="section scroll-mt-24">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Available Experiences</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {category.experiences.map((exp: any, index: number) => (
-              <div key={index} className="experience-card">
-                <div className="relative h-48">
-                  <Image src={exp.image} alt={exp.name} fill sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{exp.name}</h3>
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
-                    <svg className="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    {exp.location}
-                  </div>
-                  <dl className="grid grid-cols-2 gap-4 pt-4 border-t">
-                    <div>
-                      <dt className="text-xs text-gray-500">{category.detailLabel}</dt>
-                      <dd className="font-medium">{exp.duration}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs text-gray-500">{category.priceLabel}</dt>
-                      <dd className="text-forest-DEFAULT font-bold">{exp.price}</dd>
-                    </div>
-                  </dl>
-                  <Link
-                    href={exp.href || '/experiences'}
-                    className="mt-4 block w-full text-center py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            ))}
+        <IntroFacts
+          eyebrowRule
+          heading="Available Experiences"
+          lead={category.description}
+          facts={[{ key: 'count', value: String(category.experiences.length), label: 'Locations' }]}
+        >
+          <SectionActions
+            className="mt-8 md:mt-10"
+            primary={{ label: 'See Available Experiences', url: '#available-experiences', kind: 'internal' }}
+            secondary={[{ label: 'Back to Experiences', url: '/experiences', kind: 'internal', style: 'link' }]}
+          />
+        </IntroFacts>
+
+        {/* Available Experiences: a photo-led grid with real Explore + Book actions. */}
+        <section id="available-experiences" className={`py-14 md:py-24 lg:py-[120px] ${bandWhite} scroll-mt-28`}>
+          <div className={frame}>
+            <SectionHeader heading="Available Experiences" />
+            <ul className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+              {cards.map((exp) => (
+                <LocationCard
+                  key={exp.name}
+                  photo={{ src: exp.image, alt: exp.name }}
+                  title={exp.name}
+                  meta={exp.location}
+                  body={`${category.detailLabel}: ${exp.duration} · ${category.priceLabel}: ${exp.price}`}
+                  exploreHref={exp.href}
+                  book={exp.book}
+                  sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                />
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <ClosingCta
+          heading={`Ready to Experience ${category.name}?`}
+          text={category.description}
+          primary={{ label: 'See Available Experiences', url: '#available-experiences', kind: 'internal' }}
+          secondary={{ label: 'View All Experiences', url: '/experiences', kind: 'internal' }}
+        />
+        <StickyBooking name={category.name} cta={{ label: 'See Available Experiences', url: '#available-experiences', kind: 'internal' }} />
+      </LakesideShell>
 
       <Footer />
     </main>
