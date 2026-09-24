@@ -11,23 +11,42 @@ import {
   Gallery,
   HeritageBand,
   Hero,
+  IconChipList,
   IntroFacts,
   LakesideShell,
   Mosaic,
   RuledRows,
   OfficialDisclosure,
+  SectionActions,
   SectionHeader,
   SplitFeature,
   StickyBooking,
   body,
+  bandTint,
+  bandWhite,
   eyebrow,
-  externalProps,
   frame,
   h3,
-  pillPrimary,
+  mapsUrl,
+  telHref,
 } from '@/components/property/lakeside'
 
 const SLUG = 'long-lake-outdoor-center'
+
+// Matches the Long Lake entry in src/components/PropertyMap.tsx — the only
+// place this property's coordinates are published. Never invent a pair.
+const COORDS = { lat: 42.55, lng: -85.4 }
+
+// Resources & Downloads row photos (photo-audit.md B: a real photo per row,
+// matching its meaning, none repeated from elsewhere on this page). Every
+// file below is otherwise unused on this page.
+const DOWNLOAD_IMAGES: Record<string, { src: string; alt: string }> = {
+  'about-us': { src: '/images/long-lake/weddings/fireplace-tall.jpg', alt: 'Stone fireplace built by the CCC inside the lodge' },
+  'camp-rules': { src: '/images/long-lake/weddings/pine-path-tall.jpg', alt: 'Path through the pines leading to a cabin' },
+  'group-camps': { src: '/images/long-lake/weddings/pines-cabin-tall-2.jpg', alt: 'Cabin in a clearing among tall pines' },
+  rentals: { src: '/images/long-lake/weddings/pines-cabin-tall.jpg', alt: 'A CCC-built cabin among the pines' },
+  weddings: { src: '/images/long-lake/weddings/dining-hall-tall.jpg', alt: 'The lodge great room set up with rows of chairs' },
+}
 
 /**
  * This page reads the content layer, so it must not be frozen at build time:
@@ -105,18 +124,27 @@ export default async function LongLakePage() {
 
         <IntroFacts
           eyebrow={established ? `${established.label} ${established.value}` : undefined}
+          eyebrowRule
           heading={sections.about.heading}
           lead={sections.about.intro ?? content.summary}
           paragraphs={content.paragraphs}
           facts={facts}
-        />
+        >
+          <SectionActions
+            className="mt-8 md:mt-10"
+            primary={ctas.hero}
+            secondary={[{ label: 'Get directions', url: mapsUrl(COORDS.lat, COORDS.lng), kind: 'external' }]}
+          />
+        </IntroFacts>
 
         {mosaicPhotos.length > 0 && (
           <Mosaic photos={mosaicPhotos} caption={sections.mosaic?.intro} className={block} />
         )}
 
-        {/* Lodging: the two cabin units, the bunkhouses and the amenities */}
-        <section id="lodging" className={`${block} scroll-mt-28`}>
+        {/* Lodging: the two cabin units, the bunkhouses and the amenities.
+            A white band separates this (the "where to stay" block) from the
+            paper page around it. */}
+        <section id="lodging" className={`${block} ${bandWhite} scroll-mt-28`}>
           <div className={frame}>
             <SectionHeader heading={sections.lodging.heading ?? 'Lodging'} intro={sections.lodging.intro} />
             <CardRow
@@ -138,19 +166,9 @@ export default async function LongLakePage() {
             />
 
             <h3 className={`${h3} mt-16 mb-6 text-lake-ink md:mt-20`}>{sections.amenities.heading}</h3>
-            <ul className="grid border-t border-lake-line sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3">
-              {content.features.map((f) => (
-                <li key={f} className="border-b border-lake-line py-4 text-[16px] text-lake-ink">
-                  {f}
-                </li>
-              ))}
-            </ul>
+            <IconChipList items={content.features} />
 
-            <div className="mt-10 flex flex-col sm:flex-row">
-              <a href={ctas.sidebar.url} {...externalProps(ctas.sidebar.url)} className={pillPrimary}>
-                {ctas.sidebar.label}
-              </a>
-            </div>
+            <SectionActions className="mt-10" primary={ctas.sidebar} />
           </div>
         </section>
 
@@ -173,12 +191,17 @@ export default async function LongLakePage() {
         </section>
 
         {/* Ways to use the camp */}
-        <section className={block}>
+        <section className={`${block} ${bandTint}`}>
           <div className={frame}>
             <SectionHeader heading={sections.eventTypes.heading ?? 'Events'} intro={sections.eventTypes.intro} />
             <CardRow
               columns={4}
               items={eventTypes.map((e) => ({ key: e.key, title: e.title, body: e.body, photo: e.photo, href: e.href }))}
+            />
+            <SectionActions
+              className="mt-12"
+              primary={{ label: 'Plan a group stay', url: ctas.hero.url, kind: 'booking' }}
+              secondary={phone ? [{ label: 'Call about weddings', url: telHref(phone), kind: 'external' }] : []}
             />
           </div>
         </section>
@@ -225,11 +248,15 @@ export default async function LongLakePage() {
         <HeritageBand
           photo={heritagePhoto}
           eyebrow={sections.cccCallout.intro}
+          eyebrowRule
           heading={sections.cccCallout.heading ?? ''}
           paragraphs={sections.cccCallout.paragraphs}
         />
 
-        {/* Resources & Downloads */}
+        {/* Resources & Downloads. Each row gets a real Long Lake photo that
+            matches its meaning (none repeated from elsewhere on the page) —
+            the accent that makes five plain download rows read as five
+            separate things. See docs/ux-pass/kit-v2.md. */}
         <section className="py-14 md:py-24 lg:py-[120px]">
           <div className={frame}>
             <SectionHeader heading={sections.downloads.heading ?? 'Downloads'} intro={sections.downloads.intro} />
@@ -240,6 +267,7 @@ export default async function LongLakePage() {
                 body: d.body,
                 href: d.href,
                 linkLabel: 'Download PDF',
+                image: DOWNLOAD_IMAGES[d.key],
               }))}
             />
           </div>
