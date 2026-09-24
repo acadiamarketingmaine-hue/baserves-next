@@ -8,6 +8,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon } from '@/components/Icons'
 import { rotateFeatured } from '@/lib/featured-rotation'
+import { ListenButton } from '@/components/reader'
+import { LakesideShell, SectionActions, Eyebrow, bandTint, pillLight, pillGhostLight } from '@/components/property/lakeside'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 import ScopeAccordion from '@/components/ScopeAccordion'
@@ -829,7 +831,7 @@ function StatesGrid() {
         <div className="container-custom px-6">
           <div className="text-center mb-12">
             <span className="badge badge-forest mb-4">Browse by State</span>
-            <h2 className="headline-lg text-gray-900 mb-4">
+            <h2 className="font-lake-serif headline-lg text-gray-900 mb-4">
               Outdoor Experiences & Bookings <span className="text-forest-DEFAULT">By State</span>
             </h2>
             <p className="subheadline max-w-2xl mx-auto">
@@ -1124,6 +1126,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
     <>
     <main className="min-h-screen">
       <Navigation />
+      <LakesideShell>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900">
@@ -1146,17 +1149,24 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
         {/* Content */}
         <div className="relative z-10 container-custom px-6 pt-28">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-8 animate-fade-in">
+            <a
+              href="tel:+12073077903"
+              className="inline-flex min-h-[44px] items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-8 animate-fade-in hover:bg-white/20 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               +1 207 307-7903
-            </div>
+            </a>
 
-            <h1 className="font-display headline-xl text-white mb-6 animate-fade-in-up drop-shadow-lg">
+            <h1 className="font-lake-serif headline-xl text-white mb-6 animate-fade-in-up drop-shadow-lg">
               Find Your<br />
               <span className="text-green-400 drop-shadow-lg">Adventure.</span>
             </h1>
+
+            <div className="mb-6 animate-fade-in-up delay-100">
+              <ListenButton variant="light" />
+            </div>
 
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-10 max-w-2xl animate-fade-in-up delay-200 drop-shadow-md">
               From <span className="text-white font-semibold">the rockbound coast of Maine</span> to{' '}
@@ -1174,17 +1184,17 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             <div className="flex flex-wrap gap-4 animate-fade-in-up delay-300">
               <a
                 href="/experiences"
-                className="btn-primary text-lg"
+                className={`${pillLight} text-lg`}
               >
                 Book Your Adventure
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
-              <Link href="/experiences" className="btn-outline-white text-lg">
+              <Link href="/experiences" className={`${pillGhostLight} text-lg`}>
                 Explore Locations
               </Link>
-              <Link href="/contact?topic=partnership" className="btn-outline-white">
+              <Link href="/contact?topic=partnership" className={pillGhostLight}>
                 Partnership Inquiries
               </Link>
             </div>
@@ -1203,7 +1213,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
       <BookingWidgets />
 
       {/* Stats Section */}
-      <section ref={statsRef} className="py-16 bg-forest-DEFAULT">
+      <section ref={statsRef} className="py-16 bg-lake-spruce">
         <div className="container-custom px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -1230,11 +1240,11 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
       <StatesGrid />
 
       {/* Featured Locations */}
-      <section className="section bg-gray-50">
+      <section className={`section ${bandTint}`}>
         <div className="container-custom px-6">
           <div className="text-center mb-16">
-            <span className="badge badge-forest mb-4">Featured Destinations</span>
-            <h2 className="headline-lg text-gray-900 mb-4">
+            <Eyebrow label="Featured Destinations" rule className="mb-4 flex flex-col items-center" />
+            <h2 className="font-lake-serif headline-lg text-gray-900 mb-4">
               Discover Our <span className="text-forest-DEFAULT">Recreation Areas</span>
             </h2>
             <p className="subheadline max-w-2xl mx-auto">
@@ -1349,17 +1359,12 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <a
-              href="/experiences"
-              className="btn-secondary"
-            >
-              Book Your Stay
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </div>
+          <SectionActions
+            className="mt-12"
+            align="center"
+            primary={{ label: 'Book Your Stay', url: '/experiences', kind: 'booking' }}
+            secondary={[{ label: 'Call us', url: 'tel:+12073077903', kind: 'external' }]}
+          />
         </div>
       </section>
 
@@ -1386,7 +1391,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
         <div className="container-custom px-6">
           <div className="text-center mb-16">
             <span className="badge badge-forest mb-4">What We Offer</span>
-            <h2 className="headline-lg text-gray-900 mb-4">
+            <h2 className="font-lake-serif headline-lg text-gray-900 mb-4">
               Explore by <span className="text-forest-DEFAULT">Experience</span>
             </h2>
             <p className="subheadline max-w-2xl mx-auto">
@@ -1415,11 +1420,11 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
       </section>
 
       {/* State Department of Transportation Contracts */}
-      <section className="py-16 bg-gray-50">
+      <section className={`py-16 ${bandTint}`}>
         <div className="container-custom px-6">
           <div className="text-center mb-10">
-            <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">State Department of Transportation Contracts</span>
-            <h2 className="headline-lg text-gray-900 mb-4">Rest Area Management</h2>
+            <Eyebrow label="State Department of Transportation Contracts" rule className="mb-4 flex flex-col items-center" />
+            <h2 className="font-lake-serif headline-lg text-gray-900 mb-4">Rest Area Management</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               We partner with state Departments of Transportation to operate and maintain rest area facilities, ensuring safe and welcoming stops for millions of travelers.
             </p>
@@ -1467,23 +1472,28 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             </Link>
           </div>
           <ScopeAccordion />
+          <SectionActions
+            className="mt-10"
+            align="center"
+            primary={{ label: 'Explore our services', url: '/services', kind: 'internal' }}
+          />
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="section bg-gray-900 text-white">
+      <section className="section bg-lake-spruce text-white">
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <span className="badge bg-white/10 text-white mb-4">Our Services</span>
-              <h2 className="headline-lg mb-6">
+              <h2 className="font-lake-serif headline-lg mb-6">
                 Professional Recreation Area <span className="text-green-400">Management</span>
               </h2>
               <p className="text-xl text-white/70 leading-relaxed mb-8">
                 Beyond providing unforgettable outdoor experiences, we offer comprehensive management
                 services to keep recreation areas pristine and welcoming for all visitors. Our <Link href="/careers" className="text-green-400 underline hover:text-green-300 transition-colors">dedicated team</Link> makes it all possible.
               </p>
-              <Link href="/services" className="btn-primary">
+              <Link href="/services" className={pillLight}>
                 Learn About Our Services
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -1527,23 +1537,20 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
         </div>
 
         <div className="relative z-10 container-custom px-6 text-center">
-          <h2 className="font-display headline-lg text-white mb-6">
+          <h2 className="font-lake-serif headline-lg text-white mb-6">
             Ready for Your Next Adventure?
           </h2>
           <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">
             Book your stay at one of our pristine recreation areas and create memories that last a lifetime. <Link href="/contact" className="underline hover:text-white transition-colors">Contact us</Link> to plan your trip.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="/experiences"
-              className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
-            >
+            <a href="/experiences" className={pillLight}>
               Book Now
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <a href="tel:+12073077903" className="btn-outline-white">
+            <a href="tel:+12073077903" className={pillGhostLight}>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
@@ -1552,6 +1559,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
           </div>
         </div>
       </section>
+      </LakesideShell>
 
       <Footer />
 
