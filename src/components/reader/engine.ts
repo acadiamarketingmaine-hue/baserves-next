@@ -62,6 +62,14 @@ export class ReaderEngine {
   private preferredVoice: SpeechSynthesisVoice | null = null
   private watchdog: ReturnType<typeof setTimeout> | null = null
   private listeners = new Set<() => void>()
+  // useSyncExternalStore requires getSnapshot to return the SAME reference
+  // until something actually changes, or React re-renders forever (#185).
+  // So the snapshot is cached here and only replaced inside emit().
+  private snapshot: ReaderSnapshot
+
+  constructor() {
+    this.snapshot = this.computeSnapshot()
+  }
 
   get supported(): boolean {
     return typeof window !== 'undefined' && 'speechSynthesis' in window
@@ -74,15 +82,20 @@ export class ReaderEngine {
     }
   }
 
-  getSnapshot = (): ReaderSnapshot => ({
-    supported: this.supported,
-    status: this.status,
-    rate: this.rate,
-    heading: this.heading,
-    announcement: this.announcement,
-  })
+  getSnapshot = (): ReaderSnapshot => this.snapshot
+
+  private computeSnapshot(): ReaderSnapshot {
+    return {
+      supported: this.supported,
+      status: this.status,
+      rate: this.rate,
+      heading: this.heading,
+      announcement: this.announcement,
+    }
+  }
 
   private emit() {
+    this.snapshot = this.computeSnapshot()
     this.listeners.forEach((fn) => fn())
   }
 
