@@ -1,10 +1,20 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon, MountainIcon } from '@/components/Icons'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import {
+  CardRow,
+  ClosingCta,
+  Hero,
+  LakesideShell,
+  SectionHeader,
+  StickyBooking,
+  bandWhite,
+  frame,
+} from '@/components/property/lakeside'
+import { resolveBookingCta } from '@/components/pages/experiences/bookingLinks'
+import LocationCard from '@/components/pages/experiences/LocationCard'
 
 const locations = [
   {
@@ -12,118 +22,106 @@ const locations = [
     tagline: 'The Land of a Thousand Waterfalls',
     description: '180,000+ acres of canyons, waterfalls, old-growth forests, and exceptional birding',
     location: 'Lawrence, Winston & Franklin Counties, AL',
-    features: ['Sipsey Wilderness', '84 Bird Species', 'Waterfalls', 'Shooting Range', 'Horse Trails'],
     image: '/images/bankhead-bicycle-trail.jpg',
-    slug: 'bankhead-national-forest'
+    slug: 'bankhead-national-forest',
   },
   {
     name: 'Clear Creek Recreation Area',
-    tagline: 'Alabama\'s Premier Lakeside Campground',
+    tagline: "Alabama's Premier Lakeside Campground",
     description: '102 campsites on Lewis Smith Lake with swimming, trails, and group camping',
     location: 'Bankhead National Forest, AL',
-    features: ['102 Campsites', 'Swimming Beach', 'Boat Ramp', 'Hiking Trails', 'Group Camping'],
     image: '/images/clear-creek-swimming.jpg',
-    slug: 'experiences/clear-creek-recreation-area'
+    slug: 'experiences/clear-creek-recreation-area',
   },
   {
     name: 'Corinth Recreation Area',
     tagline: 'Modern Full-Hookup Campground',
     description: '52 full-hookup sites and 10 tent sites on Lewis Smith Lake',
     location: 'Bankhead National Forest, AL',
-    features: ['Full Hookups', 'Swimming Beach', '100-Person Pavilion', 'Bobwhite Trail', 'Boat Ramp'],
     image: '/images/corinth-boat-ramp.jpg',
-    slug: 'experiences/corinth-recreation-area'
+    slug: 'experiences/corinth-recreation-area',
   },
   {
     name: 'Tipsaw Lake Recreation Area',
     tagline: 'Lakeside Camping in Hoosier National Forest',
     description: '49 campsites on a 131-acre lake with beach, trails, and group camping',
     location: 'Perry County, IN',
-    features: ['131-Acre Lake', '49 Campsites', 'Swimming Beach', '5.9-mi Trail', 'Group Camps'],
     image: '/images/tipsaw-lake/beach-swimming.jpg',
-    slug: 'tipsaw-lake-recreation-area'
+    slug: 'tipsaw-lake-recreation-area',
   },
   {
     name: 'Hardin Ridge Recreation Area',
-    tagline: 'Lakeside Camping on Monroe Lake',
-    description: '195 campsites on Indiana\'s largest lake with beach, boat ramp, and cabins',
+    tagline: "Lakeside Camping on Monroe Lake",
+    description: "195 campsites on Indiana's largest lake with beach, boat ramp, and cabins",
     location: 'Monroe County, IN',
-    features: ['195 Sites', '10,750-Acre Lake', 'Swimming Beach', '2 Cabins', 'Boat Ramp'],
     image: '/images/hardin-ridge/beach.jpg',
-    slug: 'hardin-ridge-recreation-area'
+    slug: 'hardin-ridge-recreation-area',
   },
   {
     name: 'Canal Bridge Campground',
     tagline: 'Scenic Riverside Camping in Maine',
     description: '36 campsites on the Saco River with White Mountain views',
     location: 'Fryeburg, ME',
-    features: ['Saco River', 'Kayaking', 'Fishing', 'Mountain Views', 'Pet Friendly'],
     image: '/images/canal-bridge/beach-1.jpg',
-    slug: 'experiences/canal-bridge'
+    slug: 'experiences/canal-bridge',
   },
   {
     name: 'Yankee Springs Recreation Area',
-    tagline: 'Michigan\'s Ultimate Outdoor Escape',
+    tagline: "Michigan's Ultimate Outdoor Escape",
     description: '5,200+ acres with 200+ campsites, 30+ miles of trails, and year-round recreation',
     location: 'Barry County, MI',
-    features: ['200+ Campsites', '30+ mi Trails', 'Mountain Biking', 'Swimming', 'Winter Sports'],
     image: '/images/yankee-springs/hill-cabins.jpg',
-    slug: 'yankee-springs-recreation-area'
+    slug: 'yankee-springs-recreation-area',
   },
   {
     name: 'Long Lake Outdoor Center',
     tagline: 'Historic CCC Property Since 1939',
     description: '16 cabins, 4 bunkhouses, and a 120-seat lodge on the National Registry',
     location: 'Yankee Springs, MI',
-    features: ['16 Cabins', 'Lodge', 'Weddings', 'Group Retreats', 'Commercial Kitchen'],
     image: '/images/long-lake/fall-aerial.jpg',
-    slug: 'long-lake-outdoor-center'
+    slug: 'long-lake-outdoor-center',
   },
   {
     name: 'Meramec State Park',
-    tagline: 'Missouri\'s Scenic CCC-Built State Park',
+    tagline: "Missouri's Scenic CCC-Built State Park",
     description: '19 cabins, 40+ caves, motel, and river float rentals along the Meramec River',
     location: 'Sullivan, MO',
-    features: ['19 Cabins', '40+ Caves', 'Float Rentals', 'Motel', '13 mi Trails'],
     image: '/images/meramec-state-park/cabin-2.jpg',
-    slug: 'experiences/meramec-state-park'
+    slug: 'experiences/meramec-state-park',
   },
   {
     name: 'Washington State Park',
     tagline: 'Ancient Petroglyphs & Natural Beauty',
     description: '2,157 acres with 11 cabins, pool, 140 bird species, and Fish of the Big River series',
     location: 'De Soto, MO',
-    features: ['11 Cabins', '350+ Petroglyphs', 'Swimming Pool', '140 Bird Species', '9.7 mi Trails'],
     image: '/images/washington-thunderbird-lodge.png',
-    slug: 'washington-state-park'
+    slug: 'washington-state-park',
   },
   {
     name: 'Burlingame State Park',
-    tagline: 'Rhode Island\'s Premier Campground Since 1934',
+    tagline: "Rhode Island's Premier Campground Since 1934",
     description: '755 campsites, 20 cabins, and a rich history on Watchaug Pond',
     location: 'Charlestown, RI',
-    features: ['755 Campsites', '20 Cabins', 'Swimming', 'Boating', 'Wildlife Viewing'],
     image: '/images/Burlingame2-1536x1152.jpg',
-    slug: 'experiences/burlingame-state-park'
+    slug: 'experiences/burlingame-state-park',
   },
   {
     name: 'Monongahela National Forest',
     tagline: 'Wild & Wonderful West Virginia',
     description: '921,000 acres with 800+ miles of trails, 5 wilderness areas, and Spruce Knob',
     location: 'Eastern West Virginia',
-    features: ['921,000 Acres', '800+ mi Trails', '5 Wilderness Areas', 'Rock Climbing', 'Scenic Drives'],
     image: '/images/monongahela/spruce-knob-panorama.jpg',
-    slug: 'monongahela-national-forest'
+    slug: 'monongahela-national-forest',
   },
 ]
 
 const categories = [
-  { name: 'Campground Rentals', icon: <CampIcon className="w-8 h-8" />, count: 25, slug: 'campground-rentals', image: '/images/indian-celina/campsite2.jpg' },
-  { name: 'Conference Centers', icon: <BuildingIcon className="w-8 h-8" />, count: 4, slug: 'conference-center-rentals', image: '/images/long-lake/weddings/dining-hall.jpg' },
-  { name: 'Hiking Trails', icon: <HikeIcon className="w-8 h-8" />, count: 30, slug: 'hiking', image: '/images/DSC_0103-2048x1365.jpg' },
-  { name: 'Kayak & Watercraft', icon: <KayakIcon className="w-8 h-8" />, count: 12, slug: 'kayak-and-watercraft-rentals', image: '/images/burlingame-kayaks.png' },
-  { name: 'Lookout Pavilions', icon: <MountainIcon className="w-8 h-8" />, count: 2, slug: 'lookout-pavillions', image: '/images/meramec-state-park/overlook-pavilion.jpg' },
-  { name: 'Scenic Drives', icon: <CarIcon className="w-8 h-8" />, count: 8, slug: 'scenic-drives', image: '/images/monongahela/scenic-drive.jpg' },
+  { name: 'Campground Rentals', count: 25, slug: 'campground-rentals', image: '/images/indian-celina/campsite2.jpg' },
+  { name: 'Conference Centers', count: 4, slug: 'conference-center-rentals', image: '/images/long-lake/weddings/dining-hall.jpg' },
+  { name: 'Hiking Trails', count: 30, slug: 'hiking', image: '/images/DSC_0103-2048x1365.jpg' },
+  { name: 'Kayak & Watercraft', count: 12, slug: 'kayak-and-watercraft-rentals', image: '/images/burlingame-kayaks.png' },
+  { name: 'Lookout Pavilions', count: 2, slug: 'lookout-pavillions', image: '/images/meramec-state-park/overlook-pavilion.jpg' },
+  { name: 'Scenic Drives', count: 8, slug: 'scenic-drives', image: '/images/monongahela/scenic-drive.jpg' },
 ]
 
 export const metadata = {
@@ -135,7 +133,15 @@ export const metadata = {
   openGraph: og('/experiences'),
 }
 
-export default function ExperiencesPage() {
+export default async function ExperiencesPage() {
+  const locationCards = await Promise.all(
+    locations.map(async (loc) => ({
+      ...loc,
+      href: `/${loc.slug}`,
+      book: await resolveBookingCta(`/${loc.slug}`),
+    })),
+  )
+
   return (
     <main className="min-h-screen">
       <Navigation />
@@ -148,134 +154,94 @@ export default function ExperiencesPage() {
         image="/images/Burlingame1-2048x1365.jpg"
       />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-forest-DEFAULT overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/Burlingame1-1536x1024.jpg" alt="" fill sizes="100vw" priority className="object-cover opacity-20" />
-        </div>
-        <div className="container-custom px-6 relative z-10">
-          <div className="max-w-3xl">
-            <span className="badge bg-white/10 text-white mb-4">Our Locations</span>
-            <h1 className="font-display headline-xl text-white mb-6">
-              Explore Our <span className="text-green-400">Recreation Areas</span>
-            </h1>
-            <p className="text-xl text-white/90 leading-relaxed">
-              From coast to coast, discover pristine outdoor destinations managed with care and dedication
-              to preserving natural beauty while providing exceptional visitor experiences. <Link href="/about" className="underline hover:text-white transition-colors">Learn about our story</Link> and the <Link href="/services" className="underline hover:text-white transition-colors">services</Link> that make it possible.
-            </p>
-            <div className="mt-8">
-              <a href="#all-recreation-areas" className="btn-primary">
-                Book Now
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <LakesideShell>
+        <Hero
+          photo={{ src: '/images/Burlingame1-2048x1365.jpg', alt: 'Watchaug Pond, one of the twelve recreation areas BA Services manages' }}
+          eyebrow="Our Locations"
+          title="Explore Our Recreation Areas"
+          subline="From coast to coast, discover pristine outdoor destinations managed with care and dedication to preserving natural beauty while providing exceptional visitor experiences."
+          booking={{
+            title: 'Find Your Experience',
+            text: 'Twelve recreation areas across seven states — campgrounds, national forests, and state parks.',
+            cta: { label: 'Book Now', url: '#all-recreation-areas', kind: 'internal' },
+          }}
+        />
 
-      {/* Categories */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Browse by Experience</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {categories.map((category) => (
-              <Link
-                key={category.slug}
-                href={`/experiences/categories/${category.slug}`}
-                className="group relative overflow-hidden rounded-xl aspect-square"
-              >
-                <Image
-                  src={category.image}
-                  alt={category.name}
-                  fill
-                  sizes="(min-width: 1280px) 200px, (min-width: 1024px) 17vw, (min-width: 768px) 33vw, 50vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+        {/* Categories */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandWhite}`}>
+          <div className={frame}>
+            <SectionHeader eyebrowRule eyebrow="Browse" heading="Browse by Experience" />
+            <CardRow
+              columns={3}
+              shape="wide"
+              items={categories.map((c) => ({
+                key: c.slug,
+                title: c.name,
+                meta: `${c.count} locations`,
+                photo: { src: c.image, alt: c.name },
+                href: `/experiences/categories/${c.slug}`,
+                linkLabel: 'Explore',
+              }))}
+            />
+          </div>
+        </section>
+
+        {/* All Locations */}
+        <section id="all-recreation-areas" className="py-14 md:py-24 lg:py-[120px] scroll-mt-28">
+          <div className={frame}>
+            <SectionHeader
+              heading="All Recreation Areas"
+              intro={
+                <>
+                  Learn about <Link href="/about" className="underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">our story</Link> and the{' '}
+                  <Link href="/services" className="underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">services</Link> that make it possible.
+                </>
+              }
+            />
+            <ul className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+              {locationCards.map((loc) => (
+                <LocationCard
+                  key={loc.name}
+                  photo={{ src: loc.image, alt: loc.name }}
+                  title={loc.name}
+                  meta={loc.location}
+                  body={loc.description}
+                  exploreHref={loc.href}
+                  book={loc.book}
+                  sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
                 />
-                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/60 transition-colors" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4">
-                  <span className="text-3xl mb-2">{category.icon}</span>
-                  <span className="font-semibold text-center text-sm">{category.name}</span>
-                  <span className="text-xs text-white/70 mt-1">{category.count} locations</span>
-                </div>
-              </Link>
-            ))}
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* All Locations */}
-      <section id="all-recreation-areas" className="section scroll-mt-24">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">All Recreation Areas</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {locations.map((location) => (
-              <Link
-                key={location.name}
-                href={`/${location.slug}`}
-                className="location-card group"
-              >
-                <div className="location-card-image">
-                  <Image
-                    src={location.image}
-                    alt={location.name}
-                    fill
-                    sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="location-card-overlay" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="inline-block px-3 py-1 bg-green-700 text-white text-xs font-semibold rounded-full">
-                      {location.tagline}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {location.features.slice(0, 3).map((feature) => (
-                      <span key={feature} className="text-xs text-gray-500">
-                        {feature} •
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-forest-DEFAULT transition-colors">
-                    {location.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm italic mb-3">{location.description}</p>
-                  <div className="flex items-center text-sm text-gray-500">
-                    <svg className="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    {location.location}
-                  </div>
-                </div>
-              </Link>
-            ))}
+        <section className="pb-14 md:pb-16">
+          <div className={frame}>
+            <p className="text-center text-sm text-lake-mute">
+              <Link href="/contact" className="underline decoration-lake-line decoration-1 underline-offset-4 hover:decoration-lake-ink">
+                Reach out
+              </Link>{' '}
+              with any questions, or explore{' '}
+              <Link href="/careers" className="underline decoration-lake-line decoration-1 underline-offset-4 hover:decoration-lake-ink">
+                career opportunities
+              </Link>{' '}
+              with our team. Return to our{' '}
+              <Link href="/" className="underline decoration-lake-line decoration-1 underline-offset-4 hover:decoration-lake-ink">
+                homepage
+              </Link>{' '}
+              to see everything we offer.
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-forest-DEFAULT">
-        <div className="container-custom px-6 text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
-            Ready to Start Your Adventure?
-          </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-            Book your stay at one of our pristine recreation areas today. <Link href="/contact" className="underline hover:text-white transition-colors">Reach out</Link> with any questions, <Link href="/leave-a-review" className="underline hover:text-white transition-colors">share your feedback</Link> after your visit, or explore <Link href="/careers" className="underline hover:text-white transition-colors">career opportunities</Link> with our team. Return to our <Link href="/" className="underline hover:text-white transition-colors">homepage</Link> to see everything we offer.
-          </p>
-          <a
-            href="#all-recreation-areas"
-            className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
-          >
-            Book Now
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
-      </section>
+        <ClosingCta
+          heading="Ready to Start Your Adventure?"
+          text="Book your stay at one of our pristine recreation areas today."
+          primary={{ label: 'Book Now', url: '#all-recreation-areas', kind: 'internal' }}
+          secondary={{ label: 'Leave a review after your visit', url: '/leave-a-review', kind: 'internal' }}
+        />
+        <StickyBooking name="BA Services" cta={{ label: 'Book Now', url: '#all-recreation-areas', kind: 'internal' }} />
+      </LakesideShell>
 
       <Footer />
     </main>
