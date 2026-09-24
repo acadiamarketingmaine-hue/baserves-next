@@ -6,6 +6,8 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import { ALL_REST_AREAS, CAMPGROUND_SITES, siteForFareharborItem } from '@/data/managers'
 import Footer from '@/components/Footer'
+import { ListenButton } from '@/components/reader'
+import { LakesideShell, frame, bandTint } from '@/components/property/lakeside'
 
 
 const ratingOptions = ['Excellent', 'Good', 'Fair', 'Poor']
@@ -126,66 +128,70 @@ export default function LeaveReviewPage() {
     <main className="min-h-screen">
       <Navigation />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-16">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/Burlingame1-2048x1365.jpg"
-            alt="Leave a Review"
-            fill
-            sizes="100vw"
-            priority
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
-        <div className="relative container-custom px-6">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 bg-white/10 text-white text-sm font-medium rounded-full mb-4">Feedback</span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Submit Your <span className="text-green-400">Feedback</span>
-            </h1>
-            <p className="text-xl text-white/90 leading-relaxed">
-              Your feedback helps us maintain the highest standards at our rest areas. Please take a moment to share your experience. Learn more <Link href="/about" className="underline hover:text-white transition-colors">about our company</Link> and the <Link href="/services" className="underline hover:text-white transition-colors">services</Link> we provide.
-            </p>
+      <LakesideShell>
+        {/* Hero */}
+        <section className="relative pt-32 pb-16">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/Burlingame1-2048x1365.jpg"
+              alt="Leave a Review"
+              fill
+              sizes="100vw"
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/60" />
           </div>
-        </div>
-      </section>
+          <div className={`relative ${frame}`}>
+            <div className="max-w-3xl">
+              <span className="inline-block px-4 py-1.5 bg-white/10 text-white text-sm font-medium rounded-full mb-4">Feedback</span>
+              <h1 className="font-lake-serif headline-xl text-white mb-6">
+                Submit Your <span className="text-green-400">Feedback</span>
+              </h1>
+              <div className="mb-6">
+                <ListenButton variant="light" />
+              </div>
+              <p className="text-xl text-white/90 leading-relaxed">
+                Your feedback helps us maintain the highest standards at our rest areas. Please take a moment to share your experience. Learn more <Link href="/about" className="underline hover:text-white transition-colors">about our company</Link> and the <Link href="/services" className="underline hover:text-white transition-colors">services</Link> we provide.
+              </p>
+            </div>
+          </div>
+        </section>
 
       {/* Feedback Form */}
-      <section className="py-16">
-        <div className="container-custom px-6">
+      <section className="py-14 md:py-24 lg:py-[120px]">
+        <div className={frame}>
           <div className="max-w-3xl mx-auto">
             {submitted ? (
-              <div className="bg-green-50 border border-green-200 rounded-2xl p-12 text-center">
+              <div className="bg-green-50 border border-green-200 rounded-md p-12 text-center">
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Thank You for Your Feedback!</h2>
-                <p className="text-gray-600 mb-8">
-                  We appreciate you taking the time to share your experience. Your feedback helps us continue to improve our services. <Link href="/experiences" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">Explore our recreation areas</Link> for your next adventure, or <Link href="/contact" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">contact us</Link> with any questions.
+                <h2 className="text-2xl font-bold text-lake-ink mb-4">Thank You for Your Feedback!</h2>
+                <p className="text-lake-mute mb-8">
+                  We appreciate you taking the time to share your experience. Your feedback helps us continue to improve our services. <Link href="/experiences" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">Explore our recreation areas</Link> for your next adventure, or <Link href="/contact" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">contact us</Link> with any questions.
                 </p>
                 <button
                   onClick={() => {
                     setSubmitted(false)
                     setFormData(blankForm)
                   }}
-                  className="text-forest-DEFAULT font-semibold hover:underline"
+                  className="text-lake-ink font-semibold underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink"
                 >
                   Submit Another Review
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-8">
+              <form onSubmit={handleSubmit} className="bg-white rounded-md border border-lake-line p-8 md:p-12">
+                <h2 className="text-2xl font-bold text-lake-ink mb-8">
                   {isCampground ? 'Campground Feedback Form' : 'Rest Area Feedback Form'}
                 </h2>
 
                 {/* What are you reviewing? */}
                 <div className="mb-6">
-                  <span className="block text-sm font-medium text-gray-700 mb-2">
+                  <span className="block text-sm font-medium text-lake-ink mb-2">
                     What would you like to give feedback on? *
                   </span>
                   <div className="grid sm:grid-cols-2 gap-3">
@@ -200,12 +206,12 @@ export default function LeaveReviewPage() {
                         aria-pressed={formData.reviewType === option.value}
                         className={`text-left px-4 py-3 rounded-lg border transition-colors ${
                           formData.reviewType === option.value
-                            ? 'border-forest-DEFAULT bg-forest-DEFAULT/5 ring-2 ring-forest-DEFAULT'
-                            : 'border-gray-300 hover:border-gray-400 bg-white'
+                            ? 'border-lake-spruce bg-lake-spruce/5 ring-2 ring-lake-spruce'
+                            : 'border-lake-line hover:border-lake-moss bg-white'
                         }`}
                       >
-                        <span className="block font-semibold text-gray-900">{option.title}</span>
-                        <span className="block text-sm text-gray-600">{option.detail}</span>
+                        <span className="block font-semibold text-lake-ink">{option.title}</span>
+                        <span className="block text-sm text-lake-mute">{option.detail}</span>
                       </button>
                     ))}
                   </div>
@@ -214,7 +220,7 @@ export default function LeaveReviewPage() {
                 {/* Location Selection */}
                 {isCampground ? (
                   <div className="mb-6">
-                    <label htmlFor="site" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="site" className="block text-sm font-medium text-lake-ink mb-2">
                       Which campground or park did you visit? *
                     </label>
                     <select
@@ -223,7 +229,7 @@ export default function LeaveReviewPage() {
                       required
                       value={formData.site}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
+                      className="w-full px-4 py-3 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce focus:border-transparent bg-white"
                     >
                       <option value="">Select a location</option>
                       {CAMPGROUND_SITES.map(({ label }) => (
@@ -233,7 +239,7 @@ export default function LeaveReviewPage() {
                   </div>
                 ) : (
                   <div className="mb-6">
-                    <label htmlFor="restArea" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="restArea" className="block text-sm font-medium text-lake-ink mb-2">
                       Which rest area did you visit? *
                     </label>
                     <select
@@ -242,7 +248,7 @@ export default function LeaveReviewPage() {
                       required
                       value={formData.restArea}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
+                      className="w-full px-4 py-3 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce focus:border-transparent bg-white"
                     >
                       <option value="">Select a rest area</option>
                       {(['Utah', 'Iowa'] as const).map(group => (
@@ -260,7 +266,7 @@ export default function LeaveReviewPage() {
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   {questions.map(({ name, label, options, wide }) => (
                     <div key={name} className={wide ? 'md:col-span-2' : undefined}>
-                      <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor={name} className="block text-sm font-medium text-lake-ink mb-2">
                         {label} *
                       </label>
                       <select
@@ -269,7 +275,7 @@ export default function LeaveReviewPage() {
                         required
                         value={(formData as Record<string, string | boolean>)[name] as string}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent bg-white"
+                        className="w-full px-4 py-3 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce focus:border-transparent bg-white"
                       >
                         <option value="">Select rating</option>
                         {options.map((opt) => (
@@ -282,7 +288,7 @@ export default function LeaveReviewPage() {
 
                 {/* Feedback */}
                 <div className="mb-6">
-                  <label htmlFor="feedback" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="feedback" className="block text-sm font-medium text-lake-ink mb-2">
                     Based upon this visit, do you have any concerns, suggestions or compliments that will help us better service our visitors?
                   </label>
                   <textarea
@@ -291,7 +297,7 @@ export default function LeaveReviewPage() {
                     rows={5}
                     value={formData.feedback}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce focus:border-transparent resize-none"
                     placeholder="Your feedback..."
                   />
                 </div>
@@ -304,9 +310,9 @@ export default function LeaveReviewPage() {
                       name="followUp"
                       checked={formData.followUp}
                       onChange={handleChange}
-                      className="w-5 h-5 mt-0.5 text-forest-DEFAULT rounded-lg focus:ring-forest-DEFAULT"
+                      className="w-5 h-5 mt-0.5 text-lake-spruce rounded-lg focus:ring-lake-spruce"
                     />
-                    <span className="text-sm text-gray-700">
+                    <span className="text-sm text-lake-ink">
                       If your feedback highlights any issues, may we follow up with you directly? Yes, you may contact me.
                     </span>
                   </label>
@@ -314,10 +320,10 @@ export default function LeaveReviewPage() {
 
                 {/* Contact Info */}
                 <div className="border-t pt-8 mb-8">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Your Contact Information</h3>
+                  <h3 className="text-lg font-semibold text-lake-ink mb-4">Your Contact Information</h3>
                   <div className="grid md:grid-cols-3 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-lake-ink mb-2">
                         Your Name
                       </label>
                       <input
@@ -326,12 +332,12 @@ export default function LeaveReviewPage() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent"
+                        className="w-full px-4 py-3 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce focus:border-transparent"
                         placeholder="John Doe"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor="phone" className="block text-sm font-medium text-lake-ink mb-2">
                         Your Phone
                       </label>
                       <input
@@ -340,12 +346,12 @@ export default function LeaveReviewPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent"
+                        className="w-full px-4 py-3 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce focus:border-transparent"
                         placeholder="(555) 555-5555"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-lake-ink mb-2">
                         Your Email
                       </label>
                       <input
@@ -354,7 +360,7 @@ export default function LeaveReviewPage() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-DEFAULT focus:border-transparent"
+                        className="w-full px-4 py-3 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce focus:border-transparent"
                         placeholder="you@example.com"
                       />
                     </div>
@@ -365,7 +371,7 @@ export default function LeaveReviewPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full md:w-auto px-8 py-4 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full md:w-auto min-h-[56px] px-8 py-4 rounded-full bg-lake-spruce text-lake-paper font-semibold hover:bg-lake-spruce-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
                 >
                   {isSubmitting ? (
                     <>
@@ -386,13 +392,14 @@ export default function LeaveReviewPage() {
       </section>
 
       {/* Additional Info */}
-      <section className="py-12 bg-gray-50">
-        <div className="container-custom px-6 text-center">
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Interested in making a difference at our recreation areas? Check out our <Link href="/careers" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">career opportunities</Link>. Return to our <Link href="/" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">homepage</Link> to discover everything BA Services has to offer.
+      <section className={`py-12 ${bandTint}`}>
+        <div className={`${frame} text-center`}>
+          <p className="text-lake-mute max-w-2xl mx-auto">
+            Interested in making a difference at our recreation areas? Check out our <Link href="/careers" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">career opportunities</Link>. Return to our <Link href="/" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">homepage</Link> to discover everything BA Services has to offer.
           </p>
         </div>
       </section>
+      </LakesideShell>
 
       <Footer />
     </main>
