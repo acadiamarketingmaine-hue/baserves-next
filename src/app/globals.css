@@ -509,3 +509,24 @@ body {
 .nav-link::after {
   transition-duration: 200ms;
 }
+
+/* ------------------------------------------------------------------
+   Reader ("Listen to this page", kit-v2, Sep 2026)
+   Highlights the block currently being read aloud: a spruce-green outline
+   plus a faint tint, since an outline alone is easy to miss on a long
+   paragraph. Site-wide (the Reader runs on every page, not just Lakeside
+   ones), so this uses the general --forest-primary token, not the Lakeside
+   palette. See src/components/reader/.
+   ------------------------------------------------------------------ */
+.reader-highlight {
+  outline: 2px solid rgba(26, 71, 42, 0.55);
+  outline-offset: 4px;
+  background-color: rgba(26, 71, 42, 0.06);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reader-highlight {
+    transition: none;
+  }
+}

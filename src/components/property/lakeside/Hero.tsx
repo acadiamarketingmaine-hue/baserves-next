@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import type { Photo } from '@/content'
+import { ListenButton } from '@/components/reader'
 import BookingCard, { type BookingCardProps } from './BookingCard'
 import { externalProps, eyebrow as eyebrowClass, frame, pillLight } from './styles'
 
@@ -10,6 +11,8 @@ export interface HeroProps {
   title: string
   subline?: string
   booking: BookingCardProps
+  /** Shows the inline "Listen to this page" pill under the subline. Default on. */
+  listen?: boolean
 }
 
 /**
@@ -20,7 +23,7 @@ export interface HeroProps {
  * Motion hooks (LakesideMotion): the photo wrapper settles from 1.06 to 1, and
  * each [data-lk-hero] rises and fades in turn. Nothing clips the photo.
  */
-export default function Hero({ photo, eyebrow, title, subline, booking }: HeroProps) {
+export default function Hero({ photo, eyebrow, title, subline, booking, listen = true }: HeroProps) {
   return (
     <section
       data-lk-hero-section=""
@@ -54,6 +57,11 @@ export default function Hero({ photo, eyebrow, title, subline, booking }: HeroPr
             <p data-lk-hero="" className="mt-5 max-w-[560px] text-[16px] leading-[1.55] text-white/95 md:mt-7 md:text-[19px]">
               {subline}
             </p>
+          )}
+          {listen && (
+            <div data-lk-hero="" className="mt-6">
+              <ListenButton variant="light" />
+            </div>
           )}
           <div data-lk-hero="" className="mt-6 lg:hidden">
             <a href={booking.cta.url} {...externalProps(booking.cta.url)} className={`${pillLight} w-full`}>

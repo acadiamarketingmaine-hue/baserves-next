@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import AssistantChat from '@/components/AssistantChat'
+import { ReaderProvider, ReaderPill } from '@/components/reader'
 
 export const metadata: Metadata = {
   title: {
@@ -56,8 +57,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-gray-900 antialiased">
-        {children}
-        <AssistantChat />
+        <ReaderProvider>
+          {children}
+          <AssistantChat />
+          <ReaderPill />
+        </ReaderProvider>
       </body>
     </html>
   )

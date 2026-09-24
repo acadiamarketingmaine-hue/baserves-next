@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { ReaderButton } from '@/components/reader'
 
 const topNavLinks = [
   { name: 'Home', href: '/' },
@@ -372,6 +373,9 @@ export default function Navigation({
 
             {/* Right Side - Search, Sign In, Log In Button */}
             <div className="hidden lg:flex items-center gap-2">
+              {/* Listen to this page (Reader) */}
+              <ReaderButton />
+
               {/* Search Button */}
               <button
                 onClick={() => setSearchOpen(true)}
@@ -394,8 +398,9 @@ export default function Navigation({
               </a>
             </div>
 
-            {/* Mobile: Search + Menu */}
+            {/* Mobile: Listen + Search + Menu */}
             <div className="flex lg:hidden items-center gap-1">
+              <ReaderButton compact />
               <button
                 onClick={() => setSearchOpen(true)}
                 className="p-3 text-gray-700"
