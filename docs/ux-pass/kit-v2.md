@@ -171,27 +171,35 @@ main `9129244`. `src/components/a11y/` — no new npm dependency:
 | `settings.ts` | Pure logic: `A11ySettings` shape, `DEFAULT_SETTINGS`, `TEXT_SCALES`, `sanitizeSettings`/`loadSettings`/`saveSettings` (localStorage, try/catch), `classesFor`/`applySettings` (writes `<html>` classes + the `--a11y-zoom` custom property). |
 | `prepaint.ts` | `A11Y_PREPAINT_SCRIPT` — a hand-written plain-JS mirror of `settings.ts`'s load+apply logic, run as an inline `<script>` at the top of `<body>` (same technique as `LakesideShell`'s `lk-pre` script) so text size / motion / contrast / etc are correct on the very first paint. `tests/a11y-prepaint.test.ts` runs the actual script text against the same fixtures as `settings.ts` to catch drift between the two. |
 | `useReducedMotion.ts` | Hook any motion source outside CSS (GSAP, `requestAnimationFrame`, `setInterval`) reads instead of `prefers-reduced-motion` alone — true for either the OS setting or the panel's own toggle, updates instantly via a `window` event, no reload. |
-| `A11yWidget.tsx` | The launcher + dialog. Same focus-trap/Escape/Tab pattern as `AssistantPanel.tsx`. |
+| `A11yWidget.tsx` | Provides the shared open/close panel state (`A11yPanelContext`/`useA11yPanelTrigger`) and renders the floating launcher (`2xl` and up) + the dialog. Same focus-trap/Escape/Tab pattern as `AssistantPanel.tsx`. |
+| `A11yHeaderButton.tsx` | Second trigger for the same dialog, in the site header next to `ReaderButton`'s headphones icon — visible below `2xl`, where the floating launcher hides itself (see Placement). |
 
-**Wiring:** `layout.tsx` renders the pre-paint `<script>` first, then wraps `{children}`
-alone in `<div data-a11y-scale-root>` (text-size `zoom` applies only to page content —
-the launcher/panel/chat/booking pills sit outside it as siblings, so they never scale or
-reflow), then mounts `<A11yWidget/>` once alongside `<AssistantChat/>`/`<ReaderPill/>`.
+**Wiring:** `layout.tsx` renders the pre-paint `<script>` first, then `<A11yWidget>` wraps
+`{children}` (needed so `Navigation.tsx`, rendered inside it, can reach the panel context)
+— inside that, `{children}` alone gets `<div data-a11y-scale-root>` (text-size `zoom`
+applies only to page content; the launcher/panel/chat/booking pills sit outside it as
+siblings, so they never scale or reflow). `Navigation.tsx` renders `<A11yHeaderButton/>`
+next to `<ReaderButton/>` in both header rows (desktop and mobile-compact).
 
-**Placement:** a round 52px spruce button, left edge, vertically centred
-(`top:50%; transform:translateY(-50%)`), at every breakpoint. Chosen over "bottom-left
-above the booking pill" because the booking pill's position is scroll-state-dependent
-(hidden until past the hero, hidden again at the closing CTA) and phone-only, while the
-chat launcher (bottom-right) and the desktop sticky pill (top-right, can run wide — see
-below) both live at the bottom/top edges. Vertical-centre-left is clear of all three by
-construction, on every page, at every scroll position — no collision-detection logic
-needed. The open dialog is a rounded card, never full-screen: an inset bottom sheet
-(`bottom` safe-area inset, `inset-x-3`) up through the `lg` breakpoint (1024px), then
-anchored beside the launcher (left-side, vertically centred) at `lg` and up. It switches
-at `lg` rather than `md` (768px) because the property template's desktop sticky booking
-pill (`StickyBooking`) can run wide at 768–1023px — `"<name> · call · Book Now"` — and a
-380px panel anchored at `left-[76px]` would otherwise clip its left edge; the bottom
-sheet has no such ceiling at any width.
+**Placement — corrected after live deploy:** originally shipped as a round 52px spruce
+button, left edge, vertically centred, at every breakpoint. Live on baserves.com this
+covered real page text (the H1, body copy) below `2xl`, because the site's content gutter
+doesn't grow past roughly `x=56` until the layout's max-width is reached (~1536px) — the
+launcher's own right edge sits at `x=60`. Measured with Playwright across the home page, a
+property page (Long Lake), a campground page, and `/contact`, at width steps from 1280 to
+1728: overlap persists through 1440px and clears at 1500px+, so `2xl` (1536px) — not `xl`
+(1280px) as first guessed — is the threshold. **Below `2xl`:** the floating launcher
+renders `hidden` (`A11yWidget.tsx`); `A11yHeaderButton` in the site header is the only
+trigger, and its "overlap" with scrolled-under content is never checked — it sits inside
+the existing `position: fixed` header bar (`z-50`, opaque background), exactly like the
+headphones/search/login buttons beside it, which already sit above scrolled content by
+design. **At `2xl` and up:** the floating launcher (left edge, vertically centred) is
+clear of the chat launcher (bottom-right), the phone booking pill (bottom-left,
+phone-only), and the desktop sticky pill (top-right) by construction — no
+collision-detection logic needed. The open dialog is a rounded card, never full-screen: an
+inset bottom sheet below `2xl`, anchored beside the launcher (left-side, vertically
+centred) at `2xl` and up — matching the launcher's own threshold, since below it there's
+nothing at the screen edge to anchor beside.
 
 **Text size (A− / A / A+ / A++ = 100 / 112.5 / 125 / 150%):** CSS `zoom` on
 `[data-a11y-scale-root]`, driven by `--a11y-zoom` (set on `<html>`, inherited). The site's
@@ -274,9 +282,17 @@ Readable font forces a plain system sans stack on every element, including headi
 - **Not machine-verified:** that the panel's visual design reads as "Lakeside" to a human
   (screenshots were reviewed, not a design-system diff); that the contrast/underline/
   readable-font rules look good (not just computed-style-correct) against every section
-  background across the whole site, only the ones screenshotted; `SmoothDetails.tsx`'s
-  `Element.animate()` accordion is not wired to the toggle (see above) — motion there is
-  unaffected, a known gap.
+  background across the whole site, only the ones screenshotted.
+- `SmoothDetails.tsx`'s `Element.animate()` accordion — noted above as a gap — was wired
+  to the toggle in a follow-up commit (`5db7bfb`): it now checks
+  `html.a11y-reduce-motion` directly and skips the animation entirely.
+- **Follow-up (placement fix):** after live deploy surfaced the launcher covering page
+  text below `2xl` (see Placement above), re-verified with Playwright at 390/768/1024/
+  1280/1440 (header trigger) and 1536/1728 (floating launcher) on the home page and Long
+  Lake: exactly one trigger visible at each width, matches the expected kind, no overlap
+  with `<main>` content, and the panel opens from whichever trigger is showing. 40 + 16
+  checks, all passing; the original 73-check suite above also re-run clean (unchanged,
+  since `getByRole` finds whichever trigger is actually visible).
 
 ## Verification run (this pass)
 

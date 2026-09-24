@@ -63,14 +63,21 @@ export default function RootLayout({
             src/components/a11y/prepaint.ts. */}
         <script dangerouslySetInnerHTML={{ __html: A11Y_PREPAINT_SCRIPT }} />
         <ReaderProvider>
-          {/* Only the page content scales with the text-size control (CSS
-              `zoom` on this wrapper, driven by --a11y-zoom — see globals.css).
-              The launcher/panel/chat/pills below are siblings, so they never
-              scale or reflow with it. */}
-          <div data-a11y-scale-root>{children}</div>
-          <AssistantChat />
-          <ReaderPill />
-          <A11yWidget />
+          {/* A11yWidget provides the shared open/close panel state, so both
+              the floating launcher (rendered by A11yWidget itself, desktop
+              only) and the header icon button (rendered inside {children},
+              via Navigation.tsx, on narrower screens) can open the same
+              dialog. It has to wrap {children} for that context to reach
+              Navigation. */}
+          <A11yWidget>
+            {/* Only the page content scales with the text-size control (CSS
+                `zoom` on this wrapper, driven by --a11y-zoom — see globals.css).
+                The launcher/panel/chat/pills below are siblings, so they never
+                scale or reflow with it. */}
+            <div data-a11y-scale-root>{children}</div>
+            <AssistantChat />
+            <ReaderPill />
+          </A11yWidget>
         </ReaderProvider>
       </body>
     </html>

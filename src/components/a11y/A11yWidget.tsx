@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
 import { useReader } from '@/components/reader'
 import { AccessibilityIcon, CheckIcon, CloseIcon } from './icons'
 import {
@@ -55,20 +55,48 @@ function Toggle({
   )
 }
 
+export const PANEL_ID = 'a11y-panel'
+
+interface A11yPanelContextValue {
+  open: boolean
+  /** Opens (or closes, if already open) the shared dialog. `triggerEl` is
+   * remembered so focus returns to whichever button opened it — the
+   * floating launcher (2xl and up) or the header icon button (below 2xl,
+   * see A11yHeaderButton.tsx) — not always the same element. */
+  toggle: (triggerEl: HTMLElement | null) => void
+}
+
+const A11yPanelContext = createContext<A11yPanelContextValue | null>(null)
+
+/** Used by A11yHeaderButton (Navigation.tsx) to open the same panel the
+ * floating launcher opens. Returns null if rendered outside <A11yWidget> —
+ * shouldn't happen since it wraps {children} in the root layout, but a
+ * header button that finds no context simply renders nothing rather than
+ * crash the page. */
+export function useA11yPanelTrigger(): A11yPanelContextValue | null {
+  return useContext(A11yPanelContext)
+}
+
 /**
- * The floating accessibility & reader-control button and its panel.
- * Mounted once from the root layout (src/app/layout.tsx) so it's on every
- * page. Placement: a small round tab on the left edge, vertically centred —
- * see docs/ux-pass/kit-v2.md "Accessibility" section for why (keeps it clear
- * of the bottom-right chat launcher, the bottom-left phone booking pill, and
- * the top-right desktop sticky booking pill at every breakpoint).
+ * Provides the accessibility & reader-control panel to the whole app, and
+ * renders its two pieces: the floating launcher (a round tab on the left
+ * edge, vertically centred, `2xl` and up only) and the dialog itself. Below
+ * `2xl` the floating launcher would sit on top of page content on some
+ * pages (measured — see docs/ux-pass/kit-v2.md "Accessibility"), so a
+ * second trigger, `A11yHeaderButton`, lives in the site header instead;
+ * both call the same `toggle()` via context, sharing this one dialog.
+ * Mounted once from the root layout (src/app/layout.tsx), wrapping
+ * `{children}` so Navigation (rendered inside it) can reach the context.
  */
-export default function A11yWidget() {
+export default function A11yWidget({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false)
   const [settings, setSettings] = useState<A11ySettings>(DEFAULT_SETTINGS)
   const launcherRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeBtnRef = useRef<HTMLButtonElement>(null)
+  // Whichever element (floating launcher or header button) opened the
+  // dialog most recently — Escape/close return focus here.
+  const openerRef = useRef<HTMLElement | null>(null)
 
   const reader = useReader()
 
@@ -95,7 +123,15 @@ export default function A11yWidget() {
 
   const close = useCallback(() => {
     setOpen(false)
-    launcherRef.current?.focus()
+    openerRef.current?.focus()
+  }, [])
+
+  const toggle = useCallback((triggerEl: HTMLElement | null) => {
+    setOpen((v) => {
+      const next = !v
+      if (next) openerRef.current = triggerEl
+      return next
+    })
   }, [])
 
   // Focus the dialog on open; Escape closes; Tab is trapped inside. Same
@@ -135,16 +171,26 @@ export default function A11yWidget() {
     reader.status === 'playing' ? 'Playing' : reader.status === 'paused' ? 'Paused' : 'Not reading'
 
   return (
-    <>
+    <A11yPanelContext.Provider value={{ open, toggle }}>
+      {children}
+
+      {/* Floating launcher: 2xl (1536px) and up only. Below that, on some
+          pages, this exact position (left edge, vertically centred) lands
+          on top of real content — measured against the home page, a
+          property hero, a campground page and /contact; clear from ~1500px,
+          so `2xl` is the nearest safe Tailwind breakpoint. Below `2xl`,
+          A11yHeaderButton (site header, next to the Listen icon) is the
+          only trigger. */}
       <button
         ref={launcherRef}
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => toggle(launcherRef.current)}
         aria-haspopup="dialog"
         aria-expanded={open}
-        aria-controls="a11y-panel"
+        aria-controls={PANEL_ID}
         aria-label="Accessibility and reading options"
-        className="fixed z-40 flex items-center justify-center rounded-full bg-lake-spruce text-lake-paper shadow-[0_10px_24px_-8px_rgba(20,30,24,0.55)] transition-[box-shadow,transform] duration-200 hover:bg-lake-spruce-dark motion-safe:hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
+        data-a11y-trigger="floating"
+        className="fixed z-40 hidden items-center justify-center rounded-full bg-lake-spruce text-lake-paper shadow-[0_10px_24px_-8px_rgba(20,30,24,0.55)] transition-[box-shadow,transform] duration-200 hover:bg-lake-spruce-dark motion-safe:hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce 2xl:flex"
         style={{
           height: 52,
           width: 52,
@@ -158,19 +204,18 @@ export default function A11yWidget() {
 
       {open && (
         <div
-          id="a11y-panel"
+          id={PANEL_ID}
           ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-labelledby="a11y-panel-title"
-          // Anchored beside the launcher from `lg` up only (not `md`): the
-          // property template's desktop sticky booking pill can run wide —
-          // "<name> · call · Book Now" — and at 768-1023px a left-anchored
-          // 380px panel would reach far enough right to clip its left edge.
-          // The inset bottom sheet has no such ceiling (nothing else lives
-          // in that part of the viewport at any width), so it's used all
-          // the way up through `lg`.
-          className="fixed z-50 flex max-h-[70vh] flex-col overflow-hidden rounded-2xl border border-lake-line bg-lake-paper shadow-2xl left-3 right-3 bottom-[calc(4.5rem+env(safe-area-inset-bottom,0px))] lg:left-[76px] lg:right-auto lg:top-1/2 lg:bottom-auto lg:w-[380px] lg:max-h-[calc(100vh-2rem)] lg:-translate-y-1/2"
+          // Anchored beside the floating launcher from `2xl` up only — that's
+          // the only range the launcher itself renders in (see above), so
+          // below it there's nothing at the screen edge to anchor beside.
+          // The inset bottom sheet covers every narrower width, including
+          // 768-1023px where the property template's desktop sticky booking
+          // pill can otherwise run wide enough to clip a left-anchored panel.
+          className="fixed z-50 flex max-h-[70vh] flex-col overflow-hidden rounded-2xl border border-lake-line bg-lake-paper shadow-2xl left-3 right-3 bottom-[calc(4.5rem+env(safe-area-inset-bottom,0px))] 2xl:left-[76px] 2xl:right-auto 2xl:top-1/2 2xl:bottom-auto 2xl:w-[380px] 2xl:max-h-[calc(100vh-2rem)] 2xl:-translate-y-1/2"
         >
           <div className="flex items-center justify-between bg-lake-spruce px-4 py-3">
             <p id="a11y-panel-title" className="text-sm font-semibold text-lake-paper">
@@ -316,6 +361,6 @@ export default function A11yWidget() {
           </div>
         </div>
       )}
-    </>
+    </A11yPanelContext.Provider>
   )
 }

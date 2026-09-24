@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { ReaderButton } from '@/components/reader'
+import { A11yHeaderButton } from '@/components/a11y'
 
 const topNavLinks = [
   { name: 'Home', href: '/' },
@@ -375,6 +376,9 @@ export default function Navigation({
             <div className="hidden lg:flex items-center gap-2">
               {/* Listen to this page (Reader) */}
               <ReaderButton />
+              {/* Accessibility & reading options — only below `2xl`, where
+                  the floating launcher hides itself (see A11yWidget.tsx). */}
+              <A11yHeaderButton />
 
               {/* Search Button */}
               <button
@@ -401,6 +405,7 @@ export default function Navigation({
             {/* Mobile: Listen + Search + Menu */}
             <div className="flex lg:hidden items-center gap-1">
               <ReaderButton compact />
+              <A11yHeaderButton compact />
               <button
                 onClick={() => setSearchOpen(true)}
                 className="p-3 text-gray-700"
