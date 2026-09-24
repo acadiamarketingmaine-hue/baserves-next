@@ -27,7 +27,11 @@ Companion docs: `docs/ux-pass/motion.md` (GSAP/`data-reveal`), `decisions.md`,
 `layout.tsx` wraps `{children}` in `<ReaderProvider>` and renders `<ReaderPill/>` once,
 so every page gets the floating control for free. `Navigation.tsx` (the site's header,
 used by every real page — home included, via `HomeClient`) renders `<ReaderButton/>` in
-the desktop utility row and `<ReaderButton compact/>` in the mobile row.
+the desktop utility row and `<ReaderButton compact/>` in the mobile row. A third entry
+point lives in the floating accessibility & reader-control panel (`src/components/a11y/`,
+also mounted once from `layout.tsx` — see §E below): its "Reading tools" section calls
+`useReader()` directly (play/pause/stop/speed), the same store as everything else here —
+there is exactly one Reader engine on the page, never a second one.
 
 **Where a page opts in:** `Hero` (Lakeside) takes a `listen?: boolean` prop, default
 `true` — it renders `<ListenButton variant="light"/>` under the subline automatically.
@@ -156,6 +160,123 @@ a relevant next action" without stacking three CTAs into one section.
    one — the Reader pill sits at the *top*, so they never collide); ≥44px targets;
    reduced motion gets ≤300ms fades only (already handled by the shared `data-reveal`
    CSS — accents here use no new motion).
+
+## E. Accessibility & reader-control panel
+
+Added on branch `feat/a11y-panel` (worktree `.claude/worktrees/a11y-panel`), on top of
+main `9129244`. `src/components/a11y/` — no new npm dependency:
+
+| File | What it is |
+|---|---|
+| `settings.ts` | Pure logic: `A11ySettings` shape, `DEFAULT_SETTINGS`, `TEXT_SCALES`, `sanitizeSettings`/`loadSettings`/`saveSettings` (localStorage, try/catch), `classesFor`/`applySettings` (writes `<html>` classes + the `--a11y-zoom` custom property). |
+| `prepaint.ts` | `A11Y_PREPAINT_SCRIPT` — a hand-written plain-JS mirror of `settings.ts`'s load+apply logic, run as an inline `<script>` at the top of `<body>` (same technique as `LakesideShell`'s `lk-pre` script) so text size / motion / contrast / etc are correct on the very first paint. `tests/a11y-prepaint.test.ts` runs the actual script text against the same fixtures as `settings.ts` to catch drift between the two. |
+| `useReducedMotion.ts` | Hook any motion source outside CSS (GSAP, `requestAnimationFrame`, `setInterval`) reads instead of `prefers-reduced-motion` alone — true for either the OS setting or the panel's own toggle, updates instantly via a `window` event, no reload. |
+| `A11yWidget.tsx` | The launcher + dialog. Same focus-trap/Escape/Tab pattern as `AssistantPanel.tsx`. |
+
+**Wiring:** `layout.tsx` renders the pre-paint `<script>` first, then wraps `{children}`
+alone in `<div data-a11y-scale-root>` (text-size `zoom` applies only to page content —
+the launcher/panel/chat/booking pills sit outside it as siblings, so they never scale or
+reflow), then mounts `<A11yWidget/>` once alongside `<AssistantChat/>`/`<ReaderPill/>`.
+
+**Placement:** a round 52px spruce button, left edge, vertically centred
+(`top:50%; transform:translateY(-50%)`), at every breakpoint. Chosen over "bottom-left
+above the booking pill" because the booking pill's position is scroll-state-dependent
+(hidden until past the hero, hidden again at the closing CTA) and phone-only, while the
+chat launcher (bottom-right) and the desktop sticky pill (top-right, can run wide — see
+below) both live at the bottom/top edges. Vertical-centre-left is clear of all three by
+construction, on every page, at every scroll position — no collision-detection logic
+needed. The open dialog is a rounded card, never full-screen: an inset bottom sheet
+(`bottom` safe-area inset, `inset-x-3`) up through the `lg` breakpoint (1024px), then
+anchored beside the launcher (left-side, vertically centred) at `lg` and up. It switches
+at `lg` rather than `md` (768px) because the property template's desktop sticky booking
+pill (`StickyBooking`) can run wide at 768–1023px — `"<name> · call · Book Now"` — and a
+380px panel anchored at `left-[76px]` would otherwise clip its left edge; the bottom
+sheet has no such ceiling at any width.
+
+**Text size (A− / A / A+ / A++ = 100 / 112.5 / 125 / 150%):** CSS `zoom` on
+`[data-a11y-scale-root]`, driven by `--a11y-zoom` (set on `<html>`, inherited). The site's
+many hardcoded px sizes rule out a rem-scaling approach; `zoom` scales rendered
+text/layout genuinely (verified — see below), unlike `transform: scale()` which doesn't
+affect layout/wrapping.
+
+**Stop animations** sets `html.a11y-reduce-motion`, which:
+- Disables every CSS transition/animation site-wide via one global rule
+  (`animation-duration`/`transition-duration: 0.001ms !important` on `html.a11y-reduce-motion *`) —
+  covers Tailwind's `animate-bounce`/`animate-spin`, the assistant's typing dots and panel
+  fade-in, hover transitions, the Reader's highlight transition, etc. **Caveat:** a CSS
+  *transition* already mid-flight at the exact instant the toggle flips keeps the
+  duration that was in effect when it started (spec behaviour, unlike CSS *animations*,
+  which do adopt a new duration retroactively) — a one-off, sub-200ms artifact bounded to
+  whatever the visitor was just hovering, never a repeat.
+- `LakesideMotion.tsx`: folds the class into the same `motion` boolean the GSAP
+  `matchMedia('prefers-reduced-motion')` context already branches on, so a page that
+  mounts (first load or a client-side nav) with the toggle already on renders the
+  reduced-motion branch from the start — no flash. A second listener
+  (`a11y:reduce-motion-change`) handles flipping it on an already-mounted page: kills
+  every `ScrollTrigger` and every active GSAP tween/timeline (including the count-up
+  tweens, which animate a plain `{n}` object, not a DOM node — a target-selector kill
+  wouldn't reach them) and jumps hero/reveal/wipe/parallax elements straight to their
+  landed state.
+- `HomeClient.tsx`: the hero `<video>` pauses and `.load()`s (restores the `poster` image
+  — pausing alone leaves whatever frame it stopped on) — driven entirely by an effect,
+  with the `autoPlay` attribute removed, since the browser re-asserts `autoPlay` after
+  `.load()` and would otherwise race the pause; the featured-destinations carousel's
+  6s `setInterval` auto-advance doesn't (re)start; `PartnershipCounter`'s
+  `requestAnimationFrame` count-up jumps straight to the target instead of animating; the
+  partnership-journey step reveal (`setInterval`, 500ms/step) lights every step at once.
+- `PropertyMap.tsx`: the assistant tour popup's photo `setInterval` slideshow doesn't
+  auto-rotate.
+- `engine.ts` (Reader): `scrollIntoView` behaviour for the read-aloud highlight now also
+  checks the a11y class, not just the media query.
+- `SmoothDetails.tsx`'s native `Element.animate()` accordion already had its own
+  `prefers-reduced-motion` branch (quick opacity fade instead of a height animation) —
+  unchanged; the panel toggle doesn't currently extend to it, since `Element.animate()`
+  isn't reachable by a CSS rule (documented here as a known gap, not fixed — a follow-up
+  would be to also check `useReducedMotion()` there directly).
+
+**Reading tools** is a thin wrapper around `useReader()` from `src/components/reader/` —
+Play/Pause/Stop/speed buttons, no second speech engine. See §A above.
+
+**Higher contrast / Underline links / Line spacing / Readable font** are global CSS rules
+scoped to `[data-a11y-scale-root]`, toggled by `html.a11y-contrast` /
+`.a11y-underline-links` / `.a11y-spacing-relaxed` / `.a11y-readable-font` (`globals.css`).
+Readable font forces a plain system sans stack on every element, including headings
+(overriding both the Lakeside display serif and the site's own Playfair Display
+`font-display`).
+
+**Persistence:** `localStorage['ba-a11y-settings-v1']`, wrapped in try/catch everywhere
+(private browsing / blocked storage degrade to session-only, never throw).
+
+**Verification (this addition):**
+- `npm test` — 82/82 (60 pre-existing + 22 new: `a11y-settings.test.ts` covers
+  `sanitizeSettings`/`loadSettings`/`saveSettings`/`classesFor`/`applySettings` against a
+  fake DOM + fake storage, including the private-mode-throws path;
+  `a11y-prepaint.test.ts` runs `A11Y_PREPAINT_SCRIPT` itself through the same fixtures to
+  prove it hasn't drifted from `settings.ts`).
+- `npx tsc --noEmit` — clean. `npm run build` — clean production build (`.next` deleted
+  after, `df -h /` checked before). Server killed after verification.
+- Playwright (real headless Chromium, `npm run build` + `next start`, never the MCP
+  window): 73/73 checks — no-flash (class present at `DOMContentLoaded` with settings
+  pre-seeded in `localStorage`) on 3 page types; text-size ratio (~1.125/1.25/1.5×,
+  measured via `getBoundingClientRect` on a width-auto nav link, since `zoom` re-flows
+  width-constrained text rather than scaling its box) on 3 page types; no horizontal
+  scroll at 390/150%; a synthetic CSS-animation probe stops via `document.getAnimations()`;
+  contrast/underline/line-spacing/readable-font computed-style changes; GSAP reveal
+  elements jump to `opacity:1` and stay there through a scroll (ScrollTrigger not
+  re-arming), count-ups land on their final text; hero video pauses/resumes; carousel
+  position unchanged after a real 7s wait; settings persist across a full reload and a
+  client-side navigation; full keyboard flow (focus enters the dialog, Tab traps for 40
+  presses, Escape closes and returns focus to the launcher); no bounding-box overlap
+  between the launcher/panel and the chat launcher or the sticky booking pills at
+  390/768/1440 on the home and a property page.
+- Screenshots: `docs/ux-pass/a11y-panel/launcher-{390,1440}.png`,
+  `panel-open-{390,1440}.png`, `text-150-home-390.png`, `text-150-property-1440.png`.
+- **Not machine-verified:** that the panel's visual design reads as "Lakeside" to a human
+  (screenshots were reviewed, not a design-system diff); that the contrast/underline/
+  readable-font rules look good (not just computed-style-correct) against every section
+  background across the whole site, only the ones screenshotted; `SmoothDetails.tsx`'s
+  `Element.animate()` accordion is not wired to the toggle (see above) — motion there is
+  unaffected, a known gap.
 
 ## Verification run (this pass)
 

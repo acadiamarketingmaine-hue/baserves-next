@@ -530,3 +530,84 @@ body {
     transition: none;
   }
 }
+
+/* ------------------------------------------------------------------
+   Accessibility & reader-control panel (kit-v2, Sep 2026)
+   Floating launcher + dialog: src/components/a11y/. Settings persist to
+   localStorage and are applied to <html> as classes + one custom property
+   by an inline pre-paint script (src/components/a11y/prepaint.ts) before
+   anything else on the page paints, so there's no flash.
+   ------------------------------------------------------------------ */
+
+/* 1. Text size. `zoom` (not rem/em) on the page-content wrapper only, so the
+   many hardcoded px sizes across the site genuinely scale, while the
+   floating launcher/panel/chat/booking pills — which sit OUTSIDE this
+   wrapper as siblings in the root layout — never resize or reflow. */
+[data-a11y-scale-root] {
+  zoom: var(--a11y-zoom, 1);
+}
+
+/* 2. Stop animations. Acts exactly like prefers-reduced-motion for every
+   CSS transition/animation site-wide (button hovers, the assistant's typing
+   dots, panel fade-ins, loading spinners, ...). GSAP timelines/ScrollTrigger,
+   requestAnimationFrame count-ups and setInterval carousels aren't CSS, so
+   they're handled in JS — see src/components/a11y/useReducedMotion.ts and
+   LakesideMotion's a11y:reduce-motion-change listener. */
+html.a11y-reduce-motion {
+  scroll-behavior: auto !important;
+}
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-delay: -0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  transition-delay: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* 3. Higher contrast: darker text, stronger borders, underlined links. */
+html.a11y-contrast [data-a11y-scale-root] {
+  color: #0a0a0a;
+}
+html.a11y-contrast [data-a11y-scale-root] a {
+  color: #0a0a0a !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 2px !important;
+}
+html.a11y-contrast [data-a11y-scale-root] button,
+html.a11y-contrast [data-a11y-scale-root] input,
+html.a11y-contrast [data-a11y-scale-root] textarea,
+html.a11y-contrast [data-a11y-scale-root] select,
+html.a11y-contrast [data-a11y-scale-root] .rounded-xl,
+html.a11y-contrast [data-a11y-scale-root] .rounded-2xl,
+html.a11y-contrast [data-a11y-scale-root] .rounded-3xl,
+html.a11y-contrast [data-a11y-scale-root] .rounded-full,
+html.a11y-contrast [data-a11y-scale-root] .lk-card {
+  border-width: 2px !important;
+  border-color: #0a0a0a !important;
+}
+
+/* 4. Underline links (independent of contrast mode). */
+html.a11y-underline-links [data-a11y-scale-root] a {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 2px !important;
+}
+
+/* 5. Line spacing: normal / relaxed. */
+html.a11y-spacing-relaxed [data-a11y-scale-root] p,
+html.a11y-spacing-relaxed [data-a11y-scale-root] li,
+html.a11y-spacing-relaxed [data-a11y-scale-root] blockquote {
+  line-height: 1.85 !important;
+  margin-bottom: 1.1em;
+}
+
+/* 6. Readable font: plain system sans everywhere (including headings, which
+   normally use the Lakeside display serif / Playfair Display). */
+html.a11y-readable-font [data-a11y-scale-root],
+html.a11y-readable-font [data-a11y-scale-root] * {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+}

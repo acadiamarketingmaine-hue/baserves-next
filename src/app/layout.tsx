@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import AssistantChat from '@/components/AssistantChat'
 import { ReaderProvider, ReaderPill } from '@/components/reader'
+import { A11yWidget, A11Y_PREPAINT_SCRIPT } from '@/components/a11y'
 
 export const metadata: Metadata = {
   title: {
@@ -57,10 +58,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-white text-gray-900 antialiased">
+        {/* Applies persisted a11y settings (text size, motion, contrast, ...) to
+            <html> before anything below paints — no flash. See
+            src/components/a11y/prepaint.ts. */}
+        <script dangerouslySetInnerHTML={{ __html: A11Y_PREPAINT_SCRIPT }} />
         <ReaderProvider>
-          {children}
+          {/* Only the page content scales with the text-size control (CSS
+              `zoom` on this wrapper, driven by --a11y-zoom — see globals.css).
+              The launcher/panel/chat/pills below are siblings, so they never
+              scale or reflow with it. */}
+          <div data-a11y-scale-root>{children}</div>
           <AssistantChat />
           <ReaderPill />
+          <A11yWidget />
         </ReaderProvider>
       </body>
     </html>

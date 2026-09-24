@@ -261,7 +261,9 @@ function TourHandler() {
 
       tourPopupRef.current = popup
 
-      if (images.length > 1) {
+      // Stop animations: no auto-rotating photo carousel in the tour popup.
+      const reduceMotion = document.documentElement.classList.contains('a11y-reduce-motion')
+      if (images.length > 1 && !reduceMotion) {
         slideIntervalRef.current = setInterval(() => {
           imgIndex = (imgIndex + 1) % images.length
           popup.setContent(makeContent(imgIndex))

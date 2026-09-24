@@ -134,7 +134,8 @@ export class ReaderEngine {
     el.classList.add(HIGHLIGHT_CLASS)
     this.highlighted = el
     const reduce =
-      typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      document.documentElement.classList.contains('a11y-reduce-motion') ||
+      (typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
     el.scrollIntoView?.({ behavior: reduce ? 'auto' : 'smooth', block: 'center' })
   }
 

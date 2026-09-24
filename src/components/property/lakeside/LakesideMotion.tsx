@@ -4,8 +4,50 @@ import { useEffect, useLayoutEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
+import { REDUCE_MOTION_EVENT } from '@/components/a11y'
 
 const useIsoLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect
+
+/** Forces every Lakeside motion target to its landed/final state and kills
+ * whatever GSAP was mid-flight — used when "Stop animations" is switched ON
+ * while already on the page (the initial-mount case is handled above, by
+ * folding the a11y class into the `motion` condition before anything ever
+ * animates). Only ever makes things MORE visible/settled, so it's safe to
+ * call even if nothing was running. */
+function jumpToFinalState(root: HTMLElement) {
+  const q = <T extends HTMLElement = HTMLElement>(sel: string) => Array.from(root.querySelectorAll<T>(sel))
+  // GSAP warns "target not found" if you gsap.set() an empty array — most of
+  // these selectors legitimately match nothing on a page that isn't using
+  // that particular marker (e.g. the home page has no [data-lk-hero-img]).
+  const setIfAny = (els: HTMLElement[], vars: gsap.TweenVars) => {
+    if (els.length) gsap.set(els, vars)
+  }
+
+  ScrollTrigger.getAll().forEach((st) => st.kill())
+  // Only this component ever calls gsap.to/from on this site (see the
+  // gsap/ScrollTrigger grep in docs/ux-pass/kit-v2.md), so it's safe to stop
+  // every active tween/timeline rather than track individual targets — this
+  // also catches the count-up tweens, which animate a plain {n} object
+  // (not a DOM node), so a target-selector kill like gsap.killTweensOf('*')
+  // wouldn't reach them.
+  gsap.globalTimeline.getChildren(true, true, true).forEach((child) => child.kill())
+
+  setIfAny(q('[data-lk-hero-img]'), { clearProps: 'transform', scale: 1 })
+  setIfAny(q('[data-lk-hero], [data-lk-hero] *'), { clearProps: 'transform,opacity,visibility', autoAlpha: 1, y: 0 })
+  setIfAny(q('[data-reveal="up"], [data-reveal="fade"], [data-reveal="card"]'), {
+    clearProps: 'transform,opacity,visibility',
+    autoAlpha: 1,
+    y: 0,
+  })
+  setIfAny(q('[data-reveal="wipe"]'), { clearProps: 'clip-path' })
+  setIfAny(q('[data-parallax]'), { clearProps: 'transform', yPercent: 0 })
+
+  // Count-ups: jump straight to the final number a killed tween may have
+  // left mid-count.
+  q('[data-count]').forEach((el) => {
+    if (el.dataset.count) el.textContent = el.dataset.count
+  })
+}
 
 /**
  * All motion for the Lakeside template, ported from the house GSAP runtime
@@ -61,7 +103,13 @@ export default function LakesideMotion() {
         reduce: '(prefers-reduced-motion: reduce)',
       },
       (ctx) => {
-        const { motion } = ctx.conditions as { motion: boolean; reduce: boolean }
+        const { motion: mediaMotion } = ctx.conditions as { motion: boolean; reduce: boolean }
+        // The "Stop animations" panel toggle behaves exactly like
+        // prefers-reduced-motion: reduce, folded in here so a page that
+        // mounts (first load or a client-side nav) with it already on
+        // renders in the reduced-motion branch below from the start, with
+        // no flash of the full entrance/parallax animation.
+        const motion = mediaMotion && !document.documentElement.classList.contains('a11y-reduce-motion')
         const heroImg = q('[data-lk-hero-img]')
         const heroBits = q('[data-lk-hero]')
         const heroTitle = root.querySelector<HTMLElement>('[data-lk-hero-title]')
@@ -253,6 +301,19 @@ export default function LakesideMotion() {
       root.classList.remove('lk-armed')
       delete root.dataset.motion
     }
+  }, [])
+
+  // Live toggle: "Stop animations" flipped on while this page is already
+  // mounted (initial mount/nav is covered above). Turning it back off is
+  // intentionally a no-op here — nothing needs to be hidden and replayed.
+  useEffect(() => {
+    const root = document.querySelector<HTMLElement>('[data-lakeside]')
+    if (!root) return
+    const onChange = (e: Event) => {
+      if ((e as CustomEvent<{ reduceMotion: boolean }>).detail?.reduceMotion) jumpToFinalState(root)
+    }
+    window.addEventListener(REDUCE_MOTION_EVENT, onChange)
+    return () => window.removeEventListener(REDUCE_MOTION_EVENT, onChange)
   }, [])
 
   return null

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef, useCallback, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
@@ -9,6 +9,7 @@ import Footer from '@/components/Footer'
 import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon } from '@/components/Icons'
 import { rotateFeatured } from '@/lib/featured-rotation'
 import { ListenButton } from '@/components/reader'
+import { useReducedMotion } from '@/components/a11y'
 import { LakesideShell, SectionActions, Eyebrow, bandPaper, bandTint, pillLight, pillGhostLight, pillPrimary } from '@/components/property/lakeside'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
@@ -500,12 +501,19 @@ function PartnershipJourney() {
   const [isVisible, setIsVisible] = useState(false)
   const [activeStep, setActiveStep] = useState(0)
   const sectionRef = useRef<HTMLDivElement>(null)
+  const reducedMotion = useReducedMotion()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
+          // Stop animations: light every step immediately instead of
+          // stepping through them one at a time.
+          if (reducedMotion) {
+            setActiveStep(partnershipSteps.length)
+            return
+          }
           let step = 0
           const interval = setInterval(() => {
             step++
@@ -525,7 +533,7 @@ function PartnershipJourney() {
     }
 
     return () => observer.disconnect()
-  }, [])
+  }, [reducedMotion])
 
   return (
     <section ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden bg-white">
@@ -720,6 +728,7 @@ function PartnershipJourney() {
 
 function PartnershipCounter({ target, suffix, isActive }: { target: number; suffix: string; isActive: boolean }) {
   const [count, setCount] = useState(0)
+  const reducedMotion = useReducedMotion()
 
   useEffect(() => {
     if (!isActive) {
@@ -727,8 +736,10 @@ function PartnershipCounter({ target, suffix, isActive }: { target: number; suff
       return
     }
 
-    // Reduced motion: show the final figure immediately, no count-up.
-    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Reduced motion (OS setting or the panel's "Stop animations" toggle):
+    // show the final figure immediately, no count-up. Re-runs (and cancels
+    // any in-flight rAF loop below) the instant the toggle flips.
+    if (reducedMotion) {
       setCount(target)
       return
     }
@@ -748,7 +759,7 @@ function PartnershipCounter({ target, suffix, isActive }: { target: number; suff
 
     animationFrame = requestAnimationFrame(animate)
     return () => cancelAnimationFrame(animationFrame)
-  }, [target, isActive])
+  }, [target, isActive, reducedMotion])
 
   return <span>{count}{suffix}</span>
 }
@@ -1033,6 +1044,8 @@ interface HomeClientProps {
 export default function HomeClient({ featuredDateKey }: HomeClientProps) {
   const [statsVisible, setStatsVisible] = useState(false)
   const statsRef = useRef<HTMLDivElement>(null)
+  const reducedMotion = useReducedMotion()
+  const heroVideoRef = useRef<HTMLVideoElement>(null)
 
   // Carousel state — 1 card on mobile, 3 on desktop, smooth translateX sliding
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -1099,12 +1112,14 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
     else if (touchDeltaRef.current > threshold) prev()
   }, [next, prev])
 
-  // Auto-advance, resets on interaction
+  // Auto-advance, resets on interaction. Stop animations: no auto-rotate —
+  // the carousel stays put until the visitor swipes/clicks the dots/arrows.
   useEffect(() => {
     if (autoAdvanceRef.current) clearInterval(autoAdvanceRef.current)
+    if (reducedMotion) return
     autoAdvanceRef.current = setInterval(next, 6000)
     return () => { if (autoAdvanceRef.current) clearInterval(autoAdvanceRef.current) }
-  }, [currentIndex, next])
+  }, [currentIndex, next, reducedMotion])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -1123,6 +1138,23 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
     return () => observer.disconnect()
   }, [])
 
+  // Stop animations: pause the autoplaying hero video and show its poster
+  // frame instead. Applies immediately when the toggle flips, and on mount
+  // if it was already on (useLayoutEffect, so it runs before the browser's
+  // own autoplay has a chance to paint a moving frame).
+  useLayoutEffect(() => {
+    const video = heroVideoRef.current
+    if (!video) return
+    if (reducedMotion) {
+      video.pause()
+      // Pausing alone leaves whatever frame it stopped on; load() resets the
+      // element so its `poster` image shows instead, per spec.
+      video.load()
+    } else {
+      video.play().catch(() => {})
+    }
+  }, [reducedMotion])
+
   return (
     <>
     <main className="min-h-screen">
@@ -1134,7 +1166,11 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
         {/* Background Video */}
         <div className="absolute inset-0">
           <video
-            autoPlay
+            ref={heroVideoRef}
+            // No `autoPlay` attribute: the browser re-asserts it after
+            // video.load() (used below to restore the poster), which would
+            // race our own pause and win. Playback is driven entirely by the
+            // effect above instead, so "Stop animations" always wins.
             muted
             loop
             playsInline
