@@ -7,6 +7,16 @@ import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 import { service as serviceNode, serviceId } from '@/lib/schema'
+import { ListenButton } from '@/components/reader'
+import {
+  LakesideShell,
+  IconChipList,
+  SectionActions,
+  frame,
+  body as bodyClass,
+  pillLight,
+  telHref,
+} from '@/components/property/lakeside'
 
 const services: Record<string, any> = {
   'campground-park-maintenance': {
@@ -145,124 +155,117 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         nodes={[serviceNode(params.slug, { image: service.image, description: service.description, subServices: service.features })]}
       />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20">
-        <div className="absolute inset-0">
-          <Image
-            src={service.image}
-            alt={service.name}
-            fill
-            sizes="100vw"
-            priority
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
-        <div className="relative container-custom px-6">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 bg-white/10 text-white text-sm font-medium rounded-full mb-4">Our Services</span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              {service.name}
-            </h1>
-            <p className="text-xl text-white/90 leading-relaxed">
-              {service.tagline}
-            </p>
-            <div className="mt-8">
-              <Link href="/contact" className="btn-primary">
-                Request a Quote
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
+      <LakesideShell>
+        {/* Hero */}
+        <section className="relative pt-32 pb-20">
+          <div className="absolute inset-0">
+            <Image
+              src={service.image}
+              alt={service.name}
+              fill
+              sizes="100vw"
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/60" />
           </div>
-        </div>
-      </section>
-
-      {/* Content */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <div className="grid lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Overview</h2>
-              <div className="prose prose-lg max-w-none">
-                {service.longDescription.split('\n\n').map((paragraph: string, index: number) => (
-                  <p key={index} className="text-gray-600 leading-relaxed mb-4">
-                    {paragraph}
-                  </p>
-                ))}
+          <div className={`relative ${frame}`}>
+            <div className="max-w-3xl">
+              <span className="inline-block px-4 py-1.5 bg-white/10 text-white text-sm font-medium rounded-full mb-4">Our Services</span>
+              <h1 className="font-lake-serif headline-xl text-white mb-6">
+                {service.name}
+              </h1>
+              <div className="mb-6">
+                <ListenButton variant="light" />
               </div>
-
-              <h3 className="text-2xl font-bold text-gray-900 mt-12 mb-6">What We Offer</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {service.features.map((feature: string, index: number) => (
-                  <div key={index} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
-                    <svg className="w-6 h-6 text-forest-DEFAULT flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-gray-700">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="lg:col-span-1">
-              <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Key Benefits</h3>
-                <ul className="space-y-4">
-                  {service.benefits.map((benefit: string, index: number) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-forest-DEFAULT/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <svg className="w-4 h-4 text-forest-DEFAULT" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-forest-DEFAULT rounded-2xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-4">Request a Quote</h3>
-                <p className="text-white/90 mb-6">
-                  Interested in our {service.name.toLowerCase()} services? Contact us for a customized quote.
-                </p>
-                <Link
-                  href="/contact"
-                  className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
-                >
-                  Contact Us
-                </Link>
-                <a href="tel:+12073077903" className="flex items-center justify-center gap-2 mt-4 text-white/90 hover:text-white transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              <p className="text-xl text-white/90 leading-relaxed">
+                {service.tagline}
+              </p>
+              <div className="mt-8">
+                <Link href="/contact" className={pillLight}>
+                  Request a Quote
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                  +1 207 307-7903
-                </a>
+                </Link>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            Let us help you maintain your recreation facilities to the highest standards.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors">
-              Get a Quote
-            </Link>
-            <Link href="/services" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-forest-DEFAULT text-forest-DEFAULT font-semibold rounded-lg hover:bg-forest-DEFAULT hover:text-white transition-colors">
-              View All Services
-            </Link>
+        {/* Content */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <div className="grid lg:grid-cols-3 gap-12">
+              <div className="lg:col-span-2">
+                <h2 className="font-lake-serif text-[32px] md:text-[36px] leading-[1.1] text-lake-ink mb-6">Overview</h2>
+                <div className="space-y-4">
+                  {service.longDescription.split('\n\n').map((paragraph: string, index: number) => (
+                    <p key={index} className={bodyClass}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+
+                <h3 className="font-lake-serif text-[26px] text-lake-ink mt-12 mb-6">What We Offer</h3>
+                <IconChipList items={service.features} />
+              </div>
+
+              <div className="lg:col-span-1">
+                <div className="rounded-md border border-lake-line bg-white p-6 mb-6">
+                  <h3 className="font-lake-serif text-[22px] text-lake-ink mb-4">Key Benefits</h3>
+                  <ul className="space-y-4">
+                    {service.benefits.map((benefit: string, index: number) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <div className="w-6 h-6 rounded-full bg-lake-spruce/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <svg className="w-4 h-4 text-lake-spruce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <span className="text-lake-mute text-[15px] leading-[1.6]">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="rounded-md bg-lake-spruce p-6 text-white">
+                  <h3 className="font-lake-serif text-[22px] mb-4">Request a Quote</h3>
+                  <p className="text-white/90 mb-6 text-[15px] leading-[1.6]">
+                    Interested in our {service.name.toLowerCase()} services? Contact us for a customized quote.
+                  </p>
+                  <Link
+                    href="/contact"
+                    className={`${pillLight} w-full`}
+                  >
+                    Contact Us
+                  </Link>
+                  <a href={telHref('+1 207 307-7903')} className="flex min-h-[44px] items-center justify-center gap-2 mt-4 text-white/90 hover:text-white transition-colors">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    +1 207 307-7903
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* CTA */}
+        <section className="py-16 bg-lake-tint">
+          <div className={`${frame} text-center`}>
+            <h2 className="font-lake-serif text-[36px] md:text-[44px] leading-[1.08] text-lake-ink mb-4">Ready to Get Started?</h2>
+            <p className="text-lake-mute max-w-2xl mx-auto mb-8">
+              Let us help you maintain your recreation facilities to the highest standards.
+            </p>
+            <SectionActions
+              align="center"
+              primary={{ label: 'Get a Quote', url: '/contact', kind: 'internal' }}
+              secondary={[{ label: 'View All Services', url: '/services', kind: 'internal' }]}
+            />
+          </div>
+        </section>
+      </LakesideShell>
 
       <Footer />
     </main>
