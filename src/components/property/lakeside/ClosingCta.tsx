@@ -21,7 +21,10 @@ export default function ClosingCta({ photo, heading, text, primary, phone, secon
   return (
     <section
       data-lk-closing=""
-      className="relative isolate overflow-hidden py-14 md:flex md:min-h-[640px] md:items-center md:py-24"
+      // Desktop sets the heading and pills in white for the photo behind
+      // them. Without a photo that white landed on paper and vanished, so a
+      // photo-less closing section gets a spruce band on desktop instead.
+      className={`relative isolate overflow-hidden py-14 md:flex md:min-h-[640px] md:items-center md:py-24 ${photo ? '' : 'md:bg-lake-spruce'}`}
     >
       {photo && (
         <div className="absolute inset-0 -z-10 hidden overflow-hidden md:block">
