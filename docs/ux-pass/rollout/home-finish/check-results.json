@@ -1,0 +1,68 @@
+{
+  "mobile390": {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+    ],
+    "jsonLdCount": 1,
+    "jsonLdSample": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"HomeAndConstructionBusiness\",\"@id\":\"https://baserves.com/#business\"",
+    "statsBandValues": [
+      "15+",
+      "500+",
+      "100+",
+      "10K+"
+    ]
+  },
+  "desktop1440": {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+    ],
+    "jsonLdCount": 1,
+    "jsonLdSample": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"HomeAndConstructionBusiness\",\"@id\":\"https://baserves.com/#business\"",
+    "statsBandValues": [
+      "15+",
+      "500+",
+      "100+",
+      "10K+"
+    ]
+  },
+  "tour": {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "BAServes Widget Error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+    ],
+    "touring": {
+      "sectionExists": true,
+      "sectionIsFixed": true,
+      "hasTextCenter": true,
+      "hasContainerCustom": true
+    }
+  },
+  "reducedMotion": {
+    "statsBandValuesImmediate": [
+      "15+",
+      "500+",
+      "100+",
+      "10K+"
+    ]
+  }
+}

@@ -155,25 +155,35 @@ const contractGroups: ContractGroup[] = [
   },
 ]
 
-export default function ServiceAccordion({ compact = false }: { compact?: boolean }) {
+export default function ServiceAccordion({
+  compact = false,
+  tone = 'default',
+}: {
+  compact?: boolean
+  /** 'lake' swaps the per-group colour badges for one neutral lake-tint chip
+   * and swaps borders/links to the Lakeside palette. Additive only — the
+   * default ('default', used on /services) renders exactly as before. */
+  tone?: 'default' | 'lake'
+}) {
   const [openGroup, setOpenGroup] = useState<string | null>(null)
   const [openContract, setOpenContract] = useState<string | null>(null)
+  const lake = tone === 'lake'
 
   return (
     <div className="space-y-3">
       {contractGroups.map((group) => (
-        <div key={group.id} className="border border-gray-200 rounded-2xl overflow-hidden bg-white">
+        <div key={group.id} className={`border rounded-2xl overflow-hidden bg-white ${lake ? 'border-lake-line' : 'border-gray-200'}`}>
           {/* Group header */}
           <button
             onClick={() => setOpenGroup(openGroup === group.id ? null : group.id)}
             aria-expanded={openGroup === group.id}
-            className="w-full flex items-center justify-between px-6 py-4 hover:bg-gray-50 transition-colors"
+            className={`w-full flex items-center justify-between px-6 py-4 transition-colors ${lake ? 'hover:bg-lake-paper' : 'hover:bg-gray-50'}`}
           >
             <div className="flex items-center gap-3">
-              <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${group.badgeColor}`}>{group.badge}</span>
-              <span className="font-bold text-gray-900 text-left">{group.label}</span>
+              <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${lake ? 'border border-lake-line bg-lake-tint text-lake-ink' : group.badgeColor}`}>{group.badge}</span>
+              <span className={`text-left ${lake ? 'font-lake-serif text-[18px] text-lake-ink' : 'font-bold text-gray-900'}`}>{group.label}</span>
             </div>
-            <svg className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${openGroup === group.id ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className={`w-5 h-5 transition-transform duration-300 ${openGroup === group.id ? 'rotate-180' : ''} ${lake ? 'text-lake-moss' : 'text-gray-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </button>
@@ -182,26 +192,26 @@ export default function ServiceAccordion({ compact = false }: { compact?: boolea
           <div className={`transition-all duration-500 ease-in-out ${openGroup === group.id ? 'max-h-[4000px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
             <div className="px-6 pb-6 space-y-4">
               {group.contracts.map((contract) => (
-                <div key={contract.name} className="border border-gray-100 rounded-xl overflow-hidden">
+                <div key={contract.name} className={`border rounded-xl overflow-hidden ${lake ? 'border-lake-line' : 'border-gray-100'}`}>
                   {/* Contract header */}
                   <button
                     onClick={() => setOpenContract(openContract === contract.name ? null : contract.name)}
                     aria-expanded={openContract === contract.name}
-                    className="w-full flex items-center justify-between px-5 py-3.5 bg-gray-50 hover:bg-gray-100 transition-colors"
+                    className={`w-full flex items-center justify-between px-5 py-3.5 transition-colors ${lake ? 'bg-lake-paper hover:bg-lake-tint' : 'bg-gray-50 hover:bg-gray-100'}`}
                   >
                     <div className="text-left">
-                      <div className="font-semibold text-gray-900 text-sm">{contract.name}</div>
-                      <div className="text-xs text-gray-500">{contract.location} — {contract.stats}</div>
+                      <div className={`font-semibold text-sm ${lake ? 'text-lake-ink' : 'text-gray-900'}`}>{contract.name}</div>
+                      <div className={`text-xs ${lake ? 'text-lake-mute' : 'text-gray-500'}`}>{contract.location} — {contract.stats}</div>
                     </div>
                     <div className="flex items-center gap-2">
                       <Link
                         href={contract.href}
                         onClick={(e) => e.stopPropagation()}
-                        className="text-xs text-forest-DEFAULT font-semibold hover:underline hidden sm:block"
+                        className={`text-xs font-semibold hover:underline hidden sm:block ${lake ? 'text-lake-spruce' : 'text-forest-DEFAULT'}`}
                       >
                         View Page
                       </Link>
-                      <svg className={`w-4 h-4 text-gray-500 transition-transform duration-300 ${openContract === contract.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className={`w-4 h-4 transition-transform duration-300 ${openContract === contract.name ? 'rotate-180' : ''} ${lake ? 'text-lake-moss' : 'text-gray-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </div>
@@ -212,11 +222,11 @@ export default function ServiceAccordion({ compact = false }: { compact?: boolea
                     <div className={`p-5 grid gap-4 ${compact ? 'grid-cols-1' : 'sm:grid-cols-2'}`}>
                       {contract.scope.map((cat) => (
                         <div key={cat.title}>
-                          <h4 className="font-semibold text-gray-900 text-sm mb-2">{cat.title}</h4>
+                          <h4 className={`font-semibold text-sm mb-2 ${lake ? 'text-lake-ink' : 'text-gray-900'}`}>{cat.title}</h4>
                           <ul className="space-y-1.5">
                             {cat.items.map((item) => (
-                              <li key={item} className="flex items-start text-xs text-gray-600">
-                                <svg className="w-3.5 h-3.5 mr-1.5 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <li key={item} className={`flex items-start text-xs ${lake ? 'text-lake-mute' : 'text-gray-600'}`}>
+                                <svg className={`w-3.5 h-3.5 mr-1.5 mt-0.5 flex-shrink-0 ${lake ? 'text-lake-spruce' : 'text-green-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                 </svg>
                                 {item}

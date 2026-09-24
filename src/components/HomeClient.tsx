@@ -9,7 +9,7 @@ import Footer from '@/components/Footer'
 import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon } from '@/components/Icons'
 import { rotateFeatured } from '@/lib/featured-rotation'
 import { ListenButton } from '@/components/reader'
-import { LakesideShell, SectionActions, Eyebrow, bandTint, pillLight, pillGhostLight } from '@/components/property/lakeside'
+import { LakesideShell, SectionActions, Eyebrow, bandPaper, bandTint, pillLight, pillGhostLight, pillPrimary } from '@/components/property/lakeside'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 import ScopeAccordion from '@/components/ScopeAccordion'
@@ -528,35 +528,26 @@ function PartnershipJourney() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-      <div className="absolute inset-0 opacity-30" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-      }} />
-
+    <section ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden bg-white">
       <div className="relative container-custom px-6">
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
-            <div className="w-2 h-2 rounded-full bg-emerald-400" />
-            <span className="text-emerald-400 text-sm font-semibold tracking-wide uppercase">Partnership Opportunities</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-            Your Success Is <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-300">Our Mission</span>
+          <Eyebrow label="Partnership Opportunities" rule className="mb-6 flex flex-col items-center" />
+          <h2 className="font-lake-serif text-[34px] leading-[1.1] text-lake-ink mb-6 md:text-[44px]">
+            Your Success Is <span className="italic">Our Mission</span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-lake-mute max-w-3xl mx-auto leading-relaxed">
             We handle the complexities of recreation area management so you can focus on growth.
-            Here's how partnering with <Link href="/about">BA Services</Link> transforms your operations.
+            Here&apos;s how partnering with <Link href="/about" className="text-lake-spruce underline hover:text-lake-spruce-dark transition-colors">BA Services</Link> transforms your operations.
           </p>
         </div>
 
         {/* Journey Timeline - Desktop */}
         <div className="hidden lg:block relative max-w-6xl mx-auto mb-24">
           {/* Connection Line */}
-          <div className="absolute top-24 left-[10%] right-[10%] h-0.5 bg-slate-700" />
+          <div className="absolute top-24 left-[10%] right-[10%] h-0.5 bg-lake-line" />
           <div
-            className="absolute top-24 left-[10%] h-0.5 bg-gradient-to-r from-emerald-500 to-green-400 transition-all duration-1000 ease-out"
+            className="absolute top-24 left-[10%] h-0.5 bg-lake-spruce transition-all duration-1000 ease-out motion-reduce:duration-200"
             style={{ width: isVisible ? `${(activeStep / partnershipSteps.length) * 80}%` : '0%' }}
           />
 
@@ -565,7 +556,7 @@ function PartnershipJourney() {
             {partnershipSteps.map((step, index) => (
               <div
                 key={step.number}
-                className={`relative transition-all duration-700 ${
+                className={`relative transition-all duration-700 motion-reduce:duration-200 ${
                   index < activeStep ? 'opacity-100' : 'opacity-40'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
@@ -573,20 +564,20 @@ function PartnershipJourney() {
                 {/* Number Circle */}
                 <div className="flex justify-center mb-8">
                   <div
-                    className={`relative w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+                    className={`relative w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 motion-reduce:duration-200 ${
                       index < activeStep
-                        ? 'bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg shadow-emerald-500/30 rotate-0'
-                        : 'bg-slate-800 border border-slate-700 -rotate-3'
+                        ? 'bg-lake-spruce shadow-lg rotate-0'
+                        : 'bg-lake-paper border border-lake-line -rotate-3'
                     }`}
                   >
                     {index < activeStep ? (
                       <div className="text-white">{step.icon}</div>
                     ) : (
-                      <span className="text-2xl font-bold text-slate-500">{step.number}</span>
+                      <span className="text-2xl font-lake-serif text-lake-moss">{step.number}</span>
                     )}
                     {index < activeStep && (
                       <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-white flex items-center justify-center">
-                        <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-3 h-3 text-lake-spruce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
@@ -595,13 +586,13 @@ function PartnershipJourney() {
                 </div>
 
                 {/* Content Card */}
-                <div className={`p-6 rounded-2xl transition-all duration-500 ${
+                <div className={`p-6 rounded-2xl transition-all duration-500 motion-reduce:duration-200 ${
                   index < activeStep
-                    ? 'bg-slate-800/80 border border-slate-700'
+                    ? 'bg-lake-paper border border-lake-line'
                     : 'bg-transparent'
                 }`}>
-                  <h3 className="text-lg font-bold text-white mb-3">{step.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{step.description}</p>
+                  <h3 className="font-lake-serif text-lg text-lake-ink mb-3">{step.title}</h3>
+                  <p className="text-lake-mute text-sm leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -614,24 +605,24 @@ function PartnershipJourney() {
             {partnershipSteps.map((step, index) => (
               <div
                 key={step.number}
-                className={`flex gap-4 transition-all duration-500 ${
+                className={`flex gap-4 transition-all duration-500 motion-reduce:duration-200 ${
                   index < activeStep ? 'opacity-100' : 'opacity-40'
                 }`}
               >
                 <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${
                   index < activeStep
-                    ? 'bg-gradient-to-br from-emerald-500 to-green-600'
-                    : 'bg-slate-800 border border-slate-700'
+                    ? 'bg-lake-spruce'
+                    : 'bg-lake-paper border border-lake-line'
                 }`}>
                   {index < activeStep ? (
                     <div className="text-white scale-75">{step.icon}</div>
                   ) : (
-                    <span className="text-lg font-bold text-slate-500">{step.number}</span>
+                    <span className="text-lg font-lake-serif text-lake-moss">{step.number}</span>
                   )}
                 </div>
-                <div className="flex-1 pb-6 border-b border-slate-800">
-                  <h3 className="text-lg font-bold text-white mb-1">{step.title}</h3>
-                  <p className="text-slate-400 text-sm">{step.description}</p>
+                <div className="flex-1 pb-6 border-b border-lake-line">
+                  <h3 className="font-lake-serif text-lg text-lake-ink mb-1">{step.title}</h3>
+                  <p className="text-lake-mute text-sm">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -641,20 +632,20 @@ function PartnershipJourney() {
         {/* Stats & Benefits */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Stats Panel */}
-          <div className="bg-gradient-to-br from-emerald-600 to-green-700 rounded-3xl p-8 lg:p-10 relative overflow-hidden">
+          <div className="bg-lake-spruce rounded-3xl p-8 lg:p-10 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full translate-y-1/2 -translate-x-1/2" />
 
             <div className="relative">
-              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
+              <h3 className="font-lake-serif text-2xl lg:text-3xl text-white mb-2">
                 The Numbers Speak
               </h3>
-              <p className="text-emerald-100/80 mb-8">Real results from real partnerships</p>
+              <p className="text-white/70 mb-8">Real results from real partnerships</p>
 
               <div className="grid grid-cols-2 gap-6">
                 {partnershipStats.map((stat) => (
                   <div key={stat.label} className="text-center">
-                    <div className="text-4xl lg:text-5xl font-bold text-white mb-1">
+                    <div className="font-lake-serif text-4xl lg:text-5xl text-white mb-1">
                       {stat.display ? (
                         <span>{isVisible ? stat.display : '—'}</span>
                       ) : isVisible ? (
@@ -663,7 +654,7 @@ function PartnershipJourney() {
                         <span>—</span>
                       )}
                     </div>
-                    <div className="text-emerald-100/70 text-sm font-medium">{stat.label}</div>
+                    <div className="text-white/70 text-sm font-medium">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -672,39 +663,39 @@ function PartnershipJourney() {
 
           {/* Benefits List */}
           <div className="space-y-6">
-            <div className="flex gap-5 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/30 transition-colors">
-              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
-                <svg className="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex gap-5 p-6 rounded-2xl bg-lake-paper border border-lake-line hover:border-lake-spruce/40 transition-colors">
+              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-lake-spruce/10 flex items-center justify-center">
+                <svg className="w-7 h-7 text-lake-spruce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               <div>
-                <h4 className="text-lg font-bold text-white mb-2">Significant Cost Reduction</h4>
-                <p className="text-slate-400 leading-relaxed">Our economies of scale and operational expertise translate to major savings on staffing, equipment, and supplies—without sacrificing quality.</p>
+                <h4 className="font-lake-serif text-lg text-lake-ink mb-2">Significant Cost Reduction</h4>
+                <p className="text-lake-mute leading-relaxed">Our economies of scale and operational expertise translate to major savings on staffing, equipment, and supplies—without sacrificing quality.</p>
               </div>
             </div>
 
-            <div className="flex gap-5 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/30 transition-colors">
-              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
-                <svg className="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex gap-5 p-6 rounded-2xl bg-lake-paper border border-lake-line hover:border-lake-spruce/40 transition-colors">
+              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-lake-spruce/10 flex items-center justify-center">
+                <svg className="w-7 h-7 text-lake-spruce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
               <div>
-                <h4 className="text-lg font-bold text-white mb-2">Complete Peace of Mind</h4>
-                <p className="text-slate-400 leading-relaxed">Full liability coverage, compliance management, and trained staff mean you can rest easy knowing your recreation area is in expert hands.</p>
+                <h4 className="font-lake-serif text-lg text-lake-ink mb-2">Complete Peace of Mind</h4>
+                <p className="text-lake-mute leading-relaxed">Full liability coverage, compliance management, and trained staff mean you can rest easy knowing your recreation area is in expert hands.</p>
               </div>
             </div>
 
-            <div className="flex gap-5 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/30 transition-colors">
-              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
-                <svg className="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex gap-5 p-6 rounded-2xl bg-lake-paper border border-lake-line hover:border-lake-spruce/40 transition-colors">
+              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-lake-spruce/10 flex items-center justify-center">
+                <svg className="w-7 h-7 text-lake-spruce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                 </svg>
               </div>
               <div>
-                <h4 className="text-lg font-bold text-white mb-2">5-Star Visitor Experiences</h4>
-                <p className="text-slate-400 leading-relaxed">Professional management, pristine facilities, and attentive service create memorable experiences that keep visitors coming back.</p>
+                <h4 className="font-lake-serif text-lg text-lake-ink mb-2">5-Star Visitor Experiences</h4>
+                <p className="text-lake-mute leading-relaxed">Professional management, pristine facilities, and attentive service create memorable experiences that keep visitors coming back.</p>
               </div>
             </div>
 
@@ -712,11 +703,8 @@ function PartnershipJourney() {
             <div className="pt-4">
               <Link
                 href="/contact?topic=partnership"
-                className="group flex items-center justify-center gap-3 w-full py-5 px-8 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-semibold text-lg rounded-2xl transition-all duration-300 shadow-lg shadow-emerald-500/25"
+                className={`${pillPrimary} group w-full text-lg`}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
                 Let&apos;s Discuss Your Needs
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -736,6 +724,12 @@ function PartnershipCounter({ target, suffix, isActive }: { target: number; suff
   useEffect(() => {
     if (!isActive) {
       setCount(0)
+      return
+    }
+
+    // Reduced motion: show the final figure immediately, no count-up.
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setCount(target)
       return
     }
 
@@ -795,11 +789,12 @@ function BookingWidgets() {
   }, [])
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 md:py-16 bg-lake-paper">
       <div className="max-w-[1400px] mx-auto px-5">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div>
-            <h3 className="text-center text-2xl font-bold text-forest-DEFAULT mb-5 uppercase tracking-[3px]">
+        <Eyebrow label="Book Direct" rule className="mb-6 flex flex-col items-center text-center" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="rounded-2xl border border-lake-line bg-white p-6 md:p-8">
+            <h3 className="text-center font-lake-serif text-[22px] text-lake-ink mb-5">
               Chief Noonday Outdoor Center
             </h3>
             <div
@@ -807,8 +802,8 @@ function BookingWidgets() {
               className="min-h-[300px]"
             />
           </div>
-          <div>
-            <h3 className="text-center text-2xl font-bold text-forest-DEFAULT mb-5 uppercase tracking-[3px]">
+          <div className="rounded-2xl border border-lake-line bg-white p-6 md:p-8">
+            <h3 className="text-center font-lake-serif text-[22px] text-lake-ink mb-5">
               Long Lake
             </h3>
             <div
@@ -827,12 +822,12 @@ function StatesGrid() {
 
   return (
     <>
-      <section className="py-16 bg-white">
+      <section className={`py-16 ${bandTint}`}>
         <div className="container-custom px-6">
           <div className="text-center mb-12">
-            <span className="badge badge-forest mb-4">Browse by State</span>
-            <h2 className="font-lake-serif headline-lg text-gray-900 mb-4">
-              Outdoor Experiences & Bookings <span className="text-forest-DEFAULT">By State</span>
+            <Eyebrow label="Browse by State" rule className="mb-4 flex flex-col items-center" />
+            <h2 className="font-lake-serif headline-lg text-lake-ink mb-4">
+              Outdoor Experiences &amp; Bookings <span className="italic">By State</span>
             </h2>
             <p className="subheadline max-w-2xl mx-auto">
               Click a state to explore our recreation areas and book your next adventure
@@ -844,7 +839,7 @@ function StatesGrid() {
               <button
                 key={state.name}
                 onClick={() => setSelectedState(state)}
-                className="group flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-gray-50 transition-all duration-300 cursor-pointer"
+                className="group flex flex-col items-center gap-3 rounded-2xl border border-lake-line bg-white p-4 transition-all duration-300 hover:border-lake-spruce hover:shadow-sm cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
               >
                 <div className="relative w-24 h-24 md:w-28 md:h-28 transition-transform duration-300 group-hover:scale-110">
                   <Image
@@ -855,7 +850,7 @@ function StatesGrid() {
                     className="object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                   />
                 </div>
-                <span className="text-sm font-semibold text-gray-700 group-hover:text-forest-DEFAULT transition-colors">
+                <span className="font-lake-serif text-[17px] text-lake-ink group-hover:text-lake-spruce transition-colors">
                   {state.name}
                 </span>
               </button>
@@ -875,21 +870,21 @@ function StatesGrid() {
 
           {/* Modal */}
           <div
-            className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto"
+            className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto border border-lake-line"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setSelectedState(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/90 shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
             >
-              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-lake-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
             {/* Header */}
-            <div className="bg-forest-DEFAULT px-8 py-6 rounded-t-2xl">
+            <div className="bg-lake-spruce px-8 py-6 rounded-t-2xl">
               <div className="flex items-center gap-4">
                 <div className="relative w-16 h-16 flex-shrink-0">
                   <Image
@@ -901,7 +896,7 @@ function StatesGrid() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">{selectedState.name}</h3>
+                  <h3 className="font-lake-serif text-2xl text-white">{selectedState.name}</h3>
                   <p className="text-white/90 text-sm">{selectedState.heading}</p>
                 </div>
               </div>
@@ -922,7 +917,7 @@ function StatesGrid() {
               )}
               <div className={`grid gap-6 ${selectedState.properties.length > 1 ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
                 {selectedState.properties.map((property) => (
-                  <div key={property.name} className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+                  <div key={property.name} className="border border-lake-line rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
                     {/* Property Image */}
                     <div className="relative h-48">
                       <Image
@@ -934,7 +929,7 @@ function StatesGrid() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       <div className="absolute bottom-3 left-3">
-                        <span className="inline-block px-2.5 py-1 bg-green-700 text-white text-xs font-semibold rounded-full">
+                        <span className="inline-block px-2.5 py-1 bg-white/90 text-lake-ink text-xs font-semibold rounded-full">
                           {property.tagline}
                         </span>
                       </div>
@@ -942,8 +937,8 @@ function StatesGrid() {
 
                     {/* Property Info */}
                     <div className="p-5">
-                      <h4 className="text-lg font-bold text-gray-900 mb-1">{property.name}</h4>
-                      <div className="flex items-center text-sm text-gray-500 mb-3">
+                      <h4 className="font-lake-serif text-lg text-lake-ink mb-1">{property.name}</h4>
+                      <div className="flex items-center text-sm text-lake-mute mb-3">
                         <svg className="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
@@ -951,10 +946,10 @@ function StatesGrid() {
                       </div>
 
                       {/* Stats */}
-                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600 mb-3 pb-3 border-b">
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-lake-mute mb-3 pb-3 border-b border-lake-line">
                         {Object.entries(property.stats).map(([key, value]) => (
                           <span key={key}>
-                            <span className="font-semibold text-forest-DEFAULT">{value}</span>{' '}
+                            <span className="font-semibold text-lake-spruce">{value}</span>{' '}
                             <span className="capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
                           </span>
                         ))}
@@ -965,7 +960,7 @@ function StatesGrid() {
                         {property.activities.map((activity) => (
                           <span
                             key={activity}
-                            className="inline-block px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                            className="inline-block px-2 py-0.5 bg-lake-tint text-lake-ink text-xs rounded-full"
                           >
                             {activity}
                           </span>
@@ -975,7 +970,7 @@ function StatesGrid() {
                       <Link
                         href={property.href}
                         onClick={() => setSelectedState(null)}
-                        className="block w-full text-center py-2.5 border-2 border-forest-DEFAULT text-forest-DEFAULT font-semibold rounded-lg hover:bg-forest-DEFAULT hover:text-white transition-colors text-sm"
+                        className="block min-h-[44px] w-full text-center py-3 border-2 border-lake-spruce text-lake-spruce font-semibold rounded-lg hover:bg-lake-spruce hover:text-white transition-colors text-sm"
                       >
                         View Details
                       </Link>
@@ -997,6 +992,12 @@ function AnimatedCounter({ target, suffix = '', isActive }: { target: number; su
   useEffect(() => {
     if (!isActive) {
       setCount(0)
+      return
+    }
+
+    // Reduced motion: show the final figure immediately, no count-up.
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setCount(target)
       return
     }
 
@@ -1129,7 +1130,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
       <LakesideShell>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-lake-ink">
         {/* Background Video */}
         <div className="absolute inset-0">
           <video
@@ -1151,7 +1152,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
           <div className="max-w-3xl">
             <a
               href="tel:+12073077903"
-              className="inline-flex min-h-[44px] items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-8 animate-fade-in hover:bg-white/20 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="inline-flex min-h-[44px] items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-8 animate-fade-in motion-reduce:animate-none hover:bg-white/20 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -1159,16 +1160,16 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
               +1 207 307-7903
             </a>
 
-            <h1 className="font-lake-serif headline-xl text-white mb-6 animate-fade-in-up drop-shadow-lg">
+            <h1 className="font-lake-serif headline-xl text-white mb-6 animate-fade-in-up motion-reduce:animate-none drop-shadow-lg">
               Find Your<br />
-              <span className="text-green-400 drop-shadow-lg">Adventure.</span>
+              <span className="italic drop-shadow-lg">Adventure.</span>
             </h1>
 
-            <div className="mb-6 animate-fade-in-up delay-100">
+            <div className="mb-6 animate-fade-in-up motion-reduce:animate-none delay-100">
               <ListenButton variant="light" />
             </div>
 
-            <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-10 max-w-2xl animate-fade-in-up delay-200 drop-shadow-md">
+            <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-10 max-w-2xl animate-fade-in-up motion-reduce:animate-none delay-200 drop-shadow-md">
               From <span className="text-white font-semibold">the rockbound coast of Maine</span> to{' '}
               <span className="text-white font-semibold">the salt flats of Utah</span>, from{' '}
               <span className="text-white font-semibold">the storied mountains of West Virginia</span> to{' '}
@@ -1176,12 +1177,12 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
               <span className="text-white font-semibold">the endless plains of Iowa</span> and{' '}
               <span className="text-white font-semibold">the richly contoured landscapes of Indiana and Michigan</span>, to{' '}
               <span className="text-white font-semibold">the rugged heart of Missouri</span>—our
-              managed sites offer <span className="text-green-400 font-semibold">well-kept facilities</span>,{' '}
-              <span className="text-green-400 font-semibold">unspoiled scenery</span>, and{' '}
-              <span className="text-green-400 font-semibold">seamless experiences for every visitor</span>.
+              managed sites offer <span className="text-lake-ember-light font-semibold">well-kept facilities</span>,{' '}
+              <span className="text-lake-ember-light font-semibold">unspoiled scenery</span>, and{' '}
+              <span className="text-lake-ember-light font-semibold">seamless experiences for every visitor</span>.
             </p>
 
-            <div className="flex flex-wrap gap-4 animate-fade-in-up delay-300">
+            <div className="flex flex-wrap gap-4 animate-fade-in-up motion-reduce:animate-none delay-300">
               <a
                 href="/experiences"
                 className={`${pillLight} text-lg`}
@@ -1213,12 +1214,19 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
       <BookingWidgets />
 
       {/* Stats Section */}
-      <section ref={statsRef} className="py-16 bg-lake-spruce">
+      <section ref={statsRef} className="py-14 md:py-20 bg-white">
         <div className="container-custom px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+          <dl
+            className="border-t border-lake-line md:grid md:border-b md:py-8"
+            style={{ gridTemplateColumns: `repeat(${stats.length}, minmax(0, 1fr))` }}
+          >
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="flex items-baseline justify-between gap-4 border-b border-lake-line py-4 md:block md:border-0 md:py-0 md:pr-6"
+              >
+                <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-lake-moss">{stat.label}</dt>
+                <dd className="font-lake-serif text-[28px] leading-tight text-lake-ink md:mt-3 md:text-[40px]">
                   {statsVisible ? (
                     <AnimatedCounter
                       target={stat.target}
@@ -1228,11 +1236,10 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                   ) : (
                     '0'
                   )}
-                </div>
-                <div className="text-white/70 text-sm uppercase tracking-wider">{stat.label}</div>
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
 
@@ -1240,15 +1247,15 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
       <StatesGrid />
 
       {/* Featured Locations */}
-      <section className={`section ${bandTint}`}>
+      <section className={`section ${bandPaper}`}>
         <div className="container-custom px-6">
           <div className="text-center mb-16">
             <Eyebrow label="Featured Destinations" rule className="mb-4 flex flex-col items-center" />
-            <h2 className="font-lake-serif headline-lg text-gray-900 mb-4">
-              Discover Our <span className="text-forest-DEFAULT">Recreation Areas</span>
+            <h2 className="font-lake-serif headline-lg text-lake-ink mb-4">
+              Discover Our <span className="italic">Recreation Areas</span>
             </h2>
             <p className="subheadline max-w-2xl mx-auto">
-              Each location offers unique experiences, from lakeside camping to mountain adventures. Visitors are encouraged to <Link href="/leave-a-review" className="text-forest-DEFAULT underline hover:text-forest-light transition-colors">leave a review</Link> after their stay.
+              Each location offers unique experiences, from lakeside camping to mountain adventures. Visitors are encouraged to <Link href="/leave-a-review" className="text-lake-spruce underline hover:text-lake-spruce-dark transition-colors">leave a review</Link> after their stay.
             </p>
           </div>
 
@@ -1257,10 +1264,10 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             {/* Left arrow */}
             <button
               onClick={prev}
-              className="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl transition-all duration-200 border border-gray-200"
+              className="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-lake-paper hover:shadow-xl transition-all duration-200 border border-lake-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
               aria-label="Previous destinations"
             >
-              <svg className="w-4 h-4 md:w-5 md:h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5 text-lake-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
@@ -1268,10 +1275,10 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             {/* Right arrow */}
             <button
               onClick={next}
-              className="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl transition-all duration-200 border border-gray-200"
+              className="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-lake-paper hover:shadow-xl transition-all duration-200 border border-lake-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
               aria-label="Next destinations"
             >
-              <svg className="w-4 h-4 md:w-5 md:h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5 text-lake-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -1294,7 +1301,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                   <button
                     key={location.name}
                     onClick={() => setSelectedLocation(location)}
-                    className="location-card group text-left cursor-pointer flex-shrink-0"
+                    className="location-card group text-left cursor-pointer flex-shrink-0 border border-lake-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
                     style={{ width: `calc((100% - ${(cardsPerView - 1) * 32}px) / ${cardsPerView})` }}
                   >
                     <div className="location-card-image">
@@ -1307,7 +1314,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                       />
                       <div className="location-card-overlay" />
                       <div className="absolute bottom-4 left-4 right-4">
-                        <span className="inline-block px-3 py-1 bg-green-700 text-white text-xs font-semibold rounded-full mb-2">
+                        <span className="inline-block px-3 py-1 bg-white/90 text-lake-ink text-xs font-semibold rounded-full mb-2">
                           {location.tagline}
                         </span>
                       </div>
@@ -1315,26 +1322,26 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                     <div className="p-6">
                       <div className="flex flex-wrap gap-2 mb-3">
                         {location.features.slice(0, 4).map((feature) => (
-                          <span key={feature} className="text-xs text-gray-500">
+                          <span key={feature} className="text-xs text-lake-mute">
                             {feature} •
                           </span>
                         ))}
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-forest-DEFAULT transition-colors">
+                      <h3 className="font-lake-serif text-xl text-lake-ink mb-2 group-hover:text-lake-spruce transition-colors">
                         {location.name}
                       </h3>
-                      <p className="text-gray-600 text-sm italic mb-3">{location.description}</p>
-                      <div className="flex items-center text-sm text-gray-500 mb-4">
+                      <p className="text-lake-mute text-sm italic mb-3">{location.description}</p>
+                      <div className="flex items-center text-sm text-lake-mute mb-4">
                         <svg className="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
                         {location.location}
                       </div>
-                      <div className="flex justify-between gap-3 text-sm border-t pt-4">
+                      <div className="flex justify-between gap-3 text-sm border-t border-lake-line pt-4">
                         {Object.entries(location.stats).map(([key, value]) => (
                           <div key={key} className="flex flex-col">
-                            <span className="font-semibold text-forest-DEFAULT">{value}</span>
-                            <span className="text-gray-500 capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
+                            <span className="font-semibold text-lake-spruce">{value}</span>
+                            <span className="text-lake-mute capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
                           </div>
                         ))}
                       </div>
@@ -1352,7 +1359,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                 key={i}
                 onClick={() => goTo(i * cardsPerView)}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  i === activeDot ? 'bg-forest-DEFAULT w-6' : 'bg-gray-300 hover:bg-gray-400'
+                  i === activeDot ? 'bg-lake-spruce w-6' : 'bg-lake-line hover:bg-lake-moss'
                 }`}
                 aria-label={`Show destinations page ${i + 1}`}
               />
@@ -1369,12 +1376,15 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
       </section>
 
       {/* Map */}
+      {/* Tour hooks (AssistantPanel.tsx expandMap/closeTourMap): keep the id
+          on this <section>, plus a `.text-center` and `.container-custom`
+          descendant, exactly as the selectors expect. */}
       <section id="property-map-section" className="relative z-10 py-16 bg-white">
         <div className="container-custom px-6">
           <div className="text-center mb-10">
-            <span className="badge badge-forest mb-4">Our Locations</span>
-            <h2 className="headline-lg text-gray-900 mb-4">
-              Find Us Across <span className="text-forest-DEFAULT">America</span>
+            <Eyebrow label="Our Locations" rule className="mb-4 flex flex-col items-center" />
+            <h2 className="font-lake-serif headline-lg text-lake-ink mb-4">
+              Find Us Across <span className="italic">America</span>
             </h2>
             <p className="subheadline max-w-2xl mx-auto">
               Click a pin to explore our recreation areas
@@ -1387,12 +1397,12 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
       </section>
 
       {/* Experience Categories */}
-      <section className="section bg-white">
+      <section className={`section ${bandTint}`}>
         <div className="container-custom px-6">
           <div className="text-center mb-16">
-            <span className="badge badge-forest mb-4">What We Offer</span>
-            <h2 className="font-lake-serif headline-lg text-gray-900 mb-4">
-              Explore by <span className="text-forest-DEFAULT">Experience</span>
+            <Eyebrow label="What We Offer" rule className="mb-4 flex flex-col items-center" />
+            <h2 className="font-lake-serif headline-lg text-lake-ink mb-4">
+              Explore by <span className="italic">Experience</span>
             </h2>
             <p className="subheadline max-w-2xl mx-auto">
               Whether you're seeking adventure or relaxation, we have something for everyone
@@ -1404,13 +1414,13 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
               <Link
                 key={category.name}
                 href={`/experiences/categories/${category.slug}`}
-                className="group p-6 bg-gray-50 rounded-2xl text-center hover:bg-[#1a472a] hover:shadow-lg transition-all duration-300"
+                className="group p-6 rounded-2xl border border-lake-line bg-white text-center transition-all duration-300 hover:bg-lake-spruce hover:border-lake-spruce hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
               >
-                <div className="text-gray-700 group-hover:text-white transition-colors mb-4 flex justify-center">{category.icon}</div>
-                <h3 className="font-semibold text-gray-900 group-hover:text-white transition-colors mb-1">
+                <div className="text-lake-spruce group-hover:text-white transition-colors mb-4 flex justify-center">{category.icon}</div>
+                <h3 className="font-lake-serif text-[17px] text-lake-ink group-hover:text-white transition-colors mb-1">
                   {category.name}
                 </h3>
-                <span className="text-sm text-gray-500 group-hover:text-white/70 transition-colors">
+                <span className="text-sm text-lake-mute group-hover:text-white/70 transition-colors">
                   {category.count} locations
                 </span>
               </Link>
@@ -1420,53 +1430,53 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
       </section>
 
       {/* State Department of Transportation Contracts */}
-      <section className={`py-16 ${bandTint}`}>
+      <section className={`py-16 ${bandPaper}`}>
         <div className="container-custom px-6">
           <div className="text-center mb-10">
             <Eyebrow label="State Department of Transportation Contracts" rule className="mb-4 flex flex-col items-center" />
-            <h2 className="font-lake-serif headline-lg text-gray-900 mb-4">Rest Area Management</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="font-lake-serif headline-lg text-lake-ink mb-4">Rest Area Management</h2>
+            <p className="text-xl text-lake-mute max-w-3xl mx-auto">
               We partner with state Departments of Transportation to operate and maintain rest area facilities, ensuring safe and welcoming stops for millions of travelers.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Link href="/services/iowa-dot" className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
+            <Link href="/services/iowa-dot" className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-lake-line hover:shadow-lg transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce">
               <div className="p-8">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+                  <div className="w-12 h-12 bg-lake-tint rounded-xl flex items-center justify-center">
+                    <svg className="w-6 h-6 text-lake-spruce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-forest-DEFAULT transition-colors">Iowa DOT</h3>
-                    <p className="text-sm text-gray-500">Department of Transportation</p>
+                    <h3 className="font-lake-serif text-xl text-lake-ink group-hover:text-lake-spruce transition-colors">Iowa DOT</h3>
+                    <p className="text-sm text-lake-mute">Department of Transportation</p>
                   </div>
                 </div>
-                <p className="text-gray-600 mb-4">Rest area facilities along the I-29 corridor near Sioux City, serving northbound and southbound travelers.</p>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <span className="font-semibold text-gray-900">2</span> Rest Areas
-                  <span className="text-gray-300">|</span>
-                  <span className="font-semibold text-gray-900">I-29</span> Corridor
+                <p className="text-lake-mute mb-4">Rest area facilities along the I-29 corridor near Sioux City, serving northbound and southbound travelers.</p>
+                <div className="flex items-center gap-4 text-sm text-lake-mute">
+                  <span className="font-semibold text-lake-ink">2</span> Rest Areas
+                  <span className="text-lake-line">|</span>
+                  <span className="font-semibold text-lake-ink">I-29</span> Corridor
                 </div>
               </div>
             </Link>
-            <Link href="/services/utah-dot" className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
+            <Link href="/services/utah-dot" className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-lake-line hover:shadow-lg transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce">
               <div className="p-8">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center">
-                    <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+                  <div className="w-12 h-12 bg-lake-tint rounded-xl flex items-center justify-center">
+                    <svg className="w-6 h-6 text-lake-spruce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-forest-DEFAULT transition-colors">Utah DOT</h3>
-                    <p className="text-sm text-gray-500">Department of Transportation</p>
+                    <h3 className="font-lake-serif text-xl text-lake-ink group-hover:text-lake-spruce transition-colors">Utah DOT</h3>
+                    <p className="text-sm text-lake-mute">Department of Transportation</p>
                   </div>
                 </div>
-                <p className="text-gray-600 mb-4">Statewide rest area management across 28 facilities spanning I-15, I-80, I-70, and scenic byways through three regions.</p>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <span className="font-semibold text-gray-900">28</span> Rest Areas
-                  <span className="text-gray-300">|</span>
-                  <span className="font-semibold text-gray-900">3</span> Regions
-                  <span className="text-gray-300">|</span>
-                  <span className="font-semibold text-gray-900">Statewide</span>
+                <p className="text-lake-mute mb-4">Statewide rest area management across 28 facilities spanning I-15, I-80, I-70, and scenic byways through three regions.</p>
+                <div className="flex items-center gap-4 text-sm text-lake-mute">
+                  <span className="font-semibold text-lake-ink">28</span> Rest Areas
+                  <span className="text-lake-line">|</span>
+                  <span className="font-semibold text-lake-ink">3</span> Regions
+                  <span className="text-lake-line">|</span>
+                  <span className="font-semibold text-lake-ink">Statewide</span>
                 </div>
               </div>
             </Link>
@@ -1485,13 +1495,13 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
         <div className="container-custom px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="badge bg-white/10 text-white mb-4">Our Services</span>
+              <Eyebrow label="Our Services" tone="ember-light" rule className="mb-4" />
               <h2 className="font-lake-serif headline-lg mb-6">
-                Professional Recreation Area <span className="text-green-400">Management</span>
+                Professional Recreation Area <span className="italic">Management</span>
               </h2>
               <p className="text-xl text-white/70 leading-relaxed mb-8">
                 Beyond providing unforgettable outdoor experiences, we offer comprehensive management
-                services to keep recreation areas pristine and welcoming for all visitors. Our <Link href="/careers" className="text-green-400 underline hover:text-green-300 transition-colors">dedicated team</Link> makes it all possible.
+                services to keep recreation areas pristine and welcoming for all visitors. Our <Link href="/careers" className="text-lake-ember-light underline hover:text-white transition-colors">dedicated team</Link> makes it all possible.
               </p>
               <Link href="/services" className={pillLight}>
                 Learn About Our Services
@@ -1507,10 +1517,10 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                   key={service.title}
                   className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-lake-ember-light/20 text-lake-ember-light flex items-center justify-center mb-4">
                     {service.icon}
                   </div>
-                  <h3 className="font-semibold text-white mb-2">{service.title}</h3>
+                  <h3 className="font-lake-serif text-[19px] text-white mb-2">{service.title}</h3>
                   <p className="text-white/70 text-sm">{service.description}</p>
                 </div>
               ))}
@@ -1533,7 +1543,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-forest-DEFAULT/70" />
+          <div className="absolute inset-0 bg-lake-spruce/70" />
         </div>
 
         <div className="relative z-10 container-custom px-6 text-center">
@@ -1574,15 +1584,15 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
 
           {/* Modal */}
           <div
-            className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-fade-in-up"
+            className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto border border-lake-line animate-fade-in-up motion-reduce:animate-none"
             onClick={e => e.stopPropagation()}
           >
             {/* Close button */}
             <button
               onClick={() => setSelectedLocation(null)}
-              className="absolute top-4 right-4 z-10 w-8 h-8 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-md hover:bg-white transition-colors"
+              className="absolute top-4 right-4 z-10 w-11 h-11 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-md hover:bg-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
             >
-              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-lake-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -1598,7 +1608,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-t-2xl" />
               <div className="absolute bottom-4 left-4">
-                <span className="inline-block px-3 py-1 bg-green-700 text-white text-xs font-semibold rounded-full">
+                <span className="inline-block px-3 py-1 bg-white/90 text-lake-ink text-xs font-semibold rounded-full">
                   {selectedLocation.tagline}
                 </span>
               </div>
@@ -1606,30 +1616,30 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
 
             {/* Content */}
             <div className="p-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">{selectedLocation.name}</h3>
-              <div className="flex items-center text-sm text-gray-500 mb-4">
+              <h3 className="font-lake-serif text-2xl text-lake-ink mb-2">{selectedLocation.name}</h3>
+              <div className="flex items-center text-sm text-lake-mute mb-4">
                 <svg className="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
                 {selectedLocation.location}
               </div>
-              <p className="text-gray-600 mb-5">{selectedLocation.description}</p>
+              <p className="text-lake-mute mb-5">{selectedLocation.description}</p>
 
               {/* Features */}
               <div className="flex flex-wrap gap-2 mb-5">
                 {selectedLocation.features.map((feature) => (
-                  <span key={feature} className="px-3 py-1 bg-forest-DEFAULT/10 text-forest-DEFAULT text-xs font-medium rounded-full">
+                  <span key={feature} className="px-3 py-1 bg-lake-tint text-lake-ink text-xs font-medium rounded-full">
                     {feature}
                   </span>
                 ))}
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-gray-50 rounded-xl">
+              <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-lake-paper rounded-xl">
                 {Object.entries(selectedLocation.stats).map(([key, value]) => (
                   <div key={key} className="text-center">
-                    <div className="font-bold text-forest-DEFAULT text-lg">{value}</div>
-                    <div className="text-xs text-gray-500 capitalize">{key.replace(/([A-Z])/g, ' $1')}</div>
+                    <div className="font-lake-serif text-lg text-lake-spruce">{value}</div>
+                    <div className="text-xs text-lake-mute capitalize">{key.replace(/([A-Z])/g, ' $1')}</div>
                   </div>
                 ))}
               </div>
@@ -1637,7 +1647,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
               {/* CTA */}
               <Link
                 href={`/${selectedLocation.slug}`}
-                className="block w-full text-center py-3.5 bg-forest-DEFAULT text-white font-semibold rounded-xl hover:bg-forest-dark transition-colors"
+                className="block min-h-[44px] w-full text-center py-3.5 bg-lake-spruce text-white font-semibold rounded-xl hover:bg-lake-spruce-dark transition-colors"
                 onClick={() => setSelectedLocation(null)}
               >
                 Go to Property
