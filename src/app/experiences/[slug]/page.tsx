@@ -1,11 +1,26 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
-import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import {
+  ClosingCta,
+  Gallery,
+  Hero,
+  IconChipList,
+  IntroFacts,
+  LakesideShell,
+  SectionActions,
+  SectionHeader,
+  StickyBooking,
+  bandWhite,
+  frame,
+} from '@/components/property/lakeside'
+
+// The company number shown on every property in this template's sidebar
+// ("Call +1 207 307-7903"), unchanged.
+const COMPANY_PHONE = '+1 207 307-7903'
 
 // Experience data - will be replaced with Sanity CMS
 const experiences: Record<string, any> = {
@@ -136,6 +151,16 @@ Wildlife is abundant: white-tailed deer, river otters, and 80+ nesting bird spec
   },
 }
 
+/** "tentSites" -> "Tent Sites" (matches the stat-bar label this template has always shown). */
+function humanizeStatKey(key: string): string {
+  const spaced = key.replace(/([A-Z])/g, ' $1')
+  return spaced
+    .split(' ')
+    .filter(Boolean)
+    .map((w) => w[0].toUpperCase() + w.slice(1))
+    .join(' ')
+}
+
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const experience = experiences[params.slug]
   if (!experience) {
@@ -153,10 +178,26 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
+// NOTE: of the six entries above, only 'celina-lakes-recreation-area' actually
+// renders here — every other slug has its own page folder
+// (src/app/experiences/<slug>/page.tsx) that Next.js resolves first (see
+// docs/ux-pass/photo-audit.md, finding 6). Kept as-is; not this pass's to fix.
 export default function ExperiencePage({ params }: { params: { slug: string } }) {
   const experience = experiences[params.slug]
 
   if (!experience) notFound()
+
+  const [lead, ...paragraphs] = (experience.longDescription as string).split('\n\n')
+  const facts = Object.entries(experience.stats as Record<string, string>).map(([key, value]) => ({
+    key,
+    value,
+    label: humanizeStatKey(key),
+  }))
+  const bookCta = { label: 'Book Your Stay', url: experience.bookingUrl, kind: 'booking' as const }
+  const galleryPhotos = (experience.gallery as string[]).map((src, i) => ({
+    src,
+    alt: `${experience.name} gallery image ${i + 1}`,
+  }))
 
   return (
     <main className="min-h-screen">
@@ -171,137 +212,50 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
         crumbs={[{ name: 'Experiences', url: '/experiences' }]}
       />
 
-      {/* Hero */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-end">
-        <div className="absolute inset-0">
-          <Image
-            src={experience.image}
-            alt={experience.name}
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        </div>
+      <LakesideShell>
+        <Hero
+          photo={{ src: experience.image, alt: experience.name }}
+          eyebrow={experience.location}
+          title={experience.name}
+          subline={experience.tagline}
+          booking={{
+            title: experience.name,
+            text: experience.description,
+            cta: bookCta,
+            phone: COMPANY_PHONE,
+          }}
+        />
 
-        <div className="relative z-10 container-custom px-6 pb-16">
-          <span className="inline-block px-4 py-2 bg-green-700 text-white text-sm font-semibold rounded-full mb-4">
-            {experience.tagline}
-          </span>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4">
-            {experience.name}
-          </h1>
-          <div className="flex items-center text-white/90 mb-6">
-            <svg className="w-5 h-5 mr-2 text-red-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-            {experience.location}
+        <IntroFacts eyebrowRule heading="About This Experience" lead={lead} paragraphs={paragraphs} facts={facts}>
+          <SectionActions className="mt-8 md:mt-10" primary={bookCta} />
+        </IntroFacts>
+
+        {/* Activities & Amenities */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandWhite}`}>
+          <div className={frame}>
+            <SectionHeader heading="Activities & Amenities" />
+            <IconChipList items={experience.features as string[]} />
           </div>
-          <a
-            href={experience.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
-          >
-            Book Your Stay
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
-      </section>
+        </section>
 
-      {/* Stats Bar */}
-      <section className="bg-forest-DEFAULT py-8">
-        <div className="container-custom px-6">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-            {Object.entries(experience.stats).map(([key, value]) => (
-              <div key={key} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-white">{value as string}</div>
-                <div className="text-white/70 text-sm capitalize">{key.replace(/([A-Z])/g, ' $1')}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Description */}
-            <div className="lg:col-span-2">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About This Experience</h2>
-              <div className="prose prose-lg max-w-none">
-                {experience.longDescription.split('\n\n').map((paragraph: string, index: number) => (
-                  <p key={index} className="text-gray-600 leading-relaxed mb-4">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-
-              {/* Gallery */}
-              <div className="mt-12">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Photo Gallery</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {experience.gallery.map((image: string, index: number) => (
-                    <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                      <Image
-                        src={image}
-                        alt={`${experience.name} gallery image ${index + 1}`}
-                        fill
-                        sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 50vw"
-                        className="object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
+        {galleryPhotos.length > 0 && (
+          <section className="py-14 md:py-24 lg:py-[120px]">
+            <div className={frame}>
+              <SectionHeader heading="Photo Gallery" />
+              <Gallery photos={galleryPhotos} />
             </div>
+          </section>
+        )}
 
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              {/* Features */}
-              <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Activities & Amenities</h3>
-                <ul className="space-y-3">
-                  {experience.features.map((feature: string) => (
-                    <li key={feature} className="flex items-center text-gray-700">
-                      <svg className="w-5 h-5 mr-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Booking Card */}
-              <div className="bg-forest-DEFAULT rounded-2xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-4">Ready to Visit?</h3>
-                <p className="text-white/90 mb-6">
-                  Book your stay and experience everything {experience.name} has to offer.
-                </p>
-                <a
-                  href={experience.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
-                >
-                  Check Availability
-                </a>
-                <a href="tel:+12073077903" className="flex items-center justify-center gap-2 mt-4 text-white/90 hover:text-white transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  Call +1 207 307-7903
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        <ClosingCta
+          photo={{ src: experience.image, alt: experience.name }}
+          heading={experience.name}
+          text={`Book your stay and experience everything ${experience.name} has to offer.`}
+          primary={bookCta}
+          phone={COMPANY_PHONE}
+        />
+        <StickyBooking name={experience.name} cta={bookCta} phone={COMPANY_PHONE} />
+      </LakesideShell>
 
       <Footer />
     </main>

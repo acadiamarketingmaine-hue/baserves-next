@@ -1,10 +1,26 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import {
+  CardRow,
+  ClosingCta,
+  Gallery,
+  Hero,
+  IconChipList,
+  IntroFacts,
+  LakesideShell,
+  OfficialDisclosure,
+  RuledRows,
+  SectionActions,
+  SectionHeader,
+  StickyBooking,
+  bandTint,
+  bandWhite,
+  frame,
+  mapsUrl,
+} from '@/components/property/lakeside'
 
 export const metadata: Metadata = {
   title: { absolute: 'Canal Bridge Campground | Saco River, Fryeburg, Maine | BA Services' },
@@ -13,26 +29,40 @@ export const metadata: Metadata = {
   openGraph: og('/experiences/canal-bridge'),
 }
 
-const campsiteImages = [
-  { src: '/images/canal-bridge/site-1.jpg', alt: 'Campsite 1 at Canal Bridge', label: 'Site 1' },
-  { src: '/images/canal-bridge/site-6.jpg', alt: 'Campsite 6 at Canal Bridge', label: 'Site 6' },
-  { src: '/images/canal-bridge/site-12.jpg', alt: 'Campsite 12 at Canal Bridge', label: 'Site 12' },
-  { src: '/images/canal-bridge/site-18.jpg', alt: 'Campsite 18 at Canal Bridge', label: 'Site 18' },
-  { src: '/images/canal-bridge/site-24.jpg', alt: 'Campsite 24 at Canal Bridge', label: 'Site 24' },
-  { src: '/images/canal-bridge/site-30.jpg', alt: 'Campsite 30 at Canal Bridge', label: 'Site 30' },
-  { src: '/images/canal-bridge/site-36.jpg', alt: 'Campsite 36 at Canal Bridge', label: 'Site 36' },
+// Matches the Canal Bridge Campground entry in src/components/PropertyMap.tsx
+// — the only place this property's coordinates are published. Never invent a pair.
+const COORDS = { lat: 44.02, lng: -70.97 }
+const PHONE = '207.935.2286'
+const BOOK = { label: 'Book Your Stay', url: 'https://canalbridgeme.com/', kind: 'booking' as const }
+
+const stats = [
+  { key: 'sites', value: '36', label: 'Sites' },
+  { key: 'river', value: 'Saco', label: 'River' },
+  { key: 'mountains', value: 'White', label: 'Mountains' },
 ]
+
+const campsiteImages = [
+  { key: 'site-1', title: 'Site 1', image: { src: '/images/canal-bridge/site-1.jpg', alt: 'Campsite 1 at Canal Bridge' } },
+  { key: 'site-6', title: 'Site 6', image: { src: '/images/canal-bridge/site-6.jpg', alt: 'Campsite 6 at Canal Bridge' } },
+  { key: 'site-12', title: 'Site 12', image: { src: '/images/canal-bridge/site-12.jpg', alt: 'Campsite 12 at Canal Bridge' } },
+  { key: 'site-18', title: 'Site 18', image: { src: '/images/canal-bridge/site-18.jpg', alt: 'Campsite 18 at Canal Bridge' } },
+  { key: 'site-24', title: 'Site 24', image: { src: '/images/canal-bridge/site-24.jpg', alt: 'Campsite 24 at Canal Bridge' } },
+  { key: 'site-30', title: 'Site 30', image: { src: '/images/canal-bridge/site-30.jpg', alt: 'Campsite 30 at Canal Bridge' } },
+  { key: 'site-36', title: 'Site 36', image: { src: '/images/canal-bridge/site-36.jpg', alt: 'Campsite 36 at Canal Bridge' } },
+]
+
+const amenities = ['Saco River Frontage', 'Bath House (Storm Shelter)', 'Firewood Available', 'Ice Available', 'Camp Host On-Site', 'Office / Check-In', 'Fire Pits at Sites', 'Picnic Tables', 'Overflow Parking', 'White Mountain Views']
 
 const rules = [
-  { title: 'Check-In / Check-Out', detail: 'Check-in: 2:00 PM | Check-out: 12:00 PM' },
-  { title: 'Quiet Hours', detail: '10:00 PM to 7:00 AM. Children under 17 must be on campsite by 10:00 PM.' },
-  { title: 'Pets', detail: 'Pets must be leashed at all times. Please clean up after your pet.' },
-  { title: 'Fires', detail: 'Fires only in designated fire pits. Absolutely no fireworks.' },
-  { title: 'Vehicles', detail: '2 vehicles per campsite. Overflow parking available at the entrance.' },
-  { title: 'Reservations', detail: 'Call 207.935.2286 to reserve.' },
+  { key: 'checkin', title: 'Check-In / Check-Out', body: 'Check-in: 2:00 PM | Check-out: 12:00 PM' },
+  { key: 'quiet', title: 'Quiet Hours', body: '10:00 PM to 7:00 AM. Children under 17 must be on campsite by 10:00 PM.' },
+  { key: 'pets', title: 'Pets', body: 'Pets must be leashed at all times. Please clean up after your pet.' },
+  { key: 'fires', title: 'Fires', body: 'Fires only in designated fire pits. Absolutely no fireworks.' },
+  { key: 'vehicles', title: 'Vehicles', body: '2 vehicles per campsite. Overflow parking available at the entrance.' },
+  { key: 'reservations', title: 'Reservations', body: 'Call 207.935.2286 to reserve.' },
 ]
 
-const galleryImages = [
+const galleryPhotos = [
   { src: '/images/canal-bridge/entrance.jpg', alt: 'Canal Bridge Campground entrance' },
   { src: '/images/canal-bridge/site-1.jpg', alt: 'Campsite 1' },
   { src: '/images/canal-bridge/site-6.jpg', alt: 'Campsite 6' },
@@ -47,88 +77,46 @@ const galleryImages = [
 
 const scopeOfWork = [
   {
+    key: 'operations',
     title: 'Full-Service Campground Operations',
-    description: 'Complete day-to-day management of Canal Bridge Campground under concession agreement with the Town of Fryeburg.',
-    items: [
-      'Management of all campground activities and services',
-      'Operation of the registration office and guest check-in',
-      'Oversight of reservations and camper relations',
-      'Staffing, supervision, and scheduling of all personnel',
-      'Standards meeting or exceeding Town of Fryeburg requirements',
-      'Structured operations for consistent, high-quality service',
-    ],
+    body: 'Complete day-to-day management of Canal Bridge Campground under concession agreement with the Town of Fryeburg.',
+    items: ['Management of all campground activities and services', 'Operation of the registration office and guest check-in', 'Oversight of reservations and camper relations', 'Staffing, supervision, and scheduling of all personnel', 'Standards meeting or exceeding Town of Fryeburg requirements', 'Structured operations for consistent, high-quality service'],
   },
   {
+    key: 'staffing',
     title: 'On-Site Management & Staffing',
-    description: 'A structured management team with continuous on-site presence throughout the operating season.',
-    items: [
-      'Contract Manager overseeing performance and compliance',
-      'General Manager coordinating daily operations',
-      'On-site personnel for registration, maintenance, and security',
-      'Staff present throughout the full operating season',
-      'Continuous oversight and accountability',
-      'Responsive management at all times',
-    ],
+    body: 'A structured management team with continuous on-site presence throughout the operating season.',
+    items: ['Contract Manager overseeing performance and compliance', 'General Manager coordinating daily operations', 'On-site personnel for registration, maintenance, and security', 'Staff present throughout the full operating season', 'Continuous oversight and accountability', 'Responsive management at all times'],
   },
   {
+    key: 'guest-services',
     title: 'Guest Services & Visitor Experience',
-    description: 'A welcoming, family-friendly environment with daily office hours and 24-hour emergency availability.',
-    items: [
-      'Daily registration office hours (7:00 AM – 9:00 PM)',
-      'Direct communication and assistance to campers',
-      'Clear campground rules and expectations',
-      '24-hour emergency contact availability',
-      'Smooth guest experience from arrival to departure',
-      'Family-oriented atmosphere and visitor support',
-    ],
+    body: 'A welcoming, family-friendly environment with daily office hours and 24-hour emergency availability.',
+    items: ['Daily registration office hours (7:00 AM – 9:00 PM)', 'Direct communication and assistance to campers', 'Clear campground rules and expectations', '24-hour emergency contact availability', 'Smooth guest experience from arrival to departure', 'Family-oriented atmosphere and visitor support'],
   },
   {
+    key: 'maintenance',
     title: 'Maintenance & Groundskeeping',
-    description: 'Full responsibility for maintaining campground condition, cleanliness, and safety.',
-    items: [
-      'Bathhouse cleaning and upkeep (minimum twice daily)',
-      'Routine campground inspections for cleanliness and safety',
-      'Lawn care, landscaping, and debris removal',
-      'Beach cleaning and upkeep along the Saco River',
-      'Trash and dumpster management',
-      'All equipment and supplies provided by BA Services',
-    ],
+    body: 'Full responsibility for maintaining campground condition, cleanliness, and safety.',
+    items: ['Bathhouse cleaning and upkeep (minimum twice daily)', 'Routine campground inspections for cleanliness and safety', 'Lawn care, landscaping, and debris removal', 'Beach cleaning and upkeep along the Saco River', 'Trash and dumpster management', 'All equipment and supplies provided by BA Services'],
   },
   {
+    key: 'safety',
     title: 'Safety & Security',
-    description: 'On-site security monitoring, nightly patrols, and coordination with local law enforcement.',
-    items: [
-      'On-site security monitoring and rule enforcement',
-      'Nightly quiet hours (10:00 PM – 7:00 AM) with regular patrols',
-      'Immediate response to disturbances or safety concerns',
-      'Coordination with local law enforcement when necessary',
-      'Routine rounds to ensure a respectful atmosphere',
-      'Family-oriented safety standards maintained at all times',
-    ],
+    body: 'On-site security monitoring, nightly patrols, and coordination with local law enforcement.',
+    items: ['On-site security monitoring and rule enforcement', 'Nightly quiet hours (10:00 PM – 7:00 AM) with regular patrols', 'Immediate response to disturbances or safety concerns', 'Coordination with local law enforcement when necessary', 'Routine rounds to ensure a respectful atmosphere', 'Family-oriented safety standards maintained at all times'],
   },
   {
+    key: 'improvements',
     title: 'Facility Improvements & Investment',
-    description: 'Direct capital investment in campground upgrades to restore and elevate Canal Bridge as a premier destination.',
-    items: [
-      'Installation of new registration office and entrance gate',
-      'Campsite upgrades including fire pits and site markers',
-      'Addition of recreational amenities (volleyball, horseshoe pits)',
-      'Ongoing improvements to enhance guest experience',
-      'Long-term investment in campground quality',
-      'Designed to elevate Canal Bridge as a premier local destination',
-    ],
+    body: 'Direct capital investment in campground upgrades to restore and elevate Canal Bridge as a premier destination.',
+    items: ['Installation of new registration office and entrance gate', 'Campsite upgrades including fire pits and site markers', 'Addition of recreational amenities (volleyball, horseshoe pits)', 'Ongoing improvements to enhance guest experience', 'Long-term investment in campground quality', 'Designed to elevate Canal Bridge as a premier local destination'],
   },
   {
+    key: 'financial',
     title: 'Financial Responsibility & Reporting',
-    description: 'Transparent management of all financial and administrative functions with weekly reporting to the Town.',
-    items: [
-      'Collection of camping fees and deposits',
-      'Payment of operational expenses and utilities',
-      'Obtaining required licenses and permits',
-      'Weekly reporting of attendance and activity to the Town',
-      'Full transparency and accountability',
-      'Administrative compliance throughout the contract term',
-    ],
+    body: 'Transparent management of all financial and administrative functions with weekly reporting to the Town.',
+    items: ['Collection of camping fees and deposits', 'Payment of operational expenses and utilities', 'Obtaining required licenses and permits', 'Weekly reporting of attendance and activity to the Town', 'Full transparency and accountability', 'Administrative compliance throughout the contract term'],
   },
 ]
 
@@ -142,339 +130,126 @@ export default function CanalBridgePage() {
         crumbName="Canal Bridge Campground"
         description="Discover Canal Bridge Campground on the Saco River in Fryeburg, Maine. 36 numbered campsites, river frontage for kayaking, canoeing, and fishing with stunning White Mountain views."
         image="/images/canal-bridge/beach-1.jpg"
-        crumbs={[{ name: "Experiences", url: "/experiences" }]}
+        crumbs={[{ name: 'Experiences', url: '/experiences' }]}
       />
 
-      {/* Hero */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-end">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/canal-bridge/beach-1.jpg"
-            alt="Sandy beach on the Saco River at Canal Bridge Campground in Fryeburg, Maine"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
+      <LakesideShell>
+        <Hero
+          photo={{ src: '/images/canal-bridge/beach-1.jpg', alt: 'Sandy beach on the Saco River at Canal Bridge Campground in Fryeburg, Maine' }}
+          eyebrow="Saco River, Fryeburg, Maine"
+          title="Canal Bridge Campground"
+          subline="Scenic Riverside Camping in Maine"
+          booking={{
+            title: 'Canal Bridge Campground',
+            text: 'With 36 numbered campsites (including 30a), the campground provides the perfect balance of accessibility and seclusion for campers of all kinds.',
+            cta: BOOK,
+            phone: PHONE,
+          }}
+        />
+
+        <IntroFacts
+          eyebrowRule
+          heading="About Canal Bridge Campground"
+          lead="Nestled along the banks of the Saco River in Fryeburg, Maine, Canal Bridge Campground offers a peaceful retreat surrounded by the natural beauty of western Maine."
+          paragraphs={[
+            "The Saco River frontage is the heart of Canal Bridge. Guests enjoy direct access to kayaking, canoeing, and fishing for trout and bass right from the campground. Whether you're paddling downstream on a lazy afternoon or casting a line at sunrise, the river is always calling.",
+            "Beyond the river, Canal Bridge is framed by stunning views of the White Mountains. From your campsite, you can watch the sun set over the peaks — a daily reminder of why Maine's western highlands are one of New England's best-kept secrets.",
+          ]}
+          facts={stats}
+        >
+          <SectionActions
+            className="mt-8 md:mt-10"
+            primary={BOOK}
+            secondary={[{ label: 'Get directions', url: mapsUrl(COORDS.lat, COORDS.lng), kind: 'external' }]}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        </div>
-        <div className="relative z-10 container-custom px-6 pb-16">
-          <span className="inline-block px-4 py-2 bg-green-700 text-white text-sm font-semibold rounded-full mb-4">
-            Maine Campground
-          </span>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4">
-            Canal Bridge Campground
-          </h1>
-          <div className="flex items-center text-white/90 mb-6">
-            <svg className="w-5 h-5 mr-2 text-red-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-            Saco River, Fryeburg, Maine
-          </div>
-          <a
-            href="https://canalbridgeme.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
-          >
-            Book Your Stay
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
-      </section>
+        </IntroFacts>
 
-      {/* Stats Bar */}
-      <section className="bg-forest-DEFAULT py-8">
-        <div className="container-custom px-6">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-            {[
-              { value: '36', label: 'Sites' },
-              { value: 'Saco', label: 'River' },
-              { value: 'White', label: 'Mountains' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                <div className="text-white/70 text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Overview */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <div className="grid lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Canal Bridge Campground</h2>
-              <div className="prose prose-lg max-w-none">
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Nestled along the banks of the Saco River in Fryeburg, Maine, Canal Bridge Campground offers a peaceful retreat surrounded by the natural beauty of western Maine. With 36 numbered campsites (including 30a), the campground provides the perfect balance of accessibility and seclusion for campers of all kinds.
-                </p>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  The Saco River frontage is the heart of Canal Bridge. Guests enjoy direct access to kayaking, canoeing, and fishing for trout and bass right from the campground. Whether you&apos;re paddling downstream on a lazy afternoon or casting a line at sunrise, the river is always calling.
-                </p>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Beyond the river, Canal Bridge is framed by stunning views of the White Mountains. From your campsite, you can watch the sun set over the peaks — a daily reminder of why Maine&apos;s western highlands are one of New England&apos;s best-kept secrets.
-                </p>
-              </div>
-
-              {/* River Features */}
-              <div className="mt-10 bg-blue-50 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Saco River Activities</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  The Saco River is one of Maine&apos;s most beloved waterways, known for its gentle currents, sandy beaches, and crystal-clear water. Canal Bridge&apos;s river frontage gives you unmatched access to paddle, swim, and fish throughout your stay.
-                </p>
-                <div className="grid sm:grid-cols-3 gap-4 mt-6">
-                  {[
-                    { activity: 'Kayaking & Canoeing', desc: 'Paddle the Saco right from your campsite' },
-                    { activity: 'Fishing', desc: 'Trout and bass in the Saco River' },
-                    { activity: 'Swimming', desc: 'Sandy beaches along the river' },
-                  ].map((item) => (
-                    <div key={item.activity} className="bg-white rounded-xl p-4">
-                      <h4 className="font-bold text-gray-900 text-sm mb-1">{item.activity}</h4>
-                      <p className="text-gray-600 text-xs">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Amenities</h3>
-                <ul className="space-y-3">
-                  {[
-                    'Saco River Frontage',
-                    'Bath House (Storm Shelter)',
-                    'Firewood Available',
-                    'Ice Available',
-                    'Camp Host On-Site',
-                    'Office / Check-In',
-                    'Fire Pits at Sites',
-                    'Picnic Tables',
-                    'Overflow Parking',
-                    'White Mountain Views',
-                  ].map((amenity) => (
-                    <li key={amenity} className="flex items-center text-gray-700">
-                      <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {amenity}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-forest-DEFAULT rounded-2xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-4">Ready to Visit?</h3>
-                <p className="text-white/90 mb-6">
-                  Reserve your campsite at Canal Bridge Campground on the Saco River.
-                </p>
-                <a
-                  href="https://canalbridgeme.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
-                >
-                  Reserve Online
-                </a>
-                <a href="tel:+12079352286" className="flex items-center justify-center gap-2 mt-4 text-white/90 hover:text-white transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  207.935.2286
-                </a>
-              </div>
+        {/* River & Beach Access */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandWhite}`}>
+          <div className={frame}>
+            <SectionHeader
+              eyebrow="The Saco River"
+              eyebrowRule
+              heading="River & Beach Access"
+              intro="The Saco River is one of Maine's most beloved waterways, known for its gentle currents, sandy beaches, and crystal-clear water. Canal Bridge's river frontage gives you unmatched access to paddle, swim, and fish throughout your stay."
+            />
+            <CardRow
+              columns={2}
+              shape="wide"
+              items={[
+                { key: 'beach-1', title: 'Saco River Beach', photo: { src: '/images/canal-bridge/beach-1.jpg', alt: 'Beach area along the Saco River at Canal Bridge' } },
+                { key: 'beach-2', title: 'River Access Point', photo: { src: '/images/canal-bridge/beach-2.jpg', alt: 'Sandy river beach for swimming and kayaking' } },
+              ]}
+            />
+            <div className="mt-12 md:mt-16">
+              <CardRow
+                columns={3}
+                items={[
+                  { key: 'kayaking', title: 'Kayaking & Canoeing', body: "Launch directly from the campground and paddle the Saco's gentle currents. The river is perfect for all skill levels, from beginners to experienced paddlers." },
+                  { key: 'fishing', title: 'Fishing', body: 'The Saco River is home to trout and bass. Cast your line from the bank or wade into the shallows for a true Maine fishing experience.' },
+                  { key: 'swimming', title: 'Swimming', body: "Cool off in the Saco's crystal-clear water at the campground's sandy beach areas. A perfect way to spend a warm summer afternoon." },
+                ]}
+              />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Campsite Gallery */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Our Campsites</h2>
-          <p className="text-gray-600 mb-8 max-w-2xl">36 numbered sites (including 30a) spread across the campground along the Saco River.</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {campsiteImages.map((site) => (
-              <div key={site.label} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className="relative h-56">
-                  <Image src={site.src} alt={site.alt} fill sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-bold text-gray-900">{site.label}</h3>
-                </div>
-              </div>
-            ))}
+        {/* Amenities */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandTint}`}>
+          <div className={frame}>
+            <SectionHeader heading="Amenities" />
+            <IconChipList items={amenities} />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Beach & River */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Beach &amp; River Access</h2>
-          <p className="text-gray-600 mb-8 max-w-2xl">Canal Bridge&apos;s Saco River frontage offers sandy beaches, gentle currents, and some of the best paddling and fishing in western Maine.</p>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="relative h-80 rounded-2xl overflow-hidden">
-              <Image src="/images/canal-bridge/beach-1.jpg" alt="Beach area along the Saco River at Canal Bridge" fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <span className="px-4 py-2 bg-white/90 text-gray-900 font-semibold rounded-full text-sm">
-                  Saco River Beach
-                </span>
-              </div>
-            </div>
-            <div className="relative h-80 rounded-2xl overflow-hidden">
-              <Image src="/images/canal-bridge/beach-2.jpg" alt="Sandy river beach for swimming and kayaking" fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <span className="px-4 py-2 bg-white/90 text-gray-900 font-semibold rounded-full text-sm">
-                  River Access Point
-                </span>
-              </div>
-            </div>
+        {/* Our Campsites: a real photo per numbered site. */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <SectionHeader heading="Our Campsites" intro="36 numbered sites (including 30a) spread across the campground along the Saco River." />
+            <RuledRows rows={campsiteImages} />
           </div>
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
-            <div className="bg-blue-50 rounded-2xl p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Kayaking &amp; Canoeing</h3>
-              <p className="text-gray-600 text-sm">Launch directly from the campground and paddle the Saco&apos;s gentle currents. The river is perfect for all skill levels, from beginners to experienced paddlers.</p>
-            </div>
-            <div className="bg-blue-50 rounded-2xl p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Fishing</h3>
-              <p className="text-gray-600 text-sm">The Saco River is home to trout and bass. Cast your line from the bank or wade into the shallows for a true Maine fishing experience.</p>
-            </div>
-            <div className="bg-blue-50 rounded-2xl p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Swimming</h3>
-              <p className="text-gray-600 text-sm">Cool off in the Saco&apos;s crystal-clear water at the campground&apos;s sandy beach areas. A perfect way to spend a warm summer afternoon.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Campground Rules */}
-      <section className="py-16 bg-amber-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Campground Rules</h2>
-          <p className="text-gray-600 mb-8">Please review and follow these rules during your stay at Canal Bridge Campground.</p>
-          <div className="grid md:grid-cols-2 gap-4">
-            {rules.map((rule, index) => (
-              <div key={index} className="flex gap-3 bg-white rounded-xl p-4">
-                <div className="w-6 h-6 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-amber-700 text-xs font-bold">{index + 1}</span>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 text-sm mb-1">{rule.title}</h3>
-                  <p className="text-gray-700 text-sm">{rule.detail}</p>
-                </div>
-              </div>
-            ))}
+        {/* Campground Rules */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandWhite}`}>
+          <div className={frame}>
+            <SectionHeader heading="Campground Rules" intro="Please review and follow these rules during your stay at Canal Bridge Campground." />
+            <RuledRows rows={rules} />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Resources & Downloads */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
-          <p className="text-gray-600 mb-8">Download the campground map to plan your visit.</p>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <a
-              href="/downloads/canal-bridge/campground-map.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 bg-gray-50 rounded-2xl p-6 hover:bg-green-50 transition-colors group"
-            >
-              <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">Campground Map</h3>
-                <p className="text-gray-500 text-sm">PDF Download</p>
-              </div>
-            </a>
+        {/* Resources & Downloads */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <SectionHeader heading="Resources & Downloads" intro="Download the campground map to plan your visit." />
+            <RuledRows rows={[{ key: 'map', title: 'Campground Map', href: '/downloads/canal-bridge/campground-map.pdf', linkLabel: 'Download PDF' }]} />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Photo Gallery */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {galleryImages.map((photo, index) => (
-              <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" className="object-cover hover:scale-110 transition-transform duration-500" />
-              </div>
-            ))}
+        {/* Photo Gallery */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandWhite}`}>
+          <div className={frame}>
+            <SectionHeader heading="Photo Gallery" />
+            <Gallery photos={galleryPhotos} />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Scope of Services */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <div className="max-w-3xl mb-12">
-            <span className="badge bg-forest-DEFAULT/10 text-forest-DEFAULT mb-4">Statement of Work</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Scope of Services</h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              BA Services provides full-service campground management, maintenance, and guest services for Canal Bridge Campground under concession agreement with the Town of Fryeburg.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {scopeOfWork.map((category) => (
-              <div key={category.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{category.title}</h3>
-                <p className="text-sm text-gray-500 mb-4">{category.description}</p>
-                <ul className="space-y-2">
-                  {category.items.map((item) => (
-                    <li key={item} className="flex items-start text-sm text-gray-700">
-                      <svg className="w-4 h-4 mr-2 mt-0.5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-forest-DEFAULT">
-        <div className="container-custom px-6 text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
-            Plan Your Stay at Canal Bridge
-          </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-            Experience the Saco River, White Mountain views, and the peace of a Maine campground. Reserve your site today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://canalbridgeme.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
-            >
-              Reserve Online
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-            <Link href="/experiences" className="btn-primary bg-white/10 text-white hover:bg-white/20">
-              View All Experiences
-            </Link>
-          </div>
-        </div>
-      </section>
+        <ClosingCta
+          photo={{ src: '/images/canal-bridge/beach-1.jpg', alt: 'Sandy beach on the Saco River at Canal Bridge Campground' }}
+          heading="Plan Your Stay at Canal Bridge"
+          text="Experience the Saco River, White Mountain views, and the peace of a Maine campground. Reserve your site today."
+          primary={BOOK}
+          phone={PHONE}
+          secondary={{ label: 'View All Experiences', url: '/experiences', kind: 'internal' }}
+        />
+        <OfficialDisclosure
+          label="Statement of Work"
+          title="Scope of Services"
+          intro="BA Services provides full-service campground management, maintenance, and guest services for Canal Bridge Campground under concession agreement with the Town of Fryeburg."
+          groups={scopeOfWork}
+        />
+        <StickyBooking name="Canal Bridge Campground" cta={BOOK} phone={PHONE} />
+      </LakesideShell>
 
       <Footer />
     </main>
