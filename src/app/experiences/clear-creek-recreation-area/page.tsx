@@ -1,11 +1,27 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import { BuildingIcon } from '@/components/Icons'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import {
+  CardRow,
+  ClosingCta,
+  Gallery,
+  Hero,
+  IconChipList,
+  IntroFacts,
+  LakesideShell,
+  RuledRows,
+  SectionActions,
+  SectionHeader,
+  SplitFeature,
+  StickyBooking,
+  bandTint,
+  bandWhite,
+  body,
+  frame,
+  mapsUrl,
+} from '@/components/property/lakeside'
 
 export const metadata: Metadata = {
   title: { absolute: 'Clear Creek Recreation Area | Bankhead National Forest | BA Services' },
@@ -14,56 +30,71 @@ export const metadata: Metadata = {
   openGraph: og('/experiences/clear-creek-recreation-area'),
 }
 
+// Matches the Clear Creek Recreation Area entry in src/components/PropertyMap.tsx
+// — the only place this property's coordinates are published. Never invent a pair.
+const COORDS = { lat: 34.27, lng: -87.33 }
+const BOOK = { label: 'Book on Recreation.gov', url: 'https://www.recreation.gov/camping/campgrounds/231990', kind: 'booking' as const }
+
+const stats = [
+  { key: 'campsites', value: '102', label: 'Campsites' },
+  { key: 'loops', value: '4', label: 'Camping Loops' },
+  { key: 'bathhouses', value: '5', label: 'Bathhouses' },
+  { key: 'trails', value: '2', label: 'Trails' },
+  { key: 'lake', value: '21,200 acres', label: 'Lewis Smith Lake' },
+]
+
+const siteAmenities = ['Electricity Hookup', 'Water Hookup', 'Sewer Hookup', 'Paved Parking Spurs', 'Picnic Tables', 'Grills & Fire Rings', 'Tent Pads', 'Lantern Poles', 'ADA Accessible Sites']
+
 const campingLoops = [
-  {
-    name: 'Fox Loop',
-    description: 'Scenic loop with electric and water hookups, paved parking spurs, and close access to the campground boat ramp.',
-    image: '/images/clear-creek-fox-entrance.jpg',
-  },
-  {
-    name: 'Hoot Owl Loop',
-    description: 'Spacious sites with electric and water hookups, tent pads, picnic tables, and grills. Near the bicycle trail.',
-    image: '/images/clear-creek-hoot-owl-loop.jpg',
-  },
-  {
-    name: 'Fawn Loop',
-    description: 'Family-friendly loop featuring both single and double sites. Convenient access to bathhouses with warm showers.',
-    image: '/images/clear-creek-fawn-loop.jpg',
-  },
-  {
-    name: 'Bear Loop',
-    description: 'Quiet loop at the far end of the campground, ideal for those seeking a more secluded camping experience.',
-    image: '/images/clear-creek-overview.jpg',
-  },
+  { key: 'fox', title: 'Fox Loop', body: 'Scenic loop with electric and water hookups, paved parking spurs, and close access to the campground boat ramp.', photo: { src: '/images/clear-creek-fox-entrance.jpg', alt: 'Fox Loop' } },
+  { key: 'hoot-owl', title: 'Hoot Owl Loop', body: 'Spacious sites with electric and water hookups, tent pads, picnic tables, and grills. Near the bicycle trail.', photo: { src: '/images/clear-creek-hoot-owl-loop.jpg', alt: 'Hoot Owl Loop' } },
+  { key: 'fawn', title: 'Fawn Loop', body: 'Family-friendly loop featuring both single and double sites. Convenient access to bathhouses with warm showers.', photo: { src: '/images/clear-creek-fawn-loop.jpg', alt: 'Fawn Loop' } },
+  { key: 'bear', title: 'Bear Loop', body: 'Quiet loop at the far end of the campground, ideal for those seeking a more secluded camping experience.', photo: { src: '/images/clear-creek-overview.jpg', alt: 'Bear Loop' } },
 ]
 
 const dayUseFeatures = [
-  { name: 'Swimming Beach', description: 'Designated swimming area with roped buoys. Swim at your own risk — no lifeguard on duty.', icon: '🏊' },
-  { name: 'Double-Lane Boat Ramp', description: 'Launch your watercraft with ease on Lewis Smith Lake. Day-use and camper boat ramps available.', icon: '🚤' },
-  { name: 'Group Shelters', description: 'Three reservable group shelters — Oak Leaf, Bay Leaf, and Elm Leaf — perfect for reunions and events.', icon: <BuildingIcon className="w-8 h-8" /> },
-  { name: 'Picnic Area', description: 'Large picnic area with tables and grills in a shaded lakeside setting.', icon: '🧺' },
-  { name: 'Playground', description: 'Children\'s playground, basketball and volleyball courts, and horseshoe pit for campers.', icon: '🎪' },
-  { name: 'Bathhouses', description: 'Five bathhouses with warm showers and dressing rooms serve the camping and day-use areas.', icon: '🚿' },
+  { key: 'swimming', title: 'Swimming Beach', body: 'Designated swimming area with roped buoys. Swim at your own risk — no lifeguard on duty.' },
+  { key: 'boat-ramp', title: 'Double-Lane Boat Ramp', body: 'Launch your watercraft with ease on Lewis Smith Lake. Day-use and camper boat ramps available.' },
+  { key: 'shelters', title: 'Group Shelters', body: 'Three reservable group shelters — Oak Leaf, Bay Leaf, and Elm Leaf — perfect for reunions and events.' },
+  { key: 'picnic', title: 'Picnic Area', body: 'Large picnic area with tables and grills in a shaded lakeside setting.' },
+  { key: 'playground', title: 'Playground', body: "Children's playground, basketball and volleyball courts, and horseshoe pit for campers." },
+  { key: 'bathhouses', title: 'Bathhouses', body: 'Five bathhouses with warm showers and dressing rooms serve the camping and day-use areas.' },
 ]
 
-const trails = [
-  {
-    name: 'Raven Interpretive Trail',
-    distance: '2.5 miles',
-    description: 'Wind through the forest on this interpretive trail that highlights the natural features and ecology of the Bankhead National Forest.',
-  },
-  {
-    name: 'Paved Bicycle & Walking Trail',
-    distance: '1.25 miles',
-    description: 'A paved multi-use trail perfect for biking, walking, or jogging through the scenic campground area.',
-  },
+const specialCamps = [
+  { key: 'bent-twig', title: 'Bent Twig Camp', body: 'A secluded group camping area nestled among the trees, perfect for scout troops and organized groups seeking a more primitive camping experience in the Bankhead National Forest.', photo: { src: '/images/clear-creek-bent-twig.jpg', alt: 'Bent Twig Camp at Clear Creek' } },
+  { key: 'acorn', title: 'Acorn Camp', body: 'Another group camping option at Clear Creek, Acorn Camp provides a rustic, wooded setting with fire rings and picnic facilities for organized groups and family reunions.', photo: { src: '/images/clear-creek-acorn-camp.jpg', alt: 'Acorn Camp at Clear Creek' } },
+  { key: 'fox-entrance', title: 'Fox Loop Entrance', body: "The gateway to one of Clear Creek's most popular camping loops, Fox Loop features electric and water hookups with close access to the campground boat ramp on Lewis Smith Lake.", photo: { src: '/images/clear-creek-fox-loop.jpg', alt: 'Fox Loop entrance at Clear Creek' } },
 ]
 
-const nearbyAttractions = [
-  { name: 'The Little Natural Bridge', description: 'A unique geological formation within the Bankhead National Forest.' },
-  { name: 'Pine Torch Church', description: 'A historic 19th-century church nestled in the forest.' },
-  { name: 'Houston Civil War Jail', description: 'A preserved Civil War-era jail with historical significance.' },
-  { name: 'Sipsey Wilderness', description: 'The largest wilderness area east of the Mississippi — known as "The Land of a Thousand Waterfalls."' },
+const attractions = [
+  { key: 'natural-bridge', title: 'The Little Natural Bridge', body: 'A unique geological formation within the Bankhead National Forest.' },
+  { key: 'pine-torch', title: 'Pine Torch Church', body: 'A historic 19th-century church nestled in the forest.' },
+  { key: 'jail', title: 'Houston Civil War Jail', body: 'A preserved Civil War-era jail with historical significance.' },
+  { key: 'sipsey', title: 'Sipsey Wilderness', body: 'The largest wilderness area east of the Mississippi — known as "The Land of a Thousand Waterfalls."' },
+]
+
+const downloads = [
+  { key: 'clear-creek-map', title: 'Clear Creek Map', href: '/downloads/bankhead-national-forest/clear-creek-map.pdf' },
+  { key: 'corinth-map', title: 'Corinth Map', href: '/downloads/bankhead-national-forest/corinth-map.pdf' },
+  { key: 'birding-guide', title: 'Birding Guide', href: '/downloads/bankhead-national-forest/birding-guide.pdf' },
+  { key: 'sipsey-map', title: 'Sipsey Wilderness Map', href: '/downloads/bankhead-national-forest/sipsey-wilderness-map.pdf' },
+  { key: 'sipsey-canoe-map', title: 'Sipsey Canoe Map', href: '/downloads/bankhead-national-forest/sipsey-canoe-map.pdf' },
+  { key: 'quail-habitat', title: 'Quail Habitat Guide', href: '/downloads/bankhead-national-forest/quail-habitat.pdf' },
+  { key: 'visitor-rules', title: 'Forest Visitor Rules', href: '/downloads/bankhead-national-forest/forest-visitor-rules.pdf' },
+]
+
+const galleryPhotos = [
+  { src: '/images/clear-creek-overview.jpg', alt: 'Clear Creek Recreation Area entrance sign' },
+  { src: '/images/clear-creek-swimming.jpg', alt: 'Swimming beach on Lewis Smith Lake' },
+  { src: '/images/clear-creek-shelter.jpg', alt: 'Shaded walkway and steps in the Clear Creek day-use area' },
+  { src: '/images/clear-creek-camping.jpg', alt: 'Campground road and direction sign at Clear Creek' },
+  { src: '/images/clear-creek-hoot-owl-loop.jpg', alt: 'Hoot Owl camping loop' },
+  { src: '/images/clear-creek-fawn-loop.jpg', alt: 'Information board in the Fawn camping loop' },
+  { src: '/images/clear-creek-bent-twig.jpg', alt: 'Bent Twig Camp' },
+  { src: '/images/clear-creek-acorn-camp.jpg', alt: 'Acorn Camp' },
+  { src: '/images/clear-creek-fox-loop.jpg', alt: 'Fox Loop' },
+  { src: '/images/clear-creek-fox-entrance.jpg', alt: 'Fox Loop entrance' },
 ]
 
 const rules = [
@@ -90,429 +121,161 @@ export default function ClearCreekPage() {
         crumbName="Clear Creek Recreation Area"
         description="Explore Clear Creek Recreation Area on Lewis Smith Lake in Bankhead National Forest. 102 campsites across 4 loops, swimming beach, boat ramps, hiking trails, and group camping."
         image="/images/clear-creek-swimming.jpg"
-        crumbs={[{ name: "Experiences", url: "/experiences" }]}
+        crumbs={[{ name: 'Experiences', url: '/experiences' }]}
       />
 
-      {/* Hero */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-end">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/clear-creek-swimming.jpg"
-            alt="Swimming beach on Lewis Smith Lake at Clear Creek Recreation Area"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
+      <LakesideShell>
+        <Hero
+          photo={{ src: '/images/clear-creek-swimming.jpg', alt: 'Swimming beach on Lewis Smith Lake at Clear Creek Recreation Area' }}
+          eyebrow="Lewis Smith Lake, Winston County, Alabama"
+          title="Clear Creek Recreation Area"
+          subline="Alabama's Premier Lakeside Campground"
+          booking={{
+            title: 'Clear Creek Recreation Area',
+            text: 'The largest and one of the most popular recreation areas within Bankhead National Forest, on the shores of a 21,200-acre reservoir.',
+            cta: BOOK,
+          }}
+        />
+
+        <IntroFacts
+          eyebrowRule
+          heading="About Clear Creek"
+          lead="Clear Creek Recreation Area, constructed in 1986, is the largest and one of the most popular recreation areas within Bankhead National Forest."
+          paragraphs={[
+            'Located in Winston County approximately 13 miles north of Jasper, Alabama, the site sits along the shores of Lewis Smith Lake, a 21,200-acre reservoir, and provides direct access to a wide range of water-based recreation.',
+            'The area is a premier destination for boating, water skiing, personal watercraft use, and fishing, with the lake supporting species such as largemouth bass, striped bass, and crappies. Its accessibility and modern amenities make it a favored destination, drawing repeat visitors from across the region.',
+          ]}
+          facts={stats}
+        >
+          <SectionActions
+            className="mt-8 md:mt-10"
+            primary={BOOK}
+            secondary={[{ label: 'Get directions', url: mapsUrl(COORDS.lat, COORDS.lng), kind: 'external' }]}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        </div>
-        <div className="relative z-10 container-custom px-6 pb-16">
-          <span className="inline-block px-4 py-2 bg-green-700 text-white text-sm font-semibold rounded-full mb-4">
-            Bankhead National Forest
-          </span>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4">
-            Clear Creek Recreation Area
-          </h1>
-          <div className="flex items-center text-white/90 mb-6">
-            <svg className="w-5 h-5 mr-2 text-red-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-            Lewis Smith Lake, Winston County, Alabama
-          </div>
-          <a
-            href="https://www.recreation.gov/camping/campgrounds/231990"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-forest-DEFAULT text-white font-semibold rounded-lg hover:bg-forest-dark transition-colors"
-          >
-            Book on Recreation.gov
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
-      </section>
+          <p className="mt-4 text-sm text-lake-mute">Bankhead Ranger District: (205) 489-5111</p>
+        </IntroFacts>
 
-      {/* Stats Bar */}
-      <section className="bg-forest-DEFAULT py-8">
-        <div className="container-custom px-6">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-            {[
-              { value: '102', label: 'Campsites' },
-              { value: '4', label: 'Camping Loops' },
-              { value: '5', label: 'Bathhouses' },
-              { value: '2', label: 'Trails' },
-              { value: '21,200 acres', label: 'Lewis Smith Lake' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                <div className="text-white/70 text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Overview */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <div className="grid lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Clear Creek</h2>
-              <div className="prose prose-lg max-w-none">
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Clear Creek Recreation Area, constructed in 1986, is the largest and one of the most popular recreation areas within Bankhead National Forest. Located in Winston County approximately 13 miles north of Jasper, Alabama, the site sits along the shores of Lewis Smith Lake, a 21,200-acre reservoir, and provides direct access to a wide range of water-based recreation.
-                </p>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  The area is a premier destination for boating, water skiing, personal watercraft use, and fishing, with the lake supporting species such as largemouth bass, striped bass, and crappies. Its accessibility and modern amenities make it a favored destination, drawing repeat visitors from across the region.
-                </p>
-                <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3">Campground Facilities</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  The campground is organized into four paved loops and includes 102 RV campsites, including 32 double sites and 11 pull-through sites. All campsites are level and spacious, with paved parking spurs, picnic tables, fire rings, and lantern posts. Each site provides water service and both 30-amp and 50-amp electrical hookups. Single sites accommodate up to six people and two vehicles, while double sites can accommodate up to twelve people and four vehicles.
-                </p>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Two reservable group camping areas accommodate up to 25 tent campers each and share access to bathhouse facilities. Camping is by reservation only through Recreation.gov.
-                </p>
-                <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3">Day-Use Amenities</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  The day-use area is centered around a popular swimming beach, supported by a bathhouse with showers and changing facilities. Adjacent to the beach is a reservable 50-person picnic pavilion, while a larger picnic area includes 53 family units connected by paved walkways. Two additional 50-person pavilions are located on a scenic point overlooking the lake.
-                </p>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  A year-round boat launch with boat and trailer parking provides convenient lake access. Additional amenities include a children&apos;s playground and a 1.5-mile paved bicycle trail connecting the campground to the day-use area. The nearby 2.5-mile Raven Cliffs Trail offers additional hiking opportunities through the surrounding forest.
-                </p>
-                <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3">Access and Operations</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  An entry-controlled entrance station with an electronic gate manages campground access. Visitors are required to pack out trash from campsites and dispose of it in designated dumpsters located near the dump station. Check-in begins at 2:00 p.m., and check-out is no later than 12:00 p.m. Clear Creek opens on the second Friday of March and closes October 31st.
-                </p>
-              </div>
-
-              {/* Natural Features */}
-              <div className="mt-10 bg-green-50 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Natural Features</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  The Bankhead National Forest is located in northwestern Alabama, and its prominent feature is the Sipsey Wilderness — known as &ldquo;The Land of a Thousand Waterfalls.&rdquo; It&apos;s an area of abundant streams, old-growth forests, limestone bluffs, and lush canyons. Lewis Smith Lake boasts more than 500 miles of shoreline marked by high rock bluffs. The water is clear and deep and provides excellent fishing for Kentucky Spotted Bass and Hybrid Striped Bass.
-                </p>
-              </div>
-            </div>
-
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Site Amenities</h3>
-                <ul className="space-y-3">
-                  {['Electricity Hookup', 'Water Hookup', 'Sewer Hookup', 'Paved Parking Spurs', 'Picnic Tables', 'Grills & Fire Rings', 'Tent Pads', 'Lantern Poles', 'ADA Accessible Sites'].map((amenity) => (
-                    <li key={amenity} className="flex items-center text-gray-700">
-                      <svg className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {amenity}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-forest-DEFAULT rounded-2xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-4">Ready to Visit?</h3>
-                <p className="text-white/90 mb-6">
-                  Reserve your campsite at Clear Creek Recreation Area through Recreation.gov.
-                </p>
-                <a
-                  href="https://www.recreation.gov/camping/campgrounds/231990"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center py-4 bg-white text-forest-DEFAULT font-semibold rounded-xl hover:bg-gray-100 transition-colors"
-                >
-                  Check Availability
-                </a>
-                <div className="mt-4 text-center text-white/70 text-sm">
-                  Bankhead Ranger District: (205) 489-5111
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Camping Loops */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Camping Loops</h2>
-          <p className="text-gray-600 mb-8 max-w-2xl">102 campsites across four loops, featuring single and double units with electric and water hookups.</p>
-          <div className="grid md:grid-cols-2 gap-8">
-            {campingLoops.map((loop) => (
-              <div key={loop.name} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className="relative h-56">
-                  <Image src={loop.image} alt={loop.name} fill sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{loop.name}</h3>
-                  <p className="text-gray-600">{loop.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Group Camping */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-80 rounded-2xl overflow-hidden">
-              <Image src="/images/clear-creek-acorn-camp.jpg" alt="Picnic tables at Acorn Camp, a Clear Creek group camping area" fill sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw" className="object-cover" />
-            </div>
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Group Camping</h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                Clear Creek offers two group camping units, each capable of accommodating up to 25 persons. These are ideal for family reunions, scout troops, church groups, and other organizations looking for a shared outdoor experience.
+        {/* Campground Facilities & Access */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandWhite}`}>
+          <div className={frame}>
+            <SectionHeader heading="Campground Facilities" />
+            <div className="grid gap-5 md:grid-cols-2 md:gap-x-12">
+              <p className={body}>
+                The campground is organized into four paved loops and includes 102 RV campsites, including 32 double sites and 11 pull-through sites. All campsites are level and spacious, with paved parking spurs, picnic tables, fire rings, and lantern posts. Each site provides water service and both 30-amp and 50-amp electrical hookups. Single sites accommodate up to six people and two vehicles, while double sites can accommodate up to twelve people and four vehicles.
               </p>
-              <p className="text-gray-600 leading-relaxed">
-                Group sites include tent-only, non-electric accommodations in a more natural setting, perfect for those who want a traditional camping experience with their group.
+              <p className={body}>
+                Two reservable group camping areas accommodate up to 25 tent campers each and share access to bathhouse facilities. Camping is by reservation only through Recreation.gov. An entry-controlled entrance station with an electronic gate manages campground access. Check-in begins at 2:00 p.m., check-out is no later than 12:00 p.m., and Clear Creek opens on the second Friday of March and closes October 31st.
               </p>
             </div>
+            <IconChipList className="mt-10" items={siteAmenities} />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Day-Use Area */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Day-Use Area</h2>
-          <p className="text-gray-600 mb-8 max-w-2xl">Full-day access to the swimming beach, boat ramps, shelters, and picnic areas on Lewis Smith Lake.</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {dayUseFeatures.map((feature) => (
-              <div key={feature.name} className="bg-white rounded-2xl p-6 shadow-sm">
-                <span aria-hidden="true" className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-forest-DEFAULT/10 text-2xl text-forest-DEFAULT">{feature.icon}</span>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.name}</h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
-              </div>
-            ))}
+        {/* Camping Loops */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <SectionHeader heading="Camping Loops" intro="102 campsites across four loops, featuring single and double units with electric and water hookups." />
+            <CardRow columns={2} shape="wide" items={campingLoops} />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Special Camp Areas */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Special Camp Areas</h2>
-          <p className="text-gray-600 mb-8 max-w-2xl">Clear Creek offers unique camping experiences beyond the standard loops.</p>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-              <div className="relative h-56">
-                <Image src="/images/clear-creek-bent-twig.jpg" alt="Bent Twig Camp at Clear Creek" fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw" className="object-cover" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Bent Twig Camp</h3>
-                <p className="text-gray-600 text-sm">A secluded group camping area nestled among the trees, perfect for scout troops and organized groups seeking a more primitive camping experience in the Bankhead National Forest.</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-              <div className="relative h-56">
-                <Image src="/images/clear-creek-acorn-camp.jpg" alt="Acorn Camp at Clear Creek" fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw" className="object-cover" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Acorn Camp</h3>
-                <p className="text-gray-600 text-sm">Another group camping option at Clear Creek, Acorn Camp provides a rustic, wooded setting with fire rings and picnic facilities for organized groups and family reunions.</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-              <div className="relative h-56">
-                <Image src="/images/clear-creek-fox-loop.jpg" alt="Fox Loop entrance at Clear Creek" fill sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw" className="object-cover" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Fox Loop Entrance</h3>
-                <p className="text-gray-600 text-sm">The gateway to one of Clear Creek&apos;s most popular camping loops, Fox Loop features electric and water hookups with close access to the campground boat ramp on Lewis Smith Lake.</p>
-              </div>
-            </div>
+        {/* Group Camping */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandTint}`}>
+          <div className={frame}>
+            <SplitFeature
+              photo={{ src: '/images/clear-creek-acorn-camp.jpg', alt: 'Picnic tables at Acorn Camp, a Clear Creek group camping area' }}
+              heading="Group Camping"
+              paragraphs={[
+                'Clear Creek offers two group camping units, each capable of accommodating up to 25 persons. These are ideal for family reunions, scout troops, church groups, and other organizations looking for a shared outdoor experience.',
+                'Group sites include tent-only, non-electric accommodations in a more natural setting, perfect for those who want a traditional camping experience with their group.',
+              ]}
+            />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Resources & Downloads */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Resources &amp; Downloads</h2>
-          <p className="text-gray-600 mb-8">Download maps and guides for your visit to Bankhead National Forest.</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { name: 'Clear Creek Map', file: '/downloads/bankhead-national-forest/clear-creek-map.pdf' },
-              { name: 'Corinth Map', file: '/downloads/bankhead-national-forest/corinth-map.pdf' },
-              { name: 'Birding Guide', file: '/downloads/bankhead-national-forest/birding-guide.pdf' },
-              { name: 'Sipsey Wilderness Map', file: '/downloads/bankhead-national-forest/sipsey-wilderness-map.pdf' },
-              { name: 'Sipsey Canoe Map', file: '/downloads/bankhead-national-forest/sipsey-canoe-map.pdf' },
-              { name: 'Quail Habitat Guide', file: '/downloads/bankhead-national-forest/quail-habitat.pdf' },
-              { name: 'Forest Visitor Rules', file: '/downloads/bankhead-national-forest/forest-visitor-rules.pdf' },
-            ].map((doc) => (
-              <a
-                key={doc.name}
-                href={doc.file}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-white rounded-xl p-4 border border-gray-200 hover:border-green-300 hover:bg-green-50 transition-colors"
-              >
-                <svg className="w-8 h-8 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/>
-                </svg>
-                <span className="text-sm font-medium text-gray-900">{doc.name}</span>
-              </a>
-            ))}
+        {/* Day-Use Area */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <SectionHeader heading="Day-Use Area" intro="Full-day access to the swimming beach, boat ramps, shelters, and picnic areas on Lewis Smith Lake." />
+            <CardRow columns={3} items={dayUseFeatures} />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Photo Gallery */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Photo Gallery</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              { src: '/images/clear-creek-overview.jpg', alt: 'Clear Creek Recreation Area entrance sign' },
-              { src: '/images/clear-creek-swimming.jpg', alt: 'Swimming beach on Lewis Smith Lake' },
-              { src: '/images/clear-creek-shelter.jpg', alt: 'Shaded walkway and steps in the Clear Creek day-use area' },
-              { src: '/images/clear-creek-camping.jpg', alt: 'Campground road and direction sign at Clear Creek' },
-              { src: '/images/clear-creek-hoot-owl-loop.jpg', alt: 'Hoot Owl camping loop' },
-              { src: '/images/clear-creek-fawn-loop.jpg', alt: 'Information board in the Fawn camping loop' },
-              { src: '/images/clear-creek-bent-twig.jpg', alt: 'Bent Twig Camp' },
-              { src: '/images/clear-creek-acorn-camp.jpg', alt: 'Acorn Camp' },
-              { src: '/images/clear-creek-fox-loop.jpg', alt: 'Fox Loop' },
-              { src: '/images/clear-creek-fox-entrance.jpg', alt: 'Fox Loop entrance' },
-            ].map((photo, index) => (
-              <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" className="object-cover hover:scale-110 transition-transform duration-500" />
-              </div>
-            ))}
+        {/* Special Camp Areas */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandWhite}`}>
+          <div className={frame}>
+            <SectionHeader heading="Special Camp Areas" intro="Clear Creek offers unique camping experiences beyond the standard loops." />
+            <CardRow columns={3} items={specialCamps} />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Trails */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Trails</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {trails.map((trail) => (
-              <div key={trail.name} className="bg-white rounded-2xl p-8 shadow-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">{trail.name}</h3>
-                    <span className="text-green-700 font-semibold text-sm">{trail.distance}</span>
-                  </div>
-                </div>
-                <p className="text-gray-600">{trail.description}</p>
-              </div>
-            ))}
+        {/* Trails */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <SectionHeader heading="Trails" />
+            <RuledRows
+              rows={[
+                { key: 'raven', title: 'Raven Interpretive Trail', meta: '2.5 miles', body: 'Wind through the forest on this interpretive trail that highlights the natural features and ecology of the Bankhead National Forest.' },
+                { key: 'bicycle', title: 'Paved Bicycle & Walking Trail', meta: '1.25 miles', body: 'A paved multi-use trail perfect for biking, walking, or jogging through the scenic campground area.', image: { src: '/images/bankhead-bicycle-trail.jpg', alt: 'Paved bicycle trail at Clear Creek' } },
+              ]}
+            />
           </div>
-          <div className="mt-8">
-            <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden">
-              <Image src="/images/bankhead-bicycle-trail.jpg" alt="Paved bicycle trail at Clear Creek" fill sizes="(min-width: 1280px) 1232px, 100vw" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <span className="px-4 py-2 bg-white/90 text-gray-900 font-semibold rounded-full text-sm">
-                  1.25-mile Paved Bicycle & Walking Trail
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Nearby Attractions */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Nearby Attractions</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {nearbyAttractions.map((attraction) => (
-              <div key={attraction.name} className="border border-gray-200 rounded-2xl p-6 hover:border-green-300 transition-colors">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{attraction.name}</h3>
-                <p className="text-gray-600 text-sm">{attraction.description}</p>
-              </div>
-            ))}
+        {/* Nearby Attractions */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandWhite}`}>
+          <div className={frame}>
+            <SectionHeader heading="Nearby Attractions" />
+            <CardRow columns={4} items={attractions} />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Rules */}
-      <section className="py-16 bg-amber-50">
-        <div className="container-custom px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Campground Rules</h2>
-          <p className="text-gray-600 mb-8">Please review and follow these rules during your stay at Clear Creek Recreation Area.</p>
-          <div className="grid md:grid-cols-2 gap-4">
-            {rules.map((rule, index) => (
-              <div key={index} className="flex gap-3 bg-white rounded-xl p-4">
-                <div className="w-6 h-6 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-amber-700 text-xs font-bold">{index + 1}</span>
-                </div>
-                <p className="text-gray-700 text-sm">{rule}</p>
-              </div>
-            ))}
+        {/* Campground Rules */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <SectionHeader heading="Campground Rules" intro="Please review and follow these rules during your stay at Clear Creek Recreation Area." />
+            <RuledRows rows={rules.map((r, i) => ({ key: `rule-${i}`, body: r }))} />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Seasonal Day Use Pass */}
-      <section className="py-16">
-        <div className="container-custom px-6">
-          <div className="bg-green-50 rounded-2xl p-8 md:p-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Seasonal Day Use Pass</h2>
-            <p className="text-gray-600 leading-relaxed mb-4">
-              A Seasonal Day Use Pass is available for Clear Creek and Corinth Recreation Areas. The pass is valid from the date of purchase through December 31st of the year purchased and covers one vehicle with up to 5 people.
-            </p>
-            <ul className="space-y-2 text-gray-600 text-sm">
-              <li className="flex items-start gap-2">
-                <svg className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                Valid for day-use activities only at Clear Creek &amp; Corinth
-              </li>
-              <li className="flex items-start gap-2">
-                <svg className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                Non-transferable — valid only for the vehicle it was purchased for
-              </li>
-              <li className="flex items-start gap-2">
-                <svg className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                Windshield sticker must be displayed to be valid
-              </li>
-            </ul>
+        {/* Seasonal Day Use Pass */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandTint}`}>
+          <div className={frame}>
+            <SectionHeader heading="Seasonal Day Use Pass" intro="A Seasonal Day Use Pass is available for Clear Creek and Corinth Recreation Areas. The pass is valid from the date of purchase through December 31st of the year purchased and covers one vehicle with up to 5 people." />
+            <IconChipList
+              items={[
+                'Valid for day-use activities only at Clear Creek & Corinth',
+                'Non-transferable — valid only for the vehicle it was purchased for',
+                'Windshield sticker must be displayed to be valid',
+              ]}
+            />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-forest-DEFAULT">
-        <div className="container-custom px-6 text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
-            Plan Your Visit to Clear Creek
-          </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-            Reserve your campsite and experience the beauty of Lewis Smith Lake in Bankhead National Forest.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://www.recreation.gov/camping/campgrounds/231990"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary bg-white text-forest-DEFAULT hover:bg-gray-100"
-            >
-              Reserve on Recreation.gov
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-            <Link href="/experiences" className="btn-primary bg-white/10 text-white hover:bg-white/20">
-              View All Experiences
-            </Link>
+        {/* Resources & Downloads */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <SectionHeader heading="Resources & Downloads" intro="Download maps and guides for your visit to Bankhead National Forest." />
+            <RuledRows rows={downloads.map((d) => ({ ...d, linkLabel: 'Download PDF' }))} />
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Photo Gallery */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandWhite}`}>
+          <div className={frame}>
+            <SectionHeader heading="Photo Gallery" />
+            <Gallery photos={galleryPhotos} />
+          </div>
+        </section>
+
+        <ClosingCta
+          heading="Plan Your Visit to Clear Creek"
+          text="Reserve your campsite and experience the beauty of Lewis Smith Lake in Bankhead National Forest."
+          primary={BOOK}
+          secondary={{ label: 'View All Experiences', url: '/experiences', kind: 'internal' }}
+        />
+        <StickyBooking name="Clear Creek Recreation Area" cta={BOOK} />
+      </LakesideShell>
 
       <Footer />
     </main>
