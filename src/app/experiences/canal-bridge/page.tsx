@@ -18,6 +18,7 @@ import {
   StickyBooking,
   bandTint,
   bandWhite,
+  body,
   frame,
   mapsUrl,
 } from '@/components/property/lakeside'
@@ -162,6 +163,7 @@ export default function CanalBridgePage() {
             primary={BOOK}
             secondary={[{ label: 'Get directions', url: mapsUrl(COORDS.lat, COORDS.lng), kind: 'external' }]}
           />
+          <p className="mt-4 text-sm text-lake-mute">Reserve your campsite at Canal Bridge Campground on the Saco River.</p>
         </IntroFacts>
 
         {/* River & Beach Access */}
@@ -173,6 +175,9 @@ export default function CanalBridgePage() {
               heading="River & Beach Access"
               intro="The Saco River is one of Maine's most beloved waterways, known for its gentle currents, sandy beaches, and crystal-clear water. Canal Bridge's river frontage gives you unmatched access to paddle, swim, and fish throughout your stay."
             />
+            <p className={`${body} mb-10`}>
+              Canal Bridge&apos;s Saco River frontage offers sandy beaches, gentle currents, and some of the best paddling and fishing in western Maine.
+            </p>
             <CardRow
               columns={2}
               shape="wide"
@@ -185,7 +190,7 @@ export default function CanalBridgePage() {
               <CardRow
                 columns={3}
                 items={[
-                  { key: 'kayaking', title: 'Kayaking & Canoeing', body: "Launch directly from the campground and paddle the Saco's gentle currents. The river is perfect for all skill levels, from beginners to experienced paddlers." },
+                  { key: 'kayaking', title: 'Kayaking & Canoeing', body: "Paddle the Saco right from your campsite. Launch directly from the campground and paddle the Saco's gentle currents. The river is perfect for all skill levels, from beginners to experienced paddlers." },
                   { key: 'fishing', title: 'Fishing', body: 'The Saco River is home to trout and bass. Cast your line from the bank or wade into the shallows for a true Maine fishing experience.' },
                   { key: 'swimming', title: 'Swimming', body: "Cool off in the Saco's crystal-clear water at the campground's sandy beach areas. A perfect way to spend a warm summer afternoon." },
                 ]}
