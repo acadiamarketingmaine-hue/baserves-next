@@ -19,6 +19,7 @@ import {
   bandWhite,
   body,
   frame,
+  h3,
   mapsUrl,
 } from '@/components/property/lakeside'
 
@@ -146,13 +147,32 @@ export default function CorinthPage() {
             <SectionHeader heading="Campground Facilities" />
             <div className="grid gap-5 md:grid-cols-2 md:gap-x-12">
               <p className={body}>
-                The campground is organized into two paved loops and includes 52 campsites, all designed to accommodate RV and family camping. Each site features water, 30-amp and 50-amp electrical service, and sewer hookups, along with paved parking spurs, picnic tables, fire rings, and lantern posts.
+                The campground is organized into two paved loops and includes 52 campsites, all designed to accommodate RV and family camping. Each site features water, 30-amp and 50-amp electrical service, and sewer hookups, along with paved parking spurs, picnic tables, fire rings, and lantern posts. Most sites are level, spacious, and capable of accommodating larger RVs.
               </p>
               <p className={body}>
-                In addition to the RV sites, Corinth offers eight rustic tent-only campsites, supported by nearby community water hydrants and bathhouse access. Four bathhouses with flush toilets and warm showers serve the camping areas, and a trailer dump station is located within the recreation area. Camping is by reservation only through Recreation.gov; check-in begins at 2:00 p.m., check-out is no later than 12:00 p.m.
+                In addition to the RV sites, Corinth offers eight rustic tent-only campsites, supported by nearby community water hydrants and bathhouse access for a more traditional camping experience. ADA-accessible sites are available throughout the campground.
               </p>
             </div>
             <IconChipList className="mt-10" items={fullHookupAmenities} />
+
+            <h3 className={`${h3} mb-4 mt-16 text-lake-ink md:mt-20`}>Good to Know</h3>
+            <RuledRows
+              rows={[
+                {
+                  key: 'bathhouses-dump-gate',
+                  body: 'Four bathhouses with flush toilets and warm showers serve the camping areas. A trailer dump station is located within the recreation area, and an access-controlled entrance station with an electronic gate helps manage campground entry.',
+                },
+                {
+                  key: 'trash',
+                  body: 'Visitors are required to pack out trash from campsites and dispose of it in designated dumpsters located near the dump station.',
+                },
+                {
+                  key: 'reservations',
+                  body: 'Camping is by reservation only through Recreation.gov. Check-in begins at 2:00 p.m., and check-out is no later than 12:00 p.m.',
+                },
+              ]}
+            />
+
             <div className="mt-12 border-t border-lake-line pt-8">
               <p className={body}>
                 From Double Springs, travel 8 miles east on Hwy 278; turn right at the Corinth Recreation Area sign on County Road 57.
@@ -179,7 +199,27 @@ export default function CorinthPage() {
         <section className={`py-14 md:py-24 lg:py-[120px] ${bandTint}`}>
           <div className={frame}>
             <SectionHeader heading="Day-Use Area & Activities" intro="Swimming, boating, picnicking, and hiking — all on the shores of Lewis Smith Lake." />
+            <div className="grid gap-5 md:grid-cols-2 md:gap-x-12">
+              <p className={body}>
+                The day-use area centers around a popular swimming beach, supported by a bathhouse with showers and changing facilities. Nearby, 29 family picnic sites are connected by paved access paths, offering convenient and comfortable day-use opportunities.
+              </p>
+              <p className={body}>
+                A reservable group picnic pavilion accommodates up to 100 people and includes a nearby flush restroom. Additional amenities include a year-round boat launch with boat and trailer parking, as well as a separate launch available for campground users.
+              </p>
+              <p className={body}>
+                Visitors can also enjoy a scenic 1.25-mile shoreline trail, often referred to as the Bobwhite Trail, which provides opportunities for walking and nature observation. Interpretive programs are offered during the summer months, enhancing the visitor experience.
+              </p>
+            </div>
             <CardRow columns={3} items={dayUseFeatures} />
+          </div>
+        </section>
+
+        {/* Overview */}
+        <section className="py-14 md:py-24 lg:py-[120px]">
+          <div className={frame}>
+            <p className={body}>
+              With its combination of modern infrastructure, lakeside access, and diverse recreational offerings, Corinth Recreation Area serves as a premier destination within Bankhead National Forest. Its well-maintained facilities and convenient location make it an ideal base for both overnight stays and day-use activities. Corinth opens on the second Friday of March and closes October 31st.
+            </p>
           </div>
         </section>
 
