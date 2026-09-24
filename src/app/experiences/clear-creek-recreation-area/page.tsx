@@ -20,6 +20,7 @@ import {
   bandWhite,
   body,
   frame,
+  h3,
   mapsUrl,
 } from '@/components/property/lakeside'
 
@@ -152,7 +153,9 @@ export default function ClearCreekPage() {
             primary={BOOK}
             secondary={[{ label: 'Get directions', url: mapsUrl(COORDS.lat, COORDS.lng), kind: 'external' }]}
           />
-          <p className="mt-4 text-sm text-lake-mute">Bankhead Ranger District: (205) 489-5111</p>
+          <p className="mt-4 text-sm text-lake-mute">
+            Reserve your campsite at Clear Creek Recreation Area through Recreation.gov. Bankhead Ranger District: (205) 489-5111
+          </p>
         </IntroFacts>
 
         {/* Campground Facilities & Access */}
@@ -164,10 +167,25 @@ export default function ClearCreekPage() {
                 The campground is organized into four paved loops and includes 102 RV campsites, including 32 double sites and 11 pull-through sites. All campsites are level and spacious, with paved parking spurs, picnic tables, fire rings, and lantern posts. Each site provides water service and both 30-amp and 50-amp electrical hookups. Single sites accommodate up to six people and two vehicles, while double sites can accommodate up to twelve people and four vehicles.
               </p>
               <p className={body}>
-                Two reservable group camping areas accommodate up to 25 tent campers each and share access to bathhouse facilities. Camping is by reservation only through Recreation.gov. An entry-controlled entrance station with an electronic gate manages campground access. Check-in begins at 2:00 p.m., check-out is no later than 12:00 p.m., and Clear Creek opens on the second Friday of March and closes October 31st.
+                Two reservable group camping areas accommodate up to 25 tent campers each and share access to bathhouse facilities. Camping is by reservation only through Recreation.gov. An entry-controlled entrance station with an electronic gate manages campground access. Visitors are required to pack out trash from campsites and dispose of it in designated dumpsters located near the dump station. Check-in begins at 2:00 p.m., check-out is no later than 12:00 p.m., and Clear Creek opens on the second Friday of March and closes October 31st.
               </p>
             </div>
             <IconChipList className="mt-10" items={siteAmenities} />
+
+            <h3 className={`${h3} mb-4 mt-16 text-lake-ink md:mt-20`}>Day-Use Amenities</h3>
+            <div className="grid gap-5 md:grid-cols-2 md:gap-x-12">
+              <p className={body}>
+                The day-use area is centered around a popular swimming beach, supported by a bathhouse with showers and changing facilities. Adjacent to the beach is a reservable 50-person picnic pavilion, while a larger picnic area includes 53 family units connected by paved walkways. Two additional 50-person pavilions are located on a scenic point overlooking the lake.
+              </p>
+              <p className={body}>
+                A year-round boat launch with boat and trailer parking provides convenient lake access. Additional amenities include a children&apos;s playground and a 1.5-mile paved bicycle trail connecting the campground to the day-use area. The nearby 2.5-mile Raven Cliffs Trail offers additional hiking opportunities through the surrounding forest.
+              </p>
+            </div>
+
+            <h3 className={`${h3} mb-4 mt-16 text-lake-ink md:mt-20`}>Natural Features</h3>
+            <p className={body}>
+              The Bankhead National Forest is located in northwestern Alabama, and its prominent feature is the Sipsey Wilderness &mdash; known as &ldquo;The Land of a Thousand Waterfalls.&rdquo; It&apos;s an area of abundant streams, old-growth forests, limestone bluffs, and lush canyons. Lewis Smith Lake boasts more than 500 miles of shoreline marked by high rock bluffs. The water is clear and deep and provides excellent fishing for Kentucky Spotted Bass and Hybrid Striped Bass.
+            </p>
           </div>
         </section>
 
@@ -216,7 +234,7 @@ export default function ClearCreekPage() {
             <RuledRows
               rows={[
                 { key: 'raven', title: 'Raven Interpretive Trail', meta: '2.5 miles', body: 'Wind through the forest on this interpretive trail that highlights the natural features and ecology of the Bankhead National Forest.' },
-                { key: 'bicycle', title: 'Paved Bicycle & Walking Trail', meta: '1.25 miles', body: 'A paved multi-use trail perfect for biking, walking, or jogging through the scenic campground area.', image: { src: '/images/bankhead-bicycle-trail.jpg', alt: 'Paved bicycle trail at Clear Creek' } },
+                { key: 'bicycle', title: '1.25-mile Paved Bicycle & Walking Trail', meta: '1.25 miles', body: 'A paved multi-use trail perfect for biking, walking, or jogging through the scenic campground area.', image: { src: '/images/bankhead-bicycle-trail.jpg', alt: 'Paved bicycle trail at Clear Creek' } },
               ]}
             />
           </div>

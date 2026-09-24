@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
@@ -90,7 +91,7 @@ const cabinInfo = [
   'Two bunk beds — mattresses and bedding NOT provided',
   'Air mattresses strongly recommended',
   'Max 4 persons per cabin; site limited to 6',
-  'One tent per cabin allowed',
+  'One tent per cabin is allowed',
   'Legiontown Camp Area (Cabins C, F, H, I, J, K)',
 ]
 
@@ -255,11 +256,28 @@ export default function BurlingamePage() {
               intro="Six distinct areas across the 3,100-acre park, with sites for tents (A), small trailers (B), large trailers & motorhomes (C/M)."
             />
             <CardRow columns={3} items={campAreas} />
-            <SectionActions
-              className="mt-10"
-              primary={RESERVE}
-              secondary={[{ label: 'View campground map', url: '/images/burlingame-campground-map.png', kind: 'external', style: 'link' }]}
-            />
+
+            <a
+              href="/images/burlingame-campground-map.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-12 block overflow-hidden rounded-md border border-lake-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
+            >
+              <span className="relative block aspect-[16/10] w-full bg-white">
+                <Image
+                  src="/images/burlingame-campground-map.png"
+                  alt="Burlingame State Park campground map"
+                  fill
+                  sizes="(min-width: 1440px) 1392px, 100vw"
+                  className="object-contain"
+                />
+              </span>
+            </a>
+            <p className="mt-3 text-sm text-lake-mute">
+              Click map to view full size. Legend: A = Tents Only, B = Small Trailers, C = Large Trailers &amp; Motorhomes, M = Motorhomes
+            </p>
+
+            <SectionActions className="mt-10" primary={RESERVE} />
           </div>
         </section>
 

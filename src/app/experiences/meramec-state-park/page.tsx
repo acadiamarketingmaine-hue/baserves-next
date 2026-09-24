@@ -115,6 +115,31 @@ export default async function MeramecStateParkPage() {
           />
         </IntroFacts>
 
+        {/* Civilian Conservation Corps Legacy: real park history, restored per
+            review (was dropped from the first Lakeside pass). */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandWhite}`}>
+          <div className={frame}>
+            <SplitFeature
+              photo={content.gallery.find((p) => p.src.includes('ccc-monument')) ?? content.hero}
+              eyebrowRule
+              eyebrow="Since 1933"
+              heading={content.sections.cccLegacy.heading ?? 'Civilian Conservation Corps Legacy'}
+              paragraphs={content.sections.cccLegacy.paragraphs ?? []}
+            />
+          </div>
+        </section>
+
+        {/* Meramec Upland Forest Natural Area */}
+        <section className={`py-14 md:py-24 lg:py-[120px] ${bandTint}`}>
+          <div className={frame}>
+            <SectionHeader
+              heading={content.sections.naturalArea.heading ?? 'Meramec Upland Forest Natural Area'}
+              intro={content.sections.naturalArea.paragraphs?.[0]}
+              split={false}
+            />
+          </div>
+        </section>
+
         {/* Cabin Lodging: the "where to stay" block, white band per the kit. */}
         <section id="lodging" className={`py-14 md:py-24 lg:py-[120px] ${bandWhite} scroll-mt-28`}>
           <div className={frame}>
@@ -217,7 +242,7 @@ export default async function MeramecStateParkPage() {
         </section>
 
         <ClosingCta
-          photo={content.gallery.find((p) => p.src.includes('ccc-monument')) ?? content.hero}
+          photo={content.hero}
           heading={content.sections.closingCta.heading ?? content.name}
           text={content.sections.closingCta.intro}
           primary={content.ctas.footer}
