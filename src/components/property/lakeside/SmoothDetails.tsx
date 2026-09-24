@@ -27,6 +27,9 @@ export default function SmoothDetails({ className, summary, children }: SmoothDe
     // Only handle clicks on this details' own summary, not a nested one.
     if (!details || !content || (e.target as HTMLElement).closest('summary') !== details.querySelector(':scope > summary')) return
     if (typeof content.animate !== 'function') return
+    // "Stop animations" in the accessibility panel: let the native <details>
+    // open and close instantly instead of running the height animation.
+    if (document.documentElement.classList.contains('a11y-reduce-motion')) return
     e.preventDefault()
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
