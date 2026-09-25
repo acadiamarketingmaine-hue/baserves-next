@@ -77,32 +77,47 @@ export default function LakesideMotion() {
       return
     }
 
-    gsap.registerPlugin(ScrollTrigger, SplitText)
     const mm = gsap.matchMedia()
     const splits: SplitText[] = []
 
-    const q = <T extends HTMLElement = HTMLElement>(sel: string) =>
-      Array.from(root.querySelectorAll<T>(sel))
-    const belowFold = (el: HTMLElement) => el.getBoundingClientRect().top >= window.innerHeight
-    // First load: the pre-paint class hid the hero; if the CSS failsafe has already
-    // shown it (very slow hydration), don't hide it again. Client-side navigation:
-    // this layout effect runs before the first paint, so hiding it is flash-free.
-    const heroStillHidden = () => {
-      if (!html.classList.contains('lk-pre')) return true
-      const first = root.querySelector<HTMLElement>('[data-lk-hero]')
-      return !!first && parseFloat(getComputedStyle(first).opacity) < 0.05
-    }
+    // Failsafe: if the setup below throws (caught, see catch block) or never
+    // finishes for some other reason, `setupOk` never flips to true and this
+    // forces every hero/reveal/parallax target to its landed, visible state
+    // ~2.5s after mount instead of leaving it at opacity 0 forever. In the
+    // healthy case `setupOk` is set synchronously, well before 2.5s, so this
+    // is a no-op and normal scroll-reveal behavior is untouched.
+    let setupOk = false
+    const failsafeTimer = window.setTimeout(() => {
+      if (setupOk) return
+      html.classList.remove('lk-pre')
+      jumpToFinalState(root)
+    }, 2500)
 
-    let heroPlayed = false
-    root.classList.add('lk-armed')
-    root.dataset.motion = 'on'
+    try {
+      gsap.registerPlugin(ScrollTrigger, SplitText)
 
-    mm.add(
-      {
-        motion: '(prefers-reduced-motion: no-preference)',
-        reduce: '(prefers-reduced-motion: reduce)',
-      },
-      (ctx) => {
+      const q = <T extends HTMLElement = HTMLElement>(sel: string) =>
+        Array.from(root.querySelectorAll<T>(sel))
+      const belowFold = (el: HTMLElement) => el.getBoundingClientRect().top >= window.innerHeight
+      // First load: the pre-paint class hid the hero; if the CSS failsafe has already
+      // shown it (very slow hydration), don't hide it again. Client-side navigation:
+      // this layout effect runs before the first paint, so hiding it is flash-free.
+      const heroStillHidden = () => {
+        if (!html.classList.contains('lk-pre')) return true
+        const first = root.querySelector<HTMLElement>('[data-lk-hero]')
+        return !!first && parseFloat(getComputedStyle(first).opacity) < 0.05
+      }
+
+      let heroPlayed = false
+      root.classList.add('lk-armed')
+      root.dataset.motion = 'on'
+
+      mm.add(
+        {
+          motion: '(prefers-reduced-motion: no-preference)',
+          reduce: '(prefers-reduced-motion: reduce)',
+        },
+        (ctx) => {
         const { motion: mediaMotion } = ctx.conditions as { motion: boolean; reduce: boolean }
         // The "Stop animations" panel toggle behaves exactly like
         // prefers-reduced-motion: reduce, folded in here so a page that
@@ -292,10 +307,19 @@ export default function LakesideMotion() {
       },
     )
 
-    // Swapped-in web fonts can move trigger positions.
-    document.fonts?.ready.then(() => ScrollTrigger.refresh())
+      // Swapped-in web fonts can move trigger positions.
+      document.fonts?.ready.then(() => ScrollTrigger.refresh())
+
+      setupOk = true
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error('[LakesideMotion] setup failed, revealing content', err)
+      html.classList.remove('lk-pre')
+      jumpToFinalState(root)
+    }
 
     return () => {
+      window.clearTimeout(failsafeTimer)
       splits.forEach((s) => s.revert())
       mm.revert()
       root.classList.remove('lk-armed')
