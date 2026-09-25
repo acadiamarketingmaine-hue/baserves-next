@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -173,6 +173,9 @@ export default function Navigation({
   const [query, setQuery] = useState('')
   const searchInputRef = useRef<HTMLInputElement>(null)
   const locationsRef = useRef<HTMLDivElement>(null)
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null)
+  const mobileMenuCloseRef = useRef<HTMLButtonElement>(null)
+  const mobileMenuDrawerRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
   const results = useMemo(() => {
@@ -215,6 +218,41 @@ export default function Navigation({
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [])
 
+  const closeMobileMenu = useCallback(() => {
+    setMobileMenuOpen(false)
+    mobileMenuButtonRef.current?.focus()
+  }, [])
+
+  // Mobile drawer: closed state is `inert` (see the wrapper below) so it's out
+  // of the tab order entirely. While open, focus moves into it, Tab is
+  // trapped inside, and Escape closes it and returns focus to the hamburger.
+  useEffect(() => {
+    if (!mobileMenuOpen) return
+    mobileMenuCloseRef.current?.focus()
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        closeMobileMenu()
+      } else if (e.key === 'Tab' && mobileMenuDrawerRef.current) {
+        const f = Array.from(
+          mobileMenuDrawerRef.current.querySelectorAll<HTMLElement>(
+            'button, [href], input, [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter((el) => !el.hasAttribute('disabled'))
+        if (!f.length) return
+        const first = f[0]
+        const last = f[f.length - 1]
+        const active = document.activeElement
+        if (e.shiftKey && (active === first || !mobileMenuDrawerRef.current.contains(active))) {
+          e.preventDefault(); last.focus()
+        } else if (!e.shiftKey && (active === last || !mobileMenuDrawerRef.current.contains(active))) {
+          e.preventDefault(); first.focus()
+        }
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [mobileMenuOpen, closeMobileMenu])
 
   const handleResultClick = (href: string) => {
     setSearchOpen(false)
@@ -416,12 +454,13 @@ export default function Navigation({
                 </svg>
               </button>
               <button
+                ref={mobileMenuButtonRef}
                 type="button"
                 className="p-2.5 text-gray-700"
                 aria-expanded={mobileMenuOpen}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open menu'}</span>
                 {mobileMenuOpen ? (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -542,20 +581,29 @@ export default function Navigation({
         </div>
       </div>
 
-      {/* Mobile menu - slide out drawer */}
+      {/* Mobile menu - slide out drawer. Closed = inert + aria-hidden so its
+          content (and the invisible backdrop/panel) are fully out of the tab
+          order; a sighted-mouse user never notices since it's already
+          opacity-0/pointer-events-none. */}
       <div
         className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
+        aria-hidden={!mobileMenuOpen}
+        {...((!mobileMenuOpen ? { inert: '' } : {}) as Record<string, unknown>)}
       >
         {/* Backdrop */}
         <div
           className="absolute inset-0 bg-black/40"
-          onClick={() => setMobileMenuOpen(false)}
+          onClick={closeMobileMenu}
         />
 
         {/* Drawer */}
         <div
+          ref={mobileMenuDrawerRef}
+          role="dialog"
+          aria-modal={mobileMenuOpen}
+          aria-label="Mobile menu"
           className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl transition-transform duration-300 ease-out flex flex-col ${
             mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
@@ -573,7 +621,8 @@ export default function Navigation({
                 />
               </Link>
               <button
-                onClick={() => setMobileMenuOpen(false)}
+                ref={mobileMenuCloseRef}
+                onClick={closeMobileMenu}
                 className="p-2.5 text-gray-500 hover:text-gray-700 transition-colors"
                 aria-label="Close menu"
               >
