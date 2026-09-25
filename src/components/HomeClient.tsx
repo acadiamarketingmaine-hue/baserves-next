@@ -1388,17 +1388,25 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             </div>
           </div>
 
-          {/* Page dots */}
-          <div className="flex justify-center gap-2 mt-8">
+          {/* Page dots — each button is a 44x44 hit area (overlapping via negative
+              margin, since 12 dots at full width won't fit at 390px without it);
+              the visible dot inside stays small so the row's look is unchanged. */}
+          <div className="flex justify-center mt-8">
             {Array.from({ length: totalDots }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => goTo(i * cardsPerView)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  i === activeDot ? 'bg-lake-spruce w-6' : 'bg-lake-line hover:bg-lake-moss'
-                }`}
-                aria-label={`Show destinations page ${i + 1}`}
-              />
+                className="group/dot relative -mx-[13px] flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
+                aria-label={`Show slide ${i + 1} of ${totalDots}`}
+                aria-current={i === activeDot ? 'true' : undefined}
+              >
+                <span
+                  aria-hidden="true"
+                  className={`block h-2.5 rounded-full transition-all duration-300 ${
+                    i === activeDot ? 'bg-lake-spruce w-6' : 'bg-lake-line w-2.5 group-hover/dot:bg-lake-moss'
+                  }`}
+                />
+              </button>
             ))}
           </div>
 
