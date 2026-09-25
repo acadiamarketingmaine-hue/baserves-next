@@ -57,11 +57,6 @@ export default function SmallBusinessConnectionPage() {
                 Trusted Septic System Service South Portland, ME | Septic Advisor
               </a>
             </li>
-            <li key="https://www.apexroofnh.com">
-              <a href="https://www.apexroofnh.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                Apex Exteriors | Roofing and Siding in Rochester NH
-              </a>
-            </li>
             <li key="https://www.nasonshomesolutions.com">
               <a href="https://www.nasonshomesolutions.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                 Nason&apos;s Home Solutions | Insulation, Mold Removal & Waterproofing in Maine
@@ -125,11 +120,6 @@ export default function SmallBusinessConnectionPage() {
             <li key="https://www.gardenguyslandscaping.com">
               <a href="https://www.gardenguyslandscaping.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                 Garden Guys Landscaping | Professional Landscaping in Southern Maine
-              </a>
-            </li>
-            <li key="https://www.blackmajicsealcoating.com">
-              <a href="https://www.blackmajicsealcoating.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                Black Majic Sealcoating | Driveway Sealcoating in Southern Maine
               </a>
             </li>
       </ul>
