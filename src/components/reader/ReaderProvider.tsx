@@ -5,6 +5,12 @@ import { usePathname } from 'next/navigation'
 import { ReaderEngine, type ReaderSnapshot } from './engine'
 
 interface ReaderContextValue extends ReaderSnapshot {
+  /** True once the client has mounted, i.e. `supported` reflects a real
+   * feature check rather than the server's always-false guess. Lets a
+   * caller reserve a control's layout space while this is still false
+   * (support not yet known) without reserving it forever on a browser
+   * that's genuinely missing speechSynthesis (mounted && !supported). */
+  mounted: boolean
   play: () => void
   pause: () => void
   resume: () => void
@@ -69,6 +75,7 @@ export function useReader(): ReaderContextValue {
   return {
     ...snapshot,
     supported: snapshot.supported && mounted,
+    mounted,
     play: () => engine.play(),
     pause: () => engine.pause(),
     resume: () => engine.resume(),

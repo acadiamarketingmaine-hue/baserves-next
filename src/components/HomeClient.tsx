@@ -808,9 +808,16 @@ function BookingWidgets() {
             <h3 className="text-center font-lake-serif text-[22px] text-lake-ink mb-5">
               Chief Noonday Outdoor Center
             </h3>
+            {/* min-h matches the real rendered widget's measured height
+                (~394-418px depending on viewport/property) rather than the
+                old 300px guess, which was short enough to cause a layout
+                shift once escape.baserves.com's widget.js swaps the
+                placeholder for real content — below the fold at page load,
+                so it doesn't hit the load-time CLS score, but it does if a
+                visitor scrolls to it before the async fetch resolves. */}
             <div
               id="chief-noonday-widget"
-              className="min-h-[300px]"
+              className="min-h-[420px]"
             />
           </div>
           <div className="rounded-2xl border border-lake-line bg-white p-6 md:p-8">
@@ -819,7 +826,7 @@ function BookingWidgets() {
             </h3>
             <div
               id="long-lake-widget"
-              className="min-h-[300px]"
+              className="min-h-[420px]"
             />
           </div>
         </div>
@@ -1183,8 +1190,14 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 container-custom px-6 pt-28">
+        {/* Content. `w-full` matters here specifically: this section is a
+            flex container (for vertical centering), so without it this div
+            would shrink-to-fit its content's intrinsic width instead of
+            filling the section like every other `.container-custom` on the
+            page — and that intrinsic width shifts a few px once the serif
+            headline's webfont finishes loading, which was a measurable
+            source of home's CLS. */}
+        <div className="relative z-10 container-custom w-full px-6 pt-28">
           <div className="max-w-3xl">
             <a
               href="tel:+12073077903"
@@ -1201,7 +1214,12 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
               <span className="italic drop-shadow-lg">Adventure.</span>
             </h1>
 
-            <div className="mb-6 animate-fade-in-up motion-reduce:animate-none delay-100">
+            {/* min-h reserves the pill's height up front: ListenButton renders
+                nothing until the client confirms speechSynthesis support
+                (ReaderProvider), and without this the hero copy below jumps
+                up ~68px once it pops in — the biggest single source of
+                home's CLS. */}
+            <div className="mb-6 min-h-[44px] animate-fade-in-up motion-reduce:animate-none delay-100">
               <ListenButton variant="light" />
             </div>
 
@@ -1388,17 +1406,25 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             </div>
           </div>
 
-          {/* Page dots */}
-          <div className="flex justify-center gap-2 mt-8">
+          {/* Page dots — each button is a 44x44 hit area (overlapping via negative
+              margin, since 12 dots at full width won't fit at 390px without it);
+              the visible dot inside stays small so the row's look is unchanged. */}
+          <div className="flex justify-center mt-8">
             {Array.from({ length: totalDots }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => goTo(i * cardsPerView)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  i === activeDot ? 'bg-lake-spruce w-6' : 'bg-lake-line hover:bg-lake-moss'
-                }`}
-                aria-label={`Show destinations page ${i + 1}`}
-              />
+                className="group/dot relative -mx-[13px] flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
+                aria-label={`Show slide ${i + 1} of ${totalDots}`}
+                aria-current={i === activeDot ? 'true' : undefined}
+              >
+                <span
+                  aria-hidden="true"
+                  className={`block h-2.5 rounded-full transition-all duration-300 ${
+                    i === activeDot ? 'bg-lake-spruce w-6' : 'bg-lake-line w-2.5 group-hover/dot:bg-lake-moss'
+                  }`}
+                />
+              </button>
             ))}
           </div>
 
