@@ -122,6 +122,11 @@ export default function SmallBusinessConnectionPage() {
                 Garden Guys Landscaping | Professional Landscaping in Southern Maine
               </a>
             </li>
+            <li key="https://www.jandrmechanicalservices.com">
+              <a href="https://www.jandrmechanicalservices.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                J&R Mechanical Services | HVAC Augusta Maine | Heating and Cooling Augusta Maine
+              </a>
+            </li>
       </ul>
     </section>
   );
