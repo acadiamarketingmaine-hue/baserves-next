@@ -35,6 +35,22 @@ export interface SendMailOptions {
    * authorised to send as. Anything else fails SPF and lands in spam.
    */
   from?: string
+  /** Plain-text body; derived from `html` when omitted (HTML-only mail scores worse with Microsoft 365 filters). */
+  text?: string
+}
+
+/** Readable plain-text version of an HTML email body. */
+function htmlToText(html: string): string {
+  return html
+    .replace(/<(style|script)[^>]*>[\s\S]*?<\/\1>/gi, '')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/(p|div|tr|h[1-6]|li|table)>/gi, '\n')
+    .replace(/<\/t[dh]>/gi, '\t')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
 }
 
 /** Drops empty/duplicate addresses so a missing map entry can't produce an invalid header. */
@@ -44,7 +60,7 @@ function addressList(addresses: string[] | undefined): string | undefined {
   return cleaned.length ? cleaned.join(', ') : undefined
 }
 
-export async function sendMail({ to, subject, html, cc, bcc, replyTo, from }: SendMailOptions) {
+export async function sendMail({ to, subject, html, cc, bcc, replyTo, from, text }: SendMailOptions) {
   const recipients = addressList(to)
   if (!recipients) throw new Error('sendMail called with no recipients')
 
@@ -56,6 +72,7 @@ export async function sendMail({ to, subject, html, cc, bcc, replyTo, from }: Se
     replyTo,
     subject,
     html,
+    text: text || htmlToText(html),
   })
 
   return { id: info.messageId }

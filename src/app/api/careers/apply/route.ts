@@ -6,6 +6,10 @@ import { extraRecipientsForSite, managerForSite } from '@/data/managers'
 // the applicant picked a location.
 const OFFICE_RECIPIENTS = ['OfficeManager@BAServes.com', 'andrew@baserves.com', 'Eric@BAServes.com']
 
+// Backup copy to Acadia (Sep 2026: applicants' emails were going missing in the
+// office's Microsoft 365 filtering), so no application can vanish unseen.
+const BACKUP_BCC = ['johnphair@acadiamarketingmaine.com']
+
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json()
@@ -26,9 +30,11 @@ export async function POST(request: NextRequest) {
       to: siteRecipients.length ? [...siteRecipients, ...OFFICE_RECIPIENTS] : OFFICE_RECIPIENTS,
       subject: `Employment Application - ${data.fullName}${data.siteApplyingTo ? ` (${data.siteApplyingTo})` : ''}`,
       replyTo: data.emailAddress,
+      bcc: BACKUP_BCC,
       html,
     })
 
+    console.log('Employment application emailed:', { site: data.siteApplyingTo || null, at: new Date().toISOString() })
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Failed to send employment application:', error)
