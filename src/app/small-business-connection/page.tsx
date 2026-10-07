@@ -49,7 +49,7 @@ export default function SmallBusinessConnectionPage() {
             </li>
             <li key="https://www.rjcplumbing.com">
               <a href="https://www.rjcplumbing.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                Augusta&apos;s Trusted Plumber | Expert Plumbing in Central Maine
+                RJC Plumbing | Plumbing Brunswick Maine | Augusta&apos;s Trusted Plumber
               </a>
             </li>
             <li key="https://www.septicadvisor.com">
