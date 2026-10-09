@@ -101,8 +101,8 @@ export const longLakeOutdoorCenter: PropertyContent = {
       kind: 'internal',
     },
     weddingPacket: {
-      label: 'wedding packet',
-      url: '/downloads/long-lake/weddings.pdf',
+      label: 'wedding weekends',
+      url: '#weddings',
       kind: 'internal',
     },
   },
@@ -253,7 +253,7 @@ export const longLakeOutdoorCenter: PropertyContent = {
         {
           key: 'package',
           title: 'Wedding Package',
-          meta: '2-night rental: $3,300 (2026) · $3,800 (2027) · $4,300 (2028)',
+          meta: 'Weekend: $3,800 (2027) · $4,300 (2028). One evening in 2027: $1,500.',
         },
       ],
     },
@@ -269,7 +269,7 @@ export const longLakeOutdoorCenter: PropertyContent = {
             src: '/images/long-lake/wedding-ceremony.jpg',
             alt: 'Wedding ceremony under the pines beside Long Lake',
           },
-          body: 'Two-night wedding package: $3,300 for 2026 weddings, $3,800 for 2027, $4,300 from 2028. Ceremony and reception spaces with lakeside views, historic lodge, and full catering kitchen.',
+          body: 'Wedding weekend: $3,800 in 2027, $4,300 in 2028. Friday afternoon through Sunday morning, cleaning included. A one-evening gathering in 2027 is $1,500. Ceremony and reception spaces with lakeside views, historic lodge, and full catering kitchen.',
         },
         {
           key: 'group-camps',
@@ -334,12 +334,6 @@ export const longLakeOutdoorCenter: PropertyContent = {
           title: 'Rentals',
           href: '/downloads/long-lake/rentals.pdf',
           body: 'Cabin, bunkhouse, and facility rental details.',
-        },
-        {
-          key: 'weddings',
-          title: 'Weddings',
-          href: '/downloads/long-lake/weddings.pdf',
-          body: 'Wedding packages, pricing, and venue details.',
         },
       ],
     },

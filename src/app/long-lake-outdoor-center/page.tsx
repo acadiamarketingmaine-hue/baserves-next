@@ -224,14 +224,7 @@ export default async function LongLakePage() {
                 </div>
               )}
               <p className={`${body} mt-6`}>
-                Download the{' '}
-                <a
-                  href={ctas.weddingPacket.url}
-                  className="font-medium text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
-                >
-                  {ctas.weddingPacket.label}
-                </a>{' '}
-                for full details on ceremony locations, catering options, and rental inclusions.
+                A wedding weekend is Friday at 3pm through Sunday at 11am, with cleaning included: $3,800 in 2027 and $4,300 in 2028. One evening in 2027, from 3pm to midnight and out by 11am, is $1,500. A third day is $1,500.
               </p>
             </SplitFeature>
           </div>
