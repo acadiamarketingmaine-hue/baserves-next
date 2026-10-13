@@ -4,7 +4,13 @@
 // page. Property photos are from Elle's May 2026 Long Lake shoot; the wedding
 // photos and camp map are from Elle's camp-wedding page.
 
-export const BOOKING_URL = 'https://escape.baserves.com/long-lake-outdoor-center'
+// Each package's own booking page. The property page ignores ?unitId=, so
+// linking there drops couples into all 32 Long Lake rentals.
+const ESCAPE = 'https://escape.baserves.com/long-lake-outdoor-center/units/'
+export const BOOKING_URL = `${ESCAPE}cmkcrmi4i0001nn4fjxbuzlcp` // Two-Day Wedding Package - Entire Camp
+export const EVENING_URL = `${ESCAPE}cmkcr6bnn0001phu1b55x5moo` // Full Day - Entire Camp
+
+export const PHONE = { label: '616-644-9459', href: 'tel:+16166449459' }
 
 const P = '/images/long-lake/weddings/'
 
@@ -45,10 +51,10 @@ export const included = [
   'Camp clean-up package',
 ]
 
-export const tiers = [
-  { year: 'Wedding weekend, 2027', price: '$3,800', note: 'Friday 3pm setup and rehearsal, Saturday wedding, out by 11am Sunday' },
-  { year: 'Wedding weekend, 2028', price: '$4,300', note: 'Friday 3pm setup and rehearsal, Saturday wedding, out by 11am Sunday' },
-  { year: 'One evening, 2027', price: '$1,500', note: '3pm arrival, party until midnight, out by 11am' },
+export const tiers: { year: string; price: string; note: string; url?: string }[] = [
+  { year: 'Wedding weekend, 2027', price: '$3,800', note: 'Friday 3pm setup and rehearsal, Saturday wedding, out by 11am Sunday', url: BOOKING_URL },
+  { year: 'Wedding weekend, 2028', price: '$4,300', note: 'Friday 3pm setup and rehearsal, Saturday wedding, out by 11am Sunday', url: BOOKING_URL },
+  { year: 'One evening, 2027', price: '$1,500', note: '3pm arrival, party until midnight, out by 11am', url: EVENING_URL },
   { year: 'Add a third day', price: '$1,500', note: 'Before or after your weekend' },
 ]
 

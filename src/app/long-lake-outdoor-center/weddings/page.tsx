@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { Cormorant_Garamond, EB_Garamond, Pinyon_Script } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import { BOOKING_URL, photos, included, tiers, faqs, history } from '@/data/long-lake-weddings'
+import { BOOKING_URL, PHONE, photos, included, tiers, faqs, history } from '@/data/long-lake-weddings'
 import { og } from '@/lib/seo'
 import s from './weddings.module.css'
 
@@ -104,9 +103,9 @@ export default function LongLakeWeddings() {
               <a href={BOOKING_URL} className={`${s.outline} ${s.solid}`}>
                 Check Availability
               </a>
-              <Link href="/contact" className={s.outline}>
+              <a href={PHONE.href} className={s.outline}>
                 Schedule a Tour
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -157,6 +156,11 @@ export default function LongLakeWeddings() {
                         <span className={s.tierYear}>{tier.year}</span>
                         <span className={s.tierPrice}>{tier.price}</span>
                         <span className={s.tierNote}>{tier.note}</span>
+                        {tier.url && (
+                          <a href={tier.url} className={s.tierLink}>
+                            Check dates
+                          </a>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -253,9 +257,9 @@ export default function LongLakeWeddings() {
               <a href={BOOKING_URL} className={`${s.outline} ${s.solid}`}>
                 Check Availability
               </a>
-              <Link href="/contact" className={s.outline}>
-                Inquire
-              </Link>
+              <a href={PHONE.href} className={s.outline}>
+                Call {PHONE.label}
+              </a>
             </div>
           </div>
         </section>
