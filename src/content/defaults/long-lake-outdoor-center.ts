@@ -102,7 +102,7 @@ export const longLakeOutdoorCenter: PropertyContent = {
     },
     weddingPacket: {
       label: 'wedding weekends',
-      url: '#weddings',
+      url: '/long-lake-outdoor-center/weddings',
       kind: 'internal',
     },
   },
@@ -264,7 +264,7 @@ export const longLakeOutdoorCenter: PropertyContent = {
         {
           key: 'weddings',
           title: 'Weddings',
-          href: '#weddings',
+          href: '/long-lake-outdoor-center/weddings',
           photo: {
             src: '/images/long-lake/wedding-ceremony.jpg',
             alt: 'Wedding ceremony under the pines beside Long Lake',

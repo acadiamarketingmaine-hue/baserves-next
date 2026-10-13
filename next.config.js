@@ -62,6 +62,12 @@ const nextConfig = {
         destination: '/leave-a-review?type=campground',
         permanent: false,
       },
+      {
+        // The two wedding-page drafts Elle reviewed; /noindex1 became the live page.
+        source: '/:draft(noindex1|noindex2)',
+        destination: '/long-lake-outdoor-center/weddings',
+        permanent: true,
+      },
     ]
   },
 }

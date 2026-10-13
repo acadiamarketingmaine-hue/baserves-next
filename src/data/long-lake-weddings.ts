@@ -1,7 +1,8 @@
-// Shared copy and photos for the Long Lake Outdoor Center wedding page drafts
-// (/noindex1 and /noindex2). Facts come from the Long Lake wedding packet,
-// Elle's Aug 25 2026 pricing email, and the Long Lake property page. Photos are
-// from Elle's May 2026 Long Lake shoot.
+// Copy and photos for the Long Lake Outdoor Center wedding page
+// (/long-lake-outdoor-center/weddings). Facts come from the Long Lake wedding
+// packet, Elle's camp-wedding page (Oct 2026 prices) and the Long Lake property
+// page. Property photos are from Elle's May 2026 Long Lake shoot; the wedding
+// photos and camp map are from Elle's camp-wedding page.
 
 export const BOOKING_URL = 'https://escape.baserves.com/long-lake-outdoor-center'
 
@@ -25,11 +26,17 @@ export const photos = {
   fireplaceTall: { src: `${P}fireplace-tall.jpg`, alt: 'Stone fireplace inside the Mansion House' },
   pinePathTall: { src: `${P}pine-path-tall.jpg`, alt: 'A path through the pines' },
   firePit: { src: `${P}fire-pit.jpg`, alt: 'A fire pit outside one of the bunkhouses' },
+  coupleLakeshore: { src: `${P}couple-lakeshore.jpg`, alt: 'A bride and groom on the grassy shore of Long Lake at sunset' },
+  coupleDock: { src: `${P}couple-dock.jpg`, alt: 'A bride and groom kissing beside the dock on Long Lake' },
+  brideCabin: { src: `${P}bride-cabin.jpg`, alt: 'A bride under her veil beside a stone-chimney cabin in the pines' },
+  canoeVeil: { src: `${P}canoe-veil.jpg`, alt: 'A wedding veil draped across a canoe on the water' },
+  brideCanoe: { src: `${P}bride-canoe.jpg`, alt: 'A bride sitting in a canoe at the edge of Long Lake' },
+  campMap: { src: `${P}camp-map.jpg`, alt: 'Map of Long Lake Outdoor Center: lakefront ceremony site, cabins 1 to 16, lodge and kitchen, bath house, and the bunkhouses' },
 } as const
 
 export const included = [
   'Exclusive use of the entire property: no other guests, nothing shared',
-  'Two nights and three days, with additional nights available on either end',
+  'Friday at 3pm through Sunday at 11am, with a third day available on either end',
   'The lodge and dining hall, seating 120 at hand-crafted tables',
   'A full commercial kitchen for your caterer',
   'All 16 cabins and 4 bunkhouses, sleeping up to 120',
@@ -39,9 +46,10 @@ export const included = [
 ]
 
 export const tiers = [
-  { year: '2027 Weddings', price: '$3,800', note: 'Friday 3pm through Sunday 11am, cleaning included' },
-  { year: '2028 Weddings', price: '$4,300', note: 'Friday 3pm through Sunday 11am, cleaning included' },
-  { year: '2027 one evening', price: '$1,500', note: '3pm to midnight, out by 11am the next morning' },
+  { year: 'Wedding weekend, 2027', price: '$3,800', note: 'Friday 3pm setup and rehearsal, Saturday wedding, out by 11am Sunday' },
+  { year: 'Wedding weekend, 2028', price: '$4,300', note: 'Friday 3pm setup and rehearsal, Saturday wedding, out by 11am Sunday' },
+  { year: 'One evening, 2027', price: '$1,500', note: '3pm arrival, party until midnight, out by 11am' },
+  { year: 'Add a third day', price: '$1,500', note: 'Before or after your weekend' },
 ]
 
 export const faqs = [
@@ -50,12 +58,16 @@ export const faqs = [
     a: 'The camp is sized for intimate weddings, with a maximum total capacity of 120. The dining hall seats all 120, and the cabins and bunkhouses together sleep up to 120 on the property.',
   },
   {
-    q: 'What does the wedding package include?',
-    a: 'Two nights and three days of exclusive use of the entire property (lodge, kitchen, all 16 cabins, all 4 bunkhouses, the bath house, and the grounds) along with the camp clean-up package.',
+    q: 'Where do couples get married?',
+    a: 'Down at the lake. Vows happen on the lakefront by the dock, with the water and the pines behind you, and the reception moves up to the lodge.',
   },
   {
-    q: 'Can we add days before or after?',
-    a: 'Yes. A third day is $1,500. That covers an extra day on either end for setup, a rehearsal, or a slower goodbye.',
+    q: 'When do we arrive and leave?',
+    a: 'A wedding weekend starts Friday at 3pm for setup and the rehearsal, the wedding is Saturday, and everyone heads out by 11am Sunday. A one-evening booking runs 3pm to midnight, and guests can stay over and leave by 11am.',
+  },
+  {
+    q: 'Can we add a day?',
+    a: 'Yes. A third day is $1,500, added before or after your weekend for more setup time or a slower goodbye.',
   },
   {
     q: 'What is the kitchen like for our caterer?',

@@ -31,6 +31,7 @@ const ROUTES: [string, string, Freq, number][] = [
   ['/monongahela-national-forest', '2026-04-17', 'weekly', 0.8],
   ['/washington-state-park', '2026-04-24', 'weekly', 0.8],
   ['/long-lake-outdoor-center', '2026-04-25', 'weekly', 0.8],
+  ['/long-lake-outdoor-center/weddings', '2026-10-13', 'monthly', 0.8],
   ['/chief-noonday-outdoor-center', '2026-05-09', 'weekly', 0.8],
   ['/bankhead-national-forest', '2026-09-17', 'weekly', 0.8],
 

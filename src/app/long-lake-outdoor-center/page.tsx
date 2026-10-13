@@ -226,6 +226,10 @@ export default async function LongLakePage() {
               <p className={`${body} mt-6`}>
                 A wedding weekend is Friday at 3pm through Sunday at 11am, with cleaning included: $3,800 in 2027 and $4,300 in 2028. One evening in 2027, from 3pm to midnight and out by 11am, is $1,500. A third day is $1,500.
               </p>
+              <SectionActions
+                className="mt-8"
+                primary={{ label: 'See wedding weekends', url: '/long-lake-outdoor-center/weddings', kind: 'internal' }}
+              />
             </SplitFeature>
           </div>
         </section>

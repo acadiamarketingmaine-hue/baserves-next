@@ -5,6 +5,7 @@ import { Cormorant_Garamond, EB_Garamond, Pinyon_Script } from 'next/font/google
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { BOOKING_URL, photos, included, tiers, faqs, history } from '@/data/long-lake-weddings'
+import { og } from '@/lib/seo'
 import s from './weddings.module.css'
 
 const cormorant = Cormorant_Garamond({
@@ -29,12 +30,14 @@ const pinyon = Pinyon_Script({
   variable: '--font-pinyon',
 })
 
+const PATH = '/long-lake-outdoor-center/weddings'
+
 export const metadata: Metadata = {
-  title: 'Weddings at Long Lake Outdoor Center | Yankee Springs, Michigan',
+  title: { absolute: 'Weddings at Long Lake Outdoor Center | Yankee Springs, Michigan' },
   description:
-    'A historic lakeside wedding venue in Yankee Springs, Michigan. Two nights of exclusive use, a 120-seat timber-frame lodge, on-site lodging for every guest, and a commercial kitchen for your caterer.',
-  openGraph: { images: [photos.lakeDock.src] },
-  robots: { index: false, follow: false },
+    'A rustic lakeside camp wedding venue in Yankee Springs, Michigan, between Grand Rapids and Kalamazoo. Say your vows at the lake, celebrate in the 1939 lodge, and keep up to 120 guests in the cabins. Weekends from $3,800.',
+  alternates: { canonical: PATH },
+  openGraph: { ...og(PATH), images: [photos.coupleLakeshore.src] },
 }
 
 type Pic = { src: string; alt: string }
@@ -63,22 +66,22 @@ function Arch({ pic, caption, priority }: { pic: Pic; caption?: string; priority
 const spaces = [
   {
     name: 'The Lakefront',
-    pic: photos.lakeDock,
-    body: 'Vows at the water’s edge, with the lake and the treeline behind you. The dock and shoreline are yours all weekend.',
+    pic: photos.coupleDock,
+    body: 'Say your vows down at the lake, by the dock, with the water and the treeline behind you.',
   },
   {
     name: 'The Lodge',
     pic: photos.diningHall,
-    body: 'A timber-frame dining hall seating 120, with vaulted trusses, a stone fireplace at either end, and a long front porch.',
+    body: 'The reception moves up to the timber-frame lodge: vaulted trusses, two stone fireplaces, and a full kitchen for your caterer.',
   },
   {
     name: 'The Cabins',
     pic: photos.cabinPorch,
-    body: 'Sixteen cabins and four bunkhouses sleep up to 120, so every guest stays the night on the property.',
+    body: 'Nobody has to drive home. Your guests sleep in the cabins and bunkhouses, a short walk from the party.',
   },
 ]
 
-export default function LongLakeWeddingsForest() {
+export default function LongLakeWeddings() {
   return (
     <>
       <Navigation ctaLabel="Check Availability" ctaHref={BOOKING_URL} />
@@ -86,16 +89,16 @@ export default function LongLakeWeddingsForest() {
       <main className={`${s.page} ${cormorant.variable} ${garamond.variable} ${pinyon.variable}`}>
         {/* Hero */}
         <section className={s.hero}>
-          <Photo pic={photos.canoesPines} className={s.heroA} sizes="220px" />
-          <Photo pic={photos.pinesCabinTall} className={s.heroB} sizes="240px" />
+          <Photo pic={photos.lakeDockWide} className={s.heroA} sizes="230px" />
+          <Photo pic={photos.brideCabin} className={s.heroB} sizes="230px" />
 
           <div className={s.heroBox}>
             <span className={s.caps}>Weddings at</span>
             <h1 className={s.display}>Long Lake Outdoor Center</h1>
             <span className={s.script}>where memories take root</span>
             <p>
-              A 1939 camp on a private lake in the Michigan pines, and for your wedding weekend, the
-              whole property is yours.
+              A rustic 1939 camp on a lake in the Michigan pines, between Grand Rapids and Kalamazoo.
+              For your wedding weekend, the whole property is yours.
             </p>
             <div className={s.btnRow}>
               <a href={BOOKING_URL} className={`${s.outline} ${s.solid}`}>
@@ -107,7 +110,7 @@ export default function LongLakeWeddingsForest() {
             </div>
           </div>
 
-          <Photo pic={photos.lakeDockWide} className={s.heroC} sizes="(max-width: 720px) 100vw, 320px" />
+          <Photo pic={photos.coupleLakeshore} className={s.heroC} sizes="(max-width: 720px) 100vw, 320px" />
         </section>
 
         {/* The spaces, on deep green */}
@@ -132,11 +135,11 @@ export default function LongLakeWeddingsForest() {
             <div className={s.sectionHead}>
               <span className={s.script}>The weekend is yours</span>
               <h2 className={s.display}>The Wedding Package</h2>
-              <p>One package, and it’s the whole camp: two nights and three days with the entire property to yourselves.</p>
+              <p>The whole camp is yours from Friday at 3pm until 11am Sunday. Or book one evening, 3pm to midnight.</p>
             </div>
 
             <div className={`${s.withArch} ${s.withArchLeft}`}>
-              <Arch pic={photos.pinesCabinTall2} caption="two nights, three days" />
+              <Arch pic={photos.brideCanoe} caption="friday to sunday" />
               <div className={s.packageStack}>
                 <div className={s.packageBox}>
                   <h3 className={s.display}>What’s Included</h3>
@@ -157,9 +160,7 @@ export default function LongLakeWeddingsForest() {
                       </div>
                     ))}
                   </div>
-                  <p className={s.priceFoot}>
-                    Two nights and three days, camp clean-up included. Pricing follows the year of your wedding.
-                  </p>
+                  <p className={s.priceFoot}>Cleaning is included. Pricing follows the year of your wedding.</p>
                   <a href={BOOKING_URL} className={`${s.outline} ${s.outlineLight}`}>
                     Check Availability
                   </a>
@@ -186,14 +187,28 @@ export default function LongLakeWeddingsForest() {
                   <Image src={photos.lodgeFront.src} alt={photos.lodgeFront.alt} fill sizes="(max-width: 1040px) 50vw, 360px" />
                 </div>
               </div>
-              <div className={s.facts}>
-                <span>Seats 120</span>
-                <span>Sleeps 120</span>
-                <span>National Register</span>
-                <span>Seasonal</span>
-              </div>
             </div>
             <Arch pic={photos.diningHallTall} caption="the lodge" />
+          </div>
+        </section>
+
+        {/* Camp map */}
+        <section className={s.section} style={{ paddingTop: 0 }}>
+          <div className={s.inner}>
+            <div className={s.sectionHead}>
+              <span className={s.script}>Find your way</span>
+              <h2 className={s.display}>The Camp Map</h2>
+              <p>The ceremony spot by the lake, the lodge and kitchen, the bath house, and where everyone sleeps.</p>
+            </div>
+            <div className={s.mapFrame}>
+              <Image
+                src={photos.campMap.src}
+                alt={photos.campMap.alt}
+                width={2000}
+                height={1125}
+                sizes="(max-width: 1120px) 100vw, 1120px"
+              />
+            </div>
           </div>
         </section>
 
@@ -205,7 +220,7 @@ export default function LongLakeWeddingsForest() {
               <h2 className={s.display}>Questions Couples Ask</h2>
             </div>
             <div className={`${s.withArch} ${s.withArchLeft}`}>
-              <Arch pic={photos.canoesTall} caption="by the water" />
+              <Arch pic={photos.canoeVeil} caption="by the water" />
               <div>
                 {faqs.map((faq) => (
                   <div key={faq.q} className={s.faqItem}>
@@ -233,6 +248,7 @@ export default function LongLakeWeddingsForest() {
               Every love story is its own, and we can’t wait to host yours. Book your weekend, or reach
               out to schedule a tour of Long Lake Outdoor Center.
             </p>
+            <p className={s.credit}>Wedding photos by Elle with Ellis and Indigo</p>
             <div className={s.btnRow}>
               <a href={BOOKING_URL} className={`${s.outline} ${s.solid}`}>
                 Check Availability
