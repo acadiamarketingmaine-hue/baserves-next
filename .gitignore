@@ -36,3 +36,4 @@ docs/ux-sweep/*/build.log
 docs/ux-sweep/*/recs.partial.json
 
 .claude/
+.env*

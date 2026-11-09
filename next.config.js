@@ -18,6 +18,7 @@ const contentImageHosts = (process.env.CONTENT_IMAGE_HOSTS || '')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
@@ -40,7 +41,7 @@ const nextConfig = {
       {
         // Keep the *.vercel.app preview/production alias out of the index.
         source: '/:path*',
-        has: [{ type: 'host', value: '(.*)\\.vercel\\.app' }],
+        has: [{ type: 'host', value: '(.*)\\.(vercel\\.app|fly\\.dev)' }],
         headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
       },
     ]
