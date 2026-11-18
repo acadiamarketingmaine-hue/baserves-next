@@ -1197,7 +1197,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             page — and that intrinsic width shifts a few px once the serif
             headline's webfont finishes loading, which was a measurable
             source of home's CLS. */}
-        <div className="relative z-10 container-custom w-full px-6 pt-28">
+        <div className="relative z-10 container-custom w-full px-6 pt-28 pb-24 md:pb-0">
           <div className="max-w-3xl">
             <a
               href="tel:+12073077903"
@@ -1236,7 +1236,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
               <span className="text-lake-ember-light font-semibold">seamless experiences for every visitor</span>.
             </p>
 
-            <div className="flex flex-wrap gap-4 animate-fade-in-up motion-reduce:animate-none delay-300">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 animate-fade-in-up motion-reduce:animate-none delay-300">
               <a
                 href="/experiences"
                 className={`${pillLight} text-lg`}
