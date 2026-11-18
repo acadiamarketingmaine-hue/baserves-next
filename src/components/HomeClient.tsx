@@ -1223,7 +1223,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
               <ListenButton variant="light" />
             </div>
 
-            <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-10 max-w-2xl animate-fade-in-up motion-reduce:animate-none delay-200 drop-shadow-md">
+            <p className="text-lg md:text-2xl text-white/90 leading-relaxed mb-10 max-w-2xl animate-fade-in-up motion-reduce:animate-none delay-200 drop-shadow-md">
               From <span className="text-white font-semibold">the rockbound coast of Maine</span> to{' '}
               <span className="text-white font-semibold">the salt flats of Utah</span>, from{' '}
               <span className="text-white font-semibold">the storied mountains of West Virginia</span> to{' '}
@@ -1279,7 +1279,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                 key={stat.label}
                 className="flex items-baseline justify-between gap-4 border-b border-lake-line py-4 md:block md:border-0 md:py-0 md:pr-6"
               >
-                <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-lake-moss">{stat.label}</dt>
+                <dt className="text-xs font-medium uppercase tracking-[0.14em] text-lake-moss">{stat.label}</dt>
                 <dd className="font-lake-serif text-[28px] leading-tight text-lake-ink md:mt-3 md:text-[40px]">
                   {statsVisible ? (
                     <AnimatedCounter
@@ -1479,7 +1479,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                 className="group p-6 rounded-2xl border border-lake-line bg-white text-center transition-all duration-300 hover:bg-lake-spruce hover:border-lake-spruce hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
               >
                 <div className="text-lake-spruce group-hover:text-white transition-colors mb-4 flex justify-center">{category.icon}</div>
-                <h3 className="font-lake-serif text-[17px] text-lake-ink group-hover:text-white transition-colors mb-1">
+                <h3 className="font-lake-serif text-[15px] leading-snug sm:text-[17px] text-lake-ink group-hover:text-white transition-colors mb-1">
                   {category.name}
                 </h3>
                 <span className="text-sm text-lake-mute group-hover:text-white/70 transition-colors">
