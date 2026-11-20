@@ -20,6 +20,9 @@ const contentImageHosts = (process.env.CONTENT_IMAGE_HOSTS || '')
 const nextConfig = {
   output: 'standalone',
   images: {
+    // Pictures are served and resized by Cloudflare Images; see cloudflare-image-loader.js.
+    loader: 'custom',
+    loaderFile: './cloudflare-image-loader.js',
     remotePatterns: [
       {
         protocol: 'https',
