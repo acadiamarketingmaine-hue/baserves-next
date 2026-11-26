@@ -4,6 +4,8 @@ primary_region = "ewr"   # Newark: closest Fly region to Maine
 
 [build]
   dockerfile = "Dockerfile"
+  [build.args]
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY = "0x4AAAAAAGTrobVabEsZUQlM"
 
 [env]
   NODE_ENV = "production"

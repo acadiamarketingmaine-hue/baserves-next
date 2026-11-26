@@ -1,5 +1,5 @@
 export async function verifyTurnstile(token: unknown, remoteIp?: string | null): Promise<boolean> {
-  const secret = process.env.TURNSTILE_SECRET_KEY
+  const secret = process.env.TURNSTILE_SECRET_KEY?.trim()
   if (typeof token !== 'string' || !token.trim() || !secret) return false
 
   const body = new URLSearchParams({ secret, response: token.trim() })
