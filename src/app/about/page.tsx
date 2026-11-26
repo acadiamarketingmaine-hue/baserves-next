@@ -69,7 +69,7 @@ const stats = [
 
 export const metadata = {
   title: 'About Us',
-  description: 'BA Services, Inc. manages 15+ recreation areas across 7 states — campgrounds, national forests, state parks, and DOT rest areas with 100+ dedicated team members.',
+  description: 'BA Services, Inc. manages 15+ recreation areas across 9 states — campgrounds, national forests, state parks, and DOT rest areas with 100+ dedicated team members.',
   alternates: {
     canonical: '/about',
   },
@@ -84,7 +84,7 @@ export default function AboutPage() {
         url="/about"
         name="About Us | BA Services"
         crumbName="About Us"
-        description="BA Services, Inc. manages 15+ recreation areas across 7 states — campgrounds, national forests, state parks, and DOT rest areas with 100+ dedicated team members."
+        description="BA Services, Inc. manages 15+ recreation areas across 9 states — campgrounds, national forests, state parks, and DOT rest areas with 100+ dedicated team members."
         type="AboutPage"
         image="/images/monongahela/spruce-knob-panorama.jpg"
       />

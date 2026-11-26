@@ -157,7 +157,7 @@ export default function ContactForm() {
           <div className="bg-lake-tint rounded-md p-6 mb-6">
             <h4 className="font-semibold text-gray-900 mb-3">What we offer:</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              {['Competitive pay and benefits', 'Positions across 7+ states', 'Recreation area and DOT rest area roles', 'Site Attendants, Maintenance Technicians, Area Managers', 'Training and certification programs'].map(item => (
+              {['Competitive pay and benefits', 'Positions across 9 states', 'Recreation area and DOT rest area roles', 'Site Attendants, Maintenance Technicians, Area Managers', 'Training and certification programs'].map(item => (
                 <li key={item} className="flex items-center">
                   <svg className="w-4 h-4 mr-2 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

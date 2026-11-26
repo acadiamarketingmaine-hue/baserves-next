@@ -59,27 +59,27 @@ export const bigBendCampground: PropertyContent = {
   notices: [],
   ctas: {
     parentForest: {
-      label: 'Monongahela National Forest',
+      label: 'Part of Monongahela National Forest',
       url: '/monongahela-national-forest',
       kind: 'internal',
     },
     hero: {
-      label: 'Book on Recreation.gov',
+      label: 'Reserve on Recreation.gov',
       url: 'https://www.recreation.gov/camping/campgrounds/232019',
       kind: 'booking',
     },
     reserve: {
-      label: 'Reserve Your Site',
+      label: 'Reserve on Recreation.gov',
       url: 'https://www.recreation.gov/camping/campgrounds/232019',
       kind: 'booking',
     },
     footer: {
-      label: 'Book on Recreation.gov',
+      label: 'Reserve on Recreation.gov',
       url: 'https://www.recreation.gov/camping/campgrounds/232019',
       kind: 'booking',
     },
     footerBack: {
-      label: 'Back to Monongahela NF',
+      label: 'Explore Monongahela National Forest',
       url: '/monongahela-national-forest',
       kind: 'internal',
     },
