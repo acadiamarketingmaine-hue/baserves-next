@@ -87,7 +87,7 @@ const KAREN: Manager = {
 
 const PETE: Manager = {
   name: 'Pete Hantzis',
-  email: 'SenecaShadowsCG@gmail.com',
+  email: 'OfficeManager@baserves.com',
   role: 'Area Manager',
 }
 
