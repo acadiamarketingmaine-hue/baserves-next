@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { FAREHARBOR } from '@/data/fareharbor'
+import { listedNewForests } from '@/data/new-forests'
+
+// The new forests are told to the assistant only once their switch is on.
+const NEW_FOREST_PROMPT = listedNewForests()
+  .map((f) => `\n${f.state}:\n- ${f.name} — ${f.description}. Info at baserves.com${f.href}\n`)
+  .join('')
 
 export const dynamic = 'force-dynamic'
 
@@ -42,7 +48,7 @@ Rhode Island:
 
 West Virginia:
 - Monongahela National Forest — 921,000+ acres, 800+ miles of trails, 4,863 ft peak elevation. 5 wilderness areas, scenic drives, rock climbing. Info at baserves.com/monongahela-national-forest
-
+${NEW_FOREST_PROMPT}
 DOT REST AREA MANAGEMENT (accounts for ~50% of the business):
 
 Iowa DOT:

@@ -12,6 +12,8 @@
  * manager is named.
  */
 
+import { listedNewForests } from './new-forests.ts'
+
 export interface Manager {
   name: string
   email: string
@@ -170,6 +172,13 @@ export const ALL_REST_AREAS: { label: string; group: 'Utah' | 'Iowa' }[] = [
 
 // --- Campgrounds and recreation areas --------------------------------------
 
+// The new contracts. Until BA names their area managers they go to the office
+// inbox, and they appear in the pickers only once NEW_FORESTS_PUBLIC is true.
+function newForestSites(): RoutedSite[] {
+  const office: Manager = { name: 'BA Services Office', email: 'OfficeManager@BAServes.com', role: 'Office' }
+  return listedNewForests().map((f) => ({ label: f.name, manager: office }))
+}
+
 /**
  * Employment-application picker. Labels stay grouped the way Andrew's table
  * reads, because that's what applicants pick.
@@ -257,6 +266,8 @@ export const CAMPGROUND_SITES: RoutedSite[] = [
     label: 'Canal Bridge Campground',
     manager: DALLAS,
   },
+  ...newForestSites(),
+  ...newForestSites(),
 ]
 
 /**

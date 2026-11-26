@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/seo';
 import { lastmodFor } from '@/lib/lastmod';
+import { onlyListed } from '@/data/new-forests';
 
 type Freq = NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>;
 
@@ -34,6 +35,12 @@ const ROUTES: [string, string, Freq, number][] = [
   ['/long-lake-outdoor-center/weddings', '2026-10-13', 'monthly', 0.8],
   ['/chief-noonday-outdoor-center', '2026-05-09', 'weekly', 0.8],
   ['/bankhead-national-forest', '2026-09-17', 'weekly', 0.8],
+
+  // New National Forests (listed once NEW_FORESTS_PUBLIC is true)
+  ['/allegheny-national-forest', '2026-11-26', 'weekly', 0.8],
+  ['/ozark-st-francis-national-forest', '2026-11-26', 'weekly', 0.8],
+  ['/ozark-st-francis-national-forest/white-rock-mountain', '2026-11-26', 'weekly', 0.8],
+  ['/rogue-river-siskiyou-national-forest', '2026-11-26', 'weekly', 0.8],
 
   // Monongahela campground sub-pages
   ['/monongahela-national-forest/big-bend-campground', '2026-04-24', 'monthly', 0.7],
@@ -69,7 +76,7 @@ const ROUTES: [string, string, Freq, number][] = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ROUTES.map(([path, lastmod, changeFrequency, priority]) => ({
+  return onlyListed(ROUTES, ([path]) => path).map(([path, lastmod, changeFrequency, priority]) => ({
     url: path === '/' ? SITE_URL : `${SITE_URL}${path}`,
     lastModified: lastmodFor(path, lastmod),
     changeFrequency,
