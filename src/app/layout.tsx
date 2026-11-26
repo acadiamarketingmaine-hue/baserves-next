@@ -6,10 +6,10 @@ import { A11yWidget, A11Y_PREPAINT_SCRIPT } from '@/components/a11y'
 
 export const metadata: Metadata = {
   title: {
-    default: 'BA Services | Recreation Area Management & DOT Rest Areas Across 7 States',
+    default: 'BA Services | Recreation Area Management & DOT Rest Areas Across 9 States',
     template: '%s | BA Services',
   },
-  description: 'BA Services, Inc. manages campgrounds, national forests, state parks, and DOT rest areas across 7 states. Professional recreation management in AL, IN, ME, MI, MO, RI, WV, IA & UT.',
+  description: 'BA Services, Inc. manages campgrounds, national forests, state parks, and DOT rest areas across 9 states. Professional recreation management in AL, IN, ME, MI, MO, RI, WV, IA & UT.',
   keywords: 'recreation area management, campground management, DOT rest areas, national forest campgrounds, state park management, outdoor recreation, BA Services, camping, hiking',
   metadataBase: new URL('https://baserves.com'),
   alternates: {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'BA Services | Recreation Area Management & DOT Rest Areas',
-    description: 'Professional campground, national forest, state park, and DOT rest area management across 7 states. Well-maintained facilities and exceptional visitor experiences.',
+    description: 'Professional campground, national forest, state park, and DOT rest area management across 9 states. Well-maintained facilities and exceptional visitor experiences.',
     url: 'https://baserves.com',
     siteName: 'BA Services',
     locale: 'en_US',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'BA Services | Recreation Area Management & DOT Rest Areas',
-    description: 'Professional campground, national forest, state park, and DOT rest area management across 7 states.',
+    description: 'Professional campground, national forest, state park, and DOT rest area management across 9 states.',
     images: ['https://baserves.com/images/logo.png'],
   },
 }

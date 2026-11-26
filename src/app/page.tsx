@@ -19,8 +19,8 @@ export default function HomePage() {
     <>
       <PageSchema
         url="/"
-        name="BA Services | Recreation Area Management & DOT Rest Areas Across 7 States"
-        description="BA Services, Inc. manages campgrounds, national forests, state parks, and DOT rest areas across 7 states. Professional recreation management in AL, IN, ME, MI, MO, RI, WV, IA & UT."
+        name="BA Services | Recreation Area Management & DOT Rest Areas Across 9 States"
+        description="BA Services, Inc. manages campgrounds, national forests, state parks, and DOT rest areas across 9 states. Professional recreation management in AL, IN, ME, MI, MO, RI, WV, IA & UT."
         image={{ url: '/videos/hero-poster.jpg', caption: 'BA Services managed recreation areas' }}
         nodes={[
           videoObject({
