@@ -24,8 +24,8 @@ export const siteSettings: SiteSettings = {
     country: 'US',
   },
   emails: {
-    primary: 'email@BAServes.com',
-    alternates: ['info@baserves.com', 'andrew@baserves.com'],
+    primary: 'andrew@baserves.com',
+    alternates: ['info@baserves.com'],
   },
   notices: [],
 }

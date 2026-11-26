@@ -24,7 +24,7 @@ export const SITE = {
   shortName: 'BA Services',
   legalName: 'BA Services, Inc.',
   telephone: '+1-207-307-7903',
-  email: 'email@BAServes.com',
+  email: 'andrew@baserves.com',
   description:
     'Professional recreation area management company operating campgrounds, national forests, state parks, and DOT rest areas across Alabama, Indiana, Maine, Michigan, Missouri, Rhode Island, West Virginia, Iowa, and Utah.',
   address: { streetAddress: '1257 Hammond Street', addressLocality: 'Bangor', addressRegion: 'ME', postalCode: '04401', addressCountry: 'US' },
