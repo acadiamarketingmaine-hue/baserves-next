@@ -4,7 +4,6 @@ import Footer from '@/components/Footer'
 import ContactForm from '@/components/ContactForm'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import Image from 'next/image'
 import { ListenButton } from '@/components/reader'
 import { LakesideShell, SectionActions, frame, pillLight } from '@/components/property/lakeside'
 
@@ -30,9 +29,12 @@ export default function ContactPage() {
 
       <LakesideShell>
         <section className="relative pt-32 pb-16 bg-lake-spruce overflow-hidden">
-          <div className="absolute inset-0">
-            <Image src="/images/long-lake/weddings/lake-dock-wide.jpg" alt="" fill sizes="100vw" priority className="object-cover opacity-20" />
-          </div>
+          {/* CSS background keeps the lakeside wash without a priority fill Image as LCP */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-20"
+            style={{ backgroundImage: "url('/images/long-lake/weddings/lake-dock-wide.jpg')" }}
+            aria-hidden="true"
+          />
           <div className={`relative z-10 ${frame}`}>
             <div className="max-w-3xl">
               <span className="badge bg-white/10 text-white mb-4">Get in Touch</span>
