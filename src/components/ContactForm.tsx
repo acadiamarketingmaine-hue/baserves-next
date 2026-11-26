@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { BriefcaseIcon, HandshakeIcon, ClipboardIcon } from '@/components/Icons'
+import TurnstileWidget from '@/components/TurnstileWidget'
 
 const topics = [
   { id: 'careers', label: 'Careers', icon: <BriefcaseIcon className="w-8 h-8" />, description: 'Apply for a position with BA Services' },
@@ -28,6 +29,9 @@ export default function ContactForm() {
   }, [searchParams])
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0)
+  const [formError, setFormError] = useState('')
 
   // Partnership form
   const [partnerForm, setPartnerForm] = useState({ name: '', email: '', phone: '', organization: '', propertyType: '', location: '', message: '' })
@@ -42,9 +46,14 @@ export default function ContactForm() {
 
   const handlePartnerSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setFormError('')
+    if (!turnstileToken) {
+      setFormError('Please complete the security check before submitting.')
+      return
+    }
     setSubmitting(true)
     try {
-      await fetch('/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -52,10 +61,20 @@ export default function ContactForm() {
           ...partnerForm,
           website: honeypot,
           elapsedMs: Date.now() - formOpenedAt.current,
+          turnstileToken,
         }),
       })
+      if (!response.ok) {
+        const result = await response.json().catch(() => ({}))
+        setFormError(result.error || 'We could not submit your inquiry. Please try again.')
+        setTurnstileResetKey(key => key + 1)
+        return
+      }
       setSubmitted(true)
-    } catch { setSubmitted(true) }
+    } catch {
+      setFormError('We could not submit your inquiry. Please try again.')
+      setTurnstileResetKey(key => key + 1)
+    }
     finally { setSubmitting(false) }
   }
 
@@ -209,6 +228,8 @@ export default function ContactForm() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Tell us about your needs *</label>
             <textarea required rows={4} value={partnerForm.message} onChange={e => setPartnerForm(p => ({ ...p, message: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" placeholder="Describe your property, current challenges, and what you're looking for..." />
           </div>
+          <TurnstileWidget onToken={setTurnstileToken} resetKey={turnstileResetKey} />
+          {formError && <p role="alert" className="text-sm text-red-700">{formError}</p>}
           <button type="submit" disabled={submitting} className="inline-flex min-h-[56px] items-center justify-center rounded-full bg-lake-spruce px-8 text-base font-medium text-lake-paper hover:bg-lake-spruce-dark transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce">
             {submitting ? 'Sending...' : 'Submit Partnership Inquiry'}
           </button>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { RECREATION_SITES } from '@/data/managers'
+import TurnstileWidget from '@/components/TurnstileWidget'
 
 interface Employer {
   employerName: string
@@ -36,6 +37,8 @@ export default function EmploymentApplicationForm() {
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0)
 
   // Applicant Information
   const [fullName, setFullName] = useState('')
@@ -112,6 +115,10 @@ export default function EmploymentApplicationForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
+    if (!turnstileToken) {
+      setError('Please complete the security check before submitting.')
+      return
+    }
     setSubmitting(true)
 
     try {
@@ -120,6 +127,7 @@ export default function EmploymentApplicationForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           fullName, homeAddress, cityStateZip, yearsAtAddress, mobilePhone, emailAddress,
+          turnstileToken,
           dateOfBirth, driversLicense, drivingRecordConsent, shirtSize, vestSize, jacketSize,
           emergencyFullName, emergencyRelationship, emergencyAddress, emergencyCityStateZip,
           emergencyMobilePhone, emergencyHomePhone,
@@ -140,6 +148,7 @@ export default function EmploymentApplicationForm() {
       setSubmitted(true)
     } catch (err: any) {
       setError(err.message || 'Something went wrong. Please try again.')
+      setTurnstileResetKey(key => key + 1)
     } finally {
       setSubmitting(false)
     }
@@ -167,6 +176,8 @@ export default function EmploymentApplicationForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
+      <TurnstileWidget onToken={setTurnstileToken} resetKey={turnstileResetKey} />
+      {error && <p role="alert" className="text-sm text-red-700">{error}</p>}
       {/* Applicant Information */}
       <div>
         <h3 className="text-xl font-bold text-gray-900 mb-4">Applicant Information</h3>

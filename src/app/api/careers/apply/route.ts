@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendMail, escapeHtml } from '@/lib/mailer'
 import { extraRecipientsForSite, managerForSite } from '@/data/managers'
+import { verifyTurnstile } from '@/lib/turnstile'
 
 // Applications always reach the office; the site's area manager is added when
 // the applicant picked a location.
@@ -13,6 +14,15 @@ const BACKUP_BCC = ['johnphair@acadiamarketingmaine.com']
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json()
+
+    if (!process.env.TURNSTILE_SECRET_KEY) {
+      return NextResponse.json({ error: 'Form verification is temporarily unavailable.' }, { status: 503 })
+    }
+    const ip = (request.headers.get('x-forwarded-for') || '').split(',')[0].trim()
+      || request.headers.get('x-real-ip')
+    if (!await verifyTurnstile(data.turnstileToken, ip)) {
+      return NextResponse.json({ error: 'Please complete the security check and try again.' }, { status: 400 })
+    }
 
     if (!data.fullName || !data.emailAddress || !data.mobilePhone) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })

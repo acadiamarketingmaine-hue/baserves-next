@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendMail } from '@/lib/mailer'
+import { verifyTurnstile } from '@/lib/turnstile'
 
 // Spam guards. Deliberately no third-party service and no new dependency, and
 // nothing here changes what a real visitor sees or has to do.
@@ -32,6 +33,15 @@ export async function POST(request: NextRequest) {
   try {
     const data = await request.json()
 
+    if (!process.env.TURNSTILE_SECRET_KEY) {
+      return NextResponse.json({ error: 'Form verification is temporarily unavailable.' }, { status: 503 })
+    }
+    const ip = (request.headers.get('x-forwarded-for') || '').split(',')[0].trim()
+      || request.headers.get('x-real-ip')
+    if (!await verifyTurnstile(data.turnstileToken, ip)) {
+      return NextResponse.json({ error: 'Please complete the security check and try again.' }, { status: 400 })
+    }
+
     // 1. Honeypot: a field hidden from real visitors. Anything in it is a bot.
     if (typeof data.website === 'string' && data.website.trim() !== '') {
       console.warn('Contact form: honeypot tripped, dropping submission')
@@ -46,10 +56,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 3. Per-IP rate limit.
-    const ip = (request.headers.get('x-forwarded-for') || '').split(',')[0].trim()
-      || request.headers.get('x-real-ip')
-      || 'unknown'
-    if (isRateLimited(ip)) {
+    if (isRateLimited(ip || 'unknown')) {
       console.warn('Contact form: rate limit hit')
       return NextResponse.json({ error: 'Too many submissions. Please try again later.' }, { status: 429 })
     }
