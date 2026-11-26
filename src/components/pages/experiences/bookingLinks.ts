@@ -1,5 +1,6 @@
 import type { Cta } from '@/content'
 import { getPropertyContent } from '@/content'
+import { FAREHARBOR } from '@/data/fareharbor'
 
 /**
  * Real booking destinations for the four experience pages that are NOT on
@@ -9,7 +10,7 @@ import { getPropertyContent } from '@/content'
  * Copied verbatim from each page's own booking CTA — never invented here.
  */
 const BESPOKE_BOOKING: Record<string, Cta> = {
-  '/experiences/canal-bridge': { label: 'Book Your Stay', url: 'https://canalbridgeme.com/', kind: 'booking' },
+  '/experiences/canal-bridge': { label: 'Book Your Stay', url: FAREHARBOR.canalbridgeme.campsites, kind: 'booking' },
   '/experiences/clear-creek-recreation-area': { label: 'Book on Recreation.gov', url: 'https://www.recreation.gov/camping/campgrounds/231990', kind: 'booking' },
   '/experiences/corinth-recreation-area': { label: 'Book on Recreation.gov', url: 'https://www.recreation.gov/camping/campgrounds/232423', kind: 'booking' },
   '/experiences/burlingame-state-park': { label: 'Reserve Burlingame', url: 'https://www.reserveamerica.com/explore/burlingame-state-park/RI/252711/overview', kind: 'booking' },

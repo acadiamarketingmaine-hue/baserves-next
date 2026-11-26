@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import TurnstileWidget from '@/components/TurnstileWidget'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { BriefcaseIcon, HandshakeIcon, ClipboardIcon } from '@/components/Icons'
@@ -35,6 +36,9 @@ export default function ContactForm() {
   // Spam guards (see src/app/api/contact/route.ts). Invisible to real visitors:
   // a honeypot field only a bot will fill, and how long the form was open.
   const [honeypot, setHoneypot] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const [turnstileReset, setTurnstileReset] = useState(0)
+  const [partnerError, setPartnerError] = useState('')
   const formOpenedAt = useRef<number>(Date.now())
   useEffect(() => {
     if (topic === 'partnership') formOpenedAt.current = Date.now()
@@ -42,9 +46,10 @@ export default function ContactForm() {
 
   const handlePartnerSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setPartnerError('')
     setSubmitting(true)
     try {
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -52,10 +57,20 @@ export default function ContactForm() {
           ...partnerForm,
           website: honeypot,
           elapsedMs: Date.now() - formOpenedAt.current,
+          turnstileToken,
         }),
       })
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        setPartnerError(body.error || 'Something went wrong. Please try again, or call (207) 307-7903.')
+        setTurnstileReset(n => n + 1)
+        return
+      }
       setSubmitted(true)
-    } catch { setSubmitted(true) }
+    } catch {
+      setPartnerError('Something went wrong. Please try again, or call (207) 307-7903.')
+      setTurnstileReset(n => n + 1)
+    }
     finally { setSubmitting(false) }
   }
 
@@ -209,6 +224,10 @@ export default function ContactForm() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Tell us about your needs *</label>
             <textarea required rows={4} value={partnerForm.message} onChange={e => setPartnerForm(p => ({ ...p, message: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" placeholder="Describe your property, current challenges, and what you're looking for..." />
           </div>
+          <TurnstileWidget onToken={setTurnstileToken} resetKey={turnstileReset} />
+          {partnerError && (
+            <p role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">{partnerError}</p>
+          )}
           <button type="submit" disabled={submitting} className="inline-flex min-h-[56px] items-center justify-center rounded-full bg-lake-spruce px-8 text-base font-medium text-lake-paper hover:bg-lake-spruce-dark transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce">
             {submitting ? 'Sending...' : 'Submit Partnership Inquiry'}
           </button>

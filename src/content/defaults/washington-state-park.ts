@@ -1,4 +1,5 @@
 import type { PropertyContent } from '../types'
+import { FAREHARBOR } from '../../data/fareharbor'
 
 /**
  * Moved verbatim out of src/app/washington-state-park/page.tsx.
@@ -64,17 +65,17 @@ export const washingtonStatePark: PropertyContent = {
   ctas: {
     hero: {
       label: 'Book Your Stay',
-      url: 'https://www.washingtonstateparkmo.com/',
+      url: FAREHARBOR.washingtonstateparkmo.all,
       kind: 'booking',
     },
     sidebar: {
       label: 'Book Your Stay',
-      url: 'https://www.washingtonstateparkmo.com/',
+      url: FAREHARBOR.washingtonstateparkmo.all,
       kind: 'booking',
     },
     footer: {
       label: 'Book Your Stay',
-      url: 'https://www.washingtonstateparkmo.com/',
+      url: FAREHARBOR.washingtonstateparkmo.all,
       kind: 'booking',
     },
     footerExperiences: {

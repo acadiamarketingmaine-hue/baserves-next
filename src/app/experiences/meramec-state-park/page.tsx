@@ -54,8 +54,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 // The words and photos live in src/content/defaults/meramec-state-park.ts.
-// Meramec keeps meramecpark.com as its booking destination throughout — the
-// vendor's own site — per docs/ux-pass/decisions.md D1.
+// Meramec's booking buttons open BA's FareHarbor booking directly (lodging,
+// cabins, float trips), from src/data/fareharbor.ts. Before Nov 2026 they all
+// went to the meramecpark.com homepage (docs/ux-pass/decisions.md D1).
 export default async function MeramecStateParkPage() {
   const content = (await getPropertyContent(SLUG))!
   const cabinCategories = content.sections.cabinLodging.items ?? []

@@ -85,10 +85,17 @@ const KAREN: Manager = {
   role: 'Area Manager',
 }
 
-const PETE: Manager = {
-  name: 'Pete Hantzis',
-  email: 'SenecaShadowsCG@gmail.com',
-  role: 'Area Manager',
+// Monongahela (Seneca Shadows) used to route to Pete Hantzis at
+// SenecaShadowsCG@gmail.com. Gmail rejects that address ("550 5.1.1 The email
+// account that you tried to reach does not exist"): all four Monongahela
+// applications of Nov 17, 18 (two) and 25 2026 bounced back to
+// hello@baservicesbookings.com for that recipient, while OfficeManager@,
+// andrew@ and Eric@ received them. Until BA gives a working address for the
+// Monongahela area manager, Monongahela goes to the office inbox.
+const MONONGAHELA_OFFICE: Manager = {
+  name: 'BA Services Office (Monongahela, until an area manager address is set)',
+  email: 'OfficeManager@BAServes.com',
+  role: 'Office',
 }
 
 const LUKE: Manager = {
@@ -178,7 +185,7 @@ export const RECREATION_SITES: RoutedSite[] = [
   },
   {
     label: 'Monongahela National Forest — Seneca Shadows, Stuart, Big Bend & Spruce Knob Lake',
-    manager: PETE,
+    manager: MONONGAHELA_OFFICE,
   },
   {
     label: 'Meramec State Park',
@@ -240,7 +247,7 @@ export const CAMPGROUND_SITES: RoutedSite[] = [
   },
   {
     label: 'Monongahela National Forest — Seneca Shadows, Stuart, Big Bend & Spruce Knob Lake',
-    manager: PETE,
+    manager: MONONGAHELA_OFFICE,
   },
   {
     label: 'Burlingame State Campground',

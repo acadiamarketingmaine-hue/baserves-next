@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendMail, escapeHtml } from '@/lib/mailer'
 import { extraRecipientsForSite, managerForSite } from '@/data/managers'
+import { CAREERS_POLICY, clientIp, guardSubmission } from '@/lib/form-guard'
 
 // Applications always reach the office; the site's area manager is added when
 // the applicant picked a location.
@@ -13,6 +14,16 @@ const BACKUP_BCC = ['johnphair@acadiamarketingmaine.com']
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json()
+
+    const guard = await guardSubmission(CAREERS_POLICY, data, clientIp(request.headers), { secret: process.env.TURNSTILE_SECRET_KEY })
+    if (guard.action === 'drop') {
+      console.warn(`Careers form: ${guard.reason}, dropping submission`)
+      return NextResponse.json({ success: true })
+    }
+    if (guard.action === 'reject') {
+      console.warn(`Careers form: ${guard.reason}`)
+      return NextResponse.json({ error: guard.error }, { status: guard.status })
+    }
 
     if (!data.fullName || !data.emailAddress || !data.mobilePhone) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
@@ -27,7 +38,7 @@ export async function POST(request: NextRequest) {
     ]
 
     await sendMail({
-      to: siteRecipients.length ? [...siteRecipients, ...OFFICE_RECIPIENTS] : OFFICE_RECIPIENTS,
+      to: uniqueAddresses([...siteRecipients, ...OFFICE_RECIPIENTS]),
       subject: `Employment Application - ${data.fullName}${data.siteApplyingTo ? ` (${data.siteApplyingTo})` : ''}`,
       replyTo: data.emailAddress,
       bcc: BACKUP_BCC,
@@ -40,6 +51,17 @@ export async function POST(request: NextRequest) {
     console.error('Failed to send employment application:', error)
     return NextResponse.json({ error: 'Failed to send application' }, { status: 500 })
   }
+}
+
+/** One copy per mailbox, whatever the capitalisation (OfficeManager@ can be both the site's and the office's). */
+function uniqueAddresses(list: string[]): string[] {
+  const seen = new Set<string>()
+  return list.filter(a => {
+    const k = a.trim().toLowerCase()
+    if (seen.has(k)) return false
+    seen.add(k)
+    return true
+  })
 }
 
 function buildEmailHtml(data: any): string {

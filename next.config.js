@@ -67,6 +67,22 @@ const nextConfig = {
         permanent: false,
       },
       {
+        // Short park URLs guests and old links use; the real pages live elsewhere.
+        source: '/meramec-state-park',
+        destination: '/experiences/meramec-state-park',
+        permanent: true,
+      },
+      {
+        source: '/:old(canal-bridge|canal-bridge-campground)',
+        destination: '/experiences/canal-bridge',
+        permanent: true,
+      },
+      {
+        source: '/experiences/washington-state-park',
+        destination: '/washington-state-park',
+        permanent: true,
+      },
+      {
         // The two wedding-page drafts Elle reviewed; /noindex1 became the live page.
         source: '/:draft(noindex1|noindex2)',
         destination: '/long-lake-outdoor-center/weddings',

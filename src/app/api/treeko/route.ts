@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { FAREHARBOR } from '@/data/fareharbor'
 
 export const dynamic = 'force-dynamic'
 
@@ -25,7 +26,7 @@ Indiana (Hoosier National Forest):
 - Tipsaw Lake Recreation Area — 49 campsites, 131-acre lake, 8+ miles of trails. Perry County, IN. Book at baserves.com/tipsaw-lake-recreation-area
 
 Maine:
-- Canal Bridge Campground — 36 campsites on the Saco River, Fryeburg, ME. Kayaking, fishing, White Mountain views. Book at canalbridgeme.com
+- Canal Bridge Campground — 36 campsites on the Saco River, Fryeburg, ME. Kayaking, fishing, White Mountain views. Book campsites online through FareHarbor: ${FAREHARBOR.canalbridgeme.campsites} (park site: canalbridgeme.com)
 
 Michigan (Yankee Springs area):
 - Yankee Springs Recreation Area — 200+ campsites, 30+ miles of trails, 5,200+ acres. Barry County, MI. Book at baserves.com/yankee-springs-recreation-area
@@ -33,8 +34,8 @@ Michigan (Yankee Springs area):
 - Chief Noonday Outdoor Center — four rentable cabins and lodges sleeping 26 in total (Bear Den sleeps 6, Chickadee Cabin 4, Deer Lodge 8, Crane House 8); a small group camp & retreat center. Middleville, MI. Book at escape.baserves.com (select Chief Noonday). Phone: 616-644-9459, Email: yankee@baserves.com
 
 Missouri:
-- Meramec State Park — 6,896 acres along the Meramec River. 19 cabins, motel, float trips, Fisher Cave. Sullivan, MO. Book at mostateparks.com/park/meramec-state-park
-- Washington State Park — Ancient petroglyphs (350+ carvings, 1,000+ years old), cabins, 10+ miles of trails along the Big River. De Soto, MO. Book at mostateparks.com/park/washington-state-park
+- Meramec State Park — 6,896 acres along the Meramec River. 19 cabins, motel, float trips, Fisher Cave. Sullivan, MO. BA Services books the cabins and Hickory Ridge Motel through FareHarbor: ${FAREHARBOR.meramecpark.lodging} and river float trips: ${FAREHARBOR.meramecpark.riverFloating} (park site: meramecpark.com)
+- Washington State Park — Ancient petroglyphs (350+ carvings, 1,000+ years old), cabins, 10+ miles of trails along the Big River. De Soto, MO. BA Services books the cabins, float trips and pool admission through FareHarbor: ${FAREHARBOR.washingtonstateparkmo.all} (park site: washingtonstateparkmo.com)
 
 Rhode Island:
 - Burlingame State Park — Rhode Island's largest campground since 1934. 755 campsites, 20 rustic cabins on Watchaug Pond. 3,100+ acres. Charlestown, RI. Book at baserves.com/experiences/burlingame-state-park
@@ -85,8 +86,7 @@ Format the collected info as JSON after [INTAKE_COMPLETE] like this:
 
 IMPORTANT RULES:
 - For booking questions about Long Lake or Chief Noonday, direct to escape.baserves.com or phone 616-644-9459
-- For Meramec and Washington State Park, direct to mostateparks.com
-- For Canal Bridge, direct to canalbridgeme.com
+- For Meramec, Washington State Park and Canal Bridge, give the FareHarbor booking link listed above for that park (BA Services takes those bookings itself on FareHarbor). Never send these guests to mostateparks.com.
 - For all other properties, link to the appropriate baserves.com page
 - Keep answers focused on BA Services. Don't make up information.
 - If asked about pricing, say it varies by season and property, and suggest they check the specific property page or call.`

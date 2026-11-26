@@ -58,7 +58,7 @@ export const SITE = {
 
 /** Services (slug → route /services/{slug}); names/descriptions mirror the service pages. */
 export const SERVICES: { slug: string; name: string; serviceType: string; description: string; image?: string }[] = [
-  { slug: 'campground-park-maintenance', name: 'Campground & Park Maintenance', serviceType: 'Facility Maintenance', description: 'Professional maintenance services ensuring pristine facilities and grounds year-round.', image: '/images/DSC_0001-2048x1365.jpg' },
+  { slug: 'campground-park-maintenance', name: 'Campground & Park Maintenance', serviceType: 'Facility Maintenance', description: 'Professional maintenance services that keep facilities and grounds in top condition.', image: '/images/DSC_0001-2048x1365.jpg' },
   { slug: 'landscaping-and-groundskeeping', name: 'Landscaping & Groundskeeping', serviceType: 'Landscaping & Groundskeeping', description: 'Expert landscaping services maintaining natural beauty and visitor safety.', image: '/images/DSC_0103-2048x1365.jpg' },
   { slug: 'rest-area-cleaning-and-upkeep', name: 'Rest Area Cleaning & Upkeep', serviceType: 'Rest Area Management', description: 'Thorough cleaning and upkeep ensuring visitor comfort and hygiene.' },
   { slug: 'preventive-maintenance-and-repairs', name: 'Preventive Maintenance & Repairs', serviceType: 'Facility Maintenance', description: 'Preventing issues before they impact your visitors.', image: '/images/Burlingame1-2048x1365.jpg' },
