@@ -1,0 +1,30 @@
+# BA Services, Inc.
+> Professional recreation area management company operating campgrounds, national forests, state parks, and DOT rest areas across 7+ states.
+
+## Company Info
+- Name: BA Services, Inc.
+- Phone: (207) 307-7903
+- Email: andrew@baserves.com
+- Website: https://baserves.com
+- Service Area: Alabama, Indiana, Iowa, Maine, Michigan, Missouri, Rhode Island, Utah, and West Virginia.
+
+## Key Pages
+- Home: https://baserves.com
+- About: https://baserves.com/about
+- Services: https://baserves.com/services
+- Experiences: https://baserves.com/experiences
+- Careers: https://baserves.com/careers
+- Contact: https://baserves.com/contact
+- Rewards: https://baserves.com/rewards
+
+## Featured Recreation Areas
+- Hoosier National Forest: https://baserves.com/hoosier-national-forest
+- Tipsaw Lake Recreation Area: https://baserves.com/tipsaw-lake-recreation-area
+- Hardin Ridge Recreation Area: https://baserves.com/hardin-ridge-recreation-area
+- Indian-Celina Lakes Recreation Area: https://baserves.com/indian-celina-lakes-recreation-area
+- Yankee Springs Recreation Area: https://baserves.com/yankee-springs-recreation-area
+- Monongahela National Forest: https://baserves.com/monongahela-national-forest
+- Washington State Park: https://baserves.com/washington-state-park
+- Long Lake Outdoor Center: https://baserves.com/long-lake-outdoor-center
+- Chief Noonday Outdoor Center: https://baserves.com/chief-noonday-outdoor-center
+- Bankhead National Forest: https://baserves.com/bankhead-national-forest
