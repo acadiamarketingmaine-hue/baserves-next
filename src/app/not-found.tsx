@@ -4,7 +4,6 @@ import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'Page Not Found | BA Services',
-  robots: { index: false, follow: true },
 }
 
 const destinations = [

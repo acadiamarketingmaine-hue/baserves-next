@@ -1,9 +1,14 @@
+import type { Metadata } from 'next'
 import HomeClient from '@/components/HomeClient'
 import { PageSchema } from '@/components/SchemaMarkup'
 import { videoObject } from '@/lib/schema'
 import { utcDateKey } from '@/lib/featured-rotation'
 
-// Metadata (title/description/canonical/OG) is inherited from app/layout.tsx.
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/',
+  },
+}
 
 // This page is statically generated (no dynamic APIs used), so without a
 // revalidate window the HTML — including the Featured Destinations order —

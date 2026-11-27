@@ -12,20 +12,6 @@ export const metadata: Metadata = {
   description: 'BA Services, Inc. manages campgrounds, national forests, state parks, and DOT rest areas across 7 states. Professional recreation management in AL, IN, ME, MI, MO, RI, WV, IA & UT.',
   keywords: 'recreation area management, campground management, DOT rest areas, national forest campgrounds, state park management, outdoor recreation, BA Services, camping, hiking',
   metadataBase: new URL('https://baserves.com'),
-  alternates: {
-    canonical: '/',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
   openGraph: {
     title: 'BA Services | Recreation Area Management & DOT Rest Areas',
     description: 'Professional campground, national forest, state park, and DOT rest area management across 7 states. Well-maintained facilities and exceptional visitor experiences.',
