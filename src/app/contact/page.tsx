@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+import Image from 'next/image'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ContactForm from '@/components/ContactForm'
@@ -29,19 +30,24 @@ export default function ContactPage() {
 
       <LakesideShell>
         <section className="relative pt-32 pb-16 bg-lake-spruce overflow-hidden">
-          {/* CSS background keeps the lakeside wash without a priority fill Image as LCP */}
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-20"
-            style={{ backgroundImage: "url('/images/long-lake/weddings/lake-dock-wide.jpg')" }}
-            aria-hidden="true"
-          />
+          <div className="absolute inset-0">
+            <Image
+              src="/images/long-lake/weddings/lake-dock-wide.jpg"
+              alt=""
+              fill
+              sizes="100vw"
+              priority
+              fetchPriority="high"
+              className="object-cover opacity-20"
+            />
+          </div>
           <div className={`relative z-10 ${frame}`}>
             <div className="max-w-3xl">
               <span className="badge bg-white/10 text-white mb-4">Get in Touch</span>
               <h1 className="font-lake-serif headline-xl text-white mb-6">
                 Contact <span className="text-green-400">Us</span>
               </h1>
-              <div className="mb-6">
+              <div className="mb-6 min-h-[44px]">
                 <ListenButton variant="light" />
               </div>
               <p className="text-xl text-white/90 leading-relaxed">
