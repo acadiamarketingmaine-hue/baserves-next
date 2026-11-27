@@ -76,7 +76,7 @@ export default function ContactPage() {
               <div className="rounded-md border border-lake-line bg-white p-6">
                 <h3 className="font-lake-serif text-[18px] text-lake-ink">Phone</h3>
                 <p className="text-lake-mute mt-1 text-sm">
-                  <a href="tel:+12073077903" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">+1 207 307-7903</a>
+                  <a href="tel:+12073077903" className="inline-flex items-center min-h-[44px] text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">+1 207 307-7903</a>
                 </p>
               </div>
               <div className="rounded-md border border-lake-line bg-white p-6">
