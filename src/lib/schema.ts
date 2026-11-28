@@ -109,7 +109,7 @@ export const stateNodes = () => SITE.states.map(([n, a]) => state(n, a));
 /** The one business node. No rating: the site prints no review score. */
 export function business(): Node {
   return {
-    '@type': 'HomeAndConstructionBusiness',
+    '@type': ['Organization', 'LocalBusiness'],
     '@id': ID.business,
     name: SITE.name,
     legalName: SITE.legalName,
