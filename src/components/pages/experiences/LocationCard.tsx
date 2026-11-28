@@ -31,7 +31,7 @@ export default function LocationCard({ photo, title, meta, body, exploreHref, bo
         href={exploreHref}
         className="lk-zoom relative block aspect-[3/2] overflow-hidden rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
       >
-        <Image src={photo.src} alt={photo.alt} fill sizes={sizes} className="object-cover" />
+        <Image src={photo.src} alt={photo.alt} fill loading="eager" sizes={sizes} className="object-cover" />
       </Link>
       {meta && <p className={`${eyebrowClass} mt-6 text-lake-moss`}>{meta}</p>}
       <h3 className={`${h3} ${meta ? 'mt-2' : 'mt-5'} text-lake-ink`}>

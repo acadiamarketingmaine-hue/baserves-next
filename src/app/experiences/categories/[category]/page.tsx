@@ -33,9 +33,9 @@ const categoryData: Record<string, any> = {
       { name: 'Burlingame State Park', location: 'Charlestown, RI', duration: 'Nightly', price: '755 sites + 20 cabins', image: '/images/Burlingame2-1536x1152.jpg', href: '/experiences/burlingame-state-park' },
       { name: 'Canal Bridge Campground', location: 'Fryeburg, ME', duration: 'Nightly', price: '36 sites + 5 tent', image: '/images/canal-bridge/beach-1.jpg', href: '/experiences/canal-bridge' },
       { name: 'Meramec State Park', location: 'Sullivan, MO', duration: 'Nightly', price: '19 cabins + motel', image: '/images/meramec-state-park/cabin-2.jpg', href: '/experiences/meramec-state-park' },
-      { name: 'Washington State Park', location: 'De Soto, MO', duration: 'Nightly', price: 'Cabins + campsites', image: '/images/washington-thunderbird-lodge.png', href: '/washington-state-park' },
+      { name: 'Washington State Park', location: 'De Soto, MO', duration: 'Nightly', price: 'Cabins + campsites', image: '/images/washington-state-park/cabin-11-exterior.png', href: '/washington-state-park' },
       { name: 'Tipsaw Lake Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '49 sites — 3 loops', image: '/images/tipsaw-lake/beach-swimming.jpg', href: '/tipsaw-lake-recreation-area' },
-      { name: 'Hardin Ridge Recreation Area', location: 'Monroe County, IN', duration: 'Nightly', price: '195 sites', image: '/images/hardin-ridge/beach.jpg', href: '/hardin-ridge-recreation-area' },
+      { name: 'Hardin Ridge Recreation Area', location: 'Monroe County, IN', duration: 'Nightly', price: '195 sites', image: '/images/hardin-ridge/overlook.jpg', href: '/hardin-ridge-recreation-area' },
       { name: 'Indian-Celina Lakes Recreation Area', location: 'Perry County, IN', duration: 'Nightly', price: '59 sites', image: '/images/indian-celina/lake-view.jpg', href: '/indian-celina-lakes-recreation-area' },
       { name: 'Yankee Springs Recreation Area', location: 'Barry County, MI', duration: 'Nightly', price: '200+ sites', image: '/images/yankee-springs/hill-cabins.jpg', href: '/yankee-springs-recreation-area' },
       { name: 'Long Lake Outdoor Center', location: 'Middleville, MI', duration: 'Nightly / Weekly', price: '16 cabins + lodge', image: '/images/long-lake/fall-aerial.jpg', href: '/long-lake-outdoor-center' },
@@ -55,7 +55,7 @@ const categoryData: Record<string, any> = {
       { name: 'Hardin Ridge Trails', location: 'Monroe County, IN', duration: '12+ miles', price: 'Free', image: '/images/hardin-ridge/overlook.jpg', href: '/hardin-ridge-recreation-area' },
       { name: 'Indian-Celina Two Lakes Loop', location: 'Perry County, IN', duration: 'Trail loops', price: 'Free', image: '/images/indian-celina/trail-sign.jpg', href: '/indian-celina-lakes-recreation-area' },
       { name: 'Meramec State Park Trails', location: 'Sullivan, MO', duration: '16 miles', price: 'Free', image: '/images/meramec-entrance-sign.jpg', href: '/experiences/meramec-state-park' },
-      { name: 'Washington State Park Trails', location: 'De Soto, MO', duration: '10+ miles', price: 'Free', image: '/images/washington-thunderbird-lodge.png', href: '/washington-state-park' },
+      { name: 'Washington State Park Trails', location: 'De Soto, MO', duration: '10+ miles', price: 'Free', image: '/images/washington-state-park/cabin-11-exterior.png', href: '/washington-state-park' },
       { name: 'Tipsaw Lake Trails', location: 'Perry County, IN', duration: '8+ miles', price: 'Free', image: '/images/tipsaw-lake/amphitheater.jpg', href: '/tipsaw-lake-recreation-area' },
       { name: 'Raven Interpretive Trail', location: 'Clear Creek, Bankhead NF, AL', duration: '2.5 miles', price: 'Free', image: '/images/DSC_0103-2048x1365.jpg', href: '/experiences/clear-creek-recreation-area' },
       { name: 'Burlingame State Park Trails', location: 'Charlestown, RI', duration: 'Multiple trails', price: 'Free', image: '/images/burlingame-entrance-sign.jpg', href: '/experiences/burlingame-state-park' },
@@ -182,7 +182,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                   body={`${category.detailLabel}: ${exp.duration} · ${category.priceLabel}: ${exp.price}`}
                   exploreHref={exp.href}
                   book={exp.book}
-                  sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 520px, (min-width: 768px) 60vw, 120vw"
                 />
               ))}
             </ul>

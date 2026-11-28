@@ -30,7 +30,7 @@ export default function Hero({ photo, eyebrow, title, subline, booking, listen =
       className="relative isolate flex h-[720px] items-end overflow-hidden bg-lake-spruce md:h-[880px]"
     >
       <div data-lk-hero-img="" className="absolute inset-0 -z-10">
-        <Image src={photo.src} alt={photo.alt} fill priority sizes="100vw" className="object-cover" />
+        <Image src={photo.src} alt={photo.alt} fill priority sizes="130vw" className="object-cover" />
       </div>
       {/* Shade: dark at the bottom where the words sit, light at the top. */}
       <div

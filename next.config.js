@@ -22,6 +22,8 @@ const nextConfig = {
   deploymentId: process.env.NEXT_DEPLOYMENT_ID || 'dev',
   images: {
     // Pictures are served and resized by Cloudflare Images; see cloudflare-image-loader.js.
+    // Source photos are at most 2048px wide; never advertise a candidate larger than that.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     loader: 'custom',
     loaderFile: './cloudflare-image-loader.js',
     remotePatterns: [

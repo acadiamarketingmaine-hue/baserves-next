@@ -218,7 +218,7 @@ export default async function ExperiencesPage() {
                   body={loc.description}
                   exploreHref={loc.href}
                   book={loc.book}
-                  sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 520px, (min-width: 768px) 60vw, 120vw"
                 />
               ))}
             </ul>
