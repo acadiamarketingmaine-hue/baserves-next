@@ -30,7 +30,7 @@ export default function ClosingCta({ photo, heading, text, primary, phone, secon
         <div className="absolute inset-0 -z-10 hidden overflow-hidden md:block">
           {/* Spare photo above and below for the scrubbed parallax. */}
           <div data-parallax="" className="absolute inset-x-0 -bottom-[8%] -top-[8%]">
-            <Image src={photo.src} alt={photo.alt} fill sizes="100vw" className="object-cover" />
+            <Image src={photo.src} alt={photo.alt} fill loading="eager" sizes="130vw" className="object-cover" />
           </div>
           <div aria-hidden="true" className="absolute inset-0 bg-black/45" />
         </div>
