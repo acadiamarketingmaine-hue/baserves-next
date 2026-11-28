@@ -76,7 +76,7 @@ export default function SocialFeedSection({ posts }: { posts: SocialFeedPost[] }
                   alt={post.accountName}
                   width={post.width}
                   height={post.height}
-                  loading="lazy"
+                  loading="eager"
                   className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
                 />
                 <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 text-lake-ink text-xs font-semibold shadow-sm">

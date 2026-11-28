@@ -1623,10 +1623,11 @@ export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeCl
       <section data-lk-closing="" className="relative py-32 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/long-lake/fall-foliage.jpg"
+            src="/images/long-lake/fall-aerial.jpg"
             alt="Adventure awaits"
             fill
             sizes="100vw"
+            loading="eager"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />
