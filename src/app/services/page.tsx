@@ -4,6 +4,7 @@ import Footer from '@/components/Footer'
 import ServiceAccordion from '@/components/ServiceAccordion'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { faq } from '@/lib/schema'
 import { ListenButton } from '@/components/reader'
 import {
   LakesideShell,
@@ -91,9 +92,35 @@ const operatingSteps = [
   },
 ]
 
+const rfpFaqs = [
+  {
+    question: 'What types of public contracts does BA Services manage?',
+    answer: 'BA Services operates U.S. Forest Service recreation concessions, state park campgrounds, and state DOT interstate rest area contracts across the United States, including statewide networks for Utah DOT and corridor contracts for Iowa DOT.',
+  },
+  {
+    question: 'How does BA Services mobilize for a new federal or state facility contract?',
+    answer: 'Before opening day, our operations team completes a full site assessment of utilities, bathhouses, grounds, and seasonal traffic patterns, then stages equipment and onboards local on-site managers and field technicians.',
+  },
+  {
+    question: 'Does BA Services provide continuous staffing and compliance reporting?',
+    answer: 'Yes. We provide uniformed on-site attendants, maintenance technicians, and regional area managers backed by daily inspection logs, safety documentation, and structured agency compliance reports.',
+  },
+  {
+    question: 'Can BA Services manage both multi-site regional portfolios and individual parks?',
+    answer: 'Yes. Our operating model scales from single national forest campgrounds and state parks to 28-site statewide DOT rest area networks.',
+  },
+  {
+    question: 'How can an agency request a capability statement or RFP response?',
+    answer: 'Agency contracting officers and park partners can submit a partnership inquiry online at /contact?topic=partnership or call our operations team directly at +1 207 307-7903.',
+  },
+]
+
+const PAGE_DESCRIPTION =
+  'Campground maintenance, landscaping, rest area cleaning, and preventive repairs for federal forests, state parks, and DOT facilities nationwide.'
+
 export const metadata = {
   title: { absolute: 'Recreation Facility Management Services' },
-  description: 'Campground maintenance, landscaping, rest area cleaning, and preventive repairs. BA Services manages federal, state, and DOT recreation facilities across America.',
+  description: PAGE_DESCRIPTION,
   alternates: {
     canonical: '/services',
   },
@@ -108,9 +135,10 @@ export default function ServicesPage() {
         url="/services"
         name="Recreation Facility Management Services"
         crumbName="Services"
-        description="Campground maintenance, landscaping, rest area cleaning, and preventive repairs. BA Services manages federal, state, and DOT recreation facilities across America."
+        description={PAGE_DESCRIPTION}
         type="CollectionPage"
         image="/images/Burlingame2-1536x1152.jpg"
+        nodes={[faq('/services', rfpFaqs)]}
       />
 
       <LakesideShell>
@@ -134,7 +162,7 @@ export default function ServicesPage() {
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link href="/contact?topic=partnership" className={pillLight}>
-                  Partnership Inquiries
+                  Request Proposal / RFP
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -231,6 +259,36 @@ export default function ServicesPage() {
                     </Link>
                   </div>
                 </SplitFeature>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Band 4b: Government & Agency Procurement FAQ */}
+        <section className={`py-16 md:py-24 ${bandTint}`}>
+          <div className={frame}>
+            <div className="max-w-3xl mb-12">
+              <Eyebrow label="Agency Procurement & RFP FAQ" rule className="mb-4" />
+              <h2 className={`${h2Class} text-lake-ink mb-4`}>
+                Common Questions from Public Agencies &amp; Contracting Officers
+              </h2>
+              <p className="text-lg text-lake-mute leading-relaxed">
+                Straight answers on how BA Services mobilizes, staffs, and reports across federal, state, and DOT facility contracts.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              {rfpFaqs.map((item) => (
+                <div
+                  key={item.question}
+                  className="bg-white border border-lake-line rounded-md p-6 md:p-8"
+                >
+                  <h3 className="font-lake-serif text-xl text-lake-ink mb-3">
+                    {item.question}
+                  </h3>
+                  <p className="text-lake-mute leading-relaxed text-[15px]">
+                    {item.answer}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
