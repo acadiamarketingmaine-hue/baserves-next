@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import { getPropertyContent, getSiteSettings } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -71,6 +72,21 @@ export default async function YankeeSpringsPage() {
         crumbName={content.name}
         description={content.seo.description}
         image={content.hero.src}
+        mainEntity={`${ORIGIN}/yankee-springs-recreation-area#place`}
+        spatialCoverage={`${ORIGIN}/yankee-springs-recreation-area#place`}
+        nodes={[
+          recreationArea({
+            url: '/yankee-springs-recreation-area',
+            name: content.name,
+            description: content.seo.description,
+            image: content.hero.src,
+            telephone: phone,
+            geo: COORDS,
+            stateAbbr: 'MI',
+            campground: true,
+            amenities: content.features,
+          }),
+        ]}
       />
       <NoticeBanner notices={content.notices} />
 

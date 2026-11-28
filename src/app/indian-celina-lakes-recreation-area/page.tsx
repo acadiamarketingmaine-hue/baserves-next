@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import { getPropertyContent, getSiteSettings } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -66,6 +67,21 @@ export default async function IndianCelinaLakesPage() {
         crumbName={content.name}
         description={content.seo.description}
         image={content.hero.src}
+        mainEntity={`${ORIGIN}/indian-celina-lakes-recreation-area#place`}
+        spatialCoverage={`${ORIGIN}/indian-celina-lakes-recreation-area#place`}
+        nodes={[
+          recreationArea({
+            url: '/indian-celina-lakes-recreation-area',
+            name: content.name,
+            description: content.seo.description,
+            image: content.hero.src,
+            telephone: phone,
+            geo: COORDS,
+            stateAbbr: 'IN',
+            campground: true,
+            amenities: content.features,
+          }),
+        ]}
       />
       <NoticeBanner notices={content.notices} />
 

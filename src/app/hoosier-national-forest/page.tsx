@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import { getPropertyContent, getSiteSettings } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -74,6 +75,19 @@ export default async function HoosierNationalForestPage() {
         crumbName={content.name}
         description={content.seo.description}
         image={content.hero.src}
+        mainEntity={`${ORIGIN}/hoosier-national-forest#place`}
+        spatialCoverage={`${ORIGIN}/hoosier-national-forest#place`}
+        nodes={[
+          recreationArea({
+            url: '/hoosier-national-forest',
+            name: content.name,
+            description: content.seo.description,
+            image: content.hero.src,
+            telephone: phone,
+            stateAbbr: 'IN',
+            amenities: content.features,
+          }),
+        ]}
       />
       <NoticeBanner notices={content.notices} />
 

@@ -73,8 +73,8 @@ const services = [
 ]
 
 export const metadata = {
-  title: { absolute: 'Recreation Facility Management Services' },
-  description: 'Campground maintenance, landscaping, rest area cleaning, and preventive repairs. BA Services manages federal, state, and DOT recreation facilities across America.',
+  title: { absolute: 'Recreation Facility Management Services | BA Services' },
+  description: 'Campground maintenance, landscaping, rest area cleaning, and preventive repairs for federal, state, and DOT recreation facilities across 9 states.',
   alternates: {
     canonical: '/services',
   },
@@ -87,7 +87,7 @@ export default function ServicesPage() {
       <Navigation />
       <PageSchema
         url="/services"
-        name="Recreation Facility Management Services"
+        name="Services | BA Services"
         crumbName="Services"
         description="Campground maintenance, landscaping, rest area cleaning, and preventive repairs. BA Services manages federal, state, and DOT recreation facilities across America."
         type="CollectionPage"
@@ -176,11 +176,11 @@ export default function ServicesPage() {
             <Image src="/images/bankhead-bicycle-trail.jpg" alt="Paved recreation trail beside a lake in Bankhead National Forest" fill sizes="100vw" className="object-cover" />
             <div aria-hidden="true" className="absolute inset-0 bg-black/55" />
           </div>
-          <div className={`${frame} text-center md:text-white`}>
-            <h2 className="font-lake-serif text-[36px] leading-[1.08] tracking-[-0.01em] md:text-[52px] lg:text-[60px]">
+          <div className={`${frame} text-center text-white`}>
+            <h2 className="font-lake-serif text-[36px] leading-[1.08] tracking-[-0.01em] text-white md:text-[52px] lg:text-[60px]">
               Need Professional Management Services?
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-[1.6] text-lake-mute md:mt-6 md:text-[18px] md:text-white/95">
+            <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-[1.6] text-white/95 md:mt-6 md:text-[18px]">
               <Link href="/contact" className="underline decoration-1 underline-offset-[6px] hover:decoration-white">Contact us</Link> to discuss how we can help maintain and improve your recreation area. We&apos;re always looking for talented people to <Link href="/careers" className="underline decoration-1 underline-offset-[6px] hover:decoration-white">join our team</Link>. Visit our <Link href="/" className="underline decoration-1 underline-offset-[6px] hover:decoration-white">homepage</Link> to discover all our offerings, or <Link href="/leave-a-review" className="underline decoration-1 underline-offset-[6px] hover:decoration-white">leave a review</Link> of our work.
             </p>
             <div className="mt-8 flex flex-col items-stretch gap-3 md:flex-row md:items-center md:justify-center md:gap-4">

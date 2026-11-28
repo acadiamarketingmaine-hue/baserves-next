@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import { getPropertyContent, getSiteSettings } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -67,6 +68,21 @@ export default async function TipsawLakePage() {
         crumbName={content.name}
         description={content.seo.description}
         image={content.hero.src}
+        mainEntity={`${ORIGIN}/tipsaw-lake-recreation-area#place`}
+        spatialCoverage={`${ORIGIN}/tipsaw-lake-recreation-area#place`}
+        nodes={[
+          recreationArea({
+            url: '/tipsaw-lake-recreation-area',
+            name: content.name,
+            description: content.seo.description,
+            image: content.hero.src,
+            telephone: phone,
+            geo: COORDS,
+            stateAbbr: 'IN',
+            campground: true,
+            amenities: content.features,
+          }),
+        ]}
       />
       <NoticeBanner notices={content.notices} />
 

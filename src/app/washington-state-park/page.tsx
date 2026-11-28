@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import { getPropertyContent } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -81,6 +82,20 @@ export default async function WashingtonStateParkPage() {
         crumbName={content.name}
         description={content.seo.description}
         image={content.hero.src}
+        mainEntity={`${ORIGIN}/washington-state-park#place`}
+        spatialCoverage={`${ORIGIN}/washington-state-park#place`}
+        nodes={[
+          recreationArea({
+            url: '/washington-state-park',
+            name: content.name,
+            description: content.seo.description,
+            image: content.hero.src,
+            geo: COORDS,
+            stateAbbr: 'MO',
+            campground: true,
+            amenities: content.features,
+          }),
+        ]}
       />
       <NoticeBanner notices={content.notices} />
 

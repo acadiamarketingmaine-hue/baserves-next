@@ -293,6 +293,42 @@ export function offer(o: { name: string; price: string | number; currency?: stri
   };
 }
 
+export function recreationArea(r: {
+  url: string;
+  name: string;
+  description?: string;
+  image?: string;
+  telephone?: string;
+  geo?: { lat: number; lng: number };
+  stateAbbr?: string;
+  campground?: boolean;
+  amenities?: string[];
+  containedInName?: string;
+}): Node {
+  const url = abs(r.url);
+  return {
+    '@type': r.campground ? ['TouristAttraction', 'Campground'] : 'TouristAttraction',
+    '@id': `${url}#place`,
+    name: r.name,
+    url,
+    ...(r.description ? { description: r.description } : {}),
+    ...(r.image ? { image: imageObject(r.image) } : {}),
+    ...(r.telephone ? { telephone: r.telephone } : {}),
+    ...(r.geo ? { geo: { '@type': 'GeoCoordinates', latitude: r.geo.lat, longitude: r.geo.lng } } : {}),
+    ...(r.stateAbbr ? { containedInPlace: ref(stateId(r.stateAbbr)) } : r.containedInName ? { containedInPlace: { '@type': 'Place', name: r.containedInName } } : {}),
+    publicAccess: true,
+    ...(r.amenities?.length
+      ? {
+          amenityFeature: r.amenities.map((name) => ({
+            '@type': 'LocationFeatureSpecification',
+            name,
+            value: true,
+          })),
+        }
+      : {}),
+  };
+}
+
 // ───────────────────────────── graph() ────────────────────────────────────
 const TYPES = new Set<string>(SCHEMA_TYPES as string[]);
 
