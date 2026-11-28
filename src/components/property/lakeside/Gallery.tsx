@@ -50,7 +50,7 @@ export default function Gallery({ photos }: { photos: Photo[] }) {
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                sizes="(min-width: 1440px) 294px, (min-width: 1024px) 22vw, (min-width: 768px) 30vw, 50vw"
+                sizes="(min-width: 1024px) 480px, (min-width: 768px) 45vw, 60vw"
                 className="object-cover"
               />
             </a>

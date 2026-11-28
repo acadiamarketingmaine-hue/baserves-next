@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import {
   CardRow,
   ClosingCta,
@@ -109,6 +110,19 @@ export default function CorinthPage() {
         description="Discover Corinth Recreation Area on Lewis Smith Lake in Bankhead National Forest. 52 full-hookup campsites, 10 tent sites, swimming beach, pavilion, and Bobwhite Trail."
         image="/images/corinth-boat-ramp.jpg"
         crumbs={[{ name: 'Experiences', url: '/experiences' }]}
+        mainEntity={`${ORIGIN}/experiences/corinth-recreation-area#place`}
+        spatialCoverage={`${ORIGIN}/experiences/corinth-recreation-area#place`}
+        nodes={[
+          recreationArea({
+            url: '/experiences/corinth-recreation-area',
+            name: 'Corinth Recreation Area',
+            description: 'Discover Corinth Recreation Area on Lewis Smith Lake in Bankhead National Forest. 52 full-hookup campsites, 10 tent sites, swimming beach, pavilion, and Bobwhite Trail.',
+            image: '/images/corinth-boat-ramp.jpg',
+            geo: COORDS,
+            stateAbbr: 'AL',
+            campground: true,
+          }),
+        ]}
       />
 
       <LakesideShell>

@@ -190,7 +190,11 @@ export default async function CategoryPage({ params }: { params: { category: str
           subline={category.description}
           booking={{
             title: `Reserve ${category.name}`,
-            cta: { label: 'Explore & Reserve', url: '#available-experiences', kind: 'internal' },
+            cta: {
+              label: params.category === 'campground-rentals' ? 'Reserve / Check Availability' : 'Explore & Reserve',
+              url: '#available-experiences',
+              kind: 'internal',
+            },
           }}
         />
 
@@ -235,7 +239,14 @@ export default async function CategoryPage({ params }: { params: { category: str
           primary={{ label: 'Choose a Location', url: '#available-experiences', kind: 'internal' }}
           secondary={{ label: 'Contact Our Team', url: '/contact', kind: 'internal' }}
         />
-        <StickyBooking name={category.name} cta={{ label: 'Explore & Reserve', url: '#available-experiences', kind: 'internal' }} />
+        <StickyBooking
+          name={category.name}
+          cta={{
+            label: params.category === 'campground-rentals' ? 'Reserve / Check Availability' : 'Explore & Reserve',
+            url: '#available-experiences',
+            kind: 'internal',
+          }}
+        />
       </LakesideShell>
 
       <Footer />

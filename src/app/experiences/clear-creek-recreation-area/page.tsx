@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import {
   CardRow,
   ClosingCta,
@@ -123,6 +124,20 @@ export default function ClearCreekPage() {
         description="Explore Clear Creek Recreation Area on Lewis Smith Lake in Bankhead National Forest. 102 campsites across 4 loops, swimming beach, boat ramps, hiking trails, and group camping."
         image="/images/clear-creek-swimming.jpg"
         crumbs={[{ name: 'Experiences', url: '/experiences' }]}
+        mainEntity={`${ORIGIN}/experiences/clear-creek-recreation-area#place`}
+        spatialCoverage={`${ORIGIN}/experiences/clear-creek-recreation-area#place`}
+        nodes={[
+          recreationArea({
+            url: '/experiences/clear-creek-recreation-area',
+            name: 'Clear Creek Recreation Area',
+            description: 'Explore Clear Creek Recreation Area on Lewis Smith Lake in Bankhead National Forest. 102 campsites across 4 loops, swimming beach, boat ramps, hiking trails, and group camping.',
+            image: '/images/clear-creek-swimming.jpg',
+            geo: COORDS,
+            stateAbbr: 'AL',
+            campground: true,
+            amenities: siteAmenities,
+          }),
+        ]}
       />
 
       <LakesideShell>

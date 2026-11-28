@@ -27,7 +27,7 @@ export default function Hero({ photo, eyebrow, title, subline, booking, listen =
   return (
     <section
       data-lk-hero-section=""
-      className="relative isolate flex h-[720px] items-end overflow-hidden bg-lake-spruce md:h-[880px]"
+      className="relative isolate flex h-[640px] items-end overflow-hidden bg-lake-spruce md:h-[880px]"
     >
       <div data-lk-hero-img="" className="absolute inset-0 -z-10">
         <Image src={photo.src} alt={photo.alt} fill priority sizes="130vw" className="object-cover" />
@@ -58,15 +58,11 @@ export default function Hero({ photo, eyebrow, title, subline, booking, listen =
               {subline}
             </p>
           )}
-          {listen && (
-            <div data-lk-hero="" className="mt-6">
-              <ListenButton variant="light" />
-            </div>
-          )}
-          <div data-lk-hero="" className="mt-6 lg:hidden">
-            <a href={booking.cta.url} {...externalProps(booking.cta.url)} className={`${pillLight} w-full`}>
+          <div data-lk-hero="" className="mt-6 flex flex-wrap items-center gap-3">
+            <a href={booking.cta.url} {...externalProps(booking.cta.url)} className={`${pillLight} w-full sm:w-auto`}>
               {booking.cta.label}
             </a>
+            {listen && <ListenButton variant="light" />}
           </div>
         </div>
         <div data-lk-hero="" className="hidden shrink-0 lg:block">

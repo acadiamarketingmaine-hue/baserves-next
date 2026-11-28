@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import {
   CardRow,
   ClosingCta,
@@ -133,6 +134,21 @@ export default function CanalBridgePage() {
         description="Discover Canal Bridge Campground on the Saco River in Fryeburg, Maine. 36 numbered campsites, river frontage for kayaking, canoeing, and fishing with stunning White Mountain views."
         image="/images/canal-bridge/beach-1.jpg"
         crumbs={[{ name: 'Experiences', url: '/experiences' }]}
+        mainEntity={`${ORIGIN}/experiences/canal-bridge#place`}
+        spatialCoverage={`${ORIGIN}/experiences/canal-bridge#place`}
+        nodes={[
+          recreationArea({
+            url: '/experiences/canal-bridge',
+            name: 'Canal Bridge Campground',
+            description: 'Discover Canal Bridge Campground on the Saco River in Fryeburg, Maine. 36 numbered campsites, river frontage for kayaking, canoeing, and fishing with stunning White Mountain views.',
+            image: '/images/canal-bridge/beach-1.jpg',
+            telephone: PHONE,
+            geo: COORDS,
+            stateAbbr: 'ME',
+            campground: true,
+            amenities,
+          }),
+        ]}
       />
 
       <LakesideShell>

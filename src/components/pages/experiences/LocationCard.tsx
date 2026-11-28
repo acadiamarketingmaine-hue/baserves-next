@@ -40,15 +40,19 @@ export default function LocationCard({ photo, title, meta, body, exploreHref, bo
         </Link>
       </h3>
       {body && <p className="mt-3 text-[15px] leading-[1.6] text-lake-mute md:text-base">{body}</p>}
-      <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        <a
+          href={book.url}
+          {...externalProps(book.url)}
+          className="inline-flex min-h-[40px] items-center gap-1.5 rounded-full bg-lake-spruce px-4 text-[14px] font-medium text-lake-paper transition-colors hover:bg-lake-spruce-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
+        >
+          Reserve
+          <Arrow className="h-3.5 w-3.5" />
+        </a>
         <Link href={exploreHref} className={textLink}>
           Explore
           <Arrow className="h-4 w-4" />
         </Link>
-        <a href={book.url} {...externalProps(book.url)} className={textLink}>
-          Book
-          <Arrow className="h-4 w-4" />
-        </a>
       </div>
     </li>
   )

@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import {
   CardRow,
   ClosingCta,
@@ -200,6 +201,20 @@ export default function BurlingamePage() {
         description="Explore Burlingame State Park in Charlestown, RI. 755 campsites, 20 rustic cabins, Watchaug Pond swimming, hiking trails, and a rich history dating back to 1702."
         image="/images/Burlingame1-2048x1365.jpg"
         crumbs={[{ name: 'Experiences', url: '/experiences' }]}
+        mainEntity={`${ORIGIN}/experiences/burlingame-state-park#place`}
+        spatialCoverage={`${ORIGIN}/experiences/burlingame-state-park#place`}
+        nodes={[
+          recreationArea({
+            url: '/experiences/burlingame-state-park',
+            name: 'Burlingame State Park & Campground',
+            description: 'Explore Burlingame State Park in Charlestown, RI. 755 campsites, 20 rustic cabins, Watchaug Pond swimming, hiking trails, and a rich history dating back to 1702.',
+            image: '/images/Burlingame1-2048x1365.jpg',
+            telephone: PHONE,
+            geo: COORDS,
+            stateAbbr: 'RI',
+            campground: true,
+          }),
+        ]}
       />
 
       <LakesideShell>

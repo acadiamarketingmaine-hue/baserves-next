@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import {
   ClosingCta,
   Gallery,
@@ -211,6 +212,19 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
         description={experience.longDescription?.split('\n\n')[0] || experience.description}
         image={experience.image}
         crumbs={[{ name: 'Experiences', url: '/experiences' }]}
+        mainEntity={`${ORIGIN}/experiences/${params.slug}#place`}
+        spatialCoverage={`${ORIGIN}/experiences/${params.slug}#place`}
+        nodes={[
+          recreationArea({
+            url: `/experiences/${params.slug}`,
+            name: experience.name,
+            description: experience.longDescription?.split('\n\n')[0] || experience.description,
+            image: experience.image,
+            telephone: COMPANY_PHONE,
+            campground: true,
+            amenities: experience.features as string[],
+          }),
+        ]}
       />
 
       <LakesideShell>

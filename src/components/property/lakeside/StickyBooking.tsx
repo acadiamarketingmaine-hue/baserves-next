@@ -94,17 +94,30 @@ export default function StickyBooking({ name, cta, phone }: StickyBookingProps) 
         </a>
       </div>
 
-      {/* Phone: one compact pill, bottom-left (John: no full-width phone bottom bar). Chat assistant keeps bottom-right. */}
-      <a
+      {/* Phone: compact pill group, bottom-left, clearing ProSiteWidgets (mobileBottomOffset=76) and chat assistant bottom-right. */}
+      <div
         data-shown={shown}
         {...hiddenProps}
-        href={cta.url}
-        {...externalProps(cta.url)}
-        className="lk-sticky lk-sticky--bottom fixed bottom-[calc(12px+env(safe-area-inset-bottom,0px))] left-4 z-40 inline-flex min-h-[48px] items-center gap-2 rounded-full bg-lake-spruce px-5 text-[15px] font-medium text-lake-paper shadow-[0_12px_28px_-10px_rgba(20,30,24,0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce md:hidden"
+        className="lk-sticky lk-sticky--bottom fixed bottom-[calc(14px+env(safe-area-inset-bottom,0px))] left-4 z-40 inline-flex items-center gap-2 md:hidden"
       >
-        {cta.label}
-        <Arrow className="h-4 w-4" />
-      </a>
+        <a
+          href={cta.url}
+          {...externalProps(cta.url)}
+          className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-lake-spruce px-5 text-[15px] font-medium text-lake-paper shadow-[0_12px_28px_-10px_rgba(20,30,24,0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
+        >
+          {cta.label}
+          <Arrow className="h-4 w-4" />
+        </a>
+        {phone && (
+          <a
+            href={telHref(phone)}
+            aria-label={`Call ${phone}`}
+            className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-lake-paper/[0.97] text-lake-ink shadow-[0_12px_28px_-10px_rgba(20,30,24,0.45)] ring-1 ring-lake-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
+          >
+            {phoneIcon}
+          </a>
+        )}
+      </div>
     </>
   )
 }
