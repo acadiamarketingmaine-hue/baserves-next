@@ -18,6 +18,7 @@ const topNavLinks = [
 
 const secondaryNavLinks = [
   { name: 'Book', href: '/experiences' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'My Reservations', href: 'https://escape.baserves.com/customer/login', external: true },
   { name: 'Campgrounds', href: '/experiences/categories/campground-rentals' },
   { name: 'Watercraft', href: '/experiences/categories/kayak-and-watercraft-rentals' },
@@ -125,6 +126,7 @@ const searchIndex: SearchItem[] = [
   { title: 'Contact', description: 'Get in touch with our team', href: '/contact', category: 'Pages', keywords: ['contact', 'email', 'phone', 'message', 'help', 'support'] },
   { title: 'Careers', description: 'Job openings and employment application', href: '/careers', category: 'Pages', keywords: ['careers', 'jobs', 'hiring', 'employment', 'apply', 'work', 'application'] },
   { title: 'Rewards', description: 'BA Services rewards program — coming soon', href: '/rewards', category: 'Pages', keywords: ['rewards', 'loyalty', 'points', 'perks', 'program'] },
+  { title: 'Pricing & Rates', description: 'Published cabin, motel, watercraft, shelter, range, and wedding rates', href: '/pricing', category: 'Pages', keywords: ['pricing', 'price', 'rates', 'cost', 'how much', 'cabin rates', 'rental rates', 'wedding cost', 'refund'] },
   { title: 'Leave a Review', description: 'Share feedback about your visit', href: '/leave-a-review', category: 'Pages', keywords: ['review', 'feedback', 'rating', 'experience'] },
   { title: 'Privacy Policy', description: 'Our privacy and data practices', href: '/privacy', category: 'Pages', keywords: ['privacy', 'policy', 'data'] },
 

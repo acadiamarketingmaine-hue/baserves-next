@@ -18,6 +18,7 @@ const ROUTES: [string, string, Freq, number][] = [
   ['/contact', '2026-04-15', 'monthly', 0.8],
   ['/careers', '2026-04-15', 'weekly', 0.7],
   ['/services', '2026-09-17', 'monthly', 0.8],
+  ['/pricing', '2026-11-28', 'monthly', 0.7],
   ['/experiences', '2026-04-24', 'weekly', 0.9],
   ['/privacy', '2026-03-21', 'yearly', 0.3],
   ['/refund_returns', '2026-03-21', 'yearly', 0.3],
