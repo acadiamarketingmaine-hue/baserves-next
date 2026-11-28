@@ -7,7 +7,7 @@
  * disagree — Yankee Springs is yankee@baserves.com, not the inferred
  * elle@ address, and Washington State Park's on-site manager is Devyn Harmon.
  *
- * Rest-area clusters are Andrew's UDOT table (Bill / Frank / Chris + Jay).
+ * Rest-area clusters are Andrew's UDOT table (Jim / Frank / Chris + Jay).
  * Iowa rest areas are not in that table, so they reach Andrew until a
  * manager is named.
  */
@@ -115,7 +115,7 @@ const DALLAS: Manager = {
 // --- UDOT rest areas -------------------------------------------------------
 
 export const UDOT_AREA_MANAGERS = {
-  bill: { name: 'Bill Peterson', email: 'Bill@BAServes.com', role: 'Area Manager' },
+  jim: { name: 'Jim Siniscalchi', email: 'Jim@BAServes.com', role: 'Area Manager' },
   frank: { name: 'Frank King', email: 'D.Frank.King.BAS@gmail.com', role: 'Area Manager' },
   chris: { name: 'Chris Harrison', email: 'Chris.Harrison.BAS@gmail.com', role: 'Area Manager' },
 } as const satisfies Record<string, Manager>
@@ -129,14 +129,14 @@ export const UDOT_PROJECT_MANAGER: Manager = JAY
  * Highway letters on Lunt Park match utah-rest-areas.ts (Northbound is I-15 N).
  */
 export const REST_AREAS: { label: string; manager: UdotAreaManagerKey }[] = [
-  { label: 'Bear Lake - SR-30 - Laketown, Utah', manager: 'bill' },
-  { label: 'Bear Lake Overlook - SR-89 - Garden City, Utah', manager: 'bill' },
-  { label: 'Brigham City - I-15 - Brigham City, Utah', manager: 'bill' },
+  { label: 'Bear Lake - SR-30 - Laketown, Utah', manager: 'jim' },
+  { label: 'Bear Lake Overlook - SR-89 - Garden City, Utah', manager: 'jim' },
+  { label: 'Brigham City - I-15 - Brigham City, Utah', manager: 'jim' },
   { label: 'Crescent Junction - I-70 - Crescent Junction, Utah', manager: 'frank' },
-  { label: 'Echo Canyon Eastbound - I-80S - Coalville, Utah', manager: 'bill' },
-  { label: 'Echo Canyon Westbound - I-80N - Echo, Utah', manager: 'bill' },
-  { label: 'Grassy Mountain Eastbound - I-80S - Wendover, Utah', manager: 'bill' },
-  { label: 'Grassy Mountain Westbound - I-80N - Wendover, Utah', manager: 'bill' },
+  { label: 'Echo Canyon Eastbound - I-80S - Coalville, Utah', manager: 'jim' },
+  { label: 'Echo Canyon Westbound - I-80N - Echo, Utah', manager: 'jim' },
+  { label: 'Grassy Mountain Eastbound - I-80S - Wendover, Utah', manager: 'jim' },
+  { label: 'Grassy Mountain Westbound - I-80N - Wendover, Utah', manager: 'jim' },
   { label: "Hoover's - US-89 - Sevier, Utah", manager: 'chris' },
   { label: 'Ivie Creek - I-70 - Salina, Utah', manager: 'frank' },
   { label: 'Jensen Welcome Center - US-40 - Jensen, Utah', manager: 'frank' },
@@ -145,18 +145,18 @@ export const REST_AREAS: { label: string; manager: UdotAreaManagerKey }[] = [
   { label: 'Kane Springs - US-191 - Monticello, Utah', manager: 'frank' },
   { label: 'Lunt Park Northbound - I-15N - Paragonah, Utah', manager: 'chris' },
   { label: 'Lunt Park Southbound - I-15S - Paragonah, Utah', manager: 'chris' },
-  { label: 'Mountain Green - I-84 - Morgan, Utah', manager: 'bill' },
+  { label: 'Mountain Green - I-84 - Morgan, Utah', manager: 'jim' },
   { label: 'Oak Springs - SR-24 - Richfield, Utah', manager: 'chris' },
-  { label: 'Perry - I-15 - Perry, Utah', manager: 'bill' },
+  { label: 'Perry - I-15 - Perry, Utah', manager: 'jim' },
   { label: 'Pinion Ridge - US-40 - Duchesne, Utah', manager: 'frank' },
-  { label: 'Salt Flats Eastbound - I-80N - Wendover, Utah', manager: 'bill' },
-  { label: 'Salt Flats Westbound - I-80S - Wendover, Utah', manager: 'bill' },
+  { label: 'Salt Flats Eastbound - I-80N - Wendover, Utah', manager: 'jim' },
+  { label: 'Salt Flats Westbound - I-80S - Wendover, Utah', manager: 'jim' },
   { label: 'Shingle Creek - US-89 - Glendale, Utah', manager: 'chris' },
   { label: 'Silver City - US-6 - Jericho Junction, Utah', manager: 'frank' },
   { label: 'The Pines - SR-12 - Bryce Canyon City, Utah', manager: 'chris' },
   { label: 'Thompson Springs - I-70 - Thompson Springs, Utah', manager: 'frank' },
   { label: 'Tie-Fork - US-6 - Spanish Fork, Utah', manager: 'frank' },
-  { label: 'Weber Canyon - I-84 - Morgan, Utah', manager: 'bill' },
+  { label: 'Weber Canyon - I-84 - Morgan, Utah', manager: 'jim' },
 ]
 
 /** Iowa DOT rest areas — not in Andrew's UDOT table, so they reach Andrew only. */
