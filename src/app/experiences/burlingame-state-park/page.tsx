@@ -1,10 +1,11 @@
+import { PARK_FAQS } from '@/content/park-faqs'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ORIGIN, recreationArea } from '@/lib/schema'
+import {ORIGIN, recreationArea, faq } from '@/lib/schema'
 import {
   CardRow,
   ClosingCta,
@@ -24,6 +25,7 @@ import {
   frame,
   h3,
   mapsUrl,
+  ParkFaqBand,
 } from '@/components/property/lakeside'
 
 export const metadata: Metadata = {
@@ -214,6 +216,7 @@ export default function BurlingamePage() {
             stateAbbr: 'RI',
             campground: true,
           }),
+          faq('/experiences/burlingame-state-park', PARK_FAQS['burlingame-state-park']),
         ]}
       />
 
@@ -357,6 +360,8 @@ export default function BurlingamePage() {
             <RuledRows rows={downloads.map((d) => ({ ...d, linkLabel: 'Download PDF' }))} />
           </div>
         </section>
+
+        <ParkFaqBand items={PARK_FAQS['burlingame-state-park']} cta={RESERVE} />
 
         <ClosingCta
           photo={{ src: '/images/burlingame-picnic-area.png', alt: 'Picnic area with tables under trees at Burlingame State Park' }}

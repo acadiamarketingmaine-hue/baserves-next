@@ -3,7 +3,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ORIGIN, recreationArea } from '@/lib/schema'
+import {ORIGIN, recreationArea, faq } from '@/lib/schema'
+import { PARK_FAQS } from '@/content/park-faqs'
 import { getPropertyContent, getSiteSettings } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -23,6 +24,7 @@ import {
   frame,
   h3,
   mapsUrl,
+  ParkFaqBand,
 } from '@/components/property/lakeside'
 
 const SLUG = 'tipsaw-lake-recreation-area'
@@ -82,6 +84,7 @@ export default async function TipsawLakePage() {
             campground: true,
             amenities: content.features,
           }),
+        faq('/tipsaw-lake-recreation-area', PARK_FAQS['tipsaw-lake-recreation-area']),
         ]}
       />
       <NoticeBanner notices={content.notices} />
@@ -196,6 +199,8 @@ export default async function TipsawLakePage() {
             <Gallery photos={content.gallery} />
           </div>
         </section>
+
+        <ParkFaqBand items={PARK_FAQS['tipsaw-lake-recreation-area']} cta={ctas.hero} />
 
         <ClosingCta
           photo={{ src: '/images/tipsaw-lake/campsite2.jpg', alt: 'RV campsites along a paved campground loop at Tipsaw Lake' }}

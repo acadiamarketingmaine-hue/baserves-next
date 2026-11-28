@@ -3,7 +3,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ORIGIN, recreationArea } from '@/lib/schema'
+import {ORIGIN, recreationArea, faq } from '@/lib/schema'
+import { PARK_FAQS } from '@/content/park-faqs'
 import { getPropertyContent, getSiteSettings } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -23,6 +24,7 @@ import {
   frame,
   h3,
   mapsUrl,
+  ParkFaqBand,
 } from '@/components/property/lakeside'
 
 const SLUG = 'indian-celina-lakes-recreation-area'
@@ -81,6 +83,7 @@ export default async function IndianCelinaLakesPage() {
             campground: true,
             amenities: content.features,
           }),
+        faq('/indian-celina-lakes-recreation-area', PARK_FAQS['indian-celina-lakes-recreation-area']),
         ]}
       />
       <NoticeBanner notices={content.notices} />
@@ -185,6 +188,8 @@ export default async function IndianCelinaLakesPage() {
             <Gallery photos={content.gallery} />
           </div>
         </section>
+
+        <ParkFaqBand items={PARK_FAQS['indian-celina-lakes-recreation-area']} cta={ctas.hero} />
 
         <ClosingCta
           photo={{ src: '/images/indian-celina/lake-view.jpg', alt: 'Scenic lake view from the fishing pier at Indian-Celina Lakes' }}

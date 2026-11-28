@@ -1,6 +1,8 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { faq } from '@/lib/schema'
+import { PARK_FAQS } from '@/content/park-faqs'
 import type { PropertyContent } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -10,6 +12,7 @@ import {
   IconChipList,
   IntroFacts,
   LakesideShell,
+  ParkFaqBand,
   SectionActions,
   SectionHeader,
   StickyBooking,
@@ -48,6 +51,7 @@ const block = 'pb-14 md:pb-24 lg:pb-[120px]'
 export default function CampgroundTemplate({ content, phone, siblings }: CampgroundTemplateProps) {
   const { sections, ctas } = content
   const url = `/monongahela-national-forest/${content.slug}`
+  const faqs = PARK_FAQS[content.slug] ?? []
 
   return (
     <main className="min-h-screen">
@@ -59,6 +63,7 @@ export default function CampgroundTemplate({ content, phone, siblings }: Campgro
         description={content.seo.description}
         image={content.hero.src}
         crumbs={[{ name: 'Monongahela National Forest', url: '/monongahela-national-forest' }]}
+        nodes={faqs.length ? [faq(url, faqs)] : undefined}
       />
       <NoticeBanner notices={content.notices} />
 
@@ -129,6 +134,8 @@ export default function CampgroundTemplate({ content, phone, siblings }: Campgro
             </div>
           </section>
         )}
+
+        {faqs.length > 0 && <ParkFaqBand items={faqs} tone="white" cta={ctas.reserve} />}
 
         {/* ClosingCta's heading/text render white at desktop width whether or
             not a photo is given, so a photo is required here, not optional —

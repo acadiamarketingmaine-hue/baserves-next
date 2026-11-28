@@ -1,9 +1,10 @@
+import { PARK_FAQS } from '@/content/park-faqs'
 import type { Metadata } from 'next'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ORIGIN, recreationArea } from '@/lib/schema'
+import {ORIGIN, recreationArea, faq } from '@/lib/schema'
 import {
   CardRow,
   ClosingCta,
@@ -23,6 +24,7 @@ import {
   frame,
   h3,
   mapsUrl,
+  ParkFaqBand,
 } from '@/components/property/lakeside'
 
 export const metadata: Metadata = {
@@ -137,6 +139,7 @@ export default function ClearCreekPage() {
             campground: true,
             amenities: siteAmenities,
           }),
+          faq('/experiences/clear-creek-recreation-area', PARK_FAQS['clear-creek-recreation-area']),
         ]}
       />
 
@@ -300,6 +303,8 @@ export default function ClearCreekPage() {
             <Gallery photos={galleryPhotos} />
           </div>
         </section>
+
+        <ParkFaqBand items={PARK_FAQS['clear-creek-recreation-area']} cta={BOOK} />
 
         <ClosingCta
           photo={{ src: '/images/clear-creek-swimming.jpg', alt: 'Swimming beach on Lewis Smith Lake at Clear Creek Recreation Area' }}

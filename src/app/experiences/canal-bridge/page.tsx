@@ -1,10 +1,11 @@
+import { PARK_FAQS } from '@/content/park-faqs'
 import type { Metadata } from 'next'
 import { FAREHARBOR } from '@/data/fareharbor'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ORIGIN, recreationArea } from '@/lib/schema'
+import {ORIGIN, recreationArea, faq } from '@/lib/schema'
 import {
   CardRow,
   ClosingCta,
@@ -23,6 +24,7 @@ import {
   body,
   frame,
   mapsUrl,
+  ParkFaqBand,
 } from '@/components/property/lakeside'
 
 export const metadata: Metadata = {
@@ -148,6 +150,7 @@ export default function CanalBridgePage() {
             campground: true,
             amenities,
           }),
+          faq('/experiences/canal-bridge', PARK_FAQS['canal-bridge']),
         ]}
       />
 
@@ -255,6 +258,8 @@ export default function CanalBridgePage() {
             <Gallery photos={galleryPhotos} />
           </div>
         </section>
+
+        <ParkFaqBand items={PARK_FAQS['canal-bridge']} cta={BOOK} />
 
         <ClosingCta
           photo={{ src: '/images/canal-bridge/beach-1.jpg', alt: 'Sandy beach on the Saco River at Canal Bridge Campground' }}

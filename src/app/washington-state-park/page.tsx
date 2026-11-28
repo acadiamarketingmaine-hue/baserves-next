@@ -3,7 +3,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ORIGIN, recreationArea } from '@/lib/schema'
+import {ORIGIN, recreationArea, faq } from '@/lib/schema'
+import { PARK_FAQS } from '@/content/park-faqs'
 import { getPropertyContent } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -23,6 +24,7 @@ import {
   bandWhite,
   frame,
   mapsUrl,
+  ParkFaqBand,
 } from '@/components/property/lakeside'
 
 const SLUG = 'washington-state-park'
@@ -95,6 +97,7 @@ export default async function WashingtonStateParkPage() {
             campground: true,
             amenities: content.features,
           }),
+        faq('/washington-state-park', PARK_FAQS['washington-state-park']),
         ]}
       />
       <NoticeBanner notices={content.notices} />
@@ -212,6 +215,8 @@ export default async function WashingtonStateParkPage() {
             </div>
           </section>
         )}
+
+        <ParkFaqBand items={PARK_FAQS['washington-state-park']} cta={content.ctas.footer} />
 
         <ClosingCta
           photo={content.hero}

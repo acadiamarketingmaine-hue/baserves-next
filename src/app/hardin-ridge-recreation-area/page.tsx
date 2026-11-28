@@ -3,7 +3,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ORIGIN, recreationArea } from '@/lib/schema'
+import {ORIGIN, recreationArea, faq } from '@/lib/schema'
+import { PARK_FAQS } from '@/content/park-faqs'
 import { getPropertyContent, getSiteSettings } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -23,6 +24,7 @@ import {
   frame,
   h3,
   mapsUrl,
+  ParkFaqBand,
 } from '@/components/property/lakeside'
 
 const SLUG = 'hardin-ridge-recreation-area'
@@ -81,6 +83,7 @@ export default async function HardinRidgePage() {
             campground: true,
             amenities: content.features,
           }),
+        faq('/hardin-ridge-recreation-area', PARK_FAQS['hardin-ridge-recreation-area']),
         ]}
       />
       <NoticeBanner notices={content.notices} />
@@ -195,6 +198,8 @@ export default async function HardinRidgePage() {
             <Gallery photos={content.gallery} />
           </div>
         </section>
+
+        <ParkFaqBand items={PARK_FAQS['hardin-ridge-recreation-area']} cta={ctas.hero} />
 
         <ClosingCta
           photo={{ src: '/images/hardin-ridge/overlook.jpg', alt: 'Monroe Lake overlook and interpretive sign at Hardin Ridge' }}

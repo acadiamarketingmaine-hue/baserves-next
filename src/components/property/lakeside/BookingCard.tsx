@@ -15,7 +15,7 @@ export default function BookingCard({ title, text, cta, phone, className = '' }:
     <div
       className={`w-[380px] rounded-2xl bg-lake-paper p-8 text-lake-ink shadow-[0_20px_60px_-20px_rgba(0,0,0,0.45)] ${className}`}
     >
-      <h2 className="font-lake-serif text-[32px] leading-[1.1]">{title}</h2>
+      <p className="font-lake-serif text-[32px] leading-[1.1]">{title}</p>
       {text && <p className="mt-4 text-[15px] leading-[1.6] text-lake-mute">{text}</p>}
       <a href={cta.url} {...externalProps(cta.url)} className={`${pillPrimary} mt-6 w-full`}>
         {cta.label}

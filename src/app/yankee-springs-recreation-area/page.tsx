@@ -3,7 +3,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ORIGIN, recreationArea } from '@/lib/schema'
+import {ORIGIN, recreationArea, faq } from '@/lib/schema'
+import { PARK_FAQS } from '@/content/park-faqs'
 import { getPropertyContent, getSiteSettings } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -24,6 +25,7 @@ import {
   frame,
   h3,
   mapsUrl,
+  ParkFaqBand,
 } from '@/components/property/lakeside'
 
 const SLUG = 'yankee-springs-recreation-area'
@@ -86,6 +88,7 @@ export default async function YankeeSpringsPage() {
             campground: true,
             amenities: content.features,
           }),
+        faq('/yankee-springs-recreation-area', PARK_FAQS['yankee-springs-recreation-area']),
         ]}
       />
       <NoticeBanner notices={content.notices} />
@@ -191,6 +194,8 @@ export default async function YankeeSpringsPage() {
             <Gallery photos={content.gallery} />
           </div>
         </section>
+
+        <ParkFaqBand items={PARK_FAQS['yankee-springs-recreation-area']} cta={ctas.hero} />
 
         <ClosingCta
           photo={{ src: '/images/yankee-springs/mansion-house.jpg', alt: 'Mansion House bunkhouse at Yankee Springs' }}

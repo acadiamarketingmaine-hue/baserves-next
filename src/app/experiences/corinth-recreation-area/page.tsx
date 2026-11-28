@@ -1,9 +1,10 @@
+import { PARK_FAQS } from '@/content/park-faqs'
 import type { Metadata } from 'next'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ORIGIN, recreationArea } from '@/lib/schema'
+import {ORIGIN, recreationArea, faq } from '@/lib/schema'
 import {
   CardRow,
   ClosingCta,
@@ -22,11 +23,12 @@ import {
   frame,
   h3,
   mapsUrl,
+  ParkFaqBand,
 } from '@/components/property/lakeside'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Corinth Recreation Area | Bankhead National Forest | BA Services' },
-  description: 'Discover Corinth Recreation Area on Lewis Smith Lake in Bankhead National Forest. 52 full-hookup campsites, 10 tent sites, swimming beach, pavilion, and Bobwhite Trail.',
+  title: { absolute: 'Corinth Recreation Area | Bankhead Forest | BA Services' },
+  description: 'Camp at Corinth Recreation Area on Lewis Smith Lake in Bankhead National Forest: 52 full-hookup sites, tent sites, swimming beach, boat ramp, and trails.',
   alternates: { canonical: '/experiences/corinth-recreation-area' },
   openGraph: og('/experiences/corinth-recreation-area'),
 }
@@ -122,6 +124,7 @@ export default function CorinthPage() {
             stateAbbr: 'AL',
             campground: true,
           }),
+          faq('/experiences/corinth-recreation-area', PARK_FAQS['corinth-recreation-area']),
         ]}
       />
 
@@ -270,6 +273,8 @@ export default function CorinthPage() {
             <RuledRows rows={downloads.map((d) => ({ ...d, linkLabel: 'Download PDF' }))} />
           </div>
         </section>
+
+        <ParkFaqBand items={PARK_FAQS['corinth-recreation-area']} cta={BOOK} />
 
         <ClosingCta
           photo={{ src: '/images/corinth-boat-ramp.jpg', alt: 'Corinth Recreation Area on Lewis Smith Lake' }}
