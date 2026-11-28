@@ -768,6 +768,28 @@ function PartnershipCounter({ target, suffix, isActive }: { target: number; suff
 
 function BookingWidgets() {
   useEffect(() => {
+    // widget.js hardcodes 640px property thumbnails (escape widget.js:757)
+    // while the cards render ~596 CSS px wide, so they are half-resolution
+    // on 2x/3x screens. Escape's own page uses the same resizer at w=1200
+    // (widget.js:954), so bumping the widget's imgs to that width here is
+    // safe. Only images the widget injects into these two containers are
+    // touched; the rewrite is idempotent (it no longer matches after).
+    const bumpRetina = (root: HTMLElement) => {
+      root.querySelectorAll('img').forEach((img) => {
+        if (/escape\.baserves\.com\/_next\/image/.test(img.src) && /[?&]w=640(&|$)/.test(img.src)) {
+          img.src = img.src.replace(/([?&]w=)640/, '$11200')
+        }
+      })
+    }
+    const containers = ['chief-noonday-widget', 'long-lake-widget']
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el)
+    const obs = new MutationObserver(() => containers.forEach(bumpRetina))
+    containers.forEach((c) => {
+      obs.observe(c, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] })
+      bumpRetina(c)
+    })
+
     const loadAndInitWidgets = () => {
       // Check if script already loaded and BAServesWidget is available
       if (typeof (window as any).BAServesWidget !== 'undefined') {
@@ -799,6 +821,7 @@ function BookingWidgets() {
     }
 
     loadAndInitWidgets()
+    return () => obs.disconnect()
   }, [])
 
   return (
