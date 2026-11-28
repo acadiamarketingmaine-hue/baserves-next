@@ -26,7 +26,7 @@ export const whiteRockMountain: PropertyContent = {
   seo: {
     title: 'White Rock Mountain Recreation Area | BA Services',
     description:
-      'Stay at White Rock Mountain in Arkansas' Ozark National Forest: a stone lodge, three cabins, nine campsites and overlook trails. Reserve on Recreation.gov.',
+      'Stay at White Rock Mountain in the Arkansas Ozarks: a stone lodge, three cabins, nine campsites and overlook trails. Reserve on Recreation.gov.',
   },
   hero: {
     src: '/images/ozark-st-francis/white-rock-overlook-sunset.jpg',
