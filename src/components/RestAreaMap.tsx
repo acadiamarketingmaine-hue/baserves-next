@@ -78,6 +78,10 @@ export default function RestAreaMap({ restAreas, center, zoom, showRegionColors 
           // placeholder). OSM standard tiles need no key and are what this
           // site shipped before the retina swap.
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          // Retina without a tile key: Leaflet swaps each tile for four z+1
+          // tiles shown at half CSS size, so 2x screens get 1:1 device pixels
+          // (plain 256px tiles at 256px rendered width were the blurry flag).
+          detectRetina={true}
         />
         <ScrollZoomHandler />
         <FitBounds restAreas={restAreas} />

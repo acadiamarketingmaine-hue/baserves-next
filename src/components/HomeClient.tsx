@@ -1384,6 +1384,7 @@ export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeCl
                         src={location.image}
                         alt={location.name}
                         fill
+                        loading="eager"
                         sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
