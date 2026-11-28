@@ -2,31 +2,29 @@
 
 import { useState, useEffect, useRef } from 'react'
 import TurnstileWidget from '@/components/TurnstileWidget'
-import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { BriefcaseIcon, HandshakeIcon, ClipboardIcon } from '@/components/Icons'
 
 const topics = [
-  { id: 'careers', label: 'Careers', icon: <BriefcaseIcon className="w-8 h-8" />, description: 'Apply for a position with BA Services' },
-  { id: 'partnership', label: 'Partnerships', icon: <HandshakeIcon className="w-8 h-8" />, description: 'Explore a management partnership' },
-  { id: 'feedback', label: 'Rest Stop Feedback', icon: <ClipboardIcon className="w-8 h-8" />, description: 'Share feedback about a rest area', href: '/leave-a-review' },
+  { id: 'partnership', label: 'Partnerships & Inquiries', icon: <HandshakeIcon className="w-6 h-6" />, description: 'Explore a management partnership or send a message' },
+  { id: 'careers', label: 'Careers', icon: <BriefcaseIcon className="w-6 h-6" />, description: 'Apply for a position with BA Services' },
+  { id: 'feedback', label: 'Rest Stop Feedback', icon: <ClipboardIcon className="w-6 h-6" />, description: 'Share feedback about a rest area', href: '/leave-a-review' },
 ]
 
 export default function ContactForm() {
-  const searchParams = useSearchParams()
-  const [topic, setTopic] = useState<string | null>(null)
+  const [topic, setTopic] = useState<'partnership' | 'careers'>('partnership')
 
-  // Read topic from URL params (works with Next.js client-side navigation)
+  // Read topic from URL params on mount without useSearchParams() so the form stays server-rendered
   useEffect(() => {
-    const t = searchParams.get('topic')
+    const t = new URLSearchParams(window.location.search).get('topic')
     if (t === 'feedback') {
       window.location.replace('/leave-a-review')
       return
     }
-    if (t && ['careers', 'partnership'].includes(t)) {
+    if (t === 'careers' || t === 'partnership') {
       setTopic(t)
     }
-  }, [searchParams])
+  }, [])
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -85,66 +83,55 @@ export default function ContactForm() {
         </div>
         <h2 className="text-2xl font-bold text-gray-900 mb-3">Thank you!</h2>
         <p className="text-gray-600 mb-6">We&apos;ve received your submission and will be in touch soon.</p>
-        <button onClick={() => { setSubmitted(false); setTopic(null) }} className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-lake-ink/40 px-8 text-base font-medium text-lake-ink hover:bg-lake-ink/5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce">
+        <button onClick={() => { setSubmitted(false); setTopic('partnership') }} className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-lake-ink/40 px-8 text-base font-medium text-lake-ink hover:bg-lake-ink/5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce">
           Submit Another
         </button>
       </div>
     )
   }
 
-  // Topic selection
-  if (!topic) {
-    return (
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">What can we help you with?</h2>
-        <p className="text-gray-600 mb-8">Select a topic and we&apos;ll show you the right form.</p>
-        <div className="grid sm:grid-cols-3 gap-4">
-          {topics.map((t) => {
-            const className = "bg-white rounded-md p-6 border border-lake-line shadow-sm hover:shadow-lg hover:border-lake-spruce/40 transition-all text-left group"
-            const inner = (
-              <>
-                <span className="text-3xl mb-4 block">{t.icon}</span>
-                <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-lake-spruce transition-colors">{t.label}</h3>
-                <p className="text-sm text-gray-500">{t.description}</p>
-              </>
-            )
-            if ('href' in t && t.href) {
-              return (
-                <Link key={t.id} href={t.href} className={className}>
-                  {inner}
-                </Link>
-              )
-            }
-            return (
-              <button
-                key={t.id}
-                onClick={() => setTopic(t.id)}
-                className={className}
-              >
-                {inner}
-              </button>
-            )
-          })}
-        </div>
-      </div>
-    )
-  }
-
-  const selectedTopic = topics.find(t => t.id === topic)
-
   return (
     <div>
-      {/* Topic header with back button */}
-      <div className="flex items-center gap-4 mb-8">
-        <button onClick={() => setTopic(null)} className="p-2 rounded-lg hover:bg-gray-100 transition-colors">
-          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <div>
-          <span className="text-2xl mr-2">{selectedTopic?.icon}</span>
-          <span className="text-xl font-bold text-gray-900">{selectedTopic?.label}</span>
-        </div>
+      <h2 className="font-lake-serif text-2xl sm:text-3xl text-lake-ink mb-2">Send Us a Message</h2>
+      <p className="text-lake-mute mb-6">Use the form below for partnership or general inquiries, or switch topics for careers and rest area feedback.</p>
+
+      {/* Topic switcher */}
+      <div className="grid sm:grid-cols-3 gap-3 mb-8">
+        {topics.map((t) => {
+          const isActive = topic === t.id
+          const className = `rounded-md p-4 border transition-all text-left group ${
+            isActive
+              ? 'bg-lake-tint border-lake-spruce shadow-sm'
+              : 'bg-white border-lake-line hover:border-lake-spruce/40 hover:shadow-sm'
+          }`
+          const inner = (
+            <div className="flex items-start gap-3">
+              <span className={`mt-0.5 shrink-0 ${isActive ? 'text-lake-spruce' : 'text-lake-mute group-hover:text-lake-spruce'}`}>{t.icon}</span>
+              <div>
+                <div className="text-sm font-bold text-gray-900 group-hover:text-lake-spruce transition-colors">{t.label}</div>
+                <p className="text-xs text-gray-500 mt-0.5">{t.description}</p>
+              </div>
+            </div>
+          )
+          if ('href' in t && t.href) {
+            return (
+              <Link key={t.id} href={t.href} className={className}>
+                {inner}
+              </Link>
+            )
+          }
+          return (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => setTopic(t.id as 'partnership' | 'careers')}
+              aria-pressed={isActive}
+              className={className}
+            >
+              {inner}
+            </button>
+          )
+        })}
       </div>
 
       {/* Careers → link to full application */}

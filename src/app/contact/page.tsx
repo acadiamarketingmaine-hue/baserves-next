@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ContactForm from '@/components/ContactForm'
@@ -61,9 +60,7 @@ export default function ContactPage() {
 
         <section className="py-14 md:py-24 lg:py-[120px]">
           <div className={`${frame} max-w-4xl`}>
-            <Suspense fallback={<div className="text-center py-8 text-lake-mute">Loading...</div>}>
-              <ContactForm />
-            </Suspense>
+            <ContactForm />
 
             {/* Business address and contact details — Bar Harbor Bank card-brand review */}
             <div className="mt-12 grid sm:grid-cols-3 gap-6">
@@ -84,7 +81,7 @@ export default function ContactPage() {
               <div className="rounded-md border border-lake-line bg-white p-6">
                 <h2 className="font-lake-serif text-[18px] text-lake-ink">Email</h2>
                 <p className="text-lake-mute mt-1 text-sm break-words">
-                  <a href="mailto:email@BAServes.com" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">email@BAServes.com</a>
+                  <a href="mailto:email@baserves.com" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">email@baserves.com</a>
                 </p>
               </div>
             </div>
@@ -92,7 +89,7 @@ export default function ContactPage() {
             <SectionActions
               className="mt-10"
               primary={{ label: 'Call +1 207 307-7903', url: 'tel:+12073077903', kind: 'external' }}
-              secondary={[{ label: 'Email us', url: 'mailto:email@BAServes.com', kind: 'external' }]}
+              secondary={[{ label: 'Email us', url: 'mailto:email@baserves.com', kind: 'external' }]}
             />
           </div>
         </section>
