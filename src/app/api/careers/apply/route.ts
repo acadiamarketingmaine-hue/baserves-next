@@ -9,7 +9,7 @@ const OFFICE_RECIPIENTS = ['OfficeManager@BAServes.com', 'andrew@baserves.com', 
 
 // Backup copy to Acadia (Sep 2026: applicants' emails were going missing in the
 // office's Microsoft 365 filtering), so no application can vanish unseen.
-const BACKUP_BCC = ['johnphair@acadiamarketingmaine.com']
+const BACKUP_BCC = ['info@acadiamarketingmaine.com']
 
 export async function POST(request: NextRequest) {
   try {

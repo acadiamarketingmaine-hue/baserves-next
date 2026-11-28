@@ -93,7 +93,7 @@ export default function ContactPage() {
                 <div className="rounded-md border border-lake-line bg-white p-6">
                   <h3 className="font-lake-serif text-[18px] text-lake-ink">Email</h3>
                   <p className="text-lake-mute mt-1 text-sm break-words">
-                    <a href="mailto:email@BAServes.com" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">email@BAServes.com</a>
+                    <a href="mailto:andrew@baserves.com" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">andrew@baserves.com</a>
                   </p>
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function ContactPage() {
               primary={{ label: 'Call +1 207 307-7903', url: 'tel:+12073077903', kind: 'external' }}
               secondary={[
                 { label: 'Explore Locations', url: '/experiences', kind: 'internal' },
-                { label: 'Email us', url: 'mailto:email@BAServes.com', kind: 'external' },
+                { label: 'Email us', url: 'mailto:andrew@baserves.com', kind: 'external' },
               ]}
             />
           </div>
