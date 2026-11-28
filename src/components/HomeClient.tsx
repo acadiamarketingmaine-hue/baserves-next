@@ -14,6 +14,8 @@ import { LakesideShell, SectionActions, Eyebrow, bandPaper, bandTint, pillLight,
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 import ScopeAccordion from '@/components/ScopeAccordion'
+import SocialFeedSection from '@/components/SocialFeedSection'
+import type { SocialFeedPost } from '@/lib/social-feed'
 
 // All featured destinations — 3 shown at a time, auto-advancing every 6
 // seconds through the carousel below (see `next()`). The order rendered is
@@ -1046,9 +1048,10 @@ interface HomeClientProps {
    *  HTML and the client hydration pass — no Date.now() read in this
    *  component, so there's nothing to mismatch. */
   featuredDateKey: string
+  socialPosts?: SocialFeedPost[]
 }
 
-export default function HomeClient({ featuredDateKey }: HomeClientProps) {
+export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeClientProps) {
   const [statsVisible, setStatsVisible] = useState(false)
   const statsRef = useRef<HTMLDivElement>(null)
   const reducedMotion = useReducedMotion()
@@ -1593,6 +1596,9 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
 
       {/* Partnership Benefits - Animated Journey */}
       <PartnershipJourney />
+
+      {/* Recent Social Feed */}
+      <SocialFeedSection posts={socialPosts} />
 
       {/* CTA Section */}
       <section className="relative py-32 overflow-hidden">

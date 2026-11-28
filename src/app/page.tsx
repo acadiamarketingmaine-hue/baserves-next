@@ -3,6 +3,7 @@ import HomeClient from '@/components/HomeClient'
 import { PageSchema } from '@/components/SchemaMarkup'
 import { videoObject } from '@/lib/schema'
 import { utcDateKey } from '@/lib/featured-rotation'
+import { getSocialFeed } from '@/lib/social-feed'
 
 export const metadata: Metadata = {
   alternates: {
@@ -18,8 +19,9 @@ export const metadata: Metadata = {
 // changes over time in production while the page stays cacheable.
 export const revalidate = 3600
 
-export default function HomePage() {
+export default async function HomePage() {
   const featuredDateKey = utcDateKey(new Date())
+  const socialPosts = await getSocialFeed()
   return (
     <>
       <PageSchema
@@ -40,7 +42,7 @@ export default function HomePage() {
           }),
         ]}
       />
-      <HomeClient featuredDateKey={featuredDateKey} />
+      <HomeClient featuredDateKey={featuredDateKey} socialPosts={socialPosts} />
     </>
   )
 }
