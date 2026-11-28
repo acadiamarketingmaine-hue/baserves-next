@@ -3,6 +3,7 @@ import './globals.css'
 import AssistantChat from '@/components/AssistantChat'
 import { ReaderProvider, ReaderPill } from '@/components/reader'
 import { A11yWidget, A11Y_PREPAINT_SCRIPT } from '@/components/a11y'
+import ProSiteWidgets from '@/components/ProSiteWidgets'
 
 export const metadata: Metadata = {
   title: {
@@ -63,6 +64,7 @@ export default function RootLayout({
             <div data-a11y-scale-root>{children}</div>
             <AssistantChat />
             <ReaderPill />
+            <ProSiteWidgets accentColor="#1a472a" privacyHref="/privacy" mobileBottomOffset={76} />
           </A11yWidget>
         </ReaderProvider>
       </body>
