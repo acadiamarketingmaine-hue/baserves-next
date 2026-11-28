@@ -19,6 +19,7 @@ const contentImageHosts = (process.env.CONTENT_IMAGE_HOSTS || '')
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  deploymentId: process.env.NEXT_DEPLOYMENT_ID || 'dev',
   images: {
     // Pictures are served and resized by Cloudflare Images; see cloudflare-image-loader.js.
     loader: 'custom',

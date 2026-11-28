@@ -14,6 +14,8 @@ ARG NEXT_PUBLIC_SITE_URL
 ARG NEXT_PUBLIC_GA_ID
 ARG NEXT_PUBLIC_TURNSTILE_SITE_KEY
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID NEXT_PUBLIC_TURNSTILE_SITE_KEY=$NEXT_PUBLIC_TURNSTILE_SITE_KEY
+ARG NEXT_DEPLOYMENT_ID=dev
+ENV NEXT_DEPLOYMENT_ID=$NEXT_DEPLOYMENT_ID
 RUN if [ -f pnpm-lock.yaml ]; then pnpm run build; elif [ -f yarn.lock ]; then yarn build; else npm run build; fi
 
 FROM node:${NODE_VERSION}-bookworm-slim AS runtime
@@ -21,7 +23,14 @@ WORKDIR /app
 ENV NODE_ENV=production PORT=3000 HOSTNAME=0.0.0.0 NEXT_TELEMETRY_DISABLED=1
 COPY --from=build --chown=node:node /app/.next/standalone ./
 COPY --from=build --chown=node:node /app/.next/static ./.next/static
+COPY .prev-next-static.tgz /tmp/prev-next-static.tgz
+RUN mkdir -p /tmp/prev-unpack \
+    && tar -xzf /tmp/prev-next-static.tgz -C /tmp/prev-unpack \
+    && if [ -d /tmp/prev-unpack/static ]; then cp -an /tmp/prev-unpack/static/. ./.next/static/; fi \
+    && rm -rf /tmp/prev-unpack /tmp/prev-next-static.tgz \
+    && chown -R node:node ./.next/static
 COPY --from=build --chown=node:node /app/public ./public
+COPY --chown=node:node scripts/static-skew-guard.mjs ./static-skew-guard.mjs
 USER node
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["node", "static-skew-guard.mjs"]
