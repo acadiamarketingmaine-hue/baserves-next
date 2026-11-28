@@ -122,14 +122,17 @@ export default function ProSiteWidgets({
     const el = bannerRef.current;
     if (!el) return;
     const apply = () => {
-      const h = el.getBoundingClientRect().height;
-      root.style.setProperty('--ba-banner-lift', `${Math.ceil(h) + 12}px`);
+      const top = el.getBoundingClientRect().top;
+      const fromBottom = Math.ceil(window.innerHeight - top + 12);
+      root.style.setProperty('--ba-banner-lift', `${Math.max(0, fromBottom)}px`);
     };
     apply();
     const ro = new ResizeObserver(apply);
     ro.observe(el);
+    window.addEventListener('resize', apply);
     return () => {
       ro.disconnect();
+      window.removeEventListener('resize', apply);
       root.style.setProperty('--ba-banner-lift', '0px');
     };
   }, [showConsent, customizeConsent]);
@@ -335,12 +338,12 @@ export default function ProSiteWidgets({
         .psw-trigger-wrap {
           position: fixed;
           z-index: 9990;
-          bottom: calc(20px + var(--ba-banner-lift, 0px));
+          bottom: max(20px, var(--ba-banner-lift, 0px));
           ${position === 'left' ? 'left: 18px;' : 'right: 18px;'}
           font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
         }
         @media (max-width: 767px) {
-          .psw-trigger-wrap { bottom: calc(${mobileBottomOffset}px + var(--ba-banner-lift, 0px)); ${position === 'left' ? 'left: 12px;' : 'right: 12px;'} }
+          .psw-trigger-wrap { bottom: max(${mobileBottomOffset}px, var(--ba-banner-lift, 0px)); ${position === 'left' ? 'left: 12px;' : 'right: 12px;'} }
         }
         .psw-trigger {
           width: 44px;
