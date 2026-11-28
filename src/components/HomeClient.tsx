@@ -1178,6 +1178,9 @@ export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeCl
   useLayoutEffect(() => {
     const video = heroVideoRef.current
     if (!video) return
+    // iOS Safari inline playback: mark the element muted by default at the property
+    // level too, so a cold-load tap unlocks playback instead of opening fullscreen.
+    video.defaultMuted = true
     if (reducedMotion) {
       video.pause()
       // Pausing alone leaves whatever frame it stopped on; load() resets the
@@ -1207,6 +1210,7 @@ export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeCl
             muted
             loop
             playsInline
+            {...({ 'webkit-playsinline': 'true', 'x5-playsinline': 'true' } as unknown as Record<string, string>)}
             preload="auto"
             poster="/videos/hero-poster.jpg"
             className="absolute inset-0 w-full h-full object-cover"

@@ -619,3 +619,10 @@ html.a11y-readable-font [data-a11y-scale-root] * {
   border-color: #dc2626 !important;
   box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.22) !important;
 }
+
+
+/* iOS Safari first-tap hardening (John, Nov 29 2026): drop the 300ms
+   double-tap-zoom wait so the very first tap on a link or button registers. */
+a, button, input, select, textarea, summary, [role="button"] {
+  touch-action: manipulation;
+}
