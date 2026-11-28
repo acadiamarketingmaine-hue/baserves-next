@@ -1,9 +1,10 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
-export const metadata = {
-  title: 'Page Not Found | BA Services',
+export const metadata: Metadata = {
+  title: { absolute: 'Page Not Found | BA Services' },
 }
 
 const destinations = [
