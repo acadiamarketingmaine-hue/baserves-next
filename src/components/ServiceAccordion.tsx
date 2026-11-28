@@ -148,7 +148,7 @@ const contractGroups: ContractGroup[] = [
         stats: '20+ Cabins — Lodges — Private Lake',
         scope: [
           { title: 'Retreat Center Operations', items: ['Group camping and outdoor education programs', 'Wedding venue and event management', 'Lodge, cabin, and lakefront facility operations'] },
-          { title: 'Grounds & Programs', items: ['Year-round facility and grounds maintenance', 'Team building and nature education programs', 'Food service and guest hospitality'] },
+          { title: 'Grounds & Programs', items: ['Facility and grounds maintenance', 'Team building and nature education programs', 'Food service and guest hospitality'] },
         ],
       },
     ],

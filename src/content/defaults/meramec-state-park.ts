@@ -1,4 +1,5 @@
 import type { PropertyContent } from '../types'
+import { FAREHARBOR } from '../../data/fareharbor'
 
 /**
  * Moved verbatim out of src/app/experiences/meramec-state-park/page.tsx.
@@ -82,32 +83,32 @@ export const meramecStatePark: PropertyContent = {
   ctas: {
     hero: {
       label: 'Book Your Stay',
-      url: 'https://www.meramecpark.com/',
+      url: FAREHARBOR.meramecpark.lodging,
       kind: 'booking',
     },
     sidebar: {
       label: 'Check Availability',
-      url: 'https://www.meramecpark.com/',
+      url: FAREHARBOR.meramecpark.all,
       kind: 'booking',
     },
     cabins: {
       label: 'View All Cabins & Book',
-      url: 'https://www.meramecpark.com/',
+      url: FAREHARBOR.meramecpark.cabins,
       kind: 'booking',
     },
     resourceBookLodging: {
       label: 'Book Cabins & Motel',
-      url: 'https://www.meramecpark.com/',
+      url: FAREHARBOR.meramecpark.lodging,
       kind: 'booking',
     },
     resourceWatercraft: {
       label: 'Watercraft Rentals',
-      url: 'https://www.meramecpark.com/',
+      url: FAREHARBOR.meramecpark.riverFloating,
       kind: 'booking',
     },
     footer: {
       label: 'Book Your Stay',
-      url: 'https://www.meramecpark.com/',
+      url: FAREHARBOR.meramecpark.all,
       kind: 'booking',
     },
     footerExperiences: {

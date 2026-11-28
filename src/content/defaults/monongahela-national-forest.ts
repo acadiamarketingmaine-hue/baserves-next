@@ -86,11 +86,11 @@ export const monongahelaNationalForest: PropertyContent = {
   sections: {
     heroLinks: {
       items: [
-        { key: 'big-bend', title: 'Big Bend', href: '/monongahela-national-forest/big-bend-campground' },
-        { key: 'jess-judy', title: 'Jess Judy Group', href: '/monongahela-national-forest/jess-judy-group-campground' },
-        { key: 'seneca-shadows', title: 'Seneca Shadows', href: '/monongahela-national-forest/seneca-shadows-campground' },
-        { key: 'spruce-knob-lake', title: 'Spruce Knob Lake', href: '/monongahela-national-forest/spruce-knob-lake-campground' },
-        { key: 'gatewood', title: 'Gatewood Group', href: '/monongahela-national-forest/gatewood-group-campground' },
+        { key: 'big-bend', title: 'Big Bend Campground', href: '/monongahela-national-forest/big-bend-campground' },
+        { key: 'jess-judy', title: 'Jess Judy Group Campground', href: '/monongahela-national-forest/jess-judy-group-campground' },
+        { key: 'seneca-shadows', title: 'Seneca Shadows Campground', href: '/monongahela-national-forest/seneca-shadows-campground' },
+        { key: 'spruce-knob-lake', title: 'Spruce Knob Lake Campground', href: '/monongahela-national-forest/spruce-knob-lake-campground' },
+        { key: 'gatewood', title: 'Gatewood Group Campground', href: '/monongahela-national-forest/gatewood-group-campground' },
         { key: 'stuart', title: 'Stuart Recreation Area', href: '/monongahela-national-forest/stuart-recreation-area' },
       ],
     },
@@ -132,12 +132,12 @@ export const monongahelaNationalForest: PropertyContent = {
       intro:
         'Plan your trip to the Monongahela National Forest and experience one of the East\'s most spectacular wilderness destinations.',
       items: [
-        { key: 'big-bend', title: 'Big Bend', href: '/monongahela-national-forest/big-bend-campground' },
-        { key: 'seneca-shadows', title: 'Seneca Shadows', href: '/monongahela-national-forest/seneca-shadows-campground' },
-        { key: 'spruce-knob-lake', title: 'Spruce Knob Lake', href: '/monongahela-national-forest/spruce-knob-lake-campground' },
-        { key: 'stuart', title: 'Stuart Rec Area', href: '/monongahela-national-forest/stuart-recreation-area' },
-        { key: 'jess-judy', title: 'Jess Judy Group', href: '/monongahela-national-forest/jess-judy-group-campground' },
-        { key: 'gatewood', title: 'Gatewood Group', href: '/monongahela-national-forest/gatewood-group-campground' },
+        { key: 'big-bend', title: 'Big Bend Campground', href: '/monongahela-national-forest/big-bend-campground' },
+        { key: 'seneca-shadows', title: 'Seneca Shadows Campground', href: '/monongahela-national-forest/seneca-shadows-campground' },
+        { key: 'spruce-knob-lake', title: 'Spruce Knob Lake Campground', href: '/monongahela-national-forest/spruce-knob-lake-campground' },
+        { key: 'stuart', title: 'Stuart Recreation Area', href: '/monongahela-national-forest/stuart-recreation-area' },
+        { key: 'jess-judy', title: 'Jess Judy Group Campground', href: '/monongahela-national-forest/jess-judy-group-campground' },
+        { key: 'gatewood', title: 'Gatewood Group Campground', href: '/monongahela-national-forest/gatewood-group-campground' },
       ],
     },
     wildernessAreas: {
@@ -357,12 +357,12 @@ export const monongahelaNationalForest: PropertyContent = {
       intro:
         'From Spruce Knob\'s summit to the depths of Seneca Rocks, the Monongahela National Forest offers 921,000 acres of Appalachian wilderness waiting to be explored.',
       items: [
-        { key: 'big-bend', title: 'Big Bend', href: '/monongahela-national-forest/big-bend-campground' },
-        { key: 'seneca-shadows', title: 'Seneca Shadows', href: '/monongahela-national-forest/seneca-shadows-campground' },
-        { key: 'spruce-knob-lake', title: 'Spruce Knob Lake', href: '/monongahela-national-forest/spruce-knob-lake-campground' },
-        { key: 'stuart', title: 'Stuart Rec Area', href: '/monongahela-national-forest/stuart-recreation-area' },
-        { key: 'jess-judy', title: 'Jess Judy Group', href: '/monongahela-national-forest/jess-judy-group-campground' },
-        { key: 'gatewood', title: 'Gatewood Group', href: '/monongahela-national-forest/gatewood-group-campground' },
+        { key: 'big-bend', title: 'Big Bend Campground', href: '/monongahela-national-forest/big-bend-campground' },
+        { key: 'seneca-shadows', title: 'Seneca Shadows Campground', href: '/monongahela-national-forest/seneca-shadows-campground' },
+        { key: 'spruce-knob-lake', title: 'Spruce Knob Lake Campground', href: '/monongahela-national-forest/spruce-knob-lake-campground' },
+        { key: 'stuart', title: 'Stuart Recreation Area', href: '/monongahela-national-forest/stuart-recreation-area' },
+        { key: 'jess-judy', title: 'Jess Judy Group Campground', href: '/monongahela-national-forest/jess-judy-group-campground' },
+        { key: 'gatewood', title: 'Gatewood Group Campground', href: '/monongahela-national-forest/gatewood-group-campground' },
       ],
     },
   },

@@ -1,16 +1,11 @@
-export async function verifyTurnstile(token: unknown, remoteIp?: string | null): Promise<boolean> {
-  const secret = process.env.TURNSTILE_SECRET_KEY?.trim()
-  if (typeof token !== 'string' || !token.trim() || !secret) return false
-
-  const body = new URLSearchParams({ secret, response: token.trim() })
-  if (remoteIp) body.set('remoteip', remoteIp)
-  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body,
-    cache: 'no-store',
-  })
-  if (!response.ok) return false
-  const result = await response.json() as { success?: boolean }
-  return result.success === true
-}
+/**
+ * Cloudflare Turnstile widget "BA Services" (account widget for baserves.com,
+ * www.baserves.com and escape.baserves.com, created Nov 26 2026). A site key
+ * is public by design; the matching secret is the TURNSTILE_SECRET_KEY Fly
+ * secret on baserves-next and is never in the repo.
+ *
+ * NEXT_PUBLIC_TURNSTILE_SITE_KEY overrides it (local runs use Cloudflare's
+ * always-pass test key 1x00000000000000000000AA, since the real key only
+ * works on the listed domains).
+ */
+export const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAAGTrobVabEsZUQlM'

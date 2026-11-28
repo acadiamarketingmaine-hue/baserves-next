@@ -97,24 +97,19 @@ export default function ServicesPage() {
       <LakesideShell>
         {/* Hero */}
         <section className="relative pt-32 pb-20 bg-lake-spruce overflow-hidden">
-          <div className="absolute inset-0">
-            <Image
-              src="/images/Burlingame2-1536x1152.jpg"
-              alt=""
-              fill
-              sizes="100vw"
-              priority
-              fetchPriority="high"
-              className="object-cover opacity-20"
-            />
-          </div>
+          {/* CSS background keeps the spruce wash without a priority fill Image as LCP */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-20"
+            style={{ backgroundImage: "url('/images/Burlingame2-1536x1152.jpg')" }}
+            aria-hidden="true"
+          />
           <div className={`relative z-10 ${frame}`}>
             <div className="max-w-3xl">
               <span className="badge bg-white/10 text-white mb-4">What We Do</span>
               <h1 className="font-lake-serif headline-xl text-white mb-6">
                 Professional Property & Facility <span className="text-green-400">Management</span>
               </h1>
-              <div className="mb-6 min-h-[44px]">
+              <div className="mb-6">
                 <ListenButton variant="light" />
               </div>
               <p className="text-xl text-white/90 leading-relaxed">

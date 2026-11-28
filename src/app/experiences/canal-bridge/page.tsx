@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { FAREHARBOR } from '@/data/fareharbor'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
 // — the only place this property's coordinates are published. Never invent a pair.
 const COORDS = { lat: 44.02, lng: -70.97 }
 const PHONE = '207.935.2286'
-const BOOK = { label: 'Book Your Stay', url: 'https://canalbridgeme.com/', kind: 'booking' as const }
+const BOOK = { label: 'Book Your Stay', url: FAREHARBOR.canalbridgeme.campsites, kind: 'booking' as const }
 
 const stats = [
   { key: 'sites', value: '36', label: 'Sites' },

@@ -15,6 +15,7 @@ import {
 } from '@/components/property/lakeside'
 import { resolveBookingCta } from '@/components/pages/experiences/bookingLinks'
 import LocationCard from '@/components/pages/experiences/LocationCard'
+import { listedNewForests } from '@/data/new-forests'
 
 const locations = [
   {
@@ -113,6 +114,15 @@ const locations = [
     image: '/images/monongahela/spruce-knob-panorama.jpg',
     slug: 'monongahela-national-forest',
   },
+  // Listed once NEW_FORESTS_PUBLIC is switched on.
+  ...listedNewForests().map((f) => ({
+    name: f.name,
+    tagline: f.tagline,
+    description: f.description,
+    location: f.state,
+    image: f.image,
+    slug: f.href.slice(1),
+  })),
 ]
 
 const categories = [

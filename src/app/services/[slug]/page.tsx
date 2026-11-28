@@ -22,7 +22,7 @@ const services: Record<string, any> = {
   'campground-park-maintenance': {
     name: 'Campground & Park Maintenance',
     tagline: 'Comprehensive Facility Management',
-    description: 'Professional maintenance services ensuring pristine facilities and grounds year-round.',
+    description: 'Professional maintenance services that keep facilities and grounds in top condition.',
     longDescription: `Our campground and park maintenance services ensure that every facility under our care meets the highest standards of quality and safety. From routine groundskeeping to emergency repairs, our experienced team handles all aspects of facility maintenance.
 
 We understand that well-maintained facilities are essential for positive visitor experiences. Our proactive approach to maintenance helps prevent issues before they arise, minimizing downtime and maximizing visitor satisfaction. Whether managing a small campground or a large recreation area, we tailor our services to meet your specific needs.`,

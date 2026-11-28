@@ -109,7 +109,7 @@ const allLocations = [
   {
     name: 'Yankee Springs Recreation Area',
     tagline: "Michigan's Ultimate Outdoor Escape",
-    description: 'A year-round haven for outdoor lovers, families, and adventure seekers',
+    description: 'A haven for outdoor lovers, families, and adventure seekers',
     location: 'Barry County, MI',
     features: ['Boating', 'Fishing', 'Hiking', 'Mountain Biking', 'RV & Tent Camping'],
     stats: { campsites: '200+', trails: '30+ miles', acres: '5,200+' },
@@ -161,7 +161,7 @@ const experienceCategories = [
 const services = [
   {
     title: 'Campground & Park Maintenance',
-    description: 'Comprehensive maintenance services ensuring pristine facilities and grounds year-round.',
+    description: 'Comprehensive maintenance services that keep facilities and grounds in top condition.',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -1197,7 +1197,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
             page — and that intrinsic width shifts a few px once the serif
             headline's webfont finishes loading, which was a measurable
             source of home's CLS. */}
-        <div className="relative z-10 container-custom w-full px-6 pt-28">
+        <div className="relative z-10 container-custom w-full px-6 pt-28 pb-24 md:pb-0">
           <div className="max-w-3xl">
             <a
               href="tel:+12073077903"
@@ -1223,7 +1223,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
               <ListenButton variant="light" />
             </div>
 
-            <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-10 max-w-2xl animate-fade-in-up motion-reduce:animate-none delay-200 drop-shadow-md">
+            <p className="text-lg md:text-2xl text-white/90 leading-relaxed mb-10 max-w-2xl animate-fade-in-up motion-reduce:animate-none delay-200 drop-shadow-md">
               From <span className="text-white font-semibold">the rockbound coast of Maine</span> to{' '}
               <span className="text-white font-semibold">the salt flats of Utah</span>, from{' '}
               <span className="text-white font-semibold">the storied mountains of West Virginia</span> to{' '}
@@ -1236,7 +1236,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
               <span className="text-lake-ember-light font-semibold">seamless experiences for every visitor</span>.
             </p>
 
-            <div className="flex flex-wrap gap-4 animate-fade-in-up motion-reduce:animate-none delay-300">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 animate-fade-in-up motion-reduce:animate-none delay-300">
               <a
                 href="/experiences"
                 className={`${pillLight} text-lg`}
@@ -1279,7 +1279,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                 key={stat.label}
                 className="flex items-baseline justify-between gap-4 border-b border-lake-line py-4 md:block md:border-0 md:py-0 md:pr-6"
               >
-                <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-lake-moss">{stat.label}</dt>
+                <dt className="text-xs font-medium uppercase tracking-[0.14em] text-lake-moss">{stat.label}</dt>
                 <dd className="font-lake-serif text-[28px] leading-tight text-lake-ink md:mt-3 md:text-[40px]">
                   {statsVisible ? (
                     <AnimatedCounter
@@ -1479,7 +1479,7 @@ export default function HomeClient({ featuredDateKey }: HomeClientProps) {
                 className="group p-6 rounded-2xl border border-lake-line bg-white text-center transition-all duration-300 hover:bg-lake-spruce hover:border-lake-spruce hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
               >
                 <div className="text-lake-spruce group-hover:text-white transition-colors mb-4 flex justify-center">{category.icon}</div>
-                <h3 className="font-lake-serif text-[17px] text-lake-ink group-hover:text-white transition-colors mb-1">
+                <h3 className="font-lake-serif text-[15px] leading-snug sm:text-[17px] text-lake-ink group-hover:text-white transition-colors mb-1">
                   {category.name}
                 </h3>
                 <span className="text-sm text-lake-mute group-hover:text-white/70 transition-colors">

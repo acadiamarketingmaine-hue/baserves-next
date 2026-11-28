@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { ReaderButton } from '@/components/reader'
 import { A11yHeaderButton } from '@/components/a11y'
+import { listedNewForests, withNewForestStates } from '@/data/new-forests'
 
 const topNavLinks = [
   { name: 'Home', href: '/' },
@@ -31,7 +32,7 @@ interface LocationItem {
   children?: LocationItem[]
 }
 
-const locationsByState: { state: string; icon: string; locations: LocationItem[] }[] = [
+const currentLocationsByState: { state: string; icon: string; locations: LocationItem[] }[] = [
   {
     state: 'Alabama',
     icon: '/images/states/alabama.png',
@@ -101,6 +102,13 @@ const locationsByState: { state: string; icon: string; locations: LocationItem[]
   },
 ]
 
+// The new forests join the menu when NEW_FORESTS_PUBLIC is switched on.
+const locationsByState = withNewForestStates(currentLocationsByState, (f) => ({
+  state: f.state,
+  icon: f.icon,
+  locations: [{ name: f.name, href: f.href, image: f.image, blurb: f.blurb, children: f.children }],
+}))
+
 interface SearchItem {
   title: string
   description: string
@@ -110,6 +118,7 @@ interface SearchItem {
 }
 
 const searchIndex: SearchItem[] = [
+  ...listedNewForests().map((f) => ({ title: f.name, description: f.description, href: f.href, category: 'Locations', keywords: [f.state.toLowerCase(), 'national forest', 'camping', ...(f.children?.map((c) => c.name.toLowerCase()) ?? [])] })),
   // Pages
   { title: 'Home', description: 'BA Services homepage — outdoor recreation management', href: '/', category: 'Pages', keywords: ['home', 'main', 'recreation', 'outdoor'] },
   { title: 'About Us', description: 'Our mission, values, and team', href: '/about', category: 'Pages', keywords: ['about', 'mission', 'team', 'values', 'company', 'who'] },
@@ -372,6 +381,7 @@ export default function Navigation({
                                   { name: 'Monongahela National Forest', href: '/monongahela-national-forest', image: '/images/monongahela/spruce-knob-panorama.jpg', sub: 'West Virginia — 6 campgrounds' },
                                   { name: 'Washington State Park', href: '/washington-state-park', image: '/images/washington-thunderbird-lodge.png', sub: 'Missouri — cabins, pool, trails' },
                                   { name: 'Yankee Springs Recreation Area', href: '/yankee-springs-recreation-area', image: '/images/yankee-springs/hill-cabins.jpg', sub: 'Michigan — 200+ sites, 30+ miles of trails' },
+                                  ...listedNewForests().map((f) => ({ name: f.name, href: f.href, image: f.image, sub: `${f.state} — ${f.blurb}` })),
                                 ].map((p) => (
                                   <Link key={p.href} href={p.href} onClick={() => setServicesOpen(false)} className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-gray-50 transition-colors group">
                                     <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">

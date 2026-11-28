@@ -20,6 +20,9 @@ const contentImageHosts = (process.env.CONTENT_IMAGE_HOSTS || '')
 const nextConfig = {
   output: 'standalone',
   images: {
+    // Pictures are served and resized by Cloudflare Images; see cloudflare-image-loader.js.
+    loader: 'custom',
+    loaderFile: './cloudflare-image-loader.js',
     remotePatterns: [
       {
         protocol: 'https',
@@ -39,7 +42,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: '/:path*',
         headers: [
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
@@ -72,6 +75,22 @@ const nextConfig = {
         source: '/customer-comment-survey',
         destination: '/leave-a-review?type=campground',
         permanent: false,
+      },
+      {
+        // Short park URLs guests and old links use; the real pages live elsewhere.
+        source: '/meramec-state-park',
+        destination: '/experiences/meramec-state-park',
+        permanent: true,
+      },
+      {
+        source: '/:old(canal-bridge|canal-bridge-campground)',
+        destination: '/experiences/canal-bridge',
+        permanent: true,
+      },
+      {
+        source: '/experiences/washington-state-park',
+        destination: '/washington-state-park',
+        permanent: true,
       },
       {
         // The two wedding-page drafts Elle reviewed; /noindex1 became the live page.

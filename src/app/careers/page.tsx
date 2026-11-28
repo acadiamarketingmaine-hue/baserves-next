@@ -66,7 +66,7 @@ const JOBS_DATE_POSTED = '2026-01-16'
 
 export const metadata = {
   title: 'Careers',
-  description: 'Join BA Services — seasonal and full-time outdoor jobs at campgrounds, state parks, and rest areas across 7 states. Apply online today.',
+  description: 'Join BA Services — seasonal and full-time outdoor jobs at campgrounds, state parks, and rest areas across 9 states. Apply online today.',
   alternates: {
     canonical: '/careers',
   },

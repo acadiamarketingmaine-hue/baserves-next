@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-import { RECREATION_SITES } from '@/data/managers'
+import { useRef, useState } from 'react'
 import TurnstileWidget from '@/components/TurnstileWidget'
+import { RECREATION_SITES } from '@/data/managers'
 
 interface Employer {
   employerName: string
@@ -37,8 +37,6 @@ export default function EmploymentApplicationForm() {
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
-  const [turnstileToken, setTurnstileToken] = useState('')
-  const [turnstileResetKey, setTurnstileResetKey] = useState(0)
 
   // Applicant Information
   const [fullName, setFullName] = useState('')
@@ -112,13 +110,16 @@ export default function EmploymentApplicationForm() {
     })
   }
 
+  // Bot protection (src/lib/form-guard.ts): a honeypot only a bot fills, how
+  // long the form was open, and Cloudflare's Turnstile check.
+  const [honeypot, setHoneypot] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const [turnstileReset, setTurnstileReset] = useState(0)
+  const formOpenedAt = useRef<number>(Date.now())
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
-    if (!turnstileToken) {
-      setError('Please complete the security check before submitting.')
-      return
-    }
     setSubmitting(true)
 
     try {
@@ -127,7 +128,6 @@ export default function EmploymentApplicationForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           fullName, homeAddress, cityStateZip, yearsAtAddress, mobilePhone, emailAddress,
-          turnstileToken,
           dateOfBirth, driversLicense, drivingRecordConsent, shirtSize, vestSize, jacketSize,
           emergencyFullName, emergencyRelationship, emergencyAddress, emergencyCityStateZip,
           emergencyMobilePhone, emergencyHomePhone,
@@ -137,6 +137,9 @@ export default function EmploymentApplicationForm() {
           employers: employers.filter(e => e.employerName),
           references: references.filter(r => r.name),
           additionalInfo, certificationAgreed, signatureName, signatureDate,
+          website: honeypot,
+          elapsedMs: Date.now() - formOpenedAt.current,
+          turnstileToken,
         }),
       })
 
@@ -148,7 +151,7 @@ export default function EmploymentApplicationForm() {
       setSubmitted(true)
     } catch (err: any) {
       setError(err.message || 'Something went wrong. Please try again.')
-      setTurnstileResetKey(key => key + 1)
+      setTurnstileReset(n => n + 1)
     } finally {
       setSubmitting(false)
     }
@@ -176,8 +179,11 @@ export default function EmploymentApplicationForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
-      <TurnstileWidget onToken={setTurnstileToken} resetKey={turnstileResetKey} />
-      {error && <p role="alert" className="text-sm text-red-700">{error}</p>}
+      {/* Honeypot: hidden from people and from screen readers; bots fill it. */}
+      <div aria-hidden="true" className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden">
+        <label htmlFor="app-website">Website</label>
+        <input id="app-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={e => setHoneypot(e.target.value)} />
+      </div>
       {/* Applicant Information */}
       <div>
         <h3 className="text-xl font-bold text-gray-900 mb-4">Applicant Information</h3>
@@ -535,7 +541,8 @@ export default function EmploymentApplicationForm() {
         </div>
       )}
 
-      <div className="pt-4">
+      <div className="pt-4 space-y-4">
+        <TurnstileWidget onToken={setTurnstileToken} resetKey={turnstileReset} />
         <button
           type="submit"
           disabled={submitting}

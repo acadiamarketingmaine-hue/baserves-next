@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
+import { withNewForestStates } from '@/data/new-forests'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 
-const locationsByState = [
+const currentLocationsByState = [
   {
     state: 'Alabama',
     icon: '/images/states/alabama.png',
@@ -73,6 +74,13 @@ const locationsByState = [
     ],
   },
 ]
+
+// The new forests join the footer when NEW_FORESTS_PUBLIC is switched on.
+const locationsByState = withNewForestStates<{ state: string; icon: string; locations: any[] }>(currentLocationsByState, (f) => ({
+  state: f.state,
+  icon: f.icon,
+  locations: [{ name: f.name, href: f.href, children: f.children }],
+}))
 
 const footerLinks = {
   experiences: [

@@ -1,69 +1,73 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-
-type TurnstileApi = {
-  render: (container: HTMLElement, options: Record<string, unknown>) => string
-  remove: (widgetId: string) => void
-  reset: (widgetId?: string) => void
-}
+import { TURNSTILE_SITE_KEY } from '@/lib/turnstile'
 
 declare global {
-  interface Window { turnstile?: TurnstileApi }
+  interface Window {
+    turnstile?: {
+      render: (el: HTMLElement, opts: Record<string, unknown>) => string
+      reset: (id?: string) => void
+      remove: (id?: string) => void
+    }
+  }
 }
 
+const SCRIPT_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'
+
+function loadScript(): Promise<void> {
+  if (window.turnstile) return Promise.resolve()
+  const existing = document.querySelector<HTMLScriptElement>(`script[src="${SCRIPT_SRC}"]`)
+  return new Promise((resolve, reject) => {
+    const s = existing ?? document.createElement('script')
+    s.addEventListener('load', () => resolve())
+    s.addEventListener('error', () => reject(new Error('turnstile script failed')))
+    if (!existing) {
+      s.src = SCRIPT_SRC
+      s.async = true
+      s.defer = true
+      document.head.appendChild(s)
+    }
+  })
+}
+
+/**
+ * Cloudflare's "verify you are human" check. Most visitors never see a
+ * puzzle; the box ticks itself. `resetKey` changes force a fresh token (a
+ * token is good for one submission).
+ */
 export default function TurnstileWidget({ onToken, resetKey = 0 }: { onToken: (token: string) => void; resetKey?: number }) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const widgetIdRef = useRef<string | undefined>(undefined)
-  const callbackRef = useRef(onToken)
-  callbackRef.current = onToken
+  const box = useRef<HTMLDivElement>(null)
+  const widgetId = useRef<string | null>(null)
+  const latest = useRef(onToken)
+  latest.current = onToken
 
   useEffect(() => {
-    const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
-    if (!siteKey || !containerRef.current) return
-
-    let widgetId: string | undefined
     let cancelled = false
-    const render = () => {
-      if (cancelled || widgetId || !window.turnstile || !containerRef.current) return
-      widgetId = window.turnstile.render(containerRef.current, {
-        sitekey: siteKey,
-        callback: (token: string) => callbackRef.current(token),
-        'expired-callback': () => callbackRef.current(''),
-        'error-callback': () => callbackRef.current(''),
+    loadScript()
+      .then(() => {
+        if (cancelled || !box.current || !window.turnstile) return
+        widgetId.current = window.turnstile.render(box.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          callback: (t: string) => latest.current(t),
+          'expired-callback': () => latest.current(''),
+          'error-callback': () => latest.current(''),
+        })
       })
-      widgetIdRef.current = widgetId
-    }
-
-    let script = document.querySelector<HTMLScriptElement>('script[data-ba-turnstile]')
-    if (!script) {
-      script = document.createElement('script')
-      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'
-      script.async = true
-      script.defer = true
-      script.dataset.baTurnstile = 'true'
-      document.head.appendChild(script)
-    }
-    script.addEventListener('load', render)
-    render()
-
+      .catch(() => latest.current(''))
     return () => {
       cancelled = true
-      script?.removeEventListener('load', render)
-      if (widgetId && window.turnstile) window.turnstile.remove(widgetId)
-      widgetIdRef.current = undefined
+      if (widgetId.current && window.turnstile) window.turnstile.remove(widgetId.current)
+      widgetId.current = null
     }
   }, [])
 
   useEffect(() => {
-    if (resetKey && widgetIdRef.current && window.turnstile) {
-      window.turnstile.reset(widgetIdRef.current)
-      callbackRef.current('')
+    if (resetKey && widgetId.current && window.turnstile) {
+      window.turnstile.reset(widgetId.current)
+      latest.current('')
     }
   }, [resetKey])
 
-  if (!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) {
-    return <p role="alert" className="text-sm text-red-700">This form is temporarily unavailable. Please contact BA Services directly.</p>
-  }
-  return <div ref={containerRef} className="flex justify-start" />
+  return <div ref={box} className="min-h-[65px]" />
 }

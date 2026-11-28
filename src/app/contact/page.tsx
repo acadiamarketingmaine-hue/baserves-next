@@ -1,5 +1,4 @@
 import { Suspense } from 'react'
-import Image from 'next/image'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ContactForm from '@/components/ContactForm'
@@ -30,24 +29,19 @@ export default function ContactPage() {
 
       <LakesideShell>
         <section className="relative pt-32 pb-16 bg-lake-spruce overflow-hidden">
-          <div className="absolute inset-0">
-            <Image
-              src="/images/long-lake/weddings/lake-dock-wide.jpg"
-              alt=""
-              fill
-              sizes="100vw"
-              priority
-              fetchPriority="high"
-              className="object-cover opacity-20"
-            />
-          </div>
+          {/* CSS background keeps the lakeside wash without a priority fill Image as LCP */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-20"
+            style={{ backgroundImage: "url('/images/long-lake/weddings/lake-dock-wide.jpg')" }}
+            aria-hidden="true"
+          />
           <div className={`relative z-10 ${frame}`}>
             <div className="max-w-3xl">
               <span className="badge bg-white/10 text-white mb-4">Get in Touch</span>
               <h1 className="font-lake-serif headline-xl text-white mb-6">
                 Contact <span className="text-green-400">Us</span>
               </h1>
-              <div className="mb-6 min-h-[44px]">
+              <div className="mb-6">
                 <ListenButton variant="light" />
               </div>
               <p className="text-xl text-white/90 leading-relaxed">
@@ -84,13 +78,13 @@ export default function ContactPage() {
               <div className="rounded-md border border-lake-line bg-white p-6">
                 <h3 className="font-lake-serif text-[18px] text-lake-ink">Phone</h3>
                 <p className="text-lake-mute mt-1 text-sm">
-                  <a href="tel:+12073077903" className="inline-flex items-center min-h-[44px] text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">+1 207 307-7903</a>
+                  <a href="tel:+12073077903" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">+1 207 307-7903</a>
                 </p>
               </div>
               <div className="rounded-md border border-lake-line bg-white p-6">
                 <h3 className="font-lake-serif text-[18px] text-lake-ink">Email</h3>
                 <p className="text-lake-mute mt-1 text-sm break-words">
-                  <a href="mailto:andrew@baserves.com" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">andrew@baserves.com</a>
+                  <a href="mailto:email@BAServes.com" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">email@BAServes.com</a>
                 </p>
               </div>
             </div>
@@ -98,7 +92,7 @@ export default function ContactPage() {
             <SectionActions
               className="mt-10"
               primary={{ label: 'Call +1 207 307-7903', url: 'tel:+12073077903', kind: 'external' }}
-              secondary={[{ label: 'Email us', url: 'mailto:andrew@baserves.com', kind: 'external' }]}
+              secondary={[{ label: 'Email us', url: 'mailto:email@BAServes.com', kind: 'external' }]}
             />
           </div>
         </section>

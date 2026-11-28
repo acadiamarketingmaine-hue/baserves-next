@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import TurnstileWidget from '@/components/TurnstileWidget'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { BriefcaseIcon, HandshakeIcon, ClipboardIcon } from '@/components/Icons'
-import TurnstileWidget from '@/components/TurnstileWidget'
 
 const topics = [
   { id: 'careers', label: 'Careers', icon: <BriefcaseIcon className="w-8 h-8" />, description: 'Apply for a position with BA Services' },
@@ -29,9 +29,6 @@ export default function ContactForm() {
   }, [searchParams])
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
-  const [turnstileToken, setTurnstileToken] = useState('')
-  const [turnstileResetKey, setTurnstileResetKey] = useState(0)
-  const [formError, setFormError] = useState('')
 
   // Partnership form
   const [partnerForm, setPartnerForm] = useState({ name: '', email: '', phone: '', organization: '', propertyType: '', location: '', message: '' })
@@ -39,6 +36,9 @@ export default function ContactForm() {
   // Spam guards (see src/app/api/contact/route.ts). Invisible to real visitors:
   // a honeypot field only a bot will fill, and how long the form was open.
   const [honeypot, setHoneypot] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const [turnstileReset, setTurnstileReset] = useState(0)
+  const [partnerError, setPartnerError] = useState('')
   const formOpenedAt = useRef<number>(Date.now())
   useEffect(() => {
     if (topic === 'partnership') formOpenedAt.current = Date.now()
@@ -46,14 +46,10 @@ export default function ContactForm() {
 
   const handlePartnerSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setFormError('')
-    if (!turnstileToken) {
-      setFormError('Please complete the security check before submitting.')
-      return
-    }
+    setPartnerError('')
     setSubmitting(true)
     try {
-      const response = await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -64,16 +60,16 @@ export default function ContactForm() {
           turnstileToken,
         }),
       })
-      if (!response.ok) {
-        const result = await response.json().catch(() => ({}))
-        setFormError(result.error || 'We could not submit your inquiry. Please try again.')
-        setTurnstileResetKey(key => key + 1)
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        setPartnerError(body.error || 'Something went wrong. Please try again, or call (207) 307-7903.')
+        setTurnstileReset(n => n + 1)
         return
       }
       setSubmitted(true)
     } catch {
-      setFormError('We could not submit your inquiry. Please try again.')
-      setTurnstileResetKey(key => key + 1)
+      setPartnerError('Something went wrong. Please try again, or call (207) 307-7903.')
+      setTurnstileReset(n => n + 1)
     }
     finally { setSubmitting(false) }
   }
@@ -161,7 +157,7 @@ export default function ContactForm() {
           <div className="bg-lake-tint rounded-md p-6 mb-6">
             <h4 className="font-semibold text-gray-900 mb-3">What we offer:</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              {['Competitive pay and benefits', 'Positions across 7+ states', 'Recreation area and DOT rest area roles', 'Site Attendants, Maintenance Technicians, Area Managers', 'Training and certification programs'].map(item => (
+              {['Competitive pay and benefits', 'Positions across 9 states', 'Recreation area and DOT rest area roles', 'Site Attendants, Maintenance Technicians, Area Managers', 'Training and certification programs'].map(item => (
                 <li key={item} className="flex items-center">
                   <svg className="w-4 h-4 mr-2 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -228,8 +224,10 @@ export default function ContactForm() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Tell us about your needs *</label>
             <textarea required rows={4} value={partnerForm.message} onChange={e => setPartnerForm(p => ({ ...p, message: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" placeholder="Describe your property, current challenges, and what you're looking for..." />
           </div>
-          <TurnstileWidget onToken={setTurnstileToken} resetKey={turnstileResetKey} />
-          {formError && <p role="alert" className="text-sm text-red-700">{formError}</p>}
+          <TurnstileWidget onToken={setTurnstileToken} resetKey={turnstileReset} />
+          {partnerError && (
+            <p role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">{partnerError}</p>
+          )}
           <button type="submit" disabled={submitting} className="inline-flex min-h-[56px] items-center justify-center rounded-full bg-lake-spruce px-8 text-base font-medium text-lake-paper hover:bg-lake-spruce-dark transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce">
             {submitting ? 'Sending...' : 'Submit Partnership Inquiry'}
           </button>
