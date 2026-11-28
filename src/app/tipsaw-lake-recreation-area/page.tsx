@@ -189,6 +189,11 @@ export default async function TipsawLakePage() {
           <div className={frame}>
             <SectionHeader heading={sections.activities.heading ?? 'Activities'} intro={sections.activities.intro} />
             <CardRow columns={3} items={activities.map((a) => ({ key: a.key, title: a.title, body: a.body }))} />
+            <SectionActions
+              className="mt-10"
+              primary={{ label: 'Explore All Experiences', url: '/experiences', kind: 'internal' }}
+              secondary={[{ label: 'View Camping & Park Pricing', url: '/pricing', kind: 'internal' }]}
+            />
           </div>
         </section>
 
@@ -203,7 +208,7 @@ export default async function TipsawLakePage() {
         <ParkFaqBand items={PARK_FAQS['tipsaw-lake-recreation-area']} cta={ctas.hero} />
 
         <ClosingCta
-          photo={{ src: '/images/tipsaw-lake/campsite2.jpg', alt: 'RV campsites along a paved campground loop at Tipsaw Lake' }}
+          photo={{ src: '/images/tipsaw-lake/rickenbaugh-house.jpg', alt: 'Historic Rickenbaugh House surrounded by trees at Tipsaw Lake Recreation Area' }}
           heading={sections.closingCta.heading ?? content.name}
           text={sections.closingCta.intro}
           primary={ctas.footer}

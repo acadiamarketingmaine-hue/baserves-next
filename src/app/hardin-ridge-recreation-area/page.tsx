@@ -188,6 +188,11 @@ export default async function HardinRidgePage() {
           <div className={frame}>
             <SectionHeader heading={sections.activities.heading ?? 'Activities'} intro={sections.activities.intro} />
             <CardRow columns={3} items={activities.map((a) => ({ key: a.key, title: a.title, body: a.body }))} />
+            <SectionActions
+              className="mt-10"
+              primary={{ label: 'Explore All Experiences', url: '/experiences', kind: 'internal' }}
+              secondary={[{ label: 'View Camping & Park Pricing', url: '/pricing', kind: 'internal' }]}
+            />
           </div>
         </section>
 
@@ -202,7 +207,6 @@ export default async function HardinRidgePage() {
         <ParkFaqBand items={PARK_FAQS['hardin-ridge-recreation-area']} cta={ctas.hero} />
 
         <ClosingCta
-          photo={{ src: '/images/hardin-ridge/overlook.jpg', alt: 'Monroe Lake overlook and interpretive sign at Hardin Ridge' }}
           heading={sections.closingCta.heading ?? content.name}
           text={sections.closingCta.intro}
           primary={ctas.footer}

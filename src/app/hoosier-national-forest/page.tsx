@@ -3,7 +3,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ORIGIN, recreationArea } from '@/lib/schema'
+import { ORIGIN, recreationArea, faq } from '@/lib/schema'
+import { PARK_FAQS } from '@/content/park-faqs'
 import { getPropertyContent, getSiteSettings } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -14,6 +15,7 @@ import {
   IntroFacts,
   LakesideShell,
   OfficialDisclosure,
+  ParkFaqBand,
   SectionActions,
   SectionHeader,
   SplitFeature,
@@ -63,8 +65,8 @@ export default async function HoosierNationalForestPage() {
   // shot: an unused, real Hoosier NF photo (from Indian-Celina, inside this
   // forest), not a stand-in for the Deam Wilderness itself.
   const forestPhoto = { src: '/images/indian-celina/fall-road.jpg', alt: 'Fall foliage along a road in Hoosier National Forest' }
-  // Unused elsewhere on this page: a real Hardin Ridge view of Monroe Lake.
-  const closingPhoto = { src: '/images/hardin-ridge/aerial.jpg', alt: 'Monroe Lake seen through the trees at Hardin Ridge, Hoosier National Forest' }
+  // Retina-sharp real Hoosier National Forest photo (4928x3264).
+  const closingPhoto = { src: '/images/indian-celina/fishing-pier.jpg', alt: 'Accessible fishing pier and forested shoreline in Hoosier National Forest' }
 
   return (
     <main className="min-h-screen">
@@ -87,6 +89,7 @@ export default async function HoosierNationalForestPage() {
             stateAbbr: 'IN',
             amenities: content.features,
           }),
+          faq('/hoosier-national-forest', PARK_FAQS['hoosier-national-forest']),
         ]}
       />
       <NoticeBanner notices={content.notices} />
@@ -153,8 +156,15 @@ export default async function HoosierNationalForestPage() {
           <div className={frame}>
             <SectionHeader heading={sections.activities.heading ?? 'Activities'} intro={sections.activities.intro} />
             <CardRow columns={3} items={activities.map((a) => ({ key: a.key, title: a.title, body: a.body }))} />
+            <SectionActions
+              className="mt-10"
+              primary={{ label: 'Explore All Experiences', url: '/experiences', kind: 'internal' }}
+              secondary={[{ label: 'View Camping & Park Pricing', url: '/pricing', kind: 'internal' }]}
+            />
           </div>
         </section>
+
+        <ParkFaqBand items={PARK_FAQS['hoosier-national-forest']} cta={ctas.sidebar} />
 
         <ClosingCta
           photo={closingPhoto}

@@ -178,6 +178,11 @@ export default async function IndianCelinaLakesPage() {
           <div className={frame}>
             <SectionHeader heading={sections.activities.heading ?? 'Activities'} intro={sections.activities.intro} />
             <CardRow columns={3} items={activities.map((a) => ({ key: a.key, title: a.title, body: a.body }))} />
+            <SectionActions
+              className="mt-10"
+              primary={{ label: 'Explore All Experiences', url: '/experiences', kind: 'internal' }}
+              secondary={[{ label: 'View Camping & Park Pricing', url: '/pricing', kind: 'internal' }]}
+            />
           </div>
         </section>
 
@@ -192,7 +197,7 @@ export default async function IndianCelinaLakesPage() {
         <ParkFaqBand items={PARK_FAQS['indian-celina-lakes-recreation-area']} cta={ctas.hero} />
 
         <ClosingCta
-          photo={{ src: '/images/indian-celina/lake-view.jpg', alt: 'Scenic lake view from the fishing pier at Indian-Celina Lakes' }}
+          photo={{ src: '/images/indian-celina/fishing-pier.jpg', alt: 'Accessible fishing pier overlooking Celina Lake at Indian-Celina Lakes' }}
           heading={sections.closingCta.heading ?? content.name}
           text={sections.closingCta.intro}
           primary={ctas.footer}

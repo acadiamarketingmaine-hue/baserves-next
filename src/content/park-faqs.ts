@@ -5,6 +5,28 @@ import type { ParkFaqItem } from '@/components/property/lakeside'
  * guides. Every answer reflects real published property facts and booking flows.
  */
 export const PARK_FAQS: Record<string, ParkFaqItem[]> = {
+  'hoosier-national-forest': [
+    {
+      question: 'Which recreation areas in Hoosier National Forest can I reserve?',
+      answer:
+        'BA Services manages three developed recreation areas in Hoosier National Forest: Hardin Ridge on Monroe Lake, Indian-Celina Lakes in Perry County, and Tipsaw Lake Recreation Area. Each offers online campsite reservations through Recreation.gov.',
+    },
+    {
+      question: 'When is Hoosier National Forest open for camping and day use?',
+      answer:
+        'Hoosier National Forest trails and dispersed recreation areas are open year-round, while developed campgrounds at Hardin Ridge, Indian-Celina Lakes, and Tipsaw Lake operate seasonally from early April through late October.',
+    },
+    {
+      question: 'What is the Charles C. Deam Wilderness?',
+      answer:
+        'Spanning 13,000 acres along the southern shore of Monroe Lake, the Charles C. Deam Wilderness is Indiana\'s only federally designated wilderness area, offering non-motorized hiking, backpacking, and scenic ridgelines.',
+    },
+    {
+      question: 'Where can I compare campgrounds, activities, and rates across BA Services parks?',
+      answer:
+        'Browse our full Experiences directory to compare campgrounds, lakes, and trails, or review our Pricing page for current camping and recreation rates across all managed locations.',
+    },
+  ],
   'hardin-ridge-recreation-area': [
     {
       question: 'How do I reserve a campsite at Hardin Ridge Recreation Area?',

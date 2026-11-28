@@ -184,6 +184,11 @@ export default async function YankeeSpringsPage() {
           <div className={frame}>
             <SectionHeader heading={sections.activities.heading ?? 'Activities'} intro={sections.activities.intro} />
             <CardRow columns={3} items={activities.map((a) => ({ key: a.key, title: a.title, body: a.body }))} />
+            <SectionActions
+              className="mt-10"
+              primary={{ label: 'Explore All Experiences', url: '/experiences', kind: 'internal' }}
+              secondary={[{ label: 'View Camping & Park Pricing', url: '/pricing', kind: 'internal' }]}
+            />
           </div>
         </section>
 
@@ -195,7 +200,7 @@ export default async function YankeeSpringsPage() {
           </div>
         </section>
 
-        <ParkFaqBand items={PARK_FAQS['yankee-springs-recreation-area']} cta={ctas.hero} />
+        <ParkFaqBand items={PARK_FAQS['yankee-springs-recreation-area']} cta={ctas.heroChiefNoonday} />
 
         <ClosingCta
           photo={{ src: '/images/yankee-springs/mansion-house.jpg', alt: 'Mansion House bunkhouse at Yankee Springs' }}
