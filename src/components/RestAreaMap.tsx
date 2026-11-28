@@ -72,9 +72,12 @@ export default function RestAreaMap({ restAreas, center, zoom, showRegionColors 
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          // {r} resolves to "@2x" on retina screens (Leaflet 1.9): the 512px
-          // tiles keep the map crisp at 2x/3x DPR instead of upscaling 256px.
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+          // CARTO's @2x raster files are 256px fallbacks, so retina comes from
+          // detectRetina instead: Leaflet loads four z+1 tiles in place of one,
+          // which renders 1:1 device pixels on 2x/3x screens (no blurry upscale).
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
+          detectRetina={true}
+          subdomains="abcd"
           maxZoom={19}
         />
         <ScrollZoomHandler />

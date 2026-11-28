@@ -23,6 +23,10 @@ export default function cloudflareImageLoader({ src, width, quality }) {
     if (process.env.NODE_ENV === 'development') return `${src}?w=${width}`
 
     // Flexible variant: Cloudflare picks AVIF/WebP per browser and never enlarges.
+    // `,dpr=1` is deliberate, not decorative: edge caches key the variant by its
+    // literal string with a 48h TTL, and replaced sources (Nov 28 retina
+    // re-uploads) must not keep serving stale small derivatives from other PoPs.
+    // dpr=1 is a valid no-op transform that gives every URL a fresh cache key.
     const path = src.split('?')[0].replace(/^\//, '')
-    return `${DELIVERY}/${path}/w=${width},q=${quality || 75},fit=scale-down`
+    return `${DELIVERY}/${path}/w=${width},q=${quality || 75},fit=scale-down,dpr=1`
 }
