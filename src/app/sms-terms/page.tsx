@@ -91,7 +91,7 @@ export default function SMSTermsPage() {
               <SectionActions
                 className="mb-2"
                 primary={{ label: 'Call +1 207 307-7903', url: 'tel:+12073077903', kind: 'external' }}
-                secondary={[{ label: 'Email support@baserves.com', url: 'mailto:support@baserves.com', kind: 'external' }]}
+                secondary={[{ label: 'Email support@baserves.com', url: 'mailto:support@baserves.com', kind: 'external' }, { label: 'Explore Campgrounds & Parks', url: '/experiences', kind: 'internal' }]}
               />
 
               <h2 className="font-lake-serif text-[24px] text-lake-ink mt-10 mb-4">Privacy</h2>

@@ -35,28 +35,66 @@ function loadScript(): Promise<void> {
  * Cloudflare's "verify you are human" check. Most visitors never see a
  * puzzle; the box ticks itself. `resetKey` changes force a fresh token (a
  * token is good for one submission).
+ *
+ * The challenge script is only loaded once the box is about to come on
+ * screen (or the visitor interacts with the page). Visitors who just read
+ * never pull Cloudflare's challenge connections at all, so the page settles
+ * instantly, images finish loading, and the challenge's own console noise
+ * only ever appears next to a form someone is actually using.
  */
 export default function TurnstileWidget({ onToken, resetKey = 0 }: { onToken: (token: string) => void; resetKey?: number }) {
   const box = useRef<HTMLDivElement>(null)
   const widgetId = useRef<string | null>(null)
+  const started = useRef(false)
   const latest = useRef(onToken)
   latest.current = onToken
 
   useEffect(() => {
     let cancelled = false
-    loadScript()
-      .then(() => {
-        if (cancelled || !box.current || !window.turnstile) return
-        widgetId.current = window.turnstile.render(box.current, {
-          sitekey: TURNSTILE_SITE_KEY,
-          callback: (t: string) => latest.current(t),
-          'expired-callback': () => latest.current(''),
-          'error-callback': () => latest.current(''),
+    const start = () => {
+      if (cancelled || started.current) return
+      started.current = true
+      loadScript()
+        .then(() => {
+          if (cancelled || !box.current || !window.turnstile) return
+          widgetId.current = window.turnstile.render(box.current, {
+            sitekey: TURNSTILE_SITE_KEY,
+            callback: (t: string) => latest.current(t),
+            'expired-callback': () => latest.current(''),
+            'error-callback': () => latest.current(''),
+          })
         })
-      })
-      .catch(() => latest.current(''))
+        .catch(() => latest.current(''))
+    }
+
+    const el = box.current
+    let io: IntersectionObserver | null = null
+    const wake = () => start()
+    if (el && 'IntersectionObserver' in window) {
+      io = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            io?.disconnect()
+            io = null
+            start()
+          }
+        },
+        { rootMargin: '400px 0px' }
+      )
+      io.observe(el)
+    } else {
+      start()
+    }
+    // A click or keystroke anywhere means the visitor is doing something —
+    // make sure a token can be ready before they hit Submit.
+    window.addEventListener('pointerdown', wake, { once: true, passive: true })
+    window.addEventListener('keydown', wake, { once: true })
+
     return () => {
       cancelled = true
+      io?.disconnect()
+      window.removeEventListener('pointerdown', wake)
+      window.removeEventListener('keydown', wake)
       if (widgetId.current && window.turnstile) window.turnstile.remove(widgetId.current)
       widgetId.current = null
     }

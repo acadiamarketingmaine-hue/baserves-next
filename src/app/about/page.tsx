@@ -11,6 +11,7 @@ import {
   ClosingCta,
   Eyebrow,
   SectionActions,
+  StickyBooking,
   bandTint,
   frame,
   h2 as h2Class,
@@ -91,7 +92,7 @@ export default function AboutPage() {
 
       <LakesideShell>
         {/* Band 1: Hook */}
-        <section className="relative pt-32 pb-20">
+        <section data-lk-hero-section="" className="relative pt-32 pb-20">
           <div className="absolute inset-0">
             <Image
               src="/images/monongahela/spruce-knob-panorama.jpg"
@@ -219,6 +220,11 @@ export default function AboutPage() {
           primary={{ label: 'Explore Locations', url: '/experiences', kind: 'internal' }}
           phone="+1 207 307-7903"
           secondary={{ label: 'Join Our Team', url: '/careers', kind: 'internal' }}
+        />
+        <StickyBooking
+          name="BA Services"
+          cta={{ label: 'Book Your Stay', url: '/experiences', kind: 'internal' }}
+          phone="+1 207 307-7903"
         />
       </LakesideShell>
 

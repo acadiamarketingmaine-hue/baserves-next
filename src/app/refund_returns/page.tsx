@@ -103,7 +103,7 @@ export default function RefundPolicyPage() {
               <SectionActions
                 className="mt-10"
                 primary={{ label: 'Call +1 207 307-7903', url: 'tel:+12073077903', kind: 'external' }}
-                secondary={[{ label: 'Email support@baserves.com', url: 'mailto:support@baserves.com', kind: 'external' }]}
+                secondary={[{ label: 'Email support@baserves.com', url: 'mailto:support@baserves.com', kind: 'external' }, { label: 'Explore Campgrounds & Parks', url: '/experiences', kind: 'internal' }]}
               />
             </div>
           </div>

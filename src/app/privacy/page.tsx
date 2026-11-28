@@ -140,7 +140,7 @@ export default function PrivacyPolicyPage() {
               <SectionActions
                 className="mt-10"
                 primary={{ label: 'Call +1 207 307-7903', url: 'tel:+12073077903', kind: 'external' }}
-                secondary={[{ label: 'Email privacy@baserves.com', url: 'mailto:privacy@baserves.com', kind: 'external' }]}
+                secondary={[{ label: 'Email privacy@baserves.com', url: 'mailto:privacy@baserves.com', kind: 'external' }, { label: 'Explore Campgrounds & Parks', url: '/experiences', kind: 'internal' }]}
               />
             </div>
           </div>

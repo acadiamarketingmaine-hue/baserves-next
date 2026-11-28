@@ -9,6 +9,8 @@ import { faq, jobPosting } from '@/lib/schema'
 import { ListenButton } from '@/components/reader'
 import {
   LakesideShell,
+  ClosingCta,
+  StickyBooking,
   Eyebrow,
   RuledRows,
   SectionActions,
@@ -120,7 +122,7 @@ export default function CareersPage() {
         name="Outdoor Careers with BA Services Across 9 States"
         crumbName="Careers"
         description={metadata.description}
-        image="/images/long-lake/fall-foliage.jpg"
+        image="/images/long-lake/fall-aerial.jpg"
         nodes={[
           ...positions.map((p) =>
             jobPosting({
@@ -138,11 +140,11 @@ export default function CareersPage() {
 
       <LakesideShell>
         {/* Band 1 — Hook */}
-        <section className="relative pt-32 pb-20">
+        <section data-lk-hero-section="" className="relative pt-32 pb-20">
           <div className="absolute inset-0">
             <Image
-              src="/images/long-lake/fall-foliage.jpg"
-              alt="Careers at BA Services"
+              src="/images/long-lake/fall-aerial.jpg"
+              alt="Aerial view of autumn foliage at Long Lake Outdoor Center, a BA Services property"
               fill
               sizes="100vw"
               priority
@@ -316,6 +318,21 @@ export default function CareersPage() {
             </div>
           </div>
         </section>
+
+        {/* Band 5 close — Inspire Frictionless Action */}
+        <ClosingCta
+          photo={{ src: '/images/long-lake/fall-aerial.jpg', alt: 'Aerial view of autumn foliage at Long Lake Outdoor Center' }}
+          heading={"Ready to Work Outdoors — Or Plan Your Next Stay?"}
+          text="Apply in minutes above, call our Bangor office, or browse the campgrounds and parks our teams maintain across nine states."
+          primary={{ label: 'Apply Online Now', url: '#apply', kind: 'internal' }}
+          phone="+1 207 307-7903"
+          secondary={{ label: 'Explore Campgrounds', url: '/experiences', kind: 'internal' }}
+        />
+        <StickyBooking
+          name="BA Services Careers"
+          cta={{ label: 'Book Your Stay', url: '/experiences', kind: 'internal' }}
+          phone="+1 207 307-7903"
+        />
       </LakesideShell>
 
       <Footer />
