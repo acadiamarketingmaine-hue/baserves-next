@@ -195,7 +195,7 @@ export default function A11yWidget({ children }: { children: ReactNode }) {
           height: 52,
           width: 52,
           left: 'calc(0.5rem + env(safe-area-inset-left, 0px))',
-          top: '50%',
+          top: 'calc(50% - var(--ba-banner-lift, 0px) / 2)',
           transform: 'translateY(-50%)',
         }}
       >

@@ -41,7 +41,7 @@ export default function AssistantChat() {
   return (
     <div
       data-assistant-dock
-      className="fixed z-[9999] flex flex-col items-end gap-2 bottom-[calc(0.5rem+env(safe-area-inset-bottom,0px))] right-2 sm:bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] sm:right-4"
+      className="fixed z-[9999] flex flex-col items-end gap-2 bottom-[calc(0.5rem+env(safe-area-inset-bottom,0px)+var(--ba-banner-lift,0px))] right-2 sm:bottom-[calc(1rem+env(safe-area-inset-bottom,0px)+var(--ba-banner-lift,0px))] sm:right-4"
     >
       {open && (
         <Suspense fallback={null}>

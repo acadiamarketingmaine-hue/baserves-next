@@ -1,9 +1,14 @@
 import type { SocialFeedPost } from '@/lib/social-feed';
 
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] as const;
+
+/** UTC calendar date, built from parts. `toLocaleDateString` disagrees
+ *  between the Fly server and the browser (timezone day, and sometimes the
+ *  space character), which throws React #425/#418 on the homepage. */
 function formatPostDate(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return '';
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`;
 }
 
 function PlatformIcon({ platform }: { platform: 'facebook' | 'instagram' }) {

@@ -226,7 +226,7 @@ export default function Footer() {
         <div className="container-custom py-6 px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/70 text-sm">
-              © {new Date().getFullYear()} BA Services. All rights reserved.
+              © {new Date().getUTCFullYear()} BA Services. All rights reserved.
             </p>
             {/* Card-brand acceptance marks — Bar Harbor Bank card-brand review */}
             <div className="flex items-center gap-3">

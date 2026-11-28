@@ -109,6 +109,30 @@ export default function ProSiteWidgets({
   const [marketingOk, setMarketingOk] = useState(true);
 
   const panelRef = useRef<HTMLDivElement>(null);
+  const bannerRef = useRef<HTMLElement>(null);
+
+  // Shared lift so the chat pill and accessibility buttons sit above the
+  // cookie banner instead of covering Accept All / Preferences.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (!showConsent) {
+      root.style.setProperty('--ba-banner-lift', '0px');
+      return;
+    }
+    const el = bannerRef.current;
+    if (!el) return;
+    const apply = () => {
+      const h = el.getBoundingClientRect().height;
+      root.style.setProperty('--ba-banner-lift', `${Math.ceil(h) + 12}px`);
+    };
+    apply();
+    const ro = new ResizeObserver(apply);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      root.style.setProperty('--ba-banner-lift', '0px');
+    };
+  }, [showConsent, customizeConsent]);
 
   useEffect(() => {
     setMounted(true);
@@ -311,12 +335,12 @@ export default function ProSiteWidgets({
         .psw-trigger-wrap {
           position: fixed;
           z-index: 9990;
-          bottom: 20px;
+          bottom: calc(20px + var(--ba-banner-lift, 0px));
           ${position === 'left' ? 'left: 18px;' : 'right: 18px;'}
           font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
         }
         @media (max-width: 767px) {
-          .psw-trigger-wrap { bottom: ${mobileBottomOffset}px; ${position === 'left' ? 'left: 12px;' : 'right: 12px;'} }
+          .psw-trigger-wrap { bottom: calc(${mobileBottomOffset}px + var(--ba-banner-lift, 0px)); ${position === 'left' ? 'left: 12px;' : 'right: 12px;'} }
         }
         .psw-trigger {
           width: 44px;
@@ -594,7 +618,7 @@ export default function ProSiteWidgets({
       </div>
 
       {showConsent && (
-        <aside className="psw-cookie" data-cookie-banner="true" data-pro-cookie="true" role="region" aria-label="Cookie Preferences">
+        <aside ref={bannerRef} className="psw-cookie" data-cookie-banner="true" data-pro-cookie="true" role="region" aria-label="Cookie Preferences">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <div style={{ color: '#cbd5e1' }}>
               <strong style={{ color: '#ffffff', fontWeight: 600 }}>Cookie Preferences.</strong>{' '}
