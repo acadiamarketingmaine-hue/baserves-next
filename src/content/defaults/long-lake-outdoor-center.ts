@@ -25,9 +25,9 @@ export const longLakeOutdoorCenter: PropertyContent = {
   summary:
     'Historic CCC-built outdoor center in Yankee Springs Recreation Area. 16 cabins, 4 bunkhouses, 120-seat lodge with stone fireplaces, commercial kitchen, and private lake access. Weddings, retreats, and group camps in season.',
   seo: {
-    title: 'Long Lake Outdoor Center | Yankee Springs, Michigan | BA Services',
+    title: 'Long Lake Outdoor Center | Yankee Springs, MI | BA Services',
     description:
-      'CCC-built Long Lake Outdoor Center in Yankee Springs: 16 cabins, 4 bunkhouses, a 120-seat lodge, and a private lake.',
+      'Historic 1939 CCC camp in Yankee Springs, MI: 16 cabins, 4 bunkhouses, 120-seat lodge, commercial kitchen & private lake for retreats and weddings.',
   },
   hero: {
     src: '/images/long-lake/fall-aerial.jpg',

@@ -247,4 +247,48 @@ export const PARK_FAQS: Record<string, ParkFaqItem[]> = {
         'Late spring through early fall offers the best access for mountain camping, river swimming, and vibrant autumn foliage across Randolph County and the Allegheny Highlands.',
     },
   ],
+  'long-lake-outdoor-center': [
+    {
+      question: 'How many guests can Long Lake Outdoor Center accommodate?',
+      answer:
+        'Long Lake Outdoor Center accommodates approximately 120 guests across 16 cabins (divided between the Hill Unit and the Lake Unit), four bunkhouses, and a 120-seat central lodge with two stone fireplaces and a commercial kitchen.',
+    },
+    {
+      question: 'How do I book a wedding weekend or group retreat at Long Lake?',
+      answer:
+        'Check open dates online using the booking button on this page, or call our Long Lake office directly at (616) 644-9459 to reserve the camp for weddings, church retreats, family reunions, or youth camps.',
+    },
+    {
+      question: 'What is included in a Long Lake wedding weekend package?',
+      answer:
+        'A wedding weekend runs Friday at 3pm through Sunday at 11am with exclusive use of the lodge, dining hall, commercial kitchen, 16 cabins, 4 bunkhouses, and private lakefront, with cleaning included ($3,800 in 2027, $4,300 in 2028).',
+    },
+    {
+      question: 'When is Long Lake Outdoor Center open each year?',
+      answer:
+        'Long Lake Outdoor Center operates seasonally from spring through autumn inside Yankee Springs Recreation Area in Barry County, Michigan. Contact our office for current opening and closing dates.',
+    },
+  ],
+  'chief-noonday-outdoor-center': [
+    {
+      question: 'Which cabins are available to rent at Chief Noonday Outdoor Center?',
+      answer:
+        'Four semi-rustic cabins are available along Chief Noonday Lake: Bear Den (sleeps 6), Chickadee Cabin (sleeps 4), Crane House/Jee-Jak Wigwam (sleeps 8), and Deer Lodge (sleeps 8), accommodating up to 26 guests total.',
+    },
+    {
+      question: 'What amenities are inside the Chief Noonday cabins?',
+      answer:
+        'Each cabin includes electricity, electric heat, a mini fridge, microwave, and coffee maker, with stone fireplaces in Bear Den, Crane House, and Deer Lodge. Outside each cabin you will find a picnic table, fire pit, and grill, with a hand water pump and vault toilet nearby.',
+    },
+    {
+      question: 'How do I reserve Chief Noonday Outdoor Center for a group?',
+      answer:
+        'Use the Check Availability button on this page to reserve cabins online through our booking portal, or call (616) 644-9459 for scout outings, church retreats, family reunions, and team-building stays.',
+    },
+    {
+      question: 'Where is Chief Noonday Outdoor Center located?',
+      answer:
+        'Chief Noonday Outdoor Center is located inside Yankee Springs Recreation Area in Barry County near Middleville, Michigan, originally built in 1938 and listed on the National Register of Historic Places.',
+    },
+  ],
 }

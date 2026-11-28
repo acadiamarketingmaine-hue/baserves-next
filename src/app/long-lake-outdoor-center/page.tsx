@@ -3,8 +3,9 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ORIGIN, recreationArea } from '@/lib/schema'
+import { ORIGIN, faq, recreationArea } from '@/lib/schema'
 import { getPropertyContent, getSiteSettings } from '@/content'
+import { PARK_FAQS } from '@/content/park-faqs'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
   CardRow,
@@ -16,6 +17,7 @@ import {
   IntroFacts,
   LakesideShell,
   Mosaic,
+  ParkFaqBand,
   RuledRows,
   OfficialDisclosure,
   SectionActions,
@@ -125,6 +127,7 @@ export default async function LongLakePage() {
               { name: 'One-Evening Rental, 2027', price: '1500', url: '/long-lake-outdoor-center/weddings' },
             ],
           }),
+          faq('/long-lake-outdoor-center', PARK_FAQS['long-lake-outdoor-center']),
         ]}
       />
       <NoticeBanner notices={content.notices} />
@@ -290,6 +293,14 @@ export default async function LongLakePage() {
             />
           </div>
         </section>
+
+        <ParkFaqBand
+          eyebrow="Group stays & weddings"
+          heading="Planning your stay at Long Lake"
+          items={PARK_FAQS['long-lake-outdoor-center']}
+          tone="tint"
+          cta={ctas.hero}
+        />
 
         <ClosingCta
           photo={closingPhoto}

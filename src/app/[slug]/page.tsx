@@ -4,7 +4,9 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, faq, recreationArea } from '@/lib/schema'
 import { getPropertyContent, getSiteSettings, SLUG_TEMPLATE_SLUGS } from '@/content'
+import { PARK_FAQS } from '@/content/park-faqs'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
   ClosingCta,
@@ -13,6 +15,7 @@ import {
   IconChipList,
   IntroFacts,
   LakesideShell,
+  ParkFaqBand,
   SectionActions,
   SectionHeader,
   StickyBooking,
@@ -67,6 +70,7 @@ export default async function LocationPage({ params }: { params: { slug: string 
   const phone = content.phone ?? settings.phone
   const built = content.stats.find((s) => s.key === 'built')
   const facts = content.stats.filter((s) => s.key !== 'built')
+  const faqs = PARK_FAQS[params.slug] ?? []
 
   return (
     <main className="min-h-screen">
@@ -78,6 +82,21 @@ export default async function LocationPage({ params }: { params: { slug: string 
         crumbName={content.name}
         description={content.seo.description}
         image={content.hero.src}
+        mainEntity={`${ORIGIN}/${params.slug}#place`}
+        spatialCoverage={`${ORIGIN}/${params.slug}#place`}
+        nodes={[
+          recreationArea({
+            url: `/${params.slug}`,
+            name: content.name,
+            description: content.seo.description,
+            image: content.hero.src,
+            telephone: phone,
+            stateAbbr: 'MI',
+            campground: true,
+            amenities: content.features,
+          }),
+          ...(faqs.length > 0 ? [faq(`/${params.slug}`, faqs)] : []),
+        ]}
       />
       <NoticeBanner notices={content.notices} />
 
@@ -88,7 +107,7 @@ export default async function LocationPage({ params }: { params: { slug: string 
           title={content.name}
           subline={content.tagline}
           booking={{
-            title: content.name,
+            title: 'Reserve Your Cabins',
             text: content.summary,
             cta: content.ctas.hero,
             phone,
@@ -125,9 +144,19 @@ export default async function LocationPage({ params }: { params: { slug: string 
           </section>
         )}
 
+        {faqs.length > 0 && (
+          <ParkFaqBand
+            eyebrow="Group camping & cabin FAQs"
+            heading="Planning your group stay"
+            items={faqs}
+            tone="tint"
+            cta={content.ctas.hero}
+          />
+        )}
+
         <ClosingCta
           photo={content.gallery[1] ?? content.hero}
-          heading={content.name}
+          heading="Reserve Chief Noonday for Your Group"
           text={content.summary}
           primary={content.ctas.sidebar}
           phone={phone}

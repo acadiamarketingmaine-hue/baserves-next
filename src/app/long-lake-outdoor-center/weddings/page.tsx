@@ -101,8 +101,14 @@ export default function LongLakeWeddings() {
             name: 'Long Lake Outdoor Center',
             description: 'A rustic 1939 camp on a lake in the Michigan pines, between Grand Rapids and Kalamazoo. The whole property is yours for the wedding weekend.',
             url: `${ORIGIN}${PATH}`,
+            image: `${ORIGIN}${photos.coupleLakeshore.src}`,
             telephone: '+1-616-644-9459',
             maximumAttendeeCapacity: 120,
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: 42.55,
+              longitude: -85.4,
+            },
             address: {
               '@type': 'PostalAddress',
               addressLocality: 'Yankee Springs',
@@ -138,8 +144,8 @@ export default function LongLakeWeddings() {
           <Photo pic={photos.brideCabin} className={s.heroB} sizes="230px" />
 
           <div className={s.heroBox}>
-            <span className={s.caps}>Weddings at</span>
-            <h1 className={s.display}>Long Lake Outdoor Center</h1>
+            <span className={s.caps}>Yankee Springs, Michigan</span>
+            <h1 className={s.display}>Long Lake Outdoor Center Weddings</h1>
             <span className={s.script}>where memories take root</span>
             <p>
               A rustic 1939 camp on a lake in the Michigan pines, between Grand Rapids and Kalamazoo.
@@ -294,6 +300,7 @@ export default function LongLakeWeddings() {
 
           <div className={s.storyText}>
             <span className={s.script}>Your story belongs here</span>
+            <h2 className={s.display}>Book Your Lakeside Wedding Weekend</h2>
             <p>
               Every love story is its own, and we can’t wait to host yours. Book your weekend, or reach
               out to schedule a tour of Long Lake Outdoor Center.
