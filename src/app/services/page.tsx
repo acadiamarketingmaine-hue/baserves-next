@@ -15,6 +15,7 @@ import {
   h2 as h2Class,
   pillLight,
   pillGhostLight,
+  StickyBooking,
 } from '@/components/property/lakeside'
 
 const services = [
@@ -114,7 +115,7 @@ export default function ServicesPage() {
 
       <LakesideShell>
         {/* Band 1: Hook — Clean Above-the-Fold Hero */}
-        <section className="relative pt-32 pb-20 bg-lake-spruce overflow-hidden">
+        <section data-lk-hero-section="" className="relative pt-32 pb-20 bg-lake-spruce overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-20"
             style={{ backgroundImage: "url('/images/Burlingame2-1536x1152.jpg')" }}
@@ -236,7 +237,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Band 5: Inspire Frictionless Action */}
-        <section className="relative isolate overflow-hidden py-16 md:py-24 bg-lake-spruce text-white">
+        <section data-lk-closing="" className="relative isolate overflow-hidden py-16 md:py-24 bg-lake-spruce text-white">
           <div
             className="absolute inset-0 -z-10 bg-cover bg-center opacity-25"
             style={{ backgroundImage: "url('/images/monongahela/spruce-knob-panorama.jpg')" }}
@@ -262,6 +263,12 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+        {/* Sticky booking CTA on the funnel page, same bar as the property pages. */}
+        <StickyBooking
+          name="BA Services"
+          cta={{ label: 'Partnership Inquiries', url: '/contact?topic=partnership', kind: 'internal' }}
+          phone="+1 207 307-7903"
+        />
       </LakesideShell>
 
       <Footer />

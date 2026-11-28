@@ -11,6 +11,36 @@ const topics = [
   { id: 'feedback', label: 'Rest Stop Feedback', icon: <ClipboardIcon className="w-6 h-6" />, description: 'Share feedback about a rest area', href: '/leave-a-review' },
 ]
 
+const partnerInput = (hasError: string | undefined) =>
+  `w-full px-4 py-2.5 pr-12 border rounded-lg text-base transition-colors ${
+    hasError
+      ? 'border-red-400 ring-2 ring-red-200 focus:ring-red-300 focus:border-red-500'
+      : 'border-lake-line focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce'
+  }`
+
+/** Wraps a missed required field with the crisp vector `!` badge + one-line hint. */
+function FieldShell({ error, children }: { error?: string; children: React.ReactNode }) {
+  return (
+    <div className="relative">
+      {children}
+      {error ? (
+        <>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-white"
+          >
+            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round">
+              <path d="M12 5v10" />
+              <path d="M12 18.5v.5" />
+            </svg>
+          </span>
+          <p role="alert" className="mt-1 text-sm text-red-600">{error}</p>
+        </>
+      ) : null}
+    </div>
+  )
+}
+
 export default function ContactForm() {
   const [topic, setTopic] = useState<'partnership' | 'careers'>('partnership')
 
@@ -37,14 +67,49 @@ export default function ContactForm() {
   const [turnstileToken, setTurnstileToken] = useState('')
   const [turnstileReset, setTurnstileReset] = useState(0)
   const [partnerError, setPartnerError] = useState('')
+  // Missed-field feedback: no native bubbles. On submit we mark every empty
+  // required field with a red ring + `!` badge and scroll to the first one.
+  const [partnerFieldErrors, setPartnerFieldErrors] = useState<Record<string, string>>({})
   const formOpenedAt = useRef<number>(Date.now())
   useEffect(() => {
     if (topic === 'partnership') formOpenedAt.current = Date.now()
   }, [topic])
 
+  const validatePartnerForm = (): Record<string, string> => {
+    const errs: Record<string, string> = {}
+    if (!partnerForm.name.trim()) errs['partner-name'] = 'Please enter your full name.'
+    if (!partnerForm.email.trim()) errs['partner-email'] = 'Please enter your email so we can reply.'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(partnerForm.email.trim())) errs['partner-email'] = 'That email address looks incomplete.'
+    if (!partnerForm.message.trim()) errs['partner-message'] = 'Please tell us a little about your property or needs.'
+    return errs
+  }
+
+  const clearPartnerFieldError = (id: string) => {
+    setPartnerFieldErrors(prev => {
+      if (!prev[id]) return prev
+      const next = { ...prev }
+      delete next[id]
+      return next
+    })
+  }
+
   const handlePartnerSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setPartnerError('')
+
+    const nextErrors = validatePartnerForm()
+    const firstKey = Object.keys(nextErrors)[0]
+    if (firstKey) {
+      setPartnerFieldErrors(nextErrors)
+      const el = document.getElementById(firstKey) as HTMLElement | null
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        el.focus({ preventScroll: true })
+      }
+      return
+    }
+    setPartnerFieldErrors({})
+
     setSubmitting(true)
     try {
       const res = await fetch('/api/contact', {
@@ -166,7 +231,7 @@ export default function ContactForm() {
 
       {/* Partnerships form */}
       {topic === 'partnership' && (
-        <form onSubmit={handlePartnerSubmit} className="bg-white rounded-md border border-lake-line p-8 space-y-6">
+        <form onSubmit={handlePartnerSubmit} noValidate className="bg-white rounded-md border border-lake-line p-8 space-y-6">
           <p className="text-gray-600">Interested in partnering with BA Services for property management? Tell us about your facility.</p>
           {/* Honeypot — hidden from people and from screen readers, bots fill it. */}
           <div aria-hidden="true" className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden">
@@ -175,24 +240,28 @@ export default function ContactForm() {
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-              <input type="text" required value={partnerForm.name} onChange={e => setPartnerForm(p => ({ ...p, name: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
+              <label htmlFor="partner-name" className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+              <FieldShell error={partnerFieldErrors['partner-name']}>
+                <input id="partner-name" type="text" autoComplete="name" required aria-invalid={!!partnerFieldErrors['partner-name']} value={partnerForm.name} onChange={e => { setPartnerForm(p => ({ ...p, name: e.target.value })); clearPartnerFieldError('partner-name') }} className={partnerInput(partnerFieldErrors['partner-name'])} />
+              </FieldShell>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Organization</label>
-              <input type="text" value={partnerForm.organization} onChange={e => setPartnerForm(p => ({ ...p, organization: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
+              <label htmlFor="partner-organization" className="block text-sm font-medium text-gray-700 mb-1">Organization</label>
+              <input id="partner-organization" type="text" autoComplete="organization" value={partnerForm.organization} onChange={e => setPartnerForm(p => ({ ...p, organization: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
-              <input type="email" required value={partnerForm.email} onChange={e => setPartnerForm(p => ({ ...p, email: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
+              <label htmlFor="partner-email" className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+              <FieldShell error={partnerFieldErrors['partner-email']}>
+                <input id="partner-email" type="email" autoComplete="email" required aria-invalid={!!partnerFieldErrors['partner-email']} value={partnerForm.email} onChange={e => { setPartnerForm(p => ({ ...p, email: e.target.value })); clearPartnerFieldError('partner-email') }} className={partnerInput(partnerFieldErrors['partner-email'])} />
+              </FieldShell>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-              <input type="tel" value={partnerForm.phone} onChange={e => setPartnerForm(p => ({ ...p, phone: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
+              <label htmlFor="partner-phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+              <input id="partner-phone" type="tel" autoComplete="tel" value={partnerForm.phone} onChange={e => setPartnerForm(p => ({ ...p, phone: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Property/Facility Type</label>
-              <select value={partnerForm.propertyType} onChange={e => setPartnerForm(p => ({ ...p, propertyType: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce">
+              <label htmlFor="partner-property-type" className="block text-sm font-medium text-gray-700 mb-1">Property/Facility Type</label>
+              <select id="partner-property-type" value={partnerForm.propertyType} onChange={e => setPartnerForm(p => ({ ...p, propertyType: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce">
                 <option value="">Select type...</option>
                 <option>Campground / Recreation Area</option>
                 <option>State / National Park</option>
@@ -203,13 +272,15 @@ export default function ContactForm() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Location (State/City)</label>
-              <input type="text" value={partnerForm.location} onChange={e => setPartnerForm(p => ({ ...p, location: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
+              <label htmlFor="partner-location" className="block text-sm font-medium text-gray-700 mb-1">Location (State/City)</label>
+              <input id="partner-location" type="text" value={partnerForm.location} onChange={e => setPartnerForm(p => ({ ...p, location: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Tell us about your needs *</label>
-            <textarea required rows={4} value={partnerForm.message} onChange={e => setPartnerForm(p => ({ ...p, message: e.target.value }))} className="w-full px-4 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce/30 focus:border-lake-spruce" placeholder="Describe your property, current challenges, and what you're looking for..." />
+            <label htmlFor="partner-message" className="block text-sm font-medium text-gray-700 mb-1">Tell us about your needs *</label>
+            <FieldShell error={partnerFieldErrors['partner-message']}>
+              <textarea id="partner-message" required rows={4} aria-invalid={!!partnerFieldErrors['partner-message']} value={partnerForm.message} onChange={e => { setPartnerForm(p => ({ ...p, message: e.target.value })); clearPartnerFieldError('partner-message') }} placeholder="Describe your property, current challenges, and what you're looking for..." className={partnerInput(partnerFieldErrors['partner-message'])} />
+            </FieldShell>
           </div>
           <TurnstileWidget onToken={setTurnstileToken} resetKey={turnstileReset} />
           {partnerError && (

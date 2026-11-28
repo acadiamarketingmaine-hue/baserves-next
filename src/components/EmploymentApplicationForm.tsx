@@ -120,6 +120,21 @@ export default function EmploymentApplicationForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
+
+    // noValidate + scroll to the first missed field: a 45-question application
+    // must never "do nothing" on submit, and native bubbles are unreliable here.
+    const form = e.currentTarget as HTMLFormElement
+    form.querySelectorAll('.field-miss').forEach((el) => el.classList.remove('field-miss'))
+    if (!form.checkValidity()) {
+      const first = form.querySelector(':invalid') as HTMLElement | null
+      setError('Some required fields still need an answer. We\u2019ve highlighted the first one.')
+      if (first) {
+        first.classList.add('field-miss')
+        first.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        first.focus({ preventScroll: true })
+      }
+      return
+    }
     setSubmitting(true)
 
     try {
@@ -178,7 +193,7 @@ export default function EmploymentApplicationForm() {
   const sectionClass = 'border-t-2 border-lake-line pt-6 mt-8'
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit} noValidate onInput={(e) => (e.target as HTMLElement).classList.remove('field-miss')} className="space-y-8">
       {/* Honeypot: hidden from people and from screen readers; bots fill it. */}
       <div aria-hidden="true" className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden">
         <label htmlFor="app-website">Website</label>

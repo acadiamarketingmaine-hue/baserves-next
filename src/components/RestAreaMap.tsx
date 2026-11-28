@@ -71,8 +71,11 @@ export default function RestAreaMap({ restAreas, center, zoom, showRegionColors 
         zoomControl={true}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          // {r} resolves to "@2x" on retina screens (Leaflet 1.9): the 512px
+          // tiles keep the map crisp at 2x/3x DPR instead of upscaling 256px.
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+          maxZoom={19}
         />
         <ScrollZoomHandler />
         <FitBounds restAreas={restAreas} />

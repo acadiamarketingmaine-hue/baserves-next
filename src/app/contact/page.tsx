@@ -6,7 +6,7 @@ import ContactForm from '@/components/ContactForm'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 import { ListenButton } from '@/components/reader'
-import { LakesideShell, SectionActions, Eyebrow, frame, h2 as h2Class, pillLight, pillGhostLight } from '@/components/property/lakeside'
+import { LakesideShell, SectionActions, Eyebrow, frame, h2 as h2Class, pillLight, pillGhostLight, StickyBooking } from '@/components/property/lakeside'
 
 export const metadata = {
   title: { absolute: 'Contact BA Services in Bangor, Maine' },
@@ -29,7 +29,7 @@ export default function ContactPage() {
       />
 
       <LakesideShell>
-        <section className="relative pt-32 pb-16 bg-lake-spruce overflow-hidden">
+        <section data-lk-hero-section="" className="relative pt-32 pb-16 bg-lake-spruce overflow-hidden">
           {/* CSS background keeps the lakeside wash without a priority fill Image as LCP */}
           <div
             className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -71,7 +71,7 @@ export default function ContactPage() {
             </Suspense>
 
             {/* Business address and contact details — Bar Harbor Bank card-brand review */}
-            <div className="mt-16 pt-12 border-t border-lake-line">
+            <div data-lk-closing="" className="mt-16 pt-12 border-t border-lake-line">
               <Eyebrow label="Direct Channels" rule className="mb-4" />
               <h2 className={`${h2Class} text-lake-ink mb-6`}>Headquarters &amp; Office Hours</h2>
               <div className="grid sm:grid-cols-3 gap-6">
@@ -109,6 +109,12 @@ export default function ContactPage() {
             />
           </div>
         </section>
+        {/* Sticky CTA keeps the booking door open while the form is being filled. */}
+        <StickyBooking
+          name="BA Services"
+          cta={{ label: 'Book Your Adventure', url: '/experiences', kind: 'booking' }}
+          phone="+1 207 307-7903"
+        />
       </LakesideShell>
 
       <Footer />

@@ -10,7 +10,7 @@ import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon } from '@/componen
 import { rotateFeatured } from '@/lib/featured-rotation'
 import { ListenButton } from '@/components/reader'
 import { useReducedMotion } from '@/components/a11y'
-import { LakesideShell, SectionActions, Eyebrow, bandPaper, bandTint, pillLight, pillGhostLight, pillPrimary } from '@/components/property/lakeside'
+import { LakesideShell, SectionActions, Eyebrow, bandPaper, bandTint, pillLight, pillGhostLight, pillPrimary, StickyBooking } from '@/components/property/lakeside'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 import ScopeAccordion from '@/components/ScopeAccordion'
@@ -1172,7 +1172,7 @@ export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeCl
       <LakesideShell>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-lake-ink">
+      <section data-lk-hero-section="" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-lake-ink">
         {/* Background Video */}
         <div className="absolute inset-0">
           <video
@@ -1596,7 +1596,7 @@ export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeCl
       <SocialFeedSection posts={socialPosts} />
 
       {/* CTA Section */}
-      <section className="relative py-32 overflow-hidden">
+      <section data-lk-closing="" className="relative py-32 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/long-lake/fall-foliage.jpg"
@@ -1632,6 +1632,14 @@ export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeCl
           </div>
         </div>
       </section>
+        {/* Sticky booking CTA (funnel velocity): appears once the hero scrolls
+            away, steps aside at the closing band. Property pages already ship
+            it; the three funnel pages get the same bar. */}
+        <StickyBooking
+          name="BA Services"
+          cta={{ label: 'Book Your Adventure', url: '/experiences', kind: 'booking' }}
+          phone="+1 207 307-7903"
+        />
       </LakesideShell>
 
       <Footer />
