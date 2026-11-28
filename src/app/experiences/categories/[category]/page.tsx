@@ -65,7 +65,7 @@ const categoryData: Record<string, any> = {
     detailLabel: 'Drive',
     priceLabel: 'Cost',
     name: 'Scenic Drives',
-    description: 'Experience breathtaking vistas and natural beauty from the comfort of your vehicle.',
+    description: 'Scenic drives on BA Services land, including the 43-mile Highland Scenic Highway in Monongahela National Forest and forest roads in Alabama and Indiana.',
     image: '/images/monongahela/scenic-drive.jpg',
     experiences: [
       { name: 'Highland Scenic Highway', location: 'Monongahela National Forest, WV', duration: '43 miles', price: 'Free', image: '/images/monongahela/scenic-drive.jpg', href: '/monongahela-national-forest' },
@@ -77,7 +77,7 @@ const categoryData: Record<string, any> = {
     detailLabel: 'Booking',
     priceLabel: 'Details',
     name: 'Conference Center Rentals',
-    description: 'Host your next retreat, wedding, or corporate event in a stunning natural setting.',
+    description: 'Conference and event space at Long Lake Outdoor Center, Meramec State Park, and the 100-person Corinth Pavilion in Bankhead National Forest.',
     image: '/images/long-lake/weddings/dining-hall.jpg',
     experiences: [
       { name: 'Long Lake Outdoor Center', location: 'Middleville, MI', duration: 'Daily / Weekly', price: 'Contact for rates', image: '/images/long-lake/weddings/dining-hall.jpg', href: '/long-lake-outdoor-center' },

@@ -7,7 +7,7 @@ import { LakesideShell, SectionActions, frame } from '@/components/property/lake
 
 export const metadata = {
   title: { absolute: 'SMS Terms & Conditions | BA Services' },
-  description: 'Terms and conditions for BA Services SMS messaging services.',
+  description: 'Terms for BA Services text messages about reservations, tours, and visitor updates, including how to opt out of SMS from our Bangor office.',
   alternates: {
     canonical: '/sms-terms',
   },
@@ -22,7 +22,7 @@ export default function SMSTermsPage() {
         url="/sms-terms"
         name="SMS Terms & Conditions | BA Services"
         crumbName="SMS Terms & Conditions"
-        description="Terms and conditions for BA Services SMS messaging services."
+        description="Terms for BA Services text messages about reservations, tours, and visitor updates, including how to opt out of SMS from our Bangor office."
       />
 
       <LakesideShell>

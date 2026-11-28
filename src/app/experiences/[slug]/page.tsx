@@ -90,6 +90,7 @@ The campground provides a variety of camping options from basic tent sites to fu
     name: 'Indian-Celina Lakes Recreation Area',
     tagline: 'Twin Lakes in Hoosier National Forest',
     description: 'Peaceful lakeside camping in southern Indiana',
+    metaDescription: 'Indian-Celina Lakes in Hoosier National Forest: twin lakes, 59 campsites, shore fishing, and hiking in southern Indiana.',
     longDescription: `Indian-Celina Lakes Recreation Area offers a tranquil escape in the heart of Hoosier National Forest. These twin lakes provide excellent fishing opportunities for bass, bluegill, and catfish, while the surrounding forest offers scenic hiking trails.
 
 The campground features well-maintained sites with access to both lakes. Whether you prefer to spend your days fishing from the shore, paddling the calm waters, or exploring the forest trails, Indian-Celina Lakes provides a peaceful retreat from everyday life.`,
@@ -172,7 +173,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
   return {
     title: { absolute: `${experience.name} | BA Services` },
-    description: experience.longDescription?.split('\n\n')[0] || experience.description,
+    description: ('metaDescription' in experience ? experience.metaDescription : experience.description),
     alternates: { canonical: `/experiences/${params.slug}` },
     openGraph: og(`/experiences/${params.slug}`),
   }

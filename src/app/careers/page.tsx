@@ -65,7 +65,7 @@ const EMPLOYMENT_TYPE: Record<string, string> = { Seasonal: 'TEMPORARY', 'Full-T
 const JOBS_DATE_POSTED = '2026-01-16'
 
 export const metadata = {
-  title: 'Careers',
+  title: { absolute: 'Careers with BA Services in 9 States' },
   description: 'Join BA Services — seasonal and full-time outdoor jobs at campgrounds, state parks, and rest areas across 9 states. Apply online today.',
   alternates: {
     canonical: '/careers',
@@ -79,7 +79,7 @@ export default function CareersPage() {
       <Navigation />
       <PageSchema
         url="/careers"
-        name="Careers | BA Services"
+        name="Careers with BA Services in 9 States"
         crumbName="Careers"
         description={metadata.description}
         image="/images/long-lake/fall-foliage.jpg"

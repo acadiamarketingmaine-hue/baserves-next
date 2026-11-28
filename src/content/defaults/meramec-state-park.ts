@@ -25,7 +25,7 @@ export const meramecStatePark: PropertyContent = {
   seo: {
     title: 'Meramec State Park | Sullivan, Missouri | BA Services',
     description:
-      'Explore Meramec State Park along the Meramec River in Sullivan, Missouri. 19 cabins, motel lodging, 40+ caves, Fisher Cave tours, float trips, and CCC-built historic architecture across 6,896 acres.',
+      'Meramec State Park in Sullivan, Missouri: 19 cabins, motel lodging, 40+ caves, float trips, and 6,896 acres on the Meramec River.',
   },
   hero: {
     src: '/images/meramec-state-park/cabin-2.jpg',

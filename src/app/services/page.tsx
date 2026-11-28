@@ -73,7 +73,7 @@ const services = [
 ]
 
 export const metadata = {
-  title: 'Services',
+  title: { absolute: 'Recreation Facility Management Services' },
   description: 'Campground maintenance, landscaping, rest area cleaning, and preventive repairs. BA Services manages federal, state, and DOT recreation facilities across America.',
   alternates: {
     canonical: '/services',
@@ -87,7 +87,7 @@ export default function ServicesPage() {
       <Navigation />
       <PageSchema
         url="/services"
-        name="Services | BA Services"
+        name="Recreation Facility Management Services"
         crumbName="Services"
         description="Campground maintenance, landscaping, rest area cleaning, and preventive repairs. BA Services manages federal, state, and DOT recreation facilities across America."
         type="CollectionPage"

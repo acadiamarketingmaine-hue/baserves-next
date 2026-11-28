@@ -26,7 +26,7 @@ import {
 
 export const metadata: Metadata = {
   title: { absolute: 'Canal Bridge Campground | Saco River, Fryeburg, Maine | BA Services' },
-  description: 'Discover Canal Bridge Campground on the Saco River in Fryeburg, Maine. 36 numbered campsites, river frontage for kayaking, canoeing, and fishing with stunning White Mountain views.',
+  description: 'Canal Bridge Campground on the Saco River in Fryeburg, Maine: 36 numbered campsites, river frontage, and White Mountain views.',
   alternates: { canonical: '/experiences/canal-bridge' },
   openGraph: og('/experiences/canal-bridge'),
 }

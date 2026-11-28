@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { PageSchema } from '@/components/SchemaMarkup'
+import { og } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: "Small Business Connection",
-  description: "A network of trusted local service businesses across Maine and New England.",
+  title: { absolute: "Small Business Connection | BA Services" },
+  description: "BA Services lists trusted local service businesses across Maine and New England that share a commitment to quality work and honest pricing.",
+  alternates: { canonical: "/small-business-connection" },
+  openGraph: og("/small-business-connection"),
   robots: { index: true, follow: true },
 };
 
@@ -14,13 +17,15 @@ export default function SmallBusinessConnectionPage() {
         url="/small-business-connection"
         name="Small Business Connection | BA Services"
         crumbName="Small Business Connection"
-        description="A network of trusted local service businesses across Maine and New England."
+        description="BA Services lists trusted local service businesses across Maine and New England that share a commitment to quality work and honest pricing."
       />
       <h1 style={ { fontSize: "2rem", fontWeight: 700, marginBottom: 12 } }>Small Business Connection</h1>
+      <h2 style={ { fontSize: "1.05rem", fontWeight: 700, margin: "0 0 12px", color: "#222" } }>Maine and New England</h2>
       <p style={ { fontSize: "1.05rem", color: "#555", marginBottom: 32, lineHeight: 1.7 } }>
         We are proud to be part of a network of trusted local service businesses across Maine and New England.
         These companies share our commitment to quality work, honest pricing, and exceptional customer service.
       </p>
+      <h2 style={ { fontSize: "1.05rem", fontWeight: 700, margin: "0 0 12px", color: "#222" } }>Businesses in the network</h2>
       <ul style={ { listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 } }>
             <li key="https://www.newenglandepoxyllc.com">
               <a href="https://www.newenglandepoxyllc.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">

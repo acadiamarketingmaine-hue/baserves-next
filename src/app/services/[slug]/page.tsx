@@ -22,7 +22,7 @@ const services: Record<string, any> = {
   'campground-park-maintenance': {
     name: 'Campground & Park Maintenance',
     tagline: 'Comprehensive Facility Management',
-    description: 'Professional maintenance services that keep facilities and grounds in top condition.',
+    description: 'Daily inspections, grounds care, building repairs, utilities, and seasonal prep that keep BA Services campgrounds and parks ready for visitors.',
     longDescription: `Our campground and park maintenance services ensure that every facility under our care meets the highest standards of quality and safety. From routine groundskeeping to emergency repairs, our experienced team handles all aspects of facility maintenance.
 
 We understand that well-maintained facilities are essential for positive visitor experiences. Our proactive approach to maintenance helps prevent issues before they arise, minimizing downtime and maximizing visitor satisfaction. Whether managing a small campground or a large recreation area, we tailor our services to meet your specific needs.`,
@@ -46,7 +46,7 @@ We understand that well-maintained facilities are essential for positive visitor
   'landscaping-and-groundskeeping': {
     name: 'Landscaping & Groundskeeping',
     tagline: 'Professional Landscape Services',
-    description: 'Expert landscaping services maintaining natural beauty and visitor safety.',
+    description: 'Trail clearing, tree care, erosion control, and native plant work that keep BA Services recreation areas safe and looking like the forest around them.',
     longDescription: `Our landscaping and groundskeeping services preserve and enhance the natural beauty of outdoor recreation areas. From trail maintenance to invasive species management, we ensure that every corner of your property looks its best while supporting ecological health.
 
 Our team includes certified arborists, landscape professionals, and environmental specialists who understand the unique requirements of public recreation areas. We balance aesthetic appeal with ecological responsibility, creating sustainable landscapes that visitors can enjoy for generations.`,
@@ -70,7 +70,7 @@ Our team includes certified arborists, landscape professionals, and environmenta
   'rest-area-cleaning-and-upkeep': {
     name: 'Rest Area Cleaning & Upkeep',
     tagline: 'Spotless Facilities, Happy Visitors',
-    description: 'Thorough cleaning and upkeep ensuring visitor comfort and hygiene.',
+    description: 'Restroom cleaning, trash collection, shelter care, and supply restocking that keep BA Services rest areas comfortable for travelers.',
     longDescription: `Clean facilities are fundamental to positive visitor experiences. Our rest area cleaning services ensure that restrooms, shelters, and common areas meet the highest standards of cleanliness and hygiene.
 
 Our trained cleaning crews follow strict protocols and use environmentally-friendly products whenever possible. We schedule our services to minimize disruption while maintaining consistently clean facilities throughout operating hours.`,
@@ -94,7 +94,7 @@ Our trained cleaning crews follow strict protocols and use environmentally-frien
   'preventive-maintenance-and-repairs': {
     name: 'Preventive Maintenance & Repairs',
     tagline: 'Proactive Care for Your Facilities',
-    description: 'Preventing issues before they impact your visitors.',
+    description: 'Scheduled inspections of HVAC, plumbing, electrical, playgrounds, docks, and fire equipment before a breakdown reaches BA Services visitors.',
     longDescription: `Our preventive maintenance program identifies and addresses potential problems before they become costly emergencies. Regular inspections, scheduled maintenance, and detailed record-keeping ensure that your facilities remain in top condition year-round.
 
 From HVAC systems to playground equipment, our certified technicians have the expertise to maintain all types of recreation facility infrastructure. We work with you to develop maintenance schedules that minimize operational disruptions while maximizing equipment longevity.`,
@@ -148,7 +148,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         name={`${service.name} | BA Services`}
         crumbName={service.name}
         description={service.description}
-        type="ItemPage"
+        type="WebPage"
         image={service.image}
         mainEntity={serviceId(params.slug)}
         crumbs={[{ name: 'Services', url: '/services' }]}

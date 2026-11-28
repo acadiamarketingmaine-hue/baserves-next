@@ -25,7 +25,7 @@ export const bankheadNationalForest: PropertyContent = {
   seo: {
     title: 'Bankhead National Forest | Alabama | BA Services',
     description:
-      'Explore Bankhead National Forest — "The Land of a Thousand Waterfalls." 180,000+ acres featuring the Sipsey Wilderness, 84 breeding bird species, campgrounds, and the Hurricane Creek Shooting Range.',
+      'Bankhead National Forest in Alabama: 180,000+ acres, the Sipsey Wilderness, campgrounds, and 84 breeding bird species.',
   },
   hero: {
     src: '/images/clear-creek-swimming.jpg',

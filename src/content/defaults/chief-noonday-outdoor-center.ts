@@ -16,7 +16,7 @@ export const chiefNoondayOutdoorCenter: PropertyContent = {
   seo: {
     title: 'Chief Noonday Outdoor Center | BA Services',
     description:
-      'Chief Noonday Outdoor Center (CNOC) is a historic group camp and retreat facility located within Yankee Springs Recreation Area in Barry County, Michigan. Named for a prominent Potawatomi leader, the center reflects both the cultural heritage of the region and the legacy of early conservation efforts.',
+      'Historic group camp and retreat inside Yankee Springs Recreation Area, Barry County, Michigan, named for a Potawatomi leader.',
   },
   hero: {
     src: '/images/chief-noonday/deer-lodge.jpg',

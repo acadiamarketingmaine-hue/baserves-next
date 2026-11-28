@@ -3,8 +3,8 @@ import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Leave a Review | BA Services' },
-  description: 'Submit your feedback about BA Services rest areas and recreation facilities.',
+  title: { absolute: 'Leave a Review for a BA Services Park' },
+  description: 'Share feedback about a BA Services rest area in Utah or Iowa, or a campground and park we manage. Your note helps the crew keep facilities ready.',
   alternates: {
     canonical: '/leave-a-review',
   },
@@ -20,9 +20,9 @@ export default function LeaveReviewLayout({
     <>
       <PageSchema
         url="/leave-a-review"
-        name="Leave a Review | BA Services"
+        name="Leave a Review for a BA Services Park"
         crumbName="Leave a Review"
-        description="Submit your feedback about BA Services rest areas and recreation facilities."
+        description="Share feedback about a BA Services rest area in Utah or Iowa, or a campground and park we manage. Your note helps the crew keep facilities ready."
         type="ContactPage"
         image="/images/Burlingame1-2048x1365.jpg"
       />

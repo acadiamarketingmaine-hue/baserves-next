@@ -24,7 +24,7 @@ export const gatewoodGroupCampground: PropertyContent = {
   locationLine: '',
   summary: 'Gatewood Group Campground offers a secluded group camping experience within the Monongahela National Forest. Designed for organized groups, the campground provi',
   seo: {
-    title: 'Gatewood Group Campground | Monongahela National Forest | BA Services',
+    title: 'Gatewood Group Campground | West Virginia',
     description: 'Gatewood Group Campground offers a secluded group camping experience within the Monongahela National Forest. Designed for organized groups, the campground provi',
   },
   hero: {

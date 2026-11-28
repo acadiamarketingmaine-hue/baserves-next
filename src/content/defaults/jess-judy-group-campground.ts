@@ -24,7 +24,7 @@ export const jessJudyGroupCampground: PropertyContent = {
   locationLine: '',
   summary: 'Jess Judy Group Campground provides dedicated group camping facilities in the heart of the Monongahela National Forest. Ideal for scout troops, family reunions,',
   seo: {
-    title: 'Jess Judy Group Campground | Monongahela National Forest | BA Services',
+    title: 'Jess Judy Group Campground | West Virginia',
     description: 'Jess Judy Group Campground provides dedicated group camping facilities in the heart of the Monongahela National Forest. Ideal for scout troops, family reunions,',
   },
   hero: {

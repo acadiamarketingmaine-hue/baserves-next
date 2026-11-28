@@ -6,8 +6,8 @@ import { ListenButton } from '@/components/reader'
 import { LakesideShell, SectionActions, frame } from '@/components/property/lakeside'
 
 export const metadata = {
-  title: { absolute: 'Refund Policy | BA Services' },
-  description: 'Learn about our refund and cancellation policies for reservations.',
+  title: { absolute: 'BA Services Reservation Refund Policy' },
+  description: 'Refund and cancellation terms for BA Services cabin, campsite, and watercraft reservations at the recreation areas we manage.',
   alternates: {
     canonical: '/refund_returns',
   },
@@ -20,9 +20,9 @@ export default function RefundPolicyPage() {
       <Navigation />
       <PageSchema
         url="/refund_returns"
-        name="Refund Policy | BA Services"
+        name="BA Services Reservation Refund Policy"
         crumbName="Refund Policy"
-        description="Learn about our refund and cancellation policies for reservations."
+        description="Refund and cancellation terms for BA Services cabin, campsite, and watercraft reservations at the recreation areas we manage."
       />
 
       <LakesideShell>

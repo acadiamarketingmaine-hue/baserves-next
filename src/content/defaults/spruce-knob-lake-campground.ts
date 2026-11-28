@@ -24,7 +24,7 @@ export const spruceKnobLakeCampground: PropertyContent = {
   locationLine: '',
   summary: 'Spruce Knob Lake Campground is perched at high elevation near the summit of Spruce Knob — the highest point in West Virginia at 4,863 feet. The campground surro',
   seo: {
-    title: 'Spruce Knob Lake Campground | Monongahela National Forest | BA Services',
+    title: 'Spruce Knob Lake Campground | West Virginia',
     description: 'Spruce Knob Lake Campground is perched at high elevation near the summit of Spruce Knob — the highest point in West Virginia at 4,863 feet. The campground surro',
   },
   hero: {

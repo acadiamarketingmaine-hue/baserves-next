@@ -111,7 +111,7 @@ export default function IowaDotPage() {
         name={`${metadata.title} | BA Services`}
         crumbName={metadata.title}
         description={metadata.description}
-        type="ItemPage"
+        type="WebPage"
         image="/images/iowa-dot-collage.png"
         mainEntity={serviceId('iowa-dot')}
         crumbs={[{ name: 'Services', url: '/services' }]}
