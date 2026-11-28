@@ -7,10 +7,10 @@ import ProSiteWidgets from '@/components/ProSiteWidgets'
 
 export const metadata: Metadata = {
   title: {
-    default: 'BA Services | Recreation Area Management & DOT Rest Areas Across 9 States',
+    default: 'BA Services | Recreation Area Management & DOT Rest Areas',
     template: '%s | BA Services',
   },
-  description: 'BA Services, Inc. manages campgrounds, national forests, state parks, and DOT rest areas across 9 states. Professional recreation management in AL, IN, ME, MI, MO, RI, WV, IA & UT.',
+  description: 'BA Services manages campgrounds, national forests, state parks, and DOT rest areas across 9 states, with well-kept facilities for visitors.',
   keywords: 'recreation area management, campground management, DOT rest areas, national forest campgrounds, state park management, outdoor recreation, BA Services, camping, hiking',
   metadataBase: new URL('https://baserves.com'),
   openGraph: {
