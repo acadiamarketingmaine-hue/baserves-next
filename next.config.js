@@ -132,6 +132,11 @@ const nextConfig = {
         destination: '/experiences/categories/lookout-pavillions',
         permanent: true,
       },
+      {
+        source: '/experiences/categories/day-use',
+        destination: '/experiences',
+        permanent: true,
+      },
     ]
   },
 }
