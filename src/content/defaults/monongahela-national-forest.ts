@@ -29,7 +29,7 @@ export const monongahelaNationalForest: PropertyContent = {
   seo: {
     title: 'Monongahela National Forest | Eastern West Virginia | BA Services',
     description:
-      'Explore Monongahela National Forest — 921,000 acres of Allegheny Mountain wilderness with 800+ miles of trails, 5 wilderness areas, Spruce Knob, Seneca Rocks, highland bogs, and spruce forests.',
+      'Monongahela National Forest: 921,000 acres in eastern West Virginia, with 800+ miles of trails, five wilderness areas, and Spruce Knob.',
   },
   hero: {
     src: '/images/monongahela/spruce-knob-panorama.jpg',

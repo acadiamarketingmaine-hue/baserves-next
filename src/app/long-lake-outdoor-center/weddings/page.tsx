@@ -5,6 +5,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { BOOKING_URL, PHONE, photos, included, tiers, faqs, history } from '@/data/long-lake-weddings'
 import { og } from '@/lib/seo'
+import { PageSchema } from '@/components/SchemaMarkup'
+import { ID, ORIGIN, offer, ref } from '@/lib/schema'
 import s from './weddings.module.css'
 
 const cormorant = Cormorant_Garamond({
@@ -32,9 +34,9 @@ const pinyon = Pinyon_Script({
 const PATH = '/long-lake-outdoor-center/weddings'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Weddings at Long Lake Outdoor Center | Yankee Springs, Michigan' },
+  title: { absolute: 'Long Lake Weddings in Yankee Springs, Michigan' },
   description:
-    'A rustic lakeside camp wedding venue in Yankee Springs, Michigan, between Grand Rapids and Kalamazoo. Say your vows at the lake, celebrate in the 1939 lodge, and keep up to 120 guests in the cabins. Weekends from $3,800.',
+    'A 1939 lakeside camp wedding in Yankee Springs, Michigan. The lodge seats 120, cabins sleep 120, and weekend packages start at $3,800.',
   alternates: { canonical: PATH },
   openGraph: { ...og(PATH), images: [photos.coupleLakeshore.src] },
 }
@@ -84,6 +86,49 @@ export default function LongLakeWeddings() {
   return (
     <>
       <Navigation ctaLabel="Check Availability" ctaHref={BOOKING_URL} />
+      <PageSchema
+        url={PATH}
+        name="Long Lake Weddings in Yankee Springs, Michigan"
+        crumbName="Weddings"
+        description="A 1939 lakeside camp wedding in Yankee Springs, Michigan. The lodge seats 120, cabins sleep 120, and weekend packages start at $3,800."
+        crumbs={[{ name: 'Long Lake Outdoor Center', url: '/long-lake-outdoor-center' }]}
+        image={photos.coupleLakeshore.src}
+        mainEntity={`${ORIGIN}${PATH}#venue`}
+        nodes={[
+          {
+            '@type': 'EventVenue',
+            '@id': `${ORIGIN}${PATH}#venue`,
+            name: 'Long Lake Outdoor Center',
+            description: 'A rustic 1939 camp on a lake in the Michigan pines, between Grand Rapids and Kalamazoo. The whole property is yours for the wedding weekend.',
+            url: `${ORIGIN}${PATH}`,
+            telephone: '+1-616-644-9459',
+            maximumAttendeeCapacity: 120,
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Yankee Springs',
+              addressRegion: 'MI',
+              addressCountry: 'US',
+            },
+          },
+          {
+            '@type': 'Service',
+            '@id': `${ORIGIN}${PATH}#service`,
+            name: 'Weddings at Long Lake Outdoor Center',
+            serviceType: 'Wedding venue',
+            provider: ref(ID.business),
+            url: `${ORIGIN}${PATH}`,
+            description: 'Exclusive use of the lodge, dining hall, 16 cabins, and 4 bunkhouses. Weekend packages and one-evening bookings are listed on this page.',
+            offers: tiers.map((tier) =>
+              offer({
+                name: tier.year,
+                price: tier.price.replace(/[^0-9.]/g, ''),
+                url: tier.url,
+                description: tier.note,
+              }),
+            ),
+          },
+        ]}
+      />
 
       <main className={`${s.page} ${cormorant.variable} ${garamond.variable} ${pinyon.variable}`}>
         {/* Hero */}

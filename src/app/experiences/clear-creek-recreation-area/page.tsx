@@ -26,7 +26,7 @@ import {
 
 export const metadata: Metadata = {
   title: { absolute: 'Clear Creek Recreation Area | Bankhead National Forest | BA Services' },
-  description: 'Explore Clear Creek Recreation Area on Lewis Smith Lake in Bankhead National Forest. 102 campsites across 4 loops, swimming beach, boat ramps, hiking trails, and group camping.',
+  description: 'Clear Creek Recreation Area on Lewis Smith Lake in Bankhead National Forest: 102 campsites, a swimming beach, and a boat ramp.',
   alternates: { canonical: '/experiences/clear-creek-recreation-area' },
   openGraph: og('/experiences/clear-creek-recreation-area'),
 }

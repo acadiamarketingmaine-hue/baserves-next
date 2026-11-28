@@ -23,7 +23,7 @@ export const washingtonStatePark: PropertyContent = {
   seo: {
     title: 'Washington State Park | De Soto, Missouri | BA Services',
     description:
-      'Explore Washington State Park in De Soto, Missouri. 2,157 acres along the Big River with 11 lodging cabins, ancient petroglyphs, swimming pool, 9.7 miles of trails, and 140 bird species.',
+      'Washington State Park in De Soto, Missouri: 2,157 acres, 11 cabins, a swimming pool, 9.7 miles of trails, and 140 bird species.',
   },
   hero: {
     src: '/images/washington-thunderbird-lodge.png',

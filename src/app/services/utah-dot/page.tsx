@@ -148,7 +148,7 @@ export default function UtahDotPage() {
         name={`${metadata.title} | BA Services`}
         crumbName={metadata.title}
         description={metadata.description}
-        type="ItemPage"
+        type="WebPage"
         image="/images/utah-welcome-sign.jpg"
         mainEntity={serviceId('utah-dot')}
         crumbs={[{ name: 'Services', url: '/services' }]}

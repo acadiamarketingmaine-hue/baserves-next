@@ -191,9 +191,9 @@ export default function LeaveReviewPage() {
 
                 {/* What are you reviewing? */}
                 <div className="mb-6">
-                  <span className="block text-sm font-medium text-lake-ink mb-2">
+                  <h2 className="block text-sm font-medium text-lake-ink mb-2">
                     What would you like to give feedback on? *
-                  </span>
+                  </h2>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {([
                       { value: 'rest-area', title: 'A rest area', detail: 'Utah and Iowa rest areas we maintain' },

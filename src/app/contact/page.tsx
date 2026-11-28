@@ -8,7 +8,7 @@ import { ListenButton } from '@/components/reader'
 import { LakesideShell, SectionActions, frame, pillLight } from '@/components/property/lakeside'
 
 export const metadata = {
-  title: 'Contact Us',
+  title: { absolute: 'Contact BA Services in Bangor, Maine' },
   description: 'Reach BA Services for career opportunities, partnership inquiries, or rest area feedback. Call +1-207-307-7903 or email us from Bangor, Maine.',
   alternates: { canonical: '/contact' },
   openGraph: og('/contact'),
@@ -20,7 +20,7 @@ export default function ContactPage() {
       <Navigation />
       <PageSchema
         url="/contact"
-        name="Contact Us | BA Services"
+        name="Contact BA Services in Bangor, Maine"
         crumbName="Contact Us"
         description="Reach BA Services for career opportunities, partnership inquiries, or rest area feedback. Call +1-207-307-7903 or email us from Bangor, Maine."
         type="ContactPage"
@@ -68,7 +68,7 @@ export default function ContactPage() {
             {/* Business address and contact details — Bar Harbor Bank card-brand review */}
             <div className="mt-12 grid sm:grid-cols-3 gap-6">
               <div className="rounded-md border border-lake-line bg-white p-6">
-                <h3 className="font-lake-serif text-[18px] text-lake-ink">Mailing Address</h3>
+                <h2 className="font-lake-serif text-[18px] text-lake-ink">Mailing Address</h2>
                 <p className="text-lake-mute mt-1 text-sm leading-relaxed">
                   BA Services, Inc.<br />
                   1257 Hammond Street<br />
@@ -76,13 +76,13 @@ export default function ContactPage() {
                 </p>
               </div>
               <div className="rounded-md border border-lake-line bg-white p-6">
-                <h3 className="font-lake-serif text-[18px] text-lake-ink">Phone</h3>
+                <h2 className="font-lake-serif text-[18px] text-lake-ink">Phone</h2>
                 <p className="text-lake-mute mt-1 text-sm">
                   <a href="tel:+12073077903" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">+1 207 307-7903</a>
                 </p>
               </div>
               <div className="rounded-md border border-lake-line bg-white p-6">
-                <h3 className="font-lake-serif text-[18px] text-lake-ink">Email</h3>
+                <h2 className="font-lake-serif text-[18px] text-lake-ink">Email</h2>
                 <p className="text-lake-mute mt-1 text-sm break-words">
                   <a href="mailto:email@BAServes.com" className="text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">email@BAServes.com</a>
                 </p>

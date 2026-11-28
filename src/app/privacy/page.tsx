@@ -6,8 +6,8 @@ import { ListenButton } from '@/components/reader'
 import { LakesideShell, SectionActions, frame } from '@/components/property/lakeside'
 
 export const metadata = {
-  title: { absolute: 'Privacy Policy | BA Services' },
-  description: 'Learn how BA Services collects, uses, and protects your personal information.',
+  title: { absolute: 'Privacy Policy for BA Services Visitors' },
+  description: 'How BA Services collects, uses, and protects personal information from visitors, campers, and people who contact us from Bangor, Maine.',
   alternates: {
     canonical: '/privacy',
   },
@@ -20,9 +20,9 @@ export default function PrivacyPolicyPage() {
       <Navigation />
       <PageSchema
         url="/privacy"
-        name="Privacy Policy | BA Services"
+        name="Privacy Policy for BA Services Visitors"
         crumbName="Privacy Policy"
-        description="Learn how BA Services collects, uses, and protects your personal information."
+        description="How BA Services collects, uses, and protects personal information from visitors, campers, and people who contact us from Bangor, Maine."
       />
 
       <LakesideShell>

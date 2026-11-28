@@ -7,8 +7,8 @@ import { ListenButton } from '@/components/reader'
 import { LakesideShell, frame, pillLight, bandTint } from '@/components/property/lakeside'
 
 export const metadata = {
-  title: { absolute: 'Rewards | BA Services' },
-  description: 'BA Services rewards program - coming soon. Earn points on every booking and unlock exclusive perks.',
+  title: { absolute: 'The BA Services Camper Rewards Program' },
+  description: 'BA Services rewards, coming soon: earn points on cabin, campsite, and watercraft bookings and unlock member perks at our parks.',
   alternates: {
     canonical: '/rewards',
   },
@@ -60,9 +60,9 @@ export default function RewardsPage() {
       <Navigation />
       <PageSchema
         url="/rewards"
-        name="Rewards | BA Services"
+        name="The BA Services Camper Rewards Program"
         crumbName="Rewards"
-        description="BA Services rewards program - coming soon. Earn points on every booking and unlock exclusive perks."
+        description="BA Services rewards, coming soon: earn points on cabin, campsite, and watercraft bookings and unlock member perks at our parks."
       />
       <main className="pt-28">
         <LakesideShell>

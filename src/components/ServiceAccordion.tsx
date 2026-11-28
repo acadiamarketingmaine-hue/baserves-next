@@ -222,7 +222,7 @@ export default function ServiceAccordion({
                     <div className={`p-5 grid gap-4 ${compact ? 'grid-cols-1' : 'sm:grid-cols-2'}`}>
                       {contract.scope.map((cat) => (
                         <div key={cat.title}>
-                          <h4 className={`font-semibold text-sm mb-2 ${lake ? 'text-lake-ink' : 'text-gray-900'}`}>{cat.title}</h4>
+                          <h3 className={`font-semibold text-sm mb-2 ${lake ? 'text-lake-ink' : 'text-gray-900'}`}>{cat.title}</h3>
                           <ul className="space-y-1.5">
                             {cat.items.map((item) => (
                               <li key={item} className={`flex items-start text-xs ${lake ? 'text-lake-mute' : 'text-gray-600'}`}>

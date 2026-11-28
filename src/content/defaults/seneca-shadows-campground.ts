@@ -24,7 +24,7 @@ export const senecaShadowsCampground: PropertyContent = {
   locationLine: '',
   summary: 'Seneca Shadows Campground sits in the shadow of the iconic Seneca Rocks — one of the most famous rock climbing destinations in the eastern United States. Locate',
   seo: {
-    title: 'Seneca Shadows Campground | Monongahela National Forest | BA Services',
+    title: 'Seneca Shadows Campground | West Virginia',
     description: 'Seneca Shadows Campground sits in the shadow of the iconic Seneca Rocks — one of the most famous rock climbing destinations in the eastern United States. Locate',
   },
   hero: {

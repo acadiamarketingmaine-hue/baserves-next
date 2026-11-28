@@ -21,9 +21,9 @@ export const yankeeSpringsRecreationArea: PropertyContent = {
   summary:
     'Explore Yankee Springs Recreation Area in Barry County, Michigan. 5,200+ acres, 200+ campsites, 30+ miles of trails, historic CCC cabins, and year-round outdoor recreation.',
   seo: {
-    title: 'Yankee Springs Recreation Area | Barry County, Michigan | BA Services',
+    title: 'Yankee Springs Recreation Area | Michigan',
     description:
-      'Explore Yankee Springs Recreation Area in Barry County, Michigan. 5,200+ acres, 200+ campsites, 30+ miles of trails, historic CCC cabins, and year-round outdoor recreation.',
+      'Yankee Springs Recreation Area in Barry County, Michigan: 5,200+ acres, 200+ campsites, 30+ miles of trails, and CCC cabins.',
   },
   hero: {
     src: '/images/yankee-springs/hill-cabins.jpg',

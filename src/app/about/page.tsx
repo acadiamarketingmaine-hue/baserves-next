@@ -68,7 +68,7 @@ const stats = [
 ]
 
 export const metadata = {
-  title: 'About Us',
+  title: { absolute: 'About BA Services Recreation Management' },
   description: 'BA Services, Inc. manages 15+ recreation areas across 9 states — campgrounds, national forests, state parks, and DOT rest areas with 100+ dedicated team members.',
   alternates: {
     canonical: '/about',
@@ -82,7 +82,7 @@ export default function AboutPage() {
       <Navigation />
       <PageSchema
         url="/about"
-        name="About Us | BA Services"
+        name="About BA Services Recreation Management"
         crumbName="About Us"
         description="BA Services, Inc. manages 15+ recreation areas across 9 states — campgrounds, national forests, state parks, and DOT rest areas with 100+ dedicated team members."
         type="AboutPage"
