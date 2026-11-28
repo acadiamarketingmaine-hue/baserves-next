@@ -56,6 +56,19 @@ for (const dir of DATA_DIRS) {
   }
 }
 
+// Indexable PDF documents (public/downloads/** + root-level public PDFs) are in
+// the sitemap too (src/app/sitemap.ts documentEntries) and use this map for their
+// <lastmod>, so git-date them here. Skipped at commit time for markup-only commits.
+const PUBLIC = join(ROOT, 'public');
+if (existsSync(PUBLIC)) {
+  const docs = [];
+  if (existsSync(join(PUBLIC, 'downloads'))) walk(join(PUBLIC, 'downloads'), docs);
+  for (const e of readdirSync(PUBLIC, { withFileTypes: true })) {
+    if (e.isFile() && /\.pdf$/i.test(e.name)) docs.push(join(PUBLIC, e.name));
+  }
+  for (const f of docs) files[relative(ROOT, f)] = dateFor(f);
+}
+
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, JSON.stringify({ generatedAt: TODAY, routes, files }, null, 2) + '\n');
 console.log(`lastmod.json: ${Object.keys(routes).length} routes, ${Object.keys(files).length} data files -> ${relative(ROOT, OUT)}`);
