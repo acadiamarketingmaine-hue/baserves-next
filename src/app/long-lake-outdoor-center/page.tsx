@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import { getPropertyContent, getSiteSettings } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -105,6 +106,26 @@ export default async function LongLakePage() {
         crumbName={content.name}
         description={content.seo.description}
         image={content.hero.src}
+        mainEntity={`${ORIGIN}/long-lake-outdoor-center#place`}
+        spatialCoverage={`${ORIGIN}/long-lake-outdoor-center#place`}
+        nodes={[
+          recreationArea({
+            url: '/long-lake-outdoor-center',
+            name: content.name,
+            description: content.seo.description,
+            image: content.hero.src,
+            telephone: phone,
+            geo: COORDS,
+            stateAbbr: 'MI',
+            campground: true,
+            amenities: content.features,
+            offers: [
+              { name: 'Wedding Weekend, 2027', price: '3800', url: '/long-lake-outdoor-center/weddings' },
+              { name: 'Wedding Weekend, 2028', price: '4300', url: '/long-lake-outdoor-center/weddings' },
+              { name: 'One-Evening Rental, 2027', price: '1500', url: '/long-lake-outdoor-center/weddings' },
+            ],
+          }),
+        ]}
       />
       <NoticeBanner notices={content.notices} />
 

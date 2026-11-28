@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ID, ORIGIN, offer, ref, type Node } from '@/lib/schema'
 import { ClosingCta, Hero, IntroFacts, LakesideShell, SectionActions, SectionHeader, StickyBooking, bandWhite, frame } from '@/components/property/lakeside'
 import { resolveBookingCta } from '@/components/pages/experiences/bookingLinks'
 import LocationCard from '@/components/pages/experiences/LocationCard'
@@ -100,8 +101,32 @@ const categoryData: Record<string, any> = {
   },
 }
 
-export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {
-  const category = categoryData[params.category]
+/**
+ * Offers only from rates the card actually prints on this page ("Free" → 0;
+ * "Contact for rates" / site counts → no Offer). Never invent a price.
+ */
+function printedOffers(category: any): Node[] {
+  const offers: Node[] = []
+  for (const exp of category.experiences as any[]) {
+    const price: string = String(exp.price ?? '')
+    if (/^free$/i.test(price.trim())) {
+      offers.push(offer({ name: `${exp.name} — ${price}`, price: '0', url: exp.href }))
+      continue
+    }
+    const re = /\$\s?([\d,]+(?:\.\d{2})?)/g
+    const amounts: number[] = []
+    let m: RegExpExecArray | null
+    while ((m = re.exec(price)) !== null) {
+      const n = Number(m[1].replace(/,/g, ''))
+      if (Number.isFinite(n)) amounts.push(n)
+    }
+    if (!amounts.length) continue
+    offers.push(offer({ name: `${exp.name} — ${price}`, price: String(Math.min(...amounts)), url: exp.href }))
+  }
+  return offers
+}
+
+export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {  const category = categoryData[params.category]
   if (!category) {
     return {
       title: { absolute: 'Category Not Found | BA Services' },
@@ -128,6 +153,7 @@ export default async function CategoryPage({ params }: { params: { category: str
       book: await resolveBookingCta(exp.href),
     })),
   )
+  const offers = printedOffers(category)
 
   return (
     <main className="min-h-screen">
@@ -141,6 +167,19 @@ export default async function CategoryPage({ params }: { params: { category: str
         type="CollectionPage"
         image={category.image}
         crumbs={[{ name: 'Experiences', url: '/experiences' }]}
+        mainEntity={`${ORIGIN}/experiences/categories/${params.category}#service`}
+        nodes={[
+          {
+            '@type': 'Service',
+            '@id': `${ORIGIN}/experiences/categories/${params.category}#service`,
+            name: category.name,
+            serviceType: 'Recreation Area Services',
+            description: category.description,
+            url: `/experiences/categories/${params.category}`,
+            provider: ref(ID.business),
+            ...(offers.length ? { offers } : {}),
+          },
+        ]}
       />
 
       <LakesideShell>

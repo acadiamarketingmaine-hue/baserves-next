@@ -304,6 +304,8 @@ export function recreationArea(r: {
   campground?: boolean;
   amenities?: string[];
   containedInName?: string;
+  /** Rates printed on the page. Never invent a price. */
+  offers?: { name: string; price: string; url?: string }[];
 }): Node {
   const url = abs(r.url);
   return {
@@ -317,6 +319,8 @@ export function recreationArea(r: {
     ...(r.geo ? { geo: { '@type': 'GeoCoordinates', latitude: r.geo.lat, longitude: r.geo.lng } } : {}),
     ...(r.stateAbbr ? { containedInPlace: ref(stateId(r.stateAbbr)) } : r.containedInName ? { containedInPlace: { '@type': 'Place', name: r.containedInName } } : {}),
     publicAccess: true,
+    ...(r.offers?.length ? { offers: r.offers.map((o) => offer({ ...o, url: o.url ?? r.url })) } : {}),
+
     ...(r.amenities?.length
       ? {
           amenityFeature: r.amenities.map((name) => ({

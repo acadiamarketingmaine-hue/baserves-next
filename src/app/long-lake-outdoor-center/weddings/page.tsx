@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 import { BOOKING_URL, PHONE, photos, included, tiers, faqs, history } from '@/data/long-lake-weddings'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
-import { ID, ORIGIN, offer, ref } from '@/lib/schema'
+import { ID, ORIGIN, faq, offer, ref } from '@/lib/schema'
 import s from './weddings.module.css'
 
 const cormorant = Cormorant_Garamond({
@@ -127,6 +127,7 @@ export default function LongLakeWeddings() {
               }),
             ),
           },
+          faq(PATH, faqs.map((f) => ({ question: f.q, answer: f.a }))),
         ]}
       />
 

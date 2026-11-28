@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import { getPropertyContent, getSiteSettings } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -102,6 +103,20 @@ export default async function BankheadNationalForestPage() {
         crumbName={content.name}
         description={content.seo.description}
         image={content.hero.src}
+        mainEntity={`${ORIGIN}/bankhead-national-forest#place`}
+        spatialCoverage={`${ORIGIN}/bankhead-national-forest#place`}
+        nodes={[
+          recreationArea({
+            url: '/bankhead-national-forest',
+            name: content.name,
+            description: content.seo.description,
+            image: content.hero.src,
+            geo: COORDS,
+            stateAbbr: 'AL',
+            amenities: content.features,
+            offers: [{ name: 'Hurricane Creek Shooting Range Admission (per person)', price: '3' }],
+          }),
+        ]}
       />
       <NoticeBanner notices={content.notices} />
 

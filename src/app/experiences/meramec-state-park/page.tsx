@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, recreationArea } from '@/lib/schema'
 import { getPropertyContent } from '@/content'
 import NoticeBanner from '@/content/NoticeBanner'
 import {
@@ -86,6 +87,29 @@ export default async function MeramecStateParkPage() {
         description={content.seo.description}
         image={content.hero.src}
         crumbs={[{ name: 'Experiences', url: '/experiences' }]}
+        mainEntity={`${ORIGIN}/experiences/meramec-state-park#place`}
+        spatialCoverage={`${ORIGIN}/experiences/meramec-state-park#place`}
+        nodes={[
+          recreationArea({
+            url: '/experiences/meramec-state-park',
+            name: content.name,
+            description: content.seo.description,
+            image: content.hero.src,
+            geo: COORDS,
+            stateAbbr: 'MO',
+            campground: true,
+            amenities: content.features,
+            offers: [
+              { name: '1-Bedroom Cabin (per night)', price: '140' },
+              { name: '2-Bedroom Cabin (per night)', price: '170' },
+              { name: 'Large Cabin (per night)', price: '345' },
+              { name: 'Canoe Rental (weekday)', price: '54' },
+              { name: 'Kayak Rental (weekday)', price: '42' },
+              { name: 'Hickory Ridge Motel Standard Room (per night)', price: '90' },
+              { name: 'Hickory Ridge Motel Loft Room (per night)', price: '130' },
+            ],
+          }),
+        ]}
       />
       <NoticeBanner notices={content.notices} />
 
