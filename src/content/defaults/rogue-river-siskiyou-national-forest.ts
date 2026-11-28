@@ -20,9 +20,9 @@ export const rogueRiverSiskiyouNationalForest: PropertyContent = {
   summary:
     'The Rogue River-Siskiyou National Forest covers nearly 1.8 million acres of southwestern Oregon and extends into California.',
   seo: {
-    title: 'Rogue River-Siskiyou National Forest | Oregon and California | BA Services',
+    title: 'Rogue River-Siskiyou National Forest | BA Services',
     description:
-      'The Rogue River-Siskiyou National Forest covers nearly 1.8 million acres of southwestern Oregon and extends into California. BA Services recreation sites and booking links will be listed here when the contract begins.',
+      'Nearly 1.8 million acres of southwestern Oregon and California forest. BA Services recreation sites and booking links will be listed here soon.',
   },
   hero: {
     src: '/images/rogue-river-siskiyou/fourmile-lake.jpg',

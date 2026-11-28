@@ -24,9 +24,9 @@ export const whiteRockMountain: PropertyContent = {
   summary:
     'White Rock Mountain Recreation Area sits 2,309 feet above sea level in the Ozark National Forest, with a 1930s stone lodge, three stone cabins, nine campsites and a rim trail with scenic overlooks.',
   seo: {
-    title: 'White Rock Mountain Recreation Area | Ozark-St. Francis National Forests, Arkansas | BA Services',
+    title: 'White Rock Mountain Recreation Area | BA Services',
     description:
-      'Stay at White Rock Mountain in the Ozark National Forest, Arkansas: a CCC-built stone lodge, three cabins, nine campsites, day use, Ozark Highlands Trail parking and overlook weddings. Book on Recreation.gov.',
+      'Stay at White Rock Mountain in Arkansas' Ozark National Forest: a stone lodge, three cabins, nine campsites and overlook trails. Reserve on Recreation.gov.',
   },
   hero: {
     src: '/images/ozark-st-francis/white-rock-overlook-sunset.jpg',
