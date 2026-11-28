@@ -10,7 +10,7 @@ import { KayakIcon, CampIcon, CarIcon, HikeIcon, BuildingIcon } from '@/componen
 import { rotateFeatured } from '@/lib/featured-rotation'
 import { ListenButton } from '@/components/reader'
 import { useReducedMotion } from '@/components/a11y'
-import { LakesideShell, SectionActions, Eyebrow, bandPaper, bandTint, pillLight, pillGhostLight, pillGhost, pillPrimary } from '@/components/property/lakeside'
+import { LakesideShell, SectionActions, Eyebrow, bandPaper, bandTint, pillLight, pillGhostLight, pillPrimary } from '@/components/property/lakeside'
 
 const PropertyMap = dynamic(() => import('@/components/PropertyMap'), { ssr: false })
 import ScopeAccordion from '@/components/ScopeAccordion'
@@ -1202,16 +1202,28 @@ export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeCl
             source of home's CLS. */}
         <div className="relative z-10 container-custom w-full px-6 pt-28 pb-24 md:pb-0">
           <div className="max-w-3xl">
-            <h1 className="font-lake-serif headline-xl text-white mb-6 animate-fade-in-up motion-reduce:animate-none drop-shadow-lg">
+            <a
+              href="tel:+12073077903"
+              className="inline-flex min-h-[44px] items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-8 animate-fade-in motion-reduce:animate-none hover:bg-white/20 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              +1 207 307-7903
+            </a>
+
+            <h1 className="font-lake-serif headline-xl text-white mb-4 animate-fade-in-up motion-reduce:animate-none drop-shadow-lg">
               Find Your<br />
               <span className="italic drop-shadow-lg">Adventure.</span>
             </h1>
-
-            <h2 className="text-lg md:text-2xl font-medium text-white/90 leading-snug mb-10 max-w-2xl text-balance animate-fade-in-up motion-reduce:animate-none delay-100 drop-shadow-md">
-              Campgrounds, national forests, state parks and DOT rest areas across 9 states.
+            <h2 className="text-xl md:text-2xl font-semibold text-white mb-4 drop-shadow-md">
+              Parks and recreation areas, ready when you are.
             </h2>
+            <p className="text-lg text-white/90 leading-relaxed mb-10 max-w-xl animate-fade-in-up motion-reduce:animate-none delay-200 drop-shadow-md">
+              Well-kept facilities and unspoiled scenery at every managed site.
+            </p>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 animate-fade-in-up motion-reduce:animate-none delay-200">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 animate-fade-in-up motion-reduce:animate-none delay-300">
               <a
                 href="/experiences"
                 className={`${pillLight} text-lg`}
@@ -1221,14 +1233,11 @@ export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeCl
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
-              <a href="tel:+12073077903" className={`${pillGhostLight} text-lg`}>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                Call +1 207 307-7903
-              </a>
               <Link href="/experiences" className={`${pillGhostLight} text-lg`}>
                 Explore Locations
+              </Link>
+              <Link href="/contact?topic=partnership" className={pillGhostLight}>
+                Partnership Inquiries
               </Link>
             </div>
           </div>
@@ -1242,33 +1251,14 @@ export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeCl
         </div>
       </section>
 
-      {/* Intro copy, moved out of the hero so first load stays headline + CTAs */}
-      <section className="bg-white py-14 md:py-20">
-        <div className="container-custom px-6">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-lg md:text-2xl leading-relaxed text-lake-mute">
-              From <span className="text-lake-ink font-semibold">the rockbound coast of Maine</span> to{' '}
-              <span className="text-lake-ink font-semibold">the salt flats of Utah</span>, from{' '}
-              <span className="text-lake-ink font-semibold">the storied mountains of West Virginia</span> to{' '}
-              <span className="text-lake-ink font-semibold">the sandy shores of Rhode Island</span>, across{' '}
-              <span className="text-lake-ink font-semibold">the endless plains of Iowa</span> and{' '}
-              <span className="text-lake-ink font-semibold">the richly contoured landscapes of Indiana and Michigan</span>, to{' '}
-              <span className="text-lake-ink font-semibold">the rugged heart of Missouri</span>—our
-              managed sites offer <span className="text-lake-spruce font-semibold">well-kept facilities</span>,{' '}
-              <span className="text-lake-spruce font-semibold">unspoiled scenery</span>, and{' '}
-              <span className="text-lake-spruce font-semibold">seamless experiences for every visitor</span>.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-              {/* min-h reserves the pill's height: ListenButton renders nothing
-                  until the client confirms speechSynthesis support. */}
-              <div className="min-h-[44px]">
-                <ListenButton />
-              </div>
-              <Link href="/contact?topic=partnership" className={pillGhost}>
-                Partnership Inquiries
-              </Link>
-            </div>
+      <section className="bg-white py-14 md:py-16">
+        <div className="container-custom px-6 max-w-3xl">
+          <div className="mb-6 min-h-[44px]">
+            <ListenButton />
           </div>
+          <p className="text-lg md:text-xl text-lake-ink leading-relaxed">
+            From the rockbound coast of Maine to the salt flats of Utah, from the storied mountains of West Virginia to the sandy shores of Rhode Island, across the endless plains of Iowa and the richly contoured landscapes of Indiana and Michigan, to the rugged heart of Missouri—our managed sites offer well-kept facilities, unspoiled scenery, and seamless experiences for every visitor.
+          </p>
         </div>
       </section>
 
