@@ -232,7 +232,8 @@ export default async function ExperiencesPage() {
           booking={{
             title: 'Find Your Experience',
             text: 'Twelve recreation areas across seven states — campgrounds, national forests, and state parks.',
-            cta: { label: 'Book Now', url: '#all-recreation-areas', kind: 'internal' },
+            cta: { label: 'Reserve / Check Availability', url: '#all-recreation-areas', kind: 'internal' },
+            phone: '+1 207 307-7903',
           }}
         />
 
@@ -344,10 +345,15 @@ export default async function ExperiencesPage() {
           photo={{ src: '/images/Burlingame1-2048x1365.jpg', alt: 'Watchaug Pond, one of the twelve recreation areas BA Services manages' }}
           heading="Ready to Start Your Adventure?"
           text="Book your stay at one of our pristine recreation areas today."
-          primary={{ label: 'Book Now', url: '#all-recreation-areas', kind: 'internal' }}
+          primary={{ label: 'Reserve / Check Availability', url: '#all-recreation-areas', kind: 'internal' }}
+          phone="+1 207 307-7903"
           secondary={{ label: 'Leave a review after your visit', url: '/leave-a-review', kind: 'internal' }}
         />
-        <StickyBooking name="BA Services" cta={{ label: 'Book Now', url: '#all-recreation-areas', kind: 'internal' }} />
+        <StickyBooking
+          name="BA Services"
+          cta={{ label: 'Reserve / Check Availability', url: '#all-recreation-areas', kind: 'internal' }}
+          phone="+1 207 307-7903"
+        />
       </LakesideShell>
 
       <Footer />

@@ -44,12 +44,12 @@ export default function LocationCard({ photo, title, meta, body, exploreHref, bo
         <a
           href={book.url}
           {...externalProps(book.url)}
-          className="inline-flex min-h-[40px] items-center gap-1.5 rounded-full bg-lake-spruce px-4 text-[14px] font-medium text-lake-paper transition-colors hover:bg-lake-spruce-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
+          className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-lake-spruce px-5 text-[14px] font-medium text-lake-paper transition-colors hover:bg-lake-spruce-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-spruce"
         >
           Reserve
           <Arrow className="h-3.5 w-3.5" />
         </a>
-        <Link href={exploreHref} className={textLink}>
+        <Link href={exploreHref} className={`${textLink} min-h-[44px]`}>
           Explore
           <Arrow className="h-4 w-4" />
         </Link>

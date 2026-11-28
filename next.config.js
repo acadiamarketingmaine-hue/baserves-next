@@ -137,6 +137,17 @@ const nextConfig = {
         destination: '/experiences',
         permanent: true,
       },
+      {
+        // Canonical editorial & park guides hub lives at /experiences.
+        source: '/:hub(blog|guides)',
+        destination: '/experiences',
+        permanent: true,
+      },
+      {
+        source: '/:hub(blog|guides)/:path*',
+        destination: '/experiences',
+        permanent: true,
+      },
     ]
   },
 }
