@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export interface ProSiteWidgetsProps {
   /** Brand primary hex color (e.g. "#c8102e", "#0f172a", "#f97316") */
@@ -43,7 +44,60 @@ export default function ProSiteWidgets({
   position = 'left',
   enableCookieConsent = true,
 }: ProSiteWidgetsProps) {
+  const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+
+  // Global Top-of-Page Guarantee: forces scrollY = 0 on cold load, refresh, AND every Next.js <Link> route change
+  // (unless a #hash anchor is targeted or the user already started scrolling). Defeats CSS scroll-behavior: smooth,
+  // Mobile Safari scroll restoration, Suspense layout shifts, and Lenis stale offsets.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+    } catch {}
+    if (window.location.hash) return;
+
+    let userInteracted = false;
+    const markUser = () => { userInteracted = true; };
+    window.addEventListener('wheel', markUser, { passive: true, once: true });
+    window.addEventListener('touchstart', markUser, { passive: true, once: true });
+    window.addEventListener('keydown', markUser, { passive: true, once: true });
+
+    const snapTop = () => {
+      if (userInteracted || window.location.hash) return;
+      const html = document.documentElement;
+      const prevBehavior = html.style.scrollBehavior;
+      html.style.scrollBehavior = 'auto';
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+      html.scrollTop = 0;
+      if (document.body) document.body.scrollTop = 0;
+      const w = window as unknown as { __lenis?: { scrollTo?: (t: number, o?: { immediate?: boolean }) => void } };
+      if (w.__lenis && typeof w.__lenis.scrollTo === 'function') {
+        w.__lenis.scrollTo(0, { immediate: true });
+      }
+      html.style.scrollBehavior = prevBehavior;
+    };
+
+    snapTop();
+    const raf1 = requestAnimationFrame(snapTop);
+    const t1 = setTimeout(snapTop, 60);
+    const t2 = setTimeout(snapTop, 180);
+
+    return () => {
+      cancelAnimationFrame(raf1);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener('wheel', markUser);
+      window.removeEventListener('touchstart', markUser);
+      window.removeEventListener('keydown', markUser);
+    };
+  }, [pathname]);
   const [open, setOpen] = useState(false);
   const [prefs, setPrefs] = useState<A11yPrefs>(DEFAULT_A11Y);
   const [guideY, setGuideY] = useState<number>(280);

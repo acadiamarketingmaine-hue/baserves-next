@@ -7,10 +7,10 @@ import ProSiteWidgets from '@/components/ProSiteWidgets'
 
 export const metadata: Metadata = {
   title: {
-    default: 'BA Services | Campgrounds, Parks & DOT Rest Areas',
+    default: 'BA Services | Recreation Area Management & DOT Rest Areas Across 9 States',
     template: '%s | BA Services',
   },
-  description: 'BA Services manages campgrounds, national forests, state parks, and DOT rest areas across nine states, with well-kept facilities for visitors.',
+  description: 'BA Services, Inc. manages campgrounds, national forests, state parks, and DOT rest areas across 9 states. Professional recreation management in AL, IN, ME, MI, MO, RI, WV, IA & UT.',
   keywords: 'recreation area management, campground management, DOT rest areas, national forest campgrounds, state park management, outdoor recreation, BA Services, camping, hiking',
   metadataBase: new URL('https://baserves.com'),
   openGraph: {
@@ -44,6 +44,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: "if(!location.hash){try{history.scrollRestoration='manual';window.scrollTo(0,0)}catch(e){}}" }} />
+      </head>
       <body className="bg-white text-gray-900 antialiased">
         {/* Applies persisted a11y settings (text size, motion, contrast, ...) to
             <html> before anything below paints — no flash. See
