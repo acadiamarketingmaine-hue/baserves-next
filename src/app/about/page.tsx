@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
+import { ORIGIN } from '@/lib/schema'
 import { PageSchema } from '@/components/SchemaMarkup'
 import { ListenButton } from '@/components/reader'
 import {
@@ -68,6 +69,43 @@ const stats = [
   { number: '100+', label: 'Dedicated Team Members' },
 ]
 
+const operationSteps = [
+  {
+    step: '01',
+    title: 'Daily Site & Facility Readiness',
+    description: 'On-site hosts inspect campsites, cabins, bathhouses, and boat ramps every morning so arrivals are clean and stocked.',
+  },
+  {
+    step: '02',
+    title: 'Direct Online & Phone Reservations',
+    description: 'Guests book verified campsites, cabins, and watercraft online in minutes or call our Bangor team for group and park guidance.',
+  },
+  {
+    step: '03',
+    title: 'Agency Accountability & Stewardship',
+    description: 'We report maintenance, safety, and visitor metrics directly to federal, state, and DOT partners across nine states.',
+  },
+]
+
+const aboutFaqs = [
+  {
+    q: 'What types of properties does BA Services manage?',
+    a: 'BA Services manages 15+ federal, state, and local recreation areas, including national forest campgrounds, state park cabins, watercraft rentals, and DOT highway rest areas across nine states.',
+  },
+  {
+    q: 'Where is BA Services headquartered?',
+    a: 'BA Services, Inc. is headquartered in Bangor, Maine, with on-site campground hosts, maintenance crews, and area managers stationed at every managed property.',
+  },
+  {
+    q: 'How do I reserve a campsite, cabin, or boat rental?',
+    a: 'Browse our Experiences directory to choose your park and reserve online, or call our Bangor office at (207) 307-7903 for booking assistance.',
+  },
+  {
+    q: 'How can a public agency partner with BA Services?',
+    a: 'Federal, state, and municipal agencies can reach our operations leadership through the Contact Us page or by calling (207) 307-7903 to discuss concession and facility management contracts.',
+  },
+]
+
 export const metadata = {
   title: { absolute: 'About BA Services Recreation Management' },
   description: 'BA Services, Inc. manages 15+ campgrounds, national forests, state parks, and DOT rest areas across 9 states with 100+ dedicated team members.',
@@ -88,6 +126,17 @@ export default function AboutPage() {
         description="BA Services, Inc. manages 15+ campgrounds, national forests, state parks, and DOT rest areas across 9 states with 100+ dedicated team members."
         type="AboutPage"
         image="/images/monongahela/spruce-knob-panorama.jpg"
+        nodes={[
+          {
+            '@type': 'FAQPage',
+            '@id': `${ORIGIN}/about#faq`,
+            mainEntity: aboutFaqs.map((item) => ({
+              '@type': 'Question',
+              name: item.q,
+              acceptedAnswer: { '@type': 'Answer', text: item.a },
+            })),
+          },
+        ]}
       />
 
       <LakesideShell>
@@ -126,6 +175,9 @@ export default function AboutPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
+                <a href="tel:+12073077903" className={pillGhostLight}>
+                  Call (207) 307-7903
+                </a>
                 <Link href="/contact" className={pillGhostLight}>
                   Partner With Us
                 </Link>
@@ -173,6 +225,15 @@ export default function AboutPage() {
                     <Link href="/leave-a-review" className="font-medium text-lake-ink underline decoration-lake-line decoration-1 underline-offset-[6px] hover:decoration-lake-ink">share your experience</Link> after visiting.
                   </p>
                 </div>
+                <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                  {operationSteps.map((item) => (
+                    <div key={item.step} className="rounded-md border border-lake-line bg-white p-4">
+                      <span className="text-xs font-semibold tracking-wider text-lake-spruce">{item.step}</span>
+                      <h3 className="mt-1 font-lake-serif text-[18px] leading-snug text-lake-ink">{item.title}</h3>
+                      <p className="mt-2 text-[14px] leading-[1.55] text-lake-mute">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
                 <SectionActions
                   className="mt-8"
                   primary={{ label: 'Explore Locations', url: '/experiences', kind: 'internal' }}
@@ -206,6 +267,24 @@ export default function AboutPage() {
                   </div>
                   <h3 className="font-lake-serif text-[22px] leading-tight text-lake-ink mb-3">{value.title}</h3>
                   <p className="text-[15px] leading-[1.6] text-lake-mute">{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Band 4b: Frequently Asked Questions */}
+        <section className="py-14 md:py-20 bg-white">
+          <div className={frame}>
+            <div className="max-w-3xl">
+              <Eyebrow label="Common Questions" rule className="mb-4" />
+              <h2 className={`${h2Class} text-lake-ink mb-8`}>Frequently Asked Questions About BA Services</h2>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {aboutFaqs.map((item) => (
+                <div key={item.q} className="rounded-md border border-lake-line bg-lake-paper/40 p-6">
+                  <h3 className="font-lake-serif text-[20px] leading-snug text-lake-ink mb-2">{item.q}</h3>
+                  <p className="text-[15px] leading-[1.6] text-lake-mute">{item.a}</p>
                 </div>
               ))}
             </div>

@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
 import { ID, ORIGIN, offer, ref, type Node } from '@/lib/schema'
-import { ClosingCta, Hero, IntroFacts, LakesideShell, SectionActions, SectionHeader, StickyBooking, bandWhite, frame } from '@/components/property/lakeside'
+import { ClosingCta, Eyebrow, Hero, IntroFacts, LakesideShell, SectionActions, SectionHeader, StickyBooking, bandTint, bandWhite, frame, h2 as h2Class } from '@/components/property/lakeside'
 import { resolveBookingCta } from '@/components/pages/experiences/bookingLinks'
 import LocationCard from '@/components/pages/experiences/LocationCard'
 
@@ -154,6 +154,37 @@ export default async function CategoryPage({ params }: { params: { category: str
     })),
   )
   const offers = printedOffers(category)
+  const bookingSteps = [
+    {
+      step: '01',
+      title: 'Compare Parks & Site Types',
+      description: `Review ${category.experiences.length} managed destinations across national forests and state parks with transparent amenities.`,
+    },
+    {
+      step: '02',
+      title: 'Pick Your Dates Online',
+      description: 'Select your destination below to check real-time availability and lock in your reservation in minutes.',
+    },
+    {
+      step: '03',
+      title: 'Arrive to Ready Facilities',
+      description: 'On-site BA Services hosts keep sites clean, maintained, and supported throughout your visit.',
+    },
+  ]
+  const categoryFaqs = [
+    {
+      q: `How do I book ${category.name.toLowerCase()} with BA Services?`,
+      a: `Choose any location in the directory below and click Book or Explore to view live availability, or call our Bangor office at (207) 307-7903 for assistance.`,
+    },
+    {
+      q: `How many locations offer ${category.name.toLowerCase()}?`,
+      a: `BA Services currently operates ${category.experiences.length} destinations offering ${category.name.toLowerCase()} across our managed national forests and state parks.`,
+    },
+    {
+      q: 'Are on-site hosts available during my stay?',
+      a: 'Yes. Every BA Services recreation area is staffed with local on-site hosts and maintenance crews to assist with check-in, grounds, and park questions.',
+    },
+  ]
 
   return (
     <main className="min-h-screen">
@@ -179,6 +210,15 @@ export default async function CategoryPage({ params }: { params: { category: str
             provider: ref(ID.business),
             ...(offers.length ? { offers } : {}),
           },
+          {
+            '@type': 'FAQPage',
+            '@id': `${ORIGIN}/experiences/categories/${params.category}#faq`,
+            mainEntity: categoryFaqs.map((item) => ({
+              '@type': 'Question',
+              name: item.q,
+              acceptedAnswer: { '@type': 'Answer', text: item.a },
+            })),
+          },
         ]}
       />
 
@@ -195,6 +235,7 @@ export default async function CategoryPage({ params }: { params: { category: str
               url: '#available-experiences',
               kind: 'internal',
             },
+            phone: '+1 207 307-7903',
           }}
         />
 
@@ -204,6 +245,15 @@ export default async function CategoryPage({ params }: { params: { category: str
           lead={category.description}
           facts={[{ key: 'count', value: String(category.experiences.length), label: 'Locations' }]}
         >
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {bookingSteps.map((item) => (
+              <div key={item.step} className="rounded-md border border-lake-line bg-white p-5">
+                <span className="text-xs font-semibold tracking-wider text-lake-spruce">{item.step}</span>
+                <h3 className="mt-1 font-lake-serif text-[19px] leading-snug text-lake-ink">{item.title}</h3>
+                <p className="mt-2 text-[14px] leading-[1.55] text-lake-mute">{item.description}</p>
+              </div>
+            ))}
+          </div>
           <SectionActions
             className="mt-8 md:mt-10"
             primary={{ label: 'Explore & Reserve', url: '#available-experiences', kind: 'internal' }}
@@ -232,11 +282,29 @@ export default async function CategoryPage({ params }: { params: { category: str
           </div>
         </section>
 
+        <section className={`py-14 md:py-20 ${bandTint}`}>
+          <div className={frame}>
+            <div className="max-w-3xl">
+              <Eyebrow label="Booking Answers" rule className="mb-4" />
+              <h2 className={`${h2Class} text-lake-ink mb-8`}>Frequently Asked Questions</h2>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {categoryFaqs.map((item) => (
+                <div key={item.q} className="rounded-md border border-lake-line bg-white p-6">
+                  <h3 className="font-lake-serif text-[19px] leading-snug text-lake-ink mb-2">{item.q}</h3>
+                  <p className="text-[15px] leading-[1.6] text-lake-mute">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <ClosingCta
           photo={{ src: category.image, alt: category.name }}
           heading={`Ready to Book ${category.name}?`}
           text="Compare locations, check open dates, and reserve your spot online in minutes."
           primary={{ label: 'Choose a Location', url: '#available-experiences', kind: 'internal' }}
+          phone="+1 207 307-7903"
           secondary={{ label: 'Contact Our Team', url: '/contact', kind: 'internal' }}
         />
         <StickyBooking
@@ -246,6 +314,7 @@ export default async function CategoryPage({ params }: { params: { category: str
             url: '#available-experiences',
             kind: 'internal',
           }}
+          phone="+1 207 307-7903"
         />
       </LakesideShell>
 
