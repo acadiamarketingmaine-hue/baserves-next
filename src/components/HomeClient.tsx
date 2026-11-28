@@ -1624,7 +1624,7 @@ export default function HomeClient({ featuredDateKey, socialPosts = [] }: HomeCl
         <div className="absolute inset-0">
           <Image
             src="/images/long-lake/fall-aerial.jpg"
-            alt="Adventure awaits"
+            alt="Autumn canopy above Long Lake"
             fill
             sizes="100vw"
             loading="eager"
