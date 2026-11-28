@@ -71,14 +71,13 @@ export default function RestAreaMap({ restAreas, center, zoom, showRegionColors 
         zoomControl={true}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          // CARTO's @2x raster files are 256px fallbacks, so retina comes from
-          // detectRetina instead: Leaflet loads four z+1 tiles in place of one,
-          // which renders 1:1 device pixels on 2x/3x screens (no blurry upscale).
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
-          detectRetina={true}
-          subdomains="abcd"
-          maxZoom={19}
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          // CARTO basemaps.cartocdn.com rasters now serve an "API KEY REQUIRED"
+          // watermark tile to keyless callers (verified Nov 28 2026: every
+          // voyager tile, any host/subdomain/UA, is the same 2049-byte
+          // placeholder). OSM standard tiles need no key and are what this
+          // site shipped before the retina swap.
+          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <ScrollZoomHandler />
         <FitBounds restAreas={restAreas} />
