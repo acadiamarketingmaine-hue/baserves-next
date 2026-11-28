@@ -3,15 +3,19 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { og } from '@/lib/seo'
 import { PageSchema } from '@/components/SchemaMarkup'
+import { ORIGIN, faq } from '@/lib/schema'
 import {
   CardRow,
   ClosingCta,
+  Eyebrow,
   Hero,
   LakesideShell,
   SectionHeader,
   StickyBooking,
+  bandTint,
   bandWhite,
   frame,
+  h2 as h2Class,
 } from '@/components/property/lakeside'
 import { resolveBookingCta } from '@/components/pages/experiences/bookingLinks'
 import LocationCard from '@/components/pages/experiences/LocationCard'
@@ -134,9 +138,45 @@ const categories = [
   { name: 'Scenic Drives', count: 8, slug: 'scenic-drives', image: '/images/monongahela/scenic-drive.jpg' },
 ]
 
+const bookingSteps = [
+  {
+    step: '01',
+    title: 'Choose Your Destination',
+    description: 'Browse 12+ recreation areas across seven states — lakeside campgrounds, national forests, state parks, and historic CCC lodges.',
+  },
+  {
+    step: '02',
+    title: 'Reserve Online in Minutes',
+    description: 'Check live site, cabin, and watercraft availability with clear published rates and instant confirmation.',
+  },
+  {
+    step: '03',
+    title: 'Arrive Ready to Unwind',
+    description: 'Pull into maintained campsites, clean bathhouses, and welcoming on-site campground hosts ready to help.',
+  },
+]
+
+const experienceFaqs = [
+  {
+    question: 'How do I reserve a campsite, cabin, or boat rental?',
+    answer:
+      'Pick any recreation area below and click its direct booking link to check live dates, view site photos and rates, and confirm your stay online.',
+  },
+  {
+    question: 'Which states have BA Services recreation areas?',
+    answer:
+      'BA Services manages campgrounds, cabins, and outdoor recreation areas across Alabama, Indiana, Maine, Michigan, Missouri, Rhode Island, and West Virginia.',
+  },
+  {
+    question: 'Are full-hookup RV sites, group camps, and watercraft rentals available?',
+    answer:
+      'Yes. Depending on the park, we offer full-hookup RV sites, tent loops, rustic cabins, group camps, conference lodges, and kayak or pontoon rentals.',
+  },
+]
+
 export const metadata = {
   title: 'Experiences',
-  description: 'Explore 12+ recreation areas managed by BA Services — campgrounds, national forests, and state parks across AL, IN, ME, MI, MO, RI, and WV. Book your stay today.',
+  description: 'Explore 12+ BA Services recreation areas — campgrounds, national forests, and state parks across AL, IN, ME, MI, MO, RI, and WV. Reserve your stay online.',
   alternates: {
     canonical: '/experiences',
   },
@@ -159,9 +199,28 @@ export default async function ExperiencesPage() {
         url="/experiences"
         name="Experiences | BA Services"
         crumbName="Experiences"
-        description="Explore 12+ recreation areas managed by BA Services — campgrounds, national forests, and state parks across AL, IN, ME, MI, MO, RI, and WV. Book your stay today."
+        description={metadata.description}
         type="CollectionPage"
         image="/images/Burlingame1-2048x1365.jpg"
+        nodes={[
+          {
+            '@type': 'ItemList',
+            '@id': `${ORIGIN}/experiences#parks`,
+            name: 'BA Services Recreation Areas and Parks',
+            numberOfItems: locations.length,
+            itemListElement: locations.map((loc, idx) => ({
+              '@type': 'ListItem',
+              position: idx + 1,
+              item: {
+                '@type': 'Park',
+                name: loc.name,
+                description: loc.description,
+                url: `${ORIGIN}/${loc.slug}`,
+              },
+            })),
+          },
+          faq('/experiences', experienceFaqs),
+        ]}
       />
 
       <LakesideShell>
@@ -196,6 +255,25 @@ export default async function ExperiencesPage() {
           </div>
         </section>
 
+        {/* Peak Interest & Mechanism — How Your Stay Works */}
+        <section className={`py-14 md:py-20 ${bandTint} border-t border-b border-lake-line`}>
+          <div className={frame}>
+            <div className="max-w-2xl mb-10">
+              <Eyebrow label="How Booking Works" rule className="mb-4" />
+              <h2 className={`${h2Class} text-lake-ink`}>From Discovery to Campsite in Three Steps</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {bookingSteps.map((s) => (
+                <div key={s.step} className="rounded-xl border border-lake-line bg-white p-6">
+                  <span className="font-mono text-xs font-semibold tracking-wider text-lake-spruce">{s.step}</span>
+                  <h3 className="mt-2 font-lake-serif text-[22px] text-lake-ink">{s.title}</h3>
+                  <p className="mt-2 text-[15px] leading-[1.65] text-lake-mute">{s.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* All Locations */}
         <section id="all-recreation-areas" className="py-14 md:py-24 lg:py-[120px] scroll-mt-28">
           <div className={frame}>
@@ -222,6 +300,24 @@ export default async function ExperiencesPage() {
                 />
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* AI-Ready Answers — Frequently Asked Questions */}
+        <section className={`py-14 md:py-20 ${bandWhite} border-t border-lake-line`}>
+          <div className={frame}>
+            <div className="max-w-3xl mx-auto">
+              <Eyebrow label="Quick Answers" rule className="mb-4" />
+              <h2 className={`${h2Class} text-lake-ink mb-8`}>Frequently Asked Questions</h2>
+              <div className="divide-y divide-lake-line border-t border-b border-lake-line">
+                {experienceFaqs.map((item) => (
+                  <div key={item.question} className="py-6">
+                    <h3 className="font-lake-serif text-[21px] text-lake-ink">{item.question}</h3>
+                    <p className="mt-2 text-[15px] leading-[1.65] text-lake-mute">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

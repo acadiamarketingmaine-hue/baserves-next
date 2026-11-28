@@ -188,7 +188,7 @@ export default function EmploymentApplicationForm() {
     )
   }
 
-  const inputClass = 'w-full px-3 py-2 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce focus:border-lake-spruce text-sm'
+  const inputClass = 'w-full px-3 py-2.5 border border-lake-line rounded-lg focus:ring-2 focus:ring-lake-spruce focus:border-lake-spruce text-base md:text-sm'
   const labelClass = 'block text-sm font-medium text-lake-ink mb-1'
   const sectionClass = 'border-t-2 border-lake-line pt-6 mt-8'
 
@@ -551,8 +551,16 @@ export default function EmploymentApplicationForm() {
       </div>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 text-sm">
-          {error}
+        <div role="alert" className="flex items-start gap-3 bg-red-50 border border-red-200 text-red-800 rounded-lg p-4 text-sm">
+          <span
+            aria-hidden="true"
+            className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-600 text-white"
+          >
+            <svg className="h-3.5 w-3.5" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M7.25 3.5a.75.75 0 0 1 1.5 0v5a.75.75 0 0 1-1.5 0v-5ZM8 12.25a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
+            </svg>
+          </span>
+          <span>{error}</span>
         </div>
       )}
 
