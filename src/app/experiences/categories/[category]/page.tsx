@@ -150,28 +150,28 @@ export default async function CategoryPage({ params }: { params: { category: str
           title={category.name}
           subline={category.description}
           booking={{
-            title: 'Browse This Category',
-            cta: { label: 'See Available Experiences', url: '#available-experiences', kind: 'internal' },
+            title: `Reserve ${category.name}`,
+            cta: { label: 'Explore & Reserve', url: '#available-experiences', kind: 'internal' },
           }}
         />
 
         <IntroFacts
           eyebrowRule
-          heading="Available Experiences"
+          heading={`Why Book ${category.name} With BA Services`}
           lead={category.description}
           facts={[{ key: 'count', value: String(category.experiences.length), label: 'Locations' }]}
         >
           <SectionActions
             className="mt-8 md:mt-10"
-            primary={{ label: 'See Available Experiences', url: '#available-experiences', kind: 'internal' }}
-            secondary={[{ label: 'Back to Experiences', url: '/experiences', kind: 'internal', style: 'link' }]}
+            primary={{ label: 'Explore & Reserve', url: '#available-experiences', kind: 'internal' }}
+            secondary={[{ label: 'View All Experiences', url: '/experiences', kind: 'internal', style: 'link' }]}
           />
         </IntroFacts>
 
         {/* Available Experiences: a photo-led grid with real Explore + Book actions. */}
         <section id="available-experiences" className={`py-14 md:py-24 lg:py-[120px] ${bandWhite} scroll-mt-28`}>
           <div className={frame}>
-            <SectionHeader heading="Available Experiences" />
+            <SectionHeader heading="Explore & Reserve by Location" />
             <ul className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
               {cards.map((exp) => (
                 <LocationCard
@@ -191,12 +191,12 @@ export default async function CategoryPage({ params }: { params: { category: str
 
         <ClosingCta
           photo={{ src: category.image, alt: category.name }}
-          heading={`Ready to Experience ${category.name}?`}
-          text={category.description}
-          primary={{ label: 'See Available Experiences', url: '#available-experiences', kind: 'internal' }}
-          secondary={{ label: 'View All Experiences', url: '/experiences', kind: 'internal' }}
+          heading={`Ready to Book ${category.name}?`}
+          text="Compare locations, check open dates, and reserve your spot online in minutes."
+          primary={{ label: 'Choose a Location', url: '#available-experiences', kind: 'internal' }}
+          secondary={{ label: 'Contact Our Team', url: '/contact', kind: 'internal' }}
         />
-        <StickyBooking name={category.name} cta={{ label: 'See Available Experiences', url: '#available-experiences', kind: 'internal' }} />
+        <StickyBooking name={category.name} cta={{ label: 'Explore & Reserve', url: '#available-experiences', kind: 'internal' }} />
       </LakesideShell>
 
       <Footer />

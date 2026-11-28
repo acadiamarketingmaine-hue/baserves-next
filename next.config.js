@@ -99,6 +99,37 @@ const nextConfig = {
         destination: '/long-lake-outdoor-center/weddings',
         permanent: true,
       },
+      {
+        // High-intent plural/short category aliases guests and searchers type directly.
+        source: '/:alias(campgrounds|campground|camping|cabins)',
+        destination: '/experiences/categories/campground-rentals',
+        permanent: true,
+      },
+      {
+        source: '/parks',
+        destination: '/experiences',
+        permanent: true,
+      },
+      {
+        source: '/:alias(kayaks|watercraft)',
+        destination: '/experiences/categories/kayak-and-watercraft-rentals',
+        permanent: true,
+      },
+      {
+        source: '/:alias(hiking|trails)',
+        destination: '/experiences/categories/hiking',
+        permanent: true,
+      },
+      {
+        source: '/scenic-drives',
+        destination: '/experiences/categories/scenic-drives',
+        permanent: true,
+      },
+      {
+        source: '/pavilions',
+        destination: '/experiences/categories/lookout-pavillions',
+        permanent: true,
+      },
     ]
   },
 }
